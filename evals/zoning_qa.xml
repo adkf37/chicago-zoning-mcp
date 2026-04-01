@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Chicago Zoning MCP — Evaluation Q&A Pairs
+  ==========================================
+  Each <question> has:
+    - tool: the primary MCP tool expected to answer it
+    - type: factual | comparison | geospatial | code_search | multi_step
+    - answer: the verifiable expected value (for automated eval)
+    - notes: optional explanation
+-->
+<eval_suite name="chicago_zoning_mcp" version="1.0">
+
+  <!-- ============================
+       District Lookup (lookup_district)
+       ============================ -->
+
+  <question id="1" tool="lookup_district" type="factual">
+    <prompt>What is the floor area ratio (FAR) for an RS-3 district?</prompt>
+    <answer>0.9</answer>
+    <notes>RS-3 is the most common single-family residential district in Chicago. FAR 0.9.</notes>
+  </question>
+
+  <question id="2" tool="lookup_district" type="factual">
+    <prompt>What is the maximum FAR for a DC-16 downtown core district?</prompt>
+    <answer>16</answer>
+    <notes>DC-16 is the highest-intensity downtown zone (e.g. Willis Tower area).</notes>
+  </question>
+
+  <question id="3" tool="lookup_district" type="factual">
+    <prompt>What category does the RT-4 district fall under?</prompt>
+    <answer>Residential</answer>
+    <notes>RT = Residential Two-Flat, Townhouse and Multi-Unit District.</notes>
+  </question>
+
+  <question id="4" tool="lookup_district" type="factual">
+    <prompt>What is the minimum lot area per dwelling unit in RS-3?</prompt>
+    <answer_contains>2,500</answer_contains>
+    <notes>RS-3 requires approximately 2,500 sqft per dwelling unit.</notes>
+  </question>
+
+  <question id="5" tool="lookup_district" type="factual">
+    <prompt>Is DC-16 a valid zoning district code?</prompt>
+    <answer>yes</answer>
+    <notes>lookup_district("DC-16") should return a result, not an error.</notes>
+  </question>
+
+  <!-- ============================
+       District Comparison (compare_districts)
+       ============================ -->
+
+  <question id="6" tool="compare_districts" type="comparison">
+    <prompt>Compare RS-3 and RT-4 zoning districts. Which has a higher FAR?</prompt>
+    <answer>RT-4</answer>
+    <notes>RS-3 FAR is 0.9; RT-4 FAR is 1.2. RT-4 is higher density.</notes>
+  </question>
+
+  <question id="7" tool="compare_districts" type="comparison">
+    <prompt>What is different about the floor area ratio between B1-1 and B1-3?</prompt>
+    <answer_contains>FAR</answer_contains>
+    <notes>B1-1 FAR is 1.2, B1-3 FAR is 3.0 – compare_districts returns per-field diffs.</notes>
+  </question>
+
+  <!-- ============================
+       Development Calculator (calculate_development_envelope)
+       ============================ -->
+
+  <question id="8" tool="calculate_development_envelope" type="factual">
+    <prompt>How much floor area can I build on a 5,000 sqft lot in RS-3?</prompt>
+    <answer>4500</answer>
+    <notes>5000 sqft × FAR 0.9 = 4500 sqft max floor area.</notes>
+  </question>
+
+  <question id="9" tool="calculate_development_envelope" type="factual">
+    <prompt>What is the maximum floor area on a 10,000 sqft lot in DC-16?</prompt>
+    <answer>160000</answer>
+    <notes>10000 sqft × FAR 16 = 160,000 sqft.</notes>
+  </question>
+
+  <question id="10" tool="calculate_development_envelope" type="factual">
+    <prompt>How many dwelling units can fit on a 7,500 sqft lot zoned RS-3?</prompt>
+    <answer>3</answer>
+    <notes>RS-3 requires ~2,500 sqft per unit. 7500 / 2500 = 3 units.</notes>
+  </question>
+
+  <!-- ============================
+       Geospatial (get_parcel_zoning)
+       ============================ -->
+
+  <question id="11" tool="get_parcel_zoning" type="geospatial" requires_network="true">
+    <prompt>What is the zoning district at 233 S Wacker Dr (Willis Tower)?</prompt>
+    <answer>DC-16</answer>
+    <notes>Willis Tower is in the downtown core, zoned DC-16.</notes>
+  </question>
+
+  <question id="12" tool="get_parcel_zoning" type="geospatial" requires_network="true">
+    <prompt>What zoning district are coordinates 41.8789, -87.6359 in?</prompt>
+    <answer>DC-16</answer>
+    <notes>These are Willis Tower coordinates — same DC-16 result via lat/lng lookup.</notes>
+  </question>
+
+  <question id="13" tool="get_parcel_zoning" type="geospatial" requires_network="false">
+    <prompt>What happens if you look up zoning for an address in New York City?</prompt>
+    <answer_contains>outside Chicago</answer_contains>
+    <notes>Addresses outside Chicago should return a graceful error message.</notes>
+  </question>
+
+  <!-- ============================
+       Zoning Map URL (get_zoning_map_url)
+       ============================ -->
+
+  <question id="14" tool="get_zoning_map_url" type="factual">
+    <prompt>Give me a link to the Chicago zoning map for Willis Tower's location.</prompt>
+    <answer_contains>gisapps.chicago.gov</answer_contains>
+    <notes>get_zoning_map_url should return a URL pointing to the official map viewer.</notes>
+  </question>
+
+  <!-- ============================
+       Code Search (search_zoning_code / get_zoning_section)
+       Requires sections.json to be built from Title 17 text.
+       ============================ -->
+
+  <question id="15" tool="search_zoning_code" type="code_search" requires_index="true">
+    <prompt>Search the zoning code for "accessory dwelling unit".</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>Should return one or more sections from Chapter 17-3 or 17-9 covering ADUs.</notes>
+  </question>
+
+  <question id="16" tool="search_zoning_code" type="code_search" requires_index="true">
+    <prompt>What does the zoning code say about parking requirements?</prompt>
+    <answer_contains>parking</answer_contains>
+    <notes>Should return sections from Chapter 17-10.</notes>
+  </question>
+
+  <question id="17" tool="search_zoning_code" type="code_search" requires_index="true">
+    <prompt>Find zoning code sections about nonconforming uses.</prompt>
+    <answer_contains>17-15</answer_contains>
+    <notes>Nonconforming uses are covered in Chapter 17-15.</notes>
+  </question>
+
+  <question id="18" tool="get_zoning_section" type="code_search" requires_index="true">
+    <prompt>What does section 17-15-0100 say?</prompt>
+    <answer_contains>nonconforming</answer_contains>
+    <notes>Direct section lookup for the nonconforming use section header.</notes>
+  </question>
+
+  <!-- ============================
+       Multi-step / tool chaining
+       ============================ -->
+
+  <question id="19" tool="multi_step" type="multi_step" requires_network="true">
+    <prompt>
+      What's the zoning at 4521 N Clark St, and how much floor area
+      can I build on a 3,000 sqft lot there?
+    </prompt>
+    <expected_tools>get_parcel_zoning, calculate_development_envelope</expected_tools>
+    <answer_contains>sqft</answer_contains>
+    <notes>
+      Requires chaining get_parcel_zoning (to get the district code) then
+      calculate_development_envelope (to compute max floor area).
+    </notes>
+  </question>
+
+  <question id="20" tool="multi_step" type="multi_step">
+    <prompt>
+      Compare RS-3 and RT-4. If my RS-3 lot is 6,000 sqft and got rezoned to RT-4,
+      how many more dwelling units could I build?
+    </prompt>
+    <expected_tools>compare_districts, calculate_development_envelope</expected_tools>
+    <answer_contains>unit</answer_contains>
+    <notes>
+      RS-3: 6000/2500 = 2 units. RT-4: 6000/1000 = 6 units. Delta = 4 more units.
+      Requires two calculate_development_envelope calls or compare + manual math.
+    </notes>
+  </question>
+
+</eval_suite>

@@ -1,0 +1,366 @@
+"""Integration tests — verify all tools are registered and work end-to-end.
+
+These tests exercise the full server + tool stack with real CSV data,
+using mocks only for external network calls (Socrata, Nominatim).
+"""
+
+import time
+import pytest
+from unittest.mock import AsyncMock, MagicMock, patch
+
+from fastmcp import FastMCP
+from src.server import mcp
+
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+
+def _get_tool_names(server: FastMCP) -> set[str]:
+    """Return the set of tool names registered on a FastMCP server."""
+    # FastMCP exposes _tool_manager or similar; use the public list_tools helper.
+    # The underlying tool manager dict is at server._tool_manager._tools
+    try:
+        return set(server._tool_manager._tools.keys())
+    except AttributeError:
+        # Fallback: introspect via the MCP protocol list
+        import asyncio
+        tools = asyncio.get_event_loop().run_until_complete(server.list_tools())
+        return {t.name for t in tools}
+
+
+# ---------------------------------------------------------------------------
+# Tool registration smoke tests
+# ---------------------------------------------------------------------------
+
+
+EXPECTED_TOOLS = {
+    "lookup_district",
+    "compare_districts",
+    "list_district_types",
+    "calculate_development_envelope",
+    "get_parcel_zoning",
+    "get_zoning_map_url",
+    "search_zoning_code",
+    "get_zoning_section",
+}
+
+
+def test_all_tools_registered():
+    """All 8 expected tools must be registered on the server."""
+    registered = _get_tool_names(mcp)
+    missing = EXPECTED_TOOLS - registered
+    assert not missing, f"Missing tools: {missing}"
+
+
+def test_no_unexpected_tools():
+    """No tools should be registered beyond the expected set (prevents accidental exposure)."""
+    registered = _get_tool_names(mcp)
+    extra = registered - EXPECTED_TOOLS
+    assert not extra, f"Unexpected tools registered: {extra}"
+
+
+# ---------------------------------------------------------------------------
+# District lookup — uses real CSV data, no mocks needed
+# ---------------------------------------------------------------------------
+
+
+def test_lookup_rs3_end_to_end():
+    """Full stack: lookup_district('RS-3') should return FAR and category."""
+    from src.tools.district_lookup import register_district_tools
+
+    mcp_t = FastMCP("test")
+    tools = {}
+    original = mcp_t.tool
+
+    def capture(*a, **kw):
+        dec = original(*a, **kw)
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+        return wrap
+
+    mcp_t.tool = capture
+    register_district_tools(mcp_t)
+
+    result = tools["lookup_district"](district_code="RS-3")
+    assert "error" not in result
+    assert result["floor_area_ratio"] == "0.9"
+    assert result["category"] == "Residential"
+
+
+def test_lookup_unknown_district_returns_error():
+    """lookup_district for a nonexistent code should return an error, not raise."""
+    from src.tools.district_lookup import register_district_tools
+
+    mcp_t = FastMCP("test")
+    tools = {}
+    original = mcp_t.tool
+
+    def capture(*a, **kw):
+        dec = original(*a, **kw)
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+        return wrap
+
+    mcp_t.tool = capture
+    register_district_tools(mcp_t)
+
+    result = tools["lookup_district"](district_code="ZZ-99")
+    assert "error" in result
+
+
+def test_compare_districts_rs3_rt4():
+    """compare_districts should show RT-4 has higher FAR than RS-3."""
+    from src.tools.district_lookup import register_district_tools
+
+    mcp_t = FastMCP("test")
+    tools = {}
+    original = mcp_t.tool
+
+    def capture(*a, **kw):
+        dec = original(*a, **kw)
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+        return wrap
+
+    mcp_t.tool = capture
+    register_district_tools(mcp_t)
+
+    result = tools["compare_districts"](district_a="RS-3", district_b="RT-4")
+    assert "error" not in result
+    rs3_far = float(result["floor_area_ratio"]["RS-3"])
+    rt4_far = float(result["floor_area_ratio"]["RT-4"])
+    assert rt4_far > rs3_far
+
+
+# ---------------------------------------------------------------------------
+# Development calculator — uses real CSV data
+# ---------------------------------------------------------------------------
+
+
+def test_development_envelope_rs3_5000sqft():
+    """RS-3, 5000 sqft lot → 4500 sqft max floor area."""
+    from src.tools.development import register_development_tools
+
+    mcp_t = FastMCP("test")
+    tools = {}
+    original = mcp_t.tool
+
+    def capture(*a, **kw):
+        dec = original(*a, **kw)
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+        return wrap
+
+    mcp_t.tool = capture
+    register_development_tools(mcp_t)
+
+    result = tools["calculate_development_envelope"](district_code="RS-3", lot_area_sqft=5000)
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == 4500.0
+
+
+def test_development_envelope_bad_district():
+    """Bad district code should return error, not raise."""
+    from src.tools.development import register_development_tools
+
+    mcp_t = FastMCP("test")
+    tools = {}
+    original = mcp_t.tool
+
+    def capture(*a, **kw):
+        dec = original(*a, **kw)
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+        return wrap
+
+    mcp_t.tool = capture
+    register_development_tools(mcp_t)
+
+    result = tools["calculate_development_envelope"](district_code="ZZ-99", lot_area_sqft=5000)
+    assert "error" in result
+
+
+# ---------------------------------------------------------------------------
+# Multi-step / chaining: geocode → district → envelope
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+async def test_chain_parcel_zoning_then_envelope():
+    """Tool chaining: get zone from address, then compute envelope."""
+    from src.tools.geospatial import register_geospatial_tools
+    from src.tools.development import register_development_tools
+
+    mcp_t = FastMCP("test")
+    tools = {}
+    original = mcp_t.tool
+
+    def capture(*a, **kw):
+        dec = original(*a, **kw)
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+        return wrap
+
+    mcp_t.tool = capture
+    register_geospatial_tools(mcp_t)
+    register_development_tools(mcp_t)
+
+    mock_socrata = {
+        "type": "FeatureCollection",
+        "features": [{"type": "Feature", "properties": {"zone_class": "RS-3", "zone_type": "4"}, "geometry": {}}],
+    }
+
+    with patch("src.tools.geospatial.geocode_address", new_callable=AsyncMock) as mock_geo, \
+         patch("src.tools.geospatial.httpx.AsyncClient") as mock_client_cls:
+
+        mock_geo.return_value = (41.97, -87.66)
+        mock_resp = MagicMock()
+        mock_resp.json.return_value = mock_socrata
+        mock_resp.raise_for_status = MagicMock()
+        mock_client = AsyncMock()
+        mock_client.get.return_value = mock_resp
+        mock_client.__aenter__ = AsyncMock(return_value=mock_client)
+        mock_client.__aexit__ = AsyncMock(return_value=False)
+        mock_client_cls.return_value = mock_client
+
+        # Step 1: get zoning district
+        zone_result = await tools["get_parcel_zoning"](address="4521 N Clark St")
+        assert zone_result["zone_class"] == "RS-3"
+
+        # Step 2: calculate envelope using that district
+        district_code = zone_result["zone_class"]
+        envelope = tools["calculate_development_envelope"](
+            district_code=district_code, lot_area_sqft=3000
+        )
+        assert "error" not in envelope
+        assert envelope["max_floor_area_sqft"] == 2700.0  # 3000 * 0.9
+
+
+# ---------------------------------------------------------------------------
+# Error handling robustness
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+async def test_parcel_zoning_network_down():
+    """When Socrata is unreachable, get_parcel_zoning returns a user-friendly error."""
+    import httpx
+    from src.tools.geospatial import register_geospatial_tools
+
+    mcp_t = FastMCP("test")
+    tools = {}
+    original = mcp_t.tool
+
+    def capture(*a, **kw):
+        dec = original(*a, **kw)
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+        return wrap
+
+    mcp_t.tool = capture
+    register_geospatial_tools(mcp_t)
+
+    with patch("src.tools.geospatial.geocode_address", new_callable=AsyncMock) as mock_geo, \
+         patch("src.tools.geospatial.httpx.AsyncClient") as mock_client_cls:
+
+        mock_geo.return_value = (41.88, -87.63)
+        mock_client = AsyncMock()
+        mock_client.get.side_effect = httpx.TimeoutException("connection timed out")
+        mock_client.__aenter__ = AsyncMock(return_value=mock_client)
+        mock_client.__aexit__ = AsyncMock(return_value=False)
+        mock_client_cls.return_value = mock_client
+
+        result = await tools["get_parcel_zoning"](address="123 N Michigan Ave")
+        assert "error" in result
+        # Should not expose a raw stack trace — error must be a string
+        assert isinstance(result["error"], str)
+
+
+def test_search_zoning_code_no_index_helpful_error():
+    """search_zoning_code hits a missing index and returns actionable hint."""
+    from src.tools.code_search import register_code_search_tools
+
+    mcp_t = FastMCP("test")
+    tools = {}
+    original = mcp_t.tool
+
+    def capture(*a, **kw):
+        dec = original(*a, **kw)
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+        return wrap
+
+    mcp_t.tool = capture
+    register_code_search_tools(mcp_t)
+
+    with patch("src.tools.code_search.load_section_index", return_value=[]):
+        result = tools["search_zoning_code"](query="parking")
+    assert "error" in result
+    assert "ingest_title_17" in result.get("hint", "")
+
+
+# ---------------------------------------------------------------------------
+# Performance: critical path tools must respond quickly
+# ---------------------------------------------------------------------------
+
+
+def test_lookup_district_performance():
+    """lookup_district should complete in under 100ms (in-memory CSV)."""
+    from src.tools.district_lookup import register_district_tools
+
+    mcp_t = FastMCP("test")
+    tools = {}
+    original = mcp_t.tool
+
+    def capture(*a, **kw):
+        dec = original(*a, **kw)
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+        return wrap
+
+    mcp_t.tool = capture
+    register_district_tools(mcp_t)
+
+    start = time.perf_counter()
+    for _ in range(20):
+        tools["lookup_district"](district_code="RS-3")
+    elapsed_ms = (time.perf_counter() - start) * 1000
+    avg_ms = elapsed_ms / 20
+    assert avg_ms < 100, f"lookup_district averaged {avg_ms:.1f}ms — too slow"
+
+
+def test_development_envelope_performance():
+    """calculate_development_envelope should complete in under 100ms."""
+    from src.tools.development import register_development_tools
+
+    mcp_t = FastMCP("test")
+    tools = {}
+    original = mcp_t.tool
+
+    def capture(*a, **kw):
+        dec = original(*a, **kw)
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+        return wrap
+
+    mcp_t.tool = capture
+    register_development_tools(mcp_t)
+
+    start = time.perf_counter()
+    for _ in range(20):
+        tools["calculate_development_envelope"](district_code="B2-3", lot_area_sqft=5000)
+    elapsed_ms = (time.perf_counter() - start) * 1000
+    avg_ms = elapsed_ms / 20
+    assert avg_ms < 100, f"calculate_development_envelope averaged {avg_ms:.1f}ms — too slow"

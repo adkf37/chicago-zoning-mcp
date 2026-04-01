@@ -1,0 +1,204 @@
+"""Ingest Title 17 of the Chicago Municipal Code into a section index.
+
+This script parses the zoning ordinance text and creates a JSON index
+at data/title_17/sections.json for use by the search_zoning_code tool.
+
+Source: American Legal Publishing
+https://codelibrary.amlegal.com/codes/chicago/latest/chicago_il/0-0-0-2647389
+
+Usage:
+    python scripts/ingest_title_17.py           # Build the index
+    python scripts/ingest_title_17.py --validate # Check an existing index
+
+To download the raw text:
+1. Go to: https://codelibrary.amlegal.com/codes/chicago/latest/chicago_il/0-0-0-2647389
+2. For each chapter (17-1 through 17-17), click through and copy the plain text.
+3. Save each chapter as a .txt file in data/title_17/raw/
+   e.g., data/title_17/raw/chapter_17-1.txt
+4. Re-run this script.
+"""
+
+import argparse
+import json
+import re
+from pathlib import Path
+
+OUTPUT_DIR = Path(__file__).parent.parent / "data" / "title_17"
+OUTPUT_FILE = OUTPUT_DIR / "sections.json"
+RAW_DIR = OUTPUT_DIR / "raw"
+
+
+def parse_sections_from_text(text: str, source_file: str = "") -> list[dict]:
+    """Parse Title 17 plain text into section entries.
+
+    Handles section headers in two common amlegal.com formats:
+      17-1-0100  TITLE, PURPOSE AND APPLICABILITY
+      17-1-0101  Title.
+      Sec. 17-1-0101.  Title.
+
+    Returns list of {"section": "17-1-0101", "title": "...", "chapter": "...", "text": "..."}
+    """
+    # Match both bare and "Sec." prefixed headers
+    section_pattern = re.compile(
+        r"^(?:Sec\.\s+)?(17-\d{1,2}-\d{4}[A-Za-z]?)[.\s]+(.+?)$",
+        re.MULTILINE,
+    )
+
+    matches = list(section_pattern.finditer(text))
+
+    # Collect all candidate entries per section number, then keep the richest.
+    # Each amlegal page repeats the section number in navigation before the
+    # actual content, so there are typically 2 matches per section; we want
+    # the one with the most body text.
+    candidates: dict[str, dict] = {}
+
+    for i, match in enumerate(matches):
+        section_num = match.group(1).strip()
+        title = match.group(2).strip().rstrip(".")
+
+        # Extract text until next section
+        start = match.end()
+        end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
+        body = text[start:end].strip()
+
+        # Keep whichever occurrence has the most content
+        existing = candidates.get(section_num)
+        if existing is None or len(body) > len(existing["text"]):
+            # Infer chapter from section number (17-X-XXXX → Chapter 17-X)
+            parts = section_num.split("-")
+            chapter = f"Chapter 17-{parts[1]}" if len(parts) >= 2 else ""
+            candidates[section_num] = {
+                "section": section_num,
+                "title": title,
+                "chapter": chapter,
+                "text": body,
+                "source_file": source_file,
+            }
+
+    # Return in document order (preserve first-seen order per section)
+    seen_order: list[str] = []
+    for match in matches:
+        sec = match.group(1).strip()
+        if sec not in seen_order:
+            seen_order.append(sec)
+
+    sections = []
+    for sec in seen_order:
+        entry = candidates.get(sec)
+        if entry and (entry["text"] or entry["title"]):
+            sections.append(entry)
+
+    return sections
+
+
+def validate_index(index: list[dict]) -> list[str]:
+    """Return a list of warning messages about index quality."""
+    warnings = []
+
+    if len(index) < 100:
+        warnings.append(
+            f"Only {len(index)} sections found — expected 100+. "
+            "Some chapters may be missing from data/title_17/raw/."
+        )
+
+    # Check for duplicate section numbers
+    seen: dict[str, int] = {}
+    for entry in index:
+        num = entry["section"]
+        seen[num] = seen.get(num, 0) + 1
+    dupes = {k: v for k, v in seen.items() if v > 1}
+    if dupes:
+        warnings.append(f"Duplicate section numbers ({len(dupes)}): {list(dupes)[:10]}")
+
+    # Check all 17 chapters are represented
+    chapters_found = {e["section"].split("-")[1] for e in index if "-" in e["section"]}
+    expected_chapters = {str(i) for i in range(1, 18)}
+    missing = expected_chapters - chapters_found
+    if missing:
+        warnings.append(f"Chapters missing: {sorted(missing, key=int)}")
+
+    # Check for sections with no body text
+    empty = [e["section"] for e in index if not e.get("text", "").strip()]
+    if empty:
+        warnings.append(f"{len(empty)} sections have no body text.")
+
+    return warnings
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Build or validate Title 17 section index.")
+    parser.add_argument(
+        "--validate",
+        action="store_true",
+        help="Check an existing sections.json instead of rebuilding.",
+    )
+    args = parser.parse_args()
+
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    RAW_DIR.mkdir(parents=True, exist_ok=True)
+
+    if args.validate:
+        if not OUTPUT_FILE.exists():
+            print(f"No index found at {OUTPUT_FILE}. Run without --validate to build it.")
+            return
+        with open(OUTPUT_FILE, encoding="utf-8") as f:
+            index = json.load(f)
+        print(f"Index contains {len(index)} sections.")
+        warnings = validate_index(index)
+        if warnings:
+            print("\nWarnings:")
+            for w in warnings:
+                print(f"  [WARN] {w}")
+        else:
+            print("Index looks good — no warnings.")
+        return
+
+    # --- Build mode ---
+    raw_files = sorted(RAW_DIR.glob("*.txt"))
+    if not raw_files:
+        print("No raw text files found in data/title_17/raw/")
+        print()
+        print("To populate the index:")
+        print("1. Go to: https://codelibrary.amlegal.com/codes/chicago/latest/chicago_il/0-0-0-2647389")
+        print("2. Copy the text of each chapter (17-1 through 17-17)")
+        print("3. Save as .txt files in data/title_17/raw/")
+        print("   e.g., data/title_17/raw/chapter_17-1.txt")
+        print()
+        print("Then re-run this script.")
+        return
+
+    all_sections: list[dict] = []
+    seen_numbers: set[str] = set()
+
+    for filepath in raw_files:
+        print(f"Parsing {filepath.name}...")
+        text = filepath.read_text(encoding="utf-8")
+        sections = parse_sections_from_text(text, source_file=filepath.name)
+
+        added = 0
+        for section in sections:
+            if section["section"] not in seen_numbers:
+                seen_numbers.add(section["section"])
+                all_sections.append(section)
+                added += 1
+            else:
+                print(f"  Skipping duplicate: {section['section']}")
+
+        print(f"  Found {len(sections)} sections, added {added}")
+
+    # Validate before writing
+    warnings = validate_index(all_sections)
+    if warnings:
+        print("\nWarnings:")
+        for w in warnings:
+            print(f"  [WARN] {w}")
+
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        json.dump(all_sections, f, indent=2, ensure_ascii=False)
+
+    print(f"\nWritten {len(all_sections)} sections to {OUTPUT_FILE}")
+
+
+if __name__ == "__main__":
+    main()
+
