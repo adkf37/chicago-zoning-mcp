@@ -11,13 +11,15 @@
 
 ## Current Objective
 
-Squad review complete — ready for Coder phase. All automated code tasks across Phases 1–7
-are implemented. Remaining work is manual verification (MCP Inspector, Ollama testing,
-fresh-clone check) and one human-gated step (Title 17 text download). See `.squad/sprint.md`
-for the full ordered execution plan with agent assignments.
+Sprint 1 Tier 1 complete — all 69 offline automated tests pass. `.gitignore` added (was
+missing from the repo despite being listed as complete in Phase 1). Remaining work is manual
+verification (MCP Inspector, Ollama testing, fresh-clone check) and one human-gated step
+(Title 17 text download). See `.squad/sprint.md` for the full execution plan.
 
 ## Recent Activity
 
+- 2026-04-02: Sprint Tier 1 executed — `pytest tests/ -m "not network"` → 69 passed, 5 deselected
+- 2026-04-02: `.gitignore` created (was missing; prevented `__pycache__` from being ignored)
 - 2026-04-02: Squad review complete — backlog gaps filled, sprint plan created
 - 2026-04-01: Squad initialized — team roster, routing rules, and agent charters created
 - 2026-04-01: Project activated by Maestro — GitHub repo created, agent task dispatched to Copilot
@@ -30,6 +32,7 @@ for the full ordered execution plan with agent assignments.
 | FEEDBACK.md | `./FEEDBACK.md` | created |
 | Backlog README | `backlog/README.md` | created |
 | Data sources doc | `backlog/data_sources.md` | created |
+| `.gitignore` | `.gitignore` | created (was missing from repo) |
 | Phase 1 — Scaffold | `backlog/phase-01-scaffold-and-data.md` | complete — inputs/outputs added |
 | Phase 2 — District Lookup | `backlog/phase-02-district-lookup-tools.md` | complete — inputs/outputs added |
 | Phase 3 — Dev Calculator | `backlog/phase-03-development-calculator.md` | complete |

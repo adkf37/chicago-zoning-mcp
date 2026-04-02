@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+*.egg
+MANIFEST
+
+# pytest
+.pytest_cache/
+.cache/
+*.pytest_cache
+
+# Coverage
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Ruff
+.ruff_cache/
+
+# Type checkers
+.mypy_cache/
+.pytype/
+
+# Title 17 raw text and generated index (must be built manually)
+data/title_17/
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

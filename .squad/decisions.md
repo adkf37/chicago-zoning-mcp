@@ -44,3 +44,28 @@ from tasks requiring a human or local Ollama setup.
 **Rationale:** Agents can immediately execute Tiers 1–2 without human involvement. Tiers
 3–6 gate on human setup but should not block sprint progress for automated work.
 
+### 2026-04-02 — Tester — Tier 1 offline tests executed and all pass
+
+**Context:** Coder phase kicked off. First automated action was running the full offline test suite.
+
+**Decision:** Treat a green `pytest tests/ -m "not network"` run as the official sprint Tier 1
+completion gate. Result: 69 passed, 5 deselected (network tests marked with `@pytest.mark.network`).
+
+**Rationale:** All 8 tools are registered and callable; all data-layer, tool-layer, and
+integration assertions pass with real CSV data and lightweight mocks for external APIs.
+
+### 2026-04-02 — Lead — .gitignore was missing from repo
+
+**Context:** Phase 1 backlog listed `.gitignore` creation as a completed task, but the file
+was absent from the repository. Running tests before the file existed caused `__pycache__`
+directories to be tracked by git.
+
+**Decision:** Create `.gitignore` covering Python artifacts (`__pycache__`, `*.pyc`, `.venv`,
+`dist/`, `.pytest_cache/`, `.ruff_cache/`, `.coverage`), the gitignored data directory
+(`data/title_17/`), and common editor/OS files. Remove previously tracked `__pycache__`
+entries from git history.
+
+**Rationale:** Without `.gitignore`, every test run pollutes the repo with compiled bytecode.
+The `data/title_17/` exclusion is intentional per Phase 5 design — Title 17 raw text and the
+generated `sections.json` index must not be committed (large files, manually downloaded).
+
