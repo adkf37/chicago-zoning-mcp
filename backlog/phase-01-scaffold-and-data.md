@@ -1,12 +1,27 @@
 # Phase 1: Project Scaffold & Data Foundation
 
-**Status:** Complete (scaffolded)
+**Status:** Complete
 **Depends on:** None
 **Estimated scope:** S
 
 ## Objective
 
-Stand up the project structure, dependency management, and data loading layer so that all subsequent phases have a working foundation to build on.
+Stand up the project structure, dependency management, and data loading layer so that all
+subsequent phases have a working foundation to build on.
+
+## Inputs
+
+- `data/zoning_codes.csv` — zoning district reference data (ported from parent repo)
+
+## Outputs
+
+- `pyproject.toml` — project metadata with `fastmcp`, `httpx`, `pandas` dependencies;
+  `[dev]` extras include `pytest`, `pytest-asyncio`, `pytest-mock`
+- `src/server.py` — FastMCP entry point; imports and registers all tool groups
+- `src/data_loader.py` — `load_zoning_districts()`, `get_district()`, `get_all_districts()`,
+  `get_districts_by_category()` with `lru_cache`
+- `Dockerfile` / `docker-compose.yml` — containerized deployment skeleton
+- `.gitignore` — ignores `__pycache__`, `.venv`, `data/title_17/`, pytest/coverage artifacts
 
 ## Tasks
 
