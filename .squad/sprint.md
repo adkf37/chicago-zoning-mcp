@@ -25,14 +25,15 @@ lightweight and focused on validation and any gap-filling that emerges from manu
 
 | # | Task | Owner | File | Status |
 |---|------|-------|------|--------|
-| T1-01 | Run full offline test suite | Tester | `tests/` | ✓ Ready |
-| T1-02 | Verify all 8 tools register and respond | Tester | `tests/test_integration.py` | ✓ Ready |
-| T1-03 | Verify district lookup tools pass all edge cases | Tester | `tests/test_district_lookup.py` | ✓ Ready |
-| T1-04 | Verify development calculator accuracy (RS-3, DC-16) | Tester | `tests/test_development.py` | ✓ Ready |
-| T1-05 | Verify geospatial tools (unit — no network) | Tester | `tests/test_geospatial.py` | ✓ Ready |
-| T1-06 | Verify code search tools (fixture-based) | Tester | `tests/test_code_search.py` | ✓ Ready |
+| T1-01 | Run full offline test suite | Tester | `tests/` | ✅ Done — 69 passed, 5 deselected |
+| T1-02 | Verify all 8 tools register and respond | Tester | `tests/test_integration.py` | ✅ Done |
+| T1-03 | Verify district lookup tools pass all edge cases | Tester | `tests/test_district_lookup.py` | ✅ Done |
+| T1-04 | Verify development calculator accuracy (RS-3, DC-16) | Tester | `tests/test_development.py` | ✅ Done |
+| T1-05 | Verify geospatial tools (unit — no network) | Tester | `tests/test_geospatial.py` | ✅ Done |
+| T1-06 | Verify code search tools (fixture-based) | Tester | `tests/test_code_search.py` | ✅ Done |
 
 **Run command:** `pytest tests/ -m "not network" --tb=short`
+**Result (2026-04-02):** 69 passed, 5 deselected (network tests) — all green.
 
 ---
 
@@ -130,12 +131,12 @@ See `backlog/phase-05-code-text-search.md` for step-by-step instructions.
 
 The sprint is **Done** when all of the following are true:
 
-- [ ] `pytest tests/ -m "not network"` passes with 0 failures and 0 errors
+- [x] `pytest tests/ -m "not network"` passes with 0 failures and 0 errors — **69 passed 2026-04-02**
 - [ ] `pytest tests/ -m network` passes (or failures are documented network flakiness)
 - [ ] All 8 tools verified callable in MCP Inspector (Tier 4)
 - [ ] Ollama end-to-end test confirms single-tool calls work for all tool categories (Tier 5)
 - [ ] No tool description issues requiring a code change, OR changes have been made and reviewed by Ralph
-- [ ] `STATUS.md` updated to reflect sprint outcome
+- [x] `STATUS.md` updated to reflect sprint outcome
 - [ ] Scribe has logged the sprint completion in `.squad/agents/scribe/history.md`
 
 **Note:** Title 17 ingestion (Tier 3) and parent repo cross-reference (T6-03) are
