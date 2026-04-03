@@ -123,3 +123,41 @@
 2. Download Title 17 text (see `backlog/phase-05-code-text-search.md`)
 3. Verify all 8 tools via MCP Inspector (`npx @modelcontextprotocol/inspector python -m src.server`)
 4. Test with Ollama (`ollama pull llama3.1:8b && python -m src.server`)
+
+---
+
+## 2026-04-03 — Sprint Coder Cycle 5 Log
+
+**Session summary:** Bug fix and eval Q13 coverage — geocoded address bounds check.
+
+**Work completed:**
+- Identified missing `is_in_chicago` validation for address-based `get_parcel_zoning` calls:
+  When an address was geocoded via Nominatim and the resulting coordinates were outside
+  Chicago, the tool skipped the bounds check, made an unnecessary Socrata API call, and
+  returned "No zoning district found at this location" instead of the correct
+  "outside Chicago" error. The check existed only for the direct lat/lng input path.
+- Fixed `src/tools/geospatial.py`: added `is_in_chicago` check immediately after
+  `geocode_address` returns coordinates. Returns a structured error dict and skips
+  the Socrata query if outside Chicago bounds.
+- Added `test_parcel_zoning_address_outside_chicago` to `tests/test_geospatial.py`:
+  mocks geocoder returning NYC coordinates; asserts error returned and Socrata never called.
+- Added `test_eval_q13_address_outside_chicago` to `tests/test_evals.py`:
+  covers eval Q13 (`requires_network=false`); mocks geocoder; verifies "outside" in error.
+- `pytest tests/ -m "not network"` → **91 passed, 5 deselected** (up from 89)
+- `ruff check src/ tests/` → 0 errors
+- Updated `STATUS.md`, `.squad/decisions.md`, `.squad/sprint.md` with results
+- Marked Sprint DoD item "Scribe has logged sprint completion" as done ✅
+
+**Artifacts updated:**
+- `src/tools/geospatial.py` — address geocoding bounds check added
+- `tests/test_geospatial.py` — 1 new test (`test_parcel_zoning_address_outside_chicago`)
+- `tests/test_evals.py` — 1 new test (`test_eval_q13_address_outside_chicago`) + `patch` import
+- `STATUS.md` — test count updated to 91; current objective updated
+- `.squad/decisions.md` — decision logged (Coder/Lead)
+- `.squad/sprint.md` — DoD test count updated; Scribe log item checked
+
+**Next steps for human:**
+1. Run `pytest tests/ -m network` from a machine with internet (Nominatim + Socrata)
+2. Download Title 17 text (see `backlog/phase-05-code-text-search.md`)
+3. Verify all 8 tools via MCP Inspector (`npx @modelcontextprotocol/inspector python -m src.server`)
+4. Test with Ollama (`ollama pull llama3.1:8b && python -m src.server`)

@@ -8,6 +8,8 @@ or the Title 17 index are skipped here and marked ``@pytest.mark.network``
 Eval question IDs correspond to entries in evals/zoning_qa.xml.
 """
 
+from unittest.mock import AsyncMock, patch
+
 import pytest
 from fastmcp import FastMCP
 
@@ -189,6 +191,45 @@ def test_eval_q10_rs3_7500_units(development_tools):
     )
     assert "error" not in result
     assert result["max_dwelling_units"] == 3
+
+
+# ---------------------------------------------------------------------------
+# Q13 — address outside Chicago returns graceful error
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+async def test_eval_q13_address_outside_chicago():
+    """Eval Q13: address in New York City should return a graceful 'outside Chicago' error.
+
+    requires_network=false because we mock the geocoder to return NYC coordinates.
+    The tool must validate the geocoded coordinates against Chicago bounds and return
+    a helpful error without querying Socrata.
+    """
+    mcp_t = FastMCP("test")
+    tools = {}
+    original = mcp_t.tool
+
+    def capture(*args, **kwargs):
+        dec = original(*args, **kwargs)
+
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+
+        return wrap
+
+    mcp_t.tool = capture
+    register_geospatial_tools(mcp_t)
+
+    with patch("src.tools.geospatial.geocode_address", new_callable=AsyncMock) as mock_geo:
+        mock_geo.return_value = (40.7128, -74.0060)  # New York City coordinates
+        result = await tools["get_parcel_zoning"](address="350 5th Ave, New York, NY")
+
+    assert "error" in result
+    assert "outside" in result["error"].lower(), (
+        f"Expected 'outside' in error message, got: {result['error']}"
+    )
 
 
 # ---------------------------------------------------------------------------

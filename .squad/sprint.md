@@ -149,14 +149,14 @@ See `backlog/phase-05-code-text-search.md` for step-by-step instructions.
 
 The sprint is **Done** when all of the following are true:
 
-- [x] `pytest tests/ -m "not network"` passes with 0 failures and 0 errors — **89 passed 2026-04-03**
+- [x] `pytest tests/ -m "not network"` passes with 0 failures and 0 errors — **91 passed 2026-04-03**
 - [x] `ruff check src/ tests/` passes with 0 errors — **0 issues 2026-04-03**
 - [x] `pytest tests/ -m network` failures are documented — DNS blocked in CI sandbox (expected, run manually)
 - [ ] All 8 tools verified callable in MCP Inspector (Tier 4)
 - [ ] Ollama end-to-end test confirms single-tool calls work for all tool categories (Tier 5)
 - [ ] No tool description issues requiring a code change, OR changes have been made and reviewed by Ralph
 - [x] `STATUS.md` updated to reflect sprint outcome
-- [ ] Scribe has logged the sprint completion in `.squad/agents/scribe/history.md`
+- [x] Scribe has logged the sprint completion in `.squad/agents/scribe/history.md`
 
 **Note:** Title 17 ingestion (Tier 3) and parent repo cross-reference (T6-03) are
 explicitly out of scope for automated sprint completion — they require human action.
