@@ -28,3 +28,37 @@
 2. Download Title 17 text (see `backlog/phase-05-code-text-search.md`)
 3. Verify tools via MCP Inspector (`npx @modelcontextprotocol/inspector python -m src.server`)
 4. Test with Ollama (`ollama pull llama3.1:8b && python -m src.server`)
+
+---
+
+## 2026-04-03 — Sprint Coder Cycle 2 Log
+
+**Session summary:** Second coder pass — integration test completeness and tool enhancement.
+
+**Work completed:**
+- Enhanced `compare_districts` tool: now returns a `_differences` key (list of field names
+  that differ between the two districts). Empty list when comparing a district to itself.
+  Makes it easier for LLMs to identify changed fields without iterating every response key.
+- Added 4 new integration tests to `tests/test_integration.py`:
+  - `test_get_zoning_map_url_tool` — covers the sync map-URL tool (default + custom coords)
+  - `test_get_zoning_section_tool_with_fixture` — covers happy-path for section lookup
+  - `test_compare_districts_differences_key` — verifies `_differences` contains changed fields
+  - `test_compare_same_district_no_differences` — verifies empty `_differences` on self-compare
+- All 8 MCP tools now have at least one integration test in `tests/test_integration.py`
+- `ruff check src/ tests/` → 0 errors
+- `pytest tests/ -m "not network"` → **75 passed, 5 deselected**
+- Updated `STATUS.md`, `.squad/decisions.md`, `.squad/sprint.md` with results
+
+**Artifacts updated:**
+- `src/tools/district_lookup.py` — `compare_districts` enhanced with `_differences` key
+- `tests/test_integration.py` — 4 new tests (17 total in integration suite)
+- `STATUS.md` — updated to 75 tests passing
+- `.squad/decisions.md` — decision logged
+- `.squad/sprint.md` — test result updated
+
+**Next steps for human:**
+1. Run `pytest tests/ -m network` from a machine with internet
+2. Download Title 17 text (see `backlog/phase-05-code-text-search.md`)
+3. Verify all 8 tools via MCP Inspector
+4. Test with Ollama
+

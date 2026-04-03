@@ -50,7 +50,7 @@ def test_get_zoning_map_url_default():
     _make_mcp()
     result = _call_sync_tool_get_zoning_map_url()
     assert "url" in result
-    assert "gisapps.chicago.gov" in result["url"]
+    assert result["url"].startswith("https://gisapps.chicago.gov/")
     assert result["zoom"] == 17
 
 

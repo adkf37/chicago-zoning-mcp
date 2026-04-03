@@ -48,6 +48,9 @@ def register_district_tools(mcp: FastMCP):
                 district_b.upper(): b[key],
                 "same": a[key] == b[key],
             }
+
+        # Top-level summary: list fields that differ for quick LLM consumption
+        comparison["_differences"] = [k for k in a if a[k] != b[k]]
         return comparison
 
     @mcp.tool()
