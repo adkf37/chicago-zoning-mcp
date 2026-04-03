@@ -30,7 +30,7 @@ def load_zoning_districts() -> dict[str, dict]:
 
     Returns:
         {"RS-3": {"district_type_code": "RS-3", "zone_type": 4, "category": "Residential", ...}, ...}
-    """
+    """  # noqa: E501
     districts = {}
     with open(ZONING_CODES_CSV, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)

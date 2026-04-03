@@ -2,7 +2,7 @@
 
 from fastmcp import FastMCP
 
-from src.data_loader import get_district, get_all_districts, get_districts_by_category
+from src.data_loader import get_all_districts, get_district, get_districts_by_category
 
 
 def register_district_tools(mcp: FastMCP):

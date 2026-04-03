@@ -1,8 +1,9 @@
 """Tests for district lookup tools."""
 
-from src.data_loader import get_district, get_all_districts, get_districts_by_category
-from src.tools.district_lookup import register_district_tools
 from fastmcp import FastMCP
+
+from src.data_loader import get_all_districts, get_district, get_districts_by_category
+from src.tools.district_lookup import register_district_tools
 
 
 def _get_tools():

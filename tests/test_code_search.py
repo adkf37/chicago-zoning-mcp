@@ -4,18 +4,15 @@ Unit tests use a small in-memory fixture index to avoid requiring the full
 sections.json (which is built from manually-downloaded Title 17 text).
 """
 
-import json
-import pytest
 from unittest.mock import patch
 
-from src.tools.code_search import (
-    search_sections,
-    get_section_by_number,
-    register_code_search_tools,
-    load_section_index,
-)
 from fastmcp import FastMCP
 
+from src.tools.code_search import (
+    get_section_by_number,
+    register_code_search_tools,
+    search_sections,
+)
 
 # ---------------------------------------------------------------------------
 # Fixture index — a minimal set of realistic sections
@@ -33,7 +30,10 @@ FIXTURE_SECTIONS = [
         "section": "17-2-0100",
         "title": "Rules of Measurement",
         "chapter": "Chapter 17-2",
-        "text": "Floor area ratio (FAR) is the ratio of the total floor area of a building to the area of the lot.",
+        "text": (
+            "Floor area ratio (FAR) is the ratio of the total floor area"
+            " of a building to the area of the lot."
+        ),
         "source_file": "chapter_17-2.txt",
     },
     {

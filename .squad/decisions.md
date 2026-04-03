@@ -69,3 +69,26 @@ entries from git history.
 The `data/title_17/` exclusion is intentional per Phase 5 design — Title 17 raw text and the
 generated `sections.json` index must not be committed (large files, manually downloaded).
 
+### 2026-04-03 — Ralph/Lead — Code quality pass: ruff lint fixes in src/ and tests/
+
+**Context:** Running `ruff check src/ tests/` revealed 21 lint issues: import ordering (I001),
+line-too-long (E501), unused imports (F401), and one unused variable (F841).
+
+**Decision:** Fix all 21 issues. 14 were auto-fixed with `ruff --fix`; 7 were fixed manually
+(long string literals broken across lines, unused `mcp` variable removed).
+
+**Changes made:**
+- `src/data_loader.py` — added `# noqa: E501` on docstring example line
+- `src/tools/geospatial.py` — fixed import order; broke 3 long hint strings across lines
+- `src/server.py`, `src/tools/district_lookup.py` — fixed import order
+- `tests/test_code_search.py` — removed unused `json`, `pytest`, `load_section_index` imports;
+  broke long text fixture string
+- `tests/test_geospatial.py` — fixed import order; removed unused `mcp` variable and unused
+  `register_geospatial_tools` import
+- `tests/test_development.py`, `tests/test_district_lookup.py`, `tests/test_integration.py` —
+  fixed import ordering; broke long mock fixture line
+
+**Rationale:** Clean lint state ensures ruff can be used as a CI gate without noise,
+and removes genuinely unused code (F401, F841) that can confuse future contributors.
+All 69 offline tests pass after changes.
+
