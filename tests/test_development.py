@@ -56,14 +56,53 @@ def test_development_envelope_has_disclaimer():
     from src.tools.development import register_development_tools
 
     mcp = FastMCP("test")
+    tools = {}
+    original = mcp.tool
+
+    def capture(*a, **kw):
+        dec = original(*a, **kw)
+
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+
+        return wrap
+
+    mcp.tool = capture
     register_development_tools(mcp)
 
-    # Call the underlying function directly
-    d = get_district("RS-3")
-    assert d is not None
-    # Check our result structure has the expected disclaimer field
-    far = float(d["floor_area_ratio"])
-    assert far * 5000 == 4500.0
+    result = tools["calculate_development_envelope"](district_code="RS-3", lot_area_sqft=5000)
+    assert "disclaimer" in result
+    assert isinstance(result["disclaimer"], str)
+    assert len(result["disclaimer"]) > 0
+
+
+def test_development_envelope_dc16_10000sqft():
+    """DC-16, 10000 sqft lot → 160,000 sqft max floor area (Phase 3 acceptance criterion)."""
+    from fastmcp import FastMCP
+
+    from src.tools.development import register_development_tools
+
+    mcp = FastMCP("test")
+    tools = {}
+    original = mcp.tool
+
+    def capture(*a, **kw):
+        dec = original(*a, **kw)
+
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+
+        return wrap
+
+    mcp.tool = capture
+    register_development_tools(mcp)
+
+    result = tools["calculate_development_envelope"](district_code="DC-16", lot_area_sqft=10000)
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == 160000.0
+    assert "disclaimer" in result
 
 
 def test_height_is_text():

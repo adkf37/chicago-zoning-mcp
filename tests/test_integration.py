@@ -137,6 +137,41 @@ def test_compare_districts_rs3_rt4():
     assert rt4_far > rs3_far
 
 
+def test_list_district_types_tool():
+    """list_district_types returns all districts unfiltered, and a subset when filtered."""
+    from src.tools.district_lookup import register_district_tools
+
+    mcp_t = FastMCP("test")
+    tools = {}
+    original = mcp_t.tool
+
+    def capture(*a, **kw):
+        dec = original(*a, **kw)
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+        return wrap
+
+    mcp_t.tool = capture
+    register_district_tools(mcp_t)
+
+    # No filter → returns all districts
+    all_districts = tools["list_district_types"]()
+    assert len(all_districts) > 50
+
+    # Filtered by Residential
+    residential = tools["list_district_types"](category="Residential")
+    assert len(residential) > 0
+    assert all("Residential" in d["category"] for d in residential)
+    assert len(residential) < len(all_districts)
+
+    # Summary view: must include required fields, must NOT include all details
+    r = residential[0]
+    for field in ("district_type_code", "category", "district_title", "floor_area_ratio",
+                  "plain_description"):
+        assert field in r, f"Missing summary field: {field}"
+
+
 # ---------------------------------------------------------------------------
 # Development calculator — uses real CSV data
 # ---------------------------------------------------------------------------
