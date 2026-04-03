@@ -50,22 +50,25 @@ async def geocode_address(address: str) -> tuple[float, float] | None:
 
     await _enforce_rate_limit()
 
-    async with httpx.AsyncClient() as client:
-        resp = await client.get(
-            NOMINATIM_URL,
-            params={
-                "q": address,
-                "format": "json",
-                "limit": 1,
-                "countrycodes": "us",
-                "viewbox": "-87.94,42.02,-87.52,41.64",
-                "bounded": 1,
-            },
-            headers={"User-Agent": "chicago-zoning-mcp/0.1"},
-            timeout=10,
-        )
-        resp.raise_for_status()
-        results = resp.json()
+    try:
+        async with httpx.AsyncClient() as client:
+            resp = await client.get(
+                NOMINATIM_URL,
+                params={
+                    "q": address,
+                    "format": "json",
+                    "limit": 1,
+                    "countrycodes": "us",
+                    "viewbox": "-87.94,42.02,-87.52,41.64",
+                    "bounded": 1,
+                },
+                headers={"User-Agent": "chicago-zoning-mcp/0.1"},
+                timeout=10,
+            )
+            resp.raise_for_status()
+            results = resp.json()
+    except httpx.HTTPError:
+        return None
 
     if not results:
         return None

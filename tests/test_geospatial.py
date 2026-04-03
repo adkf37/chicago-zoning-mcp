@@ -6,10 +6,11 @@ Integration tests (marked with @pytest.mark.network) hit live APIs.
 
 from unittest.mock import AsyncMock, MagicMock, patch
 
+import httpx
 import pytest
 from fastmcp import FastMCP
 
-from src.geocoder import CHICAGO_BOUNDS, is_in_chicago
+from src.geocoder import CHICAGO_BOUNDS, geocode_address, is_in_chicago
 from src.tools.geospatial import register_geospatial_tools
 
 # --- Unit tests for geocoder helpers ---
@@ -34,6 +35,34 @@ def test_edge_of_chicago():
     """Points right at the boundary edge should be in bounds."""
     assert is_in_chicago(CHICAGO_BOUNDS["min_lat"], CHICAGO_BOUNDS["min_lng"]) is True
     assert is_in_chicago(CHICAGO_BOUNDS["max_lat"], CHICAGO_BOUNDS["max_lng"]) is True
+
+
+@pytest.mark.asyncio
+async def test_geocode_address_network_error_returns_none():
+    """geocode_address should return None (not raise) when Nominatim is unreachable."""
+    with patch("src.geocoder.httpx.AsyncClient") as mock_client_cls:
+        mock_client = AsyncMock()
+        mock_client.get.side_effect = httpx.ConnectError("name resolution failed")
+        mock_client.__aenter__ = AsyncMock(return_value=mock_client)
+        mock_client.__aexit__ = AsyncMock(return_value=False)
+        mock_client_cls.return_value = mock_client
+
+        result = await geocode_address("123 N Michigan Ave")
+    assert result is None
+
+
+@pytest.mark.asyncio
+async def test_geocode_address_timeout_returns_none():
+    """geocode_address should return None (not raise) when Nominatim times out."""
+    with patch("src.geocoder.httpx.AsyncClient") as mock_client_cls:
+        mock_client = AsyncMock()
+        mock_client.get.side_effect = httpx.TimeoutException("timed out")
+        mock_client.__aenter__ = AsyncMock(return_value=mock_client)
+        mock_client.__aexit__ = AsyncMock(return_value=False)
+        mock_client_cls.return_value = mock_client
+
+        result = await geocode_address("1060 W Addison St")
+    assert result is None
 
 
 # --- Unit tests for geospatial tools (mocked) ---

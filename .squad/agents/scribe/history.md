@@ -62,3 +62,35 @@
 3. Verify all 8 tools via MCP Inspector
 4. Test with Ollama
 
+
+---
+
+## 2026-04-03 — Sprint Coder Cycle 3 Log
+
+**Session summary:** Bug fix — geocoder resilience pass.
+
+**Work completed:**
+- Identified unhandled exception path: `geocode_address` raised `httpx.HTTPError` on
+  Nominatim network failures (connect errors, timeouts, HTTP errors) instead of returning
+  `None`. This caused `get_parcel_zoning` to propagate a raw exception to the MCP client
+  rather than returning a structured error dict.
+- Fixed `src/geocoder.py`: wrapped Nominatim request in `try/except httpx.HTTPError: return None`
+- Added 2 new unit tests in `tests/test_geospatial.py`:
+  - `test_geocode_address_network_error_returns_none` — verifies ConnectError → None
+  - `test_geocode_address_timeout_returns_none` — verifies TimeoutException → None
+- `ruff check src/ tests/` → 0 errors
+- `pytest tests/ -m "not network"` → **77 passed, 5 deselected**
+- Updated `STATUS.md`, `.squad/decisions.md`, `.squad/sprint.md` with results
+
+**Artifacts updated:**
+- `src/geocoder.py` — network error handling fix
+- `tests/test_geospatial.py` — 2 new geocoder unit tests
+- `STATUS.md` — updated to 77 tests passing
+- `.squad/decisions.md` — decision logged
+- `.squad/sprint.md` — test result updated to 77 passed
+
+**Next steps for human:**
+1. Run `pytest tests/ -m network` from a machine with internet (Nominatim + Socrata)
+2. Download Title 17 text (see `backlog/phase-05-code-text-search.md`)
+3. Verify all 8 tools via MCP Inspector (`npx @modelcontextprotocol/inspector python -m src.server`)
+4. Test with Ollama (`ollama pull llama3.1:8b && python -m src.server`)
