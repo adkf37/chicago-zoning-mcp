@@ -170,6 +170,40 @@ async def test_parcel_zoning_outside_chicago():
 
 
 @pytest.mark.asyncio
+async def test_parcel_zoning_address_outside_chicago():
+    """Address that geocodes to outside Chicago should return error without querying Socrata."""
+    mcp = FastMCP("test")
+    tools = {}
+    original_tool = mcp.tool
+
+    def capture_tool(*args, **kwargs):
+        decorator = original_tool(*args, **kwargs)
+
+        def wrapper(fn):
+            tools[fn.__name__] = fn
+            return decorator(fn)
+        return wrapper
+
+    mcp.tool = capture_tool
+    register_geospatial_tools(mcp)
+
+    # Mock geocoder returning New York City coordinates
+    with patch("src.tools.geospatial.geocode_address", new_callable=AsyncMock) as mock_geo, \
+         patch("src.tools.geospatial.httpx.AsyncClient") as mock_client_cls:
+
+        mock_geo.return_value = (40.7128, -74.0060)  # New York City coords
+
+        result = await tools["get_parcel_zoning"](address="350 5th Ave, New York, NY")
+
+        # Should return error before ever calling Socrata
+        assert mock_client_cls.called is False, (
+            "Socrata should not be queried for non-Chicago address"
+        )
+        assert "error" in result
+        assert "outside" in result["error"].lower()
+
+
+@pytest.mark.asyncio
 async def test_parcel_zoning_with_mocked_geocoder():
     """With mocked geocoder and Socrata, should return district info."""
     mcp = FastMCP("test")

@@ -37,6 +37,16 @@ def register_geospatial_tools(mcp: FastMCP):
                     ),
                 }
             lat, lng = coords
+            if not is_in_chicago(lat, lng):
+                return {
+                    "error": "Address geocoded to a location outside Chicago city limits.",
+                    "address": address,
+                    "coordinates": {"lat": lat, "lng": lng},
+                    "hint": (
+                        "Only Chicago addresses are supported. "
+                        "Chicago coordinates are roughly lat 41.64-42.02, lng -87.94 to -87.52."
+                    ),
+                }
         elif latitude != 0.0 and longitude != 0.0:
             lat, lng = latitude, longitude
             # Validate coordinates are in Chicago

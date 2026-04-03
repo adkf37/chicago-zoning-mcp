@@ -11,19 +11,21 @@
 
 ## Current Objective
 
-Sprint 1 Tiers 1 and 1.5 complete. Gap-fill and integration suite completeness passes done —
-89 offline tests now pass (up from 77). Added `tests/test_evals.py` — automated harness that
-validates 12 offline Q&A pairs from `evals/zoning_qa.xml` directly against tool outputs
-(Q1–Q10, Q14, Q20). All 8 tools covered in `tests/test_integration.py`. `geocode_address`
-returns `None` on Nominatim errors (structured error propagation). Remaining work is manual
-verification (MCP Inspector, Ollama testing, fresh-clone check) and one human-gated step
-(Title 17 text download). See `.squad/sprint.md` for the full execution plan.
+Sprint 1 Tiers 1 and 1.5 complete. Bug fix: `get_parcel_zoning` now validates
+`is_in_chicago` after geocoding an address (not just for direct coordinate input).
+Previously, an NYC address would bypass the bounds check and hit Socrata, returning
+"No zoning district found" instead of the correct "outside Chicago" error. Fixed with
+targeted bounds check after geocoding. Eval Q13 (offline, `requires_network=false`)
+added to `tests/test_evals.py` and `tests/test_geospatial.py`. 91 offline tests now
+pass (up from 89). See `.squad/sprint.md` for the full execution plan.
 
 ## Recent Activity
 
-- 2026-04-03: Eval harness — added `tests/test_evals.py` with 12 automated tests that validate
-  offline Q&A pairs from `evals/zoning_qa.xml` against tool outputs (Q1–Q10, Q14, Q20); 89
-  offline tests now pass (up from 77); `ruff check` still 0 issues
+- 2026-04-03: Bug fix — `get_parcel_zoning` now validates `is_in_chicago` after geocoding
+  an address; previously this check was only applied for direct lat/lng inputs. Added
+  `test_parcel_zoning_address_outside_chicago` to `tests/test_geospatial.py` and eval Q13
+  test (`test_eval_q13_address_outside_chicago`) to `tests/test_evals.py`; 91 offline tests
+  now pass (up from 89); `ruff check` still 0 issues
 - 2026-04-03: Bug fix — `geocode_address` now catches `httpx.HTTPError` (connect errors,
   timeouts, HTTP errors) and returns `None` so `get_parcel_zoning` always returns a structured
   error dict instead of raising; 2 new geocoder unit tests added; 77 offline tests pass (up

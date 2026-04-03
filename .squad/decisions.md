@@ -192,3 +192,30 @@ its eval question ID and the rationale from the XML `<notes>` element.
 regressions in the exact numeric outputs that the Q&A pairs depend on (e.g. RS-3 FAR,
 DC-16 FAR, unit calculations). Offline test count increases from 77 to 89. `ruff check
 src/ tests/` remains clean at 0 errors.
+
+
+### 2026-04-03 — Coder/Lead — Bug fix: geocoded address not validated against Chicago bounds
+
+**Context:** `get_parcel_zoning` in `src/tools/geospatial.py` checked `is_in_chicago` for
+direct latitude/longitude inputs, but skipped this check when an address was provided and
+geocoded via Nominatim. If Nominatim geocoded a non-Chicago address (e.g. New York City) and
+returned coordinates outside Chicago, the tool would proceed to query the Socrata API and
+return "No zoning district found at this location" instead of the correct "outside Chicago"
+error. Additionally, this caused one unnecessary external API call.
+
+**Decision:** Add `is_in_chicago` check immediately after geocoding an address (before the
+Socrata query). Returns a structured error dict with "outside Chicago" message if the
+geocoded coordinates are outside Chicago bounds. No Socrata call is made in this case.
+
+**Changes made:**
+- `src/tools/geospatial.py` — added `is_in_chicago` check in the address-geocoding branch
+- `tests/test_geospatial.py` — added `test_parcel_zoning_address_outside_chicago` (mocks
+  geocoder returning NYC coordinates; asserts error and no Socrata call)
+- `tests/test_evals.py` — added `test_eval_q13_address_outside_chicago` (eval Q13 coverage;
+  `requires_network=false` because geocoder is mocked)
+
+**Rationale:** Eval Q13 (`requires_network=false`) expected the tool to return "outside
+Chicago" for a NYC address. The previous code path only checked bounds for direct coordinates;
+this fix applies the same validation to geocoded results, making the behavior consistent and
+the error message helpful. Offline test count increases from 89 to 91. `ruff check src/
+tests/` remains clean at 0 errors.
