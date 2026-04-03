@@ -149,7 +149,7 @@ See `backlog/phase-05-code-text-search.md` for step-by-step instructions.
 
 The sprint is **Done** when all of the following are true:
 
-- [x] `pytest tests/ -m "not network"` passes with 0 failures and 0 errors — **77 passed 2026-04-03**
+- [x] `pytest tests/ -m "not network"` passes with 0 failures and 0 errors — **89 passed 2026-04-03**
 - [x] `ruff check src/ tests/` passes with 0 errors — **0 issues 2026-04-03**
 - [x] `pytest tests/ -m network` failures are documented — DNS blocked in CI sandbox (expected, run manually)
 - [ ] All 8 tools verified callable in MCP Inspector (Tier 4)
