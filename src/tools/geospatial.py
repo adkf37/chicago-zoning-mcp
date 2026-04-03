@@ -3,8 +3,8 @@
 import httpx
 from fastmcp import FastMCP
 
-from src.geocoder import geocode_address, is_in_chicago
 from src.data_loader import get_district
+from src.geocoder import geocode_address, is_in_chicago
 
 # Chicago Data Portal — Zoning Districts GeoJSON (Socrata)
 ZONING_SOCRATA_URL = "https://data.cityofchicago.org/resource/dj47-wfun.geojson"
@@ -31,7 +31,10 @@ def register_geospatial_tools(mcp: FastMCP):
             if coords is None:
                 return {
                     "error": f"Could not geocode address: {address}",
-                    "hint": "Make sure this is a valid Chicago address. Addresses outside Chicago are not supported.",
+                    "hint": (
+                        "Make sure this is a valid Chicago address. "
+                        "Addresses outside Chicago are not supported."
+                    ),
                 }
             lat, lng = coords
         elif latitude != 0.0 and longitude != 0.0:
@@ -41,7 +44,9 @@ def register_geospatial_tools(mcp: FastMCP):
                 return {
                     "error": "Coordinates are outside Chicago city limits.",
                     "coordinates": {"lat": lat, "lng": lng},
-                    "hint": "Chicago coordinates are roughly lat 41.64-42.02, lng -87.94 to -87.52.",
+                    "hint": (
+                        "Chicago coordinates are roughly lat 41.64-42.02, lng -87.94 to -87.52."
+                    ),
                 }
         else:
             return {"error": "Provide either an address or latitude/longitude."}
@@ -77,7 +82,10 @@ def register_geospatial_tools(mcp: FastMCP):
             return {
                 "error": "No zoning district found at this location.",
                 "coordinates": {"lat": lat, "lng": lng},
-                "hint": "Location may be outside Chicago city limits, in a waterway, or in an unmapped area.",
+                "hint": (
+                    "Location may be outside Chicago city limits, in a waterway, "
+                    "or in an unmapped area."
+                ),
             }
 
         # Extract district code from first matching feature

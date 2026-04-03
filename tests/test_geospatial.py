@@ -4,13 +4,13 @@ Unit tests use mocking to avoid network calls.
 Integration tests (marked with @pytest.mark.network) hit live APIs.
 """
 
-import pytest
 from unittest.mock import AsyncMock, MagicMock, patch
 
-from src.geocoder import is_in_chicago, CHICAGO_BOUNDS
-from src.tools.geospatial import register_geospatial_tools
+import pytest
 from fastmcp import FastMCP
 
+from src.geocoder import CHICAGO_BOUNDS, is_in_chicago
+from src.tools.geospatial import register_geospatial_tools
 
 # --- Unit tests for geocoder helpers ---
 
@@ -47,9 +47,7 @@ def _make_mcp():
 
 def test_get_zoning_map_url_default():
     """Default map URL should point to downtown Chicago."""
-    mcp = _make_mcp()
-    # Call the tool function directly
-    from src.tools.geospatial import register_geospatial_tools
+    _make_mcp()
     result = _call_sync_tool_get_zoning_map_url()
     assert "url" in result
     assert "gisapps.chicago.gov" in result["url"]

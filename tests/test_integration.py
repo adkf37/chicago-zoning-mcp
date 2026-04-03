@@ -5,12 +5,12 @@ using mocks only for external network calls (Socrata, Nominatim).
 """
 
 import time
-import pytest
 from unittest.mock import AsyncMock, MagicMock, patch
 
+import pytest
 from fastmcp import FastMCP
-from src.server import mcp
 
+from src.server import mcp
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -195,8 +195,8 @@ def test_development_envelope_bad_district():
 @pytest.mark.asyncio
 async def test_chain_parcel_zoning_then_envelope():
     """Tool chaining: get zone from address, then compute envelope."""
-    from src.tools.geospatial import register_geospatial_tools
     from src.tools.development import register_development_tools
+    from src.tools.geospatial import register_geospatial_tools
 
     mcp_t = FastMCP("test")
     tools = {}
@@ -215,7 +215,13 @@ async def test_chain_parcel_zoning_then_envelope():
 
     mock_socrata = {
         "type": "FeatureCollection",
-        "features": [{"type": "Feature", "properties": {"zone_class": "RS-3", "zone_type": "4"}, "geometry": {}}],
+        "features": [
+            {
+                "type": "Feature",
+                "properties": {"zone_class": "RS-3", "zone_type": "4"},
+                "geometry": {},
+            }
+        ],
     }
 
     with patch("src.tools.geospatial.geocode_address", new_callable=AsyncMock) as mock_geo, \
@@ -253,6 +259,7 @@ async def test_chain_parcel_zoning_then_envelope():
 async def test_parcel_zoning_network_down():
     """When Socrata is unreachable, get_parcel_zoning returns a user-friendly error."""
     import httpx
+
     from src.tools.geospatial import register_geospatial_tools
 
     mcp_t = FastMCP("test")

@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Phase | coder |
-| Last Updated | 2026-04-02 |
+| Last Updated | 2026-04-03 |
 | Squad Template | data_pipeline |
 | Priority | low |
 | Blocking | Title 17 download (requires human action — see `.squad/sprint.md` T3-01) |
@@ -11,13 +11,16 @@
 
 ## Current Objective
 
-Sprint 1 Tier 1 complete — all 69 offline automated tests pass. `.gitignore` added (was
-missing from the repo despite being listed as complete in Phase 1). Remaining work is manual
-verification (MCP Inspector, Ollama testing, fresh-clone check) and one human-gated step
-(Title 17 text download). See `.squad/sprint.md` for the full execution plan.
+Sprint 1 Tier 1 complete — all 69 offline automated tests pass. Code quality pass
+complete — all ruff lint warnings in `src/` and `tests/` resolved (21 issues fixed).
+Remaining work is manual verification (MCP Inspector, Ollama testing, fresh-clone check)
+and one human-gated step (Title 17 text download). See `.squad/sprint.md` for the full
+execution plan.
 
 ## Recent Activity
 
+- 2026-04-03: Code quality pass — fixed 21 ruff lint issues in `src/` and `tests/` (import
+  ordering, line length, unused imports/variables); all 69 offline tests still pass
 - 2026-04-02: Sprint Tier 1 executed — `pytest tests/ -m "not network"` → 69 passed, 5 deselected
 - 2026-04-02: `.gitignore` created (was missing; prevented `__pycache__` from being ignored)
 - 2026-04-02: Squad review complete — backlog gaps filled, sprint plan created

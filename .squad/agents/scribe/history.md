@@ -1,3 +1,30 @@
 # Scribe — History
 
 <!-- Session logs will be appended here by Scribe after each work cycle. -->
+
+## 2026-04-03 — Sprint Coder Cycle Log
+
+**Session summary:** Coder phase cycle executed by Coordinator (Squad).
+
+**Work completed:**
+- Code quality pass: 21 ruff lint issues fixed across `src/` and `tests/`
+  (import ordering, line length, unused imports/variables)
+- Tier 2 network tests attempted; DNS blocked in CI sandbox — documented in sprint.md
+- `STATUS.md` updated with 2026-04-03 activity
+- `.squad/decisions.md` updated with code quality decision
+- `.squad/sprint.md` updated with Tier 1.5 (code quality) results and Tier 2 test outcome
+- Ralph reviewed and signed off on code quality changes
+
+**Artifacts updated:**
+- `src/data_loader.py`, `src/tools/geospatial.py`, `src/server.py` — lint fixes
+- `src/tools/district_lookup.py` — lint fixes
+- `tests/test_code_search.py`, `tests/test_geospatial.py`, `tests/test_development.py`,
+  `tests/test_district_lookup.py`, `tests/test_integration.py` — lint fixes
+- `STATUS.md`, `.squad/decisions.md`, `.squad/sprint.md` — status updates
+- `.squad/agents/ralph/history.md` — Ralph sign-off logged
+
+**Next steps for human:**
+1. Run `pytest tests/ -m network` from a machine with internet (Nominatim + Socrata)
+2. Download Title 17 text (see `backlog/phase-05-code-text-search.md`)
+3. Verify tools via MCP Inspector (`npx @modelcontextprotocol/inspector python -m src.server`)
+4. Test with Ollama (`ollama pull llama3.1:8b && python -m src.server`)

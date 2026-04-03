@@ -51,8 +51,9 @@ def test_pd_nonnumeric_far():
 
 def test_development_envelope_has_disclaimer():
     """The calculate_development_envelope tool should always include a disclaimer."""
-    from src.tools.development import register_development_tools
     from fastmcp import FastMCP
+
+    from src.tools.development import register_development_tools
 
     mcp = FastMCP("test")
     register_development_tools(mcp)

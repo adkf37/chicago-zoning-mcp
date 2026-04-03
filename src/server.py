@@ -2,10 +2,10 @@
 
 from fastmcp import FastMCP
 
+from src.tools.code_search import register_code_search_tools
+from src.tools.development import register_development_tools
 from src.tools.district_lookup import register_district_tools
 from src.tools.geospatial import register_geospatial_tools
-from src.tools.development import register_development_tools
-from src.tools.code_search import register_code_search_tools
 
 mcp = FastMCP("Chicago Zoning Assistant")
 
