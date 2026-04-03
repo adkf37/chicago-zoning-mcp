@@ -23,10 +23,10 @@ Implement the development envelope calculator that combines district rules with 
 
 ## Acceptance Criteria
 
-- `calculate_development_envelope("RS-3", 5000)` returns max floor area of 4,500 sqft
-- `calculate_development_envelope("DC-16", 10000)` returns max floor area of 160,000 sqft
-- Text-based fields (height, setbacks) are passed through without crashing
-- Disclaimer always present in output
+- [x] `calculate_development_envelope("RS-3", 5000)` returns max floor area of 4,500 sqft
+- [x] `calculate_development_envelope("DC-16", 10000)` returns max floor area of 160,000 sqft
+- [x] Text-based fields (height, setbacks) are passed through without crashing
+- [x] Disclaimer always present in output
 
 ## Notes
 

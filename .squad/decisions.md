@@ -92,3 +92,31 @@ line-too-long (E501), unused imports (F401), and one unused variable (F841).
 and removes genuinely unused code (F401, F841) that can confuse future contributors.
 All 69 offline tests pass after changes.
 
+
+### 2026-04-03 — Tester/Lead — Gap-fill pass: fixed broken test, added missing coverage
+
+**Context:** Review of `tests/test_development.py` and `tests/test_integration.py` revealed
+two coverage gaps against Phase 3 acceptance criteria:
+
+1. `test_development_envelope_has_disclaimer` called `get_district()` directly and checked
+   FAR arithmetic — it never called the MCP tool and never verified the `disclaimer` key.
+2. The Phase 3 acceptance criterion "DC-16, 10,000 sqft lot → 160,000 sqft max floor area"
+   was only verified at the data layer (test_dc16_high_density), not through the MCP tool.
+3. `list_district_types` had no entry in `tests/test_integration.py`.
+
+**Decision:** Fix the broken test to actually call the tool and assert `disclaimer` is
+present; add `test_development_envelope_dc16_10000sqft` to verify the DC-16 criterion via
+the tool; add `test_list_district_types_tool` to cover the missing integration path.
+Updated `backlog/phase-03-development-calculator.md` to mark acceptance criteria with
+checkboxes.
+
+**Changes made:**
+- `tests/test_development.py` — fixed `test_development_envelope_has_disclaimer`; added
+  `test_development_envelope_dc16_10000sqft`
+- `tests/test_integration.py` — added `test_list_district_types_tool`
+- `backlog/phase-03-development-calculator.md` — added `[x]` checkboxes to acceptance criteria
+
+**Rationale:** Phase 3 acceptance criteria must be verified through the actual MCP tool
+interface (not just the underlying data functions) to confirm end-to-end correctness.
+Offline test count increases from 69 to 71. `ruff check src/ tests/` remains clean at
+0 errors.

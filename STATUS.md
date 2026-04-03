@@ -11,14 +11,19 @@
 
 ## Current Objective
 
-Sprint 1 Tier 1 complete — all 69 offline automated tests pass. Code quality pass
-complete — all ruff lint warnings in `src/` and `tests/` resolved (21 issues fixed).
+Sprint 1 Tiers 1 and 1.5 complete. Gap-fill pass complete — 2 new tests added (71 offline
+tests now pass, up from 69). All Phase 3 acceptance criteria are now verified via actual MCP
+tool calls (not just data-layer calls). `list_district_types` now has an integration test.
 Remaining work is manual verification (MCP Inspector, Ollama testing, fresh-clone check)
 and one human-gated step (Title 17 text download). See `.squad/sprint.md` for the full
 execution plan.
 
 ## Recent Activity
 
+- 2026-04-03: Gap-fill pass — fixed broken `test_development_envelope_has_disclaimer` (was
+  calling data layer, not the MCP tool); added `test_development_envelope_dc16_10000sqft`
+  (Phase 3 acceptance criterion tested via tool); added `test_list_district_types_tool`
+  integration test; 71 offline tests now pass (up from 69)
 - 2026-04-03: Code quality pass — fixed 21 ruff lint issues in `src/` and `tests/` (import
   ordering, line length, unused imports/variables); all 69 offline tests still pass
 - 2026-04-02: Sprint Tier 1 executed — `pytest tests/ -m "not network"` → 69 passed, 5 deselected
