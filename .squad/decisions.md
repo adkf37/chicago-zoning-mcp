@@ -149,3 +149,27 @@ directly consumable by LLMs without requiring them to iterate through every fiel
 Offline test count increases from 71 to 75. `ruff check src/ tests/` remains clean at
 0 errors.
 
+
+### 2026-04-03 — Coder/Lead — Geocoder resilience: network errors return None instead of raising
+
+**Context:** `geocode_address` in `src/geocoder.py` used a bare `async with httpx.AsyncClient()`
+call with no exception handling. If Nominatim was unreachable (DNS failure, timeout, HTTP error),
+an `httpx.HTTPError` would propagate all the way out of `get_parcel_zoning`, resulting in an
+unhandled exception exposed to the MCP client instead of a structured error dict.
+
+**Decision:** Wrap the Nominatim HTTP call in a `try/except httpx.HTTPError` block in
+`geocode_address`. On any HTTP-level error, return `None`. The existing `get_parcel_zoning`
+code already handles `None` from `geocode_address` by returning a structured error dict with
+a hint — this means all Nominatim failure modes now produce user-friendly responses.
+
+**Changes made:**
+- `src/geocoder.py` — added `try/except httpx.HTTPError: return None` around the Nominatim
+  request block
+- `tests/test_geospatial.py` — added `test_geocode_address_network_error_returns_none` and
+  `test_geocode_address_timeout_returns_none`; imported `httpx` and `geocode_address`
+
+**Rationale:** A production MCP server should never surface raw stack traces to LLM clients.
+Nominatim is an external dependency that can fail; treating all its failure modes as
+"could not geocode" (return None) is the correct abstraction. Offline test count increases
+from 75 to 77. `ruff check src/ tests/` remains clean at 0 errors.
+

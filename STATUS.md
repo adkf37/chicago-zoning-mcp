@@ -11,16 +11,19 @@
 
 ## Current Objective
 
-Sprint 1 Tiers 1 and 1.5 complete. Gap-fill pass complete — 4 new tests added (75 offline
-tests now pass, up from 71). All 8 tools are now covered in `tests/test_integration.py`
-(added `get_zoning_map_url`, `get_zoning_section`, and `compare_districts` `_differences`
-tests). `compare_districts` enhanced with a `_differences` summary key for easier LLM
-consumption. Remaining work is manual verification (MCP Inspector, Ollama testing,
-fresh-clone check) and one human-gated step (Title 17 text download). See `.squad/sprint.md`
-for the full execution plan.
+Sprint 1 Tiers 1 and 1.5 complete. Gap-fill and integration suite completeness passes done —
+77 offline tests now pass. All 8 tools covered in `tests/test_integration.py`. `geocode_address`
+now returns `None` (structured error propagation) instead of raising on Nominatim network errors.
+Remaining work is manual verification (MCP Inspector, Ollama testing, fresh-clone check) and
+one human-gated step (Title 17 text download). See `.squad/sprint.md` for the full execution
+plan.
 
 ## Recent Activity
 
+- 2026-04-03: Bug fix — `geocode_address` now catches `httpx.HTTPError` (connect errors,
+  timeouts, HTTP errors) and returns `None` so `get_parcel_zoning` always returns a structured
+  error dict instead of raising; 2 new geocoder unit tests added; 77 offline tests pass (up
+  from 75)
 - 2026-04-03: Coder pass 2 — enhanced `compare_districts` with `_differences` summary key;
   added `test_get_zoning_map_url_tool`, `test_get_zoning_section_tool_with_fixture`,
   `test_compare_districts_differences_key`, `test_compare_same_district_no_differences` to
