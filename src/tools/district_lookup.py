@@ -29,6 +29,10 @@ def register_district_tools(mcp: FastMCP):
 
         Shows differences in FAR, height, setbacks, and allowed uses.
         Useful for understanding what changes when a parcel is rezoned.
+
+        The response includes a ``_differences`` key with a list of field names
+        whose values differ between the two districts (empty list when both are
+        the same district).
         """
         a = get_district(district_a)
         b = get_district(district_b)

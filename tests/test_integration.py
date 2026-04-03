@@ -30,6 +30,29 @@ def _get_tool_names(server: FastMCP) -> set[str]:
         return {t.name for t in tools}
 
 
+def _register_and_capture(register_fn) -> dict:
+    """Create a fresh FastMCP instance, register tools via register_fn, and return
+    a dict mapping tool function names to their callables.
+
+    Used by tests that need to call a tool function directly without going through
+    the MCP protocol layer.
+    """
+    mcp_t = FastMCP("test")
+    tools = {}
+    original = mcp_t.tool
+
+    def capture(*a, **kw):
+        dec = original(*a, **kw)
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+        return wrap
+
+    mcp_t.tool = capture
+    register_fn(mcp_t)
+    return tools
+
+
 # ---------------------------------------------------------------------------
 # Tool registration smoke tests
 # ---------------------------------------------------------------------------
@@ -365,20 +388,7 @@ def test_get_zoning_section_tool_with_fixture():
         }
     ]
 
-    mcp_t = FastMCP("test")
-    tools = {}
-    original = mcp_t.tool
-
-    def capture(*a, **kw):
-        dec = original(*a, **kw)
-        def wrap(fn):
-            tools[fn.__name__] = fn
-            return dec(fn)
-        return wrap
-
-    mcp_t.tool = capture
-    register_code_search_tools(mcp_t)
-
+    tools = _register_and_capture(register_code_search_tools)
     with patch("src.tools.code_search.load_section_index", return_value=fixture):
         result = tools["get_zoning_section"](section_number="17-3-0102")
     assert "error" not in result
@@ -391,19 +401,7 @@ def test_get_zoning_map_url_tool():
     """get_zoning_map_url returns a valid Chicago zoning map URL."""
     from src.tools.geospatial import register_geospatial_tools
 
-    mcp_t = FastMCP("test")
-    tools = {}
-    original = mcp_t.tool
-
-    def capture(*a, **kw):
-        dec = original(*a, **kw)
-        def wrap(fn):
-            tools[fn.__name__] = fn
-            return dec(fn)
-        return wrap
-
-    mcp_t.tool = capture
-    register_geospatial_tools(mcp_t)
+    tools = _register_and_capture(register_geospatial_tools)
 
     # Default call (downtown Chicago)
     result = tools["get_zoning_map_url"]()
@@ -422,20 +420,7 @@ def test_compare_districts_differences_key():
     """compare_districts result includes a _differences list of changed field names."""
     from src.tools.district_lookup import register_district_tools
 
-    mcp_t = FastMCP("test")
-    tools = {}
-    original = mcp_t.tool
-
-    def capture(*a, **kw):
-        dec = original(*a, **kw)
-        def wrap(fn):
-            tools[fn.__name__] = fn
-            return dec(fn)
-        return wrap
-
-    mcp_t.tool = capture
-    register_district_tools(mcp_t)
-
+    tools = _register_and_capture(register_district_tools)
     result = tools["compare_districts"](district_a="RS-3", district_b="RT-4")
     assert "_differences" in result
     # RS-3 and RT-4 differ on at least FAR and district title
@@ -447,20 +432,7 @@ def test_compare_same_district_no_differences():
     """Comparing a district to itself should have no _differences."""
     from src.tools.district_lookup import register_district_tools
 
-    mcp_t = FastMCP("test")
-    tools = {}
-    original = mcp_t.tool
-
-    def capture(*a, **kw):
-        dec = original(*a, **kw)
-        def wrap(fn):
-            tools[fn.__name__] = fn
-            return dec(fn)
-        return wrap
-
-    mcp_t.tool = capture
-    register_district_tools(mcp_t)
-
+    tools = _register_and_capture(register_district_tools)
     result = tools["compare_districts"](district_a="RS-3", district_b="RS-3")
     assert "_differences" in result
     assert result["_differences"] == []
