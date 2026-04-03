@@ -120,3 +120,32 @@ checkboxes.
 interface (not just the underlying data functions) to confirm end-to-end correctness.
 Offline test count increases from 69 to 71. `ruff check src/ tests/` remains clean at
 0 errors.
+
+
+### 2026-04-03 — Coder/Lead — Integration suite completeness pass: all 8 tools now covered
+
+**Context:** Review of `tests/test_integration.py` revealed two tools had no integration
+test covering their happy-path: `get_zoning_map_url` (sync tool, no mocking needed) and
+`get_zoning_section` (async/sync tool, needs a fixture index). `compare_districts` lacked
+a test for the new `_differences` summary key.
+
+**Decision:**
+1. Add `test_get_zoning_map_url_tool` — exercises default and custom-coordinate calls.
+2. Add `test_get_zoning_section_tool_with_fixture` — patches `load_section_index` with a
+   one-entry fixture and asserts the tool returns section/title/text.
+3. Add `test_compare_districts_differences_key` and `test_compare_same_district_no_differences`
+   to cover the new `_differences` list.
+
+**Changes made:**
+- `src/tools/district_lookup.py` — `compare_districts` now appends `_differences` key:
+  a list of field names where the two districts differ. Empty list when comparing a
+  district to itself. LLMs can use this for targeted follow-up lookups.
+- `tests/test_integration.py` — 4 new tests added; all 8 tools now have at least one
+  integration test in the suite.
+
+**Rationale:** Complete integration test coverage across all 8 tools ensures regressions
+are caught immediately. The `_differences` key makes `compare_districts` output more
+directly consumable by LLMs without requiring them to iterate through every field.
+Offline test count increases from 71 to 75. `ruff check src/ tests/` remains clean at
+0 errors.
+

@@ -11,15 +11,20 @@
 
 ## Current Objective
 
-Sprint 1 Tiers 1 and 1.5 complete. Gap-fill pass complete — 2 new tests added (71 offline
-tests now pass, up from 69). All Phase 3 acceptance criteria are now verified via actual MCP
-tool calls (not just data-layer calls). `list_district_types` now has an integration test.
-Remaining work is manual verification (MCP Inspector, Ollama testing, fresh-clone check)
-and one human-gated step (Title 17 text download). See `.squad/sprint.md` for the full
-execution plan.
+Sprint 1 Tiers 1 and 1.5 complete. Gap-fill pass complete — 4 new tests added (75 offline
+tests now pass, up from 71). All 8 tools are now covered in `tests/test_integration.py`
+(added `get_zoning_map_url`, `get_zoning_section`, and `compare_districts` `_differences`
+tests). `compare_districts` enhanced with a `_differences` summary key for easier LLM
+consumption. Remaining work is manual verification (MCP Inspector, Ollama testing,
+fresh-clone check) and one human-gated step (Title 17 text download). See `.squad/sprint.md`
+for the full execution plan.
 
 ## Recent Activity
 
+- 2026-04-03: Coder pass 2 — enhanced `compare_districts` with `_differences` summary key;
+  added `test_get_zoning_map_url_tool`, `test_get_zoning_section_tool_with_fixture`,
+  `test_compare_districts_differences_key`, `test_compare_same_district_no_differences` to
+  `tests/test_integration.py`; 75 offline tests now pass (up from 71)
 - 2026-04-03: Gap-fill pass — fixed broken `test_development_envelope_has_disclaimer` (was
   calling data layer, not the MCP tool); added `test_development_envelope_dc16_10000sqft`
   (Phase 3 acceptance criterion tested via tool); added `test_list_district_types_tool`
@@ -61,3 +66,4 @@ execution plan.
   American Legal Publishing into `data/title_17/raw/`. See `backlog/phase-05-code-text-search.md`
   for step-by-step instructions. Estimated effort: ~2 hours. Until done, `search_zoning_code`
   and `get_zoning_section` return a helpful error — all other tools work normally.
+

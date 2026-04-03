@@ -35,6 +35,7 @@ lightweight and focused on validation and any gap-filling that emerges from manu
 **Run command:** `pytest tests/ -m "not network" --tb=short`
 **Result (2026-04-02):** 69 passed, 5 deselected (network tests) — all green.
 **Result (2026-04-03):** 69 passed, 5 deselected — still green after lint/code-quality fixes.
+**Result (2026-04-03 pass 2):** 75 passed, 5 deselected — 4 new integration tests added.
 
 ---
 
@@ -147,7 +148,7 @@ See `backlog/phase-05-code-text-search.md` for step-by-step instructions.
 
 The sprint is **Done** when all of the following are true:
 
-- [x] `pytest tests/ -m "not network"` passes with 0 failures and 0 errors — **69 passed 2026-04-02**
+- [x] `pytest tests/ -m "not network"` passes with 0 failures and 0 errors — **75 passed 2026-04-03**
 - [x] `ruff check src/ tests/` passes with 0 errors — **0 issues 2026-04-03**
 - [x] `pytest tests/ -m network` failures are documented — DNS blocked in CI sandbox (expected, run manually)
 - [ ] All 8 tools verified callable in MCP Inspector (Tier 4)
