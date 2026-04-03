@@ -173,3 +173,22 @@ Nominatim is an external dependency that can fail; treating all its failure mode
 "could not geocode" (return None) is the correct abstraction. Offline test count increases
 from 75 to 77. `ruff check src/ tests/` remains clean at 0 errors.
 
+
+### 2026-04-03 — Tester — Automated offline eval harness added (tests/test_evals.py)
+
+**Context:** `evals/zoning_qa.xml` contains 20 Q&A pairs intended for manual Ollama testing.
+Of those, 12 questions are fully answerable offline using the tool functions directly (no network,
+no Title 17 index needed): Q1–Q10 (district lookup, compare, and development calculator) plus
+Q14 (zoning map URL) and Q20 (offline multi-step rezone calculation).
+
+**Decision:** Create `tests/test_evals.py` as an automated harness that calls tool functions
+directly and asserts expected answers for each offline Q&A pair. Each test is annotated with
+its eval question ID and the rationale from the XML `<notes>` element.
+
+**Changes made:**
+- `tests/test_evals.py` — 12 new tests covering eval Q1–Q10, Q14, Q20
+
+**Rationale:** The eval file was documentation-only; adding automated tests prevents
+regressions in the exact numeric outputs that the Q&A pairs depend on (e.g. RS-3 FAR,
+DC-16 FAR, unit calculations). Offline test count increases from 77 to 89. `ruff check
+src/ tests/` remains clean at 0 errors.

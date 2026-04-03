@@ -94,3 +94,32 @@
 2. Download Title 17 text (see `backlog/phase-05-code-text-search.md`)
 3. Verify all 8 tools via MCP Inspector (`npx @modelcontextprotocol/inspector python -m src.server`)
 4. Test with Ollama (`ollama pull llama3.1:8b && python -m src.server`)
+
+---
+
+## 2026-04-03 — Sprint Coder Cycle 4 Log
+
+**Session summary:** Eval harness pass — automated offline Q&A validation added.
+
+**Work completed:**
+- Identified that `evals/zoning_qa.xml` had 12 questions answerable offline (no Nominatim,
+  no Title 17 index): Q1–Q10, Q14, Q20
+- Created `tests/test_evals.py` — 12 pytest tests that call tool functions directly and
+  assert against the expected answers recorded in the eval XML
+- `pytest tests/ -m "not network"` → **89 passed, 5 deselected** (up from 77)
+- `ruff check src/ tests/` → 0 errors
+- Updated `STATUS.md` with new activity and test count
+- Updated `.squad/decisions.md` with eval harness decision
+- Updated `.squad/sprint.md` DoD with new test count
+
+**Artifacts updated:**
+- `tests/test_evals.py` — new; 12 offline eval tests
+- `STATUS.md` — test count updated to 89
+- `.squad/decisions.md` — decision logged
+- `.squad/sprint.md` — DoD test count updated
+
+**Next steps for human:**
+1. Run `pytest tests/ -m network` from a machine with internet (Nominatim + Socrata)
+2. Download Title 17 text (see `backlog/phase-05-code-text-search.md`)
+3. Verify all 8 tools via MCP Inspector (`npx @modelcontextprotocol/inspector python -m src.server`)
+4. Test with Ollama (`ollama pull llama3.1:8b && python -m src.server`)
