@@ -219,3 +219,41 @@ Chicago" for a NYC address. The previous code path only checked bounds for direc
 this fix applies the same validation to geocoded results, making the behavior consistent and
 the error message helpful. Offline test count increases from 89 to 91. `ruff check src/
 tests/` remains clean at 0 errors.
+
+
+### 2026-04-03 — Tester/Lead — Gap-fill pass 2: edge-case tests for compare_districts and calculate_development_envelope
+
+**Context:** Review of `tests/test_integration.py` revealed two categories of missing
+coverage against Phase 2 and Phase 3 acceptance criteria:
+
+1. Phase 2 says "Write unit tests for edge cases (unknown district, empty category filter,
+   same-district comparison)". The "unknown district" edge case was tested for `lookup_district`
+   but NOT for `compare_districts`. No test verified that passing an invalid district code to
+   `compare_districts` returns a structured error dict (not an exception or silent None).
+
+2. Phase 3 says "Handle text-format fields gracefully (height limits, setbacks that aren't
+   simple numbers)" and "Add tests for numeric FAR districts and text-based height districts".
+   The handling of non-numeric FAR (PD district: "Varies by planned development ordinance")
+   and of "None" lot_area_per_unit (B1-1 commercial district) was only verified at the data
+   layer, not through the MCP tool.
+
+**Decision:**
+1. Add `test_compare_districts_first_invalid` — passes invalid `district_a`, valid `district_b`
+2. Add `test_compare_districts_second_invalid` — passes valid `district_a`, invalid `district_b`
+3. Add `test_compare_districts_both_invalid` — passes two invalid codes; asserts both are named
+   in the combined error message
+4. Add `test_development_envelope_pd_nonnumeric_far` — calls tool with PD district; asserts
+   max_floor_area_sqft is a descriptive string, disclaimer is present
+5. Add `test_development_envelope_commercial_no_units` — calls tool with B1-1; asserts
+   max_floor_area_sqft is numeric (FAR IS available), max_dwelling_units is a "Cannot
+   calculate" string (lot_area_per_unit is "None")
+
+**Changes made:**
+- `tests/test_integration.py` — 5 new tests added; all tools' error paths are now covered
+
+**Rationale:** Phase 2 and Phase 3 acceptance criteria require testing error paths for all
+tool functions, not just the happy path. The compare_districts error path was untested
+despite clear "unknown district" acceptance criteria. The development envelope text-field
+handling was verified only at the data layer; tool-level tests are needed to confirm the
+tool wraps these cases gracefully (no crashes, disclaimer always present). Offline test count
+increases from 91 to 96. `ruff check src/ tests/` remains clean at 0 errors.

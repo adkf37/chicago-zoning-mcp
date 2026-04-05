@@ -37,6 +37,7 @@ lightweight and focused on validation and any gap-filling that emerges from manu
 **Result (2026-04-03):** 69 passed, 5 deselected — still green after lint/code-quality fixes.
 **Result (2026-04-03 pass 2):** 75 passed, 5 deselected — 4 new integration tests added.
 **Result (2026-04-03 pass 3):** 77 passed, 5 deselected — 2 new geocoder resilience tests added.
+**Result (2026-04-03 pass 4):** 96 passed, 5 deselected — 5 new edge-case integration tests added (compare_districts invalid codes; development envelope PD + commercial).
 
 ---
 
@@ -149,7 +150,7 @@ See `backlog/phase-05-code-text-search.md` for step-by-step instructions.
 
 The sprint is **Done** when all of the following are true:
 
-- [x] `pytest tests/ -m "not network"` passes with 0 failures and 0 errors — **91 passed 2026-04-03**
+- [x] `pytest tests/ -m "not network"` passes with 0 failures and 0 errors — **96 passed 2026-04-03**
 - [x] `ruff check src/ tests/` passes with 0 errors — **0 issues 2026-04-03**
 - [x] `pytest tests/ -m network` failures are documented — DNS blocked in CI sandbox (expected, run manually)
 - [ ] All 8 tools verified callable in MCP Inspector (Tier 4)

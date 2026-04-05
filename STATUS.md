@@ -11,16 +11,21 @@
 
 ## Current Objective
 
-Sprint 1 Tiers 1 and 1.5 complete. Bug fix: `get_parcel_zoning` now validates
-`is_in_chicago` after geocoding an address (not just for direct coordinate input).
-Previously, an NYC address would bypass the bounds check and hit Socrata, returning
-"No zoning district found" instead of the correct "outside Chicago" error. Fixed with
-targeted bounds check after geocoding. Eval Q13 (offline, `requires_network=false`)
-added to `tests/test_evals.py` and `tests/test_geospatial.py`. 91 offline tests now
-pass (up from 89). See `.squad/sprint.md` for the full execution plan.
+Sprint 1 Tiers 1 and 1.5 complete. Gap-fill pass: 5 new edge-case tests added
+to `tests/test_integration.py` covering (a) `compare_districts` error paths for
+invalid district codes and (b) `calculate_development_envelope` with non-numeric
+FAR (PD district) and "None" lot-area-per-unit (B1-1 commercial). 96 offline tests
+now pass (up from 91). See `.squad/sprint.md` for the full execution plan.
 
 ## Recent Activity
 
+- 2026-04-03: Gap-fill pass 2 — 5 new edge-case integration tests added:
+  `test_compare_districts_first_invalid`, `test_compare_districts_second_invalid`,
+  `test_compare_districts_both_invalid` (Phase 2 "unknown district" coverage for
+  `compare_districts`); `test_development_envelope_pd_nonnumeric_far`,
+  `test_development_envelope_commercial_no_units` (Phase 3 "text-format fields"
+  coverage at tool level). 96 offline tests now pass (up from 91); `ruff check`
+  still 0 issues.
 - 2026-04-03: Bug fix — `get_parcel_zoning` now validates `is_in_chicago` after geocoding
   an address; previously this check was only applied for direct lat/lng inputs. Added
   `test_parcel_zoning_address_outside_chicago` to `tests/test_geospatial.py` and eval Q13

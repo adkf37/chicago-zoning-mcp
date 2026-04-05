@@ -227,22 +227,38 @@ def test_development_envelope_bad_district():
     """Bad district code should return error, not raise."""
     from src.tools.development import register_development_tools
 
-    mcp_t = FastMCP("test")
-    tools = {}
-    original = mcp_t.tool
-
-    def capture(*a, **kw):
-        dec = original(*a, **kw)
-        def wrap(fn):
-            tools[fn.__name__] = fn
-            return dec(fn)
-        return wrap
-
-    mcp_t.tool = capture
-    register_development_tools(mcp_t)
-
+    tools = _register_and_capture(register_development_tools)
     result = tools["calculate_development_envelope"](district_code="ZZ-99", lot_area_sqft=5000)
     assert "error" in result
+
+
+def test_development_envelope_pd_nonnumeric_far():
+    """PD district has non-numeric FAR — tool should return partial result, not crash."""
+    from src.tools.development import register_development_tools
+
+    tools = _register_and_capture(register_development_tools)
+    result = tools["calculate_development_envelope"](district_code="PD", lot_area_sqft=5000)
+    assert "error" not in result
+    # FAR is not a number, so max_floor_area_sqft should be a string explanation
+    assert isinstance(result["max_floor_area_sqft"], str)
+    assert "Cannot calculate" in result["max_floor_area_sqft"]
+    # Disclaimer must still be present even when FAR is non-numeric
+    assert "disclaimer" in result
+
+
+def test_development_envelope_commercial_no_units():
+    """Commercial district with no lot_area_per_unit (B1-1) should return partial result."""
+    from src.tools.development import register_development_tools
+
+    tools = _register_and_capture(register_development_tools)
+    result = tools["calculate_development_envelope"](district_code="B1-1", lot_area_sqft=5000)
+    assert "error" not in result
+    # Floor area should be numeric: B1-1 FAR = 1.0, so 5000 sqft * 1.0 = 5000.0
+    assert result["max_floor_area_sqft"] == pytest.approx(5000.0)
+    # Dwelling units cannot be computed for pure commercial districts
+    assert isinstance(result["max_dwelling_units"], str)
+    assert "Cannot calculate" in result["max_dwelling_units"]
+    assert "disclaimer" in result
 
 
 # ---------------------------------------------------------------------------
@@ -436,6 +452,38 @@ def test_compare_same_district_no_differences():
     result = tools["compare_districts"](district_a="RS-3", district_b="RS-3")
     assert "_differences" in result
     assert result["_differences"] == []
+
+
+def test_compare_districts_first_invalid():
+    """compare_districts returns error dict when the first district code is invalid."""
+    from src.tools.district_lookup import register_district_tools
+
+    tools = _register_and_capture(register_district_tools)
+    result = tools["compare_districts"](district_a="ZZ-99", district_b="RS-3")
+    assert "error" in result
+    assert "ZZ-99" in result["error"]
+
+
+def test_compare_districts_second_invalid():
+    """compare_districts returns error dict when the second district code is invalid."""
+    from src.tools.district_lookup import register_district_tools
+
+    tools = _register_and_capture(register_district_tools)
+    result = tools["compare_districts"](district_a="RS-3", district_b="ZZ-99")
+    assert "error" in result
+    assert "ZZ-99" in result["error"]
+
+
+def test_compare_districts_both_invalid():
+    """compare_districts returns a combined error when both district codes are invalid."""
+    from src.tools.district_lookup import register_district_tools
+
+    tools = _register_and_capture(register_district_tools)
+    result = tools["compare_districts"](district_a="INVALID", district_b="ALSO_INVALID")
+    assert "error" in result
+    # Both missing codes should be mentioned in the combined error message
+    assert "INVALID" in result["error"]
+    assert "ALSO_INVALID" in result["error"]
 
 
 # ---------------------------------------------------------------------------
