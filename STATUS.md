@@ -11,16 +11,31 @@
 
 ## Current Objective
 
-Sprint 1 Tiers 1 and 1.5 complete. Eval coverage pass: added automated tests for eval
-questions Q15–Q18 (`test_eval_q15_search_accessory_dwelling_unit`,
-`test_eval_q16_search_parking_requirements`, `test_eval_q17_search_nonconforming_uses`,
-`test_eval_q18_get_nonconforming_section`). These use the in-memory fixture index so no
-live Title 17 download is required. 109 offline tests now pass (up from 105). All 20
-eval Q&A pairs now have automated coverage except Q11, Q12, Q19 (require network).
-See `.squad/sprint.md` for the full execution plan.
+Sprint 1 Tier T5-05 complete: proactively improved tool docstrings across all 8 MCP tools
+in `src/tools/*.py` to maximize LLM tool-selection accuracy before Ollama testing begins.
+Created `backlog/tasks/` directory with 4 discrete task files (T5-05 done; T3-01, T4, T5
+pending human action or local toolchain). 109 offline tests still pass, `ruff check` still 0 errors.
+See `.squad/sprint.md` and `.squad/decisions.md` for details.
 
 ## Recent Activity
 
+- 2026-04-21: T5-05 — Proactive tool docstring improvements for LLM tool selection:
+  - `src/tools/district_lookup.py`: improved docstrings for `lookup_district`,
+    `compare_districts`, and `list_district_types` — added "Use this tool when…"
+    guidance, listed returned fields, noted alternatives.
+  - `src/tools/development.py`: improved `calculate_development_envelope` docstring —
+    noted to call `get_parcel_zoning` first when only address is known; listed all
+    returned fields; added concrete example.
+  - `src/tools/geospatial.py`: improved `get_parcel_zoning` docstring — emphasized
+    network dependency, common first-step role in multi-step queries; improved
+    `get_zoning_map_url` docstring — clarified it returns a URL only, not a district code.
+  - `src/tools/code_search.py`: improved `search_zoning_code` docstring — strengthened
+    trigger phrases and noted index requirement; improved `get_zoning_section` docstring —
+    clarified it is for direct section retrieval by number.
+  - Created `backlog/tasks/` directory with 4 task files covering this task (T5-05),
+    the blocked Title 17 ingestion (T3-01), MCP Inspector verification (T4), and
+    Ollama testing (T5).
+  - 109 offline tests still pass; `ruff check` still 0 errors.
 - 2026-04-21: Eval coverage pass — added 4 automated eval tests for code-search Q&A pairs:
   - `tests/test_evals.py`: added `test_eval_q15_search_accessory_dwelling_unit`,
     `test_eval_q16_search_parking_requirements`, `test_eval_q17_search_nonconforming_uses`,

@@ -392,3 +392,33 @@ data would trigger it — but completes the exception coverage for the dwelling-
 path. The two new tool-level tests cover observable behaviors that were only implicitly
 verified by lower-level data-layer tests. Offline test count increases from 102 to 105.
 `ruff check src/ tests/` remains clean at 0 errors.
+
+### 2026-04-21 — Data Engineer — Proactive tool docstring improvements (T5-05)
+
+**Context:** Sprint task T5-05 says to tune tool docstrings if an LLM picks the wrong
+tool during Ollama testing. All automated tasks are complete and the next phase of work
+is manual Ollama testing (Tier 5). Before that manual testing begins, docstrings can be
+improved proactively to maximize the chance the LLM selects the correct tool on the
+first try.
+
+**Decision:** Improved all 8 tool docstrings in `src/tools/*.py`:
+- Added explicit "Use this tool when…" guidance to each tool
+- Added "NOT for…" guidance where confusion is likely (e.g., `lookup_district` does not
+  accept street addresses)
+- Listed all returned fields explicitly so the LLM knows what data to expect
+- Added concrete examples (e.g., "Example: RS-3, 5000 sqft → 4500 sqft floor area")
+- Clarified network dependency for `get_parcel_zoning`
+- Clarified that `get_zoning_map_url` does NOT look up the district code
+- Noted that both code-search tools require the Title 17 index
+
+**Rationale:** The MCP spec says tool descriptions are the primary mechanism for LLM
+tool selection. More precise descriptions directly improve tool-calling accuracy for
+smaller models (llama3.1:8b). No functional code was changed; only docstrings.
+
+**Created:** `backlog/tasks/` directory with 4 discrete task files:
+- `T5-05-improve-tool-docstrings.md` — this task (complete)
+- `T3-01-download-title-17-BLOCKED.md` — human-gated Title 17 download
+- `T4-mcp-inspector-verification.md` — MCP Inspector manual verification
+- `T5-ollama-llm-testing.md` — Ollama end-to-end testing
+
+**Test count:** 109 offline tests still passing; `ruff check` still 0 errors.

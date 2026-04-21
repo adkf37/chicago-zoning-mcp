@@ -113,7 +113,7 @@ See `backlog/phase-05-code-text-search.md` for step-by-step instructions.
 | T5-02 | Connect MCP server to Continue.dev or Claude Desktop | Lead | T5-01 | Manual |
 | T5-03 | Ask single-tool questions from `evals/zoning_qa.xml` | Tester | T5-02 | Manual |
 | T5-04 | Ask multi-step question: *"What's the zoning at 4521 N Clark St, and what can I build on a 3,000 sqft lot?"* | Tester | T5-02 | Manual |
-| T5-05 | If wrong tool called: tune docstring in `src/tools/*.py` | Data Engineer | T5-03, T5-04 | Conditional |
+| T5-05 | Tune docstrings in `src/tools/*.py` (proactive — all 8 tools improved) | Data Engineer | — | ✅ Done — 2026-04-21 |
 | T5-06 | Re-test with `llama3.1:70b` for higher accuracy (optional) | Tester | T5-01 | Optional |
 
 ---

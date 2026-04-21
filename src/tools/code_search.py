@@ -82,14 +82,22 @@ def register_code_search_tools(mcp: FastMCP):
 
     @mcp.tool()
     def search_zoning_code(query: str, max_results: int = 5) -> dict:
-        """Search the text of Title 17 of the Chicago Municipal Code (the Zoning Ordinance).
+        """Search the full text of Title 17 of the Chicago Municipal Code (the Zoning Ordinance).
 
-        Finds sections matching your keywords. Useful for questions about
-        specific regulations, procedures, definitions, or requirements
-        that go beyond basic district lookup.
+        Use this tool when the user asks about specific regulations, procedures,
+        definitions, or requirements that are written in the text of the zoning code
+        — not just district lookup data. This tool searches the actual ordinance text.
 
-        Examples: "accessory dwelling unit", "parking requirements",
-        "planned development approval process", "nonconforming use"
+        Examples of good queries: "accessory dwelling unit", "parking requirements",
+        "planned development approval process", "nonconforming use", "sign regulations",
+        "landscaping requirements", "bulk and density".
+
+        Note: Requires the Title 17 text index to be built. If the index is not built,
+        this tool returns a helpful error with instructions. All district-level data
+        (FAR, height, setbacks) is available without the index via lookup_district.
+
+        Returns: result_count and a ranked list of matching sections, each with
+        section number, title, chapter, text snippet, and relevance_score.
         """
         results = search_sections(query, max_results=min(max_results, 10))
 
@@ -114,11 +122,17 @@ def register_code_search_tools(mcp: FastMCP):
 
     @mcp.tool()
     def get_zoning_section(section_number: str) -> dict:
-        """Retrieve the full text of a specific Title 17 section by its number.
+        """Retrieve the full text of a specific Title 17 section by its section number.
 
-        Use this when you know the exact section number you need (e.g. "17-3-0102",
-        "17-15-0100"). Faster and more precise than keyword search when you have
-        a specific cite.
+        Use this tool when you know the exact section number you need and want its
+        full text. Faster and more precise than search_zoning_code when you have a
+        cite (e.g. from a previous search result, a permit, or a legal reference).
+
+        Section number format: "17-X-XXXX" (e.g. "17-3-0102", "17-15-0100").
+        Section numbers are case-insensitive.
+
+        Note: Requires the Title 17 text index to be built (same requirement as
+        search_zoning_code). Returns an error with instructions if the index is missing.
         """
         if not load_section_index():
             return {
