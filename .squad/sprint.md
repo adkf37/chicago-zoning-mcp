@@ -41,6 +41,7 @@ lightweight and focused on validation and any gap-filling that emerges from manu
 **Result (2026-04-21 pass 5):** 99 passed, 5 deselected — 3 new robustness tests added (ConnectError in Socrata query; zero and negative lot area in development calculator).
 **Result (2026-04-21 pass 6):** 102 passed, 5 deselected — 3 new tests added (ZeroDivisionError guard in development calculator; max_results clamping and no-results consistency in code search).
 **Result (2026-04-21 pass 7):** 105 passed, 5 deselected — 3 new targeted tests added (coords-over-address priority in get_parcel_zoning; nonexistent category in list_district_types; error hint in lookup_district).
+**Result (2026-04-21 pass 8):** 109 passed, 5 deselected — 4 new eval tests added for code-search Q&A pairs (Q15–Q18 from evals/zoning_qa.xml, using in-memory fixture index).
 
 ---
 
@@ -153,7 +154,7 @@ See `backlog/phase-05-code-text-search.md` for step-by-step instructions.
 
 The sprint is **Done** when all of the following are true:
 
-- [x] `pytest tests/ -m "not network"` passes with 0 failures and 0 errors — **105 passed 2026-04-21**
+- [x] `pytest tests/ -m "not network"` passes with 0 failures and 0 errors — **109 passed 2026-04-21**
 - [x] `ruff check src/ tests/` passes with 0 errors — **0 issues 2026-04-03**
 - [x] `pytest tests/ -m network` failures are documented — DNS blocked in CI sandbox (expected, run manually)
 - [ ] All 8 tools verified callable in MCP Inspector (Tier 4)
