@@ -2,35 +2,45 @@
 
 | Field | Value |
 |---|---|
-| Phase | closeout |
+| Phase | Closeout (complete) |
 | Last Updated | 2026-04-21 |
 | Squad Template | data_pipeline |
 | Priority | low |
-| Blocking | Title 17 download (requires human action — see `.squad/sprint.md` T3-01) |
+| Blocking | None (automated); see "Needs Human Input" below for manual follow-ups |
 | GitHub Repo | https://github.com/adkf37/chicago-zoning-mcp |
 
 ## Current Objective
 
-**Validate phase complete — advancing to Closeout.**
+**Closeout complete — automated sprint finished. Ready for human handoff.**
 
-All automatable acceptance criteria have been verified:
+All automatable acceptance criteria are satisfied and the sprint Definition of Done is met
+for automated items. The project is in a working, deployable state.
+
+Summary of completed work:
 - `pytest tests/ -m "not network"` → **109 passed, 5 deselected** ✅
 - `ruff check src/ tests/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
 - `calculate_development_envelope("RS-3", 5000)` → 4500 sqft ✅
 - 59 districts in `data/zoning_codes.csv` ✅
+- Eval harness covers 17/20 Q&A pairs offline (Q11, Q12, Q19 require live network) ✅
+- All phase documentation complete (Phases 1–7) ✅
 
-Remaining items require human action or local toolchain (explicitly out of scope for automated sprint):
+**Remaining items require human action or local toolchain and are explicitly out of scope
+for automated sprint completion** (see "Needs Human Input" below):
 - Title 17 ingestion (T3): human must download from amlegal.com
 - MCP Inspector verification (T4): manual, needs Node.js
 - Ollama end-to-end testing (T5): manual, needs Ollama
-- Parent repo cross-reference (T6-03): human
+- Docker Compose verification (T6-02): manual
+- Parent repo cross-reference (T6-03): human with parent repo access
 
-See `.squad/decisions.md` for full validation evidence.
+See `.squad/decisions.md` for full validation evidence and closeout log.
 
 ## Recent Activity
 
+- 2026-04-21: **Closeout complete** — all automated sprint criteria verified; phase set to
+  `Closeout (complete)`; final closeout entry logged in `.squad/decisions.md`; project ready
+  for human handoff. Remaining manual steps documented below.
 - 2026-04-21: Validate phase — ran all automatable checks; 109 offline tests pass, ruff clean,
   8 tools verified callable, RS-3 lookup and dev envelope values correct; phase advanced to closeout.
   Full evidence recorded in `.squad/decisions.md`.
@@ -106,8 +116,30 @@ See `.squad/decisions.md` for full validation evidence.
 
 ## Needs Human Input
 
-- **Title 17 download** — A human must manually copy-paste Title 17 chapters from
-  American Legal Publishing into `data/title_17/raw/`. See `backlog/phase-05-code-text-search.md`
-  for step-by-step instructions. Estimated effort: ~2 hours. Until done, `search_zoning_code`
-  and `get_zoning_section` return a helpful error — all other tools work normally.
+These items are **not blockers** for the automated sprint — the server is fully functional
+without them. They are follow-up tasks for a human or local-toolchain session.
+
+### 🔴 Required for full `search_zoning_code` / `get_zoning_section` functionality
+
+- **Title 17 download (T3-01 through T3-05)** — A human must manually copy-paste Title 17
+  chapters from American Legal Publishing (`https://codelibrary.amlegal.com/codes/chicago/latest/chicago_il/0-0-0-2596552`)
+  into `data/title_17/raw/`. See `backlog/phase-05-code-text-search.md` for step-by-step
+  instructions. Estimated effort: ~2 hours. Until done, `search_zoning_code` and
+  `get_zoning_section` return a helpful "index not built" error — all other 6 tools work normally.
+
+### 🟡 Manual verification (local toolchain required)
+
+- **MCP Inspector (T4-01 through T4-10)** — Requires Node.js.
+  Run: `npx @modelcontextprotocol/inspector python -m src.server` and verify all 8 tools appear and respond.
+
+- **Ollama end-to-end test (T5-01 through T5-04)** — Requires Ollama installed.
+  Pull `llama3.1:8b`, connect to Continue.dev or Claude Desktop, and exercise the Q&A pairs in `evals/zoning_qa.xml`.
+
+- **Docker Compose deploy (T6-02)** — Run `docker compose up` locally and verify both the
+  MCP server and Ollama containers start cleanly and the model auto-pulls.
+
+### 🔵 Requires external access
+
+- **Parent repo cross-reference (T6-03)** — A human with access to the parent repo should
+  add a reference or link to this MCP server project.
 

@@ -3,6 +3,46 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-04-21 — Squad Coordinator — Closeout complete; project ready for human handoff
+
+**Context:** Closeout phase triggered by Maestro to finalize the automated sprint loop.
+
+**Sprint Definition of Done — final status:**
+
+| Criterion | Result |
+|---|---|
+| `pytest tests/ -m "not network"` passes (0 failures) | ✅ 109 passed, 5 deselected |
+| `ruff check src/ tests/` passes (0 errors) | ✅ 0 issues |
+| Network test failures documented | ✅ DNS blocked in CI sandbox (expected) |
+| All 8 tools verified callable in MCP Inspector (Tier 4) | ⏳ Manual — requires Node.js |
+| Ollama end-to-end test (Tier 5) | ⏳ Manual — requires Ollama |
+| Tool description issues resolved or reviewed | ✅ T5-05 complete (Ralph-reviewed) |
+| `STATUS.md` updated | ✅ Phase set to `Closeout (complete)` |
+| Scribe logged sprint completion | ✅ `.squad/agents/scribe/history.md` |
+
+**Decisions made at closeout:**
+
+1. **Phase set to `Closeout (complete)`** — All automatable sprint criteria are met. The
+   project is in a working, deployable state. Remaining manual items (T3, T4, T5, T6-02,
+   T6-03) are explicitly scoped as post-sprint human actions and do not block handoff.
+
+2. **Blockers left explicit in STATUS.md** — The "Needs Human Input" section has been
+   expanded into three priority tiers (🔴 Required for full functionality, 🟡 Manual
+   verification, 🔵 External access) with direct URLs and commands so a human can act
+   without reading the full sprint plan.
+
+3. **No new code changes at closeout** — The codebase is clean (109 tests, 0 lint errors).
+   Closeout is documentation-only.
+
+4. **Eval coverage is 17/20 offline** — Q11 (network geocode), Q12 (network Socrata), and
+   Q19 (network Nominatim) require live network and are excluded from CI. This is acceptable;
+   the 3 remaining gaps are infrastructure-blocked, not code bugs.
+
+**Recommendation for next human session:**
+- Start with T3-01 (Title 17 download) — it unblocks 2 tools and 3 eval questions.
+- After T3, run T4 (MCP Inspector) and T5 (Ollama) as an end-to-end smoke test.
+- If T5 reveals tool-selection problems, re-open with `[Coder]` phase for docstring tuning.
+
 ### 2026-04-21 — Tester — Validate phase checks complete; advancing to Closeout
 
 **Context:** The Validate phase was triggered to check all automated build outputs
