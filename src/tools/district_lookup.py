@@ -12,8 +12,17 @@ def register_district_tools(mcp: FastMCP):
     def lookup_district(district_code: str) -> dict:
         """Look up a Chicago zoning district by its code (e.g. RS-3, B2-5, DX-12).
 
-        Returns the district's FAR, max height, setbacks, lot requirements,
-        and a plain-language description of what the district allows.
+        Use this tool when you already know the zoning district code and want its
+        rules. This tool does NOT accept street addresses — use get_parcel_zoning
+        first to find the district code for an address.
+
+        Returns: FAR (floor_area_ratio), maximum_building_height, lot_area_per_unit,
+        front/side/rear setbacks, minimum_lot_area, plain_description, category,
+        and district_title.
+
+        Common codes: RS-3 (single-family), RT-4 (two-flat/townhouse),
+        RM-5 (multi-family), B3-2 (community shopping), DC-16 (downtown core),
+        DX-7 (downtown mixed-use), M1-1 (light manufacturing).
         """
         result = get_district(district_code)
         if result is None:
@@ -27,12 +36,21 @@ def register_district_tools(mcp: FastMCP):
     def compare_districts(district_a: str, district_b: str) -> dict:
         """Compare two Chicago zoning districts side by side.
 
-        Shows differences in FAR, height, setbacks, and allowed uses.
-        Useful for understanding what changes when a parcel is rezoned.
+        Use this tool when you know two district codes and want to understand the
+        differences between them (e.g. after a rezoning, or to explain what a
+        district change means for development potential).
 
-        The response includes a ``_differences`` key with a list of field names
-        whose values differ between the two districts (empty list when both are
-        the same district).
+        Both district_a and district_b must be valid district codes (e.g. "RS-3",
+        "RT-4"). Use lookup_district or list_district_types to discover valid codes.
+
+        Returns per-field comparison with "same" boolean for each field, plus a
+        top-level "_differences" list naming every field whose value differs between
+        the two districts. An empty "_differences" list means the districts are
+        identical.
+
+        Useful for questions like:
+        - "What changes if my lot gets rezoned from RS-3 to RT-4?"
+        - "Which has a higher FAR, B1-1 or B3-3?"
         """
         a = get_district(district_a)
         b = get_district(district_b)
@@ -61,11 +79,25 @@ def register_district_tools(mcp: FastMCP):
     def list_district_types(category: str = "") -> list[dict]:
         """List all Chicago zoning districts, optionally filtered by category.
 
-        Categories: Residential, Commercial, Business/Shopping, Manufacturing/Industrial,
-        Downtown Mixed-Use, Downtown Core, Downtown Residential, Downtown Service,
-        Planned Development, Parks and Open Space, Transportation.
+        Use this tool to discover valid district codes, browse districts by
+        type, or answer "What residential districts exist in Chicago?" style
+        questions. Returns a summary view (code, category, title, FAR, description)
+        — for full details on a specific district, call lookup_district.
 
-        If no category is given, returns all districts (summary view).
+        Valid category values (case-insensitive, partial match):
+        - "Residential" — RS, RT, RM districts
+        - "Commercial" — C1, C2, C3 districts
+        - "Business/Shopping" — B1, B2, B3 districts
+        - "Manufacturing/Industrial" — M1, M2, M3 districts
+        - "Downtown Mixed-Use" — DX districts
+        - "Downtown Core" — DC districts
+        - "Downtown Residential" — DR districts
+        - "Downtown Service" — DS districts
+        - "Planned Development" — PD districts
+        - "Parks and Open Space" — POS districts
+        - "Transportation" — T districts
+
+        Leave category empty to return all districts.
         """
         if category:
             districts = get_districts_by_category(category)

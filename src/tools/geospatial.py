@@ -21,9 +21,20 @@ def register_geospatial_tools(mcp: FastMCP):
     ) -> dict:
         """Look up the zoning district for a specific Chicago location.
 
-        Provide EITHER an address (e.g. "1060 W Addison St") OR
-        latitude/longitude coordinates. Returns the zoning district
-        code and full district details.
+        Use this tool when you have a street address or coordinates and need to find
+        the zoning district code. This tool performs live network calls (Nominatim
+        geocoding and Chicago Data Portal Socrata API) — it requires internet access.
+
+        This is typically the FIRST step in multi-step questions like:
+        "What can I build at [address]?" — call this tool first to get the district
+        code, then call calculate_development_envelope with the result.
+
+        Provide EITHER an address (e.g. "1060 W Addison St", "233 S Wacker Dr") OR
+        latitude/longitude coordinates. If both are provided, coordinates take
+        priority.
+
+        Returns: zone_class (the district code), coordinates, socrata_properties
+        (raw API data), and district_details (full district record from our CSV).
         """
         # Resolve coordinates
         if address and (latitude == 0.0 and longitude == 0.0):
@@ -130,8 +141,17 @@ def register_geospatial_tools(mcp: FastMCP):
     ) -> dict:
         """Get a URL to the Chicago zoning map centered on a location.
 
-        Defaults to downtown Chicago. Zoom 17 shows individual parcels;
-        zoom 13 shows neighborhood-scale; zoom 11 shows the full city.
+        Use this tool when the user asks for a link to the official Chicago zoning
+        map, or when get_parcel_zoning fails and you want to give the user a
+        fallback way to look up the zoning themselves visually.
+
+        This tool does NOT look up the district code — it only returns a URL.
+        For district code lookup, use get_parcel_zoning.
+
+        Defaults to downtown Chicago (City Hall area). Zoom levels:
+        - 20 / 17 — individual parcels (default 17)
+        - 13 — neighborhood scale
+        - 11 — full city view
         """
         # Clamp zoom to reasonable range
         zoom = max(10, min(zoom, 20))

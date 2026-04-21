@@ -15,11 +15,19 @@ def register_development_tools(mcp: FastMCP):
     ) -> dict:
         """Calculate the maximum development envelope for a lot in a given zoning district.
 
-        Given a district code and lot size in square feet, returns:
-        - Maximum buildable floor area (from FAR)
-        - Estimated max dwelling units (from lot area per unit)
-        - Maximum building height
-        - Key setback requirements
+        Use this tool when you know the district code and lot size and want to know
+        how much you can build. If you only have a street address, call
+        get_parcel_zoning first to find the district code.
+
+        Returns:
+        - max_floor_area_sqft — maximum total buildable floor area (lot × FAR)
+        - max_dwelling_units — estimated maximum number of residential units
+        - floor_area_ratio — the FAR used in the calculation
+        - maximum_building_height — height limit (may be text, e.g. "30 ft, 2 stories")
+        - front_yard_setback, side_setback, rear_yard_setback — required setbacks
+        - disclaimer — reminder that this is an estimate
+
+        Example: district_code="RS-3", lot_area_sqft=5000 → max_floor_area_sqft=4500
 
         This is an estimate — actual limits depend on lot shape, overlays,
         planned developments, and other factors.
