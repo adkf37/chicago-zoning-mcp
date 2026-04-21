@@ -101,6 +101,7 @@ def register_code_search_tools(mcp: FastMCP):
                 }
             return {
                 "results": [],
+                "result_count": 0,
                 "query": query,
                 "message": "No matching sections found. Try different keywords.",
             }

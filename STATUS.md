@@ -11,14 +11,28 @@
 
 ## Current Objective
 
-Sprint 1 Tiers 1 and 1.5 complete. Robustness pass 3: bug fix (Socrata
-`ConnectError` now caught in `get_parcel_zoning`) and input validation (non-positive
-`lot_area_sqft` now returns structured error in `calculate_development_envelope`).
-3 new tests added. 99 offline tests now pass (up from 96). See `.squad/sprint.md`
+Sprint 1 Tiers 1 and 1.5 complete. Robustness pass 4: defensive ZeroDivisionError
+guard in `calculate_development_envelope`, consistent `result_count` field in
+`search_zoning_code` no-results response, and 3 new tests (ZeroDivisionError guard,
+`max_results` clamping, no-results consistency). 102 offline tests now pass (up from
+99). README district count corrected (59, not ~80). See `.squad/sprint.md`
 for the full execution plan.
 
 ## Recent Activity
 
+- 2026-04-21: Robustness pass 4 — defensive guard + consistency fix:
+  - `src/tools/development.py`: added `lot_area_per_unit <= 0` guard and
+    `ZeroDivisionError` to the `except` clause in `calculate_development_envelope`;
+    prevents crash if a future CSV row has `0 sq ft/dwelling unit`.
+  - `src/tools/code_search.py`: added `result_count: 0` to the "no results but index
+    exists" response branch; makes success and no-results responses structurally
+    consistent so LLMs always see `result_count` in the output.
+  - `tests/test_integration.py`: added `test_development_envelope_zero_lot_area_per_unit_graceful`.
+  - `tests/test_code_search.py`: added `test_search_tool_max_results_clamped_at_10` and
+    `test_search_tool_no_results_includes_query`; updated `test_search_tool_no_results` to
+    assert `result_count == 0`.
+  - `README.md`: corrected district count from "~80" to "59".
+  - 102 offline tests now pass (up from 99); `ruff check` still 0 issues.
 - 2026-04-21: Robustness pass — bug fix + input validation:
   - `src/tools/geospatial.py`: added `except httpx.HTTPError` catch after the existing
     `TimeoutException` and `HTTPStatusError` handlers in the Socrata query block; now

@@ -294,3 +294,43 @@ LLM clients. The `ConnectError` case specifically matches what happens when DNS 
 blocked (observed in CI sandbox for Tier 2 network tests). The `lot_area_sqft`
 validation prevents confusing tool outputs that could mislead LLM reasoning.
 Offline test count increases from 96 to 99. `ruff check src/ tests/` remains clean.
+
+
+### 2026-04-21 — Coder/Lead — Robustness pass 4: ZeroDivisionError guard + search_zoning_code consistency
+
+**Context:** Two small but meaningful gaps were identified in the codebase:
+
+1. `calculate_development_envelope` in `src/tools/development.py` did not guard against
+   `lot_area_per_unit` parsing to `0.0`. If a future CSV row contained `"0 sq ft/dwelling
+   unit"`, the expression `int(lot_area_sqft // 0.0)` would raise `ZeroDivisionError`,
+   which is NOT in the existing `except (ValueError, TypeError, IndexError)` clause and
+   would propagate as an unhandled exception to the MCP client.
+
+2. `search_zoning_code` in `src/tools/code_search.py` returned `result_count` in the
+   success path but omitted it from the "no matching sections" path. This structural
+   inconsistency could cause LLMs to behave differently when no results are returned
+   (e.g., failing to display a count or assuming the key is always present).
+
+**Decision:**
+1. Add `if lot_per_unit <= 0: raise ValueError(...)` before the division in
+   `calculate_development_envelope`, and add `ZeroDivisionError` to the `except` tuple
+   as a belt-and-suspenders guard.
+2. Add `"result_count": 0` to the "no results" branch of `search_zoning_code` so that
+   `result_count` is always present in the response regardless of whether results exist.
+
+**Changes made:**
+- `src/tools/development.py` — added `<= 0` guard before division; added `ZeroDivisionError`
+  to except clause
+- `src/tools/code_search.py` — added `"result_count": 0` to no-results response
+- `tests/test_integration.py` — added `test_development_envelope_zero_lot_area_per_unit_graceful`
+- `tests/test_code_search.py` — added `test_search_tool_max_results_clamped_at_10`,
+  `test_search_tool_no_results_includes_query`; updated `test_search_tool_no_results` to
+  assert `result_count == 0`
+- `README.md` — corrected district count from "~80" to "59" (actual CSV row count)
+
+**Rationale:** The `ZeroDivisionError` case is defensive — no current district has
+`lot_area_per_unit = 0` — but prevents a future data regression from producing an
+unhandled crash. The `result_count` consistency fix makes the tool response schema
+predictable: LLMs and downstream code can always read `result.result_count` without
+conditional logic. Offline test count increases from 99 to 102. `ruff check src/ tests/`
+remains clean at 0 errors.
