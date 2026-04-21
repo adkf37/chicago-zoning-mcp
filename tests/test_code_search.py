@@ -241,6 +241,37 @@ def test_search_tool_no_results():
         result = tools["search_zoning_code"](query="xyzzy_nomatchwhatsoever")
     assert "error" not in result
     assert result["results"] == []
+    # result_count should be present and 0 even when no results found
+    assert result["result_count"] == 0
+
+
+def test_search_tool_no_results_includes_query():
+    """search_zoning_code no-results response should include the original query."""
+    tools = _make_tools()
+    with patch("src.tools.code_search.load_section_index", return_value=FIXTURE_SECTIONS):
+        result = tools["search_zoning_code"](query="xyzzy_nomatchwhatsoever")
+    assert result["query"] == "xyzzy_nomatchwhatsoever"
+
+
+def test_search_tool_max_results_clamped_at_10():
+    """search_zoning_code should cap results at 10 even when max_results > 10 is passed."""
+    # Build a large fixture: 12 sections all matching the query
+    large_fixture = [
+        {
+            "section": f"17-99-{i:03d}",
+            "title": f"Parking Section {i}",
+            "chapter": "Chapter 17-99",
+            "text": "parking requirements apply here",
+            "source_file": "chapter_17-99.txt",
+        }
+        for i in range(12)
+    ]
+    tools = _make_tools()
+    with patch("src.tools.code_search.load_section_index", return_value=large_fixture):
+        result = tools["search_zoning_code"](query="parking", max_results=20)
+    assert "error" not in result
+    assert len(result["results"]) <= 10
+    assert result["result_count"] <= 10
 
 
 def test_search_tool_returns_results():

@@ -124,7 +124,7 @@ This starts both Ollama and the MCP server. The Ollama model is pulled automatic
 
 ## Data Sources
 
-- **Zoning district rules**: `data/zoning_codes.csv` — FAR, height, setbacks, descriptions for all ~80 Chicago zoning districts
+- **Zoning district rules**: `data/zoning_codes.csv` — FAR, height, setbacks, descriptions for all 59 Chicago zoning districts
 - **Parcel zoning**: [Chicago Data Portal](https://data.cityofchicago.org/resource/dj47-wfun.geojson) — live Socrata API queries
 - **Zoning code text**: Title 17 of the Chicago Municipal Code, section-indexed in `data/title_17/sections.json`
 

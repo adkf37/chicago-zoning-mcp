@@ -281,6 +281,32 @@ def test_development_envelope_commercial_no_units():
     assert "disclaimer" in result
 
 
+def test_development_envelope_zero_lot_area_per_unit_graceful():
+    """A district whose lot_area_per_unit parses to 0 should return a graceful error string.
+
+    Guards against ZeroDivisionError from ``lot_area_sqft // 0.0``. No current district
+    has this value, but the guard ensures robustness against future data changes.
+    """
+    from unittest.mock import patch
+
+    from src.data_loader import get_district
+    from src.tools.development import register_development_tools
+
+    original_district = get_district("RS-3").copy()
+    original_district["lot_area_per_unit"] = "0 sq ft/dwelling unit"
+
+    tools = _register_and_capture(register_development_tools)
+    with patch("src.tools.development.get_district", return_value=original_district):
+        result = tools["calculate_development_envelope"](
+            district_code="RS-3", lot_area_sqft=5000
+        )
+    assert "error" not in result
+    # With lot_area_per_unit = 0, dwelling units cannot be computed
+    assert isinstance(result["max_dwelling_units"], str)
+    assert "Cannot calculate" in result["max_dwelling_units"]
+    assert "disclaimer" in result
+
+
 # ---------------------------------------------------------------------------
 # Multi-step / chaining: geocode → district → envelope
 # ---------------------------------------------------------------------------

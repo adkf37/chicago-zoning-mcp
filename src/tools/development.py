@@ -57,6 +57,8 @@ def register_development_tools(mcp: FastMCP):
             numeric = lot_per_unit_str.split("/")[0].split("sq")[0]
             numeric = numeric.replace(",", "").strip()
             lot_per_unit = float(numeric)
+            if lot_per_unit <= 0:
+                raise ValueError("lot_area_per_unit must be positive")
             max_units = int(lot_area_sqft // lot_per_unit)
             result["lot_area_per_dwelling_unit_sqft"] = lot_per_unit
             result["max_dwelling_units"] = max(max_units, 1)
