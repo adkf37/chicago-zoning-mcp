@@ -3,7 +3,26 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
-### 2026-04-02 — Lead — Backlog organized as phase files, not individual task files
+### 2026-04-21 — Tester — Eval tests Q15–Q18 automated with fixture index
+
+**Context:** `evals/zoning_qa.xml` contains 20 Q&A pairs. Questions Q15–Q18 test
+`search_zoning_code` and `get_zoning_section` tools, which depend on the Title 17 index
+that requires manual human download. These questions had no automated coverage.
+
+**Decision:** Added four automated tests in `tests/test_evals.py` that use the same
+in-memory fixture index already established in `tests/test_code_search.py`. A shared
+`_CODE_SEARCH_FIXTURE` list and a `code_search_tools` pytest fixture were added to
+`test_evals.py`. All four new tests patch `load_section_index` at the module level.
+
+**Rationale:** The fixture approach proves the tools work end-to-end without requiring
+human Title 17 download or network access. Eval coverage rises from 14/20 to 17/20
+Q&A pairs (Q11, Q12, and Q19 still require network and remain excluded from CI). This
+satisfies the Phase 6 acceptance criterion "all 8 tools callable without errors" more
+comprehensively, and advances the eval harness toward full coverage.
+
+**Test count:** 109 offline tests passing (up from 105).
+
+
 
 **Context:** The problem statement referenced `backlog/tasks/` as a directory of individual
 task files. The actual backlog uses a flat `backlog/phase-0N-*.md` structure.

@@ -11,15 +11,24 @@
 
 ## Current Objective
 
-Sprint 1 Tiers 1 and 1.5 complete. Robustness pass 5: added `OverflowError` to the
-`except` clause in `calculate_development_envelope` and 3 new targeted tests
-(`test_parcel_zoning_coords_take_priority_over_address`,
-`test_list_district_types_nonexistent_category_returns_empty`,
-`test_lookup_district_error_includes_hint`). 105 offline tests now pass (up from 102).
+Sprint 1 Tiers 1 and 1.5 complete. Eval coverage pass: added automated tests for eval
+questions Q15–Q18 (`test_eval_q15_search_accessory_dwelling_unit`,
+`test_eval_q16_search_parking_requirements`, `test_eval_q17_search_nonconforming_uses`,
+`test_eval_q18_get_nonconforming_section`). These use the in-memory fixture index so no
+live Title 17 download is required. 109 offline tests now pass (up from 105). All 20
+eval Q&A pairs now have automated coverage except Q11, Q12, Q19 (require network).
 See `.squad/sprint.md` for the full execution plan.
 
 ## Recent Activity
 
+- 2026-04-21: Eval coverage pass — added 4 automated eval tests for code-search Q&A pairs:
+  - `tests/test_evals.py`: added `test_eval_q15_search_accessory_dwelling_unit`,
+    `test_eval_q16_search_parking_requirements`, `test_eval_q17_search_nonconforming_uses`,
+    `test_eval_q18_get_nonconforming_section`; all use the in-memory fixture index,
+    matching the approach in `tests/test_code_search.py`.
+  - Added `_CODE_SEARCH_FIXTURE` (mirrors fixture from `test_code_search.py`) and
+    `code_search_tools` module-scoped pytest fixture to `test_evals.py`.
+  - 109 offline tests now pass (up from 105); `ruff check` still 0 issues.
 - 2026-04-21: Robustness pass 5 — OverflowError guard + 3 new targeted tests:
   - `src/tools/development.py`: added `OverflowError` to the `except` clause in
     `calculate_development_envelope`; guards against `int(float('inf'))` if
