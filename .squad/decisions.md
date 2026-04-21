@@ -334,3 +334,42 @@ unhandled crash. The `result_count` consistency fix makes the tool response sche
 predictable: LLMs and downstream code can always read `result.result_count` without
 conditional logic. Offline test count increases from 99 to 102. `ruff check src/ tests/`
 remains clean at 0 errors.
+
+
+### 2026-04-21 — Coder/Lead — Robustness pass 5: OverflowError guard + 3 new targeted tests
+
+**Context:** Three small but meaningful gaps were identified:
+
+1. `calculate_development_envelope` except clause was missing `OverflowError`. In Python,
+   `5000.0 // 0.0 = float('inf')` (no exception), and `int(float('inf'))` raises
+   `OverflowError`. The `<= 0` guard already prevents this in practice, but adding
+   `OverflowError` to the except clause is belt-and-suspenders against future data changes.
+
+2. `get_parcel_zoning` coordinate-priority behavior (coords win over address when both are
+   supplied) was untested. The code correctly routes to the direct-coordinate path when
+   `latitude != 0.0 and longitude != 0.0`, but no test verified that `geocode_address`
+   is NOT called in this case.
+
+3. Two tool-level behaviors had no integration test:
+   - `list_district_types` returning `[]` for a non-matching category
+   - `lookup_district` error dict including a `hint` pointing to `list_district_types`
+
+**Decision:**
+1. Add `OverflowError` to the `except` tuple in `calculate_development_envelope`.
+2. Add `test_parcel_zoning_coords_take_priority_over_address` asserting `geocode_address`
+   is not called when explicit coordinates are provided alongside an address.
+3. Add `test_list_district_types_nonexistent_category_returns_empty` at integration level.
+4. Add `test_lookup_district_error_includes_hint` verifying the error dict has a `hint`
+   key mentioning `list_district_types`.
+
+**Changes made:**
+- `src/tools/development.py` — added `OverflowError` to except clause
+- `tests/test_geospatial.py` — added `test_parcel_zoning_coords_take_priority_over_address`
+- `tests/test_integration.py` — added `test_list_district_types_nonexistent_category_returns_empty`
+  and `test_lookup_district_error_includes_hint`
+
+**Rationale:** The OverflowError case is purely defensive — no current or expected district
+data would trigger it — but completes the exception coverage for the dwelling-unit calculation
+path. The two new tool-level tests cover observable behaviors that were only implicitly
+verified by lower-level data-layer tests. Offline test count increases from 102 to 105.
+`ruff check src/ tests/` remains clean at 0 errors.

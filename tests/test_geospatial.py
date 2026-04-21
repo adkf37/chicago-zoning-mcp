@@ -438,6 +438,59 @@ async def test_parcel_zoning_coords_directly():
         assert result["coordinates"]["lat"] == 41.8789
 
 
+@pytest.mark.asyncio
+async def test_parcel_zoning_coords_take_priority_over_address():
+    """When both address and coordinates are provided, coordinates win (no geocoding call)."""
+    mcp = FastMCP("test")
+    tools = {}
+    original_tool = mcp.tool
+
+    def capture_tool(*args, **kwargs):
+        decorator = original_tool(*args, **kwargs)
+
+        def wrapper(fn):
+            tools[fn.__name__] = fn
+            return decorator(fn)
+        return wrapper
+
+    mcp.tool = capture_tool
+    register_geospatial_tools(mcp)
+
+    mock_socrata_response = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "properties": {"zone_class": "RS-3", "zone_type": "4"},
+                "geometry": {},
+            }
+        ],
+    }
+
+    with patch("src.tools.geospatial.geocode_address", new_callable=AsyncMock) as mock_geo, \
+         patch("src.tools.geospatial.httpx.AsyncClient") as mock_client_cls:
+
+        mock_resp = MagicMock()
+        mock_resp.json.return_value = mock_socrata_response
+        mock_resp.raise_for_status = MagicMock()
+
+        mock_client = AsyncMock()
+        mock_client.get.return_value = mock_resp
+        mock_client.__aenter__ = AsyncMock(return_value=mock_client)
+        mock_client.__aexit__ = AsyncMock(return_value=False)
+        mock_client_cls.return_value = mock_client
+
+        # Both address and coords provided — geocoder must NOT be called
+        result = await tools["get_parcel_zoning"](
+            address="some address that would be ignored",
+            latitude=41.97,
+            longitude=-87.66,
+        )
+        assert mock_geo.called is False, "geocode_address should not be called when coords provided"
+        assert result["zone_class"] == "RS-3"
+        assert result["coordinates"]["lat"] == 41.97
+
+
 # --- Integration tests (require network) ---
 
 

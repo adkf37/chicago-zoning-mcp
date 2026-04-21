@@ -195,6 +195,27 @@ def test_list_district_types_tool():
         assert field in r, f"Missing summary field: {field}"
 
 
+def test_list_district_types_nonexistent_category_returns_empty():
+    """list_district_types returns an empty list for a category with no matches."""
+    from src.tools.district_lookup import register_district_tools
+
+    tools = _register_and_capture(register_district_tools)
+    result = tools["list_district_types"](category="Nonexistent Category XYZ")
+    assert isinstance(result, list)
+    assert result == []
+
+
+def test_lookup_district_error_includes_hint():
+    """lookup_district error response should include a hint referencing list_district_types."""
+    from src.tools.district_lookup import register_district_tools
+
+    tools = _register_and_capture(register_district_tools)
+    result = tools["lookup_district"](district_code="ZZ-99")
+    assert "error" in result
+    assert "hint" in result
+    assert "list_district_types" in result["hint"]
+
+
 # ---------------------------------------------------------------------------
 # Development calculator — uses real CSV data
 # ---------------------------------------------------------------------------

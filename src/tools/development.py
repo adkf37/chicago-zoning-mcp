@@ -62,7 +62,7 @@ def register_development_tools(mcp: FastMCP):
             max_units = int(lot_area_sqft // lot_per_unit)
             result["lot_area_per_dwelling_unit_sqft"] = lot_per_unit
             result["max_dwelling_units"] = max(max_units, 1)
-        except (ValueError, TypeError, IndexError):
+        except (ValueError, TypeError, IndexError, OverflowError):
             result["lot_area_per_dwelling_unit"] = lot_per_unit_str
             result["max_dwelling_units"] = "Cannot calculate — see lot_area_per_dwelling_unit"
 

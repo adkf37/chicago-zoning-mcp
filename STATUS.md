@@ -11,15 +11,25 @@
 
 ## Current Objective
 
-Sprint 1 Tiers 1 and 1.5 complete. Robustness pass 4: defensive ZeroDivisionError
-guard in `calculate_development_envelope`, consistent `result_count` field in
-`search_zoning_code` no-results response, and 3 new tests (ZeroDivisionError guard,
-`max_results` clamping, no-results consistency). 102 offline tests now pass (up from
-99). README district count corrected (59, not ~80). See `.squad/sprint.md`
-for the full execution plan.
+Sprint 1 Tiers 1 and 1.5 complete. Robustness pass 5: added `OverflowError` to the
+`except` clause in `calculate_development_envelope` and 3 new targeted tests
+(`test_parcel_zoning_coords_take_priority_over_address`,
+`test_list_district_types_nonexistent_category_returns_empty`,
+`test_lookup_district_error_includes_hint`). 105 offline tests now pass (up from 102).
+See `.squad/sprint.md` for the full execution plan.
 
 ## Recent Activity
 
+- 2026-04-21: Robustness pass 5 — OverflowError guard + 3 new targeted tests:
+  - `src/tools/development.py`: added `OverflowError` to the `except` clause in
+    `calculate_development_envelope`; guards against `int(float('inf'))` if
+    `lot_area_per_unit` somehow evades the `<= 0` guard in a future data change.
+  - `tests/test_geospatial.py`: added `test_parcel_zoning_coords_take_priority_over_address`;
+    verifies geocoder is NOT called when both address and coordinates are supplied.
+  - `tests/test_integration.py`: added `test_list_district_types_nonexistent_category_returns_empty`
+    and `test_lookup_district_error_includes_hint`; covers empty-result category and
+    error-hint presence for the district lookup tool.
+  - 105 offline tests now pass (up from 102); `ruff check` still 0 issues.
 - 2026-04-21: Robustness pass 4 — defensive guard + consistency fix:
   - `src/tools/development.py`: added `lot_area_per_unit <= 0` guard and
     `ZeroDivisionError` to the `except` clause in `calculate_development_envelope`;
