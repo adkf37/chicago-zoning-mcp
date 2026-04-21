@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Phase | coder |
+| Phase | validate |
 | Last Updated | 2026-04-21 |
 | Squad Template | data_pipeline |
 | Priority | low |
