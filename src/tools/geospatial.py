@@ -86,6 +86,15 @@ def register_geospatial_tools(mcp: FastMCP):
                 "error": f"Chicago Data Portal returned an error: {e.response.status_code}",
                 "coordinates": {"lat": lat, "lng": lng},
             }
+        except httpx.HTTPError:
+            return {
+                "error": "Could not connect to Chicago Data Portal. Check your network connection.",
+                "coordinates": {"lat": lat, "lng": lng},
+                "hint": (
+                    "Try again shortly, or use get_zoning_map_url to look up the"
+                    " location manually."
+                ),
+            }
 
         features = data.get("features", [])
         if not features:

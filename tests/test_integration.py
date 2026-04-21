@@ -232,6 +232,26 @@ def test_development_envelope_bad_district():
     assert "error" in result
 
 
+def test_development_envelope_zero_lot_area():
+    """Zero lot area should return a structured error, not calculate nonsense."""
+    from src.tools.development import register_development_tools
+
+    tools = _register_and_capture(register_development_tools)
+    result = tools["calculate_development_envelope"](district_code="RS-3", lot_area_sqft=0)
+    assert "error" in result
+    assert isinstance(result["error"], str)
+
+
+def test_development_envelope_negative_lot_area():
+    """Negative lot area should return a structured error, not calculate nonsense."""
+    from src.tools.development import register_development_tools
+
+    tools = _register_and_capture(register_development_tools)
+    result = tools["calculate_development_envelope"](district_code="RS-3", lot_area_sqft=-100)
+    assert "error" in result
+    assert isinstance(result["error"], str)
+
+
 def test_development_envelope_pd_nonnumeric_far():
     """PD district has non-numeric FAR — tool should return partial result, not crash."""
     from src.tools.development import register_development_tools
