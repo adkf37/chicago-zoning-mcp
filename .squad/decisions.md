@@ -3,6 +3,44 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-04-21 — Tester — Validate phase checks complete; advancing to Closeout
+
+**Context:** The Validate phase was triggered to check all automated build outputs
+against backlog acceptance criteria.
+
+**Checks run (2026-04-21):**
+
+| Check | Command | Result |
+|---|---|---|
+| Offline test suite | `pytest tests/ -m "not network" --tb=short` | ✅ 109 passed, 5 deselected |
+| Linter | `ruff check src/ tests/` | ✅ 0 errors |
+| Tool registration | `mcp.list_tools()` programmatic call | ✅ 8 tools registered |
+| `lookup_district("RS-3")` | programmatic call | ✅ FAR 0.9, height "30 ft, 2 stories" |
+| `calculate_development_envelope("RS-3", 5000)` | programmatic call | ✅ 4500.0 sqft |
+| District count | `get_all_districts()` | ✅ 59 districts |
+| Network tests | `pytest tests/ -m network` | ⚠️ DNS blocked in CI sandbox (expected; documented in sprint.md) |
+
+**Blocked items (unchanged from prior sessions):**
+
+- T3-01–T3-05: Title 17 ingestion — requires human to download from amlegal.com
+- T4-01–T4-10: MCP Inspector verification — requires local Node.js toolchain
+- T5-01–T5-06: Ollama end-to-end testing — requires local Ollama installation
+- T6-03: Parent repo cross-reference — requires human access to parent repo
+
+**Decision:** All automatable acceptance criteria from `backlog/README.md` are satisfied:
+- ✅ Criterion 1: All 8 MCP tools registered and callable
+- ✅ Criterion 2: District lookup accurate (RS-3 → FAR 0.9, height 30 ft)
+- ✅ Criterion 3: Dev calculator accurate (RS-3, 5000 sqft → 4500 sqft)
+- ⚠️ Criterion 4: Geospatial lookup (network-blocked in CI; tools are implemented)
+- ⚠️ Criterion 5: Code search (blocked on human Title 17 download; graceful error returned)
+- ✅ Criterion 6: All automated tests pass (109 offline tests)
+- ⚠️ Criterion 7: Docker Compose deploy (manual verification; Dockerfile and compose present)
+- ✅ Criterion 8: Documentation complete (README, CONTRIBUTING.md, phase docs)
+
+**Phase recommendation:** Advance to **Closeout**. Remaining blocked items (T3, T4, T5, T6-03)
+require human action or local toolchain; they cannot be automated and are explicitly
+out of scope for automated sprint completion per `sprint.md` Definition of Done.
+
 ### 2026-04-21 — Tester — Eval tests Q15–Q18 automated with fixture index
 
 **Context:** `evals/zoning_qa.xml` contains 20 Q&A pairs. Questions Q15–Q18 test

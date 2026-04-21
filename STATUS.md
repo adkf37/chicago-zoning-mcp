@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Phase | validate |
+| Phase | closeout |
 | Last Updated | 2026-04-21 |
 | Squad Template | data_pipeline |
 | Priority | low |
@@ -11,62 +11,33 @@
 
 ## Current Objective
 
-Sprint 1 Tier T5-05 complete: proactively improved tool docstrings across all 8 MCP tools
-in `src/tools/*.py` to maximize LLM tool-selection accuracy before Ollama testing begins.
-Created `backlog/tasks/` directory with 4 discrete task files (T5-05 done; T3-01, T4, T5
-pending human action or local toolchain). 109 offline tests still pass, `ruff check` still 0 errors.
-See `.squad/sprint.md` and `.squad/decisions.md` for details.
+**Validate phase complete — advancing to Closeout.**
+
+All automatable acceptance criteria have been verified:
+- `pytest tests/ -m "not network"` → **109 passed, 5 deselected** ✅
+- `ruff check src/ tests/` → **0 errors** ✅
+- All 8 MCP tools registered and callable ✅
+- `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
+- `calculate_development_envelope("RS-3", 5000)` → 4500 sqft ✅
+- 59 districts in `data/zoning_codes.csv` ✅
+
+Remaining items require human action or local toolchain (explicitly out of scope for automated sprint):
+- Title 17 ingestion (T3): human must download from amlegal.com
+- MCP Inspector verification (T4): manual, needs Node.js
+- Ollama end-to-end testing (T5): manual, needs Ollama
+- Parent repo cross-reference (T6-03): human
+
+See `.squad/decisions.md` for full validation evidence.
 
 ## Recent Activity
 
-- 2026-04-21: T5-05 — Proactive tool docstring improvements for LLM tool selection:
-  - `src/tools/district_lookup.py`: improved docstrings for `lookup_district`,
-    `compare_districts`, and `list_district_types` — added "Use this tool when…"
-    guidance, listed returned fields, noted alternatives.
-  - `src/tools/development.py`: improved `calculate_development_envelope` docstring —
-    noted to call `get_parcel_zoning` first when only address is known; listed all
-    returned fields; added concrete example.
-  - `src/tools/geospatial.py`: improved `get_parcel_zoning` docstring — emphasized
-    network dependency, common first-step role in multi-step queries; improved
-    `get_zoning_map_url` docstring — clarified it returns a URL only, not a district code.
-  - `src/tools/code_search.py`: improved `search_zoning_code` docstring — strengthened
-    trigger phrases and noted index requirement; improved `get_zoning_section` docstring —
-    clarified it is for direct section retrieval by number.
-  - Created `backlog/tasks/` directory with 4 task files covering this task (T5-05),
-    the blocked Title 17 ingestion (T3-01), MCP Inspector verification (T4), and
-    Ollama testing (T5).
-  - 109 offline tests still pass; `ruff check` still 0 errors.
-- 2026-04-21: Eval coverage pass — added 4 automated eval tests for code-search Q&A pairs:
-  - `tests/test_evals.py`: added `test_eval_q15_search_accessory_dwelling_unit`,
-    `test_eval_q16_search_parking_requirements`, `test_eval_q17_search_nonconforming_uses`,
-    `test_eval_q18_get_nonconforming_section`; all use the in-memory fixture index,
-    matching the approach in `tests/test_code_search.py`.
-  - Added `_CODE_SEARCH_FIXTURE` (mirrors fixture from `test_code_search.py`) and
-    `code_search_tools` module-scoped pytest fixture to `test_evals.py`.
-  - 109 offline tests now pass (up from 105); `ruff check` still 0 issues.
-- 2026-04-21: Robustness pass 5 — OverflowError guard + 3 new targeted tests:
-  - `src/tools/development.py`: added `OverflowError` to the `except` clause in
-    `calculate_development_envelope`; guards against `int(float('inf'))` if
-    `lot_area_per_unit` somehow evades the `<= 0` guard in a future data change.
-  - `tests/test_geospatial.py`: added `test_parcel_zoning_coords_take_priority_over_address`;
-    verifies geocoder is NOT called when both address and coordinates are supplied.
-  - `tests/test_integration.py`: added `test_list_district_types_nonexistent_category_returns_empty`
-    and `test_lookup_district_error_includes_hint`; covers empty-result category and
-    error-hint presence for the district lookup tool.
-  - 105 offline tests now pass (up from 102); `ruff check` still 0 issues.
-- 2026-04-21: Robustness pass 4 — defensive guard + consistency fix:
-  - `src/tools/development.py`: added `lot_area_per_unit <= 0` guard and
-    `ZeroDivisionError` to the `except` clause in `calculate_development_envelope`;
-    prevents crash if a future CSV row has `0 sq ft/dwelling unit`.
-  - `src/tools/code_search.py`: added `result_count: 0` to the "no results but index
-    exists" response branch; makes success and no-results responses structurally
-    consistent so LLMs always see `result_count` in the output.
-  - `tests/test_integration.py`: added `test_development_envelope_zero_lot_area_per_unit_graceful`.
-  - `tests/test_code_search.py`: added `test_search_tool_max_results_clamped_at_10` and
-    `test_search_tool_no_results_includes_query`; updated `test_search_tool_no_results` to
-    assert `result_count == 0`.
-  - `README.md`: corrected district count from "~80" to "59".
-  - 102 offline tests now pass (up from 99); `ruff check` still 0 issues.
+- 2026-04-21: Validate phase — ran all automatable checks; 109 offline tests pass, ruff clean,
+  8 tools verified callable, RS-3 lookup and dev envelope values correct; phase advanced to closeout.
+  Full evidence recorded in `.squad/decisions.md`.
+- 2026-04-21: T5-05 — Proactive tool docstring improvements for LLM tool selection across all 8 tools.
+- 2026-04-21: Eval coverage pass — added 4 automated eval tests for code-search Q&A pairs (Q15–Q18).
+- 2026-04-21: Robustness passes 4–5 — OverflowError/ZeroDivisionError guards, input validation,
+  consistency fix in code search; 109 offline tests pass.
 - 2026-04-21: Robustness pass — bug fix + input validation:
   - `src/tools/geospatial.py`: added `except httpx.HTTPError` catch after the existing
     `TimeoutException` and `HTTPStatusError` handlers in the Socrata query block; now
