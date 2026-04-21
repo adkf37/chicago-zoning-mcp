@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Phase | coder |
-| Last Updated | 2026-04-03 |
+| Last Updated | 2026-04-21 |
 | Squad Template | data_pipeline |
 | Priority | low |
 | Blocking | Title 17 download (requires human action — see `.squad/sprint.md` T3-01) |
@@ -11,14 +11,25 @@
 
 ## Current Objective
 
-Sprint 1 Tiers 1 and 1.5 complete. Gap-fill pass: 5 new edge-case tests added
-to `tests/test_integration.py` covering (a) `compare_districts` error paths for
-invalid district codes and (b) `calculate_development_envelope` with non-numeric
-FAR (PD district) and "None" lot-area-per-unit (B1-1 commercial). 96 offline tests
-now pass (up from 91). See `.squad/sprint.md` for the full execution plan.
+Sprint 1 Tiers 1 and 1.5 complete. Robustness pass 3: bug fix (Socrata
+`ConnectError` now caught in `get_parcel_zoning`) and input validation (non-positive
+`lot_area_sqft` now returns structured error in `calculate_development_envelope`).
+3 new tests added. 99 offline tests now pass (up from 96). See `.squad/sprint.md`
+for the full execution plan.
 
 ## Recent Activity
 
+- 2026-04-21: Robustness pass — bug fix + input validation:
+  - `src/tools/geospatial.py`: added `except httpx.HTTPError` catch after the existing
+    `TimeoutException` and `HTTPStatusError` handlers in the Socrata query block; now
+    `httpx.ConnectError` and other transport-layer errors return a structured error
+    dict instead of propagating as unhandled exceptions to MCP clients.
+  - `src/tools/development.py`: added `lot_area_sqft <= 0` guard that returns a
+    structured error dict immediately, preventing nonsense outputs for invalid inputs.
+  - `tests/test_geospatial.py`: added `test_parcel_zoning_socrata_connect_error`.
+  - `tests/test_integration.py`: added `test_development_envelope_zero_lot_area` and
+    `test_development_envelope_negative_lot_area`. 99 offline tests now pass (up from
+    96); `ruff check` still 0 issues.
 - 2026-04-03: Gap-fill pass 2 — 5 new edge-case integration tests added:
   `test_compare_districts_first_invalid`, `test_compare_districts_second_invalid`,
   `test_compare_districts_both_invalid` (Phase 2 "unknown district" coverage for

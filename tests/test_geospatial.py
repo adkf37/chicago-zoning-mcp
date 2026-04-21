@@ -357,6 +357,42 @@ async def test_parcel_zoning_socrata_timeout():
 
 
 @pytest.mark.asyncio
+async def test_parcel_zoning_socrata_connect_error():
+    """A Socrata connection error (DNS failure, etc.) should return a user-friendly error."""
+    mcp = FastMCP("test")
+    tools = {}
+    original_tool = mcp.tool
+
+    def capture_tool(*args, **kwargs):
+        decorator = original_tool(*args, **kwargs)
+
+        def wrapper(fn):
+            tools[fn.__name__] = fn
+            return decorator(fn)
+        return wrapper
+
+    mcp.tool = capture_tool
+    register_geospatial_tools(mcp)
+
+    with patch("src.tools.geospatial.geocode_address", new_callable=AsyncMock) as mock_geo, \
+         patch("src.tools.geospatial.httpx.AsyncClient") as mock_client_cls:
+
+        mock_geo.return_value = (41.88, -87.63)
+
+        mock_client = AsyncMock()
+        mock_client.get.side_effect = httpx.ConnectError("Name resolution failed")
+        mock_client.__aenter__ = AsyncMock(return_value=mock_client)
+        mock_client.__aexit__ = AsyncMock(return_value=False)
+        mock_client_cls.return_value = mock_client
+
+        result = await tools["get_parcel_zoning"](address="Some Address")
+        assert "error" in result
+        assert isinstance(result["error"], str)
+        # Should not raise; must return a structured dict
+        assert "coordinates" in result
+
+
+@pytest.mark.asyncio
 async def test_parcel_zoning_coords_directly():
     """Coordinates can be passed directly without an address."""
     mcp = FastMCP("test")

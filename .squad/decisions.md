@@ -257,3 +257,40 @@ despite clear "unknown district" acceptance criteria. The development envelope t
 handling was verified only at the data layer; tool-level tests are needed to confirm the
 tool wraps these cases gracefully (no crashes, disclaimer always present). Offline test count
 increases from 91 to 96. `ruff check src/ tests/` remains clean at 0 errors.
+
+
+### 2026-04-21 — Coder/Lead — Robustness pass: ConnectError fix + lot_area_sqft validation
+
+**Context:** Two robustness gaps were identified in the codebase:
+
+1. `get_parcel_zoning` in `src/tools/geospatial.py` only caught `httpx.TimeoutException`
+   and `httpx.HTTPStatusError` for the Socrata query. `httpx.ConnectError` (DNS failure,
+   connection refused, etc.) — which is what the CI sandbox emits when DNS is blocked —
+   was not caught and would propagate as an unhandled exception to the MCP client.
+
+2. `calculate_development_envelope` accepted any float for `lot_area_sqft`, including
+   zero and negative values. Zero input would produce `max_floor_area_sqft = 0.0` and
+   `max_dwelling_units = 1` (from the `max(..., 1)` guard), while negative input would
+   produce a negative floor area — both are nonsensical and should be rejected early.
+
+**Decision:**
+1. Add `except httpx.HTTPError as e:` after the existing exception handlers in
+   `src/tools/geospatial.py`. Because `httpx.HTTPError` is the base class for all httpx
+   exceptions including `ConnectError`, `ReadError`, etc., this catches all remaining
+   network-level failures and returns a structured error dict with a `hint`.
+2. Add a guard at the top of `calculate_development_envelope`: if `lot_area_sqft <= 0`,
+   return a structured `{"error": "lot_area_sqft must be a positive number.", ...}` dict
+   before any district lookup.
+
+**Changes made:**
+- `src/tools/geospatial.py` — added `except httpx.HTTPError` handler for Socrata query
+- `src/tools/development.py` — added `lot_area_sqft <= 0` input validation guard
+- `tests/test_geospatial.py` — added `test_parcel_zoning_socrata_connect_error`
+- `tests/test_integration.py` — added `test_development_envelope_zero_lot_area` and
+  `test_development_envelope_negative_lot_area`
+
+**Rationale:** A production MCP server must never surface raw exception tracebacks to
+LLM clients. The `ConnectError` case specifically matches what happens when DNS is
+blocked (observed in CI sandbox for Tier 2 network tests). The `lot_area_sqft`
+validation prevents confusing tool outputs that could mislead LLM reasoning.
+Offline test count increases from 96 to 99. `ruff check src/ tests/` remains clean.

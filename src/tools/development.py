@@ -24,6 +24,12 @@ def register_development_tools(mcp: FastMCP):
         This is an estimate — actual limits depend on lot shape, overlays,
         planned developments, and other factors.
         """
+        if lot_area_sqft <= 0:
+            return {
+                "error": "lot_area_sqft must be a positive number.",
+                "lot_area_sqft": lot_area_sqft,
+            }
+
         district = get_district(district_code)
         if district is None:
             return {"error": f"District '{district_code}' not found."}
