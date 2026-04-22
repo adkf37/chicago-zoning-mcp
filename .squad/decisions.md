@@ -3,6 +3,44 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-04-22 — Squad Coordinator — Closeout complete; project ready for human handoff
+
+**Context:** Final closeout pass was triggered by Maestro after the Validate phase confirmed
+all automatable acceptance criteria were satisfied.
+
+**Closeout checklist review:**
+
+| Item | Status |
+|---|---|
+| All automated tests pass (`pytest tests/ -m "not network"`) | ✅ 109 passed, 5 deselected |
+| Linter clean (`ruff check src/ tests/`) | ✅ 0 errors |
+| All 8 MCP tools registered | ✅ verified programmatically |
+| `lookup_district("RS-3")` → FAR 0.9, height 30 ft | ✅ |
+| `calculate_development_envelope("RS-3", 5000)` → 4500 sqft | ✅ |
+| 59 districts in zoning_codes.csv | ✅ |
+| Documentation complete (README, CONTRIBUTING, phase docs) | ✅ |
+| Sprint Definition of Done (automatable items) | ✅ all checked |
+| Remaining blocked items documented | ✅ — see below |
+
+**Open items — require human action (explicitly out of scope for automated sprint):**
+
+| Task | Blocker | Effort |
+|------|---------|--------|
+| Title 17 ingestion (T3-01–T3-05) | Human must download from amlegal.com | ~2 hrs |
+| MCP Inspector verification (T4-01–T4-10) | Needs local Node.js | ~30 min |
+| Ollama end-to-end testing (T5-01–T5-06) | Needs local Ollama | ~1 hr |
+| Parent repo cross-reference (T6-03) | Human needs parent repo access | ~15 min |
+
+**Decision:** Mark project phase as **Closeout (complete)**. The codebase, data layer,
+tests, and documentation are production-ready for the 6 tools that do not require Title 17.
+The 2 code-search tools (search_zoning_code, get_zoning_section) return a clear actionable
+error until a human completes the Title 17 download.
+
+**Artifacts updated in this session:**
+- `STATUS.md` — Phase set to "Closeout (complete)"; Current Objective updated; Needs Human
+  Input section expanded with time estimates and explicit follow-up steps.
+- `.squad/decisions.md` — this entry.
+
 ### 2026-04-21 — Tester — Validate phase checks complete; advancing to Closeout
 
 **Context:** The Validate phase was triggered to check all automated build outputs
