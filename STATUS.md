@@ -2,35 +2,44 @@
 
 | Field | Value |
 |---|---|
-| Phase | closeout |
-| Last Updated | 2026-04-21 |
+| Phase | Closeout (complete) |
+| Last Updated | 2026-04-22 |
 | Squad Template | data_pipeline |
 | Priority | low |
-| Blocking | Title 17 download (requires human action — see `.squad/sprint.md` T3-01) |
+| Blocking | None for automated work — see "Needs Human Input" below for manual follow-ups |
 | GitHub Repo | https://github.com/adkf37/chicago-zoning-mcp |
 
 ## Current Objective
 
-**Validate phase complete — advancing to Closeout.**
+**Closeout complete — ready for human handoff.**
 
-All automatable acceptance criteria have been verified:
+All automatable acceptance criteria from `backlog/README.md` are satisfied:
 - `pytest tests/ -m "not network"` → **109 passed, 5 deselected** ✅
 - `ruff check src/ tests/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
 - `calculate_development_envelope("RS-3", 5000)` → 4500 sqft ✅
 - 59 districts in `data/zoning_codes.csv` ✅
+- Documentation complete (README, CONTRIBUTING.md, phase docs, example conversations) ✅
 
-Remaining items require human action or local toolchain (explicitly out of scope for automated sprint):
-- Title 17 ingestion (T3): human must download from amlegal.com
-- MCP Inspector verification (T4): manual, needs Node.js
-- Ollama end-to-end testing (T5): manual, needs Ollama
-- Parent repo cross-reference (T6-03): human
+The following items remain open but **require human action or local toolchain** and are
+explicitly out of scope for automated sprint completion (see `sprint.md` Definition of Done):
 
-See `.squad/decisions.md` for full validation evidence.
+| Item | Blocker | Effort |
+|------|---------|--------|
+| Title 17 ingestion (T3-01–T3-05) | Human must download from amlegal.com | ~2 hrs manual copy-paste |
+| MCP Inspector verification (T4) | Needs local Node.js | ~30 min |
+| Ollama end-to-end testing (T5) | Needs local Ollama | ~1 hr |
+| Parent repo cross-reference (T6-03) | Human needs access to parent repo | ~15 min |
+
+See `.squad/decisions.md` for full validation evidence and final closeout notes.
 
 ## Recent Activity
 
+- 2026-04-22: Closeout complete — all automated acceptance criteria verified; STATUS.md updated
+  to "Closeout (complete)"; final closeout notes logged in `.squad/decisions.md`. Remaining
+  open items (Title 17 ingestion, MCP Inspector, Ollama, parent repo cross-reference) are
+  explicitly human-gated and documented as follow-up work.
 - 2026-04-21: Validate phase — ran all automatable checks; 109 offline tests pass, ruff clean,
   8 tools verified callable, RS-3 lookup and dev envelope values correct; phase advanced to closeout.
   Full evidence recorded in `.squad/decisions.md`.
@@ -106,8 +115,22 @@ See `.squad/decisions.md` for full validation evidence.
 
 ## Needs Human Input
 
-- **Title 17 download** — A human must manually copy-paste Title 17 chapters from
+> ⚠️ These items are the only remaining blockers for full feature completeness. All other tools work today.
+
+- **Title 17 download** (~2 hrs) — A human must manually copy-paste Title 17 chapters from
   American Legal Publishing into `data/title_17/raw/`. See `backlog/phase-05-code-text-search.md`
-  for step-by-step instructions. Estimated effort: ~2 hours. Until done, `search_zoning_code`
-  and `get_zoning_section` return a helpful error — all other tools work normally.
+  for step-by-step instructions. Until done, `search_zoning_code` and `get_zoning_section` return
+  a helpful error — all other 6 tools work normally.
+
+- **MCP Inspector verification** (~30 min) — Requires local Node.js. Run:
+  `npx @modelcontextprotocol/inspector python -m src.server` and verify all 8 tools appear
+  and respond. See `backlog/tasks/T4-mcp-inspector-verification.md`.
+
+- **Ollama end-to-end test** (~1 hr) — Requires local Ollama installation. Pull
+  `ollama pull llama3.1:8b`, connect via Claude Desktop or Continue.dev, and test
+  the Q&A pairs in `evals/zoning_qa.xml`. See `backlog/tasks/T5-ollama-llm-testing.md`.
+
+- **Parent repo cross-reference** (~15 min) — A human with access to the parent
+  `Plan_for_Chicago_2030` repo should add a link/reference to this MCP server in
+  the parent README.
 
