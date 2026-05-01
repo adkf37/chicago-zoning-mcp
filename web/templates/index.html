@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chicago Zoning Assistant</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, sans-serif; }
+    .chat-bubble-user { background: #1e40af; color: white; border-radius: 1rem 1rem 0.25rem 1rem; }
+    .chat-bubble-bot  { background: #f1f5f9; color: #1e293b; border-radius: 1rem 1rem 1rem 0.25rem; }
+    .chat-bubble-bot p { margin-bottom: 0.5rem; }
+    .chat-bubble-bot ul { list-style: disc; padding-left: 1.25rem; margin-bottom: 0.5rem; }
+    .chat-bubble-bot code { background: #e2e8f0; padding: 0.1rem 0.3rem; border-radius: 0.25rem; font-size: 0.85em; }
+    .tool-badge { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.7rem;
+                  background: #dbeafe; color: #1e40af; border-radius: 9999px;
+                  padding: 0.15rem 0.5rem; font-weight: 600; }
+    #messages { scroll-behavior: smooth; }
+    .spinner { border: 3px solid #e2e8f0; border-top-color: #1e40af;
+               border-radius: 50%; width: 1.25rem; height: 1.25rem; animation: spin 0.7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .suggestion-btn { transition: background 0.15s; }
+    .suggestion-btn:hover { background: #eff6ff; }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-blue-800 text-white shadow-md">
+    <div class="max-w-3xl mx-auto px-4 py-4 flex items-center gap-3">
+      <div class="text-3xl">🏙️</div>
+      <div>
+        <h1 class="text-xl font-bold leading-tight">Chicago Zoning Assistant</h1>
+        <p class="text-blue-200 text-sm">Powered by Gemini · Title 17 Chicago Municipal Code</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Chat area -->
+  <main class="flex-1 max-w-3xl w-full mx-auto px-4 py-6 flex flex-col gap-4" style="min-height: 0;">
+
+    <div id="messages" class="flex-1 overflow-y-auto flex flex-col gap-4 pb-2"
+         style="max-height: calc(100vh - 260px);">
+
+      <!-- Welcome message -->
+      <div class="flex gap-3 items-start">
+        <div class="w-8 h-8 rounded-full bg-blue-800 flex items-center justify-center text-white text-sm flex-shrink-0">Z</div>
+        <div class="chat-bubble-bot px-4 py-3 max-w-xl shadow-sm">
+          <p class="font-medium mb-2">Welcome! I can help you understand Chicago's zoning code.</p>
+          <p class="text-sm text-slate-500">Try one of these questions, or ask your own:</p>
+        </div>
+      </div>
+
+      <!-- Suggestion chips -->
+      <div id="suggestions" class="flex flex-wrap gap-2 pl-11">
+        <button class="suggestion-btn px-3 py-1.5 text-sm border border-blue-200 rounded-full text-blue-700 bg-white shadow-sm"
+                onclick="sendSuggestion(this)">What's the zoning at 233 S Wacker Dr?</button>
+        <button class="suggestion-btn px-3 py-1.5 text-sm border border-blue-200 rounded-full text-blue-700 bg-white shadow-sm"
+                onclick="sendSuggestion(this)">What can I build on a 5,000 sqft RS-3 lot?</button>
+        <button class="suggestion-btn px-3 py-1.5 text-sm border border-blue-200 rounded-full text-blue-700 bg-white shadow-sm"
+                onclick="sendSuggestion(this)">What are the parking requirements in the zoning code?</button>
+        <button class="suggestion-btn px-3 py-1.5 text-sm border border-blue-200 rounded-full text-blue-700 bg-white shadow-sm"
+                onclick="sendSuggestion(this)">Compare RS-3 and RT-4 districts</button>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <form id="chat-form" class="flex gap-2 bg-white border border-slate-200 rounded-2xl shadow-sm px-4 py-3">
+      <input id="question-input"
+             type="text"
+             placeholder="Ask about Chicago zoning…"
+             autocomplete="off"
+             class="flex-1 outline-none text-slate-800 placeholder-slate-400 bg-transparent" />
+      <button type="submit"
+              id="submit-btn"
+              class="bg-blue-800 hover:bg-blue-700 text-white rounded-xl px-4 py-2 text-sm font-semibold transition-colors flex items-center gap-2">
+        <span id="btn-text">Ask</span>
+        <span id="btn-spinner" class="spinner hidden"></span>
+      </button>
+    </form>
+    <p class="text-center text-xs text-slate-400">
+      Data from Chicago Municipal Code Title 17 · Chicago Data Portal · Not legal advice
+    </p>
+  </main>
+
+  <script>
+    const messagesEl = document.getElementById('messages');
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('question-input');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnText = document.getElementById('btn-text');
+    const btnSpinner = document.getElementById('btn-spinner');
+
+    function setLoading(loading) {
+      submitBtn.disabled = loading;
+      btnText.classList.toggle('hidden', loading);
+      btnSpinner.classList.toggle('hidden', !loading);
+    }
+
+    function appendMessage(role, html, toolCalls) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'flex gap-3 items-start';
+
+      const avatar = document.createElement('div');
+      avatar.className = 'w-8 h-8 rounded-full flex items-center justify-center text-white text-sm flex-shrink-0 ' +
+        (role === 'user' ? 'bg-slate-600' : 'bg-blue-800');
+      avatar.textContent = role === 'user' ? 'You' : 'Z';
+
+      const bubble = document.createElement('div');
+      bubble.className = (role === 'user' ? 'chat-bubble-user' : 'chat-bubble-bot') +
+        ' px-4 py-3 max-w-xl shadow-sm';
+
+      if (role === 'user') {
+        bubble.textContent = html;
+      } else {
+        bubble.innerHTML = marked.parse(html);
+
+        // Tool badges
+        if (toolCalls && toolCalls.length > 0) {
+          const toolBar = document.createElement('div');
+          toolBar.className = 'flex flex-wrap gap-1 mt-2 pt-2 border-t border-slate-200';
+          toolCalls.forEach(tc => {
+            const badge = document.createElement('span');
+            badge.className = 'tool-badge';
+            badge.innerHTML = `<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg> ${tc.name}`;
+            toolBar.appendChild(badge);
+          });
+          bubble.appendChild(toolBar);
+        }
+      }
+
+      wrapper.appendChild(avatar);
+      wrapper.appendChild(bubble);
+      messagesEl.appendChild(wrapper);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function appendError(msg) {
+      appendMessage('bot', `⚠️ **Error:** ${msg}`, []);
+    }
+
+    async function sendQuestion(question) {
+      if (!question) return;
+
+      // Hide suggestions after first real question
+      const suggestions = document.getElementById('suggestions');
+      if (suggestions) suggestions.remove();
+
+      appendMessage('user', question, null);
+      input.value = '';
+      setLoading(true);
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ question }),
+        });
+        const data = await res.json();
+
+        if (!res.ok || data.error) {
+          const details = [
+            data.error || 'Server error',
+            data.detail,
+            data.status ? `Status: ${data.status}` : '',
+            data.status_code ? `HTTP ${data.status_code}` : '',
+          ].filter(Boolean).join('\n\n');
+          appendError(details);
+        } else {
+          appendMessage('bot', data.answer, data.used_tools ? data.tool_calls : []);
+        }
+      } catch (err) {
+        appendError('Could not reach the server. Please try again.');
+      } finally {
+        setLoading(false);
+        input.focus();
+      }
+    }
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      sendQuestion(input.value.trim());
+    });
+
+    function sendSuggestion(btn) {
+      sendQuestion(btn.textContent.trim());
+    }
+
+    input.focus();
+  </script>
+</body>
+</html>

@@ -1,0 +1,5616 @@
+
+
+17-17-0100 Use group and category descriptions.
+
+
+ShareDownloadBookmarkPrint
+
+
+17-17-0100  Use group and category descriptions.
+
+
+   17-17-0101 General.
+
+
+      17-17-0101-A Use Groups. This Zoning Ordinance classifies land uses into 5 major groupings: Residential, Public and Civic, Commercial, Industrial, and Other. These are referred to as "Use Groups".
+
+
+      17-17-0101-B Use Categories. Each Use Group is further divided into more specific "Use Categories". Use Categories classify land uses and activities based on common functional, product, or physical characteristics. Characteristics include the type and amount of activity, the type of customers or residents, how goods or services are sold or delivered and site conditions.
+
+
+      17-17-0101-C Typical Uses. Typical uses cited in the description of Use Categories are not intended to be exclusive or restrictive.
+
+
+      17-17-0101-D Determination of Appropriate Land Use Categories. When a specific use type cannot be classified into a Use Category or appears to fit into two or more Use Categories, the Zoning Administrator is authorized to determine the most appropriate Use Category.
+
+
+   17-17-0102 Residential Use Group. The Residential Use Group includes uses that provide living accommodations to one or more persons. The Residential Use Group includes two Use Categories: group living and household living.
+
+
+      17-17-0102-A Group Living. Residential occupancy of a dwelling by other than a "household", typically providing communal kitchen/dining facilities. Examples of group living uses include but are not limited to fraternities, sororities, convents, monasteries, nursing homes and the following specific use types:
+
+
+         1.   Assisted Living. A facility that meets the definition of: (1) an "assisted living establishment" or (2) a "shared housing establishment" as those terms are defined in the Assisted Living and Shared Housing Act, 210 ILCS 9/1, et seq., as amended.
+
+
+         2.   Convents and Monasteries. A residential building housing persons (such as nuns or monks) under religious vows.
+
+
+         3.   Community Home. An adult family care home or adult family care center, as those terms are defined in Sections 4-6-110 and 4-6-080(a), respectively; or a single dwelling unit occupied on a permanent basis by a group of unrelated persons with disabilities in a family-like environment, and which may be occupied by paid professional support staff provided by a sponsoring agency.
+
+
+            (a)   Community Home, Family.
+
+
+               (i)   An adult family care home, as that term is defined in Section 4-6-110; or
+
+
+               (ii)   A single dwelling unit that complies with the regulations of the zoning district in which it is located, and which is occupied on a permanent basis by a group of not more than 8 unrelated persons with disabilities in a family-like environment and which may be occupied by paid professional support staff provided by a sponsoring agency.
+
+
+            (b)   Community Home, Group.
+
+
+               (i)   An adult family care center, as that term is defined in Section 4-6-080(a); or
+
+
+               (ii)   A single dwelling unit that complies with the regulations of the zoning district in which it is located, and which is occupied on a permanent basis by a group of not less than 9 and not more than 15 unrelated persons with disabilities in a family-like environment and which may be occupied by paid professional support staff provided by a sponsoring agency.
+
+
+         4.   Domestic Violence Residence. A building or portion thereof, in which temporary housing is provided exclusively for persons who are victims of domestic violence or abuse and for their children, and which may also be occupied by professional support staff provided by a sponsoring agent. Any children or support staff using sleeping accommodations at a Domestic Violence Residence will be included in determining maximum occupancy, as provided in subsections (a), (b) and (c) below.
+
+
+            (a)   Domestic Violence Residence, Family. A domestic violence residence in which sleeping accommodations are provided for a maximum of 8 persons.
+
+
+            (b)   Domestic Violence Residence, Group. A domestic violence residence in which sleeping accommodations are provided for a maximum of 15 persons.
+
+
+            (c)   Domestic Violence Shelter. A domestic violence residence in which sleeping accommodations are provided for more than 15 persons.
+
+
+         5.   Nursing Home. A "skilled care facility," "intermediate care facility," "sheltered care facility" or similar "long-term care facility," as those terms are defined in the Illinois Nursing Home Care Act (210 ILCS 45/) and/or Title 77 Ill. Adm. Code Part 300.
+
+
+         6.   Temporary Overnight Shelter. A building, or portion thereof, in which sleeping accommodations are provided for no more than 12 hours per day, for 3 or more persons who are not related to the property owner, operator, manager or other occupants thereof by blood or by marriage, as described in Chapter 13-208 of the Municipal Code.
+
+
+         7.   Transitional Residence. A temporary residential living arrangement for persons who are receiving therapy or counseling for purposes such as, but not limited to, the following: (a) to help recuperate from the effects of drugs or alcohol addiction; (b) to help re-enter society while housed under supervision and the constraints of alternatives to imprisonment including, but not limited to, pre-release, work-release and probationary programs; or (c) to help with family or school adjustment problems that require specialized attention and care in order to achieve personal independence.
+
+
+         8.   Transitional Shelter. A "transitional shelter" is a building, or portion thereof, in which temporary residential accommodations are provided for 3 or more persons who are not related to the property owner, operator, manager or other occupants thereof by blood or by marriage.
+
+
+      17-17-0102-B Household Living Category. Residential occupancy of a dwelling unit by a household with tenancy arranged on a monthly or longer basis. (Note: see building type definitions [e.g., detached house, two-flat, townhouse, artist live/work space in Sec. 17-17-0200])
+
+
+   17-17-0103 Public and Civic Use Group. The public and civic use group includes uses that provide public or quasi-public services. The public and civic use group includes the following Use Categories:
+
+
+      17-17-0103-A Colleges and Universities. Colleges and other institutions of higher learning that offer courses of general or specialized study leading to a degree. They are certified by the state or by a recognized accrediting agency. Colleges tend to be in campus-like settings or on multiple blocks. Examples include universities, liberal arts colleges, community colleges, nursing and medical schools not accessory to a hospital, conservatories and seminaries.
+
+
+      17-17-0103-B Cultural Exhibits and Libraries. Museum-like preservation and exhibition of objects in one or more of the arts and sciences, gallery exhibition of works of art, or library collection of books, manuscripts, etc., for study and reading.
+
+
+      17-17-0103-C Day Care. A place in which are received 3 or more adults or children, not of common parentage, apart from their parents or guardian, for part or all of a day. The term "day care center" or "child care center" includes but is not limited to the following: nursery schools, adult and/or child care centers, day nurseries, kindergartens and play groups, but does not include bona fide kindergartens and nursery schools operated by public or private elementary or secondary school systems.
+
+
+      17-17-0103-C[a] Detention and Correctional Facilities. Facilities for the judicially required detention or incarceration of people. Inmates and detainees are under 24-hour supervision by peace officers, except when on an approved leave. Examples include prisons, jails, probation centers, and juvenile detention homes.
+
+
+      17-17-0103-D Hospital. Uses providing medical or surgical care to patients and offering inpatient (overnight) care.
+
+
+      17-17-0103-E Lodge or Private Club. A non-profit association of persons who are bona fide members paying annual dues, which owns, hires or leases a building, or portion thereof, the use of such premises being restricted to members and their guests.
+
+
+      17-17-0103-F Parks and Recreation. Recreational, social, or multi-purpose uses typically associated with public parks, public open spaces, public play fields, public or private golf courses, or public recreation areas or buildings.
+
+
+      1.   Community Garden. A neighborhood- based development with the primary purpose of providing space for members of the community to grow plants for beautification, education, recreation, community distribution or personal use. Sites are typically managed by public or civic entities, nonprofit organizations or other community-based organizations that are responsible for maintenance and operations. Processing and storage of plants or plant products, other than for purposes of composting as provided in Section 17-9-0103.5-C, are prohibited on site. Gardening tools and supplies may be stored within an accessory building that is in compliance with Section 17-9-0103.5-B of the Municipal Code.
+
+
+      17-17-0103-G Postal Service. Mailing services and processing as traditionally operated or leased by postal and parcel service companies.
+
+
+      17-17-0103-H Public Safety Services. Public safety services that provide fire, police or life protection, together with the incidental storage and maintenance of necessary vehicles. Typical uses include fire stations, police stations and ambulance services.
+
+
+      17-17-0103-I Religious Assembly. Religious services involving public assembly such as customarily occur in synagogues, temples, mosques and churches.
+
+
+      17-17-0103-J School. Public and private schools at the primary, elementary, junior high, or high school level that provide state-mandated basic education. Learning, healthcare and social support centers less than 5,000 square feet in size, and which be accessible to the community at large and may provide a separate entrance directly to a public way or street, are permitted as an accessory use within a school, provided that the center is approved by the Chicago Public Schools.
+
+
+      17-17-0103-K Utilities and Services, Major. Infrastructure services that have substantial land use impacts on surrounding areas. Such uses may be allowed when the public interest supersedes the usual limitations placed on land use and transcends the usual restraints of the district for reasons of necessary location and community-wide interest. Typical uses include but are not limited to: water and waste water treatment facilities, major water storage facilities, transit stations, bus turnarounds, and transit maintenance and storage garages. Major utilities and services do not include waste-related uses.
+
+
+      17-17-0103-L Utilities and Services, Minor. Infrastructure services that need to be located in an area where the service is provided. Minor Utilities and Services generally do not have regular employees at the site and typically have few if any impacts on surrounding areas. Typical uses include water and sewer pump stations; electrical substations; stormwater facilities and conveyance systems; and telephone exchanges.
+
+
+      17-17-0103-M Wind Energy Meteorological Tower. A temporary facility, operating no more than two years from the date of installation, consisting of wind-measuring devices and data acquisition peripherals which are used solely to measure winds in order to assess the viability of constructing a wind energy facility, mounted on a tower secured with either an approved base or guy wires secured with an approved anchoring system.
+
+
+   17-17-0104 Commercial Use Group. The commercial use group includes uses that provide a business service or involve the selling, leasing or renting of merchandise to the general public. The commercial use group includes the following Use Categories:
+
+
+      17-17-0104-A Adult Use. The term "adult use" means adult book stores, adult motion picture theaters, adult mini motion picture theaters, adult entertainment cabarets, or similar establishments.
+
+
+         1.   An adult book store is an establishment having as a substantial or significant portion of its sales or stock in trade, books, magazines, films for sale or viewing on premises by use of motion picture devices or any other coin-operated means, and other periodicals which are distinguished or characterized by their emphasis on matter depicting, describing or relating to "specified sexual activities", or "specified anatomical areas" or an establishment with a segment or section devoted to the sale or display of such material, or an establishment that holds itself out to the public as a purveyor of such materials based upon its signage, advertising, displays, actual sales, presence of video preview or coin-operated booths, the exclusion of minors from the establishment's premises, or any other factors showing that the establishment's primary purpose is to purvey such material.
+
+
+         2.   An adult motion picture theater is an enclosed building with a capacity of 50 or more persons used regularly and routinely for presenting material having as a dominant theme material distinguished or characterized by an emphasis on matter depicting, describing or relating to "specified sexual activities" or "specified anatomical areas", for observations by patrons therein.
+
+
+         3.   An adult mini motion picture theater is an enclosed building with a capacity for less than 50 persons used for presenting material distinguished or characterized by an emphasis on matter depicting, describing or relating to "specified sexual activities" or "specified anatomical areas", for observation by patrons therein.
+
+
+         4.   An adult entertainment cabaret is a public or private establishment which (i) features topless dancers, strippers, (ii) not infrequently features entertainers who display "specified anatomical areas"; or (iii) features entertainers who by reason of their appearance or conduct perform in a manner which is designed primarily to appeal to the prurient interest of the patron or entertainers who engage in, or engage in explicit simulation of, "specified sexual activities".
+
+
+         5.   The phrase "specified sexual activities" in connection with adult uses means:
+
+
+            (a)   Human genitals in the state of sexual stimulation or arousal;
+
+
+            (b)   Acts of human masturbation, sexual intercourse or sodomy;
+
+
+            (c)   Fondling or other erotic touching of human genitals, pubic region, buttock or female breast.
+
+
+         6.   The phrase "specified anatomical areas" in connection with adult uses means:
+
+
+            (a)   Less than completely and opaquely covered: (a) human genitals, pubic region, (b) buttock and (c) female breast below a point, immediately above the top of the areola; and
+
+
+            (b)   Human male genitals in a discernibly turgid state, even if completely and opaquely covered.
+
+
+      17-17-0104-B Animal Services. The following are animal services use types:
+
+
+         1.   Shelter and Boarding Kennels. Animal shelters and kennel services for dogs, cats, and small animals. Typical uses include boarding kennels, dog training centers and animal rescue shelters.
+
+
+         2.   Sales and Grooming. Sales and grooming of dogs, cats, and similar small animals. Typical uses include pet stores, dog bathing and clipping salons and pet grooming shops.
+
+
+         3.   Veterinary. Typical uses include pet clinics, dog and cat hospitals, and animal hospitals.
+
+
+         4.   Stables. Stables and boarding facilities for horses and similar large animals.
+
+
+      17-17-0104-C Artist Work or Sales Space. Floor space devoted to the production, showing, or sale of art. Typical uses include art galleries and artist studios, but not including art museums. Art museums are classified in the "Cultural Exhibits and Libraries" use category.
+
+
+      17-17-0104-D Body Art Services. Provision of any of the following procedures: body piercing, tattooing, cosmetic tattooing, branding, and scarification. This definition does not include practices that are considered medical procedures by the Illinois Medical Board, which may not be performed in a body art services establishment.
+
+
+      17-17-0104-E Building Maintenance Services. Provision of maintenance and custodial services to commercial and industrial establishments. Typical uses include janitorial, landscape maintenance and window cleaning services. Also includes exterminator services for residential, commercial or industrial applications.
+
+
+      17-17-0104-F Business Equipment Sales and Services. Sale, rental, or repair of office, professional, and service equipment and supplies to the firms themselves rather than to individuals. Excludes automotive, construction, and farm equipment. Typical uses include office equipment and supply firms, small business machine repair shops and hotel equipment and supply firms.
+
+
+      17-17-0104-G Business Support Services. Provision of clerical, employment, protective, or minor processing services to firms rather than individuals. Storage of goods other than samples is prohibited. Typical uses include secretarial services, telephone answering services and blueprint services. Also includes business or trade schools that do not involving any outdoor storage or manufacturing processes. Business or trades schools that do involve outdoor storage or manufacturing processes are classified as "Manufacturing and Production, General".
+
+
+      17-17-0104-H Urban Farm. Growing, washing, packaging and storage of fruits, vegetables and other plant products for wholesale or retail sales.
+
+
+         1.   Indoor Operation. All allowed activities must be conducted within completely enclosed buildings. Typical operations include greenhouses, vertical farming, hydroponic systems and aquaponic systems.
+
+
+         2.   Outdoor Operation. Allowed activities are conducted in unenclosed areas or partially enclosed structures. May include indoor operations in conjunction with outdoor operations. Typical operations include growing beds, growing fields, hoophouses and orchards.
+
+
+         3.   Rooftop Operation. All allowed activities occur on the roof of a principal building as a principal use or accessory use. Typical operations include growing beds and growing trays.
+
+
+      17-17-0104-I Communications Service Establishments. Broadcasting and other information relay services accomplished through use of electronic and telephonic mechanisms. Excludes services classified as "major utilities and services" and "Minor Utilities". Typical uses include recording studios, television and radio studios, telecommunication service centers and telegraph service offices.
+
+
+      17-17-0104-J Construction Sales and Services. Construction activities and incidental storage on lots other than construction sites. Also includes the retail or wholesale sale, from the premises, of materials used in the construction of buildings or other structures other than retail sale of paint, fixtures, and hardware, but excludes those uses classified as "Automotive" and/or "Heavy Equipment" use types. Typical uses include building materials stores, tool and equipment rental or sales and building contracting/construction offices.
+
+
+      17-17-0104-K Eating and Drinking Establishments. Provision of prepared food or beverages for on- or off-premises consumption. The following are examples of eating and drinking establishments:
+
+
+         1.   Restaurant. An establishment primarily engaged in serving prepared food to the public pursuant to required licenses, including those with outdoor seating areas.
+
+
+            (a)   Limited Restaurant. A restaurant in which there is no service of alcoholic liquor or in which the service of alcoholic liquor is clearly incidental and subordinate to the primary activity (prepared food service) and in which live entertainment or dancing, if any, is clearly incidental and subordinate to the primary activity (prepared food service).
+
+
+            (b)   General Restaurant. A restaurant in which alcoholic liquor may be served in conjunction with the primary activity (prepared food service) and in which live entertainment and dancing are permitted in completely enclosed areas.
+
+
+         2.   Tavern. An establishment that is primarily engaged in serving alcoholic liquor for consumption on the premises and in which the serving of prepared food, live entertainment and dancing are permitted.
+
+
+         3. Outdoor patio. Outdoor patio shall have the meaning ascribed to it in Section 4-60-010 of this Code. For the purposes of the special use provisions of Section 17-3-0200 of this zoning ordinance, any outdoor patio located on or above the roof or above the first story of any building or any other structure shall be considered to be located on a rooftop. For the purposes of the permitted use provisions of Section 17-3-0200 of this zoning ordinance, any outdoor patio located adjacent to the grade-level floor, or below the surface of the floor next above the grade-level floor, of any building or any other structure shall be considered to be located at grade level. The provisions of Section 17-3-0200 of this zoning ordinance regarding outdoor patios do not apply to any location subject to a special club license pursuant to Chapter 4-388 of this Code.
+
+
+      17-17-0104-L Entertainment and Spectator Sports. Provision of cultural, entertainment, athletic, and other events to spectators. The following are spectator sports and entertainment use types:
+
+
+         1.   Inter-Track or Sports Wagering Facility. A facility other than a race track at which wagering is conducted: (i) with respect to the outcome of a simultaneously televised horse race taking place at an Illinois race track or horse races of national or international interest held at race tracks in other states or countries, or (ii) with respect to the outcome of a professional sport or athletic event, a collegiate sport or athletic event, a motor race event, or other event or competition of skill upon which wagering is permitted under the Sports Wagering Act.
+
+
+         2.   Small Venue. Entertainment and spectator sports establishments, other than Inter-track Wagering Facilities, conducted within an enclosed building with a capacity of no more than 149 persons. Typical uses include small theaters.
+
+
+         3.   Medium Venue. Entertainment and spectator sports establishments, other than Inter-track Wagering Facilities, conducted within an enclosed building with a capacity of more than 149 and fewer than 1,000 persons. Typical uses include theaters.
+
+
+         4.   Large Venue. Entertainment and spectator sports establishments, other than Inter-track Wagering Facilities, with a capacity of 1,000 persons or more. Typical uses include large theaters and cinemas.
+
+
+         5.   Indoor Event Venue. Entertainment and spectator sports establishments with the primary purpose of providing space that is rented, leased, or otherwise used, maintained, and held out to the public as a place for members of the public to host pre-arranged events that do not include activities requiring adult use registration and certification under Chapter 16-16 of this Code, including, but not limited to, weddings, receptions, fundraisers, banquets, dinners, lunches, breakfasts, and other gatherings. Indoor event venue does not include: (i) eating and drinking establishments hosting a private event; (ii) hotels/motels or other lodging use types; (iii) lodges or private clubs; (iv) religious assemblies; (v) entertainment cabarets or other participant sports and recreation use types; (vi) parks and recreation use types; (vii) other entertainment and spectator sport establishments, including theaters and cinemas; (viii) industrial private event venues; (ix) any business holding or required to hold a Public Place of Amusement License as defined in Chapter 4-156 of the Code; or (x) any other businesses hosting an indoor special event pursuant to a valid special event license issued pursuant to Article IV of Chapter 4-156 that is not otherwise an indoor event venue.
+
+
+      17-17-0104-M Flea Market. A site either indoors or outdoors where individual stalls or spaces are provided on a short term basis for vendors to display, buy, sell, exchange, or deal in new or used goods.
+
+
+      17-17-0104-N Financial Services. Financial or securities brokerage services. Typical uses include banks, savings and loans, consumer investment businesses and the following specific use types:
+
+
+         1.   Payday/Title Secured Loan Store. An establishment that engages in the business of offering payday or title secured loans. A "payday loan" means a loan with a finance charge exceeding an annual percentage rate of 36% and with a term that does not exceed 120 days, including any transaction conducted via any medium whatsoever, including, but not limited to, paper, facsimile, Internet, or telephone, in which:
+
+
+            (i)   A lender accepts one or more checks dated on the date written and agrees to hold them for a period of days before deposit or presentment, or accepts one or more checks dated subsequent to the date written and agrees to hold them for deposit;
+
+
+            (ii)   A lender accepts one or more authorizations to debit a consumer's bank account; or
+
+
+            (iii)   A lender accepts an interest in a consumer's wages, including, but not limited to, a wage assignment.
+
+
+   The term "payday loan" also includes any installment loan otherwise meeting the definition of payday loan, but that has a term agreed to by the parties of not less than 112 days and not exceeding 180 days.
+
+
+   A "title-secured loan" means a loan upon which interest is charged at an annual percentage rate exceeding 36%, in which, at commencement, an obligor provides to the lender, as security for the loan, physical possession of the obligor's title to a motor vehicle, and upon which a lender may charge, contract for, and receive thereon interest at the rate agreed upon by the licensee and borrower.
+
+
+   For purposes of these definitions, the annual percentage rate shall be calculated in accordance with the federal Truth in Lending Act.
+
+
+         2.   Pawn Shop. An establishment or person (pawnbroker) engaged in the business of receiving property in pledge or as security for money or other things advanced to the pawner or pledger.
+
+
+         3.   Consumer Loan Establishment. Any business that makes loans in a principal amount not exceeding $25,000 secured other than by a mortgage or lien on the borrower's real property or on personal property acquired by the borrower with the proceeds of the loan. "consumer loan establishment" does not include any bank, savings bank, savings and loan association or credit union.
+
+
+      17-17-0104-O Food and Beverage Retail Sales. Retail sale of food and beverages for home consumption. Typical uses include groceries, liquor stores and wine stores.
+
+
+      17-17-0104-P Fortune Telling Service. An establishment engaged in or that professes to foretell future or past events or that is engaged in the practice of palmistry (the art or practice of reading a person's character or future from the lines on the palms of hands).
+
+
+      17-17-0104-Q Funeral and Interment Services. Provision of services involving the care, preparation or disposition of the dead. The following are funeral and interment services use types:
+
+
+         1.   Cemetery / Mausoleum / Columbarium. Land or facilities used for burial of human dead.
+
+
+         2.   Cremating. Crematory services involving the purification and reduction of the human or companion animal body by fire. For purposes of this subsection, the term "companion animal" shall be defined as in 815 ILCS 318/5. Typical uses include crematories and crematoriums.
+
+
+         3.   Undertaking. Undertaking services for human dead such as preparing the dead for burial and arranging and managing funerals. Typical uses include funeral homes and mortuaries.
+
+
+      17-17-0104-R Gas Stations. A building or portion thereof used for offering for sale at retail to the public, fuels, oils and accessories for motor vehicles, where repair service and automobile washing is incidental, where no storage or parking space is offered for rent and where no motor vehicles or boats are offered for sale or rent.
+
+
+      17-17-0104-S Lodging. Provision of lodging services on a temporary basis with incidental food, drink, and other sales and services intended for the convenience of guests. The following are lodging use types:
+
+
+         1.   Bed and Breakfast. An owner-occupied, detached house or an owner-occupied dwelling unit within a multi-unit residential building that does not exceed 4 stories in height and contains no more than 11 sleeping rooms or an owner-occupied condominium, townhouse or cooperative in which 11 or fewer sleeping rooms are available for rent or for hire for transient occupancy by registered guests. For purposes of this definition, the term "bed and breakfast" does not include single-room occupancy buildings. If the bed and breakfast is a detached house located on a lot that includes a principal house and an accessory building that was being used for residential purposes as of January 16, 2003, the accessory building will be considered to be part of the establishment.
+
+
+         2.   Hotel/Motel. An establishment containing 7 or more guest rooms and in which short-term lodging is offered for compensation and which may or may not include the service of one or more meals to guests. Typical uses include hotels, motels and transient boarding houses. For purposes of this definition, the term "hotel/motel" does not include single-room occupancy buildings or bed and breakfast establishments.
+
+
+         3.   Vacation Rental. A dwelling unit that contains 6 or fewer sleeping rooms that are available for rent or for hire for transient occupancy by guests. The term "guests" does not include members of the owner's household. The term "vacation rental" shall not include: (i) single-room occupancy buildings; (ii) bed and breakfast establishments; (iii) hotels/motels; (iv) any dwelling unit for which a tenant has a month-to-month rental agreement as defined in Section 5-12-030 and the rental payments are paid on a monthly basis; (v) corporate housing, as defined in Section 4-14-010; (vi) guest suites, as defined in Section 4-6-300; (vii) shared housing units registered pursuant to Chapters 4-13 and 4-14 of this Code; (viii) conversion units; or (ix) coach houses lawfully established after May 1, 2021.
+
+
+         4.   Shared Housing Unit. "Shared housing unit" means a dwelling unit containing 6 or fewer sleeping rooms that is rented, or any portion therein is rented, for transient occupancy by guests. The term "shared housing unit" does not include: (1) single-room occupancy buildings; (2) hotels/motels; (3) corporate housing, as defined in Section 4-14-010; (4) guest suites, as defined in Section 4-6-300; (5) bed and breakfast establishments; (6) vacation rentals; (7) conversion units; or (8) coach houses lawfully established after May 1, 2021.
+
+
+      17-17-0104-T Medical Service. Personal health services including prevention, diagnosis and treatment, rehabilitation services provided by physicians, dentists, nurses, and other health personnel and medical testing and analysis services. Typical uses include medical and dental offices, medical/dental laboratories, health maintenance organizations and government-operated health centers. Excludes use types more specifically classified, such as hospitals.
+
+
+      17-17-0104-U Office. Professional, governmental, executive, management or administrative offices of private organizations or government agencies. Typical uses include government offices, administrative offices, legal offices, and architectural firms. Also includes electronic data storage centers and high- technology offices.
+
+
+         1.   Electronic Data Storage Center. A work site used as a facility for the storage of and the operation of computer hardware, equipment for processing, storage and/or routing of electronic data, or other high technology uses.
+
+
+      17-17-0104-V Parking, Non-Accessory. Parking that not provided to comply with minimum off-street parking requirements and that is not provided exclusively to serve occupants of or visitors to a particular use, but rather is available to the public at-large. A facility that provides both accessory parking and non-accessory parking is classified as non- accessory parking.
+
+
+      17-17-0104-W Personal Service. Informational, instructional, personal improvement and similar services of a nonprofessional nature. Typical uses include hair salons, barber shops, beauty shops, massage establishments, nail salons, yoga or dance studios, driving schools and martial arts studios.
+
+
+      17-17-0104-X Repair and Laundry Services, Consumer. Provision of repair, dry cleaning or laundry services to individuals and households, but not to firms. Excludes "Automotive and Equipment" use types. Typical uses include laundry/dry cleaning drop-off stations (with no dry cleaning on the premises), hand laundries, appliance repair shops, locksmiths, shoe and apparel repair and musical instrument repair.
+
+
+      17-17-0104-Y Residential Support Services. Commercial uses provided primarily to serve the needs of residents in large, multi-unit residential buildings or residents within the immediate area. The following are considered residential support services:
+
+
+         1.   Restaurants, with or without service of alcohol;
+
+
+         2.   Financial services, except pawnshops, consumer loan agencies and payday/title secured loan stores;
+
+
+         3.   Food and beverage retail sales, alcohol sales as accessory use only; no package liquor stores;
+
+
+         4.   Medical service;
+
+
+         5.   Offices;
+
+
+         6.   Personal service; and
+
+
+         7.   Retail Sales, General.
+
+
+      17-17-0104-Z Retail Sales, General. Businesses involved in the sale, lease or rent of new or used products or merchandise to the general public. Typical uses include drug stores, grocery stores, department stores and apparel stores.
+
+
+      17-17-0104-AA Small Box Retailers. Any retail sales store (a) with a floor area between 4,000 and 17,500 square feet; (b) that holds a retail food establishment license; and (c) that continuously offers or advertises a majority of the items in their inventory for sale at a price less than $5.00 per item. A retail store is not considered a small-box retailer if it: (i) contains a prescription pharmacy, (ii) sells gasoline or diesel fuel, (iii) primarily sells specialty food items, or (iv) dedicates more than 10 percent of floor space to sales of fresh meats, poultry, seafood, dairy products, eggs, fruit or vegetables. Typical uses include “dollar stores” and other non-specialty discount retailers. Small-box retailer does not include gas stations, valuable objects dealers, pawn shops, flea markets, drug stores, department stores, grocery stores, apparel stores, thrift stores, secondhand dealers, consignment stores, or any other use where retail sales are a permitted accessory or incidental use under this Zoning Ordinance, such as a gift shop.
+
+
+      17-17-0104-BB Sports and Recreation, Participant. Provision of sports or recreation primarily by and for participants. (Spectators would be incidental and on a nonrecurring basis). The following are participant sports and recreation use types (for either general or personal use):
+
+
+         1.   Amusement Arcades. A place of amusement that includes 4 or more automatic amusement devices as defined in Section 4-6-120, "Automatic amusement operator" of the Municipal Code, whether directly or remotely operated or controlled; provided, however, that when calculating the number of automatic amusement devices, jukeboxes will not be counted.
+
+
+         2.   Entertainment Cabaret. Any dance hall, non-alcohol bar, dry cabaret, juice bar, teen-age cabaret, used or intended to be used primarily for participation by the public for entertainment or amusement, including but not limited to music, music videos and dancing. This use does not include any establishment that is licensed to serve alcoholic beverages.
+
+
+         3.   Indoor. Participant sport and recreation uses conducted within an enclosed building, other than arcades and entertainment cabarets. Typical uses include bowling alleys, billiard parlors, shooting range facilities, physical fitness centers, and casinos.
+
+
+         4.   Outdoor. Participant sport and recreation uses conducted outside of an enclosed building, other than entertainment cabarets. Typical uses include driving ranges, miniature golf courses, swimming pools, and marinas.
+
+
+         5.   Children's Play Center. "Children's play center" means an institution or place, regardless of nomenclature, where the primary business activity is to provide recreational activities to children who are apart from their parent or guardian. A "Children's activities play center" does not include the following:
+
+
+            (1)   any programs operated by private entities on the grounds of public or private elementary schools or secondary schools;
+
+
+            (2)   any programs operated by a public or private schools or secondary level schools;
+
+
+            (3)   any programs operated by the State Board of Education or the Board of Education of Chicago;
+
+
+            (4)   any programs operated by government agencies or conducted on government premises;
+
+
+            (5)   any programs operated by or conducted on the premises of a college or university;
+
+
+            (6)   any programs operated primarily for religious instruction;
+
+
+            (7)   any programs operated by hospitals or other health care facility;
+
+
+            (8)   any entity, location or place licensed or required to be licensed as a public place of amusement pursuant to Article III of Chapter 4-156 of this Code; or
+
+
+            (9)   any person providing one-on-one recreational, cognitive or educational activities to a child in a dwelling unit, as defined in Section 17-17-0248, in which the person or child resides.
+
+
+      17-17-0104-CC Valuable Objects Dealer. Any person, other than those excluded from the definition of a secondhand dealer pursuant to Section 4-264-005 of the Municipal Code of Chicago, who engages in the business of purchasing, selling, receiving, trading, consignment selling or otherwise transferring for value, any previously owned precious metal, stone or gem or any jewelry, as said terms are defined in Section 4-264-005 of the Municipal Code.
+
+
+      17-17-0104-DD Vehicle Sales and Service. Sales of motor vehicles or services related to motor vehicles. The following are vehicle sales and service use types:
+
+
+         1.   Auto Supply/Accessory Sales. Businesses involved in the sale, lease or rental of new or used automobile supplies or accessories to the general public. Typical uses include auto parts stores.
+
+
+         2.   Car Wash or Cleaning Service. A building or site containing facilities for washing automobiles. It may use automatic production line methods – a chain conveyor, blower, steam cleaning device, or other mechanical device – or it may provide space, water, and equipment for hand washing, cleaning or detailing of automobiles, whether by the customer or the operator.
+
+
+         3.   Motor Vehicle Repair Shop. A building, structure, premises, enclosure or other place including automobile service stations, garages and motor vehicle service shops, where the business of doing repair work on or for motor vehicles, replacing motor vehicle parts, or diagnosing malfunctions of a motor vehicle is conducted in any facility, shop, drive-in station or garage which inspects motor vehicles for the purpose of appraising, evaluating or estimating the extent or value of motor vehicle damage or the necessity or cost of motor vehicle repairs. A motor vehicle repair shop shall also include any business, establishment or location where tires are collected, stored, maintained, altered, refabricated, disposed of, replaced, changed or repaired; provided, however, this definition shall not include any business operated under a certificate of authority issued under Chapter 215 of the Illinois Compiled Statutes, nor any person set forth in subsection (c) of Section 4-228-020.
+
+
+         4.   Heavy Equipment Sales/Rentals. Sale, retail or wholesale, and/or rental from the premises of heavy construction equipment, trucks, and aircraft, together with incidental maintenance. Typical uses include heavy construction equipment dealers and tractor trailer sales.
+
+
+         5.   Light Equipment Sales/Rentals. Sale, retail, wholesale, or rental from the premises of autos, noncommercial trucks, motorcycles, trailers with less than 10,000 lbs. gross cargo weight, motorhomes and boat dealers, together with incidental maintenance. Typical uses include automobile and boat dealers, car rental agencies and recreational vehicle sales and rental agencies.
+
+
+         6.   RV or Boat Storage. Storage of recreational vehicles or boats as a principal use. Typical uses include storage yards for personal recreational vehicles and boat storage yards.
+
+
+         7.   Vehicle Storage and Towing. Storage of operating motor vehicles or vehicle towing services. Typical uses include towing services, private parking tow-aways, impound yards, and fleet storage yards.
+
+
+   17-17-0105 Industrial Use Group. The Industrial Use Group includes uses that produce goods from extracted materials or from recyclable or previously prepared materials, including the design, storage and handling of these products and the materials from which they are produced. It also includes uses that store or distribute materials or goods in large quantities. The Industrial Use Group includes the following Use Categories:
+
+
+      17-17-0105-A Reserved.
+
+
+      17-17-0105-B Manufacturing, Production and Industrial Services.
+
+
+         1.   Artisan. On-site production of goods by hand manufacturing, involving the use of hand tools and small-scale, light mechanical equipment. Typical uses include woodworking and cabinet shops, ceramic studios, jewelry manufacturing and similar types of arts and crafts or very small-scale manufacturing uses that have no negative external impacts on surrounding properties.
+
+
+         2.   Limited. Manufacturing of finished parts or products, primarily from previously prepared materials. Typical uses include: shared kitchens; catering establishments, printing and related support activities; machinery manufacturing; food manufacturing; computer and electronic product manufacturing/assembly; electrical equipment, appliance, component manufacturing/assembly; furniture and related product manufacturing/ assembly; and other manufacturing and production establishments that typically have very few, if any, negative external impacts on surrounding properties.
+
+
+         3.   General.
+
+
+            (a)   Manufacturing of finished or unfinished products, primarily from extracted or raw materials, or recycled or secondary materials, or bulk storage and handling of such products and materials. Typical uses include: textile mills; textile product mills; apparel manufacturing; leather and allied product manufacturing; wood product manufacturing; paper manufacturing; chemical manufacturing; plastics and rubber products manufacturing; nonmetallic mineral product manufacturing; transportation equipment manufacturing; primary metal manufacturing; and fabricated metal product manufacturing.
+
+
+            (b)   Industrial service firms engaged in the repair or servicing of industrial or commercial machinery, equipment, products or by-products. Typical uses include: welding shops; machine shops; industrial tool repair; fuel oil distributors; solid fuel yards; laundry, dry-cleaning, and carpet cleaning plants; and photofinishing laboratories. Excludes uses classified as "consumer repair or laundry services".
+
+
+         4.   Intensive. Manufacturing of acetylene, cement, lime, gypsum or plaster-of-Paris, chlorine, corrosive acid or fertilizer, insecticides, disinfectants, poisons, explosives, paint, lacquer, varnish, petroleum products, coal products, plastic and synthetic resins and radioactive materials. This group also includes smelting, animal slaughtering and oil refining.
+
+
+      17-17-0105-C Mining/Excavation. Mining or extraction of mineral or aggregate resources from the ground for off-site use. Examples include quarrying or dredging for sand, gravel or other aggregate materials; mining; and oil and gas drilling.
+
+
+      17-17-0105-D Recycling Facilities. Any building, portion of building or area in which Type A, Type B, Type C or Type D recyclable material is collected, stored, or processed for the purpose of marketing the material for use as raw material in the manufacturing process of new, reused or reconstituted products. No recycling facility shall engage in the recovery of materials for fuel in combustion or energy production processes. However, this section shall not prohibit any such recycling facility from recovering and using biogas or other fuel generated as a byproduct of a recycling activity, as approved by the Chief Sustainability Officer, while the facility is otherwise primarily engaged in recycling.
+
+
+         1.   Recycling Facility, Class I. A recycling facility which contains receptacles for the collection of Type A and Type B recyclable materials only. Manual separation only of Type A and Type B recyclable materials shall be permitted at a Class I facility. (Note: consumer-oriented collection boxes for newspapers, cans and glass items are considered an accessory use and may be allowed in any zoning district.)
+
+
+         2.   Recycling Facility, Class II. A recycling facility for the collection of Type A and Type B recyclable materials only. Class II facilities may perform any activity permitted in a Class I facility and may also perform processing, such as cleaning, bundling, compacting, cutting or packing of recyclable materials.
+
+
+         3.   Recycling Facility, Class III. A recycling facility for the collection of Type A and Type B recyclable materials only. Class III facilities may perform any activity permitted in a Class II facility and may also engage in composting.
+
+
+         4.   Recycling Facilities, Class IVA and Class IVB. Class IVA facilities are recycling facilities for the collection of Type A and Type C recyclable materials only. Class IVA facilities may engage in processing, such as cleaning, bundling, compacting or packing of recyclable materials, and may also dismantle, either manually or with the use of small power tools, used vehicles and used vehicle parts for resale. Class IVB facilities are facilities for the collection of Type A and Type C recyclable materials only. Class IVB facilities may perform any activity permitted in a Class IVA facility and may also engage in the shredding, crushing or other large-scale processing or vehicles.
+
+
+         5.   Recycling Facilities. Class V. A recycling facility for the collection of Type D recyclable materials only. Manual sorting and temporary storage only of Type D recyclable material shall be permitted at a Class V facility.
+
+
+      17-17-0105-E Warehousing, Wholesaling and Freight Movement. Storage, wholesale sales and distribution of materials and equipment. Typical uses include storage warehouses, moving and storage firms, fulfillment centers, trucking or cartage operations, truck staging or storage areas, wholesale sales of materials and equipment to parties other than the general public and the following specific use types:
+
+
+         1.   Residential Storage Warehouses. Storage or warehousing service within a building for individuals to store personal effects and for businesses to store materials for operation of an industrial or commercial enterprise elsewhere. Incidental uses in a residential storage warehouse may include the repair and maintenance of stored materials by the tenant; but in no case may storage spaces in a residential storage warehouse facility function as an independent retail, wholesale, business, or service use. Spaces may not be used for workshops, hobby shops, manufacturing, or similar uses. Human occupancy is limited to that required to transport, arrange and maintain stored materials.
+
+
+         2.   Container Storage. Any building, structure, premises, enclosure or other place where 4 or more freight containers are stacked, housed, stored, kept for hire, sheltered or parked for any purpose other than repair or repainting, or where rent or compensation is paid to any owner, manager or lessee to stack, house, store keep, shelter or park freight containers on any property.
+
+
+         3.   Freight Terminal. A building or area in which freight is collected and/or stored for in intrastate or interstate shipment.
+
+
+      17-17-0105-F Waste-Related Uses.
+
+
+         1.   Hazardous Waste Treatment or Storage. As defined in Chapter 11-4 of the Municipal Code (Environmental Protection and Control)
+
+
+         2.   Incinerators. As defined in Chapter 11-4 of the Municipal Code (Environmental Protection and Control)
+
+
+         3.   Incinerators, Municipal. As defined in Chapter 11-4 of the Municipal Code (Environmental Protection and Control)
+
+
+         4.   Liquid Waste Handling Facility. A facility that treats or disposes of liquid waste, liquid special waste, or liquid hazardous waste.
+
+
+         5.   Reprocessable Construction / Demolition Material Facility. A site used for purposes of receiving, storing, reprocessing and transport of reprocessable construction/demolition material. Such facility may not include any operation used for hot mixed asphalt processing.
+
+
+         6.   Resource Recovery Facilities. A facility that uses non-hazardous solid waste as fuel in a process specifically designed for the purpose of waste disposal or volume reduction and which produces thermal energy or electricity as a by-product.
+
+
+         7.   Sanitary Landfills. A facility originally licensed under Chapter 11-4 of the Municipal Code and operating as amended before January 1, 1985 and the Illinois Environmental Protection Act for the disposal of waste on land without creating nuisances or hazards to the public health.
+
+
+         8.   Transfer Stations. A facility for the transfer and packing of solid waste from smaller collecting vehicles to larger transport vehicles.
+
+
+         9.   Modified Transfer Stations. A transfer station that accepts only landscape waste and/or construction and demolition debris.
+
+
+   17-17-0106 Other Uses Group. The Other Uses Group includes the following two Use Categories:
+
+
+      17-17-0106-A Off-premise signs. A sign which directs attention to a business, commodity, service, or entertainment conducted, sold, or offered elsewhere than upon the premises where such sign is located, or to which it is affixed.
+
+
+      17-17-0106-B Wireless Communication Facilities. Facilities related to the use of the radio frequency spectrum for the purposes of transmitting or receiving radio signals, and may include, but is not limited to radio towers, television towers, telephone exchanges, micro-wave relay towers, telephone transmission equipment buildings and commercial mobile radio service facilities. The wireless communication facility use category includes all associated equipment unless the written context clearly indicates that another meaning is intended. The term "associated equipment" is to be read broadly and in context. Associated equipment may include, but is not limited to: antenna, equipment shelter or platform, lighting, monopole tower, mounting hardware, and supporting electrical or mechanical equipment.
+
+
+         1.   Co-located Facility. A wireless telecommunication facility that is attached to an existing pole, tower, or other structure including, but not limited to, a structure that can accommodate the future installation of two or more antenna systems.
+
+
+         2.   Freestanding Facility. A new tower, monopole, or other unattached structure erected to support wireless communication antennas and connecting appurtenances.
+
+
+      17-17-0106-B* Coke & Coal Bulk Material and Related Terms.
+
+
+* Editor’s note – Coun. J. 10-16-19, p. 7854, § 10, renumbered this as 17-17-0106-B, but that section number already exists; future legislation will correct if needed.
+
+
+         1.   Coke & coal bulk material. Any coke, coal, or combination thereof. Coke & coal bulk material does not include any coal material stored at a location in an amount equal to or less than 25 cubic yards at any one time.
+
+
+         2.   Coal. Any solid, brittle, carbonaceous rock classified as anthracite, bituminous, subbituminous. or lignite by ASTM Designation D388-77.
+
+
+         3.   Coke. Any solid carbonaceous material derived from the distillation of coal (including metallurgical coke) or from oil refinery coker units or other cracking processes (including petroleum coke).
+
+
+         4.   Coke & coal bulk material processing. Any chemical, industrial, commercial, or manufacturing operation, or activity, including, but not limited to, blending, mixing, crushing, and screening, breaking, wet or dry cleaning, thermal drying, or chemically treating, that causes, or has the potential to cause, the emission of airborne particles of coke or coal. Notwithstanding anything to the contrary in subsection 17-17-02127 of this zoning ordinance, for purposes of this definition, the term "processing" shall have the meaning described in this subsection 17-17-0105-G4.*
+
+
+* Editor’s note – Coun. J. 10-16-19, p. 7854, § 10, did not renumber this internal reference; future legislation will correct if needed.
+
+
+      17-17-0106-C Firearms Dealer. A firearms dealer means a person issued a weapons dealer-firearms dealer license pursuant to Article VII of Chapter 4-144.
+
+
+      17-17-0106-D Manganese-bearing material and related terms.
+
+
+         1.   Manganese-bearing material. Ferrous manganese, manganese silicate, manganese alloy, manganese ore, or any other material from which manganese is extracted or emitted or otherwise becomes airborne. The term "manganese-bearing material" does not include any material which contains an amount of manganese that is less than 1 percent by weight.
+
+
+         2.   Manganese. A hard, brittle, grayish-white, metallic element, whose symbol is Mn, atomic weight is 54.938 and atomic number is 25, and which is used chiefly as an alloying agent in steel.
+
+
+         3.   Manganese-bearing material operation use. Any activity, including, but not limited to, the storing, loading, unloading, stockpiling, handling on-site, blending, mixing, crushing, screening, breaking, wet or dry cleaning, thermal drying, chemically treating or any other processing of manganese-bearing material, or any improvement or development associated therewith.
+
+
+         4.   Non-packaged. Not fully enclosed to prevent the possibility of any dust escaping from the package the entire time the material is in the possession of the owner or operator.
+
+
+      17-17-0106-E Cannabis business establishments.
+
+
+         1.   Cannabis Business Establishment. A cannabis craft grower, cannabis cultivation center, adult use cannabis dispensary, medical cannabis dispensary, cannabis infuser or cannabis processor licensed by the State of Illinois’ Cannabis Regulation and Tax Act (410 ILCS 705/1-1 et seq.) or the State of Illinois’ Compassionate Use of Medical Cannabis Program Act (410 ILCS 130/1 et seq.) and administrative rules promulgated thereunder.
+
+
+         2.   Cannabis Cultivation Center. A facility operated by an organization or business that is licensed by the Illinois Department of Agriculture to cultivate, process, transport or perform other necessary activities to provide cannabis and cannabis-infused products to cannabis business establishments.
+
+
+         3.   Adult Use Cannabis Dispensary. A facility operated by a person who is registered by the Illinois Department of Financial and Professional Regulation to acquire adult use cannabis from cannabis business establishments for the purpose of dispensing cannabis pursuant to and in accordance with the State of Illinois’ Cannabis Regulation and Tax Act (410 ILCS 705/1-1 et seq.) and administrative rules promulgated thereunder.
+
+
+         4.   Medical Cannabis Dispensary. A facility operated by a person who is registered by the Illinois Department of Financial and Professional Regulation to acquire medical cannabis from cannabis cultivation centers, or, subject to applicable law, any cannabis business establishment, for the purpose of dispensing cannabis, paraphernalia, or related supplies and educational material to registered qualifying patients. For purposes of this definition, "qualified patient" has the meaning ascribed to that term in the State of Illinois’ Compassionate Use of Medical Cannabis Program Act (410 ILCS 130/1 et seq.).
+
+
+         5.   [Reserved.]
+
+
+         6.   Cannabis Craft Grower. A facility operated by an organization or business that is licensed by the Illinois Department of Agriculture to perform necessary activities to cultivate, dry, cure and package cannabis and perform other necessary activities to make cannabis available for sale at a registered cannabis dispensary or for use at a cannabis processing facility.
+
+
+         7.   Cannabis Infuser. A facility operated by an organization or business that is licensed by the Illinois Department of Agriculture to directly incorporate cannabis or cannabis concentrate into a product formulation to produce a cannabis-infused product for sale at a registered cannabis dispensary.
+
+
+         8.   Cannabis Processor. A facility operated by an organization or business that is licensed by the Illinois Department of Agriculture to either extract constituent chemicals or compounds to produce cannabis concentrate or incorporate cannabis or cannabis concentrate into a product formulation to produce a cannabis product for sale at a registered cannabis dispensary.
+
+
+(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 9-1-04, p. 30490; Amend Coun. J. 3-9-05, p. 44391; Amend Coun. J. 9-13-06, p. 84870, § 2; Amend Coun. J. 9-13-06, p. 84912, § 3; Amend Coun. J. 12-13-06, p. 95363, § 1; Amend Coun. J. 9-27-07, p. 9539, § 3; Amend Coun. J. 9-27-07, p. 9546, § 3; Amend Coun. J. 10-31-07, p. 12062, § 1; Amend Coun. J. 12-12-07, p. 17742, § 1; Amend Coun. J. 4-9-08, p. 24657, § 7; Amend Coun. J. 5-14-08, p. 28180, § 1; Amend Coun. J. 5-13-09, p. 62736, § 1; Amend Coun. J. 5-12-10, p. 91343, § 4; Amend Coun. J. 6-30-10, p. 96060, § 4; Amend Coun. J. 11-3-10, p. 104527; Amend Coun. J. 11-3-10, p. 104833, § 2; Amend Coun. J. 2-9-11, p. 112149, §§ 25 – 27; Amend Coun. J. 5-4-11, p. 117699, § 10; Amend Coun. J. 6-8-11, p. 1725, § 6; Amend Coun. J. 7-6-11, p. 3073, § 12; Amend Coun. J. 9-8-11, p. 7541, § 9; Amend Coun. J. 5-9-12, p. 27485, §§ 198 – 201; Amend Coun. J. 11-8-12, p. 38872, §§ 282, 283; Amend Coun. J. 1-17-13, p. 45622, § 1; Amend Coun. J. 2-13-13, p. 47140, § 1; Amend Coun. J. 2-13-13, 47141, § 1; Amend Coun. J. 10-16-13, p. 61664, § 2; Amend Coun. J. 4-30-14, p. 80394, § 8; Amend Coun. J. 7-29-15, p. 4110, § 5; Amend Coun. J. 6-22-16, p. 27712, § 17; Amend Coun. J. 4-19-17, p. 48180, Art. V, § 42; Amend Coun. J. 7-26-17, p. 53898, § 9; Amend Coun. J. 3-28-18, p. 74512, § 8; Amend Coun. J. 4-10-19, p. 100029, Art. II, § 114; Amend Coun. J. 10-16-19, p. 7854, § 10; Amend Coun. J. 1-15-20, p. 13417, § 4; Amend Coun. J. 12-16-20, p. 26066, § 15; Amend Coun. J. 3-24-21, p. 29065, § 11; Amend Coun. J. 12-15-21, p. 42922, § 13; Amend Coun. J. 5-25-22, p. 48413, § 12; Amend Coun. J. 2-21-24, p. 9904, § 3; Amend Coun. J. 7-17-24, p. 14728, § 6; Amend Coun. J. 12-20-25, p. 39283, Art. III, § 7)
+
+
+Disclaimer: This Code of Ordinances and/or any other documents that appear on this site may not reflect the most current legislation adopted by the Municipality. American Legal Publishing provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.
+
+For further information regarding the official version of any of this Code of Ordinances or other documents posted on this site, please contact the Municipality directly or contact American Legal Publishing toll-free at 800-445-5588.
+
+Hosted by: American Legal Publishing
+
+
+
+
+
+17-17-0200 General terms.
+
+
+ShareDownloadBookmarkPrint
+
+
+17-17-0200  General terms.
+
+
+   17-17-0201 Abandoned Sign Structure. A sign structure that has had no sign in place for a continuous period of 6 months or more.
+
+
+   17-17-0201.1 Abutting Property Line. A border, boundary or property line with no intervening public way or other land.
+
+
+   17-17-0202 Accessible Dwelling Unit. See "Type A unit," Section 17-17-02184.5.
+
+
+   17-17-0203 Accessory Building. A building that is subordinate in area, extent and purpose to the principal use and building on the zoning lot and that is customarily used or occupied in conjunction with a permitted accessory use. (See Sec. 17-17-0311 for rules governing measurement of accessory building height).
+
+
+   17-17-0204 Accessory Parking. Parking provided to comply with minimum off-street parking requirements and non-required parking that is provided exclusively to serve occupants of or visitors to a particular use, rather than the public at-large. See "non- accessory parking", Sec. 17-17-02101.
+
+
+   17-17-0205 Accessory Structure. A structure that is subordinate in area, extent and purpose to the principal use and building on the zoning lot and that is customarily used in conjunction with a permitted accessory use.
+
+
+   17-17-0206 Accessory Use. A use that is subordinate in area, extent and purpose to the principal use on the zoning lot and that is customarily found in conjunction with a permitted principal use.
+
+
+   17-17-0207 Administrative Adjustment. Modification of an otherwise applicable standard, approved in accordance with Sec. 17-13-1000.
+
+
+   17-17-0207.5 Inclusionary Application. An application for approval of a residential or mixed use planned development or Type 1 zoning map amendment, in an inclusionary housing area that is located within 2,640 feet of a CTA or METRA rail station entrance or exit or within 1,320 feet of a CTA bus line corridor roadway segment listed in Table 17-17-0400-B in which the application has: (i) all affordable dwelling units required by Section 2-44-085 located on-site, or (ii) 20% or more of the on-site dwelling units are subject to recorded covenant, lien, regulatory agreement, deed restriction, or similar instrument approved by the Department of Housing.
+
+
+   17-17-0208 Agent. A person duly authorized to act on behalf of a property owner.
+
+
+   17-17-0209 Air Rights. The ownership or control of all land property, and that area of space at and above a horizontal plane over the ground surface of land utilized for railroad or expressway purposes. The horizontal plane must be at a height above the city datum that is reasonably necessary or legally required for the full and free use of the ground surface.
+
+
+   17-17-0210 Alley. A public right-of-way that affords a secondary means of access to abutting property.
+
+
+   17-17-0211 Allowed Use. A permitted use or special use in the subject zoning district.
+
+
+   17-17-0212 Artist Live/Work Space. A dwelling unit in which up to 50% of the floor area is used for the production, showing, and sale of art.
+
+
+   17-17-0213 Attic. Unfinished floor space located immediately below a gabled roof or other form of sloped roof.
+
+
+   17-17-0214 Automated Teller Machine. An electronically powered machine activated by means of a coded celluloid card or other similar device that permits banking transactions.
+
+
+   17-17-0214.3 Automated Teller Machine Facility. A facility or store whose principal use is for the location and operation of one or more remote service units. A "remote service unit" means an automated teller machine, automated loan machine, and an automated device for receiving deposits, or an other such similar device.
+
+
+   17-17-0214.5 Automotive Lift. Equipment designed to deposit motor vehicles in a parking space by moving motor vehicles vertically above floor level on pallets or platforms equipped with tracks, channels or similar devices to hold the vehicle's wheels, not the vehicle frame or designated support points in place while the vehicle is being moved vertically.
+
+
+   17-17-0215 Awning. A roof-like structure of fabric or similar non-rigid material attached to a rigid frame that is supported completely or partially by either an exterior building wall or wall exterior to an individual tenant space.
+
+
+   17-17-0216 Awning Sign. A sign incorporated into or attached to an awning.
+
+
+   17-17-0217 Banner. A sign made of fabric or other similar non-rigid material with no enclosing framework or electrical components that is supported or anchored on two or more edges or at all four corners. Banners also include non-rigid signs anchored along one edge, or two corners, with weights installed that reduce the reaction of the sign to wind. See also "flag".
+
+
+   17-17-0218 Base District. Any zoning district that is not an overlay district.
+
+
+   17-17-0219 Base Floor Area Ratio. The maximum floor area ratio allowed under the subject zoning classification before any applicable bonus or premium floor area allowance is applied.
+
+
+   17-17-0220 Block. A tract of land bounded by streets, or by a combination of streets and public parks, cemeteries, railroad right-of-way, bulkhead lines or shore lines of waterways, or corporate boundary lines of the City of Chicago.
+
+
+   17-17-0221 Block Face. All lots abutting one side of a street between the two nearest intersecting streets.
+
+
+   17-17-0222 Buffer Zone. Any natural or undeveloped area or existing open space that separates transfer stations, resource recovery facilities, incinerators, sanitary landfills and Class III recycling facilities from surrounding uses.
+
+
+   17-17-0223 Building. Any structure that is permanently affixed to the land and built for the support, shelter, or enclosure of persons, animals, chattels, or movable property of any kind.
+
+
+   17-17-0224 Building, Completely Enclosed. See "completely enclosed building".
+
+
+   17-17-0225 Building Coverage. The amount of a lot covered by buildings.
+
+
+   17-17-0226 Building, Detached. See "detached building".
+
+
+   17-17-0227 Building Height. The vertical distance from grade to a fixed point on the building. (See Sec. 17-17-0311 for rules governing measurement of building height)
+
+
+   17-17-0228 Building Line. An imaginary line representing the actual location of an exterior building wall.
+
+
+   17-17-0229 Building, Principal. See "principal building".
+
+
+   17-17-0230 Building, Residential. See "residential building".
+
+
+   17-17-0230.5 Business live/work unit. A space within a building (a) that combines a commercial use with a living space for the owner of the commercial establishment and that person's household, (b) where the resident owner of the commercial establishment is responsible for the commercial use on the premises; and (c) where the commercial use takes place subject to a valid business license, if applicable, associated with the premises and based on the commercial activity conducted therein.
+
+
+   17-17-0231 Bulk. The general term used to refer to the size of a building or the building features allowed on a lot. It includes the following:
+
+
+   17-17-0231-A lot area;
+
+
+   17-17-0231-B setbacks;
+
+
+   17-17-0231-C open space;
+
+
+   17-17-0231-D floor area;
+
+
+   17-17-0231-E floor area ratio;
+
+
+   17-17-0231-F building coverage; and
+
+
+   17-17-0231-G building height.
+
+
+   17-17-0232 Business Park. A planned, unified, campus-like development consisting primarily of office, research and limited manufacturing uses.
+
+
+   17-17-0233 Canopy. A roof like structure of a permanent nature that projects from the wall of a building and overhangs the public way.
+
+
+   17-17-0234 Casino. A facility at which gambling is authorized as provided in the Illinois Gambling Act as in effect on May 4, 2022.
+
+
+Editor's note – Coun. J. 4-30-14, p. 80832, § 6, repealed former § 17-17-0234, which defined changing-image signs.
+
+
+   17-17-0234.5 City Digital Sign shall mean a sign that satisfies all of the following conditions:
+
+
+      (a)   the city digital sign is installed at the city's express direction and is located on land or public way owned by the city, or controlled by the city pursuant to an intergovernmental agreement approved by the city council, that is located within 660 feet of any designated expressway or toll road;
+
+
+      (b)   the sign is capable of receiving and transmitting both programmed and real-time digital images and messages and is operated as a dynamic image display sign;
+
+
+      (c)   the sign is integrated into the city's emergency response network, and to other city digital signs in an integrated network, so as to enable the city to interrupt and override, on either a city-wide or localized basis, any regularly programmed messaging in order to communicate city emergency information (or emergency information from a federal, state, Cook County, local or other unit of government);
+
+
+      (d)   the sign is integrated with other city digital signs in an integrated network so as to enable the city to communicate, on either a city-wide or a localized basis, both programmed and real-time city public service messages, information or content (or public service messages, information or content from a federal, state, Cook County, local or other unit of government);
+
+
+      (e)   the city has a legal right to both (i) not less than ten percent (10%) of the regularly scheduled programmable time for such sign (for example, one rotation during each eight rotation loop) for the city's (or another governmental unit's) public service messages, information or content, (ii) other available programmable time (or a portion thereof) when the operator of the integrated network of city digital signs otherwise has no advertising commitments, and (iii) the emergency information override and broadcast rights described in subparagraph (c) above; and
+
+
+      (f)   the operator of the integrated network of city digital signs has entered into a written agreement with the city setting forth the operational requirements for such city digital signs and network, including, without limitation, requirements regulating sign design, light intensity, mitigating light pollution, energy conservation, and similar environmental and public health and safety concerns, which agreement has been approved by the city council.
+
+
+   17-17-0234.6 Coach House. An accessory building meeting the requirements of Section 17-9-0201-F and containing one dwelling unit.
+
+
+   17-17-0235 Commercial Establishment. A business classified in the commercial use group, the ownership, management and physical location of which are separate and distinct from those of any other place of business located on the same zoning lot, as partly evidenced by maintaining separate and distinct doors and access points.
+
+
+   17-17-0236 Commercial Message. Any sign, wording, or logo that directly advertises a specific business, proprietary product or service, or other commercial activity.
+
+
+   17-17-0237 Common Open Space. An outdoor area designated and intended for the common use and enjoyment of residents or other members of the controlling association.
+
+
+   17-17-0238 Common Parking Area. An off-street parking area containing parking spaces that serve two or more dwelling units or uses.
+
+
+   17-17-0239 Completely Enclosed Building. A building separated on all sides from the adjacent open space, or from other buildings or other structures, by a permanent roof and by exterior walls or party walls, pierced only by windows and normal entrance or exit doors.
+
+
+   17-17-0240 Composting. A controlled process that transforms organic waste and/or livestock waste into products useful as soil amendments. Composting shall include windrow composting, in-vessel aerobic composting and anaerobic digestion composting technologies.
+
+
+   17-17-0240.3 Construction and demolition debris. Materials resulting from the construction, remodeling, repair and demolition of utilities, structures, buildings, and roads, including but not limited to the following: bricks, concrete, and other masonry materials; soil; rock; wood, including painted, treated, and coated wood and wood products; wall coverings; plaster; drywall; plumbing fixtures; non-asbestos insulation; roofing shingles and other roof coverings; reclaimed asphalt pavement; glass; plastics; electrical wiring; and piping or metals incidental to any of those materials.
+
+
+   17-17-0240.5 Conversion, illegal or unlawful. Any change to a building that results in the creation of one or more dwelling units that are illegal under the Zoning Ordinance either because they exceed the number of dwelling units permitted in the zoning district where the building is located, do not comply with the bulk and density standards of the zoning district where the building is located, or were created without a required special use.
+
+
+   17-17-0240.6 Conversion Unit. A dwelling unit that is: (i) either newly constructed or rehabilitated for reuse, and (ii) located within a principal residential building that has been in lawful existence for 20 or more years, and (iii) established in accordance with Sections 17-2-0303-C and 17-9-0131.
+
+
+   17-17-0241 Corner Lot. A lot situated at the intersection of two streets, the interior angle of such intersection not exceeding 135 degrees.
+
+
+   17-17-0242 Curb Level. The level of the established curb that is adjacent to the front property line of the subject lot, measured at the center of such front property line. When no curb elevation has been established, the mean elevation of the finished lot grade immediately adjacent to a building is considered the "curb level".
+
+
+   17-17-0243 Dangerous Sign. A sign constituting a hazard to public safety because it no longer meets the lateral and/or vertical loads as specified in the Building Code, or no longer meets the wiring and installation standards of the Electrical Code.
+
+
+   17-17-0244 Density. The general term used to refer to the number of dwelling units allowed per unit of land area. It is expressed in this Zoning Ordinance in terms of a minimum amount of lot area required per dwelling unit (minimum lot area per dwelling unit).
+
+
+   17-17-0244.5 Designated Expressway or Toll Road. A designated expressway or toll road means any of the following and shall include any access ramp thereto:
+
+
+      (A)   Bishop Ford Expressway;
+
+
+      (B)   Chicago Skyway;
+
+
+      (C)   Dan Ryan Expressway;
+
+
+      (D)   Edens Expressway;
+
+
+      (E)   Eisenhower Expressway;
+
+
+      (F)   Interstate 57;
+
+
+      (G)   Interstate 90;
+
+
+      (H)   Interstate 190;
+
+
+      (I)   Kennedy Expressway;
+
+
+      (J)   Stevenson Expressway; or
+
+
+      (K)   Tri-State Tollway.
+
+
+   17-17-0245 Detached Building. A building surrounded by open space on the same lot.
+
+
+   17-17-0246 Detached House. A dwelling unit that is located on its own lot and that is not attached to any other dwelling unit.
+
+
+   17-17-0247 Development Application. Any application or petition for approval in accordance with the procedures of Chapter 17-13.
+
+
+   17-17-0247.5 Drive-through Facility. Any service window, automated device or other facility that provides goods or services to individuals in a motor vehicle.
+
+
+   17-17-0248 Dwelling Unit. One or more rooms arranged, designed or used as independent living quarters for a single household. Buildings with more than one kitchen or more than one set of cooking facilities are deemed to contain multiple dwelling units unless the additional cooking facilities are clearly accessory and not intended to serve additional households.
+
+
+   17-17-0248.5 Dynamic image display sign. Any sign, or portion thereof, with characteristics that appear to have movement or that appear to change, caused by any method other than physically removing and replacing the sign or its components, whether the apparent movement or change is in the display, the sign structure itself, or any other component of the sign. This includes a display that incorporates a technology or method allowing the sign face to change the image without having to physically or mechanically replace the sign face or its components. This also includes any rotating, revolving, moving, blinking, or animated display and any display that incorporates rotating panels, LED lights manipulated through digital input, "digital ink" or any other method or technology that allows the sign face to present a series of images or displays.
+
+
+   17-17-0249 Efficiency. A dwelling unit, other than a single-room occupancy unit, that contains no more than 700 square feet of floor area, consisting of one room exclusive of bathroom, kitchen, hallway, closets or dining alcove directly off the principal room, provided that such dining alcove does not exceed 125 square feet in area.
+
+
+   17-17-0250 Elderly Housing. Dwelling units specially designed and marketed for persons who are 55 years of age or older, but not including buildings containing equipment for surgical care or for the treatment of disease or injury, other than emergency first-aid-care.
+
+
+   17-17-0251 Electric Sign. Any sign containing electrical wiring, lighting or other electrical components, but not including signs illuminated by a detached exterior light source.
+
+
+   17-17-0251.5-A Electric Vehicle. Any vehicle that is licensed and registered for operation on public and private highways, roads, and streets; either partially or exclusively, on electrical energy from the grid, or an off-board source, that is stored on-board via a battery to propel the vehicle.
+
+
+   17-17-0251.5-B Electric Vehicle Supply Equipment or EVSE. The equipment, as defined by the National Electrical Code and adopted in Section 14E-6-625 of the Municipal Code of Chicago, that includes the conductors, including the ungrounded, grounded, and equipment grounding conductors, and the electric vehicle connectors, attachment plugs, and all other fittings, devices, power outlets, or apparatus installed specifically for the purpose of transferring energy between the premises wiring and an electric vehicle.
+
+
+   17-17-0251.5-C Electric Vehicle Supply Equipment Infrastructure.  The electrical infrastructure necessary to support installation of electric vehicle supply equipment, including, but not be limited to, the design load placed on electrical panels and service equipment to support the additional electrical demand, the panel capacity to support additional feeder/branch circuits, raceways, and wiring.
+
+
+   17-17-0251.5-D EVSE-Ready Space. A parking space having electric vehicle supply equipment infrastructure installed so as to provide conduit and wiring for a 40-ampere, 208- or 240-volt dedicated branch circuit terminating at a receptacle or junction box within 3 feet of the parking space. For two adjacent parking spaces, a single branch circuit is allowed. The electrical panel directory and receptacle or junction box must both be permanently marked "For future electric vehicle supply equipment".
+
+
+   17-17-0251.5-E EVSE-Installed Space. A parking space having such electric vehicle supply equipment infrastructure installed so as to be an EVSE-ready space and with electric vehicle supply equipment installed within 3 feet of the parking space.
+
+
+   17-17-0251.5-F EVSE Energy Management System. Equipment that automatically balances the amount of electricity drawn by multiple electric vehicles simultaneously connected to electric vehicle supply equipment in the same parking facility based on the capacity of the electrical infrastructure serving the premises. This may also be referred to as an "automatic load management system".
+
+
+   17-17-0252 End Wall. An exterior wall that is generally perpendicular to front walls and rear walls.
+
+
+   17-17-0253 Façade. The exterior plane or "face" of a building.
+
+
+   17-17-0254 FAR. An abbreviation for "floor area ratio". See "floor area ratio" definition.
+
+
+   17-17-0255 Flag. A sign made of fabric or other similar non-rigid material supported or anchored along only one edge or supported or anchored at only two corners. If any dimension of a flag is more than 3 times as long as any other dimension, it is classified and regulated as a banner regardless of how it is anchored or supported. See also "banner".
+
+
+   17-17-0256 Flashing Sign. Any sign or portion of a sign that contains an intermittent or flashing light source or that changes light intensity in sudden transitory bursts. Example of flashing signs include signs that contain or use strobe lights, or rotating lights; signs with blinking or flashing features that are designed to merely to attract attention rather than convey a message; and changing-image signs that do not comply with applicable standards.
+
+
+   17-17-0257 Floor Area Ratio (FAR). The ratio of the floor area of all principal buildings to the total area of the lot upon which such buildings are located. (See Sec. 17-17-0305 for rules governing measurement of floor area ratio)
+
+
+   17-17-0258 Freight Container. A non-wheeled, enclosed storage container designed to be integrated into the frame of a train car or truck bed.
+
+
+   17-17-0259 Freestanding Sign. A sign on a frame, pole, or other support structure that is not attached to any building.
+
+
+   17-17-0260 Front Property Line. That property line that abuts or is along an existing or dedicated public street, or when no public street exists, is along a public way. On lots with multiple street frontages, the property owner may select either street property line as the front property line.
+
+
+   17-17-0261 Front Setback. The setback required between a building and the front property line of the lot on which the building is located, extending along the full length of the front property line between the side property lines.
+
+
+Figure 17-17-0261
+
+
+   17-17-0262 Front Wall. In buildings that contain more than one dwelling unit on a single floor, front walls and rear walls are those walls that are generally perpendicular to the party walls between dwelling units. In buildings that do not contain more than one dwelling unit on a single floor, the front wall is the wall that is generally parallel and closest to the front property line and the rear wall is the exterior building wall opposite the front wall.
+
+
+   17-17-0263 Front Yard. The actual area that exists between a building and the front property line of the lot on which the building is located, extending along the full length of the front property line between the side property lines. See also "Setback, Front".
+
+
+Figure 17-17-0263
+
+
+   17-17-0264 Government-Subsidized (Dwelling Unit). A dwelling unit that is financed in whole or in part with federal, state or local financial assistance or a dwelling unit otherwise provided in order to satisfy a public benefit obligation.
+
+
+   17-17-0265 Grade. The curb level adjacent to the front property line or the mean elevation of the finished lot, as measured along exterior building walls of the principal building, whichever is higher.
+
+
+   17-17-0266 Gross Lot Area. The entire land area within the boundaries of a site.
+
+
+   17-17-0267 Height, Building. See "building height".
+
+
+   17-17-0267.1 Heliport. A landing facility for one or more helicopters that may include fueling stations, helicopter storage or other service-related functions, such as, but not limited to, service or maintenance hangers. Heliports may only be located at ground level.
+
+
+   17-17-0267.2 Helistops. A landing pad for helicopters that does not typically include fueling stations, helicopter storage or other service or maintenance facilities for routine use. Helistops may be located at ground level or be elevated on a building rooftop or other structure.
+
+
+   17-17-0267.3 Vertiport. A landing facility for one or more tiltrotors or helicopters that may include fueling stations, helicopter or tiltrotor storage or other service-related functions, such as, but not limited to, service or maintenance hangers. Vertiports may only be located at ground level
+
+
+   17-17-0268 High-Rise Building Sign. An individual letter sign mounted at a height of 150 feet or more that is attached to the exterior wall of a building or to a roof-top mechanical equipment penthouse or other roof-top feature that is integral to the building upon which it is located.
+
+
+   17-17-0269 Home Occupation. An accessory use of a dwelling unit for business or commercial purposes. Home occupations are subject to the standards of Sec. 17-9-0202.
+
+
+   17-17-0269.5 Hookah bar. An establishment where patrons share flavored tobacco from a communal hookah or similar type water pipe, smoking device while seated at a table or bar.
+
+
+   17-17-0270 Household. One or more persons related by blood, marriage, legal adoption or guardianship, plus not more than 3 additional persons, all of whom live together as a single housekeeping unit; or one or more handicapped persons, as defined in the Fair Housing Amendments Act of 1988, plus not more than 3 additional persons, all of whom live together as a single housekeeping unit.
+
+
+   17-17-0270.5 Hydroponic system. Propagation of plants using a mechanical system designed to circulate a solution of minerals in water with limited use of growing media.
+
+
+   17-17-0270.6 Aquaponic system. The symbiotic propagation of plants and fish in an indoor, constructed and recirculating environment.
+
+
+   17-17-0270.7 Apiary. Keeping or propagation of honeybee colonies for collection of honey or other bee products. Up to five (5) colonies may be kept as an accessory use to the primary activity on the site.
+
+
+   17-17-0270.8 Indoor Special Event. "Indoor special event" means any temporary amusement or planned temporary aggregation of attractions or amusements, including public entertainment, food and beverage facilities, or sales of souvenirs or other merchandise or similar attractions, that is: (1) conducted primarily indoors; and (2) conducted or held pursuant to a valid special events license issued pursuant to Article IV of Chapter 4-156.
+
+
+   17-17-0271 Incidental Sign. A sign that contains no commercial message and that is exclusively used to convey directions or other information for the convenience of the public. Included are signs designating restrooms, address numbers, hours of operation, entrances to buildings, help wanted, public telephone, etc. Also included are signs on private property designed to guide or direct pedestrians or vehicular traffic, such as "entrance" and "exit" signs.
+
+
+   17-17-0271.5 Inclusionary Housing Area. Inclusionary housing area has the same meaning ascribed to that term in Section
+										2-44-085
+										(B).
+
+
+   17-17-0272 Indirect Lighting. Illumination from a light source that is not contained within a sign or awning.
+
+
+   17-17-0273 Individual Letter Sign. A wall sign or high-rise building sign consisting of raised individual letters, script or symbols. The background of an individual letter sign is either the exterior building wall surface or another opaque, non-illuminated surface.
+
+
+   17-17-0274 Industrial Corridor. Any area that has been designated as a priority area for industrial development and/or retention in a plan approved by the Plan Commission or City Council.
+
+
+   17-17-0275 Industrial Establishment. A business classified in the industrial use group, the ownership, management and physical location of which are separate and distinct from those of any other place of business located on the same zoning lot, as partly evidenced by maintaining separate and distinct doors and access points.
+
+
+   17-17-0276 Industrial Park. A planned, unified, campus-like development consisting primarily of manufacturing, industrial and warehousing uses.
+
+
+   17-17-0276.5 Industrial Private Event Venue. Industrial Private Event Venue means an establishment issued an industrial private event venue license under Article VI of Chapter 4-156 where an industrial venue event, such as fundraising event or a private event, is held in compliance with that Article. For purposes of this definition, the terms "fundraising event", "industrial venue event" and "private event" have the meaning ascribed to those terms in section 4-156-800.
+
+
+   17-17-0277 Interior Side Property Line. A side property line that does not abut a street or alley.
+
+
+   17-17-0278 Internal Lighting. Illumination from a light source that is contained within a sign or awning.
+
+
+   17-17-0278.5 Kennel. The term "kennel" shall mean an animal care facility as that term is defined in Section 4-384-010.
+
+
+   17-17-0278.7 Landscape waste. Grass or shrubbery cuttings, leaves, tree limbs and other materials accumulated as a result of the care of lawns, shrubbery, vines and trees, and includes any discarded fruits, vegetables and other vegetative material or crop residue generated in the care of a garden. The term "landscape waste" does not include soil other than incidental soil (e.g., soil attached to sod or attached to other materials accumulated as a result of the care of lawns, shrubbery, vines, trees or a garden).
+
+
+   17-17-0279 Landscaped. Substantially covered with grass, ground cover, shrubs, trees or other living plant material.
+
+
+   17-17-0280 Legible. Capable of being read or deciphered by a 5-foot to 6-foot tall person whose eyesight meets the minimum requirements necessary for receipt of an Illinois driver's license (wearing any corrective lenses required by such license).
+
+
+   17-17-0281 Lighting, Direct. Exposed lighting or neon tubes on a sign face. Direct lighting of signs also includes signs whose message or image is created by light projected onto a surface.
+
+
+   17-17-0282 Lighting, Indirect. A light source that is separate from the sign face and that is directed to shine onto the sign.
+
+
+   17-17-0283 Lighting, Internal. A light source that is concealed within a sign.
+
+
+   17-17-0284 Lot. A "zoning lot" unless the context clearly indicates a "lot of record. The term "lot" will be construed to include the terms "site", "parcel" and any other similar undefined term.
+
+
+   17-17-0285 Lot Area. The total horizontal land area contained within the property lines of a lot.
+
+
+   17-17-0286 Lot Coverage. The area of a lot covered by principal buildings, as measured along the exterior building wall at ground level, and including all building projections other than those expressly allowed encroaching into required setback areas.
+
+
+   17-17-0287 Lot Depth. The mean horizontal distance between the front property line and the rear property line of a lot measured within the lot's boundaries.
+
+
+   17-17-0288 Lot Frontage. The horizontal distance between side property lines on a lot, as measured along the front property line.
+
+
+   17-17-0289 Lot of Record. An area of land designated as a lot on a plat of subdivision recorded or registered, pursuant to statute, with the Recorder of Deeds of Cook County and the Ex-officio Examiner of Subdivisions of the City of Chicago.
+
+
+   17-17-0290 Lot Width. The mean horizontal distance between the side property lines of a lot measured within the lot's boundaries.
+
+
+   17-17-0291 Lot, Corner. See "corner lot".
+
+
+   17-17-0292 Lot, Reversed Corner. See "reversed corner lot".
+
+
+   17-17-0293 Lot, Through. See "through lot".
+
+
+   17-17-0294 Lot, Zoning. See "zoning lot".
+
+
+   17-17-0294.5 Marina. A facility located on a body of water that provides for the storage (wet and dry), launching, and mooring of pleasure boats together with one or more accessory retail and service uses, such as marine equipment sales, showers, private clubs and restaurants.
+
+
+   17-17-0295 Marquee. A roof-like structure of a permanent nature that projects from the wall of a building and overhangs the public way.
+
+
+   17-17-0296 Marquee Sign. A sign incorporated into or attached to a marquee or permanent canopy.
+
+
+   17-17-0297 Mobility Street. Any street officially designated as a mobility street in accordance with Sec. 17-4-0600.
+
+
+   17-17-0298 Motor Vehicle. Any passenger vehicle, truck, truck-trailer, trailer or semi-trailer propelled or drawn by mechanical power.
+
+
+   17-17-0299 Multi-Unit Residential. A residential building that contains 3 or more dwelling units that share common walls or common floors/ceilings with one or more dwelling units. The land upon which the building sits is not divided into separate lots.
+
+
+   17-17-02100   Net Site Area. The entire land area within the boundaries of a site, less the area of all land required or proposed for public use.
+
+
+   17-17-02101 Non-Accessory Parking. Parking spaces provided in excess of the maximum accessory parking limits established in Sec. 17-10-0208, and parking spaces (and the drive aisles and circulation area associated with such parking spaces) that are provided to serve the general public rather than being reserved exclusively by occupants of and visitors to a particular use (e.g., public parking garages).
+
+
+   17-17-02102 Nonconforming Building. A building that was lawfully established in accordance with zoning regulations in effect at the time of its establishment but that no longer complies with the bulk standards of the zoning district in which it is now located.
+
+
+   17-17-02103 Nonconforming Development. Any aspect of a development – other than a nonconforming lot, nonconforming use or nonconforming sign – that was lawfully established, in accordance with zoning regulations in effect at the time of its establishment but that no longer complies with one or more standards of this Zoning Ordinance. Common examples of nonconforming developments are buildings that do not comply with current setback or height standards, off- street parking or loading areas that contain fewer spaces than required by current standards or sites that do not comply with current landscaping standards.
+
+
+   17-17-02104 Nonconforming Lot. A tract of land lawfully established as a lot on a plat of subdivision recorded or registered, pursuant to statute, with the Recorder of Deeds of Cook County and the Ex-officio Examiner of Subdivisions of the City of Chicago that does not comply with the minimum lot area or lot width standards of the zoning district in which it is now located.
+
+
+   17-17-02105 Nonconforming Sign. A sign that was lawfully established, in accordance with zoning and other sign regulations in effect at the time of its establishment but that is no longer allowed by the regulations of this Zoning Ordinance.
+
+
+   17-17-02106 Nonconforming Use. A use that was lawfully established in accordance with zoning regulations in effect at the time of its establishment but that is no longer allowed by the use regulations of the zoning district in which it is now located.
+
+
+   17-17-02107 Nonconformity. Any nonconforming building, nonconforming development, nonconforming lot, nonconforming sign or nonconforming use.
+
+
+   17-17-02108 Off-premise sign. A sign that directs attention to a business, commodity, service, or entertainment conducted, sold, or offered elsewhere than upon the lot upon which it is located or to which it is affixed.
+
+
+   17-17-02109 On-premise Sign. A sign that directs attention to a business or profession conducted or to a commodity, service, or entertainment sold or offered upon the premises where the sign is located.
+
+
+   17-17-02110 Open Space, Public. See "public open space".
+
+
+   17-17-02110.5 Ornamental Fencing. A decorative metal fence, including wrought-iron or fencing that gives the appearance of wrought-iron fencing, but expressly excluding chain-link, barbed wire and similar non-decorative fences.
+
+
+   17-17-02111 Overlay District. A zoning district that overlays one or more base zoning districts and imposes requirements in addition to those of the base district or modifies the standards otherwise applicable in the base district.
+
+
+   17-17-02112 Owner. See "property owner".
+
+
+   17-17-02113 Painted Wall Sign. A sign applied to a building wall with paint or a thin layer of vinyl, paper or similar material adhered directly to the building surface and that has no sign structure.
+
+
+   17-17-02114 Parapet. A low wall or railing to protect the edge of a roof.
+
+
+   17-17-02115 Parkway, Public. See "public parkway".
+
+
+   17-17-02116 Parkway Tree. Trees planted or required to be planted within the public parkway.
+
+
+   17-17-02117 Pedestrian Street. Any street officially designated as a pedestrian street in accordance with Sec. 17-3-0500 or Sec. 17-4-0500.
+
+
+   17-17-02118 Permanent Sign. Any sign not classified as a temporary sign.
+
+
+   17-17-02119 Permitted Use. A use permitted by- right in the subject zoning district in accordance with the applicable use regulations of this Zoning Ordinance.
+
+
+   17-17-02120 Planned Development. A development that meets mandatory planned development thresholds of Sec. 17-8-0500 or the elective planned development thresholds of Sec. 17-8-0600.
+
+
+   17-17-02121 Planned Manufacturing District (PMD). A district of 5 acres or more that is contiguous or would be contiguous except for separation by a public way or a railroad right-of-way and that is designated as a PMD in accordance with the procedures of Sec. 17-13-0700.
+
+
+   17-17-02122 Portable Sign. Any sign not permanently attached to the ground or other permanent structure or a sign designed to be transported, including, but not limited to, signs designed to be transported by means of wheels and signs made as A-frames or T- frames.
+
+
+   17-17-02123 Pre-construction Grade. The unfinished mean grade of a lot before commencement of any building or construction activity.
+
+
+   17-17-02124 Primary Boulevard. The following streets and segments of streets:
+
+
+Street
+
+
+From
+
+
+To
+
+
+Street
+
+
+From
+
+
+To
+
+
+31st Boulevard
+
+
+Western
+
+
+California
+
+
+67th Street
+
+
+Yates
+
+
+Stony Island
+
+
+California Boulevard
+
+
+24th Boulevard
+
+
+31st Boulevard
+
+
+Central Park Boulevard
+
+
+Garfield Park
+
+
+Franklin Boulevard
+
+
+Diversey Parkway
+
+
+Logan
+
+
+Lake Shore Drive
+
+
+Douglas Boulevard
+
+
+Independence
+
+
+Douglas Park
+
+
+Drexel Boulevard
+
+
+Oakwood
+
+
+Drexel Square (51st)
+
+
+Franklin Boulevard
+
+
+Central Park
+
+
+Sacramento Square
+
+
+Garfield Boulevard
+
+
+Western Boulevard
+
+
+Martin Luther King Drive
+
+
+Hamlin Boulevard
+
+
+Eisenhower Expressway
+
+
+Lake Street
+
+
+Humboldt Boulevard
+
+
+North Avenue
+
+
+Palmer Square
+
+
+Independence Boulevard
+
+
+Douglas Boulevard
+
+
+Garfield Park
+
+
+Kedzie Boulevard
+
+
+Palmer
+
+
+Logan
+
+
+Logan Boulevard
+
+
+Kedzie Boulevard
+
+
+Diversey Parkway
+
+
+Marshall Boulevard
+
+
+24th Boulevard
+
+
+California Boulevard
+
+
+Martin Luther King Drive
+
+
+25th Street
+
+
+60th Street
+
+
+Midway Plaisance
+
+59th Street
+
+60th Street
+
+
+Washington Park
+
+
+Jackson Park
+
+
+Oakwood Boulevard
+
+
+Drexel
+
+
+Martin Luther King Drive
+
+
+Sacramento Boulevard
+
+
+Sacramento Square
+
+
+Augusta
+
+
+Stony Island
+
+
+56th Street
+
+
+67th Street
+
+
+Western Boulevard
+
+
+55th Street
+
+
+31st Street
+
+
+Yates Boulevard
+
+
+67th Street
+
+
+71st Street
+
+
+   17-17-02125 Principal Building. A building or combination of buildings of chief importance or function on a lot. In general, the principal use is carried out in a principal building. The difference between a principal building and an accessory building or structure is determined by comparing the size, placement, similarity of design, use of common building materials, and the orientation of the structures on the lot.
+
+
+   17-17-02126 Principal Use. An activity or combination of activities of chief importance on the lot. One of the main purposes for which the land, buildings or structures are intended, designed, or ordinarily used.
+
+
+   17-17-02127 Processing. A series of operations performed in the making or treatment of a product or to perform operations on data.
+
+
+   17-17-02128 Product Display Window. An illuminated window display area in which products and goods are displayed to pedestrians but that do not generally allow visibility into the interior of the building.
+
+
+   17-17-02129 Projecting Sign. A sign attached to and projecting out from a building face or wall, generally at right angles to the building. Projecting signs include signs that are totally in the right-of-way, partially in the right-of-way, or fully on private property.
+
+
+   17-17-02130 Property Line. The boundary of a lot, as shown on a plat of subdivision recorded or registered pursuant to statute or as designated by the lot's owner or developer as the boundary of a parcel of land to be used, developed, or built upon as a unit, under single ownership or control.
+
+
+   17-17-02130.1 Property Line, Abutting. See "abutting property line".
+
+
+   17-17-02131 Property Line, Front. See "front property line".
+
+
+   17-17-02132 Property Line, Rear. See "rear property line".
+
+
+   17-17-02133 Property Line, Side. See "side property line".
+
+
+   17-17-02134 Property Owner. The legal or beneficial owner of an improved or unimproved parcel of real estate.
+
+
+   17-17-02135 Public Open Space. Any publicly- owned open area, including, but not limited to parks, playgrounds, beaches, waterways, parkways and streets.
+
+
+   17-17-02136 Public Parkway. That portion of the public way between a street and the nearest parallel property line, including sidewalk areas.
+
+
+   17-17-02137 Public Way. Any sidewalk, street, alley, highway, or other public thoroughfare.
+
+
+   17-17-02138 Railroad Right-of-Way. A strip of land with tracks and auxiliary facilities for track operation, but not including freight depots or stations, loading platforms, train sheds, warehouses, car or locomotive shops, or car yards.
+
+
+   17-17-02139 Rear Property Line. That property line that is most distant from and is most parallel to the front property line.
+
+
+   17-17-02140 Rear Setback. The setback required between a building and the rear property line of the lot on which the building is located, extending along the full length of the rear property line between the side property lines.
+
+
+Figure 17-17-02140
+
+
+   17-17-02141   Rear Wall. In buildings that contain more than one dwelling unit on a single floor, front walls and rear walls are those walls that are generally perpendicular to the party walls between dwelling units. In buildings that do not contain more than one dwelling unit on a single floor, the front wall is the wall that is generally parallel and closest to the front property line and the rear wall is the exterior building wall opposite the front wall.
+
+
+   17-17-02142   Rear Yard. The actual area that exists between a building and the rear property line of the lot on which the building is located, extending along the full length of the rear property line between the side property lines. See also "Setback, Rear".
+
+
+Figure 17-17-02142
+
+
+   17-17-02143 Recyclable Material. Recyclable material shall be categorized as Type A, Type B, Type C or Type D recyclable material and shall have the meaning ascribed to each such type, as follows:
+
+
+   1.   Type A recyclable material. Any aluminum or ferrous or non-ferrous scrap metal; bi-metal or tin cans; glass products; paper products; rubber; textiles; plastic products, such as polyethelene terephthalate, high density polyethylene, low density polyethylene, polystyrene or polypropolene; and any other material designated as Type A recyclable material by the Chief Sustainability Officer in duly promulgated rules and regulations.
+
+
+   2.   Type B recyclable material. Organic waste and any other material designated as Type B recyclable material by the Chief Sustainability Officer in duly promulgated rules and regulations.
+
+
+   3.   Type C recyclable material. Used motor vehicles or motor vehicle parts, and any other material designated as Type C recyclable material by the Chief Sustainability Officer in duly promulgated rules and regulations.
+
+
+   4.   Type D recyclable material. Construction and demolition debris that does not contain lead, asbestos or any other hazardous material in such a way as to render recycling of such material illegal or impossible and that has been rendered reusable and is reused, or that would otherwise be disposed of or discarded but is collected or separated and returned to the economic mainstream in the form of raw materials or product; and any other material designated as Type D recyclable material by the Chief Sustainability Officer in duly promulgated rules and regulations.
+
+
+   17-17-02144 Recycling. The collection, temporary storage, and minimal processing of recyclable materials for the purpose of marketing that material for use as a raw material in a manufacturing process or reuse as consumer products. For the purpose of interpreting this definition only, the term "processing" means manual, mechanical or automated separation of recyclable materials from other materials; separation of recyclable materials from each other; cleaning, bundling, compacting, cutting or packing of recyclable material(s). "Processing" in this context does not include melting, rendering, smelting, vulcanizing or purification by application of heat or chemical process.
+
+
+   17-17-02145 Reprocessable Construction / Demolition Material. Broken concrete, bricks, rock, stone or paving asphalt generated from construction or demolition activities.
+
+
+   17-17-02146 Residential Building. A building that is arranged, designed, used or intended to be used:
+
+
+      17-17-02146-A exclusively for residential occupancy by one or more families; or
+
+
+      17-17-02146-B for a mixture of nonresidential and residential occupancy and in which the floor area devoted to residential dwelling units makes up 50% or more of the building's total gross floor area.
+
+
+   17-17-02147 Residential District. Any R or DR zoning district or residential planned development.
+
+
+   17-17-02148 Reversed Corner Lot. A corner lot, the street side property line of which is substantially a continuation of the front property line of the first lot to its rear.
+
+
+Figure 17-17-02148
+
+
+   17-17-02149 Roof Line. The top edge of a roof or parapet, whichever is higher.
+
+
+   17-17-02150 Roof Sign. A sign or any portion of a sign that is erected upon or projects more than 24 inches above the roofline of any building whether the principal support for the sign is on the roof, wall or any other structural element of the building.
+
+
+   17-17-02150.1 Rooftop gravity tank. Any wooden or metal container, which was originally designed or converted (i) to hold water to supply a sprinkler system at gravity pressure, or to support a building's manufacturing system at gravity pressure, or to support a building's domestic water system at gravity pressure, regardless of whether the container is holding water; and (ii) is elevated on a rooftop or is free-standing.
+
+
+   17-17-02150.5 Rooftop gravity tank supporting structure. Any structure used to support a rooftop gravity tank regardless of whether a tank is affixed to such supporting structure. The term "supporting structure" shall be construed broadly to include anchors, guides, tracks, mounting brackets, mounting hardware of any type and all other forms of tank support.
+
+
+   17-17-02151 Satellite Dish Antenna. A device designed or used for the reception or the transmission of television or other electric communication signal broadcast or, relayed from a satellite. It may be a solid, open mesh, or bar configured structure, in the shape of a shallow dish or parabola.
+
+
+   17-17-02152 Setback. An open, unobstructed area that is required by this Zoning Ordinance to be provided from the furthermost projection of a structure to the property line of the lot on which the building is located.
+
+
+   17-17-02153 Setback, Front. See "front setback".
+
+
+   17-17-02154 Setback, Rear. See "rear setback".
+
+
+   17-17-02155 Setback, Side. See "side setback".
+
+
+   17-17-02155.1 Shared kitchen. Any (1) food establishment used as a place of business for the exclusive or primary purpose of utilizing, leasing or renting its kitchen space to individuals or entities for food preparation, temporary extra production capacity, menu planning, training, taste testing, product development, food packaging, food storage or any other food-related purpose; or (2) retail or wholesale food establishment that leases, rents or otherwise makes kitchen space available at such establishment for utilization by individuals or entities for food preparation, temporary extra production capacity, menu planning, training, taste testing, product development, food packaging, food storage or any other food-related purpose that is secondary or incidental to the establishment's primary business activity of retail or wholesale food establishment.
+
+
+   17-17-02155.5 Shooting range facility. "Shooting range facility" means a public or private shooting range and the premises on which the shooting range is located and includes all the buildings, structures, parking areas, and other associated improvements located on the premises. A "shooting range facility" includes any shooting range facility operated or managed by members of a private club or organization for the benefit of its members. A "shooting range facility" shall not include any shooting range facility operated by any federal, state or local law enforcement agency or by the armed forces of the United States, including the Reserves.
+
+
+   17-17-02156 Side Property Line. Any property line that is not a front property line or a rear property line.
+
+
+   17-17-02157 Side Setback. The setback required between a building and the side property line of the lot on which the building is located, extending along a side property line from the point of the minimum front setback to the point of the minimum rear setback.
+
+
+Figure 17-17-02157
+
+
+   17-17-02158 Side Yard. The actual area that exists between a building and the side property line of the lot on which the building is located, extending along a side property line from the point of the minimum front setback to the point of the minimum rear setback. See also "Setback, Side".
+
+
+Figure 17-17-02158
+
+
+   17-17-02159 Sign. Materials placed or constructed, or light projected, that: (1) conveys a message or image and (2) is used to inform or attract the attention of the public. Some examples of "signs" are materials or lights meeting the definition of the preceding sentence and that are commonly referred to as signs, placards, A- boards, posters, billboards, murals, diagrams, banners, flags, or projected slides, images or holograms. When not qualified with the terms "on-premise" or "off- premise", the term "sign" refers to all signs, whether on- or off-premise in nature.
+
+
+   17-17-02160 Sign Maintenance. Normal care needed to keep a sign functional, such as cleaning, painting, oiling, and changing of light bulbs.
+
+
+   17-17-02161 Sign Repair. Fixing or replacement of broken or worn parts. Replacement includes comparable materials only. Repairs may be made with the sign in position or with the sign removed.
+
+
+   17-17-02162 Sign Structure. A structure specifically intended for supporting or containing a sign.
+
+
+   17-17-02163 Single-Room Occupancy. A residential building containing 5 or more single-room occupancy units in which at least 90% of the units are single room occupancy units occupied by the same tenants for a continuous period of at least 32 days.
+
+
+   17-17-02164 Single-Room Occupancy Unit. A dwelling unit within a single-room occupancy (building) that is used or intended to be used as sleeping quarters or living quarters with or without cooking facilities, and that contains not more than one room consisting of not more than 250 square feet of floor area, excluding from the calculation of floor area any kitchen having less than 70 square feet of floor area; provided, however, the size and room limits of this section do not apply to single-room occupancy buildings to the extent necessary for the building to: i) remain in conformance with Chapter 5-15 of the Code (Single-Room Occupancy Preservation Ordinance); or ii) qualify for a government subsidy as determined by the City's Department of Housing.
+
+
+   17-17-02165 Special Character Overlay District. A zoning district that has been established in accordance with the provisions of Sec. 17-7-0600 and that imposes special, supplemental and zoning regulations for the use and development of land within such district.
+
+
+   17-17-02166 Special Events Signs. A temporary sign announcing an event at stadium, auditorium or public or civic facility.
+
+
+   17-17-02167 Special Use. A use allowed in the subject zoning district only if reviewed and approved in accordance with the special use procedures of Sec. 17-13-0900.
+
+
+   17-17-02168 SRO. See "single-room occupancy".
+
+
+   17-17-02169 Story. That portion of a building included between the surface of any floor and the surface of the floor next above, or if there is no floor above, the space between the floor and the ceiling next above. A basement or below-grade floor will be counted as a story when more than one-half of the floor-to- ceiling height is above grade.
+
+
+   17-17-02170 Street. A public right-of-way that affords a primary means of access to abutting property.
+
+
+   17-17-02171 Street Frontage. Any portion of a lot that abuts a street. (See also "lot frontage")
+
+
+   17-17-02172 Strip Center. A building used for 2 or more commercial establishments (including stores, shops, businesses services and offices), that is typically one story in height and typically separated from the street frontage by parking, and that contains less than 65,000 square feet of floor area. This definition does not include single-use buildings when such buildings include accessory business such as coffee shops, dry cleaners, banks or automated teller machines and when such accessory uses are not separated from the principal use by demising walls.
+
+
+   17-17-02173 Structural Alteration (to a sign). Modification of a sign, sign structure or awning that affects size, shape, height, or sign location; changes in structural materials; or replacement of electrical components with other than comparable materials. The replacement of wood parts with metal parts, the replacement of incandescent bulbs with light emitting diodes (LED), or the addition of electronic elements to a non-electric sign are all examples of structural alterations. Structural alteration does not include ordinary maintenance or repair, repainting an existing sign surface, including changes of message or image, exchanging painted and pasted or glued materials on painted wall signs, or exchanging display panels of a sign through release and closing of clips or other brackets.
+
+
+   17-17-02174 Substandard Lot Depth. Lot depth of less than 125 feet.
+
+
+   17-17-02175 Temporary Overnight Shelter. A building, or portion thereof, in which sleeping accommodations are provided for no more than twelve hours per day, for three or more persons who are not related to the property owner, operator, manager or other occupants thereof by blood or by marriage, as described in Chapter 13-208 of this Code.
+
+
+   17-17-02176 Temporary Sign. A sign that is designed to be used only temporarily and not permanently mounted to a structure or permanently installed in the ground. These include "for sale", leasing and grand opening signs.
+
+
+   17-17-02176.5 Temporary Storage Container. A temporary storage container means any portable container, storage unit, shed-like container or other portable receptacle designed and used primarily for the temporary outside storage of building materials, household goods, personal items and other materials; provided that a "temporary storage container" does not include a refuse container or dumpster.
+
+
+   17-17-02177 Through Lot. A lot having a pair of opposite property lines along two more or less parallel public streets, and that is not a corner lot.
+
+
+   17-17-02178 Top of the Bank. The slope adjacent to the water's edge and that point at the top of the slope at which the contour of the slope ceases to be 10% or greater.
+
+
+   17-17-02179 Townhouse. A dwelling unit that shares a common wall with another dwelling unit or that has an exterior wall that abuts the exterior wall of another dwelling unit and that shares a common roof. Such common or exterior walls extend from the ground to the roof or from the roof of the garage to the roof of the dwelling unit.
+
+
+   17-17-02180 Townhouse Development. Two more townhouse units.
+
+
+   17-17-02181 Transitional Residence. A temporary residential living arrangement for persons who are receiving therapy or counseling for purposes such as, but not limited to, the following: (a) to help persons recuperate from the effects of drugs or alcohol addiction; (b) to help persons re-enter society while housed under supervision while under the constraints of alternatives to imprisonment including, but not limited to, pre-release, work-release and probationary programs; (c) to help persons with family or school adjustment problems that require specialized attention and care in order to achieve personal independence; or (d) to provide temporary shelter for persons who are victims of domestic abuse.
+
+
+   17-17-02182 Transitional Shelter. A building, or portion thereof, in which temporary residential accommodations are provided for three or more persons who are not related to the property owner, operator, manager or other occupants thereof by blood or by marriage, as described in Chapter 13-212 of the Municipal Code.
+
+
+   17-17-02183 Transitional Shelter Room. A room used as sleeping and living quarters, but without cooking facilities or without individual bathrooms, as part of a transitional shelter. In a suite of rooms without cooking facilities, each room that provides sleeping accommodations will be counted as one transitional shelter unit.
+
+
+   17-17-02184 Two-flat. A residential building that contains 2 dwelling units located on a single lot. The dwelling units must share a common wall or common floor/ceiling.
+
+
+   17-17-02184.5 Type A Unit. A dwelling unit that complies with the Type A unit requirements of Chapter 14B-11 of the Municipal Code.
+
+
+   17-17-02185 Use. The purpose or activity for which the land, or building thereon, is designed, arranged or intended, or for which it is occupied or maintained. Unless the otherwise expressly indicated, the term "use" means principal use.
+
+
+   17-17-02186 Use of Open Land. Storage yards, construction debris sites, used vehicle sales lots, vehicle impound yards, auto wrecking, junkyards, and similar open-air uses when the only buildings on the lot are incidental and accessory to the open-air use of the lot.
+
+
+   17-17-02187 Use, Principal. See "principal use".
+
+
+   17-17-02188 Variation. Modification of an otherwise applicable standard, approved in accordance with Sec. 17-13-1100.
+
+
+   17-17-02189 Vehicular Use Area. Any area of the lot not located within any enclosed or partially enclosed structure and that is devoted to a use by or for motor vehicles including parking (accessory or non- accessory); storage of automobiles, trucks or other vehicles; gasoline stations; car washes; motor vehicle repair shops; loading areas; service areas and drives; and access drives and driveways.
+
+
+   17-17-02190 Video Display Sign. A video display sign is a type of dynamic image display sign that has text, images or graphics on the face of the sign that: (1) depict motion; (2) change more than once every 10 seconds; or (3) have a twirl time that exceeds 0.25 seconds. For purposes of this section, "motion" and "twirl time" have the meanings ascribed to those terms in Section 13-20-510.
+
+
+   17-17-02190.5 Vintage Sign. A nonconforming sign, including abandoned nonconforming signs, designated as a vintage sign pursuant to the procedures and criteria established in Section 17-15-0600.
+
+
+   17-17-02191 Wall Sign. A single-faced sign attached flush to a building or other structure or a sign consisting of light projected onto a building or other structure. Wall signs do not include signs that are attached to sign structures.
+
+
+   17-17-02192 Yard. The actual (as opposed to "required") open space on a zoning lot that is unoccupied and unobstructed from its lowest level to the sky. See also "Setback".
+
+
+   17-17-02193 Yard, Front. See "front yard".
+
+
+   17-17-02194 Yard, Rear. See "rear yard".
+
+
+   17-17-02195 Yard, Side. See "side yard".
+
+
+   17-17-02196 Zoning Inspector. A municipal employee supervised to issue citations for code violations and conduct inspections of public or private real property in Chicago to determine if code violations exist.
+
+
+   17-17-02197 Zoning Lot. A single tract of land located within a single block, that (at the time of filing for a building permit) is designated by its owner or developer as a tract to be used, developed, or built upon as a unit, under single ownership or control.
+
+
+(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 3-9-05, p. 44391; Amend Coun. J. 6-29-05, p. 52355, § 2; Amend Coun. J. 6-28-06, p. 79813, § 3; Amend Coun. J. 7-26-06, p. 81829, § 4; Amend Coun. J. 9-13-06, p. 84870, § 2; Amend Coun. J. 2-7-07, p. 98109, § 2; Amend Coun. J. 4-11-07, p. 103484, § 1; Amend Coun. J. 12-12-07, p. 17742, § 2; Amend Coun. J. 11-19-08, p. 47220, Art. VIII, § 1; Amend Coun. J. 6-9-10, p. 93530, §§ 7, 8; Amend Coun. J. 7-28-10, p. 97810, § 1; Amend Coun. J. 11-17-10, p. 106597, Art. IX, § 11; Amend Coun. J. 2-9-11, p. 112149, §§ 28 – 31; Amend Coun. J. 5-4-11, p. 117699, § 11; Amend Coun. J. 7-6-11, p. 3073, § 12; Amend Coun. J. 9-8-11, p. 7541, § 10; Amend Coun. J. 11-16-11, p. 13798, Art. II, § 6; Amend Coun. J. 1-18-12, p. 19185, §§ 4 – 6; Amend Coun. J. 6-27-12, p. 30744, § 3; Amend Coun. J. 11-8-12, p. 38872, §§ 284 – 287; Amend Coun. J. 12-12-12, p. 44485, § 6; Amend Coun. J. 11-26-13, p. 67481, Art. I, § 30; Amend Coun. J. 4-30-14, p. 80382, § 6; Amend Coun. J. 6-25-14, p. 84153, § 2; Amend Coun. J. 6-25-14, p. 83727, § 16; Amend Coun. J. 7-30-14, p. 86194, § 8; Amend Coun. J. 7-30-14, p. 86203, §§ 19, 20; Amend Coun. J. 11-12-14, p. 97375, § 4; Amend Coun. J. 2-10-16, p. 18766, § 16; Amend Coun. J. 11-14-18, p. 90308, Art. I, § 37; Amend Coun. J. 10-16-19, p. 7854, §§ 10, 11; Amend Coun. J. 10-16-19, p. 7867, § 2; Amend Coun. J. 2-19-20, p. 14473, Art. VI, § 27; Amend Coun. J. 4-24-20, p. 16148, § 1; Amend Coun. J. 12-16-20, p. 26066, § 16; Amend Coun. J. 5-25-22, p. 48413, § 12; Amend Coun. J. 7-20-22, p. 50878, § 8; Amend Coun. J. 7-19-23, p. 1992, § 4; Amend Coun. J. 9-14-23, p. 2842, § 4; Amend Coun. J. 12-20-25, p. 39283, Art. III, § 7)
+
+
+Disclaimer: This Code of Ordinances and/or any other documents that appear on this site may not reflect the most current legislation adopted by the Municipality. American Legal Publishing provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.
+
+For further information regarding the official version of any of this Code of Ordinances or other documents posted on this site, please contact the Municipality directly or contact American Legal Publishing toll-free at 800-445-5588.
+
+Hosted by: American Legal Publishing
+
+
+
+
+
+17-17-0300 Measurements.
+
+
+ShareDownloadBookmarkPrint
+
+
+17-17-0300  Measurements.
+
+
+   17-17-0301 Division of Improved Zoning Lots. No improved zoning lot may be divided into 2 or more zoning lots and no portion of any improved zoning lot may be sold unless all improved zoning lots resulting from the division or sale comply with all the applicable bulk regulations of the zoning district in which the property is located; provided, however, divisions or sales that do not further increase the extent of any existing nonconformity, including a nonconforming setback that is not impacted by the proposed division or sale, shall be allowed.
+
+
+   17-17-0302 Lot Area. Lot area includes the total land area contained within the property lines of a lot.
+
+
+   17-17-0303 Lot Frontage. Lot frontage is measured between side property lines along the front property line abutting a public street.
+
+
+   17-17-0304 Lot Area per Unit. Lot area per unit refers to the amount of lot area required for each dwelling unit on the property. For example, if a minimum lot-area-per-unit standard of 1,000 square feet is applied to 3,125 square foot lot, a maximum of 3 dwelling units would be allowed on the property.
+
+
+   17-17-0305 Floor Area Ratio. The floor area ratio of a building is the floor area of the building divided by the total gross area of the zoning lot upon which the building is located. In the case of planned developments and townhouse developments, the floor area ratio of a building site is the floor area of all buildings on the site divided by the net site area of the building site.
+
+
+      17-17-0305-A For the purpose of calculating floor area ratios, the "floor area" of a building is the sum of the gross horizontal area of all floors in the building measured from the exterior faces of the exterior walls or from the center line of walls separating two buildings. The "floor area" of a building expressly includes all of the following:
+
+
+         1.   floor area of any floor located below grade or partially below grade when more than one-half the floor-to-ceiling height of the below-grade (or partially-below-grade) floor is above grade level, provided that below-grade or partially below-grade floors with a clear height of less than 6 feet 9 inches are not counted as floor area;
+
+
+Figure 17-17-0305-A1
+
+
+         2.   elevator shafts and stairwells on each floor;
+
+
+         3.   floor area used for mechanical equipment, except equipment located on the roof and mechanical equipment within the building that occupies a commonly owned contiguous area of 5,000 square feet or more;
+
+
+         4.   those portions of an attic having clear height (head-room) of 6 feet 9 inches or more;
+
+
+Figure 17-17-0305-A4
+
+
+         5.   mezzanines;
+
+
+         6.   enclosed porches;
+
+
+         7.   floor area devoted to non-accessory parking;
+
+
+         8.   parking provided in excess of the maximum accessory parking limits established in Sec. 17-10-0208, provided that each such parking space will be counted as 350 square feet of floor area; and
+
+
+         9.   floor area within a principal building that is occupied by accessory uses.
+
+
+      17-17-0305-B For the purpose of calculating floor area ratios, floor area devoted to required loading, accessory parking and the drive aisles and circulation area associated with such loading and parking are not to be counted as "floor area".
+
+
+      17-17-0305-C Stairway and Elevator Enclosures and Elevator Equipment Penthouses. For the purpose of calculating floor area ratio, the floor area of stairway and elevator enclosures and elevator equipment penthouses shall not be counted as "floor area" in accordance with Section 17-17-0311-C.
+
+
+   17-17-0306 Front Setbacks.
+
+
+      17-17-0306-A Measurement. Required front setbacks and existing average front yards are to be measured from the front property line of the lot on which such building is located to the exterior wall of the building.
+
+
+      17-17-0306-B Permitted Obstructions / Encroachments. Required setbacks must be unobstructed and unoccupied from the ground to the sky except as expressly allowed in Sec. 17-17-0309. All portions of required front setbacks that are not occupied by permitted obstructions (See Sec. 17-17-0309) must be landscaped and preserved as open space.
+
+
+      17-17-0306-C Patio Pits. No terrace or patio more than 2 feet below grade is permitted within 15 feet of the front property line in any RS1, RS2 or RS3 district or within 12 feet of the front property line in any other R district. This provision is not intended to prohibit the installation of a terrace or patio on a lot that has a pre-construction grade more than 2 feet below the top of the curb of the street upon which the lot fronts. Patios or terraces more than 2 feet below grade may be constructed in the front yard outside of the required setback distance established in this section only if such terrace or patio is visually screened from view with landscaping and decorative fencing.
+
+
+      17-17-0306-D Negative Grade Elevation Lots and Allowed Uses. When the existing street grade (curb level) has a positive (+) elevation above the established lot grade and there is no requested negative (–) elevation change or lowering of the established lot grade within the front setback; then, a terrace or patio may be allowed provided that the area within the terrace or patio is landscaped and preserved as open space. A decorative fence must be installed at the front property enclosing the front setback.
+
+
+   17-17-0307 Rear Setbacks.
+
+
+      17-17-0307-A Measurement. Required rear setbacks are to be measured from the rear property line of the lot on which such structure is located to the furthermost projection of the structure, not including those projections and features allowed within such setback pursuant to Sec. 17-17-0309.
+
+
+      17-17-0307-B Permitted Obstructions / Encroachments. Required setbacks must be unobstructed and unoccupied from the ground to the sky except as expressly allowed in Sec. 17-2-0306-D Sec. 17-2-0306-E or Sec. 17-17-0309.
+
+
+   17-17-0308 Side Setbacks.
+
+
+      17-17-0308-A Measurement. Required side setbacks and existing side yards are to be measured from the side property line of the lot on which such structure is located to the furthermost projection of the structure, not including those projections and features allowed within such setback pursuant to Sec. 17-17-0309.
+
+
+      17-17-0308-B Permitted Obstructions / Encroachments. Required setbacks must be unobstructed and unoccupied from the ground to the sky except as expressly allowed in Sec. 17-17-0309.
+
+
+      17-17-0308-C Division of Improved Zoning Lots. When zoning lots in RS3, RT3.5, RT4, R4.5, RM5, and lots in B and C districts are divided and such lots contain existing attached buildings, side setbacks do not apply between the attached buildings.
+
+
+   17-17-0309 Features Allowed to Encroach in Required Setbacks. Required setbacks in all districts must be unobstructed and unoccupied from the ground to the sky except that features are allowed to encroach into required setbacks to the extent indicated in the following table:
+
+
+Obstruction/Projection into Required Setback
+
+
+Front
+
+
+Side
+
+
+Rear
+
+
+Obstruction/Projection into Required Setback
+
+
+Front
+
+
+Side
+
+
+Rear
+
+
+Accessory buildings used for domestic storage (e.g., sheds and tool rooms)
+
+
+No
+
+
+No
+
+
+Yes
+
+
+Air conditioning units, provided the unit is not more than 4 feet in height
+
+
+No
+
+
+Yes
+
+
+Yes
+
+
+Arbors and trellises
+
+
+Yes
+
+
+Yes
+
+
+Yes
+
+
+Awnings and canopies
+
+
+Yes
+
+
+Yes
+
+
+Yes
+
+
+Bay windows that project no more than 3 feet into the setback and are located at least 4 feet above grade at their lowest point
+
+
+Yes
+
+
+No
+
+
+Yes
+
+
+Chimneys that project no more than 18 inches into the setback
+
+
+Yes
+
+
+Yes
+
+
+Yes
+
+
+Coach houses meeting the requirements of Section 17-2-201-F.* Coach houses that are constructed adjacent to a public alley must be set back at least two feet from the rear property line; provided, however, that this two-foot setback is not required if the coach house is located at least ten feet from the centerline of the alley, as evidenced by a survey or other similar evidence provided by the applicant and deemed acceptable by the Zoning Administrator
+
+
+														* Editor's note – as set forth in Coun. J. 4-21-21, p. 29942, § 3; intended reference is likely Section 17-9-0201-F. Future legislation will correct if needed.
+
+
+No
+
+
+No
+
+
+Yes
+
+
+Satellite dish antennas, not exceeding 1 meter in diameter
+
+
+Yes [1]
+
+
+Yes
+
+
+Yes
+
+
+Satellite dish antennas, over 1 meter but not exceeding 2.4 meters in diameter
+
+
+No
+
+
+No
+
+
+Yes
+
+
+Eaves and gutters projecting 18 inches or less into setback
+
+
+Yes
+
+
+Yes
+
+
+Yes
+
+
+Eaves and gutters projecting 3 feet or less into setback
+
+
+Yes
+
+
+No
+
+
+Yes
+
+
+Fences and walls (no more than 20% opaque) up to 6 feet in height
+
+
+Yes
+
+
+Yes
+
+
+Yes
+
+
+Fences and walls (more than 20% opaque or solid) up to 4.5 feet in height
+
+
+Yes
+
+
+Yes
+
+
+Yes
+
+
+Fences and walls (more than 20% opaque or solid) up to 6 feet in height
+
+
+No
+
+
+Yes
+
+
+Yes
+
+
+Flagpoles
+
+
+Yes
+
+
+Yes
+
+
+Yes
+
+
+Parking spaces, enclosed, provided that (attached or detached) garages that are accessed from alleys must be set back at least two feet from the rear property line (this two-foot setback is not required if the garage is located at least 10 feet from the centerline of the alley, as evidenced by a survey or other similar evidence provided by the applicant and deemed acceptable by the Zoning Administrator) provided further, however, that additions following the rear wall of existing garages shall be permitted regardless of the proximity of the existing garage's rear wall to the rear property line
+
+
+No
+
+
+No
+
+
+Yes
+
+
+Parking spaces, unenclosed in RS districts
+
+
+No
+
+
+Yes [2]
+
+
+Yes
+
+
+Parking spaces, unenclosed in RT and RM districts
+
+
+No
+
+
+No
+
+
+Yes
+
+
+Patios that are not over 4 feet above the average level of the adjoining ground (See Sec. 17-17-0306-C)
+
+
+No
+
+
+No
+
+
+Yes
+
+
+Porches and balconies and that are open on at least 3 sides
+
+
+No
+
+
+No
+
+
+Yes
+
+
+Recreational equipment (e.g., swing sets and basketball hoops)
+
+
+No
+
+
+No
+
+
+Yes
+
+
+Roof projecting from garage over open patio not to exceed 8 feet
+
+
+No
+
+
+No
+
+
+Yes
+
+
+Stairs (unenclosed), providing access to a rooftop deck on an accessory building, with a staircase width not exceeding 4 feet, so long as the entire staircase abuts and is parallel to the wall of the accessory building
+
+
+No
+
+
+Yes
+
+
+Yes
+
+
+Stairs (unenclosed) providing secondary egress required by the Building Code
+
+
+No
+
+
+Yes[3]
+
+
+Yes
+
+
+Sills, belt courses, cornices, buttresses and other architectural features projecting no more than 3 feet into the setback
+
+
+Yes
+
+
+Yes
+
+
+Yes
+
+
+Steps no more than 6 feet above Grade that are necessary for access to a permitted building or for access to zoning lot from a street or alley
+
+
+Yes
+
+
+Yes
+
+
+Yes
+
+
+Wheelchair lifts and ramps that meet federal, state and local accessibility standards
+
+
+Yes
+
+
+Yes
+
+
+Yes
+
+
+[1]   Subject to the restrictions of Section 17-9-0203-A.
+
+
+[2]   Permitted only when the parking is accessed from a public street where no alley exists.
+
+
+[3]   Permitted only for townhouse developments.
+
+
+   17-17-0310 Building Wall Separation.
+
+
+      17-17-0310-A Measurement. Required building separations are to be measured between the furthermost projection of the structures, not including those projections and features allowed within such setback pursuant to Sec. 17-17-0309.
+
+
+      17-17-0310-B Permitted Obstructions / Encroachments. Required separations must be unobstructed and unoccupied from the ground to the sky except as expressly allowed in Sec. 17-17-0309.
+
+
+   17-17-0311 Building Height.
+
+
+      17-17-0311-A Measurement. The building height of any principal or accessory building is measured as the vertical distance from grade to the highest point of the underside of the top floor's ceiling joist on a building with a flat roof or to the mean height level between eaves and ridge of a gable, hip, mansard, or gambrel roof. For purposes of this provision, "floor" means any enclosed area with a floor-to-ceiling height of 6 feet 9 inches or more.
+
+
+Figure 17-17-0311-A
+
+
+      17-17-0311-B Rooftop Features.
+
+
+         1.   Stairway and elevator enclosures providing access to occupiable rooftops and elevator equipment penthouses are allowed to exceed the maximum building height in accordance with Section 17-17-0311-C.
+
+
+         2.   Solar photovoltaic or solar thermal panels in all districts are allowed to exceed the maximum building height on a building with a flat roof, provided that the panels and supporting structures do not extend beyond the edge of the roof and do not exceed 9 feet in overall height or extend more than 5 feet above the parapet, whichever results in a lesser height.
+
+
+         3.   Solar photovoltaic or solar thermal panels in all districts are not considered when determining building height of a building with a gable, hip, mansard, or gambrel roof, provided that the panels and supporting structures do not extend beyond the edge of the roof, do not extend further than 12 inches vertically above the roof surface at any point, and do not extend vertically above the highest ridgeline of the roof.
+
+
+         4.   Rooftop wind energy systems shall be considered permitted accessory structures within all districts provided they comply with the height limits and setbacks established in this Section. A rooftop energy conversion system shall consist of a wind turbine(s) and associated equipment for converting wind energy to power. Wind energy conversions systems shall be permitted as rooftop accessory structures provided such structures:
+
+
+            (a)   are set back at least 20 feet from the front building line, or in the case of corner lots, at least 15 feet from the front and side building line facing a street.
+
+
+            (b)   are limited to a height of no more than 15 feet above the roof or top of the parapet, whichever is greater.
+
+
+            (c)   comply with all noise limitations of the Chicago Municipal Code.
+
+
+         5.   Pergolas, arbors and trellises located on rooftops of principal buildings or private garages are allowed to exceed the maximum building height, provided that:
+
+
+            (a)   on principal buildings less than 80 feet tall, they are set back at least 20 feet from the front building line, or in the case of comer lots, at least 15 feet from the front building line and side building line facing a street.
+
+
+            (b)   on principal buildings and private garages, they do not exceed 11 feet in overall height above the rooftop deck or extend more than 8 feet above the parapet, whichever is greater.
+
+
+      17-17-0311-C Stairway and Elevator Enclosures and Elevator Equipment Penthouses.
+
+
+         1.   Stairway and elevator enclosures providing access to occupiable rooftops and elevator equipment penthouses in R, B, C and D districts are allowed to exceed the maximum building height or mandatory planned development height threshold and will not be counted as floor area for the purpose of calculating floor area ratio to the extent indicated in the following table:
+
+
+District
+
+
+Enclosure contains
+
+
+Setback 1
+
+
+Maximum Floor Area per enclosure exceeding building height 2
+
+
+Maximum Height 3
+
+
+District
+
+
+Enclosure contains
+
+
+Setback 1
+
+
+Maximum Floor Area per enclosure exceeding building height 2
+
+
+Maximum Height 3
+
+
+R
+
+
+Stairway only
+
+
+20'-0"
+
+
+200 square feet
+
+
+13'-0"
+
+
+Elevator only
+
+
+20'-0"
+
+
+275 square feet
+
+
+19'-6"
+
+
+Elevator and Stairway
+
+
+20'-0"
+
+
+500 square feet
+
+
+19'-6"
+
+
+Elevator Equipment Penthouse
+
+
+20'-0"
+
+
+200 square feet
+
+
+13'-0"
+
+
+B, C or D
+
+
+Stairway only
+
+
+15'-0"
+
+
+300 square feet
+
+
+13'-0"
+
+
+Elevator only
+
+
+15'-0"
+
+
+275 square feet + 175 square feet per elevator car exceeding 1
+
+
+22'-6"
+
+
+Elevator and Stairway
+
+
+15'-0"
+
+
+575 square feet + 175 square feet per elevator car exceeding 1
+
+
+22'-6"
+
+
+Elevator Equipment Penthouse
+
+
+20'-0"
+
+
+200 square feet + 175 square feet per elevator car exceeding 1
+
+
+13'-0"
+
+
+[1]   Measured from the front building line to the nearest outside face of the enclosure.
+
+[2]   Measured in accordance with Section 17-17-0305-A.
+
+[3]   Measured from the underside of the top floor's ceiling joist to the highest point of the enclosure structure.
+
+
+         2.   Stairway and elevator enclosures allowed by this section may only contain stairways, elevator shafts, elevator vestibules, landings, and elevator, mechanical, or fire protection equipment. Enclosures for any other purpose may not exceed the maximum building height for the district and must be included in floor area for the purpose of calculating floor area ratio.
+
+
+         3.   In the case of corner lots, in addition to the setback required from the front building line a setback equal to one half the distance between side building lines is required from the side building line facing a street to the nearest outside face of the enclosure.
+
+
+(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 3-9-05, p. 44391; Amend Coun. J. 3-29-06, p. 73934, § 1; Amend Coun. J. 9-13-06, p. 84870, §§ 2, 3; Amend Coun. J. 10-31-07, p. 12065, § 1; Amend Coun. J. 10-8-08, p. 40951, § 1; Amend Coun. J. 5-12-10, p. 92103, § 1; Amend Coun. J. 4-13-11, p. 115858, § 1; Amend Coun. J. 11-2-11, p. 12143, § 1; Amend Coun. J. 3-14-12, p. 23152, § 2; Amend Coun. J. 3-29-17, p. 45477, §§ 7, 8; Amend Coun. J. 2-19-20, p. 14473, Art. VI, § 28; Amend Coun. J. 4-21-21, p. 29942, § 3; Amend Coun. J. 7-20-22, p. 50878, § 8; Amend Coun. J. 12-14-22, p. 58278, Art. V, § 2)
+
+
+Disclaimer: This Code of Ordinances and/or any other documents that appear on this site may not reflect the most current legislation adopted by the Municipality. American Legal Publishing provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.
+
+For further information regarding the official version of any of this Code of Ordinances or other documents posted on this site, please contact the Municipality directly or contact American Legal Publishing toll-free at 800-445-5588.
+
+Hosted by: American Legal Publishing
+
+
+
+
+
+17-17-0400 Public transit tables.
+
+
+ShareDownloadBookmarkPrint
+
+
+17-17-0400  Public transit tables.
+
+
+Table 17-17-0400-A - CTA and Pace Bus Routes Included
+
+(Bus route names are included only for reference purposes and are subject to change.)
+
+
+Route Name
+
+
+Corridor
+
+
+Route Name
+
+
+Corridor
+
+
+Hyde Park Express / 2
+
+
+South DuSable Lake Shore Drive
+
+
+King Drive / 3
+
+
+King Drive
+
+
+Cottage Grove / 4
+
+
+Cottage Grove
+
+
+Jackson Park Express / 6
+
+
+South DuSable Lake Shore Drive
+
+
+Harrison / 7
+
+
+Harrison
+
+
+Halsted / 8
+
+
+Halsted
+
+
+Ashland / 9
+
+
+Ashland
+
+
+Lincoln / 11
+
+
+Lincoln
+
+
+Roosevelt / 12
+
+
+Roosevelt
+
+
+Jeffery Local / 15
+
+
+Jeffery
+
+
+Madison / 20
+
+
+Madison
+
+
+Cermak / 21
+
+
+Cermak
+
+
+Clark / 22
+
+
+Clark
+
+
+South Shore Express / 26
+
+
+South DuSable Lake Shore Drive
+
+
+Stony Island / 28
+
+
+South DuSable Lake Shore Drive
+
+
+State / 29
+
+
+State
+
+
+South Michigan / 34
+
+
+South Michigan
+
+
+Broadway / 36
+
+
+Broadway
+
+
+Pershing / 39
+
+
+Pershing
+
+
+43rd / 43
+
+
+43rd
+
+
+47th / 47
+
+
+47th
+
+
+Western / 49
+
+
+Western
+
+
+Pulaski / 53
+
+
+Pulaski
+
+
+Pulaski / 53A
+
+
+South Pulaski
+
+
+Cicero / 54
+
+
+Cicero
+
+
+Garfield / 55
+
+
+Garfield
+
+
+Milwaukee / 56
+
+
+Milwaukee
+
+
+Blue Island/26th / 60
+
+
+Blue Island
+
+
+Archer / 62
+
+
+Archer
+
+
+63rd / 63
+
+
+63rd
+
+
+Chicago / 66
+
+
+Chicago Ave.
+
+
+67th-69th-71st / 67
+
+
+67th / 69th / 71st
+
+
+Northwest Highway / 68
+
+
+North Milwaukee
+
+
+Division / 70
+
+
+Division
+
+
+71st/South Shore / 71
+
+
+71st / South Shore
+
+
+North / 72
+
+
+North
+
+
+Armitage / 73
+
+
+Armitage
+
+
+Fullerton / 74
+
+
+Fullerton
+
+
+74th-75th / 75
+
+
+74th / 75th
+
+
+Diversey / 76
+
+
+Diversey
+
+
+Belmont / 77
+
+
+Belmont
+
+
+Montrose / 78
+
+
+Montrose
+
+
+79th / 79
+
+
+79th Street
+
+
+Irving Park / 80
+
+
+Irving Park
+
+
+Lawrence / 81
+
+
+Lawrence
+
+
+Kimball-Homan / 82
+
+
+Kimball-Homan
+
+
+Peterson / 84
+
+
+Bryn Mawr
+
+
+Central / 85
+
+
+Central
+
+
+87th / 87
+
+
+87th
+
+
+Higgins / 88
+
+
+North Milwaukee
+
+
+Austin / 91
+
+
+North Milwaukee
+
+
+Foster / 92
+
+
+Foster
+
+
+95th / 95
+
+
+95th
+
+
+Pulse Milwaukee Line / Pace
+
+
+Milwaukee Ave
+
+
+East 103rd / 106
+
+
+103rd
+
+
+Halsted/95th / 108
+
+
+South Halsted
+
+
+111th/King Drive / 111
+
+
+111th / King
+
+
+Pullman/115th / 115
+
+
+115th / Cottage Grove
+
+
+Michigan/119th / 119
+
+
+119th / Michigan
+
+
+Stockton/LaSalle Express / 134
+
+
+North DuSable Lake Shore Drive
+
+
+Clarendon/LaSalle Express / 135
+
+
+North DuSable Lake Shore Drive
+
+
+Sheridan/LaSalle Express / 136
+
+
+North DuSable Lake Shore Drive
+
+
+Stockton/Michigan Express / 143
+
+
+North DuSable Lake Shore Drive
+
+
+Inner Drive/Michigan Express / 146
+
+
+North DuSable Lake Shore Drive
+
+
+Outer Drive Express / 147
+
+
+North DuSable Lake Shore Drive
+
+
+Clarendon/Michigan Express / 148
+
+
+North DuSable Lake Shore Drive
+
+
+Sheridan / 151
+
+
+Sheridan
+
+
+Devon / 155
+
+
+Devon
+
+
+Streeterville/Taylor / 157
+
+
+Ogden Ave
+
+
+U. of Chicago/Kenwood / 172
+
+
+Hyde Park
+
+
+North Western / 49B
+
+
+North Western
+
+
+South Cicero / 54B
+
+
+South Cicero
+
+
+North Central / 85A
+
+
+North Milwaukee
+
+
+South Halsted / 8A
+
+
+South Halsted
+
+
+Jeffery Jump / J14
+
+
+Jeffery / South DuSable Lake Shore Drive
+
+
+Western Express / X49
+
+
+Western
+
+
+Ashland Express / X9
+
+
+Ashland
+
+
+Table 17-17-0400-B - Bus Line Corridor Roadway Segments
+
+
+Street Name
+
+
+Segment
+
+
+Served by CTA or
+
+Pace Route(s)
+
+
+From
+
+
+To
+
+
+Street Name
+
+
+Segment
+
+
+Served by CTA or
+
+Pace Route(s)
+
+
+From
+
+
+To
+
+
+100th St
+
+
+Torrence Ave
+
+
+Van Vlissingen Rd
+
+
+15, J14
+
+
+103rd St
+
+
+Michigan Ave
+
+
+Torrence Ave
+
+
+15, J14, 106
+
+
+104th St
+
+
+Torrence Ave
+
+
+Commercial Ave
+
+
+71
+
+
+111th St
+
+
+Vincennes Ave
+
+
+Cottage Grove Ave
+
+
+111, 115
+
+
+115th St
+
+
+Vincennes Ave
+
+
+King Dr
+
+
+111, 115
+
+
+119th St
+
+
+Western Ave
+
+
+Michigan Ave
+
+
+111, 115, 119
+
+
+127th St
+
+
+Indiana Ave
+
+
+Michigan Ave
+
+
+34
+
+
+130th St
+
+
+Eberhart Ave
+
+
+Indiana Ave
+
+
+34
+
+
+131st St
+
+
+Ellis Ave
+
+
+Eberhart Ave
+
+
+34
+
+
+133rd St
+
+
+Langley Ave
+
+
+Ellis Ave
+
+
+34
+
+
+16th St
+
+
+Indiana Ave
+
+
+Michigan Ave
+
+
+12
+
+
+25th St
+
+
+Michigan Ave
+
+
+King Dr
+
+
+21
+
+
+25th St
+
+
+Lawndale Ave
+
+
+Central Park Ave
+
+
+82
+
+
+26th St
+
+
+King Dr
+
+
+Michigan Ave
+
+
+21
+
+
+26th St
+
+
+Ogden Ave
+
+
+Blue Island Ave
+
+
+60
+
+
+31st St
+
+
+Komensky Ave
+
+
+Pulaski Rd
+
+
+53
+
+
+31st St
+
+
+Central Park Ave
+
+
+Lawndale Ave
+
+
+82
+
+
+32nd St
+
+
+Lawndale Ave
+
+
+Central Park Ave
+
+
+82
+
+
+35th St
+
+
+Cottage Grove Ave
+
+
+Michigan Ave
+
+
+4
+
+
+41st Street
+
+
+Prairie Ave
+
+
+Michigan Ave
+
+
+39
+
+
+43rd St
+
+
+Cottage Grove Ave
+
+
+Prairie Ave
+
+
+43
+
+
+43rd St
+
+
+LaSalle St
+
+
+State St
+
+
+43
+
+
+47th St
+
+
+Kedzie Ave
+
+
+S DuSable Lake Shore Dr
+
+
+6, 15, 43, 47
+
+
+50th St
+
+
+S Lake Shore Dr
+
+
+Cornell Ave
+
+
+172
+
+
+51st St
+
+
+Wells St
+
+
+Cottage Grove Ave
+
+
+15
+
+
+53rd St
+
+
+Woodlawn Ave
+
+
+Ellis Ave
+
+
+172
+
+
+55th St
+
+
+Cicero
+
+
+Morgan St
+
+
+55
+
+
+55th St
+
+
+Rainey Dr
+
+
+S Hyde Park Blvd
+
+
+55
+
+
+56th St
+
+
+Stony Island Ave
+
+
+S Lake Park Ave
+
+
+15
+
+
+57th Dr
+
+
+57th St
+
+
+S Everett Ave
+
+
+6, 55
+
+
+57th St
+
+
+Stony Island Ave
+
+
+57th Dr
+
+
+6
+
+
+59th St
+
+
+Dorchester Ave
+
+
+Woodlawn Ave
+
+
+172
+
+
+60th St
+
+
+Stony Island Ave
+
+
+Cottage Grove Ave
+
+
+2, 172
+
+
+63rd St
+
+
+Cicero Ave
+
+
+Stony Island Ave
+
+
+63
+
+
+64th St
+
+
+Stony Island Ave
+
+
+Blackstone Ave
+
+
+63
+
+
+67th St
+
+
+S South Shore Dr
+
+
+Rhodes Ave
+
+
+6, 15, 26, 67
+
+
+69th St
+
+
+Western Ave
+
+
+Keefe Ave
+
+
+67, 71
+
+
+71st St
+
+
+Western Ave
+
+
+Kedzie Ave
+
+
+67
+
+
+71st St
+
+
+S South Shore Dr
+
+
+Vincennes Ave
+
+
+6, 26, 71
+
+
+73rd St
+
+
+Exchange Ave
+
+
+Yates Blvd
+
+
+71
+
+
+74th St
+
+
+Damen Ave
+
+
+Loomis Blvd
+
+
+75
+
+
+74th St
+
+
+Racine Ave
+
+
+Eggleston Ave
+
+
+75
+
+
+75th St
+
+
+S South Shore Dr
+
+
+Eggleston Ave
+
+
+71, 75
+
+
+76th St
+
+
+Loomis Blvd
+
+
+Racine Ave
+
+
+75
+
+
+76th St
+
+
+Kostner Ave
+
+
+Cicero Ave
+
+
+79
+
+
+79th St
+
+
+Cicero Ave
+
+
+S South Shore Dr
+
+
+79
+
+
+83rd St
+
+
+Exchange Ave
+
+
+S South Shore Dr
+
+
+26, 71
+
+
+87th St
+
+
+Western Ave
+
+
+Buffalo Ave
+
+
+87, 95
+
+
+91st St
+
+
+Mackinaw Ave
+
+
+Commercial Ave
+
+
+26, 87, 95
+
+
+92nd St
+
+
+Commerical Ave
+
+
+Buffalo Ave
+
+
+95
+
+
+93rd St
+
+
+Stony Island Ave
+
+
+Exchange Ave
+
+
+95
+
+
+93rd St
+
+
+Cottage Grove Ave
+
+
+Woodlawn Ave
+
+
+95
+
+
+95th St
+
+
+Woodlawn Ave
+
+
+Stony Island Ave
+
+
+95
+
+
+95th St
+
+
+Western Ave
+
+
+Cottage Grove Ave
+
+
+3, 4, 95, 106, 111, 115, 119
+
+
+Adams St
+
+
+Michigan Ave
+
+
+Clinton St
+
+
+7, 151
+
+
+Archer Ave
+
+
+Harlem Ave
+
+
+State St
+
+
+62
+
+
+Armitage Ave
+
+
+Pulaski Rd
+
+
+Kostner Ave
+
+
+73
+
+
+Ashland Ave
+
+
+95th St
+
+
+Irving Park Rd
+
+
+9, X9, 63
+
+
+Ashland Ave
+
+
+119th St
+
+
+115th St
+
+
+111, 115
+
+
+Ashland Blvd
+
+
+Pratt Blvd
+
+
+Morse Ave
+
+
+155
+
+
+Balbo Dr
+
+
+Columbus Dr
+
+
+Michigan Ave
+
+
+6,26, J14
+
+
+Belmont Ave
+
+
+Cumberland Ave
+
+
+N Lake Shore Dr W
+
+
+77
+
+
+Blackstone Ave
+
+
+64th St
+
+
+63rd St
+
+
+63
+
+
+Blue Island Ave
+
+
+26th St
+
+
+Cermak Rd
+
+
+60
+
+
+Blue Island Ave
+
+
+Loomis St
+
+
+Racine Ave
+
+
+60
+
+
+Bradley Pl
+
+
+Broadway
+
+
+Halsted St
+
+
+8
+
+
+Broadway
+
+
+Clark St
+
+
+Devon Ave
+
+
+8, 36, 80, 90
+
+
+Bryn Mawr Ave
+
+
+Broadway
+
+
+Lake Shore Dr
+
+
+92, 84
+
+
+Bryn Mawr Ave
+
+
+Central Ave
+
+
+Elston Ave
+
+
+85
+
+
+Buffalo Ave
+
+
+87th St
+
+
+92nd St
+
+
+87, 95
+
+
+Burley Ave
+
+
+92nd St
+
+
+91st St
+
+
+95
+
+
+Canal St
+
+
+Harrison St
+
+
+Washington St
+
+
+7, 60
+
+
+Cannon Dr
+
+
+Stockton Dr
+
+
+Sheridan Rd
+
+
+151
+
+
+Central ave
+
+
+Milwaukee Ave
+
+
+Elston Ave
+
+
+85
+
+
+Central Ave
+
+
+Harrison St
+
+
+Higgins Ave
+
+
+12, 85
+
+
+Central Park Ave
+
+
+25th St
+
+
+Douglas Blvd
+
+
+82
+
+
+Central Park Ave
+
+
+32nd St
+
+
+31st St
+
+
+82
+
+
+Cermak Rd
+
+
+Cicero Ave
+
+
+Michigan Ave
+
+
+3, 21, 60
+
+
+Chicago Ave
+
+
+Austin Blvd
+
+
+Fairbanks Ct
+
+
+3, 26, 66
+
+
+Cicero Ave
+
+
+I-55
+
+
+79th St
+
+
+54B, 55, 63, 79
+
+
+Cicero Ave
+
+
+Montrose Ave
+
+
+Roosevelt Rd
+
+
+54, 60
+
+
+Clarendon Ave
+
+
+Lawrence Ave
+
+
+Irving Park Ave
+
+
+135, 148
+
+
+Clark St
+
+
+Polk St
+
+
+Howard St
+
+
+22, 36, 70
+
+
+Clinton St
+
+
+Madison St
+
+
+Harrison St
+
+
+7, 60, 151
+
+
+Columbus Dr
+
+
+S DuSable Lake Shore Dr
+
+
+Balbo Dr
+
+
+6, 26, J14, 146
+
+
+Columbus Dr
+
+
+Randolph St
+
+
+South Water
+
+
+4
+
+
+Commercial Ave
+
+
+104th St
+
+
+Exchange Ave
+
+
+26, 71, 87
+
+
+Congress Plaza Dr
+
+
+Michigan Ave
+
+
+Ida B Wells Dr
+
+
+7
+
+
+Cornell Ave
+
+
+50th St
+
+
+E Hyde Park Blvd
+
+
+172
+
+
+Cottage Grove Ave
+
+
+111th St
+
+
+35th St
+
+
+4, 95, 115
+
+
+Damen Ave
+
+
+Taylor St
+
+
+Roosevelt Rd
+
+
+12
+
+
+Dearborn St
+
+
+Polk St
+
+
+Division St
+
+
+22, 36, 62, 70, 151
+
+
+Devon Ave
+
+
+Broadway
+
+
+Kedzie Ave
+
+
+36, 155
+
+
+Diversey Ave
+
+
+Kedzie Ave
+
+
+N Lake Shore Dr W
+
+
+76, 77
+
+
+Diversey Ave
+
+
+Natchez Ave
+
+
+Milwaukee Ave
+
+
+76
+
+
+Division St
+
+
+Austin Blvd
+
+
+State St
+
+
+36, 70
+
+
+Dorchester Ave
+
+
+60th St
+
+
+59th St
+
+
+172
+
+
+Douglas Blvd
+
+
+Central Park Ave
+
+
+Homan Ave
+
+
+82
+
+
+E Hyde Park Blvd
+
+
+S Lake Shore Dr
+
+
+Cottage Grove Ave
+
+
+2, 6, 15, 28, 172
+
+
+Eberhart Ave
+
+
+131st St
+
+
+130th St
+
+
+34
+
+
+Ellis Ave
+
+
+133rd St
+
+
+131st St
+
+
+34
+
+
+Ellis Ave
+
+
+53rd St
+
+
+60th St
+
+
+172
+
+
+Elston Ave
+
+
+Byrn Mawr Ave
+
+
+Central Ave
+
+
+85
+
+
+Ewing Ave
+
+
+91st St
+
+
+106th St
+
+
+26
+
+
+Exchange Ave
+
+
+Commercial Ave
+
+
+83rd St
+
+
+26, 71
+
+
+Exchange Ave
+
+
+93rd St
+
+
+92nd St
+
+
+95
+
+
+Exchange Ave
+
+
+75th St
+
+
+73rd St
+
+
+71
+
+
+Fairbanks Ct
+
+
+Chicago Ave
+
+
+Illinois St
+
+
+66
+
+
+Fifth Ave
+
+
+Kostner Ave
+
+
+Harrison St
+
+
+7
+
+
+Foster Ave
+
+
+Lake Shore Dr
+
+
+Milwaukee Ave
+
+
+92, 147
+
+
+Fullerton Ave
+
+
+Grand Ave
+
+
+Halsted St
+
+
+74
+
+
+Gale St
+
+
+Higgins Ave
+
+
+Milwaukee Ave
+
+
+85
+
+
+Grand Ave
+
+
+Streeter Dr
+
+
+State St
+
+
+29, 66
+
+
+Grand Ave
+
+
+Nordica Ave
+
+
+Fullerton Ave
+
+
+74
+
+
+Halsted St
+
+
+79th St
+
+
+Waveland Ave
+
+
+8, 20, 74
+
+
+Halsted St
+
+
+127th St
+
+
+95th St
+
+
+8A, 108
+
+
+Harrison St
+
+
+Paulina St
+
+
+Canal St
+
+
+7, 60
+
+
+Harrison St
+
+
+Central Ave
+
+
+Kostner Ave
+
+
+7
+
+
+Harrison St
+
+
+Fifth Ave
+
+
+Wood St
+
+
+7
+
+
+Harrison St
+
+
+Wells St
+
+
+Financial Pl
+
+
+36
+
+
+Higgins Ave
+
+
+Central Ave
+
+
+Gale St
+
+
+85
+
+
+Homan Ave
+
+
+Douglas Blvd
+
+
+North Ave
+
+
+82
+
+
+Howard St
+
+
+Paulina St
+
+
+Clark St
+
+
+22
+
+
+Ida B Wells Dr
+
+
+Financial Pl
+
+
+Dearborn St
+
+
+36
+
+
+Ida B Wells Dr
+
+
+Congress Plaza Dr
+
+
+State St
+
+
+7, 147
+
+
+Illinois St
+
+
+Dearborn St
+
+
+Streeter Dr
+
+
+29, 36, 66
+
+
+Indiana Ave
+
+
+41st St
+
+
+Pershing Rd
+
+
+39
+
+
+Indiana Ave
+
+
+35th St
+
+
+Michigan Ave
+
+
+4
+
+
+Indiana Ave
+
+
+Roosevelt Rd
+
+
+16th St
+
+
+12
+
+
+Indiana Ave
+
+
+130th St
+
+
+127th St
+
+
+34
+
+
+Inner Lake Shore Dr
+
+
+Belmont Ave
+
+
+W Sheridan Rd
+
+
+135, 146
+
+
+Irving Park Rd
+
+
+Cumberland Ave
+
+
+Lake Shore Dr (local)
+
+
+9, 80, 135, 148
+
+
+Jackson Blvd
+
+
+Clinton St
+
+
+Michigan Ave
+
+
+7, 151
+
+
+Jeffery Blvd
+
+
+Van Vlissingen Rd
+
+
+67th St
+
+
+15, J14
+
+
+Justine St
+
+
+63rd St
+
+
+Ashland/63rd CTA Station
+
+
+63
+
+
+Kedzie Ave
+
+
+48th Pl
+
+
+47th St
+
+
+47
+
+
+Kedzie Ave
+
+
+Milwaukee Ave
+
+
+Diversey Ave
+
+
+76
+
+
+Keefe Ave
+
+
+69th St
+
+
+Rhodes Ave
+
+
+67
+
+
+Kimball Ave
+
+
+North Ave
+
+
+Lincoln Ave
+
+
+82
+
+
+King Dr
+
+
+115th St
+
+
+26th St
+
+
+3, 21, 111, 115
+
+
+Kinzie St
+
+
+Dearborn St
+
+
+State St
+
+
+62
+
+
+Kostner Ave
+
+
+Harrison St
+
+
+Fifth Ave
+
+
+7
+
+
+Lafayette Ave
+
+
+69th St
+
+
+95th St
+
+
+29, 75
+
+
+Lake St
+
+
+State St
+
+
+Michigan Ave
+
+
+146
+
+
+LaSalle Dr
+
+
+Lake Shore Dr
+
+
+Stockton Dr
+
+
+151
+
+
+LaSalle St
+
+
+Pershing Road
+
+
+35th Street
+
+
+39
+
+
+LaSalle St
+
+
+47th St
+
+
+43rd St
+
+
+43
+
+
+Lawndale Ave
+
+
+32nd Ave
+
+
+25th St
+
+
+82
+
+
+Lawrence Ave
+
+
+Milwaukee Ave
+
+
+N Lake Shore Dr W
+
+
+81
+
+
+Lincoln Ave
+
+
+Bryn Mawr Ave
+
+
+Leland Ave
+
+
+11
+
+
+Lincoln Ave
+
+
+Webster Ave
+
+
+Fullerton Ave
+
+
+37, 74
+
+
+Lipps Ave
+
+
+Jefferson Park Blue Line Station
+
+
+Lawrence Ave
+
+
+81
+
+
+Loomis Blvd
+
+
+74th St
+
+
+76th St
+
+
+75
+
+
+Loomis St
+
+
+Cermak Rd
+
+
+Blue Island Ave
+
+
+60
+
+
+Madison St
+
+
+Austin Blvd
+
+
+Michigan Ave
+
+
+20, 60, J14
+
+
+Marine Dr
+
+
+Foster Ave
+
+
+Irving Park Rd
+
+
+81, 136, 146, 148
+
+
+Marquette Rd
+
+
+67th St
+
+
+Promontory Dr
+
+
+67
+
+
+Marshfield Ave
+
+
+117th St
+
+
+119th St
+
+
+111, 115
+
+
+McCormack Blvd
+
+
+Lincoln Ave
+
+
+Devon Ave
+
+
+82
+
+
+McFetridge Dr
+
+
+Museum Campus Dr
+
+
+Columbus Dr
+
+
+146
+
+
+Michigan Ave
+
+
+127th St
+
+
+95th St
+
+
+34, 39, 106, 119
+
+
+Michigan Ave
+
+
+35th St
+
+
+Lake Shore Dr
+
+
+3, 4, 6, 7, 12, 20, 21, 26, 60, J14, 146, 147, 151
+
+
+Milwaukee Ave
+
+
+Division St
+
+
+Foster Ave
+
+
+56, 68, 76, 85/85A, 81, 88, 91, 92
+
+
+Milwaukee Ave
+
+
+W Veterans Place
+
+
+Albion Ave
+
+
+Pulse Milwaukee
+
+
+Montrose Ave
+
+
+Kimball Ave
+
+
+California Ave
+
+
+78
+
+
+Morgan St
+
+
+Garfield Blvd
+
+
+Rainey Dr
+
+
+55
+
+
+Morse Ave
+
+
+Ashland Blvd
+
+
+Sheridan Rd
+
+
+155
+
+
+N Lake Shore Dr W
+
+
+Belmont Ave
+
+
+Diversey Pkwy
+
+
+77
+
+
+North Ave
+
+
+Harlem Ave
+
+
+Clark St
+
+
+72
+
+
+Ogden Ave
+
+
+Pulaski Rd
+
+
+Western Ave
+
+
+157
+
+
+Ogden Ave
+
+
+Roosevelt Rd
+
+
+Polk St
+
+
+12, 157
+
+
+Museum Campus Dr
+
+
+Solidarity Dr
+
+
+McFetridge Dr
+
+
+146
+
+
+Paulina St
+
+
+Rogers Ave
+
+
+Howard St
+
+
+22
+
+
+Paulina St
+
+
+Polk St
+
+
+Harrison St
+
+
+7
+
+
+Pershing Rd
+
+
+Cottage Grove Ave
+
+
+LaSalle St
+
+
+39
+
+
+Polk St
+
+
+Wood St
+
+
+Paulina St
+
+
+7
+
+
+Polk St
+
+
+Clark St
+
+
+State St
+
+
+22, 62
+
+
+Prairie Ave
+
+
+Pershing Road
+
+
+41st Street
+
+
+39
+
+
+Pratt Blvd
+
+
+Sheridan Rd
+
+
+Ashland Blvd
+
+
+155
+
+
+Pulaski Rd
+
+
+31st St
+
+
+Peterson Ave
+
+
+53
+
+
+Pulaski Rd
+
+
+36th St
+
+
+87th St.
+
+
+53A
+
+
+Pulaski Rd
+
+
+99th St
+
+
+115th St
+
+
+53A
+
+
+Racine Ave
+
+
+Blue Island Ave
+
+
+Harrison St
+
+
+60
+
+
+Racine Ave
+
+
+76th St
+
+
+74th St
+
+
+75
+
+
+Rainey Dr
+
+
+Morgan St
+
+
+55th St
+
+
+55
+
+
+Randolph St
+
+
+Michigan Ave
+
+
+Harbor Dr
+
+
+4, 6, 60
+
+
+Rhodes Ave
+
+
+Keefe Ave
+
+
+67th St
+
+
+67
+
+
+Rogers Ave
+
+
+Clark St
+
+
+Paulina St
+
+
+22
+
+
+Roosevelt Rd
+
+
+Central Ave
+
+
+Ogden Ave
+
+
+12
+
+
+Roosevelt Rd
+
+
+Damen Ave
+
+
+Columbus Dr
+
+
+12, 146
+
+
+S Hyde Park Blvd
+
+
+57th Dr
+
+
+E Hyde Park Blvd
+
+
+6, 28, 55
+
+
+S Lake Park Ave
+
+
+56th St
+
+
+47th St
+
+
+2, 6, 15, 28
+
+
+S Lake Shore Dr (local)
+
+
+E Hyde Park Blvd
+
+
+50th St
+
+
+172
+
+
+S South Shore Dr
+
+
+83rd St
+
+
+67th St
+
+
+6, 26, 71
+
+
+Sheridan Rd
+
+
+Foster Ave
+
+
+Howard St
+
+
+92, 136, 147, 155
+
+
+Sheridan Rd
+
+
+Diversey Pkwy
+
+
+Melrose St
+
+
+77, 134, 143, 151
+
+
+Solidarity Dr
+
+
+Planetarium
+
+
+Museum Campus Dr
+
+
+146
+
+
+South Water
+
+
+Columbus Dr
+
+
+Michigan Ave
+
+
+4
+
+
+Southport Ave
+
+
+Clark St
+
+
+Irving Park Rd
+
+
+9
+
+
+State St
+
+
+95th St
+
+
+Division St
+
+
+6, 29, 36, 62, 71, 75, 142, 147
+
+
+Stetson Ave
+
+
+Randolph St
+
+
+Wacker Dr
+
+
+6
+
+
+Stockton Dr
+
+
+LaSalle Dr
+
+
+Cannon Dr
+
+
+151
+
+
+Stony Island Ave
+
+
+56th St
+
+
+95th St
+
+
+2, 6, 15, 26, 28, 63, 95
+
+
+Streeter Dr
+
+
+Illinois St
+
+
+Grand Ave
+
+
+66
+
+
+Taylor St
+
+
+Ogden Ave
+
+
+Damen Ave
+
+
+12
+
+
+Trumbull Ave
+
+
+Cermak Rd
+
+
+Cermak Rd
+
+
+21
+
+
+Torrence Ave
+
+
+112th St
+
+
+100th St
+
+
+71, J14
+
+
+Van Vlissingen Rd
+
+
+100th St
+
+
+Jeffery Blvd
+
+
+15, J14
+
+
+Vincennes Ave
+
+
+69th Red Line Station
+
+
+71st St
+
+
+71
+
+
+Vincennes Ave
+
+
+115th St
+
+
+111th St
+
+
+111
+
+
+W Sheridan Rd
+
+
+Lake Shore Dr
+
+
+N Sheridan Rd
+
+
+80, 151
+
+
+Wacker Dr
+
+
+State St
+
+
+Columbus Dr
+
+
+6
+
+
+Walton St
+
+
+Dearborn St
+
+
+Clark St
+
+
+22, 70
+
+
+Washington St
+
+
+Halsted St
+
+
+Michigan Ave
+
+
+20, 60, J14, 147, 151
+
+
+Waveland Ave
+
+
+Halsted St
+
+
+Broadway
+
+
+8
+
+
+Webster Ave
+
+
+Halsted St
+
+
+Lincoln Ave
+
+
+74
+
+
+Wells St
+
+
+47th St
+
+
+51st St
+
+
+15
+
+
+Wentworth Ave
+
+
+51st St
+
+
+47th St
+
+
+15
+
+
+Western Ave
+
+
+79th St
+
+
+Howard St
+
+
+49, X49, 49B
+
+
+Western Ave
+
+
+95th St
+
+
+87th St
+
+
+95
+
+
+Wood St
+
+
+Harrison St
+
+
+Polk St
+
+
+7
+
+
+Woodlawn Ave
+
+
+93rd St
+
+
+95th St
+
+
+95
+
+
+Woodlawn Ave
+
+
+59th St
+
+
+E Hyde Park Blvd
+
+
+172
+
+
+Yates Ave
+
+
+103rd St
+
+
+100th St
+
+
+15
+
+
+Yates Ave
+
+
+73rd St
+
+
+71st St
+
+
+71
+
+
+(Added Coun. J. 7-20-22, p. 50878, § 8)
+
+
+Disclaimer: This Code of Ordinances and/or any other documents that appear on this site may not reflect the most current legislation adopted by the Municipality. American Legal Publishing provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.
+
+For further information regarding the official version of any of this Code of Ordinances or other documents posted on this site, please contact the Municipality directly or contact American Legal Publishing toll-free at 800-445-5588.
+
+Hosted by: American Legal Publishing
+

@@ -3,6 +3,34 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-04-30 — Lead — Web deployment layer added (Gemini + Flask + Cloud Run)
+
+**Context:** User confirmed Title 17 is already ingested locally. Ollama approach superseded
+by Gemini + Google Cloud Run (mirroring the existing Homicide Bot architecture).
+Decided to extend in-place (not fork) so tool logic stays in one repo.
+
+**Architecture decision:** Single repo, two deployment modes:
+| Mode | Entry point | Use case |
+|---|---|---|
+| MCP stdio | `python -m src.server` | Claude Desktop, Cursor, any MCP client |
+| Web app | `gunicorn web.app:app` | Public Cloud Run URL, browser chat |
+
+**Files added:**
+- `web/__init__.py`, `web/app.py` — Flask app with `/`, `/api/chat`, `/api/health`, `/api/tools`
+- `web/tool_bridge.py` — synchronous wrappers for all 8 tools (calls `src.*` directly)
+- `web/gemini_client.py` — Gemini `google-genai` SDK client with manual function-calling loop + trace
+- `web/templates/index.html` — chat UI (Tailwind CSS, Markdown rendering, tool badges)
+- `.github/workflows/deploy-cloud-run.yml` — CI/CD: tests → build → Cloud Run deploy on push to main
+
+**Files updated:**
+- `Dockerfile` — now installs `.[web]` extras and defaults CMD to gunicorn web server
+- `pyproject.toml` — added `[web]` optional deps: `flask`, `google-genai`, `gunicorn`
+
+**Secrets required (one-time human setup):**
+1. Store Gemini API key in GCP Secret Manager: `gcloud secrets create gemini-api-key --data-file=-`
+2. Set GitHub secrets: `WIF_PROVIDER`, `WIF_SERVICE_ACCOUNT`, `GCP_PROJECT_ID`
+3. Set up Workload Identity Federation (see DEPLOYMENT.md in Homicide Bot repo for guide)
+
 ### 2026-04-22 — Squad Coordinator — Closeout complete; project ready for human handoff
 
 **Context:** Final closeout pass was triggered by Maestro after the Validate phase confirmed

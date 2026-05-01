@@ -36,9 +36,6 @@ coverage.xml
 .mypy_cache/
 .pytype/
 
-# Title 17 raw text and generated index (must be built manually)
-data/title_17/
-
 # Editors / IDEs
 .vscode/
 .idea/

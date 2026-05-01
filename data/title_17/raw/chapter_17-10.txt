@@ -1,0 +1,2211 @@
+
+
+17-10-0100 General.
+
+
+ShareDownloadBookmarkPrint
+
+
+17-10-0100  General.
+
+
+   17-10-0101 Applicability.
+
+
+      17-10-0101-A New Development. Unless otherwise expressly stated, the parking and loading standards of this chapter apply to all new buildings constructed and all new uses established in all zoning districts.
+
+
+      17-10-0101-B Expansions and increases in intensity.
+
+
+         1.   Nonresidential Uses.
+
+
+            (a)   Unless otherwise expressly stated, the parking and loading standards of this chapter apply when an existing nonresidential building or nonresidential use is expanded or enlarged by 15% or more. This provision applies to the addition of floor area, seating capacity, employees or other units of measurement used for establishing off-street parking and loading requirements.
+
+
+            (b)   In the case of nonresidential buildings or nonresidential uses that have been in lawful existence for 50 or more years, the parking and loading standards of this chapter apply when the building or use is expanded or enlarged by 25% or more.
+
+
+            (c)   In the case of nonresidential building or use expansions triggering requirements for additional parking, such additional off-street parking and loading spaces are required only to serve the enlarged or expanded area, not the entire building or use.
+
+
+         2.   Residential Uses.
+
+
+            (a)   Unless otherwise expressly stated, the parking and loading standards of this chapter apply whenever additional dwelling units are added to an existing residential building or other residential use. In such cases, additional off-street parking and loading spaces are required only to serve the added dwelling units. While a lawfully existing off-street parking deficit is not required to be eliminated when additional dwelling units are added to a building, existing off-street parking spaces may not be reduced below, or if already less than, may not be further reduced further below minimum required parking ratios. The Zoning Administrator is authorized to require that applicants provide reasonable evidence showing the existing number of dwelling units and the existing number of off-street parking spaces. The intent of this provision is to ensure that existing parking deficits are not increased as a result of additions containing dwelling units. If the residential building or other residential use has been in lawful existence for 20 or more years, the parking and loading standards of this chapter apply when 2 or more dwelling units are added.
+
+
+      17-10-0101-C Change of Use (Nonresidential).
+
+
+         1.   Unless otherwise expressly stated, when the use of property changes, off-street parking and loading facilities must be provided to serve nonresidential uses only when the number of parking or loading spaces required for the new nonresidential use exceeds the number of spaces required for the use that most recently occupied the building, based on the minimum parking standards of this Zoning Ordinance. In other words, "credit" is given to the most recent use of the property for the number of parking spaces that would be required now; a new nonresidential use is not required to "make up" the existing deficit.
+
+
+         2.   If the building in which the change of use occurs has been in lawful existence for 50 or more years, additional parking and loading facilities must be provided only when the number of parking or loading spaces required for the new nonresidential use exceed by 25% or more the number of spaces that would have been required for the use that most recently occupied the building based on the minimum parking standards of this Zoning Ordinance. In such cases, additional parking and loading spaces must be provided only in the amount by which the number of parking or loading spaces required for the new nonresidential use exceed 125% of the number of spaces that would have been required for the use that most recently occupied the building (based on existing parking ratios).
+
+
+         3.   Notwithstanding any other provision of the code to the contrary, no credit for required off-street parking or loading space shall be given to any building, or any part thereof, in which the change is to a use as an industrial private event venue.
+
+
+   17-10-0102 Off-street Parking Exemptions and Reductions.
+
+
+      17-10-0102-A Landmarks.
+
+
+         1.   No additional off-street parking or loading spaces are required for rehabilitation or reuse of an official Chicago Landmark building.
+
+
+         2.   No additional off-street parking or loading spaces are required for rehabilitation or reuse of an existing "contributing building" within an official Chicago Landmark district.
+
+
+         3.   Minimum off-street automobile parking ratios for all uses may be reduced by up to 50 percent from the otherwise applicable standards for the rehabilitation of existing buildings which are 1) designated a National Historic Landmark; or 2) listed individually on the National Register of Historic Places; or 3) listed as a "contributing building" to a Historic District that is listed on the National Register of Historic Places.
+
+
+      17-10-0102-B Transit-Served Locations.
+
+
+         1.   (a)   In all districts except D districts, minimum off-street automobile parking ratios may be reduced by up to 100 percent from the otherwise applicable standards for new construction or rehabilitation or reuse of existing structures located within 2,640 feet of a CTA rail station entrance or exit or within 1,320 feet of a CTA bus line corridor roadway segment listed in Table 17-17-0400-B.
+
+
+            (b)   In D districts, minimum off-street automobile parking ratios may be reduced by up to 50 percent from the otherwise applicable standards for new construction or rehabilitation or reuse of existing structures located within 2,640 feet of a CTA rail station entrance or exit or within 1,320 feet of a CTA bus line corridor roadway segment listed in Table 17-17-0400-B. Any reduction in minimum off-street automobile parking ratios in excess of 50 percent under this Section 17-10-0102-B.1(b) shall be approved only as an administrative adjustment under the provisions of Section 17-13-1003-EE. Any party requesting a reduction in excess of 50 percent under this Section 17-10-0102-B.1(b) shall provide notice to the alderman of the ward in which the subject property is located, and no such reduction shall be approved until at least 10 days after the date that such notice was delivered to the alderman.
+
+
+            (c)   In all districts, minimum off-street automobile parking ratios may be reduced by up to 50 percent from the otherwise applicable standards for new construction or rehabilitation or reuse of existing structures located within 2,640 feet of a METRA rail station entrance or exit. Any reduction in minimum off-street automobile parking ratios in excess of 50 percent under this Section 17-10-0102-B.1(c) shall be approved only as an administrative adjustment under the provisions of Section 17-13-1003-EE. Any party requesting a reduction in excess of 50 percent under this Section 17-10-0102-B.1(c) shall provide notice to the alderman of the ward in which the subject property is located, and no such reduction shall be approved until at least 10 days after the date that such notice was delivered to the alderman.
+
+
+         2.   Residential buildings within 2,640 feet of a CTA or METRA rail station entrance or exit or within 1,320 feet of a CTA bus line corridor roadway segment listed in Table 17-17-0400-B must contain at least one bicycle parking space per dwelling unit.  Non-residential buildings within 2,640 feet of a CTA or METRA rail station entrance or exit or within 1,320 feet of a CTA bus line corridor roadway segment listed in Table 17-17-0400-B must contain at least one bicycle parking space for each automobile parking space that would otherwise be required under the applicable standards of Section 17-10-0200. When such calculations for residential buildings or non-residential buildings result in a bicycle parking requirement in excess of 50 bicycle parking spaces, the limits described in Section 17-10-0301-B shall not apply. All bicycle parking design is subject to the regulations of Section 17-10-0302.
+
+
+         3.   The 1,320-foot and 2,640-foot distances specified in this Section must be measured along a straight line between the rail station entrance or exit and the nearest boundary of the lot to be developed or, when applied to a CTA bus line corridor roadway segment listed in Table 17-17-0400-B, between the roadway segment centerline and the nearest boundary of the lot to be developed.
+
+
+         4.   Residential buildings which: i. achieve a mandatory planned development threshold, pursuant to Section 17-8-0513; ii. maximize minimum lot area density for efficiency units, pursuant to Sections 17-2-0313, 17-3-0410 or 17-4-0409; iii. maximize floor area ratio, pursuant to Sections 17-2-0304, 17-3-0403 or 17-4-0405; and, iv. are located within 2,640 feet of a CTA or METRA rail station entrance or exit or within 1,320 feet of a CTA bus line corridor roadway segment listed in Table 17-17-0400-B, may replace, at a 1:1 ratio, square footage required for accessory parking that was reduced pursuant to Section 17-10-0102-B.1 with floor area for on-site affordable square footage, as defined by Section 2-44-085, provided:
+
+
+            a.   the parking is reduced beyond 50% pursuant to Section 17-10-0102-B.1;
+
+
+            b.   the residential unit floor area is provided for new units only, and not for the expansion of allowed units, per 17-10-0102-B(4)(ii) and 17-10-0102-B(4)(iii) above;
+
+
+            c.   notwithstanding any other provision of this Code to the contrary, any affordable units, as defined by Section 2-44-085, as amended (the "ARO"), established in a project pursuant to this Section, shall be subject to all terms and provisions of the ARO until the project is re-established as a non-residential use; and,
+
+
+            d.   the residential unit floor area is provided in the same residential building from which the parking is replaced.
+
+
+            e.   the total number of on-site affordable units in the building equals at least the minimum number of on-site affordable units required by Section 2-44-085, plus the number of additional units added to the building pursuant to this Section.
+
+
+         5.   For projects located within 2,640 feet of a CTA or METRA rail station entrance or exit or within 1,320 feet of a CTA bus line corridor roadway segment listed in Table 17-17-0400-B, minimum off-street automobile parking ratios may be reduced by up to 100 percent for the entire building from the otherwise applicable standards for new construction or rehabilitation or reuse of existing structures if:
+
+
+            a.   50% or more of the dwelling units are either: (i) assisted housing, as defined by Section 2-44-120 or (ii) affordable units, as defined by Section 2-44-085; or
+
+
+            b.   50% or more of the dwelling units are in a residential development otherwise subject to a recorded covenant, lien, regulatory agreement, deed restriction, or similar instrument requiring that units be income restricted to no more than 80% of Area Median Income, as defined by the US Department of Housing and Urban Development, approved or acknowledged by the Department of Housing.
+
+
+      17-10-0102-C Underground Parking. When buildings in "D" zoning districts provide all parking spaces underground, minimum off-street parking ratios are reduced by 50 percent from otherwise applicable standards.
+
+
+      17-10-0102-D Small Dwelling Units. The Zoning Administrator is authorized to approve off-street parking ratio reductions of up to 25 percent for multi-unit residential developments in "D" districts if the Zoning Administrator determines, based on information provided by the applicant, that automobile ownership rates are likely to be lower than minimum off-street parking requirements. In order to qualify for consideration of lower parking ratios under this provision, the building must contain 100 or more dwelling units and the average size of a dwelling unit within the building must be less than 800 square feet.
+
+
+      17-10-0102-E Minimal Parking. When the minimum off-street parking requirements of this chapter result in a requirement to provide fewer than the following number of parking spaces, off-street parking need not be provided:
+
+
+District
+
+
+Parking Waived if Minimum Requirement is for Less than:
+
+
+D dash 5
+
+
+5 spaces
+
+
+D dash 7, 10
+
+
+10 spaces
+
+
+D dash 12, 16
+
+
+50 Spaces
+
+
+      17-10-0102-F Type A Units. When a multi-unit residential building utilizes the incentives in 17-2-0303-B.2 or 17-2-0304-D, minimum off-street parking shall be no greater than 1 space per 8 feet of alley frontage, provided that an accessible parking space shall count as 2 spaces. Fractions in the calculation of the number of required off-street parking spaces shall be rounded down to the nearest whole number. In no circumstance should this provision be interpreted to require a greater number of off-street parking spaces than would otherwise be required.
+
+
+   17-10-0103 Damage or Destruction. When a use that has been damaged or destroyed by fire, collapse, explosion, or other cause is re-established, off-street parking or loading facilities must also be re-established or continued in operation in an amount equal to the number maintained at the time of such damage or destruction. It is not necessary, however, to restore or maintain parking or loading facilities in excess of those required by this Zoning Ordinance for equivalent new uses or construction.
+
+
+(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 3-9-05, p. 44391; Amend Coun. J. 11-19-08, p. 47220, Art. VII, § 1; Amend Coun. J. 6-27-12, p. 30542, § 1; Amend Coun. J. 11-8-12, p. 38872, § 248; Amend Coun. J. 9-11-13, p. 60173, § 7; Amend Coun. J. 11-5-14, p. 96201, § 1; Amend Coun. J. 3-18-15, p. 105476, § 8; Amend Coun. J. 9-24-15, p. 7499, § 8; Amend Coun. J. 2-10-16, p. 18766, § 15; Amend Coun. J. 1-23-19, p. 94981, § 3; Amend Coun. J. 7-20-22, p. 50878, § 6; Amend Coun. J. 7-16-25, p. 30724, § 2)
+
+
+Disclaimer: This Code of Ordinances and/or any other documents that appear on this site may not reflect the most current legislation adopted by the Municipality. American Legal Publishing provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.
+
+For further information regarding the official version of any of this Code of Ordinances or other documents posted on this site, please contact the Municipality directly or contact American Legal Publishing toll-free at 800-445-5588.
+
+Hosted by: American Legal Publishing
+
+
+
+
+
+17-10-0200 Off-street parking ratios.
+
+
+ShareDownloadBookmarkPrint
+
+
+17-10-0200  Off-street parking ratios.
+
+
+   17-10-0201 General. Off-street parking spaces must be provided in accordance with the off-street parking schedules of this section.
+
+
+   17-10-0202 Parking Groups. Each land use listed in the use tables of Sec. 17-2-0200, Sec. 17-3-0200, Sec. 17-4-0200 and Sec. 17-5-0200, is assigned to a parking group which, in turn, establishes the applicable off-street parking standard for the listed use type. The off-street parking standards that apply to each of the parking groups are listed in the off-street parking schedules of this section.
+
+
+   17-10-0203 Districts. Many parking standards vary according to the district in which the use is located. The first column of the off-street parking schedules identifies the zoning districts in which the listed standard applies.
+
+
+   17-10-0204 Minimum Automobile Parking Ratio. The second column of the off-street parking schedules establishes the minimum required off-street automobile parking ratio.
+
+
+   17-10-0205 Maximum Accessory Parking Ratio. In downtown zoning districts, many uses are subject to a maximum accessory parking ratio. The third column of off-street parking schedule 2 establishes applicable maximum accessory parking ratios. When the number of off-street spaces provided exceeds the stated maximum accessory parking ratio, then each parking space provided in excess of the maximum accessory ratio will be counted as 350 square feet of floor area when calculating the building's floor area and determining compliance with applicable floor area ratio standards. Parking spaces provided in excess of maximum accessory ratios will not be counted as floor area if such spaces are located underground, below the lowest grade level of any abutting street.
+
+
+   17-10-0206 Minimum Bicycle Parking. The final column of the off-street parking schedules establishes the minimum bicycle parking ratio for the parking group.
+
+
+   17-10-0207 Off-Street Parking Schedule 1: Neighborhood Zoning Districts. Schedule "1" presents off-street parking standards for uses in neighborhood zoning districts (i.e., R, B, C and M districts). The off- street parking standards for downtown (D) zoning districts are presented in Sec. 17-10-0208 below. In the event of conflict between this schedule and zoning district use regulations (e.g., this schedule establishes a parking standard for a use not allowed in the underlying zoning district), the zoning district use regulations govern.
+
+
+For a printer-friendly PDF version of Table 17-10-0207, please click here.
+
+
+District
+
+
+Minimum Automobile Parking Ratio (per unit or gross floor area)
+
+
+Minimum Bike Parking
+
+
+District
+
+
+Minimum Automobile Parking Ratio (per unit or gross floor area)
+
+
+Minimum Bike Parking
+
+
+17-10-0207-A Parking Group A.
+
+(Detached Houses, Two-flat, Townhouses)
+
+
+RS1 and RS2
+
+
+2 spaces per unit, provided that off-street parking is not required for detached houses on lots of records that are 33 feet or less in width if the subject lot does not have access to an improved alley and provided further that the Zoning Administrator is authorized to approve an administrative adjustment allowing a minimum of 1 parking space per unit if such reduction will result in more useable open space on the lot (See Sec. 17-13-1003-CC); 1 space per unit for government-subsidized units
+
+
+None
+
+
+RS3
+
+
+2 spaces per unit for detached houses and 1.5 spaces per unit for two-flats, provided that off-street parking is not required for detached houses or two-flats on lots of records that are 33 feet or less in width if the subject lot does not have access to an improved alley and provided further that the Zoning Administrator is authorized to approve an administrative adjustment allowing a minimum of 1 parking space per unit if such reduction will result in more useable open space on the lot (See Sec. 17-13-1003-CC); 1 space per unit for government-subsidized units
+
+
+None
+
+
+All other districts
+
+
+1 space per unit, provided that off-street parking is not required for detached houses or two-flats on lots of records that are 33 feet or less in width if the subject lot does not have access to an improved alley; 1 space per unit for government-subsidized detached houses and two-flats
+
+
+None
+
+
+17-10-0207-B Parking Group B.
+
+(Single-room Occupancy)
+
+
+All districts
+
+
+1 space per 10 units
+
+
+1 per 2 auto spaces in buildings containing 8 or more units
+
+
+17-10-0207-C Parking Group C.
+
+(Multi-Unit, nongovernment-subsidized; based on zoning)
+
+
+R (all)
+
+
+1 space per unit
+
+
+1 per 2 auto spaces in buildings containing 8 or more units
+
+
+B, C dash 1, 1.5, 2
+
+
+1 space per unit
+
+
+B, C dash 3
+
+
+1 space per unit
+
+
+B, C dash 5
+
+
+1 space per unit for first 100 units; 0.60 spaces per unit for all additional units
+
+
+(Multi-Unit, government-subsidized; based on unit size)
+
+
+Less than 600 sq. ft.
+
+
+0.33 spaces per unit
+
+
+1 per 2 auto spaces in buildings containing 8 or more units
+
+
+600 – 1,200 square feet
+
+
+0.70 spaces per unit
+
+
+1,201+ square feet
+
+
+1 space per unit
+
+
+(Note: DPD authorized to grant further reductions for government-subsidized units based on transit availability, auto availability, income levels, availability of shopping and services within walking distance and other pertinent factors)
+
+(Note: Business live/work units shall comply with the off-street parking standards of Parking Group C; provided, however, in the case of buildings constructed prior to August 1, 2012, one business live/work unit per building shall be exempt from such parking standards.)
+
+
+17-10-0207-D Parking Group D.
+
+(Elderly Housing)
+
+
+All
+
+
+0.33 spaces per unit
+
+
+1 per 4 auto spaces in buildings containing 8 or more units
+
+
+17-10-0207-E Parking Group E.
+
+(Universities, Day Care, Parks and Recreation, Postal Service, Public Safety, Schools, Utilities, Business/Trade School)
+
+
+R (All)
+
+B, C, M dash 1, 1.5, 2, 3
+
+
+1 per 3 employees + additional parking and drop-off spaces as determined by Department of Zoning and Land Use Planning
+
+
+1 per 10 auto spaces; minimum 4 spaces
+
+
+B, C, M dash 5
+
+
+None for first 35,000 square feet or 2 × lot area, whichever is greater, then 1.33 spaces per 1,000 square feet
+
+
+17-10-0207-F Parking Group F.
+
+(Cultural Exhibits and Libraries)
+
+
+R (All)
+
+B, C, M dash 1, 1.5 or 2
+
+
+None for first 4,000 square feet then 1 space per 1,000 square feet
+
+
+1 per 10 auto spaces; minimum 4 spaces
+
+
+B, C, M dash 3
+
+
+None for first 10,000 square feet then 2.5 space per 1,000 square feet
+
+
+B, C, M dash 5
+
+
+None for first 35,000 square feet or 2 × lot area, whichever is greater, then 1.33 spaces per 1,000 square feet
+
+
+17-10-0207-G Parking Group G.
+
+(Hospitals)
+
+
+R (All)
+
+B, C, M dash 1, 1.5, 2, 3
+
+
+1 space per 3 beds + 1 per 3 employees + 1 per doctor
+
+
+1 per 10 auto spaces
+
+
+B, C, M dash 5
+
+
+None for first 35,000 square feet or 2 × lot area, whichever is greater, then 1.33 spaces per 1,000 square feet
+
+
+17-10-0207-H Parking Group H.
+
+(Lodges and Private Clubs)
+
+
+R (All)
+
+B, C, M dash 1, 1.5, 2, 3
+
+
+1 per 3 lodging rooms + 1 per 10 persons capacity
+
+
+1 per 10 auto spaces
+
+
+B, C, M dash 5
+
+
+None for first 35,000 square feet or 2 × lot area, whichever is greater, then 1.33 spaces per 1,000 square feet
+
+
+17-10-0207-I Parking Group I.
+
+(Religious Assembly)
+
+
+R (All)
+
+B, C, M dash 1, 1.5, 2, 3
+
+
+1 per 8 seats in auditorium
+
+
+1 per 10 auto spaces
+
+
+B, C, M dash 5
+
+
+None for first 35,000 square feet or 2 × lot area, whichever is greater, then 1.33 spaces per 1,000 square feet
+
+
+17-10-0207-J Parking Group J.
+
+(Adult Use)
+
+
+C, M dash 1, 1.5, 2, 3
+
+
+Entertainment-related: 1 per 10 persons capacity Retail-related: None for first 4,000 square feet then 2.5 spaces per 1,000 square feet
+
+
+1 per 10 auto spaces
+
+
+B, C, M dash 5
+
+
+Entertainment-related: 1 per 10 persons capacity Retail-related: None for first 35,000 square feet or 2 × lot area, whichever is greater, then 1.33 spaces per 1,000 square feet
+
+
+17-10-0207-K Parking Group K.
+
+(Shelter/Boarding Kennel, Veterinary)
+
+
+B, C, M dash 1, 1.5, 2, 3
+
+
+2 spaces for 1,000 square feet not including space used for animal pens and other non-public areas
+
+
+None
+
+
+B, C, M dash 5
+
+
+None for first 35,000 square feet or 2 × lot area, whichever is greater, then 1.33 spaces per 1,000 square feet
+
+
+17-10-0207-L Parking Group L.
+
+(Office, High Technology Office, Animal Sales and Grooming, Communication Service, Financial Services, Business Support Services, Employment Agencies)
+
+
+B, C, M dash 1, 1.5, 2
+
+
+None for first 4,000 square feet then 2 spaces per 1,000 square feet
+
+
+1 per 10 auto spaces
+
+
+B, C, M dash 3
+
+
+None for first 10,000 square feet then 2 spaces per 1,000 square feet
+
+
+B, C, M dash 5
+
+
+None for first 35,000 square feet or 2 × lot area, whichever is greater, then 1.33 spaces per 1,000 square feet
+
+
+17-10-0207-M Parking Group M.
+
+(Retail, Body Art, Eating and Drinking Establishments, Food and Beverage Sales, Participant Sports and Recreation, Fortune Telling, Personal Service, Auto Supply/Accessory Sales, Artist Work or Sales Space, Copying and Reproduction, or Cannabis Business Establishment)
+
+
+B, C, M dash 1, 1.5, 2
+
+
+Health Clubs: as required by Sec. 4-6-020 of the Municipal Code
+
+Participant Sports and Recreation: 1 per 10 persons capacity
+
+All other: None for first 4,000 square feet then 2.5 spaces per 1,000 square feet
+
+
+1 per 5 auto spaces
+
+
+B, C, M dash 3
+
+
+Health Clubs: as required by Sec. 4-6-020 of the Municipal Code
+
+Participant Sports and Recreation: 1 per 10 persons capacity
+
+All other: None for first 10,000 square feet then 2.5 spaces per 1,000 square feet
+
+
+B, C, M dash 5
+
+
+Health Clubs: as required by Sec. 4-6-020 of the Municipal Code
+
+Participant Sports and Recreation: 1 per 10 persons capacity
+
+All other: None for first 35,000 square feet or 2 × lot area, whichever is greater, then 1.33 spaces per 1,000 square feet
+
+
+17-10-0207-N Parking Group N.
+
+(Building Maintenance, Business Equipment Sales and Service, Repair or Laundry Service, Vehicle Sales and Service)
+
+
+B, C, M dash 1, 1.5, 2
+
+
+None for first 4,000 square feet then 1.66 spaces per 1,000 square feet
+
+
+None
+
+
+B, C, M dash 3
+
+
+None for first 10,000 square feet then 1.66 spaces per 1,000 square feet
+
+
+B, C, M dash 5
+
+
+None for first 35,000 square feet or 2 × lot area, whichever is greater, then 1.33 spaces per 1,000 square feet
+
+
+17-10-0207-O Parking Group O.
+
+(Construction Sales and Service)
+
+
+B, C, M dash 1, 1.5, 2, 3
+
+
+1.66 spaces per 1,000 square feet
+
+
+1 per 10 auto spaces
+
+
+B, C, M dash 5D (all)
+
+
+See Off-Street Parking Schedule "2"
+
+
+17-10-0207-P Parking Group P.
+
+(Entertainment and Spectator Sports)
+
+
+B, C, M dash 1, 1.5, 2, 3
+
+
+1 space per 10 persons capacity; none for live theater venues with less than 150 seats
+
+
+1 per 10 auto spaces
+
+
+B, C, M dash 5
+
+
+Indoor Event Venues: 1 space per 10 persons capacity All other: None for first 35,000 square feet or 2 × lot area, whichever is greater, then 1.33 spaces per 1,000 square feet
+
+
+17-10-0207-Q Parking Group Q.
+
+(Group Living, Funeral and Interment, Consulates, Philanthropic Institutions, Day Labor Employment Agency, Residential Storage Warehouse)
+
+
+R (All)
+
+B, C, M dash 1, 1.5, 2, 3
+
+
+As determined by DPD
+
+
+As determined by DPD
+
+
+B, C, M dash 5
+
+
+None for first 35,000 square feet or 2 × lot area, whichever is greater, then 1.33 spaces per 1,000 square feet
+
+
+17-10-0207-R Parking Group R.
+
+(Flea Market, Gas Stations)
+
+
+B, C, M dash 1, 1.5, 2, 3
+
+
+1 space per 3 employees
+
+
+None
+
+
+B, C, M dash 5
+
+
+None for first 35,000 square feet or 2 × lot area, whichever is greater, then 1.33 spaces per 1,000 square feet
+
+
+17-10-0207-S Parking Group S.
+
+(Lodging)
+
+
+R (All)
+
+B, C, M dash 1, 1.5, 2, 3
+
+
+Bed and Breakfast: 1 space per 4 rooms, plus 1 space for owner; none required if guests have access to public parking (non-accessory) facility within 600 feet Hotel/Motel: 1 space per 3 lodging rooms
+
+
+1 per 10 auto spaces
+
+
+B, C, M dash 5
+
+
+None for first 35,000 square feet or 2 × lot area, whichever is greater, then 1.33 spaces per 1,000 square feet
+
+
+17-10-0207-T Parking Group T.
+
+(Medical Service, Children's Activities Facility)
+
+
+R (All)B, C, M dash 1, 1.5, 2, 3
+
+
+None for first 4,000 square feet, then 2.5 spaces per 1,000 square feet
+
+
+1 per 10 auto spaces
+
+
+B, C, M dash 5
+
+
+None for first 35,000 square feet or 2 × lot area, whichever is greater, then 1.33 spaces per 1,000 square feet
+
+
+17-10-0207-U Parking Group U.
+
+(Commercial Garden or Greenhouse, Electronic Data Storage Centers, Industrial)
+
+
+B, C, M dash 1, 1.5, 2, 3
+
+
+1 space per 4 employees
+
+
+1 per 10 auto spaces
+
+
+B, C, M dash 5
+
+
+None for first 35,000 square feet or 2 × lot area, whichever is greater, then 1.33 spaces per 1,000 square feet
+
+
+17-10-0207-V Parking Group V.
+
+(Indoor Special Event)
+
+
+All
+
+
+1 space per 10-persons capacity; none required on-site (i) for events with an estimated attendance of 150 or fewer persons; or (ii) upon proof of an agreement, submitted pursuant to Section 17-10-0604, providing for the use of off-site parking privileges; or (iii) in manufacturing districts, upon proof of an agreement with a licensed valet parking operator in a form acceptable to the Zoning Administrator.
+
+
+None
+
+
+17-10-0207-W Parking Group W.
+
+(Motor Vehicle Repair Shops required to be licensed under Chap. 4-228 of the Chicago Municipal Code)
+
+
+All
+
+
+2 spaces for each repair bay or 300 square feet of vehicle repair space, whichever is greater
+
+
+None
+
+
+   17-10-0208 Off-Street Parking Schedule 2: Downtown Zoning Districts. Schedule "2" presents off-street parking standards for uses in downtown (D) zoning districts. The off-street parking standards for neighborhood zoning districts (i.e., R, B, C and M) are presented in Sec. 17-10-0207 above.
+
+
+For a printer-friendly PDF version of Table 17-10-0208, please click here.
+
+
+District
+
+
+Minimum Automobile Parking Ratio
+
+(Per unit or gross floor area)
+
+
+Maximum Accessory Parking Ratio
+
+(per unit or gross floor area)
+
+
+Minimum Bike Parking
+
+
+District
+
+
+Minimum Automobile Parking Ratio
+
+(Per unit or gross floor area)
+
+
+Maximum Accessory Parking Ratio
+
+(per unit or gross floor area)
+
+
+Minimum Bike Parking
+
+
+Residential Uses
+
+
+D dash 3
+
+
+1 space per dwelling unit
+
+
+2.0 per dwelling unit
+
+
+1 per 2 auto spaces in buildings containing 8 or more units
+
+
+D dash 5
+
+
+1 space per unit for first 100 units; 0.60 spaces per unit for all additional units; subsidized units as determined by DHED
+
+
+1.5 per dwelling unit
+
+
+D dash 7
+
+
+0.7 spaces per dwelling unit
+
+
+DC district: 1.1 per dwelling unit DX and DR districts: 1.1 per dwelling unit for dwelling units containing less than 1,600 square feet of floor area; 1.5 per dwelling unit for dwelling units containing 1,600 square feet of floor area or more
+
+
+D dash 10, 12, 16
+
+
+0.55 spaces per dwelling unit
+
+
+Nonresidential Uses
+
+
+D dash 3
+
+
+None for first 10,000 square feet then 2 spaces per 1,000 square feet
+
+
+None
+
+
+None
+
+
+D dash 5
+
+
+None for first 70,000 square feet or 2 x lot area, whichever is greater, then 0.8 spaces per 1,000 square feet
+
+
+None
+
+
+D dash 7, 12, 16
+
+
+No minimums in dash 7, 12 or 16 except for the following:
+
+
+Hotels with more than 15,000 square feet of meeting, conference or banquet area: 1 space per 1,000 square feet
+
+
+Theaters and other indoor entertainment and spectator sport facilities with seating capacity of more than 1,000: 1 space per 20 seats when located in a DX district (none required in DC)
+
+
+Maximum accessory parking ratio in DC and DX dash 7, 12 and 16:
+
+
+Hotels: 1 space per 400 square feet of assembly space (i.e. meeting, conference or banquet area) + 1 space per 10 rooms in DC and 1 space per 5 rooms in DX
+
+
+Offices: 1 space per 2,800 square feet of gross floor area
+
+
+Retail: 1 space per 1,000 square feet in DC; 2.5 per 1,000 square feet in DX
+
+
+Restaurant: 1 space per 1,000 square feet in DC; 3 per 1,000 square feet in DX
+
+
+Theaters and other indoor entertainment and spectator sport facilities: 1 space per 10 seats in DC; 1 per 5 seats in DX
+
+
+(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 3-9-05, p. 44381; Amend Coun. J. 3-9-05, p. 44391; Amend Coun. J. 11-30-05, p. 62719; Amend Coun. J. 9-13-06, p. 84870, § 2; Amend Coun. J. 11-19-08, p. 47220, Art. VII, § 1; Amend Coun. J. 5-12-10, p. 91343, § 4; Amend Coun. J. 11-17-10, p. 106597, Art. IX, § 11; Amend Coun. J. 9-8-11, p. 7541, § 8; Amend Coun. J. 5-9-12, p. 27485, § 193; Amend Coun. J. 6-27-12, p. 30744, § 2; Amend Coun. J. 11-8-12, p. 38872, §§ 249, 250; Amend Coun. J. 11-26-13, p. 67481, Art. I, § 30; Amend Coun. J. 7-30-14, p. 86194, § 7; Amend Coun. J. 10-16-19, p. 7854, § 7; Amend Coun. J. 1-18-23, p. 59 796, § 9; Amend Coun. J. 7-17-24, p. 14728, § 4)
+
+
+Disclaimer: This Code of Ordinances and/or any other documents that appear on this site may not reflect the most current legislation adopted by the Municipality. American Legal Publishing provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.
+
+For further information regarding the official version of any of this Code of Ordinances or other documents posted on this site, please contact the Municipality directly or contact American Legal Publishing toll-free at 800-445-5588.
+
+Hosted by: American Legal Publishing
+
+
+
+
+
+17-10-0300 Bicycle parking.
+
+
+ShareDownloadBookmarkPrint
+
+
+17-10-0300  Bicycle parking.
+
+
+   17-10-0301 Spaces Required. Except as expressly stated in Section 17-10-0301-B, bicycle parking must be provided in accordance with the off-street parking ratios of Section 17-10-0200.
+
+
+      17-10-0301-A Unless otherwise expressly stated, whenever bicycle parking is required, at least 2 bicycle spaces must be provided.
+
+
+      17-10-0301-B No use is required to provide more than 50 bicycle parking spaces.
+
+
+      17-10-0301-C The Zoning Administrator is authorized to approve an administrative adjustment reducing the number of bicycle spaces required for a particular use in accordance with Sec. 17-13-1003-GG.
+
+
+   17-10-0302 Design and Location.
+
+
+      17-10-0302-A Required bicycle parking spaces for nonresidential uses must have minimum dimensions of 2 feet in width by 6 feet in length, with a minimum overhead vertical clearance of 7 feet. Racks and other fixtures used to provide required bicycle parking for nonresidential uses must be of a design that is approved by the Chicago Department of Transportation. Such fixtures must be affixed securely to the ground or a building, to which a bicycle may be locked or chained. Bicycle racks are not required for bicycle parking associated with residential uses. Required bicycle parking for residential uses may be provided in garages, storage rooms and other resident-accessible, secure areas.
+
+
+      17-10-0302-B Required bicycle parking may be located indoors or outdoors. Such spaces must be located on private property unless the Commissioner of the Department of Transportation approves location within the public right-of-way. If required bicycle parking facilities are not visible from the street, signs must be posted indicating their location.
+
+
+      17-10-0302-C A nonresidential use may use up to two vehicle parking spaces required under this Chapter as space for providing bicycle parking.
+
+
+      17-10-0302-D Space within dwelling units or on balconies may not be counted toward satisfying bicycle parking requirements.
+
+
+      17-10-0302-E Areas used for required bicycle parking must be:
+
+
+         1.   paved and drained to be reasonably free of mud, dust, and standing water; and
+
+
+         2.   well-lighted.
+
+
+   17-10-0303 Non-accessory Parking. A non-accessory parking facility must provide bicycle parking area equivalent to 2 parking spaces if the facility has more than 250 parking spaces. The space must contain lockers, hard covers or shells, or other similar structures or devices in which bicycles may be individually covered and locked.
+
+
+(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 11-8-12, p. 38872, § 251; Amend Coun. J. 9-11-13, p. 60173, § 11; Amend Coun. J. 7-20-22, p. 50878, § 6)
+
+
+Disclaimer: This Code of Ordinances and/or any other documents that appear on this site may not reflect the most current legislation adopted by the Municipality. American Legal Publishing provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.
+
+For further information regarding the official version of any of this Code of Ordinances or other documents posted on this site, please contact the Municipality directly or contact American Legal Publishing toll-free at 800-445-5588.
+
+Hosted by: American Legal Publishing
+
+
+
+
+
+17-10-0400 Calculation rules.
+
+
+ShareDownloadBookmarkPrint
+
+
+17-10-0400  Calculation rules.
+
+
+   The following rules apply when calculating off-street parking requirements.
+
+
+   17-10-0401 Multiple Uses.
+
+
+      17-10-0401-A Unless otherwise approved, lots containing more than one principal use must provide parking in an amount equal to the total of the requirements for all principal uses. (See the shared and cooperative parking provisions of Sec. 17-10-0600 and Sec. 17-10-0800 for possible exceptions)
+
+
+      17-10-0401-B When two or more principal uses are located on a single lot and the applicable parking ratio for such uses exempts a certain portion of the floor area (e.g., the first 4,000 or 10,000 square feet), only one such floor area exemption may be taken.
+
+
+      17-10-0401-C No parking is required for accessory uses unless otherwise expressly stated.
+
+
+   17-10-0402 Fractions. When measurements of the number of required spaces result in a fractional number, any fractional result of 0.5 or more must be rounded up to the next consecutive whole number. Any fractional result of less than 0.5 may be rounded down to the previous consecutive whole number. For example, if a minimum ratio of 2 spaces per 1,000 square feet is applied to a use with 1,900 square feet of floor area, the result (3.8) must be rounded up to 4 spaces.
+
+
+   17-10-0403 Area Measurements.
+
+
+      17-10-0403-A Unless otherwise expressly stated, all area-based (square feet) parking standards must be computed on the basis of gross floor area, which is to be measured as the sum of the gross horizontal area devoted to such use, including accessory storage areas located within sales or working spaces, such as counters, racks, or closets and any basement floor area devoted to retailing activities, to the production or processing of goods, or to business or professional offices. Except as noted in the preceding sentence, "floor area" for purposes of calculating off- street parking requirements does not include: floor area devoted primarily to storage purposes; floor area devoted to off-street parking or loading facilities, including aisles, ramps, and maneuvering space; or basement floor area.
+
+
+      17-10-0403-B For outdoor areas, calculations will be based on the portion of the lot actually being used for the specified purpose.
+
+
+      17-10-0403-C When open land is used for manufacturing, storage, or other operations in a manner similar to indoor operations, such open use of land must be added to floor space in determining the number of off-street parking spaces required
+
+
+   17-10-0404 Occupancy- or Capacity-Based Standards. For the purpose of calculating parking requirements based on employees, students, or occupants, calculations are to be based on the greatest number of persons working on any single shift, the maximum enrollment or the maximum fire-rated capacity, whichever is applicable and whichever results in the greater number of spaces.
+
+
+   17-10-0405 Bench Seating. When seating consists of benches, pews or other similar seating facilities, each 20 linear inches of seating space counts as 1 seat.
+
+
+   17-10-0406 Unlisted Uses. Upon receiving a permit or development application for a use not specifically addressed, the Zoning Administrator is authorized to apply the off-street parking standard specified for the use that the Zoning Administrator deems most similar to the proposed use or require the applicant to submit a parking study or other evidence that will help Zoning Administrator determine the appropriate parking ratio to be applied.
+
+
+   17-10-0407 Public Places of Amusement. There is no special parking requirement for uses that require a public place of amusement (PPA) license. Parking requirements are to be determined solely in accordance with the off-street parking schedules of Sec. 17-10-0200.
+
+
+(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 3-9-05, p. 44391)
+
+
+Disclaimer: This Code of Ordinances and/or any other documents that appear on this site may not reflect the most current legislation adopted by the Municipality. American Legal Publishing provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.
+
+For further information regarding the official version of any of this Code of Ordinances or other documents posted on this site, please contact the Municipality directly or contact American Legal Publishing toll-free at 800-445-5588.
+
+Hosted by: American Legal Publishing
+
+
+
+
+
+17-10-0500 Use of off-street parking areas; leasing of required.
+
+
+ShareDownloadBookmarkPrint
+
+
+17-10-0500  Use of off-street parking areas; leasing of required.
+
+
+   17-10-0501 Required off-street parking areas are to be used solely for the parking of licensed motor vehicles in operating condition. Required spaces may not be used for the display of goods for sale or lease or for long- term storage of vehicles, boats, or recreational vehicles or building materials.
+
+
+   17-10-0502 Required off-street parking spaces are intended to serve residents, tenants, patrons, employees, or guests of the principal use. Off-street parking spaces that are required by this Zoning Ordinance must be maintained for the life of the principal use. Except as expressly allowed by Sec. 17-10-0503, the following are deemed non-accessory parking spaces and may not be counted toward satisfaction of minimum off-street parking requirements:
+
+
+      17-10-0502-A spaces that have been sold to or are owned by persons or entities who do not at the same time also own a dwelling unit used as a residence or other permitted principal use, unless the parking space is rented to or is otherwise being used by residents, tenants, patrons, employees or guests of the principal use; and
+
+
+      17-10-0502-B Spaces used by persons who are not residents, tenants, patrons, employees or guests of the principal use.
+
+
+   17-10-0503 In RM5, RM5.5, RM6, RM6.5, all B and all C districts, and DR dash 3 and DX dash 3 districts, up to 25% of the number of parking spaces required for residential uses may be leased out on a daily, weekly or monthly basis to persons who are not residents, tenants, patrons, employees, or guests of the principal use. In the RM6, RM6.5, B dash 5 and C dash 5 districts, and DR dash 5 and DX dash 5 districts and above, the amount of spaces allowed to be leased out to non-occupants may be increased to 45% if reviewed and approved as a special use in accordance with Sec. 17-13-0900.
+
+
+   17-10-0504 Before a parking garage operator may obtain a license for a public (non-accessory) or accessory garage, the applicant must provide the Zoning Administrator with a written statement declaring that the minimum off-street parking standards for the zoning lot have been satisfied, and that all of the non-accessory parking spaces to be licensed are spaces provided in excess of applicable minimum standards.
+
+
+   17-10-0505 No motor vehicle repair work of any kind is permitted in conjunction with accessory parking facilities located in R, B, DC, DX and DR districts.
+
+
+   17-10-0506 No motor vehicle repair work of any kind is permitted in conjunction with open (outdoor) accessory parking facilities located in C districts.
+
+
+   17-10-0507 No motor vehicle repair work of any kind is permitted in conjunction with open (outdoor) accessory parking facilities located in M districts if such parking facilities are located within 500 feet of a residential or B district.
+
+
+   17-10-0508 In D districts, parking spaces in non-accessory parking facilities may not be used for temporary storage containers.
+
+
+(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 9-13-06, p. 84870, § 2; Amend Coun. J. 6-25-14, p. 84153, § 1)
+
+
+Disclaimer: This Code of Ordinances and/or any other documents that appear on this site may not reflect the most current legislation adopted by the Municipality. American Legal Publishing provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.
+
+For further information regarding the official version of any of this Code of Ordinances or other documents posted on this site, please contact the Municipality directly or contact American Legal Publishing toll-free at 800-445-5588.
+
+Hosted by: American Legal Publishing
+
+
+
+
+
+17-10-0600 Location of off-street parking.
+
+
+ShareDownloadBookmarkPrint
+
+
+17-10-0600  Location of off-street parking.
+
+
+   17-10-0601 RS Districts. The following standards apply in all RS districts.
+
+
+      17-10-0601-A Off-street parking is prohibited in side setbacks and within 20 feet of the front property line. Off-street parking is permitted in a required side setback when accessed by a permitted driveway from the front property line.
+
+
+      17-10-0601-B Required off-street parking spaces for residential uses must be located on the same zoning lot as the dwelling units served.
+
+
+      17-10-0601-C Required off-street parking and non-required accessory parking serving nonresidential uses in RS districts (e.g., religious assembly) must be located on the same zoning lot as the use served, except that such parking may be located off site if approved as a special use. In such cases, the distance between the nearest parking space and the entrance to the use served by such parking may not exceed 600 feet. (See the special use procedures of Sec. 17-13-0900)
+
+
+   17-10-0602 RT, RM and DR Districts. The following standards apply in all RT, RM and DR districts.
+
+
+      17-10-0602-A Off-street parking is prohibited in side setbacks and within a 20-foot setback as measured from the front property line. Off-street parking is permitted in a required side setback when accessed by a permitted driveway from the front property line.
+
+
+      17-10-0602-B Off-street parking spaces required for detached houses, townhouses and two-flats must be located on the same zoning lot as the dwellings served.
+
+
+      17-10-0602-C Required off-street parking and non-required accessory parking serving uses other than detached houses, townhouses and two-flats in RT, RM and DR districts must be located on the same zoning lot as the use served, except that such parking may be located off site if approved as a special use. In such cases, the distance between the nearest parking space and the entrance to the use served by such parking may not exceed 600 feet. Off-site parking spaces accessory to a use in an RT, RM or DR district may not be located in RS1, RS2 or RS3 district. (See the special use procedures of Sec. 17-13-0900)
+
+
+   17-10-0603 B, C, DC, DX, DS and M Districts.
+
+
+      17-10-0603-A In B, C, DC, DX, DS and M districts, all required accessory parking spaces must be located on the same zoning lot as the building or use served, except that:
+
+
+         1.   Required accessory parking serving nonresidential uses in B, C, DC, DX, DS and M districts may be located off site when approved as an administrative adjustment (See Sec. 17-13-1003-FF), provided that:
+
+
+            (a)   the distance between the nearest off-site, accessory parking space and the entrance to the use served by such parking does not exceed 100 feet; and
+
+
+            (b)   the proposed off-site, accessory parking is not located in an R or DR district.
+
+
+         2.   Required accessory parking serving residential or nonresidential uses in B, C, DC, DX, DS and M districts may be located off site when approved as a special use (See Sec. 17-13-0900), provided that the distance between the nearest off-site, accessory parking space and the entrance to the use served by such parking does not exceed 600 feet.
+
+
+      17-10-0603-B Non-required accessory parking serving uses in B, C, DC, DX, DS and M districts may be located off site in any zoning district that allows non-accessory parking.
+
+
+   17-10-0604 Agreement. An agreement providing for the use of off-site parking, executed by the parties involved, must be filed with the Zoning Administrator, in a form approved by the Zoning Administrator. Off-site parking privileges will continue in effect only as long as the agreement, binding on all parties, remains in force. Agreements must guarantee long-term availability of the parking, commensurate with the use served by the parking. If the agreement is no longer in force, then parking must be provided as otherwise required by this chapter.
+
+
+(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 3-9-05, p. 44391; Amend Coun. J. 9-13-06, p. 84870, § 2; Amend Coun. J. 9-11-13, p. 60173, § 10)
+
+
+Disclaimer: This Code of Ordinances and/or any other documents that appear on this site may not reflect the most current legislation adopted by the Municipality. American Legal Publishing provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.
+
+For further information regarding the official version of any of this Code of Ordinances or other documents posted on this site, please contact the Municipality directly or contact American Legal Publishing toll-free at 800-445-5588.
+
+Hosted by: American Legal Publishing
+
+
+
+
+
+17-10-0700 Shared parking.
+
+
+ShareDownloadBookmarkPrint
+
+
+17-10-0700  Shared parking.
+
+
+   17-10-0701 Description. Shared parking represents an arrangement in which two or more nonresidential uses with different peak parking demands (hours of operation) use the same off-street parking spaces to meet their off-street parking requirements.
+
+
+   17-10-0702 Authorization and Criteria.
+
+
+      17-10-0702-A The Zoning Administrator is authorized to approve and administrative adjustment allowing shared parking arrangements for nonresidential uses with different hours of operation. (See Sec. 17-13-1003-HH.)
+
+
+      17-10-0702-B The Zoning Administrator may permit up to 100% of the parking required for a daytime use to be supplied by the off-street parking spaces provided for a nighttime or Sunday use and vice-versa.
+
+
+      17-10-0702-C In order to approve the administrative adjustment for shared parking, the Zoning Administrator must find, based on competent evidence provided by the applicant, that there is no substantial conflict in the principal operating hours of the uses for which the sharing of parking is proposed.
+
+
+   17-10-0703 Uses with Different Hours of Operation.
+
+
+      17-10-0703-A For the purposes of this section, the following uses are considered daytime uses:
+
+
+         1.   Office uses;
+
+
+         2.   Retail uses,
+
+
+         3.   Industrial uses; and
+
+
+         4.   Other similar primarily daytime uses, when authorized by the Zoning Administrator.
+
+
+      17-10-0703-B For the purposes of this section, the following uses are considered nighttime or Sunday uses:
+
+
+         1.   Auditoriums accessory to schools;
+
+
+         2.   Religious assembly facilities;
+
+
+         3.   Entertainment uses;
+
+
+         4.   Eating and drinking establishments; and
+
+
+         5.   Other similar primarily nighttime or Sunday uses, when authorized by the Zoning Administrator.
+
+
+   17-10-0704 Location of Shared Parking Facility. A use for which an application is being made for shared parking must be located within 600 feet walking distance of the shared parking, measured from the entrance of the use to the nearest parking space within the shared parking lot.
+
+
+   17-10-0705 Agreement. An agreement providing for the shared use of parking, executed by the parties involved, must be filed with the Zoning Administrator, in a form approved by the Zoning Administrator. Shared parking privileges will continue in effect only as long as the agreement, binding on all parties, remains in force. Agreements must guarantee long-term availability of the parking, commensurate with the use served by the parking. If the agreement is no longer in force, then parking must be provided as otherwise required by this chapter.
+
+
+(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 11-8-12, p. 38872, § 252; Amend Coun. J. 9-11-13, p. 60173, § 12)
+
+
+Disclaimer: This Code of Ordinances and/or any other documents that appear on this site may not reflect the most current legislation adopted by the Municipality. American Legal Publishing provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.
+
+For further information regarding the official version of any of this Code of Ordinances or other documents posted on this site, please contact the Municipality directly or contact American Legal Publishing toll-free at 800-445-5588.
+
+Hosted by: American Legal Publishing
+
+
+
+
+
+17-10-0800 Cooperative parking.
+
+
+ShareDownloadBookmarkPrint
+
+
+17-10-0800  Cooperative parking.
+
+
+   17-10-0801 Description. Cooperative parking represents an arrangement in which two or more commercial uses provide their required off-street parking in the same parking lot, thereby reducing the number of individual parking lots and the number of curb cuts required to serve such lots. Reduced off-street parking requirements are available as an incentive for providing cooperative parking. Approval of an administrative adjustment is required. (See Sec. 17-13-1003-HH.)
+
+
+   17-10-0802 Authorization. The Zoning Administrator is authorized to approve an administrative adjustment allowing a reduction in the number of off-street parking spaces required when multiple commercial uses provide their off-street parking in the same parking lot, as follows:
+
+
+      17-10-0802-A up to a 20% reduction may be approved when 4 or more commercial uses are involved;
+
+
+      17-10-0802-B up to a 15% reduction may be approved when 3 commercial uses are involved; and
+
+
+      17-10-0802-C up to a 10% reduction may be approved when 2 commercial uses are involved.
+
+
+   17-10-0803 Location of Cooperative Parking Facility. A use for which an application is being made for cooperative parking must be located within 600 feet walking distance of the cooperative parking, measured from the entrance of the use to the nearest parking space within the cooperative parking lot.
+
+
+   17-10-0804 Agreement. An agreement providing for cooperative use of parking must be filed with the Zoning Administrator, in a form approved by the Zoning Administrator. Cooperative parking privileges will continue in effect only as long as the agreement remains in force. Agreements must guarantee long-term availability of the parking, commensurate with the use served by the parking. If the agreement is no longer in force, then parking must be provided as otherwise required by this chapter.
+
+
+(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 9-11-13, p. 60173, § 13)
+
+
+Disclaimer: This Code of Ordinances and/or any other documents that appear on this site may not reflect the most current legislation adopted by the Municipality. American Legal Publishing provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.
+
+For further information regarding the official version of any of this Code of Ordinances or other documents posted on this site, please contact the Municipality directly or contact American Legal Publishing toll-free at 800-445-5588.
+
+Hosted by: American Legal Publishing
+
+
+
+
+
+17-10-0900 Accessible parking (for people with disabilities).
+
+
+ShareDownloadBookmarkPrint
+
+
+17-10-0900  Accessible parking (for people with disabilities).
+
+
+   17-10-0901 Applicability. The accessible parking standards of this section apply to all new parking lots and garages and to changes, improvements and maintenance of existing parking lots and garages, including but not limited to sealcoating, resurfacing, remarking, fencing, curbs, walks and landscaping.
+
+
+   17-10-0902 Required Parking Spaces and Passenger Loading Facilities.
+
+
+      17-10-0902-A Nonresidential Uses. Unless otherwise expressly stated, accessible off-street parking spaces must be provided to serve uses other than nontransient residential uses as follows:
+
+
+Total Off-Street Parking Spaces Provided [1]
+
+
+Minimum Number of Accessible Spaces Required
+
+
+Total Off-Street Parking Spaces Provided [1]
+
+
+Minimum Number of Accessible Spaces Required
+
+
+1 to 25
+
+
+1
+
+
+26 to 50
+
+
+2
+
+
+51 to 75
+
+
+3
+
+
+76 to 100
+
+
+4
+
+
+101 to 150
+
+
+5
+
+
+151 to 200
+
+
+6
+
+
+201 to 300
+
+
+7
+
+
+301 to 400
+
+
+8
+
+
+401 to 500
+
+
+9
+
+
+501 to 1,000
+
+
+2% of total
+
+(rounded up to the nearest whole number)
+
+
+More than 1,000
+
+
+20 plus one for each 100, or fraction thereof, over 1,000
+
+
+[1] Motorcycle and bicycle spaces are not required to be counted in the total number of spaces provided.
+
+
+      17-10-0902-B Nontransient Residential Uses. When off-street parking is provided to serve nontransient residential uses that are required by the Chicago Building Code to have accessible units, Type A units, or Type B units, accessible parking spaces must be provided as follows:
+
+
+Total Off-Street Parking Spaces Provided [1]
+
+
+Minimum Number of Accessible Spaces Required
+
+
+Total Off-Street Parking Spaces Provided [1]
+
+
+Minimum Number of Accessible Spaces Required
+
+
+1 to 50
+
+
+1
+
+
+51 to 100
+
+
+2
+
+
+101 to 150
+
+
+3
+
+
+151 to 200
+
+
+4
+
+
+201 to 250
+
+
+5
+
+
+251 to 300
+
+
+6
+
+
+301 to 350
+
+
+7
+
+
+351 to 400
+
+
+8
+
+
+401 to 450
+
+
+9
+
+
+451 to 500
+
+
+10
+
+
+More than 500
+
+
+2% of total (rounded up to the nearest whole number)
+
+
+[1] Motorcycle and bicycle spaces are not required to be counted in the total number of spaces provided.
+
+
+      17-10-0902-C Medical Facilities. Parking at outpatient facilities, rehabilitation facilities and outpatient physical therapy facilities must be provided as follows:
+
+
+         1.   Outpatient Facilities. At least 10% of patient and visitor parking spaces provided to serve hospital outpatient facilities must be accessible.
+
+
+         2.   Rehabilitation Facilities and Outpatient Physical Therapy Facilities. At least 20% of patient and visitor parking spaces provided to serve rehabilitation facilities and outpatient physical therapy facilities must be accessible.
+
+
+   17-10-0903 Layout and Design.
+
+
+      17-10-0903-A Vehicle Spaces. Accessible parking spaces must be either 8 feet in width (minimum) or 11 feet in width (minimum), must be marked to define the width, and must have an adjacent access aisle complying with Section 17-10-0903-B.
+
+
+      17-10-0903-B Access Aisle. Access aisles serving accessible parking spaces must comply with the following standards:
+
+
+         1.   Width. The combined width of an accessible parking space and its adjacent access aisle must be 16 feet minimum. Access aisles serving parking spaces that are at least 11 feet wide must be at least 5 feet wide. Access aisles serving parking spaces that are less than 11 feet wide must be at least 8 feet wide. For accessible parking spaces exclusively serving the residents of a residential building that contains no more than 19 dwelling units that are either Type A units or Type B units, however, an aisle width of 5 feet and a combined width of 13 feet is allowed.
+
+
+         2.   Length. Access aisles must extend the full length of the accessible parking spaces they serve.
+
+
+         3.   Marking. Access aisles must be marked with diagonal striping so as to discourage parking in them.
+
+
+         4.   Location. Access aisles may not overlap the vehicular way. Access aisles may be placed on either side of the parking space except for angled parking spaces which must have access aisles located on the passenger side of the parking space.
+
+
+         5.   Arrangement. Access aisles must adjoin an accessible route. Two parking spaces, other than diagonal parking spaces, may share a common access aisle.
+
+
+      17-10-0903-C Floor or Ground Surfaces. Parking spaces and access aisles must have surface slopes no steeper than 1:48. Access aisles must be at the same level as the parking spaces they serve. Changes in level are not allowed.
+
+
+      17-10-0903-D Vertical Clearance.
+
+
+         1.   Parking spaces for vans and the vehicle routes leading to such spaces must have a vertical clearance of at least 8 feet 2 inches.
+
+
+         2.   For every 6 or fraction of 6 accessible parking spaces, at least one must provide the vertical clearance required for vans. A van space is not required, however, for parking exclusively serving the residents of a residential building that contains no more than 19 dwelling units that are either Type A units or Type B units.
+
+
+      17-10-0903-E Signs and Identification. Accessible parking spaces and accessible passenger loading zones must be identified by signs. Such signs must comply with the Chicago Building Code.
+
+
+      17-10-0903-F Relationship to Accessible Routes. Accessible parking spaces and access aisles must be designed so that vehicles, when parked, cannot obstruct the required clear width of adjacent accessible routes.
+
+
+      17-10-0903-G Location.
+
+
+         1.   General. Accessible parking spaces must be located on the shortest accessible route of travel from adjacent parking to an accessible building entrance. In parking facilities that do not serve a particular building, accessible parking spaces must be located on the shortest accessible route to an accessible pedestrian entrance to the parking facility. When buildings have multiple accessible entrances with adjacent parking, accessible parking spaces must be dispersed and located near the accessible entrances.
+
+
+         2.   Alternatives.
+
+
+            (a)   In multilevel parking structures, van-accessible parking spaces may be consolidated on a single level.
+
+
+            (b)   The total number of accessible parking spaces may be distributed among parking facilities if substantially equivalent or greater access and usability to people with disabilities is provided in terms of distance from an accessible entrance or entrances, parking fee and user convenience.
+
+
+   17-10-0904 Passenger Loading Zones.
+
+
+      17-10-0904-A Continuous Loading Zones. Where passenger loading zones are provided, one passenger loading zone in every continuous 100 linear feet maximum of loading zone space must be accessible.
+
+
+      17-10-0904-B Medical Facilities. An accessible passenger loading zone must be provided at an accessible entrance to licensed medical and long-term care facilities where people receive physical or medical treatment or care and when the period of stay exceeds 24 hours. A passenger loading zone must be incorporated at the weather-protected entrance required by Chicago Building Code Section 14B-11-1105.3.
+
+
+      17-10-0904-C Valet Parking. An accessible  passenger loading zone must be provided at valet parking services. If at-grade parking is provided, at least one accessible space for self-parking of a vehicle must be provided.
+
+
+      17-10-0904-D Mechanical Access Parking Garages. Mechanical access parking garages must provide at least one accessible passenger loading zone at vehicle drop-off and vehicle pick-up areas.
+
+
+      17-10-0904-E Design.
+
+
+         1.   Vehicle Pull-up Space Size. Accessible passenger loading zones must provide a vehicular pull-up space that is at least 8 feet in width and at least 20 feet in length.
+
+
+         2.   Access Aisle. Accessible passenger loading zones must have an adjacent access aisle that complies with the following:
+
+
+            (a)   Location. Access aisles must adjoin an accessible route. Access aisles may not overlap the vehicular way.
+
+
+            (b)   Width. Access aisles serving vehicle pull-up spaces must be at least 5 feet in width.
+
+
+            (c)   Length. Access aisles must be at least 20 feet in length.
+
+
+            (d)   Marking. Access aisles must be marked so as to discourage parking in them.
+
+
+         3.   Floor Surfaces. Vehicle pull-up spaces and access aisles serving them must have surface slopes no steeper than 1:48. Access aisles must be at the same level as the vehicle pull-up space they serve.
+
+
+         4.   Vertical Clearance. A vertical clearance of at least 9 feet 6 inches must be provided at the following locations:
+
+
+            (a)   Accessible vehicle pull-up spaces;
+
+
+            (b)   Access aisles serving accessible vehicle pull-up spaces;
+
+
+            (c)   A vehicular route from an entrance to the accessible passenger loading zone; and
+
+
+            (d)   A vehicular route from the accessible passenger loading zone to a vehicular exit serving vehicle pull-up spaces.
+
+
+(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 3-9-05, p. 44391; Amend Coun. J. 7-20-22, p. 50878, § 6; Amend Coun. J. 1-18-23, p. 59796, § 8)
+
+
+Disclaimer: This Code of Ordinances and/or any other documents that appear on this site may not reflect the most current legislation adopted by the Municipality. American Legal Publishing provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.
+
+For further information regarding the official version of any of this Code of Ordinances or other documents posted on this site, please contact the Municipality directly or contact American Legal Publishing toll-free at 800-445-5588.
+
+Hosted by: American Legal Publishing
+
+
+
+
+
+17-10-1000 Parking area design.
+
+
+ShareDownloadBookmarkPrint
+
+
+17-10-1000  Parking area design.
+
+
+   The parking area design standards of this section apply to all off-street parking areas.
+
+
+   17-10-1001 Dimensions. Unless otherwise expressly stated, off-street parking areas must comply with the following standards:
+
+
+Dimensions (in feet)
+
+
+Parking Angle
+
+
+45º
+
+
+60º
+
+
+90º
+
+
+Dimensions (in feet)
+
+
+Parking Angle
+
+
+45º
+
+
+60º
+
+
+90º
+
+
+A. Stall Depth to Wall
+
+
+18.4
+
+
+19.7
+
+
+18
+
+
+B. Stall Depth Parallel to Vehicle
+
+
+18
+
+
+18
+
+
+18
+
+
+C. Aisle Width [1][2]
+
+
+12
+
+
+16
+
+
+22
+
+
+D. Stall Depth to Interlock
+
+
+16.4
+
+
+18.2
+
+
+18
+
+
+E. Stall Depth Reduction due to Interlock
+
+
+2
+
+
+1.5
+
+
+0
+
+
+F. Stall Width (Parallel to Aisle)
+
+
+11.3
+
+
+11.1
+
+
+8
+
+
+G. Stall Width Perpendicular to Vehicle
+
+
+8
+
+
+8
+
+
+8
+
+
+Note: For bumper overhang deduct 2 feet from stall-depth-to-wall dimension and 4 feet from wall-to-wall dimensions.
+
+
+[1] Aisle width standards for parking angles of 90º may be reduced to 20 feet when parking stall width is increased to 8.5 feet.
+
+
+[2] Aisle width standards for indoor accessory parking garages in existing buildings that are being rehabbed for residential use may be reduced to 16 feet for parking angles of 90º.
+
+
+Figure 17-10-1001
+
+
+   17-10-1002 Materials and Surfacing. The materials used in the design of off-street parking and circulation areas must be easily maintained and indicative of their function.
+
+
+      17-10-1002-A Surfacing. All off-street parking areas and driveways except those serving detached houses must be improved with a compacted base, not less than 4 inches thick, surfaced with asphaltic concrete, or a comparable all-weather dustless material. Sand or gravel is not considered dustless material.
+
+
+      17-10-1002-B Maintenance. Parking lots must be maintained in a safe operating condition so as not to create a hazard or nuisance. All materials used in the design of paving, lighting fixtures, retaining walls, fences, curbs and benches must be continuously maintained and kept free of debris and hazards.
+
+
+   17-10-1003 Vertical Clearance. All off-street parking spaces must have a vertical clearance of at least 7 feet.
+
+
+   17-10-1004 Access. All off-street parking areas must be designed with appropriate means of vehicular access to a street or alley in a manner that will least interfere with traffic movements. No curb cut or driveway onto a public street property may exceed 25 feet in width.
+
+
+   17-10-1005 Striping. All parking spaces must be clearly marked with striping. Stripes must have a minimum width of 4 inches. Parking stall widths may be measured from the center of the stripe.
+
+
+   17-10-1006 Pedestrian Connections. Surface parking lots containing 150 parking space or more must be designed to provide protected walkways for pedestrians that link store entrances with parking spaces and with public sidewalks along adjacent streets.
+
+
+   17-10-1007 Landscaping. Parking lot landscaping must be provided in accordance with Sec. 17-11-0200.
+
+
+   17-10-1008 Plot Plan.
+
+
+      17-10-1008-A Any application for a zoning certification for any parking lot must include a plot plan – drawn to scale and fully dimensioned – showing all provisions for:
+
+
+         1.   bumper guards;
+
+
+         2.   markings;
+
+
+         3.   surfacing;
+
+
+         4.   screening and landscaping; and
+
+
+         5.   lighting, in compliance with the regulations of this Zoning Ordinance.
+
+
+      17-10-1008-B Any other application for a zoning certification must include a plot plan – drawn to scale and fully dimensioned – showing all off-street parking and loading facilities.
+
+
+   17-10-1009 Multi-level Parking Garages. All parking garages containing 2 or more above-grade parking levels are subject to Site Plan Review pursuant to Sec. 17-13-0800. (See also Sec. 17-11-0206)
+
+
+   17-10-1010 Automotive Lifts.
+
+
+      17-10-1010-A General.
+
+
+         1.   Automotive lifts shall be used only as expressly provided in this Section 17-10-1010 or as expressly approved as part of a planned development. If an automotive lift(s) is expressly approved as part of a planned development, the automotive lift(s) shall be exempt from the standards of this Section 17-10-1010.
+
+
+         2.   Automotive lifts shall be exempt from the following requirements of this code:
+
+
+            (a)   the parking lot dimensions requirements of Section 17-10-1001;
+
+
+            (b)   the parking lot surfacing requirements of Section 17-10-1002;
+
+
+            (c)   the vertical clearance requirements of Section 17-10-1003;
+
+
+            (d)   the striping requirements of Section 17-10-1005; and
+
+
+            (e)   the maximum parking requirements of Sections 17-10-0205 and 17-10-0208 as they relate to the additional parking spaces provided by the use of automotive lifts.
+
+
+         3.   Allowed automotive lifts shall be located wholly within an enclosed building and shall not be visible from outside the building or facility. For purposes of this item (3), an enclosed building shall include a parking facility as defined in Chapter 14B-2.
+
+
+      17-10-1010-B Use In Residential Buildings/Residential Use In Mixed-Use Buildings.
+
+
+         1.   Automotive lifts in residential buildings shall be used only for accessory parking in excess of minimum off-street parking ratios and for any non-accessory parking permitted in the building. Automotive lifts in residential buildings shall not be used to satisfy minimum off-street parking ratios.
+
+
+         2.   Allowed automotive lifts within residential buildings shall be operated by a valet or an attendant employed by the Equipment's owner or owned and operated by an owner or resident of a dwelling unit within the building.
+
+
+      17-10-1010-C Use In Non-Residential Buildings/Non-Residential Use In Mixed-Use Buildings.
+
+
+         1.   In DX12, DC12, DX16 and DC16 district, automotive lifts may be used in non-residential buildings for any accessory parking and non-accessory parking permitted in the building.
+
+
+         2.   Outside the DX12, DC12, DX16 and DC16 districts, automotive lifts may be used in non-residential buildings (i) only for accessory parking in excess of minimum off-street parking ratios; and (ii) for any non-accessory parking permitted in the building; provided, however, that automotive lifts may not be used in non-residential buildings to satisfy minimum off-street parking ratios.
+
+
+         3.   Allowed automotive lifts within non-residential buildings shall be operated by a valet or an attendant employed by the Equipment's owner.
+
+
+   17-10-1011 Electric Vehicle Supply Equipment. This section shall apply to building permit applications for a new construction building project that includes accessory parking or non-accessory parking as described in this section.
+
+
+      17-10-1011-A Residential Buildings.
+
+
+         1.   Where the first building permit application for the project is submitted after October 31, 2020, and before November 1, 2023, new construction of a multi-unit residential building containing five or more dwelling units where on-site parking is provided shall include equipment so that at least 20 percent, and no less than one, of the parking spaces are either EVSE-ready spaces or EVSE-installed spaces.
+
+
+         2.   Where the first building permit application for the project is submitted on or after November 1, 2023, new construction of a residential building intended for household living with accessory parking provided shall include equipment so that 100 percent of the accessory parking spaces serving dwelling units, 20 percent of the accessory parking spaces serving other than dwelling units, and 20 percent of the non-accessory parking spaces are either EVSE-ready spaces or EVSE-installed spaces.
+
+
+         3.   Where the first building permit application for the project is submitted on or after November 1, 2023, new construction of a residential building intended for group living or lodging with accessory parking provided shall include equipment so that 20 percent of parking spaces are either EVSE-ready spaces or EVSE-installed spaces.
+
+
+      17-10-1011-B Nonresidential Buildings. Where the first building permit application for the project is submitted after October 31, 2020, new construction of a building other than a residential building, with 30 or more parking spaces provided shall include equipment so that at least 20 percent of the parking spaces are either EVSE-ready spaces or EVSE-installed spaces.
+
+
+      17-10-1011-C Accessible EVSE-Ready Spaces and EVSE-Installed Spaces. Installation of EVSE-ready spaces or EVSE-installed spaces shall neither increase nor reduce the number, layout, or design of accessible parking spaces required by Chapter 17-10-0900 or 14B-11 of the Municipal Code of Chicago, and any accessible EVSE-ready space or EVSE-installed space shall also be available for use by an automobile that is not an electric vehicle provided such automobile bears an appropriate handicapped parking decal or device. If this section requires the installation of EVSE-ready spaces or EVSE-installed spaces, then the number of accessible parking spaces required by Chapter 17-10-0900 or 14B-11 of the Municipal Code of Chicago that must also be EVSE-ready spaces or EVSE-installed spaces is as follows:
+
+
+Total EVSE-Ready Spaces or
+
+EVSE-Installed Spaces
+
+
+Minimum Number of EVSE-Ready Spaces or EVSE-Installed Spaces Required to Be Accessible Parking Spaces
+
+
+1 to 50
+
+
+1*
+
+
+51 to 75
+
+
+2
+
+
+76 to 100
+
+
+3
+
+
+More than 100
+
+
+3, plus 1 for every 60 additional EVSE-ready spaces or EVSE-installed spaces
+
+
+* An accessible parking space is not required by this section if no accessible parking spaces are required by Section 17-10-0902.
+
+
+For the first required accessible EVSE-ready space or EVSE-installed space, the electric vehicle supply equipment infrastructure may be located so that the electric vehicle supply equipment will be located on an accessible route and may be shared by an accessible parking space and a parking space not required to be accessible. Otherwise, both an accessible parking space and a parking space not required to be accessible must be EVSE-ready spaces or EVSE-installed spaces.
+
+
+      17-10-1011-D Use of EVSE Energy Management System. The required electrical capacity to serve either EVSE-installed spaces or EVSE-ready spaces in a parking area with EVSE-installed spaces connected to an EVSE energy management system may be determined based on the use of an EVSE energy management system that is designed by an Illinois-licensed professional engineer and is capable of providing at least 12 kWh to each space over an 8-hour period when all spaces are occupied by charging electric vehicles (at least 1.5 kW average power delivered).
+
+
+(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 6-29-05, p. 52355; Amend Coun. J. 9-13-06, p. 84870, § 2; Amend Coun. J. 4-10-19, p. 100029, Art. II, § 112; Amend Coun. J. 10-16-19, p. 7867, § 3; Amend Coun. J. 4-24-20, p. 16148, § 2; Amend Coun. J. 12-15-21, p. 42674, § 5; Amend Coun. J. 9-14-23, p. 2842, § 2)
+
+
+Disclaimer: This Code of Ordinances and/or any other documents that appear on this site may not reflect the most current legislation adopted by the Municipality. American Legal Publishing provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.
+
+For further information regarding the official version of any of this Code of Ordinances or other documents posted on this site, please contact the Municipality directly or contact American Legal Publishing toll-free at 800-445-5588.
+
+Hosted by: American Legal Publishing
+
+
+
+
+
+17-10-1100 Off-street loading.
+
+
+ShareDownloadBookmarkPrint
+
+
+17-10-1100  Off-street loading.
+
+
+   17-10-1101 Schedule of Minimum Requirements. Minimum off-street loading ratios are as follows:
+
+
+For a printer-friendly PDF version of Table 17-10-1101, please click here.
+
+
+Use
+
+
+Gross Floor Area (Square Feet)
+
+
+Required Loading Spaces
+
+
+Space Size
+
+(feet)
+
+
+Use
+
+
+Gross Floor Area (Square Feet)
+
+
+Required Loading Spaces
+
+
+Space Size
+
+(feet)
+
+
+Multi-Unit Residential
+
+
+0 – 24,999
+
+
+0
+
+
+10 x 25
+
+
+25,000 – 199,999
+
+
+1
+
+
+200,000+
+
+
+1 per 200,000 sq. ft. or portion thereof
+
+
+Lodging, Group Living and all uses in Public and Public and Civic Use Group)
+
+
+0 – 24,999
+
+
+0
+
+
+10 x 25; 10 x 50 for buildings over 50,000 sq. ft.
+
+
+25,000 – 199,999
+
+
+1
+
+
+200,000+
+
+
+1 per 200,000 sq. ft. or portion thereof
+
+
+Industrial (all uses in Industrial Use Group)
+
+
+0 – 9,999
+
+
+0
+
+
+10 x 25; 10 x 50 for buildings over 20,000 sq. ft.
+
+
+10,000 – 49,999
+
+
+1
+
+
+50,000 – 99,999
+
+
+2
+
+
+100,000+
+
+
+2 + 1 per 100,000 sq. ft. or portion thereof above 100,000 sq. ft.
+
+
+Retail
+
+
+0 – 9,999
+
+
+0
+
+
+NA
+
+
+10,000 – 24,999
+
+
+1
+
+
+10 x 25
+
+
+25,000 – 49,999
+
+
+2
+
+
+10 x 50
+
+
+50,000 – 99,999
+
+
+3
+
+
+10 x 50
+
+
+100,000 – 249,999
+
+
+4
+
+
+10 x 50
+
+
++250,000
+
+
+1 per 200,000 above 250,000
+
+
+10 x 50
+
+
+Entertainment and Spectator Sports
+
+
+0 – 49,999
+
+
+0
+
+
+10 x 50
+
+
+50,000 – 99,999
+
+
+1
+
+
+100,000+
+
+
+1 per 100,000 sq. ft. or portion thereof
+
+
+Commercial (uses in Commercial Use Group for which loading standard is not otherwise specified in this schedule)
+
+
+0 – 24,999
+
+
+0
+
+
+10 x 25
+
+
+25,0000 – 499,999
+
+
+1 per 100,000 sq. ft. or portion thereof
+
+
+500,000+
+
+
+1 per 500,000 sq. ft. or portion thereof
+
+
+Funeral Service
+
+
+0 – 9,999
+
+
+0
+
+
+10 x 25
+
+
+10,000
+
+
+1 per 100,000 sq. ft. or portion thereof
+
+
+   17-10-1102 Special Uses. For special uses other than prescribed for hereinafter, loading spaces adequate in number and size to serve such uses as determined by the Department of Planning and Development must be provided.
+
+
+   17-10-1103 Calculation Rules. The following rules apply when calculating off-street loading requirements.
+
+
+      17-10-1103-A Multiple Uses. Unless otherwise approved, lots containing more than one use must provide loading in an amount equal to the total of the requirements for all uses.
+
+
+      17-10-1103-B Fractions. When measurements of the number of required spaces result in a fractional number, any fractional result of 0.5 or more must be rounded up to the next consecutive whole number. Any fractional result of less than 0.5 may be rounded down to the previous consecutive whole number.
+
+
+      17-10-1103-C Area Measurements.
+
+
+         1.   Unless otherwise expressly stated, all area-based (square feet) loading standards must be computed on the basis of gross floor area, which is to be measured as the sum of the gross horizontal area devoted to such use, including accessory storage areas located within sales or working spaces, such as counters, racks, or closets and any basement floor area devoted to retailing activities, to the production or processing of goods, or to business or professional offices. Except as noted in the preceding sentence, "floor area" for purposes of calculating off-street parking requirements does not include: floor area devoted primarily to storage purposes; floor area devoted to off-street parking or loading facilities, including aisles, ramps, and maneuvering space; or basement floor area.
+
+
+         2.   For outdoor areas, calculations will be based on the portion of the lot actually being used for the specified purpose.
+
+
+         3.   When open land is used for manufacturing, storage, or other operations in a manner similar to indoor operations, such open use of land must be added to floor space in determining the number of off-street loading spaces required.
+
+
+      17-10-1103-D Unlisted Uses. Upon receiving a permit or development application for a use not specifically addressed, the Zoning Administrator must apply the off-street loading standard specified for the use that the Zoning Administrator deems most similar to the proposed use or require that the applicant submit a loading study or other evidence that will help in determining the appropriate loading ratio.
+
+
+   17-10-1104 Location.
+
+
+      17-10-1104-A All required loading spaces must be located on the same zoning lot as the use served.
+
+
+      17-10-1104-B No loading spaces may be located within 25 feet of the nearest point of intersection of any two streets.
+
+
+      17-10-1104-C No loading spaces may be located in a required front setback or side setback.
+
+
+      17-10-1104-D Any loading spaces located in a required rear setback must be open to the sky.
+
+
+   17-10-1105 Use of Off-Street Loading Areas. No motor vehicle repair work or service of any kind is permitted in conjunction with off-street loading facilities provided in any R or B district.
+
+
+   17-10-1106 Design.
+
+
+      17-10-1106-A Size. Required off-street loading spaces must comply with the space size standards of Sec. 17-10-1101 and must have a minimum vertical clearance of 14 feet.
+
+
+      17-10-1106-B Access. Each required off- street loading space must be designed with appropriate means of vehicular access to a street or alley in a manner which will least interfere with traffic movements, subject to approval by the Commissioner of Transportation.
+
+
+      17-10-1106-C Surfacing. All open off-street loading spaces must be improved with a compacted macadam base, not less than 7 inches thick, surfaced with not less than 2 inches of asphaltic concrete or some comparable all-weather dustless material.
+
+
+(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 3-9-05, p. 44391; Amend Coun. J. 11-19-08, p. 47220, Art. VII, § 1; Amend Coun. J. 11-17-10, p. 106597, Art. IX, § 11; Amend Coun. J. 11-26-13, p. 67481, Art. I, § 30)
+
+
+Disclaimer: This Code of Ordinances and/or any other documents that appear on this site may not reflect the most current legislation adopted by the Municipality. American Legal Publishing provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.
+
+For further information regarding the official version of any of this Code of Ordinances or other documents posted on this site, please contact the Municipality directly or contact American Legal Publishing toll-free at 800-445-5588.
+
+Hosted by: American Legal Publishing
+

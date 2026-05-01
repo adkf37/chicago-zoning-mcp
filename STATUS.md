@@ -2,8 +2,8 @@
 
 | Field | Value |
 |---|---|
-| Phase | Closeout (complete) |
-| Last Updated | 2026-04-22 |
+| Phase | Web Deployment (in progress) |
+| Last Updated | 2026-04-30 |
 | Squad Template | data_pipeline |
 | Priority | low |
 | Blocking | None for automated work — see "Needs Human Input" below for manual follow-ups |
@@ -11,7 +11,7 @@
 
 ## Current Objective
 
-**Closeout complete — ready for human handoff.**
+**Adding Gemini + Flask web layer for Google Cloud Run deployment (mirroring Homicide Bot architecture).**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
 - `pytest tests/ -m "not network"` → **109 passed, 5 deselected** ✅
@@ -27,15 +27,17 @@ explicitly out of scope for automated sprint completion (see `sprint.md` Definit
 
 | Item | Blocker | Effort |
 |------|---------|--------|
-| Title 17 ingestion (T3-01–T3-05) | Human must download from amlegal.com | ~2 hrs manual copy-paste |
+| Title 17 ingestion (T3-01–T3-05) | ✅ Done — 16 chapters in `data/title_17/raw/`, 1.1 MB `sections.json` | — |
 | MCP Inspector verification (T4) | Needs local Node.js | ~30 min |
-| Ollama end-to-end testing (T5) | Needs local Ollama | ~1 hr |
+| Ollama end-to-end testing (T5) | Superseded — replacing with Gemini/Cloud Run deployment | closed |
 | Parent repo cross-reference (T6-03) | Human needs access to parent repo | ~15 min |
 
 See `.squad/decisions.md` for full validation evidence and final closeout notes.
 
 ## Recent Activity
 
+- 2026-04-30: Web deployment phase started — adding `web/` (Flask+Gemini) layer + GitHub Actions CI/CD for Cloud Run. Title 17 confirmed already ingested locally. Ollama testing superseded by Gemini approach.
+- 2026-04-30: Web layer complete — `web/app.py`, `web/gemini_client.py`, `web/tool_bridge.py`, `web/templates/index.html`, `.github/workflows/deploy-cloud-run.yml`, updated `Dockerfile` and `pyproject.toml`.
 - 2026-04-22: Closeout complete — all automated acceptance criteria verified; STATUS.md updated
   to "Closeout (complete)"; final closeout notes logged in `.squad/decisions.md`. Remaining
   open items (Title 17 ingestion, MCP Inspector, Ollama, parent repo cross-reference) are
