@@ -1,0 +1,29 @@
+PASS Q1 (1.0s): What is the floor area ratio (FAR) for an RS-3 district?
+PASS Q2 (1.0s): What is the maximum FAR for a DC-16 downtown core district?
+PASS Q3 (0.9s): What category does the RT-4 district fall under?
+PASS Q4 (1.0s): What is the minimum lot area per dwelling unit in RS-3?
+FAIL Q5 (2.8s): Is DC-16 a valid zoning district code?
+  - missing expected text: 'yes'
+  - missing expected tool: lookup_district
+PASS Q6 (1.6s): Compare RS-3 and RT-4 zoning districts. Which has a higher FAR?
+FAIL Q7 (12.3s): What is different about the floor area ratio between B1-1 and B1-3?
+  - missing expected tool: compare_districts
+PASS Q8 (1.4s): How much floor area can I build on a 5,000 sqft lot in RS-3?
+PASS Q9 (1.4s): What is the maximum floor area on a 10,000 sqft lot in DC-16?
+PASS Q10 (1.0s): How many dwelling units can fit on a 7,500 sqft lot zoned RS-3?
+FAIL Q11 (2.3s): What is the zoning district at 233 S Wacker Dr (Willis Tower)?
+  - missing expected text: 'DC-16'
+FAIL Q12 (3.4s): What zoning district are coordinates 41.8789, -87.6359 in?
+  - missing expected text: 'DC-16'
+  - missing expected tool: get_parcel_zoning
+PASS Q13 (1.5s): What happens if you look up zoning for an address in New York City?
+PASS Q14 (2.3s): Give me a link to the Chicago zoning map for Willis Tower's location.
+PASS Q15 (4.9s): Search the zoning code for "accessory dwelling unit".
+PASS Q16 (4.8s): What does the zoning code say about parking requirements?
+PASS Q17 (3.5s): Find zoning code sections about nonconforming uses.
+FAIL Q18 (2.4s): What does section 17-15-0100 say?
+  - missing expected text: 'nonconforming'
+  - missing expected tool: get_zoning_section
+FAIL Q19 (3.8s): What's the zoning at 4521 N Clark St, and how much floor area can I build on a 3,000 sqft lot there?
+  - missing expected tool: calculate_development_envelope
+PASS Q20 (4.3s): Compare RS-3 and RT-4. If my RS-3 lot is 6,000 sqft and got rezoned to RT-4, how many more dwelling units could I build?
