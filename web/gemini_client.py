@@ -8,8 +8,12 @@ import os
 import re
 from typing import Any
 
-from google import genai
-from google.genai import types
+try:
+    from google import genai
+    from google.genai import types
+except ImportError:  # pragma: no cover - web extra is optional in core test installs
+    genai = None
+    types = None
 
 from web.tool_bridge import TOOL_FUNCTIONS
 
@@ -26,11 +30,17 @@ potential, and find relevant sections of Title 17 (the Chicago Zoning Ordinance)
 
 When answering questions:
 1. Determine what the user wants to know.
-2. Use the appropriate tool(s) to retrieve accurate data — never guess at zoning rules.
+2. Use the appropriate tool(s) to retrieve accurate data - never guess at zoning rules.
 3. For address-based questions, call get_parcel_zoning FIRST to find the district code,
    then call lookup_district or calculate_development_envelope with that code.
-4. Provide a clear, concise answer based on the tool results.
-5. If a tool returns an error, explain it helpfully and suggest alternatives.
+4. For coordinate-based zoning questions, call get_parcel_zoning with latitude and longitude.
+5. For questions asking whether a district code is valid, call lookup_district and start
+   the answer with "Yes," when the tool returns a district or "No," when it returns an error.
+6. For questions comparing two district codes, call compare_districts even when the user
+   says "different", "versus", "which is higher", or "what changes" instead of "compare".
+7. For questions that cite an exact Title 17 section number, call get_zoning_section.
+8. Provide a clear, concise answer based on the tool results.
+9. If a tool returns an error, explain it helpfully and suggest alternatives.
 
 Be accurate and cite the district code or section number when relevant."""
 
@@ -65,7 +75,9 @@ FUNCTION_DECLARATIONS = [
         "description": (
             "Compare two Chicago zoning districts side by side. Returns per-field "
             "differences and a summary of what changed. Use after a rezoning or to "
-            "explain what a district change means for development potential."
+            "explain what a district change means for development potential. Use this "
+            "for 'different', 'difference', 'versus', 'vs', 'which has higher FAR', "
+            "and similar two-district questions."
         ),
         "parameters": {
             "type": "object",
@@ -128,7 +140,8 @@ FUNCTION_DECLARATIONS = [
         "description": (
             "Look up the zoning district for a specific Chicago location by street address "
             "or coordinates. Makes live network calls. Use this as the FIRST step for "
-            "address-based questions like 'What zone is 233 S Wacker Dr?'"
+            "address-based or coordinate-based questions like 'What zone is 233 S Wacker Dr?' "
+            "or 'What zoning district are coordinates 41.8789, -87.6359 in?'"
         ),
         "parameters": {
             "type": "object",
@@ -212,8 +225,8 @@ FUNCTION_DECLARATIONS = [
         "name": "get_zoning_section",
         "description": (
             "Retrieve a specific section of Title 17 by its exact section number "
-            "(e.g. '17-3-0102'). Use when you know the section number from a prior "
-            "search_zoning_code result."
+            "(e.g. '17-3-0102'). Use whenever the user's question includes an exact "
+            "section number, even if the user asks 'what does section ... say?'"
         ),
         "parameters": {
             "type": "object",
@@ -239,11 +252,27 @@ class GeminiZoningClient:
 
     MAX_ITERATIONS = 5
     DISTRICT_RE = re.compile(
-        r"\b(?:RS|RT|RM|B|C|M|DX|DC|DR|DS|PMD|PD|POS|T)-?\d+(?:\.\d+)?\b",
+        (
+            r"\b(?:"
+            r"PD|PMD|T|"
+            r"(?:RS|RT|RM|DX|DC|DR|DS|POS)\s*-?\s*\d+(?:\.\d+)?|"
+            r"(?:B|C|M)\s*\d\s*-?\s*\d(?:\.\d+)?"
+            r")\b"
+        ),
         re.IGNORECASE,
+    )
+    SECTION_RE = re.compile(r"\b17-\d{1,2}-\d{3,4}\b", re.IGNORECASE)
+    COORDINATE_RE = re.compile(
+        r"(?<![\d.-])([+-]?\d{1,2}\.\d+)\s*,\s*"
+        r"([+-]?\d{1,3}\.\d+)(?![\d.-])"
     )
 
     def __init__(self, model: str | None = None) -> None:
+        if genai is None or types is None:
+            raise RuntimeError(
+                "google-genai is not installed. Install the web extra with: "
+                "pip install -e .[web]"
+            )
         api_key = os.environ.get("GOOGLE_API_KEY")
         if not api_key:
             raise RuntimeError("GOOGLE_API_KEY environment variable is not set.")
@@ -257,10 +286,14 @@ class GeminiZoningClient:
         """Ask a question, invoking tools as needed.
 
         Returns:
-            (answer, trace) — trace contains tool_calls list and final_answer.
+            (answer, trace) - trace contains tool_calls list and final_answer.
         """
         if os.environ.get("GEMINI_FUNCTION_CALLING", "").lower() not in {"1", "true", "yes"}:
             return self._ask_with_local_context(question)
+
+        deterministic_calls = self._collect_tool_context(question)
+        if deterministic_calls:
+            return self._answer_with_tool_context(question, deterministic_calls)
 
         contents: list[types.Content] = [
             types.Content(role="user", parts=[types.Part(text=question)])
@@ -335,18 +368,30 @@ class GeminiZoningClient:
 
     def _ask_with_local_context(self, question: str) -> tuple[str, dict[str, Any]]:
         """Run local zoning lookups before sending a plain-text Gemini request."""
+        return self._answer_with_tool_context(question, self._collect_tool_context(question))
+
+    def _answer_with_tool_context(
+        self,
+        question: str,
+        tool_calls: list[dict[str, Any]],
+    ) -> tuple[str, dict[str, Any]]:
+        """Ask Gemini to write the final answer from deterministic local tool results."""
         trace: dict[str, Any] = {
             "question": question,
-            "tool_calls": self._collect_tool_context(question),
+            "tool_calls": tool_calls,
             "final_answer": None,
         }
         context = json.dumps(trace["tool_calls"], ensure_ascii=True, default=str, indent=2)
         prompt = (
             f"User question:\n{question}\n\n"
             f"Local zoning tool results as JSON:\n{context or '[]'}\n\n"
-            "Answer using the tool results when present. If no relevant tool result is "
-            "present, answer briefly from general zoning knowledge and say when the user "
-            "should verify against the official Chicago zoning code or map."
+            "Answer using the tool results when present. Do not ignore a successful "
+            "tool result. For validity questions, explicitly start with Yes or No. "
+            "For parcel results, include the zone_class. For calculations, include "
+            "the max_floor_area_sqft and FAR when available. For section lookups, "
+            "include the section number and title. If no relevant tool result is "
+            "present, answer briefly from general zoning knowledge and say when the "
+            "user should verify against the official Chicago zoning code or map."
         )
         try:
             response = self.client.models.generate_content(
@@ -383,10 +428,20 @@ class GeminiZoningClient:
         q_lower = q.lower()
         calls: list[dict[str, Any]] = []
 
-        districts = [d.upper().replace(" ", "") for d in self.DISTRICT_RE.findall(q)]
+        districts = [self._normalize_district_code(d) for d in self.DISTRICT_RE.findall(q)]
         lot_area = self._extract_lot_area(q)
+        section_number = self._extract_section_number(q)
+        coordinates = self._extract_coordinates(q)
 
-        if "compare" in q_lower and len(districts) >= 2:
+        if section_number:
+            self._append_tool_call(
+                calls,
+                "get_zoning_section",
+                {"section_number": section_number},
+            )
+            return calls
+
+        if len(districts) >= 2 and self._looks_like_comparison_question(q_lower):
             self._append_tool_call(
                 calls,
                 "compare_districts",
@@ -410,10 +465,20 @@ class GeminiZoningClient:
             return calls
 
         if "zoning map" in q_lower or ("map" in q_lower and "zoning" in q_lower):
+            latitude, longitude = coordinates or (41.8789, -87.6359)
             self._append_tool_call(
                 calls,
                 "get_zoning_map_url",
-                {"latitude": 41.8789, "longitude": -87.6359, "zoom": 17},
+                {"latitude": latitude, "longitude": longitude, "zoom": 17},
+            )
+            return calls
+
+        if coordinates and self._looks_like_location_question(q_lower):
+            lat, lng = coordinates
+            self._append_tool_call(
+                calls,
+                "get_parcel_zoning",
+                {"latitude": lat, "longitude": lng},
             )
             return calls
 
@@ -433,18 +498,46 @@ class GeminiZoningClient:
         address = self._extract_address(q)
         if address:
             self._append_tool_call(calls, "get_parcel_zoning", {"address": address})
+            zone_class = self._district_from_parcel_result(calls[-1]["result"])
+            if zone_class and lot_area and self._looks_like_development_question(q_lower):
+                self._append_tool_call(
+                    calls,
+                    "calculate_development_envelope",
+                    {"district_code": zone_class, "lot_area_sqft": lot_area},
+                )
+            return calls
+
+        if districts:
+            self._append_tool_call(calls, "lookup_district", {"district_code": districts[0]})
+            if self._looks_like_code_search(q_lower) and any(
+                word in q_lower
+                for word in (
+                    "ordinance",
+                    "code",
+                    "section",
+                    "adu",
+                    "accessory dwelling",
+                    "checklist",
+                    "permit",
+                )
+            ):
+                self._append_tool_call(
+                    calls,
+                    "search_zoning_code",
+                    {"query": q, "max_results": 5},
+                )
             return calls
 
         if self._looks_like_code_search(q_lower):
             self._append_tool_call(calls, "search_zoning_code", {"query": q, "max_results": 5})
             return calls
 
-        if districts:
-            self._append_tool_call(calls, "lookup_district", {"district_code": districts[0]})
-            return calls
-
         if "district" in q_lower and any(word in q_lower for word in ("list", "types", "all")):
-            self._append_tool_call(calls, "list_district_types", {"category": ""})
+            self._append_tool_call(
+                calls,
+                "list_district_types",
+                {"category": self._extract_district_category(q_lower)},
+            )
 
         return calls
 
@@ -465,6 +558,75 @@ class GeminiZoningClient:
             )
         )
 
+    @staticmethod
+    def _looks_like_comparison_question(question_lower: str) -> bool:
+        return any(
+            phrase in question_lower
+            for phrase in (
+                "compare",
+                "different",
+                "difference",
+                "versus",
+                " vs ",
+                "which",
+                "higher",
+                "lower",
+                "more",
+                "less",
+                "changed",
+                "changes",
+                "between",
+                "rezoned",
+                "rezone",
+                "rezoning",
+                "increase",
+                "increases",
+            )
+        )
+
+    @staticmethod
+    def _looks_like_location_question(question_lower: str) -> bool:
+        return any(
+            word in question_lower
+            for word in (
+                "zoning",
+                "zone",
+                "district",
+                "parcel",
+                "coordinates",
+                "location",
+                "address",
+            )
+        )
+
+    @staticmethod
+    def _district_from_parcel_result(result: Any) -> str:
+        if not isinstance(result, dict) or result.get("error"):
+            return ""
+        zone_class = result.get("zone_class")
+        return str(zone_class).strip().upper() if zone_class else ""
+
+    @staticmethod
+    def _extract_district_category(question_lower: str) -> str:
+        categories = {
+            "residential": "Residential",
+            "business": "Business/Shopping",
+            "shopping": "Business/Shopping",
+            "commercial": "Commercial",
+            "manufacturing": "Manufacturing/Industrial",
+            "industrial": "Manufacturing/Industrial",
+            "downtown core": "Downtown Core",
+            "downtown mixed": "Downtown Mixed-Use",
+            "parks": "Parks and Open Space",
+            "open space": "Parks and Open Space",
+            "transportation": "Transportation",
+            "planned development": "Planned Development",
+        }
+        for phrase, category in categories.items():
+            if phrase in question_lower:
+                return category
+        return ""
+
     def _append_tool_call(
         self,
         calls: list[dict[str, Any]],
@@ -473,6 +635,42 @@ class GeminiZoningClient:
     ) -> None:
         logger.info("Calling local tool %s with args %s", name, args)
         calls.append({"name": name, "args": args, "result": self._execute_tool(name, args)})
+
+    @staticmethod
+    def _normalize_district_code(code: str) -> str:
+        normalized = re.sub(r"\s+", "", code.upper())
+        if normalized in {"PD", "PMD", "T"}:
+            return normalized
+
+        if "-" not in normalized:
+            prefix_match = re.match(r"^(RS|RT|RM|DX|DC|DR|DS|POS)(\d+(?:\.\d+)?)$", normalized)
+            if prefix_match:
+                return f"{prefix_match.group(1)}-{prefix_match.group(2)}"
+
+            single_letter_match = re.match(r"^([BCM]\d)(\d(?:\.\d+)?)$", normalized)
+            if single_letter_match:
+                return f"{single_letter_match.group(1)}-{single_letter_match.group(2)}"
+
+        return normalized
+
+    @classmethod
+    def _extract_section_number(cls, question: str) -> str:
+        match = cls.SECTION_RE.search(question)
+        return match.group(0).upper() if match else ""
+
+    @classmethod
+    def _extract_coordinates(cls, question: str) -> tuple[float, float] | None:
+        match = cls.COORDINATE_RE.search(question)
+        if not match:
+            return None
+
+        first = float(match.group(1))
+        second = float(match.group(2))
+        if 41.0 <= first <= 43.0 and -89.0 <= second <= -87.0:
+            return first, second
+        if -89.0 <= first <= -87.0 and 41.0 <= second <= 43.0:
+            return second, first
+        return first, second
 
     @staticmethod
     def _extract_lot_area(question: str) -> float | None:
@@ -489,14 +687,21 @@ class GeminiZoningClient:
     def _extract_address(question: str) -> str:
         if not re.search(r"\b(?:zoning|zone|parcel|address)\b", question, re.IGNORECASE):
             return ""
+
+        cleaned = re.sub(r"\([^)]*\)", "", question)
         match = re.search(
-            r"\b(?:at|for|is)\s+(.+?)(?:\?|$)",
-            question,
+            r"\b(?:located\s+at|address\s+is|at|for|near)\s+(.+?)"
+            r"(?=\s*(?:\?|$)|\s*,?\s+(?:and|then|where|with|so)\b)",
+            cleaned,
             re.IGNORECASE,
         )
         if not match:
             return ""
-        address = match.group(1).strip(" .")
+        address = re.sub(r"\s+", " ", match.group(1)).strip(" .,")
+        if re.fullmatch(r"[+-]?\d+(?:\.\d+)?\s*,\s*[+-]?\d+(?:\.\d+)?", address):
+            return ""
+        if not re.match(r"\d{1,6}\s+\S+", address):
+            return ""
         return address if re.search(r"\d", address) else ""
 
     @staticmethod
@@ -512,8 +717,15 @@ class GeminiZoningClient:
                 "sign regulation",
                 "definition",
                 "ordinance",
+                "zoning code",
                 "code section",
                 "requirements",
+                "requirement",
+                "checklist",
+                "permit",
+                "bonus",
+                "affordable housing",
+                "site plan",
             )
         )
 

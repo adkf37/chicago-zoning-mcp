@@ -1,176 +1,301 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Chicago Zoning MCP — Evaluation Q&A Pairs
-  ==========================================
-  Each <question> has:
-    - tool: the primary MCP tool expected to answer it
-    - type: factual | comparison | geospatial | code_search | multi_step
-    - answer: the verifiable expected value (for automated eval)
-    - notes: optional explanation
+  Chicago Zoning MCP evaluation suite.
+
+  Version 2 expands the original 20 checks with prompt patterns adapted from
+  response-all-models.xlsx, which evaluated a Minneapolis zoning RAG system
+  across question type, prompt complexity, and audience.
+
+  Metadata attributes are used by scripts/eval_live_web.py for grouped pass-rate
+  reporting. Existing fields remain compatible with the original runner:
+    - tool: primary expected tool, or "multi_step"
+    - expected_tools: comma-separated tools for multi-tool questions
+    - answer / answer_contains / answer_regex: automated answer checks
 -->
-<eval_suite name="chicago_zoning_mcp" version="1.0">
+<eval_suite name="chicago_zoning_mcp" version="2.0" source_basis="response-all-models.xlsx">
 
-  <!-- ============================
-       District Lookup (lookup_district)
-       ============================ -->
-
-  <question id="1" tool="lookup_district" type="factual">
+  <!-- Baseline district lookup -->
+  <question id="1" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
     <prompt>What is the floor area ratio (FAR) for an RS-3 district?</prompt>
     <answer>0.9</answer>
-    <notes>RS-3 is the most common single-family residential district in Chicago. FAR 0.9.</notes>
+    <notes>RS-3 FAR is 0.9.</notes>
   </question>
 
-  <question id="2" tool="lookup_district" type="factual">
+  <question id="2" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
     <prompt>What is the maximum FAR for a DC-16 downtown core district?</prompt>
-    <answer>16</answer>
-    <notes>DC-16 is the highest-intensity downtown zone (e.g. Willis Tower area).</notes>
+    <answer_contains>16</answer_contains>
+    <notes>DC-16 FAR is 16.0.</notes>
   </question>
 
-  <question id="3" tool="lookup_district" type="factual">
+  <question id="3" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
     <prompt>What category does the RT-4 district fall under?</prompt>
     <answer>Residential</answer>
-    <notes>RT = Residential Two-Flat, Townhouse and Multi-Unit District.</notes>
+    <notes>RT-4 is residential.</notes>
   </question>
 
-  <question id="4" tool="lookup_district" type="factual">
+  <question id="4" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
     <prompt>What is the minimum lot area per dwelling unit in RS-3?</prompt>
     <answer_contains>2,500</answer_contains>
-    <notes>RS-3 requires approximately 2,500 sqft per dwelling unit.</notes>
+    <notes>RS-3 requires 2,500 sq ft per dwelling unit.</notes>
   </question>
 
-  <question id="5" tool="lookup_district" type="factual">
+  <question id="5" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
     <prompt>Is DC-16 a valid zoning district code?</prompt>
-    <answer>yes</answer>
-    <notes>lookup_district("DC-16") should return a result, not an error.</notes>
+    <answer_contains>yes</answer_contains>
+    <notes>lookup_district("DC-16") should return a valid district.</notes>
   </question>
 
-  <!-- ============================
-       District Comparison (compare_districts)
-       ============================ -->
-
-  <question id="6" tool="compare_districts" type="comparison">
+  <!-- District comparison -->
+  <question id="6" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
     <prompt>Compare RS-3 and RT-4 zoning districts. Which has a higher FAR?</prompt>
-    <answer>RT-4</answer>
-    <notes>RS-3 FAR is 0.9; RT-4 FAR is 1.2. RT-4 is higher density.</notes>
+    <answer_contains>RT-4</answer_contains>
+    <notes>RT-4 FAR is 1.2; RS-3 FAR is 0.9.</notes>
   </question>
 
-  <question id="7" tool="compare_districts" type="comparison">
+  <question id="7" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="google_search" audience="general" data_source="district_reference">
     <prompt>What is different about the floor area ratio between B1-1 and B1-3?</prompt>
     <answer_contains>FAR</answer_contains>
-    <notes>B1-1 FAR is 1.2, B1-3 FAR is 3.0 – compare_districts returns per-field diffs.</notes>
+    <notes>B1-1 FAR is 1.0; B1-3 FAR is 3.0.</notes>
   </question>
 
-  <!-- ============================
-       Development Calculator (calculate_development_envelope)
-       ============================ -->
-
-  <question id="8" tool="calculate_development_envelope" type="factual">
+  <!-- Development calculator -->
+  <question id="8" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
     <prompt>How much floor area can I build on a 5,000 sqft lot in RS-3?</prompt>
-    <answer>4500</answer>
-    <notes>5000 sqft × FAR 0.9 = 4500 sqft max floor area.</notes>
+    <answer_contains>4500</answer_contains>
+    <notes>5000 sqft * FAR 0.9 = 4500 sqft.</notes>
   </question>
 
-  <question id="9" tool="calculate_development_envelope" type="factual">
+  <question id="9" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
     <prompt>What is the maximum floor area on a 10,000 sqft lot in DC-16?</prompt>
-    <answer>160000</answer>
-    <notes>10000 sqft × FAR 16 = 160,000 sqft.</notes>
+    <answer_contains>160000</answer_contains>
+    <notes>10000 sqft * FAR 16 = 160,000 sqft.</notes>
   </question>
 
-  <question id="10" tool="calculate_development_envelope" type="factual">
+  <question id="10" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
     <prompt>How many dwelling units can fit on a 7,500 sqft lot zoned RS-3?</prompt>
-    <answer>3</answer>
-    <notes>RS-3 requires ~2,500 sqft per unit. 7500 / 2500 = 3 units.</notes>
+    <answer_regex>\b(3|three)\b</answer_regex>
+    <notes>7500 / 2500 = 3 units.</notes>
   </question>
 
-  <!-- ============================
-       Geospatial (get_parcel_zoning)
-       ============================ -->
-
-  <question id="11" tool="get_parcel_zoning" type="geospatial" requires_network="true">
+  <!-- Geospatial -->
+  <question id="11" tool="get_parcel_zoning" type="geospatial" requires_network="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="parcel_zoning_api">
     <prompt>What is the zoning district at 233 S Wacker Dr (Willis Tower)?</prompt>
-    <answer>DC-16</answer>
-    <notes>Willis Tower is in the downtown core, zoned DC-16.</notes>
+    <answer_contains>DC-16</answer_contains>
+    <notes>Willis Tower is in DC-16.</notes>
   </question>
 
-  <question id="12" tool="get_parcel_zoning" type="geospatial" requires_network="true">
+  <question id="12" tool="get_parcel_zoning" type="geospatial" requires_network="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="parcel_zoning_api">
     <prompt>What zoning district are coordinates 41.8789, -87.6359 in?</prompt>
-    <answer>DC-16</answer>
-    <notes>These are Willis Tower coordinates — same DC-16 result via lat/lng lookup.</notes>
+    <answer_contains>DC-16</answer_contains>
+    <notes>Coordinates are at Willis Tower.</notes>
   </question>
 
-  <question id="13" tool="get_parcel_zoning" type="geospatial" requires_network="false">
+  <question id="13" tool="get_parcel_zoning" type="geospatial" question_type="factual" prompt_complexity="simple" audience="general" data_source="parcel_zoning_api">
     <prompt>What happens if you look up zoning for an address in New York City?</prompt>
     <answer_contains>outside Chicago</answer_contains>
-    <notes>Addresses outside Chicago should return a graceful error message.</notes>
+    <notes>Outside-Chicago addresses should fail gracefully.</notes>
   </question>
 
-  <!-- ============================
-       Zoning Map URL (get_zoning_map_url)
-       ============================ -->
-
-  <question id="14" tool="get_zoning_map_url" type="factual">
+  <question id="14" tool="get_zoning_map_url" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="parcel_zoning_api">
     <prompt>Give me a link to the Chicago zoning map for Willis Tower's location.</prompt>
     <answer_contains>gisapps.chicago.gov</answer_contains>
-    <notes>get_zoning_map_url should return a URL pointing to the official map viewer.</notes>
+    <notes>Should return the official Chicago map viewer URL.</notes>
   </question>
 
-  <!-- ============================
-       Code Search (search_zoning_code / get_zoning_section)
-       Requires sections.json to be built from Title 17 text.
-       ============================ -->
-
-  <question id="15" tool="search_zoning_code" type="code_search" requires_index="true">
+  <!-- Code search -->
+  <question id="15" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_zoning_code">
     <prompt>Search the zoning code for "accessory dwelling unit".</prompt>
     <answer_contains>17-</answer_contains>
-    <notes>Should return one or more sections from Chapter 17-3 or 17-9 covering ADUs.</notes>
+    <notes>Should return Title 17 section references.</notes>
   </question>
 
-  <question id="16" tool="search_zoning_code" type="code_search" requires_index="true">
+  <question id="16" tool="search_zoning_code" type="code_search" requires_index="true" question_type="summary" prompt_complexity="simple" audience="general" data_source="chicago_zoning_code">
     <prompt>What does the zoning code say about parking requirements?</prompt>
     <answer_contains>parking</answer_contains>
-    <notes>Should return sections from Chapter 17-10.</notes>
+    <notes>Should return Chapter 17-10 or related parking sections.</notes>
   </question>
 
-  <question id="17" tool="search_zoning_code" type="code_search" requires_index="true">
+  <question id="17" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_zoning_code">
     <prompt>Find zoning code sections about nonconforming uses.</prompt>
     <answer_contains>17-15</answer_contains>
     <notes>Nonconforming uses are covered in Chapter 17-15.</notes>
   </question>
 
-  <question id="18" tool="get_zoning_section" type="code_search" requires_index="true">
+  <question id="18" tool="get_zoning_section" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_zoning_code">
     <prompt>What does section 17-15-0100 say?</prompt>
     <answer_contains>nonconforming</answer_contains>
-    <notes>Direct section lookup for the nonconforming use section header.</notes>
+    <notes>Direct section lookup should call get_zoning_section.</notes>
   </question>
 
-  <!-- ============================
-       Multi-step / tool chaining
-       ============================ -->
-
-  <question id="19" tool="multi_step" type="multi_step" requires_network="true">
-    <prompt>
-      What's the zoning at 4521 N Clark St, and how much floor area
-      can I build on a 3,000 sqft lot there?
-    </prompt>
+  <!-- Multi-step -->
+  <question id="19" tool="multi_step" type="multi_step" requires_network="true" question_type="recommendation" prompt_complexity="simple" audience="professional_developer" data_source="parcel_zoning_api">
+    <prompt>What's the zoning at 4521 N Clark St, and how much floor area can I build on a 3,000 sqft lot there?</prompt>
     <expected_tools>get_parcel_zoning, calculate_development_envelope</expected_tools>
     <answer_contains>sqft</answer_contains>
-    <notes>
-      Requires chaining get_parcel_zoning (to get the district code) then
-      calculate_development_envelope (to compute max floor area).
-    </notes>
+    <notes>Requires parcel lookup followed by development envelope calculation.</notes>
   </question>
 
-  <question id="20" tool="multi_step" type="multi_step">
-    <prompt>
-      Compare RS-3 and RT-4. If my RS-3 lot is 6,000 sqft and got rezoned to RT-4,
-      how many more dwelling units could I build?
-    </prompt>
+  <question id="20" tool="multi_step" type="multi_step" question_type="recommendation" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare RS-3 and RT-4. If my RS-3 lot is 6,000 sqft and got rezoned to RT-4, how many more dwelling units could I build?</prompt>
     <expected_tools>compare_districts, calculate_development_envelope</expected_tools>
     <answer_contains>unit</answer_contains>
-    <notes>
-      RS-3: 6000/2500 = 2 units. RT-4: 6000/1000 = 6 units. Delta = 4 more units.
-      Requires two calculate_development_envelope calls or compare + manual math.
-    </notes>
+    <answer_regex>\b(4|four)\b</answer_regex>
+    <notes>RS-3 allows 2 units; RT-4 allows 6 units; delta is 4.</notes>
+  </question>
+
+  <!-- Spreadsheet-inspired factual variants -->
+  <question id="21" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="google_search" audience="homeowner" data_source="district_reference">
+    <prompt>my zoning info for single family home in RS-3 residential district Chicago</prompt>
+    <answer_contains>RS-3</answer_contains>
+    <notes>Google-search phrasing for a homeowner district lookup.</notes>
+  </question>
+
+  <question id="22" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="structured" audience="professional_developer" data_source="district_reference">
+    <prompt>Aim: Provide a professional developer information on zoning district DC-16. Output: Provide the district title, FAR, and the zoning code section used.</prompt>
+    <answer_contains>DC-16</answer_contains>
+    <answer_contains>16</answer_contains>
+    <notes>Structured prompt should still use lookup_district.</notes>
+  </question>
+
+  <question id="23" tool="multi_step" type="multi_step" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Which district allows more dwelling units on a 6,000 sqft lot: RS-3 or RT-4?</prompt>
+    <expected_tools>compare_districts, calculate_development_envelope</expected_tools>
+    <answer_contains>RT-4</answer_contains>
+    <notes>Requires comparing and calculating unit capacity.</notes>
+  </question>
+
+  <question id="24" tool="get_zoning_section" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_zoning_code">
+    <prompt>What does Section 17-2-0300 say?</prompt>
+    <answer_contains>Bulk</answer_contains>
+    <notes>Direct exact section lookup for residential bulk and density standards.</notes>
+  </question>
+
+  <question id="25" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="google_search" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>affordable housing bonus Chicago zoning code</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>Search-style prompt for a code topic.</notes>
+  </question>
+
+  <!-- Spreadsheet-inspired summary variants -->
+  <question id="26" tool="multi_step" type="multi_step" requires_index="true" question_type="summary" prompt_complexity="simple" audience="homeowner" data_source="chicago_zoning_code">
+    <prompt>I am a homeowner. Summarize the zoning code requirements I should know for an RS-3 single-family property.</prompt>
+    <expected_tools>lookup_district, search_zoning_code</expected_tools>
+    <answer_contains>RS-3</answer_contains>
+    <notes>Mirrors Minneapolis homeowner summary prompts.</notes>
+  </question>
+
+  <question id="27" tool="lookup_district" type="summary" question_type="summary" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What are the zoning requirements for B3-2 in Chicago according to the district data?</prompt>
+    <answer_contains>B3-2</answer_contains>
+    <notes>Professional developer summary for a mixed-use district.</notes>
+  </question>
+
+  <question id="28" tool="calculate_development_envelope" type="recommendation" question_type="recommendation" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Do these proposed specs comply for RS-3: 3,000 sqft lot area and a 3,000 sqft building?</prompt>
+    <answer_contains>2700</answer_contains>
+    <notes>RS-3 max floor area on a 3000 sqft lot is 2700 sqft.</notes>
+  </question>
+
+  <question id="29" tool="calculate_development_envelope" type="recommendation" question_type="recommendation" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Evaluate an RT-4 proposal with a 6,000 sqft lot and 5 dwelling units. What is the maximum unit count?</prompt>
+    <answer_regex>\b(6|six)\b</answer_regex>
+    <notes>RT-4 allows 6 units on 6000 sqft at 1000 sqft per unit.</notes>
+  </question>
+
+  <question id="30" tool="search_zoning_code" type="code_search" requires_index="true" question_type="summary" prompt_complexity="simple" audience="homeowner" data_source="chicago_zoning_code">
+    <prompt>I want to build an accessory dwelling unit. What Chicago zoning code sections should I review?</prompt>
+    <answer_contains>accessory</answer_contains>
+    <notes>Homeowner ADU summary should search Title 17.</notes>
+  </question>
+
+  <!-- Spreadsheet-inspired checklist / pre-check variants -->
+  <question id="31" tool="multi_step" type="multi_step" requires_index="true" question_type="checklist" prompt_complexity="google_search" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>zoning requirement checklist for mixed-use construction in B3-2 district Chicago zoning code</prompt>
+    <expected_tools>lookup_district, search_zoning_code</expected_tools>
+    <answer_contains>B3-2</answer_contains>
+    <notes>Google-search phrasing for a developer checklist.</notes>
+  </question>
+
+  <question id="32" tool="multi_step" type="multi_step" requires_index="true" question_type="checklist" prompt_complexity="simple" audience="homeowner" data_source="chicago_zoning_code">
+    <prompt>Give me a checklist of zoning information I need as a homeowner building an ADU on an RS-3 lot in Chicago.</prompt>
+    <expected_tools>lookup_district, search_zoning_code</expected_tools>
+    <answer_contains>RS-3</answer_contains>
+    <notes>Homeowner checklist prompt adapted from the Minneapolis suite.</notes>
+  </question>
+
+  <question id="33" tool="lookup_district" type="summary" question_type="summary" prompt_complexity="structured" audience="professional_developer" data_source="district_reference">
+    <prompt>Aim: I am a professional developer and I want to build in DX-7. Output: Summarize the relevant district limits with citations or code references.</prompt>
+    <answer_contains>DX-7</answer_contains>
+    <notes>Structured developer summary should retrieve the district record.</notes>
+  </question>
+
+  <question id="34" tool="multi_step" type="multi_step" question_type="recommendation" prompt_complexity="structured" audience="professional_developer" data_source="district_reference">
+    <prompt>Aim: Evaluate whether rezoning a 6,000 sqft RS-3 lot to RT-4 increases residential development capacity. Output: Include FAR and dwelling unit implications.</prompt>
+    <expected_tools>compare_districts, calculate_development_envelope</expected_tools>
+    <answer_contains>RT-4</answer_contains>
+    <notes>Structured recommendation prompt should compare and calculate.</notes>
+  </question>
+
+  <question id="35" tool="get_zoning_map_url" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="parcel_zoning_api">
+    <prompt>Give me a zoning map link for coordinates 41.8789, -87.6359.</prompt>
+    <answer_contains>gisapps.chicago.gov</answer_contains>
+    <notes>Coordinate map prompt should use get_zoning_map_url, not parcel lookup.</notes>
+  </question>
+
+  <question id="36" tool="list_district_types" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>List the residential zoning district types in Chicago.</prompt>
+    <answer_contains>RS-3</answer_contains>
+    <notes>Should call list_district_types with a residential filter or all districts.</notes>
+  </question>
+
+  <question id="37" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 10,000 sqft lot in POS-1?</prompt>
+    <answer_contains>1000</answer_contains>
+    <notes>POS-1 FAR is 0.1; 10000 sqft * 0.1 = 1000 sqft.</notes>
+  </question>
+
+  <question id="38" tool="calculate_development_envelope" type="recommendation" question_type="recommendation" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>Can I build 4 dwelling units on a 5,000 sqft RS-3 lot?</prompt>
+    <answer_regex>\b(2|two)\b</answer_regex>
+    <notes>RS-3 allows 2 units by the lot-area-per-unit calculation.</notes>
+  </question>
+
+  <question id="39" tool="get_zoning_section" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_zoning_code">
+    <prompt>Retrieve section 17-10-0200 on parking ratios.</prompt>
+    <answer_contains>parking</answer_contains>
+    <notes>Direct parking section lookup.</notes>
+  </question>
+
+  <question id="40" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_zoning_code">
+    <prompt>Find zoning code sections about nonconforming signs.</prompt>
+    <answer_contains>17-15</answer_contains>
+    <notes>Nonconforming signs are in Chapter 17-15.</notes>
+  </question>
+
+  <question id="41" tool="multi_step" type="multi_step" requires_index="true" question_type="checklist" prompt_complexity="structured" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>Aim: I am preparing a planned development submission for a PD-zoned site. Output: Provide a zoning ordinance checklist and cite relevant Title 17 topics.</prompt>
+    <expected_tools>lookup_district, search_zoning_code</expected_tools>
+    <answer_contains>PD</answer_contains>
+    <notes>Planned development checklist should use both district data and code search.</notes>
+  </question>
+
+  <question id="42" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="google_search" audience="professional_developer" data_source="district_reference">
+    <prompt>DC16 zoning Chicago FAR height code section</prompt>
+    <answer_contains>DC-16</answer_contains>
+    <notes>Router should normalize DC16 to DC-16.</notes>
+  </question>
+
+  <question id="43" tool="multi_step" type="multi_step" requires_index="true" question_type="checklist" prompt_complexity="simple" audience="homeowner" data_source="chicago_zoning_code">
+    <prompt>Give me a permit pre-check checklist for building a single-family home in RS-3 under the Chicago zoning ordinance.</prompt>
+    <expected_tools>lookup_district, search_zoning_code</expected_tools>
+    <answer_contains>RS-3</answer_contains>
+    <notes>Homeowner pre-check prompt adapted from spreadsheet checklist cases.</notes>
+  </question>
+
+  <question id="44" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 2,500 sqft lot zoned B1-3?</prompt>
+    <answer_contains>7500</answer_contains>
+    <notes>B1-3 FAR is 3.0; 2500 sqft * 3.0 = 7500 sqft.</notes>
   </question>
 
 </eval_suite>

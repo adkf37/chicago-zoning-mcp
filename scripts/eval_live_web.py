@@ -9,10 +9,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import time
 import urllib.error
 import urllib.request
 import xml.etree.ElementTree as ET
+from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -26,10 +28,15 @@ class EvalCase:
     id: str
     prompt: str
     answer: str
-    answer_contains: str
+    answer_contains: list[str]
+    answer_regex: list[str]
     expected_tools: list[str]
     requires_network: bool
     requires_index: bool
+    question_type: str
+    prompt_complexity: str
+    audience: str
+    data_source: str
 
 
 def _text(node: ET.Element, name: str) -> str:
@@ -37,6 +44,14 @@ def _text(node: ET.Element, name: str) -> str:
     if child is None or child.text is None:
         return ""
     return " ".join(child.text.split())
+
+
+def _texts(node: ET.Element, name: str) -> list[str]:
+    return [
+        " ".join(child.text.split())
+        for child in node.findall(name)
+        if child.text and child.text.strip()
+    ]
 
 
 def load_cases(path: Path) -> list[EvalCase]:
@@ -56,10 +71,15 @@ def load_cases(path: Path) -> list[EvalCase]:
                 id=node.attrib["id"],
                 prompt=_text(node, "prompt"),
                 answer=_text(node, "answer"),
-                answer_contains=_text(node, "answer_contains"),
+                answer_contains=_texts(node, "answer_contains"),
+                answer_regex=_texts(node, "answer_regex"),
                 expected_tools=expected_tools,
                 requires_network=node.attrib.get("requires_network") == "true",
                 requires_index=node.attrib.get("requires_index") == "true",
+                question_type=node.attrib.get("question_type", node.attrib.get("type", "")),
+                prompt_complexity=node.attrib.get("prompt_complexity", ""),
+                audience=node.attrib.get("audience", ""),
+                data_source=node.attrib.get("data_source", ""),
             )
         )
     return cases
@@ -95,11 +115,16 @@ def grade(case: EvalCase, data: dict[str, Any]) -> tuple[bool, list[str]]:
     if data.get("error"):
         reasons.append(f"api error: {data.get('error')}")
 
-    expected_text = case.answer_contains or case.answer
-    normalized_expected = expected_text.lower().replace(",", "")
     normalized_answer = answer_lower.replace(",", "")
-    if expected_text and normalized_expected not in normalized_answer:
-        reasons.append(f"missing expected text: {expected_text!r}")
+    expected_texts = case.answer_contains or ([case.answer] if case.answer else [])
+    for expected_text in expected_texts:
+        normalized_expected = expected_text.lower().replace(",", "")
+        if normalized_expected not in normalized_answer:
+            reasons.append(f"missing expected text: {expected_text!r}")
+
+    for pattern in case.answer_regex:
+        if not re.search(pattern, answer, flags=re.IGNORECASE):
+            reasons.append(f"missing expected pattern: {pattern!r}")
 
     used_tools = [call.get("name", "") for call in data.get("tool_calls", [])]
     for tool in case.expected_tools:
@@ -107,6 +132,22 @@ def grade(case: EvalCase, data: dict[str, Any]) -> tuple[bool, list[str]]:
             reasons.append(f"missing expected tool: {tool}")
 
     return not reasons, reasons
+
+
+def print_breakdown(results: list[dict[str, Any]], field: str, label: str) -> None:
+    groups: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for item in results:
+        key = item.get("metadata", {}).get(field) or "unspecified"
+        groups[key].append(item)
+    if len(groups) <= 1:
+        return
+
+    print()
+    print(f"By {label}:")
+    for key in sorted(groups):
+        items = groups[key]
+        passed = sum(1 for item in items if item["passed"])
+        print(f"  {key}: {passed}/{len(items)} passed")
 
 
 def main() -> int:
@@ -147,6 +188,13 @@ def main() -> int:
                 "passed": passed,
                 "reasons": reasons,
                 "elapsed_seconds": round(elapsed, 3),
+                "expected_tools": case.expected_tools,
+                "metadata": {
+                    "question_type": case.question_type,
+                    "prompt_complexity": case.prompt_complexity,
+                    "audience": case.audience,
+                    "data_source": case.data_source,
+                },
                 "response": data,
             }
         )
@@ -156,6 +204,9 @@ def main() -> int:
     passed_count = sum(1 for item in results if item["passed"])
     print()
     print(f"Summary: {passed_count}/{total} passed")
+    print_breakdown(results, "question_type", "question type")
+    print_breakdown(results, "prompt_complexity", "prompt complexity")
+    print_breakdown(results, "audience", "audience")
 
     if args.json_out:
         args.json_out.write_text(json.dumps(results, indent=2), encoding="utf-8")

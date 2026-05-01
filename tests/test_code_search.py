@@ -121,6 +121,29 @@ def test_search_planned_development():
     assert any(r["section"] == "17-13-0300" for r in results)
 
 
+def test_search_boosts_exact_title_phrase():
+    """Exact title phrases should beat long sections with many body hits."""
+    sections = [
+        {
+            "section": "17-13-0300",
+            "title": "Zoning Map Amendments",
+            "chapter": "Chapter 17-13",
+            "text": "Procedures for rezonings.",
+            "source_file": "chapter_17-13.txt",
+        },
+        {
+            "section": "17-99-9999",
+            "title": "Administrative Procedures",
+            "chapter": "Chapter 17-99",
+            "text": "zoning map amendments " * 20,
+            "source_file": "chapter_17-99.txt",
+        },
+    ]
+    with patch("src.tools.code_search.load_section_index", return_value=sections):
+        results = search_sections("zoning map amendments")
+    assert results[0]["section"] == "17-13-0300"
+
+
 def test_search_respects_max_results():
     """max_results parameter should cap the number of results."""
     with _patched_load():

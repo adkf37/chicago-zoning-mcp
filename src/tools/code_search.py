@@ -30,7 +30,8 @@ def load_section_index() -> list[dict]:
 def search_sections(query: str, max_results: int = 5) -> list[dict]:
     """Keyword search across section titles and text.
 
-    Returns matching sections ranked by number of keyword hits.
+    Returns matching sections ranked by phrase and keyword hits, with title
+    matches weighted above body matches.
     """
     sections = load_section_index()
     if not sections:
@@ -41,16 +42,29 @@ def search_sections(query: str, max_results: int = 5) -> list[dict]:
     if not keywords:
         return []
 
+    phrase = " ".join(keywords)
     scored = []
     for section in sections:
-        searchable = (
-            f"{section.get('title', '')} {section.get('text', '')} {section.get('chapter', '')}"
-        ).lower()
-        score = sum(searchable.count(kw) for kw in keywords)
+        title = section.get("title", "").lower()
+        text = section.get("text", "").lower()
+        chapter = section.get("chapter", "").lower()
+
+        score = 0
+        if phrase and phrase in title:
+            score += 100
+        if phrase and phrase in text:
+            score += 20
+        if all(keyword in title for keyword in keywords):
+            score += 15
+
+        score += sum(title.count(keyword) * 5 for keyword in keywords)
+        score += sum(chapter.count(keyword) * 2 for keyword in keywords)
+        score += sum(text.count(keyword) for keyword in keywords)
+
         if score > 0:
             scored.append((score, section))
 
-    scored.sort(key=lambda x: x[0], reverse=True)
+    scored.sort(key=lambda x: (-x[0], x[1].get("section", "")))
 
     return [
         {
