@@ -532,7 +532,7 @@ class GeminiZoningClient:
             self._append_tool_call(calls, "search_zoning_code", {"query": q, "max_results": 5})
             return calls
 
-        if "district" in q_lower and any(word in q_lower for word in ("list", "types", "all")):
+        if self._looks_like_list_districts_question(q_lower):
             self._append_tool_call(
                 calls,
                 "list_district_types",
@@ -540,6 +540,28 @@ class GeminiZoningClient:
             )
 
         return calls
+
+    @staticmethod
+    def _looks_like_list_districts_question(question_lower: str) -> bool:
+        """Return True when the question asks for a list of zoning districts."""
+        # Explicit "list" or "types" or "all" combined with "district"
+        if "district" in question_lower and any(
+            word in question_lower for word in ("list", "types", "all")
+        ):
+            return True
+        # "what are" + zoning-related pattern: "what are the commercial zoning districts"
+        if re.search(
+            r"\bwhat are\b.*\b(?:zoning\s+)?districts?\b",
+            question_lower,
+        ):
+            return True
+        # "show me" or "give me" + districts
+        if re.search(
+            r"\b(?:show|give)\s+me\b.*\bdistricts?\b",
+            question_lower,
+        ):
+            return True
+        return False
 
     @staticmethod
     def _looks_like_development_question(question_lower: str) -> bool:

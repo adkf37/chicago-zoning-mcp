@@ -464,3 +464,46 @@ def test_inclusionary_zoning_routes_to_code_search():
 
     names = _tool_names(calls)
     assert "search_zoning_code" in names
+
+
+def test_what_are_commercial_districts_routes_to_list():
+    """Q94: 'What are the commercial zoning districts' routes to list_district_types."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "What are the commercial zoning districts in Chicago?"
+        )
+
+    names = _tool_names(calls)
+    assert "list_district_types" in names
+    list_call = next(c for c in calls if c["name"] == "list_district_types")
+    assert list_call["args"].get("category") == "Commercial"
+
+
+def test_list_all_downtown_districts_routes_to_list():
+    """Q100: 'List all downtown zoning districts' routes to list_district_types."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "List all downtown zoning districts in Chicago."
+        )
+
+    names = _tool_names(calls)
+    assert "list_district_types" in names
+
+
+def test_show_me_residential_districts_routes_to_list():
+    """Routing: 'Show me all residential zoning districts' routes to list_district_types."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "Show me all residential zoning districts in Chicago."
+        )
+
+    names = _tool_names(calls)
+    assert "list_district_types" in names
+    list_call = next(c for c in calls if c["name"] == "list_district_types")
+    assert list_call["args"].get("category") == "Residential"
