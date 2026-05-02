@@ -2263,3 +2263,373 @@ def test_eval_q120_rs3_half_acre_envelope(development_tools):
     )
     assert "error" not in result
     assert result["max_floor_area_sqft"] == pytest.approx(19602.0)
+
+
+# ===========================================================================
+# Q121–Q140: Zoning code text searches, address patterns, and new districts
+# ===========================================================================
+
+# Additional code search fixture entries for Q121-Q140
+
+_CODE_SEARCH_FIXTURE_Q121 = _CODE_SEARCH_FIXTURE + [
+    {
+        "section": "17-4-0600",
+        "title": "Home Occupation Standards",
+        "chapter": "Chapter 17-4",
+        "text": (
+            "A home occupation is a business activity conducted in a dwelling unit by "
+            "a resident of that unit. Home occupations are accessory uses subject to "
+            "the following standards: no exterior sign larger than one square foot; "
+            "no non-resident employees on the premises; no retail sales."
+        ),
+        "source_file": "chapter_17-4.txt",
+    },
+    {
+        "section": "17-12-0200",
+        "title": "Sign Regulations — Commercial Districts",
+        "chapter": "Chapter 17-12",
+        "text": (
+            "In commercial and business districts, ground signs and wall signs are "
+            "permitted subject to size limits. Sign area may not exceed 1.5 times the "
+            "street frontage in square feet. Electronic message signs must comply with "
+            "illumination and animation restrictions."
+        ),
+        "source_file": "chapter_17-12.txt",
+    },
+    {
+        "section": "17-2-0100",
+        "title": "Floor Area Ratio Definitions",
+        "chapter": "Chapter 17-2",
+        "text": (
+            "Floor area ratio (FAR) is the ratio of the total gross floor area of all "
+            "buildings on a lot to the total area of that lot. Gross floor area means "
+            "the sum of the horizontal areas of each floor of a building measured from "
+            "the exterior faces of the exterior walls."
+        ),
+        "source_file": "chapter_17-2.txt",
+    },
+]
+
+
+# ---------------------------------------------------------------------------
+# Q121 — get_zoning_section("17-3-0102") returns ADU text
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q121_get_section_17_3_0102(code_search_tools):
+    """Eval Q121: get_zoning_section('17-3-0102') returns accessory dwelling unit text."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE,
+    ):
+        result = code_search_tools["get_zoning_section"](section_number="17-3-0102")
+    assert "error" not in result
+    assert result["section"] == "17-3-0102"
+    assert (
+        "accessory" in result["title"].lower()
+        or "accessory" in result["text"].lower()
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q122 — search "home occupation" returns relevant Title 17 section
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q122_search_home_occupation(code_search_tools):
+    """Eval Q122: search_zoning_code('home occupation') returns a Title 17 section."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_Q121,
+    ):
+        result = code_search_tools["search_zoning_code"](query="home occupation standards")
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    for section in result["results"]:
+        assert section["section"].startswith("17-")
+    assert any(
+        "home" in r.get("title", "").lower() or "home" in r.get("text", "").lower()
+        for r in result["results"]
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q123 — get_zoning_section("17-1-0101") returns Chicago Zoning Ordinance title
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q123_get_section_17_1_0101(code_search_tools):
+    """Eval Q123: get_zoning_section('17-1-0101') returns the ordinance title text."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE,
+    ):
+        result = code_search_tools["get_zoning_section"](section_number="17-1-0101")
+    assert "error" not in result
+    assert result["section"] == "17-1-0101"
+    assert (
+        "chicago zoning ordinance" in result["text"].lower()
+        or "chicago" in result["text"].lower()
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q124 — search "sign regulations" returns a Chapter 17-12 section
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q124_search_sign_regulations(code_search_tools):
+    """Eval Q124: search_zoning_code('sign regulations') returns sign-related sections."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_Q121,
+    ):
+        result = code_search_tools["search_zoning_code"](
+            query="sign regulations commercial districts"
+        )
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    assert any(
+        "sign" in r.get("title", "").lower() or "sign" in r.get("text", "").lower()
+        for r in result["results"]
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q125 — DX-5 FAR is 5.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q125_dx5_far(district_tools):
+    """Eval Q125: DX-5 FAR should be 5.0."""
+    result = district_tools["lookup_district"](district_code="DX-5")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(5.0)
+
+
+# ---------------------------------------------------------------------------
+# Q126 — RS-3 rear yard setback contains "28"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q126_rs3_rear_yard_setback(district_tools):
+    """Eval Q126: RS-3 rear_yard_setback should reference 28 ft."""
+    result = district_tools["lookup_district"](district_code="RS-3")
+    assert "error" not in result
+    setback = result.get("rear_yard_setback", "")
+    assert "28" in str(setback), f"Expected '28' in rear_yard_setback, got: {setback!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q127 — B2-2 category contains "Neighborhood Mixed-Use" or "Mixed-Use"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q127_b2_2_category(district_tools):
+    """Eval Q127: B2-2 category should be Business/Shopping."""
+    result = district_tools["lookup_district"](district_code="B2-2")
+    assert "error" not in result
+    cat = result.get("category", "")
+    assert "Business" in cat, (
+        f"Expected 'Business' in B2-2 category, got: {cat!r}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q128 — C1-1 max floor area on 4000 sqft lot = 4000 (FAR 1.0)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q128_c1_1_4000_envelope(development_tools):
+    """Eval Q128: C1-1 FAR 1.0 × 4000 sqft lot = 4,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="C1-1", lot_area_sqft=4000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(4000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q129 — C3-5 has higher FAR than C3-2
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q129_c3_5_higher_far_than_c3_2(district_tools):
+    """Eval Q129: compare_districts C3-2 vs C3-5 — C3-5 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="C3-2", district_b="C3-5")
+    assert "error" not in result
+    c3_2_far = float(result["floor_area_ratio"]["C3-2"])
+    c3_5_far = float(result["floor_area_ratio"]["C3-5"])
+    assert c3_5_far > c3_2_far, (
+        f"Expected C3-5 FAR ({c3_5_far}) > C3-2 FAR ({c3_2_far})"
+    )
+    assert "floor_area_ratio" in result["_differences"]
+
+
+# ---------------------------------------------------------------------------
+# Q130 — M1-3 maximum building height contains "55"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q130_m1_3_height(district_tools):
+    """Eval Q130: M1-3 maximum_building_height should mention 55 ft."""
+    result = district_tools["lookup_district"](district_code="M1-3")
+    assert "error" not in result
+    height = result.get("maximum_building_height", "")
+    assert "55" in str(height), f"Expected '55' in M1-3 height, got: {height!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q131 — list Business/Shopping districts includes B1-1
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q131_list_business_districts(district_tools):
+    """Eval Q131: list_district_types('Business/Shopping') should include B1-1."""
+    result = district_tools["list_district_types"](category="Business/Shopping")
+    assert isinstance(result, list)
+    codes = [d["district_type_code"] for d in result]
+    assert "B1-1" in codes, f"Expected B1-1 in Business/Shopping list, got: {codes}"
+
+
+# ---------------------------------------------------------------------------
+# Q132 — DX-12 max floor area on 1500 sqft lot = 18000
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q132_dx12_1500_envelope(development_tools):
+    """Eval Q132: DX-12 FAR 12.0 × 1500 sqft lot = 18,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="DX-12", lot_area_sqft=1500
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(18000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q133 — list Parks and Open Space districts includes POS-1
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q133_list_parks_districts(district_tools):
+    """Eval Q133: list_district_types('Parks and Open Space') should include POS-1."""
+    result = district_tools["list_district_types"](category="Parks and Open Space")
+    assert isinstance(result, list)
+    codes = [d["district_type_code"] for d in result]
+    assert "POS-1" in codes, f"Expected POS-1 in Parks and Open Space list, got: {codes}"
+
+
+# ---------------------------------------------------------------------------
+# Q134 — B1-2 FAR is 2.2
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q134_b1_2_far(district_tools):
+    """Eval Q134: B1-2 neighborhood shopping FAR should be 2.2."""
+    result = district_tools["lookup_district"](district_code="B1-2")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(2.2)
+
+
+# ---------------------------------------------------------------------------
+# Q135 — search "floor area ratio" returns a Chapter 17-2 section
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q135_search_far_definition(code_search_tools):
+    """Eval Q135: search_zoning_code('floor area ratio') returns a Chapter 17-2 section."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_Q121,
+    ):
+        result = code_search_tools["search_zoning_code"](query="floor area ratio definitions")
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    for section in result["results"]:
+        assert section["section"].startswith("17-")
+    assert any(
+        "floor area" in r.get("title", "").lower() or "floor area" in r.get("text", "").lower()
+        for r in result["results"]
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q136 — B1-3 has higher FAR than B1-2
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q136_b1_3_higher_far_than_b1_2(district_tools):
+    """Eval Q136: compare_districts B1-2 vs B1-3 — B1-3 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="B1-2", district_b="B1-3")
+    assert "error" not in result
+    b1_2_far = float(result["floor_area_ratio"]["B1-2"])
+    b1_3_far = float(result["floor_area_ratio"]["B1-3"])
+    assert b1_3_far > b1_2_far, (
+        f"Expected B1-3 FAR ({b1_3_far}) > B1-2 FAR ({b1_2_far})"
+    )
+    assert "floor_area_ratio" in result["_differences"]
+
+
+# ---------------------------------------------------------------------------
+# Q137 — C2-5 max floor area on 3000 sqft lot = 15000 (FAR 5.0)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q137_c2_5_3000_envelope(development_tools):
+    """Eval Q137: C2-5 FAR 5.0 × 3000 sqft lot = 15,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="C2-5", lot_area_sqft=3000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(15000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q138 — C2-1 FAR is 1.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q138_c2_1_far(district_tools):
+    """Eval Q138: C2-1 motor vehicle commercial FAR should be 1.0."""
+    result = district_tools["lookup_district"](district_code="C2-1")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(1.0)
+
+
+# ---------------------------------------------------------------------------
+# Q139 — search "planned development application" returns Chapter 17-13 section
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q139_search_planned_development(code_search_tools):
+    """Eval Q139: search for 'planned development application' returns 17-13 sections."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE,
+    ):
+        result = code_search_tools["search_zoning_code"](
+            query="planned development application procedures"
+        )
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    sections = [r["section"] for r in result["results"]]
+    assert any(s.startswith("17-13") for s in sections), (
+        f"Expected a 17-13 section for planned development query, got: {sections}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q140 — B2-3 has higher FAR than B2-1
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q140_b2_3_higher_far_than_b2_1(district_tools):
+    """Eval Q140: compare_districts B2-1 vs B2-3 — B2-3 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="B2-1", district_b="B2-3")
+    assert "error" not in result
+    b2_1_far = float(result["floor_area_ratio"]["B2-1"])
+    b2_3_far = float(result["floor_area_ratio"]["B2-3"])
+    assert b2_3_far > b2_1_far, (
+        f"Expected B2-3 FAR ({b2_3_far}) > B2-1 FAR ({b2_1_far})"
+    )
+    assert "floor_area_ratio" in result["_differences"]

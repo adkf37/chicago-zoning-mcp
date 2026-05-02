@@ -767,4 +767,126 @@
     <notes>0.5 acre = 21,780 sqft; RS-3 FAR 0.9 × 21,780 = 19,602 sqft.</notes>
   </question>
 
+  <!-- Q121-Q140: Zoning code text searches, address questions, and additional district coverage -->
+
+  <question id="121" tool="get_zoning_section" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="chicago_zoning_code">
+    <prompt>What does section 17-3-0102 say about accessory dwelling units?</prompt>
+    <answer_contains>accessory</answer_contains>
+    <notes>Section 17-3-0102 covers ADU definitions. get_zoning_section tool required.</notes>
+  </question>
+
+  <question id="122" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="chicago_zoning_code">
+    <prompt>What does the Chicago zoning code say about home occupations?</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>Home occupation standards are covered in Title 17.</notes>
+  </question>
+
+  <question id="123" tool="get_zoning_section" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_zoning_code">
+    <prompt>What does section 17-1-0101 say?</prompt>
+    <answer_contains>Chicago Zoning Ordinance</answer_contains>
+    <notes>Section 17-1-0101 is the title/citation section of the ordinance.</notes>
+  </question>
+
+  <question id="124" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_zoning_code">
+    <prompt>What are the sign regulations in the Chicago zoning code?</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>Sign regulations are covered in Chapter 17-12.</notes>
+  </question>
+
+  <question id="125" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the FAR for a DX-5 downtown mixed-use district?</prompt>
+    <answer>5.0</answer>
+    <notes>DX-5 FAR is 5.0.</notes>
+  </question>
+
+  <question id="126" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the rear yard setback for an RS-3 single-family district?</prompt>
+    <answer_contains>28</answer_contains>
+    <notes>RS-3 rear yard setback is 28 ft.</notes>
+  </question>
+
+  <question id="127" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What category does the B2-2 zoning district fall under?</prompt>
+    <answer_contains>Business</answer_contains>
+    <notes>B2-2 is a Business/Shopping district (zone_type 1).</notes>
+  </question>
+
+  <question id="128" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 4,000 sqft lot in C1-1?</prompt>
+    <answer_contains>4000</answer_contains>
+    <notes>C1-1 FAR is 1.0; 4000 × 1.0 = 4,000 sqft.</notes>
+  </question>
+
+  <question id="129" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare C3-2 and C3-5 commercial manufacturing districts. Which allows more floor area?</prompt>
+    <answer_contains>C3-5</answer_contains>
+    <notes>C3-5 FAR is 5.0; C3-2 FAR is 2.2.</notes>
+  </question>
+
+  <question id="130" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in an M1-3 limited manufacturing district?</prompt>
+    <answer_contains>55</answer_contains>
+    <notes>M1-3 maximum building height is 55 ft, 5 stories.</notes>
+  </question>
+
+  <question id="131" tool="list_district_types" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>List all business and shopping zoning districts in Chicago.</prompt>
+    <answer_contains>B1-1</answer_contains>
+    <notes>Should call list_district_types with Business/Shopping filter and return B-series districts.</notes>
+  </question>
+
+  <question id="132" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 1,500 sqft lot in DX-12?</prompt>
+    <answer_contains>18000</answer_contains>
+    <notes>DX-12 FAR is 12.0; 1500 × 12 = 18,000 sqft.</notes>
+  </question>
+
+  <question id="133" tool="list_district_types" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>List all parks and open space zoning districts in Chicago.</prompt>
+    <answer_contains>POS-1</answer_contains>
+    <notes>Should return POS-1 and POS-2 districts.</notes>
+  </question>
+
+  <question id="134" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for a B1-2 neighborhood shopping district?</prompt>
+    <answer_contains>2.2</answer_contains>
+    <notes>B1-2 FAR is 2.2.</notes>
+  </question>
+
+  <question id="135" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_zoning_code">
+    <prompt>What does the Chicago zoning code say about floor area ratio definitions?</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>FAR is defined in Chapter 17-2.</notes>
+  </question>
+
+  <question id="136" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare B1-2 and B1-3 neighborhood shopping districts. Which has a higher FAR?</prompt>
+    <answer_contains>B1-3</answer_contains>
+    <notes>B1-3 FAR is 3.0; B1-2 FAR is 2.2.</notes>
+  </question>
+
+  <question id="137" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 3,000 sqft lot in C2-5?</prompt>
+    <answer_contains>15000</answer_contains>
+    <notes>C2-5 FAR is 5.0; 3000 × 5.0 = 15,000 sqft.</notes>
+  </question>
+
+  <question id="138" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the FAR for a C2-1 motor vehicle commercial district?</prompt>
+    <answer>1.0</answer>
+    <notes>C2-1 FAR is 1.0.</notes>
+  </question>
+
+  <question id="139" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>What does the Chicago zoning ordinance say about planned development application procedures?</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>Planned development procedures are covered in Chapter 17-13.</notes>
+  </question>
+
+  <question id="140" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare B2-1 and B2-3 neighborhood mixed-use districts. Which allows more floor area?</prompt>
+    <answer_contains>B2-3</answer_contains>
+    <notes>B2-3 FAR is 3.0; B2-1 FAR is 1.0.</notes>
+  </question>
+
 </eval_suite>

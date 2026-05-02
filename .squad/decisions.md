@@ -3,7 +3,56 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
-### 2026-05-02 — Data Pipeline — Eval expansion Q101–Q120, acre lot-area routing
+### 2026-05-02 — Data Pipeline — Eval expansion Q121–Q140, front-end redesign, routing improvements
+
+**Context:** FEEDBACK.md goals: (1) expand test suite with wider questions including
+zoning code text and specific addresses; (2) improve performance for 100% accuracy;
+(3) make front-end more professional, inspired by Plan_for_Chicago_2030.
+
+**Decisions:**
+
+1. **Eval suite extended to 140 questions** — Added Q121–Q140 to `evals/zoning_qa.xml`:
+   - Q121–Q124: Code text questions — get_zoning_section for ADU (17-3-0102), search
+     home occupation standards, get section 17-1-0101 title, search sign regulations.
+   - Q125–Q130: District lookups for DX-5, RS-3 rear yard setback, B2-2 category,
+     C1-1 development envelope, C3-5 vs C3-2 comparison, M1-3 height limit.
+   - Q131–Q133: List district types — Business/Shopping (B1-1), Parks and Open Space (POS-1);
+     DX-12 development envelope on 1,500 sqft lot.
+   - Q134–Q140: B1-2 FAR, FAR definition search, B1-3 vs B1-2 comparison, C2-5
+     development envelope, C2-1 FAR, planned-development code search, B2-3 vs B2-1.
+
+2. **20 new eval tests** — `tests/test_evals.py` Q121–Q140 add offline coverage for
+   code-search fixture queries (home occupation, sign regulations, FAR definitions),
+   new district FAR values (DX-5 = 5.0, B1-2 = 2.2, C2-1 = 1.0), development envelopes
+   (C1-1, DX-12, C2-5), and comparison rankings (C3-5 > C3-2, B1-3 > B1-2, B2-3 > B2-1).
+
+3. **Front-end redesign** — `web/templates/index.html` rebuilt with:
+   - Larger hero (headline `clamp(2rem, 5vw, 3.2rem)`, 3rem top padding) with Chicago
+     city star (★★★★) accent in the eyebrow text.
+   - Three-step "How It Works" strip below the hero to orient new users.
+   - Categorized suggestion chips (Address Lookup / District Rules / Zoning Code).
+   - Richer stats bar (1,888 indexed sections, 8 tools, 59 districts, Live data).
+   - Improved footer with official resource links and cleaner attribution.
+   - All design tokens preserved (DM Serif Display, Libre Franklin, navy/cream palette).
+
+4. **System prompt improvement** — Added step 8 explicitly instructing the model to
+   call `search_zoning_code` for any question about a zoning code topic.
+
+5. **Routing keyword expansion** — `_looks_like_code_search` in `web/gemini_client.py`
+   extended with 16 new phrases to improve routing recall for code-search questions
+   involving home occupation, sign permits, certificate of zoning, use matrix, permitted
+   uses, conditional use, bulk regulation, green roof, sustainability, open space,
+   public benefits, demolition, adaptive reuse, historic preservation, transit-oriented
+   development, and pedestrian street requirements.
+
+**Impact:**
+- Test count: 259 → 279 (20 new tests); `ruff check` clean.
+- Every district code in `data/zoning_codes.csv` continues to have eval coverage;
+  new coverage added for 9 additional districts.
+- Front-end is more professional and visually polished.
+- Routing layer handles a wider range of zoning code text queries.
+
+
 
 **Context:** FEEDBACK.md goal: answer 100% of questions accurately. Previous pass
 completed Q1–Q100, covering most district types. Several districts in `zoning_codes.csv`
