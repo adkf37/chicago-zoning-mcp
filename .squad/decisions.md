@@ -3,16 +3,47 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
-### 2026-05-02 — Data Pipeline — Eval expansion Q141–Q160, full district coverage
+### 2026-05-02 — Data Pipeline — Eval expansion Q161–Q180, frontend redesign
 
-**Context:** Eval suite previously covered 140 questions (Q1–Q140). Audit of `data/zoning_codes.csv`
-revealed 18 districts still lacked eval coverage: RS-1, RS-2, RT-3.5, RM-4.5, RM-5, RM-5.5,
-B1-5, B2-5, B3-1, C1-3, C2-3, M1-1, M2-1, M2-2, M2-3, DR-3, DR-5, POS-2. Two comparison
-pairs (RM-5 vs RM-5.5, M2-2 vs M2-3) were also absent.
+**Context:** FEEDBACK.md goals: (1) expand test suite with wider questions including
+zoning code text and specific addresses; (2) improve performance for 100% accuracy;
+(3) make front-end more professional, inspired by Plan_for_Chicago_2030.
 
 **Decisions:**
 
-1. **Eval suite extended to 160 questions** — Added Q141–Q160 to `evals/zoning_qa.xml`:
+1. **Eval suite extended to 180 questions** — Added Q161–Q180 to `evals/zoning_qa.xml`:
+   - Q161–Q164: B1-1.5 FAR (1.5), M3-3 envelope (4000 sqft → 12,000 sqft), DX-16 lot
+     area per unit (115 sqft), DC-12 FAR (12.0).
+   - Q165–Q169: List downtown mixed-use districts (DX-3), B1-1 vs B1-1.5 comparison,
+     RM-4.5 units on 12,000 sqft lot (16), DS-3 vs DS-5 comparison, C3-5 envelope (3000 sqft → 15,000 sqft).
+   - Q170–Q174: Get section 17-13-0300 (planned development), DC-16 lot area per unit,
+     M3-3 envelope on 10,000 sqft lot (30,000 sqft), B1-2 lot area per unit (700 sqft),
+     green roof/sustainability search.
+   - Q175–Q180: RM-5 vs RM-6 comparison, certificate of zoning compliance search,
+     M3-3 height (55 ft), RM-5 units on 10,000 sqft lot (20), B1-1.5 vs B1-2 comparison,
+     Willis Tower address lookup (mocked, returns DC-16).
+
+2. **20 new eval tests** — `tests/test_evals.py` Q161–Q180 add offline coverage for:
+   - Previously untested districts: B1-1.5, M3-3, DX-16, DC-12
+   - Complex multi-step: address lookup (mocked) → zone_class = DC-16
+   - Zoning code text: green roof/sustainability, certificate of zoning compliance, get_zoning_section 17-13-0300
+   - New comparison pairs: B1-1 vs B1-1.5, DS-3 vs DS-5, RM-5 vs RM-6, B1-1.5 vs B1-2
+
+3. **Frontend redesigned** — `web/templates/index.html` improved to be more professional:
+   - Hero headline enlarged to `clamp(2.4rem, 5.5vw, 3.8rem)` (was 2rem–3.2rem).
+   - Stats bar numbers enlarged to `clamp(1.4rem, 3vw, 2rem)` with generous cell padding.
+   - Added `.hero__bg-grid` with subtle crosshatch pattern for visual depth.
+   - Replaced "how-it-works" section with 3-column "Capabilities" evidence cards
+     (District Lookup · Development Potential · Title 17 Search) with hover lift effects
+     and DM Serif Display stat labels — matching the Plan_for_Chicago_2030 visual language.
+   - Color tokens aligned: `--red: #cf2920`, `--red-hover: #a82018`.
+
+**Impact:**
+- Test count: 299 → 319; eval suite: 160 → 180 questions.
+- `ruff check src/ tests/ web/` → 0 errors.
+- Frontend more visually prominent and professional.
+
+
    - Q141–Q142: RS-1 FAR (0.5), RS-2 lot area per unit (5,000 sqft)
    - Q143–Q146: RT-3.5 height (35 ft), RM-4.5 FAR (1.5), RM-5 height (45 ft),
      RM-5.5 lot area per unit (400 sqft)
