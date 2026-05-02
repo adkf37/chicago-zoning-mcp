@@ -39,8 +39,10 @@ When answering questions:
 6. For questions comparing two district codes, call compare_districts even when the user
    says "different", "versus", "which is higher", or "what changes" instead of "compare".
 7. For questions that cite an exact Title 17 section number, call get_zoning_section.
-8. Provide a clear, concise answer based on the tool results.
-9. If a tool returns an error, explain it helpfully and suggest alternatives.
+8. For questions about zoning code topics (parking, ADUs, signs, variances, setbacks,
+   home occupations, planned developments, nonconforming uses, etc.), call search_zoning_code.
+9. Provide a clear, concise answer based on the tool results.
+10. If a tool returns an error, explain it helpfully and suggest alternatives.
 
 Be accurate and cite the district code or section number when relevant."""
 
@@ -813,6 +815,23 @@ class GeminiZoningClient:
                 "building height",
                 "density bonus",
                 "floor area",
+                "home occupation",
+                "home-based business",
+                "sign permit",
+                "certificate of zoning",
+                "use matrix",
+                "permitted uses",
+                "conditional use",
+                "bulk regulation",
+                "green roof",
+                "sustainability",
+                "open space",
+                "public benefits",
+                "demolition",
+                "adaptive reuse",
+                "historic preservation",
+                "transit-oriented",
+                "pedestrian street",
             )
         )
 
