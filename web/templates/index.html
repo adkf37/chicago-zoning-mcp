@@ -4,303 +4,661 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chicago Zoning Assistant</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <meta name="description" content="Ask questions about Chicago zoning districts, development potential, and Title 17 of the Chicago Municipal Code." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
+    /* ─── DESIGN TOKENS ──────────────────────────────────── */
     :root {
-      --chicago-blue: #003087;
-      --chicago-red: #C60C30;
-      --accent: #0057A8;
-      --surface: #F8FAFC;
-      --border: #E2E8F0;
+      --navy:        #003366;
+      --navy-deep:   #001d3d;
+      --navy-mid:    #002b55;
+      --red:         #C60C30;
+      --red-hover:   #a00a27;
+      --cream:       #faf8f5;
+      --warm-white:  #f4f1ec;
+      --text:        #1a1a1a;
+      --text-muted:  #5a6068;
+      --text-light:  #8a8f96;
+      --rule:        #d4cfc7;
+      --card-bg:     #ffffff;
+      --user-bg:     #003366;
+      --bot-bg:      #ffffff;
+      --border:      #e4e0da;
+      --card-shadow: 0 1px 3px rgba(0,20,50,.06), 0 8px 24px rgba(0,20,50,.04);
+      --font-display: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+      --font-body:    'Libre Franklin', 'Segoe UI', system-ui, sans-serif;
     }
-    * { box-sizing: border-box; }
-    body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
 
-    /* Chat bubbles */
-    .bubble-user {
-      background: var(--chicago-blue);
-      color: white;
-      border-radius: 1.25rem 1.25rem 0.375rem 1.25rem;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--cream);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
-    .bubble-bot {
-      background: white;
-      color: #1E293B;
+
+    /* ─── SITE HEADER ─────────────────────────────────────── */
+    .site-header {
+      background: var(--navy-deep);
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .site-header::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      right: -5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(198,12,48,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-top {
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-icon {
+      width: 2.25rem;
+      height: 2.25rem;
+      background: rgba(255,255,255,0.08);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: #ffffff;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-sub {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .header-live {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .live-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: #4ade80;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* ─── STATS BAR ───────────────────────────────────────── */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      max-width: 100%;
+    }
+
+    .stat-cell {
+      padding: 0.6rem 1.5rem;
+      background: rgba(0,29,61,0.7);
+      text-align: center;
+    }
+
+    .stat-cell__number {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .stat-cell__label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.42);
+    }
+
+    /* ─── CHAT LAYOUT ─────────────────────────────────────── */
+    .chat-wrapper {
+      flex: 1;
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      min-height: 0;
+    }
+
+    .messages {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-bottom: 0.5rem;
+      max-height: calc(100vh - 320px);
+    }
+
+    .messages::-webkit-scrollbar { width: 4px; }
+    .messages::-webkit-scrollbar-track { background: transparent; }
+    .messages::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 9999px; }
+
+    /* ─── CHAT BUBBLES ────────────────────────────────────── */
+    .msg-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .msg-row--user {
+      flex-direction: row-reverse;
+    }
+
+    .avatar {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      flex-shrink: 0;
+      font-family: var(--font-body);
+    }
+
+    .avatar--bot {
+      background: var(--navy);
+      color: #ffffff;
+    }
+
+    .avatar--user {
+      background: #475569;
+      color: #ffffff;
+    }
+
+    .bubble {
+      max-width: 78%;
+      padding: 0.875rem 1.125rem;
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      box-shadow: var(--card-shadow);
+      border-radius: 0 1rem 1rem 1rem;
+    }
+
+    .bubble--bot {
+      background: var(--bot-bg);
+      color: var(--text);
       border: 1px solid var(--border);
-      border-radius: 1.25rem 1.25rem 1.25rem 0.375rem;
     }
-    .bubble-bot p { margin-bottom: 0.625rem; line-height: 1.65; }
-    .bubble-bot p:last-child { margin-bottom: 0; }
-    .bubble-bot ul, .bubble-bot ol {
-      padding-left: 1.5rem;
-      margin-bottom: 0.625rem;
-    }
-    .bubble-bot ul { list-style: disc; }
-    .bubble-bot ol { list-style: decimal; }
-    .bubble-bot li { margin-bottom: 0.25rem; line-height: 1.6; }
-    .bubble-bot strong { color: #0F172A; }
-    .bubble-bot code {
-      background: #F1F5F9;
-      color: #1E40AF;
-      padding: 0.15rem 0.4rem;
-      border-radius: 0.25rem;
-      font-size: 0.82em;
-      font-family: 'SF Mono', 'Fira Code', monospace;
-    }
-    .bubble-bot h3 { font-weight: 600; font-size: 0.95em; margin: 0.75rem 0 0.35rem; color: #0F172A; }
 
-    /* Tool badges */
+    .bubble--user {
+      background: var(--user-bg);
+      color: #ffffff;
+      border-radius: 1rem 0 1rem 1rem;
+    }
+
+    /* Markdown in bot bubbles */
+    .bubble--bot p { margin-bottom: 0.5rem; }
+    .bubble--bot p:last-child { margin-bottom: 0; }
+    .bubble--bot ul, .bubble--bot ol { padding-left: 1.4rem; margin-bottom: 0.5rem; }
+    .bubble--bot ul { list-style: disc; }
+    .bubble--bot ol { list-style: decimal; }
+    .bubble--bot li { margin-bottom: 0.2rem; line-height: 1.6; }
+    .bubble--bot strong { color: var(--navy-deep); font-weight: 600; }
+    .bubble--bot code {
+      background: #f0ede8;
+      color: var(--navy);
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      font-size: 0.82em;
+      font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+    }
+    .bubble--bot h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--navy-deep);
+      margin: 0.75rem 0 0.35rem;
+      font-weight: normal;
+    }
+    .bubble--bot a { color: var(--red); }
+
+    /* Bot name label */
+    .bubble-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+
+    /* ─── TOOL BADGES ─────────────────────────────────────── */
+    .tool-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+      padding-top: 0.625rem;
+      border-top: 1px solid var(--rule);
+    }
+
     .tool-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
-      font-size: 0.68rem;
+      gap: 0.25rem;
+      font-size: 0.67rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      border-radius: 9999px;
+      padding: 0.15rem 0.55rem;
+    }
+
+    /* ─── WELCOME + SUGGESTIONS ───────────────────────────── */
+    .welcome-block {
+      background: var(--bot-bg);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      padding: 1.25rem 1.375rem;
+      border-radius: 0 1rem 1rem 1rem;
+      max-width: 78%;
+      box-shadow: var(--card-shadow);
+    }
+
+    .welcome-block__heading {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--navy-deep);
+      margin-bottom: 0.35rem;
+      line-height: 1.3;
+    }
+
+    .welcome-block__text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 0.875rem;
+    }
+
+    .welcome-block__prompt {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    .suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding-left: 2.75rem;
+    }
+
+    .chip {
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 0.4rem 0.85rem;
+      border: 1px solid var(--rule);
+      border-radius: 9999px;
+      background: var(--card-bg);
+      color: var(--text-muted);
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+      transition: all 0.15s ease;
+      font-family: var(--font-body);
+    }
+
+    .chip:hover {
+      background: #eff6ff;
+      border-color: #93c5fd;
+      color: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    /* ─── TYPING INDICATOR ────────────────────────────────── */
+    .typing-dots {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.5rem 0.2rem;
+    }
+
+    .typing-dots span {
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 50%;
+      background: #94a3b8;
+      animation: bounce 1.1s ease-in-out infinite;
+    }
+
+    .typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes bounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-5px); }
+    }
+
+    /* ─── INPUT AREA ──────────────────────────────────────── */
+    .input-area {
+      flex-shrink: 0;
+    }
+
+    .chat-form {
+      display: flex;
+      gap: 0.5rem;
+      background: var(--card-bg);
+      border: 1.5px solid var(--rule);
+      border-radius: 0.875rem;
+      padding: 0.625rem 0.625rem 0.625rem 1rem;
+      box-shadow: 0 2px 8px rgba(0,20,50,.05);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .chat-form:focus-within {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(0,51,102,0.1);
+    }
+
+    .chat-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      color: var(--text);
+      background: transparent;
+      line-height: 1.5;
+    }
+
+    .chat-input::placeholder { color: #a8b0ba; }
+
+    .submit-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--navy-deep);
+      color: #ffffff;
+      border: none;
+      border-radius: 0.625rem;
+      padding: 0.55rem 1.1rem;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
       font-weight: 600;
       letter-spacing: 0.02em;
-      background: #EFF6FF;
-      color: #1D4ED8;
-      border: 1px solid #BFDBFE;
-      border-radius: 9999px;
-      padding: 0.2rem 0.6rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      flex-shrink: 0;
     }
 
-    /* Spinner */
+    .submit-btn:hover:not(:disabled) {
+      background: var(--navy);
+      transform: translateY(-1px);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
     .spinner {
-      border: 2.5px solid rgba(255,255,255,0.3);
+      border: 2px solid rgba(255,255,255,0.3);
       border-top-color: white;
       border-radius: 50%;
-      width: 1.1rem;
-      height: 1.1rem;
-      animation: spin 0.65s linear infinite;
+      width: 1rem;
+      height: 1rem;
+      animation: spin 0.6s linear infinite;
     }
+
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Suggestion chips */
-    .chip {
-      transition: all 0.15s ease;
-      cursor: pointer;
-    }
-    .chip:hover {
-      background: #EFF6FF;
-      border-color: #93C5FD;
-      color: #1D4ED8;
+    .footer-note {
+      text-align: center;
+      font-size: 0.73rem;
+      color: var(--text-light);
+      margin-top: 0.625rem;
+      letter-spacing: 0.01em;
     }
 
-    /* Stats bar */
-    .stat-item { border-right: 1px solid rgba(255,255,255,0.2); }
-    .stat-item:last-child { border-right: none; }
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .header-live { display: none; }
+      .bubble { max-width: 90%; }
+      .welcome-block { max-width: 90%; }
+      .suggestions { padding-left: 0; }
+    }
 
-    /* Scrollbar */
-    #messages::-webkit-scrollbar { width: 5px; }
-    #messages::-webkit-scrollbar-track { background: transparent; }
-    #messages::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 9999px; }
-
-    /* Input focus ring */
-    #chat-form:focus-within {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(0,87,168,0.12);
+    @media (max-width: 380px) {
+      .stats-bar { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col">
+<body>
 
-  <!-- Header -->
-  <header style="background: var(--chicago-blue);" class="text-white shadow-lg">
-    <div class="max-w-4xl mx-auto px-5 py-4">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center text-xl"
-               style="background: rgba(255,255,255,0.12);">🏙️</div>
-          <div>
-            <h1 class="text-lg font-bold leading-tight tracking-tight">Chicago Zoning Assistant</h1>
-            <p class="text-xs mt-0.5" style="color: rgba(255,255,255,0.65);">
-              Title 17 Chicago Municipal Code · Powered by Gemini
-            </p>
-          </div>
-        </div>
-        <div class="hidden sm:flex items-center gap-1 text-xs" style="color: rgba(255,255,255,0.7);">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block mr-1"></span>
-          Live
+  <!-- ═══ SITE HEADER ════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="header-top">
+      <div class="brand">
+        <div class="brand-icon">🏙️</div>
+        <div class="brand-text">
+          <div class="brand-name">Chicago Zoning Assistant</div>
+          <div class="brand-sub">Title 17 · Chicago Municipal Code</div>
         </div>
       </div>
+      <div class="header-live">
+        <span class="live-dot"></span>
+        Live
+      </div>
     </div>
+
     <!-- Stats bar -->
-    <div style="background: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.1);">
-      <div class="max-w-4xl mx-auto px-5 py-2 flex items-center gap-0 overflow-x-auto">
-        <div class="stat-item flex items-center gap-1.5 px-4 first:pl-0 whitespace-nowrap">
-          <span class="text-xs font-semibold text-white">1,888</span>
-          <span class="text-xs" style="color:rgba(255,255,255,0.6)">indexed sections</span>
-        </div>
-        <div class="stat-item flex items-center gap-1.5 px-4 whitespace-nowrap">
-          <span class="text-xs font-semibold text-white">8</span>
-          <span class="text-xs" style="color:rgba(255,255,255,0.6)">zoning tools</span>
-        </div>
-        <div class="stat-item flex items-center gap-1.5 px-4 whitespace-nowrap">
-          <span class="text-xs font-semibold text-white">200+</span>
-          <span class="text-xs" style="color:rgba(255,255,255,0.6)">district codes</span>
-        </div>
-        <div class="flex items-center gap-1.5 px-4 whitespace-nowrap">
-          <span class="text-xs font-semibold text-white">Live</span>
-          <span class="text-xs" style="color:rgba(255,255,255,0.6)">Chicago Data Portal</span>
-        </div>
+    <div class="stats-bar">
+      <div class="stat-cell">
+        <div class="stat-cell__number">1,888</div>
+        <div class="stat-cell__label">Indexed sections</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell__number">8</div>
+        <div class="stat-cell__label">Zoning tools</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell__number">59</div>
+        <div class="stat-cell__label">Reference district types</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell__number">Live</div>
+        <div class="stat-cell__label">Chicago Data Portal</div>
       </div>
     </div>
   </header>
 
-  <!-- Chat area -->
-  <main class="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-5 py-5 flex flex-col gap-4" style="min-height: 0;">
+  <!-- ═══ CHAT ════════════════════════════════════════════════ -->
+  <main class="chat-wrapper">
 
-    <div id="messages"
-         class="flex-1 overflow-y-auto flex flex-col gap-4 pb-2"
-         style="max-height: calc(100vh - 310px);">
+    <div id="messages" class="messages">
 
       <!-- Welcome message -->
-      <div class="flex gap-3 items-start">
-        <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm flex-shrink-0 font-bold shadow-sm"
-             style="background: var(--chicago-blue);">Z</div>
-        <div class="bubble-bot px-5 py-4 max-w-2xl shadow-sm">
-          <p class="font-semibold text-sm mb-1" style="color: var(--chicago-blue);">
-            Chicago Zoning Assistant
-          </p>
-          <p class="text-sm text-slate-700 mb-3">
-            Ask me anything about Chicago's zoning regulations — district rules, FAR limits,
-            development potential, or specific sections of Title 17.
-          </p>
-          <p class="text-xs text-slate-400">Try one of these questions to get started:</p>
+      <div class="msg-row">
+        <div class="avatar avatar--bot">Z</div>
+        <div>
+          <div class="welcome-block">
+            <p class="bubble-label">Chicago Zoning Assistant</p>
+            <h2 class="welcome-block__heading">What would you like to know about Chicago zoning?</h2>
+            <p class="welcome-block__text">
+              Ask about district rules, development potential, Title 17 sections,
+              or the zoning at any Chicago address.
+            </p>
+            <p class="welcome-block__prompt">Try one of these questions →</p>
+          </div>
         </div>
       </div>
 
       <!-- Suggestion chips -->
-      <div id="suggestions" class="flex flex-wrap gap-2 pl-12">
-        <button class="chip text-xs px-3.5 py-2 border border-slate-200 rounded-full text-slate-600 bg-white shadow-sm font-medium"
-                onclick="sendSuggestion(this)">What's the zoning at 233 S Wacker Dr?</button>
-        <button class="chip text-xs px-3.5 py-2 border border-slate-200 rounded-full text-slate-600 bg-white shadow-sm font-medium"
-                onclick="sendSuggestion(this)">What can I build on a 5,000 sqft RS-3 lot?</button>
-        <button class="chip text-xs px-3.5 py-2 border border-slate-200 rounded-full text-slate-600 bg-white shadow-sm font-medium"
-                onclick="sendSuggestion(this)">Compare RS-3 and RT-4 districts</button>
-        <button class="chip text-xs px-3.5 py-2 border border-slate-200 rounded-full text-slate-600 bg-white shadow-sm font-medium"
-                onclick="sendSuggestion(this)">What does section 17-15-0100 say?</button>
-        <button class="chip text-xs px-3.5 py-2 border border-slate-200 rounded-full text-slate-600 bg-white shadow-sm font-medium"
-                onclick="sendSuggestion(this)">What are the parking requirements?</button>
+      <div id="suggestions" class="suggestions">
+        <button class="chip" onclick="sendSuggestion(this)">What's the zoning at 233 S Wacker Dr?</button>
+        <button class="chip" onclick="sendSuggestion(this)">What can I build on a 5,000 sqft RS-3 lot?</button>
+        <button class="chip" onclick="sendSuggestion(this)">Compare RS-3 and RT-4 districts</button>
+        <button class="chip" onclick="sendSuggestion(this)">What does section 17-15-0100 say?</button>
+        <button class="chip" onclick="sendSuggestion(this)">What are Chicago's parking requirements?</button>
+        <button class="chip" onclick="sendSuggestion(this)">What is the zoning at Wrigley Field?</button>
       </div>
-    </div>
 
-    <!-- Input -->
-    <div>
-      <form id="chat-form"
-            class="flex gap-2 bg-white border border-slate-200 rounded-2xl shadow-sm px-4 py-3 transition-all">
-        <input id="question-input"
-               type="text"
-               placeholder="Ask about Chicago zoning…"
-               autocomplete="off"
-               class="flex-1 outline-none text-slate-800 placeholder-slate-400 bg-transparent text-sm" />
-        <button type="submit"
-                id="submit-btn"
-                class="text-white rounded-xl px-5 py-2 text-sm font-semibold transition-colors flex items-center gap-2"
-                style="background: var(--chicago-blue);"
-                onmouseover="this.style.background='var(--accent)'"
-                onmouseout="this.style.background='var(--chicago-blue)'"
-        >
+    </div><!-- /messages -->
+
+    <!-- Input area -->
+    <div class="input-area">
+      <form id="chat-form" class="chat-form">
+        <input
+          id="question-input"
+          type="text"
+          placeholder="Ask about Chicago zoning…"
+          autocomplete="off"
+          class="chat-input"
+        />
+        <button type="submit" id="submit-btn" class="submit-btn">
           <span id="btn-text">Ask</span>
-          <span id="btn-spinner" class="spinner hidden"></span>
+          <span id="btn-spinner" class="spinner" style="display:none;"></span>
         </button>
       </form>
-      <p class="text-center text-xs text-slate-400 mt-2">
-        Data from Chicago Municipal Code Title 17 · Chicago Data Portal · Not legal advice
+      <p class="footer-note">
+        Data from Title 17 of the Chicago Municipal Code · Chicago Data Portal · Not legal advice
       </p>
     </div>
+
   </main>
 
   <script>
     const messagesEl = document.getElementById('messages');
-    const form = document.getElementById('chat-form');
-    const input = document.getElementById('question-input');
-    const submitBtn = document.getElementById('submit-btn');
-    const btnText = document.getElementById('btn-text');
+    const form       = document.getElementById('chat-form');
+    const input      = document.getElementById('question-input');
+    const submitBtn  = document.getElementById('submit-btn');
+    const btnText    = document.getElementById('btn-text');
     const btnSpinner = document.getElementById('btn-spinner');
 
-    // Configure marked for safe rendering
     marked.setOptions({ breaks: true, gfm: true });
 
-    function setLoading(loading) {
-      submitBtn.disabled = loading;
-      btnText.classList.toggle('hidden', loading);
-      btnSpinner.classList.toggle('hidden', !loading);
+    function setLoading(on) {
+      submitBtn.disabled = on;
+      btnText.style.display    = on ? 'none'  : '';
+      btnSpinner.style.display = on ? 'block' : 'none';
     }
 
     function appendMessage(role, content, toolCalls) {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'flex gap-3 items-start';
+      const row = document.createElement('div');
+      row.className = `msg-row${role === 'user' ? ' msg-row--user' : ''}`;
 
-      const avatar = document.createElement('div');
-      avatar.className = 'w-9 h-9 rounded-full flex items-center justify-center text-white text-xs flex-shrink-0 font-bold shadow-sm';
-      if (role === 'user') {
-        avatar.style.background = '#475569';
-        avatar.textContent = 'You';
-      } else {
-        avatar.style.background = 'var(--chicago-blue)';
-        avatar.textContent = 'Z';
-      }
+      const av = document.createElement('div');
+      av.className = `avatar avatar--${role}`;
+      av.textContent = role === 'user' ? 'You' : 'Z';
 
       const bubble = document.createElement('div');
-      bubble.className = (role === 'user' ? 'bubble-user' : 'bubble-bot') + ' px-4 py-3 max-w-2xl shadow-sm text-sm';
+      bubble.className = `bubble bubble--${role}`;
 
       if (role === 'user') {
         bubble.textContent = content;
       } else {
-        bubble.innerHTML = marked.parse(content);
+        const label = document.createElement('p');
+        label.className = 'bubble-label';
+        label.textContent = 'Zoning Assistant';
+        bubble.appendChild(label);
 
-        // Tool call badges
+        const body = document.createElement('div');
+        body.innerHTML = marked.parse(content);
+        bubble.appendChild(body);
+
         if (toolCalls && toolCalls.length > 0) {
-          const toolBar = document.createElement('div');
-          toolBar.className = 'flex flex-wrap gap-1.5 mt-3 pt-2.5 border-t border-slate-100';
+          const bar = document.createElement('div');
+          bar.className = 'tool-bar';
           toolCalls.forEach(tc => {
             const badge = document.createElement('span');
             badge.className = 'tool-badge';
             badge.innerHTML =
-              `<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94
-                     3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724
-                     1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572
-                     1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31
-                     -.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724
-                     1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
               </svg> ${tc.name}`;
-            toolBar.appendChild(badge);
+            bar.appendChild(badge);
           });
-          bubble.appendChild(toolBar);
+          bubble.appendChild(bar);
         }
       }
 
-      wrapper.appendChild(avatar);
-      wrapper.appendChild(bubble);
-      messagesEl.appendChild(wrapper);
+      row.appendChild(av);
+      row.appendChild(bubble);
+      messagesEl.appendChild(row);
       messagesEl.scrollTop = messagesEl.scrollHeight;
     }
 
-    // Typing indicator
     function showTyping() {
-      const wrapper = document.createElement('div');
-      wrapper.id = 'typing-indicator';
-      wrapper.className = 'flex gap-3 items-start';
-      wrapper.innerHTML = `
-        <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs flex-shrink-0 font-bold shadow-sm"
-             style="background: var(--chicago-blue);">Z</div>
-        <div class="bubble-bot px-4 py-3 shadow-sm flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-slate-400 animate-bounce" style="animation-delay:0s"></span>
-          <span class="w-2 h-2 rounded-full bg-slate-400 animate-bounce" style="animation-delay:.15s"></span>
-          <span class="w-2 h-2 rounded-full bg-slate-400 animate-bounce" style="animation-delay:.3s"></span>
+      const row = document.createElement('div');
+      row.id = 'typing';
+      row.className = 'msg-row';
+      row.innerHTML = `
+        <div class="avatar avatar--bot">Z</div>
+        <div class="bubble bubble--bot">
+          <div class="typing-dots">
+            <span></span><span></span><span></span>
+          </div>
         </div>`;
-      messagesEl.appendChild(wrapper);
+      messagesEl.appendChild(row);
       messagesEl.scrollTop = messagesEl.scrollHeight;
     }
 
     function hideTyping() {
-      const el = document.getElementById('typing-indicator');
+      const el = document.getElementById('typing');
       if (el) el.remove();
     }
 

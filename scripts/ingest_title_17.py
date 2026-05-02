@@ -27,6 +27,9 @@ OUTPUT_DIR = Path(__file__).parent.parent / "data" / "title_17"
 OUTPUT_FILE = OUTPUT_DIR / "sections.json"
 RAW_DIR = OUTPUT_DIR / "raw"
 
+# Maximum characters of child subsection text included in parent section aggregation
+_MAX_CHILD_TEXT_LENGTH = 300
+
 # Boilerplate lines injected by amlegal.com's web interface
 _BOILERPLATE_RE = re.compile(
     r"ShareDownloadBookmarkPrint|"
@@ -127,6 +130,27 @@ def parse_sections_from_text(text: str, source_file: str = "") -> list[dict]:
         entry = candidates.get(sec)
         if entry and (entry["text"] or entry["title"]):
             sections.append(entry)
+
+    # Post-process: populate empty parent sections with text from their children.
+    # e.g., 17-2-0104 (empty) gets summary text from 17-2-0104-A, -B, -C, etc.
+    for section in sections:
+        if section.get("text", "").strip():
+            continue  # already has text
+
+        parent_prefix = section["section"]
+        # Collect direct child subsection text (letter-suffixed only: -A, -B, ...)
+        child_texts = []
+        for s in sections:
+            sec_num = s["section"]
+            if (
+                sec_num.startswith(parent_prefix + "-")
+                and len(sec_num) == len(parent_prefix) + 2  # exactly one letter suffix
+                and s.get("text", "").strip()
+            ):
+                child_texts.append(f"({sec_num}) {s['text'][:_MAX_CHILD_TEXT_LENGTH]}")
+
+        if child_texts:
+            section["text"] = "\n".join(child_texts)
 
     return sections
 

@@ -220,3 +220,82 @@ def test_letter_suffixed_section_routes_to_get_section():
 
     assert _tool_names(calls) == ["get_zoning_section"]
     assert calls[0]["args"] == {"section_number": "17-15-0102-A"}
+
+
+def test_wrigley_field_address_routes_to_parcel_zoning():
+    """Q45: Wrigley Field address routes to get_parcel_zoning."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context("What is the zoning at 1060 W Addison St?")
+
+    assert _tool_names(calls) == ["get_parcel_zoning"]
+    assert calls[0]["args"] == {"address": "1060 W Addison St"}
+
+
+def test_address_with_lot_area_chains_parcel_then_envelope():
+    """Q46: Address + lot area chains get_parcel_zoning → calculate_development_envelope."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "What can I build on a 4,000 sqft lot at 5555 N Sheridan Rd?"
+        )
+
+    names = _tool_names(calls)
+    assert "get_parcel_zoning" in names
+    assert "calculate_development_envelope" in names
+    parcel_call = next(c for c in calls if c["name"] == "get_parcel_zoning")
+    assert parcel_call["args"] == {"address": "5555 N Sheridan Rd"}
+
+
+def test_list_all_districts_routes_to_list_district_types():
+    """Q47: 'List all zoning district types' routes to list_district_types."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context("List all zoning district types in Chicago.")
+
+    assert len(calls) > 0
+    assert any(c["name"] == "list_district_types" for c in calls)
+
+
+def test_homeowner_rs3_routes_to_lookup_and_search():
+    """Q51: Homeowner RS-3 question routes to lookup_district and search_zoning_code."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "I am a homeowner in RS-3. What zoning code requirements apply to my property?"
+        )
+
+    names = _tool_names(calls)
+    assert "lookup_district" in names
+
+
+def test_height_comparison_routes_to_compare():
+    """Q53: Height comparison between two districts routes to compare_districts."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "What is the difference in maximum height between RS-3 and RT-4?"
+        )
+
+    names = _tool_names(calls)
+    assert "compare_districts" in names
+    compare_call = next(c for c in calls if c["name"] == "compare_districts")
+    assert compare_call["args"] == {"district_a": "RS-3", "district_b": "RT-4"}
+
+
+def test_rt4_lot_area_routes_to_development():
+    """Q55: RT-4 max floor area question routes to calculate_development_envelope."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "What is the maximum floor area for a 3,000 sqft lot in RT-4?"
+        )
+
+    assert _tool_names(calls) == ["calculate_development_envelope"]
+    assert calls[0]["args"] == {"district_code": "RT-4", "lot_area_sqft": 3000.0}

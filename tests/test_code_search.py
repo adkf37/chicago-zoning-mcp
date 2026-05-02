@@ -409,3 +409,38 @@ def test_validate_index_no_warnings_on_full_valid_index():
 
     warnings = validate_index(big_index)
     assert warnings == []
+
+
+def test_parser_populates_empty_parent_from_children():
+    """Empty parent sections inherit text from letter-suffixed subsections."""
+    from scripts.ingest_title_17 import parse_sections_from_text
+
+    sample = """\
+17-2-0104 RM, Residential Multi-Unit Districts.
+
+   17-2-0104-A General. The RM districts accommodate moderate-density residential buildings.
+
+   17-2-0104-B RM4.5. The RM4.5 district is a transition district between RT4 and RM5.
+"""
+    sections = parse_sections_from_text(sample)
+    parent = next((s for s in sections if s["section"] == "17-2-0104"), None)
+    assert parent is not None, "Parent 17-2-0104 should be in the output"
+    # Parent should now have text derived from its children
+    assert parent["text"], "Parent section text should be non-empty after child aggregation"
+    assert "RM" in parent["text"], "Parent text should mention RM from child sections"
+
+
+def test_parser_does_not_overwrite_parent_text_when_already_set():
+    """Parent sections that already have body text should not have it replaced."""
+    from scripts.ingest_title_17 import parse_sections_from_text
+
+    sample = """\
+17-3-0200 General Zoning Requirements. These requirements apply citywide.
+
+   17-3-0200-A Additional standards. Each district has specific additional standards.
+"""
+    sections = parse_sections_from_text(sample)
+    parent = next((s for s in sections if s["section"] == "17-3-0200"), None)
+    assert parent is not None
+    # The parent's original body text should be preserved
+    assert "citywide" in parent["text"], "Original parent text should be preserved"

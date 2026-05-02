@@ -3,7 +3,43 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
-### 2026-04-30 — Lead — Web deployment layer added (Gemini + Flask + Cloud Run)
+### 2026-05-02 — Data Pipeline — Test expansion, ingestion improvement, front-end redesign
+
+**Context:** FEEDBACK.md requested expanding the test suite to cover more Q&A scenarios
+(especially address-specific questions), improving code ingestion quality, and redesigning
+the front-end to be more professional (inspired by Plan_for_Chicago_2030).
+
+**Decisions made:**
+
+1. **Ingestion improvement** — Added post-processing step to `parse_sections_from_text` that
+   aggregates child subsection text into empty parent sections. This reduced empty-text sections
+   from 368 → 188 in the built `sections.json` index, improving search recall for parent-level
+   queries like "residential multi-unit districts" (17-2-0104).
+
+2. **Address routing fix** — Extended `_extract_address` in `web/gemini_client.py` to recognize
+   "build" and "built" as trigger keywords. Previously, "What can I build at 5555 N Sheridan Rd?"
+   failed to extract the address because only "zoning"/"zone"/"parcel"/"address" keywords were
+   checked. The fix enables the full `get_parcel_zoning → calculate_development_envelope` chain
+   for construction questions with addresses.
+
+3. **Q&A harness expansion** — Added Q45–Q55 to `evals/zoning_qa.xml` covering:
+   - Address-specific questions (Wrigley Field, 5555 N Sheridan Rd) — requires_network
+   - list_district_types, sign regulations, height comparisons
+   - Homeowner RS-3 + ADU scenarios
+   - Developer RT-4 floor area calculations
+   These give the eval harness 55 questions (up from 44).
+
+4. **Front-end redesign** — Replaced Tailwind CDN-based UI with purpose-built CSS using:
+   - DM Serif Display + Libre Franklin fonts (matching Plan_for_Chicago_2030)
+   - Navy (#001d3d) / cream (#faf8f5) / Chicago red (#C60C30) palette
+   - Stats bar showing 1,888 sections, 8 tools, 59 districts, Live API status
+   - Improved chat bubbles with bot label, clean typography, tool badge rendering
+   - 6 suggestion chips covering common question types
+
+5. **New eval tests (Q26, Q30, Q31, Q32, Q41, Q43, Q45–Q55)** — Added 22 new tests to
+   `tests/test_evals.py`. Tests for Q45/Q46 mock geocoder + Socrata so they run offline.
+
+
 
 **Context:** User confirmed Title 17 is already ingested locally. Ollama approach superseded
 by Gemini + Google Cloud Run (mirroring the existing Homicide Bot architecture).

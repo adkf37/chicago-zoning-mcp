@@ -11,10 +11,10 @@
 
 ## Current Objective
 
-**Build phase — improving ingestion depth, eval coverage, and front-end polish.**
+**Build phase — expanding test coverage, ingestion quality, and front-end polish (per FEEDBACK.md).**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
-- `pytest tests/ -m "not network"` → **144 passed, 5 deselected** ✅
+- `pytest tests/ -m "not network"` → **169 passed, 5 deselected** ✅
 - `ruff check src/ tests/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
@@ -24,7 +24,31 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 
 ## Recent Activity
 
-- 2026-05-02: Build pass — ingestion improvements, expanded eval tests, front-end refresh:
+- 2026-05-02 (this pass): Expanded test coverage, improved ingestion, redesigned front-end:
+  - **Ingestion**: `parse_sections_from_text` now post-processes empty parent sections by
+    aggregating child subsection text (e.g. 17-2-0104-A through -E into 17-2-0104). Reduced
+    empty-text sections from **368 → 188** in the rebuilt `sections.json` index. Added 2 new
+    parser tests (`test_parser_populates_empty_parent_from_children`,
+    `test_parser_does_not_overwrite_parent_text_when_already_set`).
+  - **Index rebuilt**: `python scripts/ingest_title_17.py` run — 1,888 sections, 188 remaining
+    empty (reserved/table-only sections), 0 duplicates.
+  - **Eval tests**: Added Q26, Q30, Q31, Q32, Q41, Q43, Q45–Q55 to `tests/test_evals.py`.
+    Test count grew from 47 → **57 eval tests**. Q45/Q46 mock geocoder + Socrata without
+    network. Q51–Q55 cover homeowner ADU, district comparisons, development envelopes.
+  - **Routing tests**: Added 6 new routing tests (Q45/Q46 address chain, Q47 list all,
+    Q51 homeowner RS-3, Q53 height comparison, Q55 RT-4 floor area). Total: 29 routing tests.
+  - **Address routing fix**: Extended `_extract_address` in `web/gemini_client.py` to also
+    trigger when the question contains "build" or "built" keywords, enabling "What can I build
+    at 5555 N Sheridan Rd?" to chain `get_parcel_zoning → calculate_development_envelope`.
+  - **Q&A harness**: Added Q45–Q55 to `evals/zoning_qa.xml` (address-specific, code-text, and
+    multi-step scenarios covering homeowner and developer audiences).
+  - **Front-end**: Full redesign of `web/templates/index.html` — replaced Tailwind CDN with
+    purpose-built CSS using DM Serif Display + Libre Franklin fonts (same as Plan_for_Chicago_2030),
+    navy/cream/Chicago-red palette, stats bar (1,888 sections / 8 tools / 59 districts / Live),
+    improved chat bubbles, tool badge styling, and 6 suggestion chips.
+  - **Tests**: Total 169 passing (was 144).
+
+- 2026-05-02 (previous pass): Build pass — ingestion improvements, expanded eval tests, front-end refresh.
   - **Ingestion**: Improved `parse_sections_from_text` in `scripts/ingest_title_17.py` to capture
     indented subsections and letter-suffixed sub-items (e.g. `17-15-0102-A`). The parser now uses
     `\s*` to match non-breaking space (`\xa0`) indentation from amlegal.com. Added boilerplate
