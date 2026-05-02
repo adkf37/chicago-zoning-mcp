@@ -11,11 +11,11 @@
 
 ## Current Objective
 
-**Build phase — ingestion pipeline improvement: all 1,888 indexed sections now have text.**
+**Build phase — eval suite expanded to 80 questions, routing improved, front-end redesigned.**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
-- `pytest tests/ -m "not network"` → **187 passed, 5 deselected** ✅ (was 184)
-- `ruff check src/ tests/` → **0 errors** ✅
+- `pytest tests/ -m "not network"` → **209 passed, 5 deselected** ✅ (was 187)
+- `ruff check src/ tests/ web/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
 - `calculate_development_envelope("RS-3", 5000)` → 4500 sqft ✅
@@ -24,49 +24,40 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 
 ## Recent Activity
 
-- 2026-05-02 (this pass): Ingestion pipeline improvements — **0 empty sections** (was 188):
-  - **`\xa0` normalization** in `parse_sections_from_text`: the title-line extraction now
-    normalizes non-breaking spaces (`\xa0`) to regular spaces before detecting the `". "`
-    sentence boundary. amlegal.com sometimes uses `".\xa0"` as the separator between a
-    section heading and its inline body text (e.g. `"Nonconforming Uses.\xa0..."`) which
-    previously caused the body content to be lost. Fixed 1 section (17-6-0404).
-  - **Numeric child aggregation** (Post-process 2): empty section-group headers ending in
-    a multiple of 100 (e.g. `17-2-0100 "District descriptions"`, `17-2-0200 "Allowed uses"`)
-    now get a summary of their child sections' titles appended as text. This enables
-    `get_zoning_section("17-2-0100")` to return useful content. Fixed ~89 header sections.
-  - **Title-as-text fallback** (Post-process 3): any section still empty after the above
-    steps (e.g. single-line list items like `17-3-0502-A "have a high concentration..."` and
-    reserved placeholder sections) now uses the section title as its text, making every
-    section keyword-searchable. Fixed ~98 remaining sections.
-  - **Index rebuilt**: `python scripts/ingest_title_17.py` — 1,888 sections, **0 empty**
-    (down from 188), 0 duplicates. Validation now shows only the expected chapter 17-1 warning.
-  - **Tests**: Added 3 new parser tests (`test_parser_handles_nbsp_separator`,
-    `test_parser_populates_header_section_from_numeric_children`,
-    `test_parser_uses_title_as_text_for_list_items`). Total: **187 passing** (was 184).
+- 2026-05-02 (this pass): Eval suite expansion, routing improvements, and front-end redesign:
+  - **Eval suite expanded to 80 questions** — Added Q66–Q80 to `evals/zoning_qa.xml` covering:
+    - New district types: RS-1, RM-6, DR-7, M1-1/M1-3, POS-2, RT-3.5, RM-5.5, DS-3, B2-3, C1-5, DX-5
+    - New calculations: RM-6 (FAR 4.4), POS-2 (FAR 0.05), RT-3.5 units, RM-5.5, B2-3, C1-5
+    - New comparisons: M1-1 vs M1-3, DX-5 vs DX-12
+    - New code searches: setback requirements, inclusionary zoning
+    - New list query: manufacturing district types
+  - **Routing keywords extended** — Added `inclusionary`, `setback`, `height limit`,
+    `building height`, `density bonus`, `floor area` to `_looks_like_code_search`
+    for better no-district code search coverage.
+  - **22 new tests** — 15 eval tests (Q66–Q80) + 7 routing tests. Total: **209 passing** (was 187).
+  - **Front-end redesign** — Overhauled `web/templates/index.html`:
+    - Added a top navigation bar with links to Chicago DPD, Official Zoning Map, and Title 17
+    - Upgraded hero section with eyebrow text, large italic headline, subtitle, and red accent glow
+    - Categorized suggestion chips into three groups: Address Lookup, District Rules, Zoning Code
+    - Added a professional footer with attribution and resource links
+    - Uses the same visual language as Plan_for_Chicago_2030 (DM Serif + Libre Franklin,
+      navy/red/cream color scheme, radial gradient accent)
 
-- 2026-05-02 (previous pass): Expanded routing keywords, eval suite, and test coverage:
-  - **Routing improvement**: Extended `_looks_like_code_search` in `web/gemini_client.py`
-    with keywords `variance`, `special use`, `landscaping`, `landscape`, `overlay`,
-    `certificate of occupancy`, `use approval`, `rezoning process`, and `application process`.
-  - **Eval suite**: Added Q56–Q65 to `evals/zoning_qa.xml` (65 total).
-  - **Routing tests**: Added 5 new routing tests. Total: 34 routing tests.
-  - **Eval tests**: Added 10 new eval tests (Q56–Q65). Test count grew from **169 → 184**.
+- 2026-05-02 (previous pass): Ingestion pipeline improvements — **0 empty sections** (was 188):
+  - **`\xa0` normalization**, numeric child aggregation, title-as-text fallback.
+  - Index rebuilt: 1,888 sections, 0 empty, 0 duplicates.
+  - Tests: 187 passing.
 
-- 2026-05-02 (earlier pass): Expanded test coverage, improved ingestion, redesigned front-end:
-  - **Ingestion**: Reduced empty-text sections from **368 → 188** via letter-suffix aggregation.
-  - **Front-end**: Full redesign of `web/templates/index.html`.
-  - **Tests**: Total 169 passing (was 144).
+- 2026-05-02 (earlier pass): Routing keywords, eval Q56–Q65, 184 tests.
 
-- 2026-04-30: Web deployment phase started — adding `web/` (Flask+Gemini) layer + GitHub Actions CI/CD for Cloud Run.
+- 2026-04-30: Web deployment phase started — adding `web/` (Flask+Gemini) layer.
 - 2026-04-22: Closeout complete — all automated acceptance criteria verified.
 
 ## Next Recommended Step
 
-**Validate phase.** The index is now fully populated (0 empty sections). Run
-`python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>` to measure live eval
-pass-rate against the full 65-question harness. Then optionally add
-`data/title_17/raw/chapter_17-01.txt` for Chapter 17-1 (Definitions) and
-re-run ingestion to complete the full 17-chapter index.
+**Validate phase.** Run `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>` to
+measure live eval pass-rate against the full 80-question harness. Prior live eval score
+was 14/20 (70%) on 20 questions; the new target is 100% on 80 questions.
 
 ## Artifacts
 
@@ -84,6 +75,8 @@ re-run ingestion to complete the full 17-chapter index.
 | Squad routing rules | `.squad/routing.md` | created |
 | Squad decisions log | `.squad/decisions.md` | updated |
 | Sprint plan | `.squad/sprint.md` | created |
+| Eval suite | `evals/zoning_qa.xml` | 80 questions (Q1–Q80) |
+| Eval tests | `tests/test_evals.py` | 209 tests passing |
 
 ## Needs Human Input
 
@@ -92,8 +85,7 @@ re-run ingestion to complete the full 17-chapter index.
   `python scripts/ingest_title_17.py` to rebuild the index with all 17 chapters.
 
 - **Live eval run** (~15 min) — Execute `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>`
-  to measure pass-rate against the 65-question harness. The last known score was 14/20 (70%)
-  on 20 questions; the full 65-question target is 100%.
+  to measure pass-rate against the 80-question harness.
 
 - **MCP Inspector verification** (~30 min) — Run `npx @modelcontextprotocol/inspector python -m src.server`.
 

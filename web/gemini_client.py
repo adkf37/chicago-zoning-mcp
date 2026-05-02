@@ -747,6 +747,7 @@ class GeminiZoningClient:
                 "permit",
                 "bonus",
                 "affordable housing",
+                "inclusionary",
                 "site plan",
                 "variance",
                 "special use",
@@ -758,6 +759,11 @@ class GeminiZoningClient:
                 "rezoning process",
                 "application process",
                 "approval process",
+                "setback",
+                "height limit",
+                "building height",
+                "density bonus",
+                "floor area",
             )
         )
 

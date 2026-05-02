@@ -368,3 +368,99 @@ def test_b3_2_large_lot_routes_to_development():
 
     assert _tool_names(calls) == ["calculate_development_envelope"]
     assert calls[0]["args"] == {"district_code": "B3-2", "lot_area_sqft": 20000.0}
+
+
+def test_rs1_far_routes_to_lookup():
+    """Q66: RS-1 FAR question routes to lookup_district."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "What is the floor area ratio for an RS-1 single-family district?"
+        )
+
+    assert _tool_names(calls) == ["lookup_district"]
+    assert calls[0]["args"] == {"district_code": "RS-1"}
+
+
+def test_rm6_envelope_routes_to_development():
+    """Q68: RM-6 floor area on 5000 sqft routes to calculate_development_envelope."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "What is the maximum floor area on a 5,000 sqft lot in RM-6?"
+        )
+
+    assert _tool_names(calls) == ["calculate_development_envelope"]
+    assert calls[0]["args"] == {"district_code": "RM-6", "lot_area_sqft": 5000.0}
+
+
+def test_m1_1_vs_m1_3_routes_to_compare():
+    """Q70: M1-1 vs M1-3 comparison routes to compare_districts."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "Compare M1-1 and M1-3 manufacturing districts. Which allows more floor area?"
+        )
+
+    names = _tool_names(calls)
+    assert "compare_districts" in names
+    compare_call = next(c for c in calls if c["name"] == "compare_districts")
+    assert set(compare_call["args"].values()) == {"M1-1", "M1-3"}
+
+
+def test_rt3_5_units_routes_to_development():
+    """Q73: RT-3.5 dwelling units question routes to calculate_development_envelope."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "How many dwelling units can I build on an 8,250 sqft lot zoned RT-3.5?"
+        )
+
+    assert _tool_names(calls) == ["calculate_development_envelope"]
+    assert calls[0]["args"] == {"district_code": "RT-3.5", "lot_area_sqft": 8250.0}
+
+
+def test_setback_requirements_routes_to_code_search():
+    """Q75: 'setback requirements' question routes to search_zoning_code."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "What does the Chicago zoning code say about building setback requirements?"
+        )
+
+    names = _tool_names(calls)
+    assert "search_zoning_code" in names
+
+
+def test_dx5_vs_dx12_routes_to_compare():
+    """Q79: DX-5 vs DX-12 comparison routes to compare_districts."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "Which downtown mixed-use district allows more floor area: DX-5 or DX-12?"
+        )
+
+    names = _tool_names(calls)
+    assert "compare_districts" in names
+    compare_call = next(c for c in calls if c["name"] == "compare_districts")
+    assert set(compare_call["args"].values()) == {"DX-5", "DX-12"}
+
+
+def test_inclusionary_zoning_routes_to_code_search():
+    """Q80: 'inclusionary zoning' question routes to search_zoning_code."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "Find zoning code sections about inclusionary zoning "
+            "or affordable housing requirements."
+        )
+
+    names = _tool_names(calls)
+    assert "search_zoning_code" in names
