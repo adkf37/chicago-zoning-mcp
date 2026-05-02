@@ -109,3 +109,114 @@ def test_address_development_question_chains_parcel_then_envelope():
     assert _tool_names(calls) == ["get_parcel_zoning", "calculate_development_envelope"]
     assert calls[0]["args"] == {"address": "4521 N Clark St"}
     assert calls[1]["args"] == {"district_code": "B3-2", "lot_area_sqft": 3000.0}
+
+
+def test_structured_dc16_question_routes_to_lookup():
+    """Q22: Structured professional prompt for DC-16 routes to lookup_district.
+
+    A code-search call may also fire because the prompt mentions 'code section'.
+    """
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "Aim: Provide a professional developer information on zoning district DC-16. "
+            "Output: Provide the district title, FAR, and the zoning code section used."
+        )
+
+    names = _tool_names(calls)
+    assert "lookup_district" in names
+    assert calls[0]["args"] == {"district_code": "DC-16"}
+
+
+def test_dx7_developer_lookup_routes_to_lookup():
+    """Q33: DX-7 developer summary routes to lookup_district."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "Aim: I am a professional developer and I want to build in DX-7. "
+            "Output: Summarize the relevant district limits with citations or code references."
+        )
+
+    assert _tool_names(calls) == ["lookup_district"]
+    assert calls[0]["args"] == {"district_code": "DX-7"}
+
+
+def test_rezoning_comparison_routes_to_compare_then_envelope():
+    """Q34: Rezoning evaluation routes to compare_districts and calculate_development_envelope."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "Aim: Evaluate whether rezoning a 6,000 sqft RS-3 lot to RT-4 increases "
+            "residential development capacity. Output: Include FAR and dwelling unit implications."
+        )
+
+    names = _tool_names(calls)
+    assert "compare_districts" in names or "lookup_district" in names
+    assert "calculate_development_envelope" in names
+
+
+def test_zoning_map_with_coords_uses_map_url():
+    """Q35: 'zoning map link for coordinates' routes to get_zoning_map_url."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "Give me a zoning map link for coordinates 41.8789, -87.6359."
+        )
+
+    assert _tool_names(calls) == ["get_zoning_map_url"]
+
+
+def test_pos1_floor_area_routes_to_development():
+    """Q37: POS-1 floor area on 10,000 sqft lot routes to calculate_development_envelope."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "What is the maximum floor area on a 10,000 sqft lot in POS-1?"
+        )
+
+    assert _tool_names(calls) == ["calculate_development_envelope"]
+    assert calls[0]["args"] == {"district_code": "POS-1", "lot_area_sqft": 10000.0}
+
+
+def test_dc16_without_hyphen_normalizes():
+    """Q42: 'DC16' without hyphen should be normalized to 'DC-16'."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "DC16 zoning Chicago FAR height code section"
+        )
+
+    names = _tool_names(calls)
+    assert "lookup_district" in names
+    lookup_call = next(c for c in calls if c["name"] == "lookup_district")
+    assert lookup_call["args"] == {"district_code": "DC-16"}
+
+
+def test_b1_3_floor_area_routes_to_development():
+    """Q44: B1-3 max floor area on 2,500 sqft routes to calculate_development_envelope."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "What is the maximum floor area on a 2,500 sqft lot zoned B1-3?"
+        )
+
+    assert _tool_names(calls) == ["calculate_development_envelope"]
+    assert calls[0]["args"] == {"district_code": "B1-3", "lot_area_sqft": 2500.0}
+
+
+def test_letter_suffixed_section_routes_to_get_section():
+    """Section number with letter suffix (17-15-0102-A) routes to get_zoning_section."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context("What does section 17-15-0102-A say?")
+
+    assert _tool_names(calls) == ["get_zoning_section"]
+    assert calls[0]["args"] == {"section_number": "17-15-0102-A"}
