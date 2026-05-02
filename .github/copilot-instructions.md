@@ -1,35 +1,94 @@
-# Copilot Coding Agent — Maestro Project Instructions
+# Copilot Coding Agent - Maestro Project Instructions
+
+<!-- Managed by Maestro workflow contract. Update `workflow_contract.yaml` instead of editing this file directly. -->
 
 This project is managed by the **Maestro** orchestration system and uses **Squad** for multi-agent coordination.
 
 ## Before Starting Work
 
-1. Read `backlog/README.md` for the project goals and success criteria.
-2. Read `backlog/tasks/` for the discrete task list.
-3. Read `STATUS.md` for current phase and blocking issues.
-4. Read `FEEDBACK.md` for any human corrections or guidance.
-5. If `.squad/team.md` exists, read it for the team roster and your role assignment.
-6. If `.squad/routing.md` exists, check routing rules before starting.
+1. `STATUS.md` - current phase, objective, blockers, and next recommended step
+2. `FEEDBACK.md` - human corrections or guidance, if present
+
+If these files or directories exist, read them next:
+
+- `backlog/README.md` - project goals and success criteria
+- `backlog/data_sources.md` - known data sources and constraints
+- `backlog/tasks/` - discrete task definitions
+- `.squad/team.md` - roster and role assignments
+- `.squad/routing.md` - routing rules
+- `.squad/sprint.md` - ordered execution plan
+- `.squad/decisions.md` - shared context, evidence, and decisions
 
 ## Work Conventions
 
-- **Branch naming:** `maestro/{phase}-{kebab-case-slug}` (e.g., `maestro/planner-initial-plan`)
-- **Commit messages:** Start with the phase: `[Planner]`, `[Coder]`, `[Tester]`, `[Reconciler]`
-- **Status updates:** Update `STATUS.md` when you change the project's phase or objective.
-- **Decisions:** If you make a significant architectural or data decision, log it in `.squad/decisions.md` (create it if missing).
+- **Branch naming:** `maestro/{phase}-{kebab-case-slug}`
+- **Commit messages:** Use one of these phase prefixes: `[Planner]`, `[Squad Init]`, `[Squad Review]`, `[Build]`, `[Validate]`, `[Closeout]`
+- **Status updates:** Update `STATUS.md` whenever you change the phase, objective, blockers, or next step.
+- **Decisions:** Log significant architectural, data, and validation decisions in `.squad/decisions.md`.
 
 ## Phases
 
-This project follows the Maestro lifecycle:
-1. **Planner** — Survey existing files, define goals, write `PLAN.md`
-2. **Squad Init** — Initialize the agent team based on the plan
-3. **Coder** — Implement the plan (Squad routes to specialists)
-4. **Tester** — Validate implementation, write tests
-5. **Reconciler** — Compare dual-coder outputs (if applicable)
-6. **Reviewer** — Critical review, fact-checking, final polish
+This repo follows the Maestro lifecycle:
+1. **Planner** - Survey the existing repo, define the deliverable, and create the backlog contract.
+2. **Squad Init** - Bootstrap `.squad/`, define the team, and align responsibilities to the backlog.
+3. **Squad Review** - Tighten backlog tasks, surface risks, and turn the backlog into an execution plan.
+4. **Build** - Execute the next implementation or analysis slice from the sprint plan.
+5. **Validate** - Run the right checks, capture evidence, and decide whether the loop advances or returns to build.
+6. **Closeout** - Refresh handoff artifacts and decide whether the project is complete or loops back for more work.
+
+Legacy aliases still appear in older repos:
+
+- `coder` maps to `build`
+- `reviewer` maps to `closeout`
+- `review` maps to `closeout`
+
+## Artifact Contract
+
+### Planner
+
+- `backlog/README.md` - project background, goals, and success criteria
+- `backlog/data_sources.md` - source URLs/endpoints and availability status
+- `backlog/phases.md` - lifecycle breakdown aligned to Maestro phases
+- `backlog/tasks/` - one file per discrete task
+- `STATUS.md` - current objective updated to reflect the plan
+- `requirements.txt` - created or updated if additional Python packages are needed
+
+### Squad Init
+
+- `.squad/team.md` - full roster with role descriptions
+- `.squad/routing.md` - routing rules and ownership
+- `.squad/decisions.md` - decision log initialized and useful
+- `.squad/agents/*/charter.md` - one charter per agent
+- `STATUS.md` - updated to show the team is initialized and ready for `squad-review`
+
+### Squad Review
+
+- `backlog/tasks/` - detailed, fully specified task files
+- `.squad/sprint.md` - ordered execution plan with ownership and dependencies
+- `STATUS.md` - updated to show review is complete and the repo is ready for `build`
+
+### Build
+
+- Implementation work that materially advances at least one task from `backlog/tasks/`
+- `STATUS.md` - updated with progress, blockers, and suggested next step
+- `.squad/decisions.md` - updated with significant implementation decisions
+
+### Validate
+
+- Tests, lint, type checks, metrics, evals, or data integrity checks run when applicable
+- `.squad/validation_report.md` - commands/checks run, results, blocked checks, evidence, and pass/fail recommendation
+- `STATUS.md` - updated with pass/fail/blocked outcome and next recommended phase
+- `.squad/decisions.md` - updated with validation evidence and rationale
+
+### Closeout
+
+- `STATUS.md` - updated with closeout outcome and remaining blockers
+- `.squad/review_report.md` - final review decision, evidence checked, risks, and explicit signoff or return-to-work decision
+- `.squad/decisions.md` - final closeout decisions and handoff notes
+- Human-facing docs refreshed enough for handoff
 
 ## Data Constraints
 
-- Prefer using data already in the repo (`data/`, `cache/`, CSV files).
-- If external data is needed, document the source URL in `PLAN.md` and `requirements.txt`.
-- Never hardcode API keys — use environment variables.
+- Prefer using data already in the repo (`data/`, `cache/`, CSV files) when possible.
+- If external data is needed, document the source URL in the backlog and any dependency changes in `requirements.txt`.
+- Never hardcode API keys - use environment variables.
