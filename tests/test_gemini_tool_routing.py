@@ -41,6 +41,16 @@ def test_for_phrase_with_district_is_not_misread_as_address():
     assert calls[0]["args"] == {"district_code": "RS-3"}
 
 
+def test_bare_street_address_routes_to_parcel_zoning():
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context("2821 w sherwin")
+
+    assert _tool_names(calls) == ["get_parcel_zoning"]
+    assert calls[0]["args"] == {"address": "2821 w sherwin"}
+
+
 def test_b_district_comparison_preserves_full_codes():
     client = _client()
 

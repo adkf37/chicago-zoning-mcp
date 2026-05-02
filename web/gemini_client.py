@@ -685,10 +685,14 @@ class GeminiZoningClient:
 
     @staticmethod
     def _extract_address(question: str) -> str:
+        cleaned = re.sub(r"\([^)]*\)", "", question)
+        cleaned = re.sub(r"\s+", " ", cleaned).strip(" .,")
+        if GeminiZoningClient._looks_like_street_address(cleaned):
+            return cleaned
+
         if not re.search(r"\b(?:zoning|zone|parcel|address)\b", question, re.IGNORECASE):
             return ""
 
-        cleaned = re.sub(r"\([^)]*\)", "", question)
         match = re.search(
             r"\b(?:located\s+at|address\s+is|at|for|near)\s+(.+?)"
             r"(?=\s*(?:\?|$)|\s*,?\s+(?:and|then|where|with|so)\b)",
@@ -700,9 +704,23 @@ class GeminiZoningClient:
         address = re.sub(r"\s+", " ", match.group(1)).strip(" .,")
         if re.fullmatch(r"[+-]?\d+(?:\.\d+)?\s*,\s*[+-]?\d+(?:\.\d+)?", address):
             return ""
-        if not re.match(r"\d{1,6}\s+\S+", address):
+        if not GeminiZoningClient._looks_like_street_address(address):
             return ""
         return address if re.search(r"\d", address) else ""
+
+    @staticmethod
+    def _looks_like_street_address(text: str) -> bool:
+        return bool(
+            re.match(
+                r"^\d{1,6}\s+(?:N|S|E|W|North|South|East|West)?\.?\s*"
+                r"[A-Za-z0-9][A-Za-z0-9 .'-]*"
+                r"(?:\s+(?:St|Street|Ave|Avenue|Rd|Road|Blvd|Boulevard|Dr|Drive|"
+                r"Pl|Place|Ct|Court|Ln|Lane|Way|Ter|Terrace|Pkwy|Parkway))?"
+                r"(?:,\s*Chicago(?:,\s*IL)?)?$",
+                text,
+                re.IGNORECASE,
+            )
+        )
 
     @staticmethod
     def _looks_like_code_search(question_lower: str) -> bool:
