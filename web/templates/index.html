@@ -15,8 +15,8 @@
       --navy:        #003366;
       --navy-deep:   #001d3d;
       --navy-mid:    #002b55;
-      --red:         #C60C30;
-      --red-hover:   #a00a27;
+      --red:         #cf2920;
+      --red-hover:   #a82018;
       --cream:       #faf8f5;
       --warm-white:  #f4f1ec;
       --text:        #1a1a1a;
@@ -132,10 +132,31 @@
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
     }
 
+    .hero__bg-grid {
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 44px,
+          rgba(255,255,255,0.025) 44px,
+          rgba(255,255,255,0.025) 45px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 44px,
+          rgba(255,255,255,0.025) 44px,
+          rgba(255,255,255,0.025) 45px
+        );
+      pointer-events: none;
+    }
+
     .hero__inner {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 3rem 1.5rem 0;
+      padding: 3.5rem 1.5rem 0;
     }
 
     .hero__eyebrow {
@@ -160,7 +181,7 @@
 
     .hero__headline {
       font-family: var(--font-display);
-      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
       line-height: 1.1;
       letter-spacing: -0.01em;
       color: #ffffff;
@@ -174,7 +195,7 @@
     }
 
     .hero__subtitle {
-      font-size: 1rem;
+      font-size: 1.1rem;
       line-height: 1.65;
       color: rgba(255,255,255,0.62);
       max-width: 580px;
@@ -193,14 +214,14 @@
     }
 
     .stat-cell {
-      padding: 0.85rem 1.5rem;
+      padding: 1.25rem 1.5rem;
       background: rgba(0,29,61,0.7);
       text-align: center;
     }
 
     .stat-cell__number {
       font-family: var(--font-display);
-      font-size: 1.25rem;
+      font-size: clamp(1.4rem, 3vw, 2rem);
       color: #ffffff;
       line-height: 1.2;
     }
@@ -266,6 +287,88 @@
       color: var(--text);
       font-weight: 600;
       margin-bottom: 0.1rem;
+    }
+
+    /* ─── CAPABILITIES SECTION ────────────────────────────── */
+    .capabilities {
+      background: var(--warm-white);
+      border-bottom: 1px solid var(--rule);
+      flex-shrink: 0;
+    }
+
+    .capabilities__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .capabilities__label {
+      font-family: var(--font-body);
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .capabilities__heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      color: var(--navy);
+      margin-bottom: 1.75rem;
+      line-height: 1.25;
+    }
+
+    .capabilities__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .capability-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-top: 3px solid var(--navy);
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .capability-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,20,50,.08), 0 16px 40px rgba(0,20,50,.06);
+    }
+
+    .capability-card__icon {
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .capability-card__stat {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin-bottom: 0.35rem;
+      line-height: 1.2;
+    }
+
+    .capability-card__title {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .capability-card__text {
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 640px) {
+      .capabilities__grid { grid-template-columns: 1fr; }
     }
 
     /* ─── CHAT LAYOUT ─────────────────────────────────────── */
@@ -722,6 +825,7 @@
 
   <!-- ═══ HERO ════════════════════════════════════════════════ -->
   <header class="hero">
+    <div class="hero__bg-grid" aria-hidden="true"></div>
     <div class="hero__inner">
       <p class="hero__eyebrow">
         <span class="hero__eyebrow-stars" aria-hidden="true">★ ★ ★ ★</span>
@@ -755,29 +859,43 @@
     </div>
   </header>
 
-  <!-- ═══ HOW IT WORKS ════════════════════════════════════════ -->
-  <section class="how-it-works">
-    <div class="how-it-works__inner">
-      <div class="how-step">
-        <div class="how-step__number">1</div>
-        <div class="how-step__text">
-          <strong>Ask a question</strong>
-          Type a question in plain English — about a district, an address, or a code section.
+  <!-- ═══ CAPABILITIES ════════════════════════════════════════ -->
+  <section class="capabilities">
+    <div class="capabilities__inner">
+      <p class="capabilities__label">What it can do</p>
+      <h2 class="capabilities__heading">Three tools in one conversation</h2>
+      <div class="capabilities__grid">
+
+        <div class="capability-card">
+          <span class="capability-card__icon" aria-hidden="true">📍</span>
+          <div class="capability-card__stat">59 Districts</div>
+          <h3 class="capability-card__title">District Lookup</h3>
+          <p class="capability-card__text">
+            Look up any Chicago zoning district by code. Instantly retrieve FAR limits,
+            height limits, setback requirements, and a plain-language description.
+          </p>
         </div>
-      </div>
-      <div class="how-step">
-        <div class="how-step__number">2</div>
-        <div class="how-step__text">
-          <strong>Tools run automatically</strong>
-          The assistant queries the Chicago Data Portal and Title 17 index for live, accurate data.
+
+        <div class="capability-card">
+          <span class="capability-card__icon" aria-hidden="true">🏗️</span>
+          <div class="capability-card__stat">By-the-Number</div>
+          <h3 class="capability-card__title">Development Potential</h3>
+          <p class="capability-card__text">
+            Calculate the maximum floor area, dwelling unit count, and height for any
+            lot. Enter a district code and lot size — get precise answers back.
+          </p>
         </div>
-      </div>
-      <div class="how-step">
-        <div class="how-step__number">3</div>
-        <div class="how-step__text">
-          <strong>Get a clear answer</strong>
-          Receive a concise response with cited district codes, FAR values, or ordinance sections.
+
+        <div class="capability-card">
+          <span class="capability-card__icon" aria-hidden="true">📖</span>
+          <div class="capability-card__stat">1,888+ Sections</div>
+          <h3 class="capability-card__title">Title 17 Search</h3>
+          <p class="capability-card__text">
+            Search the full text of the Chicago Zoning Ordinance. Find sections on
+            parking, ADUs, variances, signs, planned developments, and more.
+          </p>
         </div>
+
       </div>
     </div>
   </section>
