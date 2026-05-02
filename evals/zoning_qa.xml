@@ -431,4 +431,96 @@
     <notes>RS-2 maximum building height is 30 ft, 2 stories.</notes>
   </question>
 
+  <!-- Extended evaluation set — additional districts, calculations, code search, and address lookups -->
+
+  <question id="66" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the floor area ratio for an RS-1 single-family district?</prompt>
+    <answer>0.5</answer>
+    <notes>RS-1 is the lowest-density residential district; FAR is 0.5.</notes>
+  </question>
+
+  <question id="67" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What category does the RM-6 zoning district fall under?</prompt>
+    <answer_contains>Residential</answer_contains>
+    <notes>RM-6 is a high-density multi-unit residential district.</notes>
+  </question>
+
+  <question id="68" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 5,000 sqft lot in RM-6?</prompt>
+    <answer_contains>22000</answer_contains>
+    <notes>RM-6 FAR is 4.4; 5000 * 4.4 = 22,000 sqft.</notes>
+  </question>
+
+  <question id="69" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What category does the DR-7 zoning district fall under?</prompt>
+    <answer_contains>Downtown</answer_contains>
+    <notes>DR-7 is a Downtown Residential district.</notes>
+  </question>
+
+  <question id="70" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare M1-1 and M1-3 manufacturing districts. Which allows more floor area?</prompt>
+    <answer_contains>M1-3</answer_contains>
+    <notes>M1-3 FAR is 3.0; M1-1 FAR is 1.0.</notes>
+  </question>
+
+  <question id="71" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 10,000 sqft lot in POS-2?</prompt>
+    <answer_contains>500</answer_contains>
+    <notes>POS-2 FAR is 0.05; 10000 * 0.05 = 500 sqft.</notes>
+  </question>
+
+  <question id="72" tool="list_district_types" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>List all manufacturing zoning district types in Chicago.</prompt>
+    <answer_contains>M1-1</answer_contains>
+    <notes>Should call list_district_types with a manufacturing filter and return M1 districts.</notes>
+  </question>
+
+  <question id="73" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>How many dwelling units can I build on an 8,250 sqft lot zoned RT-3.5?</prompt>
+    <answer_regex>\b(5|five)\b</answer_regex>
+    <notes>RT-3.5 lot_area_per_unit is 1,650 sqft; 8250 / 1650 = 5 units.</notes>
+  </question>
+
+  <question id="74" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on an 8,000 sqft lot in RM-5.5?</prompt>
+    <answer_contains>20000</answer_contains>
+    <notes>RM-5.5 FAR is 2.5; 8000 * 2.5 = 20,000 sqft.</notes>
+  </question>
+
+  <question id="75" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>What does the Chicago zoning code say about building setback requirements?</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>Setback standards are addressed in multiple Title 17 chapters.</notes>
+  </question>
+
+  <question id="76" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a DS-3 Downtown Service district?</prompt>
+    <answer_contains>50</answer_contains>
+    <notes>DS-3 maximum building height is 50 ft, 4 stories.</notes>
+  </question>
+
+  <question id="77" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 5,000 sqft lot in B2-3?</prompt>
+    <answer_contains>15000</answer_contains>
+    <notes>B2-3 FAR is 3.0; 5000 * 3.0 = 15,000 sqft.</notes>
+  </question>
+
+  <question id="78" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 2,000 sqft lot zoned C1-5?</prompt>
+    <answer_contains>10000</answer_contains>
+    <notes>C1-5 FAR is 5.0; 2000 * 5.0 = 10,000 sqft.</notes>
+  </question>
+
+  <question id="79" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Which downtown mixed-use district allows more floor area: DX-5 or DX-12?</prompt>
+    <answer_contains>DX-12</answer_contains>
+    <notes>DX-12 FAR is 12.0; DX-5 FAR is 5.0.</notes>
+  </question>
+
+  <question id="80" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>Find zoning code sections about inclusionary zoning or affordable housing requirements.</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>Affordable housing and inclusionary requirements appear in Title 17.</notes>
+  </question>
+
 </eval_suite>

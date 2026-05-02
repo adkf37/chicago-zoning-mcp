@@ -3,6 +3,41 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-05-02 — Data Pipeline — Eval expansion Q66–Q80, routing, front-end redesign
+
+**Context:** FEEDBACK.md requested expanding the test suite with wider range of questions,
+improving routing to answer 100% of questions accurately, and improving the front-end design
+using Plan_for_Chicago_2030 as inspiration.
+
+**Decisions made:**
+
+1. **Eval suite extended to 80 questions** — Added Q66–Q80 to `evals/zoning_qa.xml`:
+   - Covers 11 new district types not previously tested: RS-1, RM-6, DR-7, M1-3, POS-2,
+     RT-3.5, RM-5.5, DS-3, B2-3, C1-5, DX-5
+   - New development envelope calculations with FAR values: 4.4 (RM-6), 0.05 (POS-2),
+     1.05 (RT-3.5 units), 2.5 (RM-5.5), 3.0 (B2-3), 5.0 (C1-5)
+   - New comparisons: M1-1 vs M1-3, DX-5 vs DX-12
+   - New code searches: setback requirements, inclusionary zoning
+   - New list query: manufacturing district types
+
+2. **Routing keywords extended** — Added to `_looks_like_code_search` in `gemini_client.py`:
+   `inclusionary`, `setback`, `height limit`, `building height`, `density bonus`, `floor area`.
+   These cover common no-district questions that previously fell through to an empty tool call.
+
+3. **Test count 187 → 209** — 15 eval tests (Q66–Q80) + 7 routing tests. All pass offline.
+
+4. **Front-end redesigned** — `web/templates/index.html` now uses the Plan_for_Chicago_2030
+   visual language:
+   - Top navigation bar: links to Chicago DPD, official Zoning Map, and Title 17 text
+   - Hero section with eyebrow, italic headline, and subtitle (matches Plan_for_Chicago_2030)
+   - Radial red accent glow and fade bottom border in hero (matches plan site)
+   - Suggestion chips organized into three labeled groups: Address Lookup, District Rules,
+     Zoning Code — replacing a flat unordered list
+   - Professional footer with attribution and four resource links (DPD, Zoning Map, Title 17,
+     Chicago Data Portal)
+   - `--red: #C60C30` updated to Chicago flag red (was `#cf2920`)
+
+
 ### 2026-05-02 — Data Pipeline — Routing expansion, eval breadth, Q56–Q65
 
 **Context:** Build pass to add more question coverage per FEEDBACK.md goal of answering

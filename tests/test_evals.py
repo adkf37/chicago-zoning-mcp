@@ -1463,3 +1463,258 @@ def test_eval_q65_rs2_height(district_tools):
     assert "30" in str(height), (
         f"Expected '30' in RS-2 maximum_building_height, got: {height!r}"
     )
+
+
+# ---------------------------------------------------------------------------
+# Q66 — RS-1 FAR is 0.5
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q66_rs1_far(district_tools):
+    """Eval Q66: RS-1 FAR should be 0.5."""
+    result = district_tools["lookup_district"](district_code="RS-1")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(0.5)
+
+
+# ---------------------------------------------------------------------------
+# Q67 — RM-6 category is Residential
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q67_rm6_category(district_tools):
+    """Eval Q67: RM-6 should be in the Residential category."""
+    result = district_tools["lookup_district"](district_code="RM-6")
+    assert "error" not in result
+    assert "Residential" in result["category"]
+
+
+# ---------------------------------------------------------------------------
+# Q68 — RM-6 max floor area on 5000 sqft = 22000 (FAR 4.4)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q68_rm6_5000_envelope(development_tools):
+    """Eval Q68: RM-6 FAR 4.4 × 5000 sqft lot = 22,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RM-6", lot_area_sqft=5000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(22000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q69 — DR-7 category is Downtown Residential
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q69_dr7_category(district_tools):
+    """Eval Q69: DR-7 should be in the Downtown Residential category."""
+    result = district_tools["lookup_district"](district_code="DR-7")
+    assert "error" not in result
+    assert "Downtown" in result["category"], (
+        f"Expected 'Downtown' in DR-7 category, got: {result['category']!r}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q70 — M1-3 has higher FAR than M1-1
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q70_m1_3_higher_far_than_m1_1(district_tools):
+    """Eval Q70: compare_districts M1-1 vs M1-3 — M1-3 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="M1-1", district_b="M1-3")
+    assert "error" not in result
+    m1_1_far = float(result["floor_area_ratio"]["M1-1"])
+    m1_3_far = float(result["floor_area_ratio"]["M1-3"])
+    assert m1_3_far > m1_1_far, (
+        f"Expected M1-3 FAR ({m1_3_far}) > M1-1 FAR ({m1_1_far})"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q71 — POS-2 max floor area on 10000 sqft = 500 (FAR 0.05)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q71_pos2_10000_envelope(development_tools):
+    """Eval Q71: POS-2 FAR 0.05 × 10,000 sqft lot = 500 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="POS-2", lot_area_sqft=10000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(500.0)
+
+
+# ---------------------------------------------------------------------------
+# Q72 — list_district_types filtering by Manufacturing returns M1-1
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q72_list_manufacturing_districts(district_tools):
+    """Eval Q72: list_district_types('Manufacturing') should include M1-1."""
+    result = district_tools["list_district_types"](category="Manufacturing")
+    assert isinstance(result, list)
+    assert len(result) > 0
+    district_codes = [d["district_type_code"] for d in result]
+    assert "M1-1" in district_codes, (
+        f"Expected M1-1 in manufacturing districts, got: {district_codes}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q73 — RT-3.5 max units on 8250 sqft = 5 (8250 / 1650)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q73_rt3_5_units_8250(development_tools):
+    """Eval Q73: RT-3.5 on 8250 sqft lot → 5 max dwelling units (8250 / 1650)."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RT-3.5", lot_area_sqft=8250
+    )
+    assert "error" not in result
+    assert result["max_dwelling_units"] == 5
+
+
+# ---------------------------------------------------------------------------
+# Q74 — RM-5.5 max floor area on 8000 sqft = 20000 (FAR 2.5)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q74_rm5_5_8000_envelope(development_tools):
+    """Eval Q74: RM-5.5 FAR 2.5 × 8000 sqft lot = 20,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RM-5.5", lot_area_sqft=8000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(20000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q75 — search "setback requirements" returns Title 17 sections
+# ---------------------------------------------------------------------------
+
+_CODE_SEARCH_FIXTURE_SETBACKS = _CODE_SEARCH_FIXTURE + [
+    {
+        "section": "17-2-0400",
+        "title": "Setback Requirements",
+        "chapter": "Chapter 17-2",
+        "text": (
+            "All buildings and structures must observe minimum front, side, and rear "
+            "setbacks as specified by the applicable district standards. Setbacks are "
+            "measured from the lot line to the nearest wall of the structure."
+        ),
+        "source_file": "chapter_17-2.txt",
+    },
+]
+
+
+def test_eval_q75_setback_requirements_code_search(code_search_tools):
+    """Eval Q75: search_zoning_code('setback requirements') returns Title 17 sections."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_SETBACKS,
+    ):
+        result = code_search_tools["search_zoning_code"](
+            query="building setback requirements"
+        )
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    for section in result["results"]:
+        assert section["section"].startswith("17-")
+
+
+# ---------------------------------------------------------------------------
+# Q76 — DS-3 maximum building height contains 50
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q76_ds3_height(district_tools):
+    """Eval Q76: DS-3 maximum_building_height should reference 50 ft."""
+    result = district_tools["lookup_district"](district_code="DS-3")
+    assert "error" not in result
+    height = result.get("maximum_building_height", "")
+    assert "50" in str(height), (
+        f"Expected '50' in DS-3 maximum_building_height, got: {height!r}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q77 — B2-3 max floor area on 5000 sqft = 15000 (FAR 3.0)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q77_b2_3_5000_envelope(development_tools):
+    """Eval Q77: B2-3 FAR 3.0 × 5000 sqft lot = 15,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="B2-3", lot_area_sqft=5000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(15000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q78 — C1-5 max floor area on 2000 sqft = 10000 (FAR 5.0)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q78_c1_5_2000_envelope(development_tools):
+    """Eval Q78: C1-5 FAR 5.0 × 2000 sqft lot = 10,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="C1-5", lot_area_sqft=2000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(10000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q79 — DX-12 has higher FAR than DX-5
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q79_dx12_higher_far_than_dx5(district_tools):
+    """Eval Q79: compare_districts DX-5 vs DX-12 — DX-12 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="DX-5", district_b="DX-12")
+    assert "error" not in result
+    dx5_far = float(result["floor_area_ratio"]["DX-5"])
+    dx12_far = float(result["floor_area_ratio"]["DX-12"])
+    assert dx12_far > dx5_far, (
+        f"Expected DX-12 FAR ({dx12_far}) > DX-5 FAR ({dx5_far})"
+    )
+    assert "floor_area_ratio" in result["_differences"]
+
+
+# ---------------------------------------------------------------------------
+# Q80 — search "inclusionary zoning" returns Title 17 sections
+# ---------------------------------------------------------------------------
+
+_CODE_SEARCH_FIXTURE_INCLUSIONARY = _CODE_SEARCH_FIXTURE_EXTENDED + [
+    {
+        "section": "17-4-1000",
+        "title": "Affordable Housing and Inclusionary Zoning",
+        "chapter": "Chapter 17-4",
+        "text": (
+            "Inclusionary zoning requirements apply to residential developments that "
+            "receive city financial assistance or involve a zoning map amendment. "
+            "Developers must provide a specified percentage of affordable housing units "
+            "or make an in-lieu payment to the Affordable Housing Opportunity Fund."
+        ),
+        "source_file": "chapter_17-4.txt",
+    },
+]
+
+
+def test_eval_q80_inclusionary_zoning_code_search(code_search_tools):
+    """Eval Q80: search for 'inclusionary zoning' returns Title 17 sections."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_INCLUSIONARY,
+    ):
+        result = code_search_tools["search_zoning_code"](
+            query="inclusionary zoning affordable housing requirements"
+        )
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    for section in result["results"]:
+        assert section["section"].startswith("17-")
