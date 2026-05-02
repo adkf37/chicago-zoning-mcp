@@ -30,6 +30,11 @@ RAW_DIR = OUTPUT_DIR / "raw"
 # Maximum characters of child subsection text included in parent section aggregation
 _MAX_CHILD_TEXT_LENGTH = 300
 
+# Maximum number of numeric child sections to scan when aggregating section-group headers.
+# Title 17 section groups (e.g. 17-2-0100, 17-2-0200) never contain more than ~15 direct
+# numeric children, so 20 provides comfortable headroom without scanning too far forward.
+_MAX_NUMERIC_CHILDREN = 20
+
 # Boilerplate lines injected by amlegal.com's web interface
 _BOILERPLATE_RE = re.compile(
     r"ShareDownloadBookmarkPrint|"
@@ -80,7 +85,10 @@ def parse_sections_from_text(text: str, source_file: str = "") -> list[dict]:
 
     for i, match in enumerate(matches):
         section_num = match.group(1).strip()
-        raw_title = match.group(2).strip()
+        # Normalize non-breaking spaces (\xa0) to regular spaces in the title line.
+        # amlegal.com sometimes uses \xa0 as a sentence separator (e.g. "Title.\xa0Body..."),
+        # which prevents the ". " split below from detecting the sentence boundary.
+        raw_title = match.group(2).strip().replace("\xa0", " ")
 
         # Extract text until next section
         start = match.end()
@@ -151,6 +159,43 @@ def parse_sections_from_text(text: str, source_file: str = "") -> list[dict]:
 
         if child_texts:
             section["text"] = "\n".join(child_texts)
+
+    # Post-process 2: populate empty section-group headers (sections ending in
+    # a multiple of 100, e.g. 17-2-0100, 17-2-0200) with a list of their
+    # numeric children's titles, so that get_zoning_section returns useful content
+    # rather than an empty record.
+    section_by_num = {s["section"]: s for s in sections}
+    for section in sections:
+        if section.get("text", "").strip():
+            continue  # already has text
+
+        parts = section["section"].split("-")
+        if len(parts) < 3:
+            continue
+        try:
+            base_num = int(parts[2])
+        except ValueError:
+            continue
+        if base_num % 100 != 0:
+            continue  # only process x00 header sections
+
+        child_titles = []
+        for i in range(1, _MAX_NUMERIC_CHILDREN + 1):
+            child_key = f"{parts[0]}-{parts[1]}-{base_num + i:04d}"
+            child = section_by_num.get(child_key)
+            if child and child.get("title", "").strip():
+                child_titles.append(f"({child_key}) {child['title']}")
+
+        if child_titles:
+            section["text"] = "Sections in this group:\n" + "\n".join(child_titles)
+
+    # Post-process 3: use section title as text for any sections still empty.
+    # This covers single-line list items (e.g. letter-suffix criteria like
+    # "17-3-0502-A have a high concentration of...") and reserved placeholder
+    # sections, ensuring every indexed section is keyword-searchable.
+    for section in sections:
+        if not section.get("text", "").strip() and section.get("title", "").strip():
+            section["text"] = section["title"]
 
     return sections
 

@@ -3,7 +3,7 @@
     "section": "17-2-0100",
     "title": "District descriptions",
     "chapter": "Chapter 17-2",
-    "text": "",
+    "text": "Sections in this group:\n(17-2-0101) Generally\n(17-2-0102) RS, Residential Single-Unit (Detached House) Districts\n(17-2-0103) RT, Residential Two-Flat, Townhouse and Multi-Unit Districts\n(17-2-0104) RM, Residential Multi-Unit Districts\n(17-2-0105) \"A\" Suffix Designation",
     "source_file": "chapter_17-02.txt"
   },
   {
@@ -24,7 +24,7 @@
     "section": "17-2-0103",
     "title": "RT, Residential Two-Flat, Townhouse and Multi-Unit Districts",
     "chapter": "Chapter 17-2",
-    "text": "The primary purpose of the RT districts is to accommodate detached houses, two-flats, townhouses and low-density, multi-unit residential buildings at a density and building scale that is compatible with RS districts. The districts are intended to be applied in areas characterized by a mix of housing types. The districts are also intended to provide a gradual transition between RS districts and higher density RM districts. The RT districts are differentiated primarily on the basis of allowed density (minimum lot area per unit) and floor area ratios.",
+    "text": "The primary purpose of the RT districts is to accommodate detached houses, two-flats, townhouses and low-density, multi-unit residential buildings at a density and building scale that is compatible with RS districts. The districts are intended to be applied in areas characterized by a mix of housing types. The districts are also intended to provide a gradual transition between RS districts and higher density RM districts. The RT districts are differentiated primarily on the basis of allowed density (minimum lot area per unit) and floor area ratios.",
     "source_file": "chapter_17-02.txt"
   },
   {
@@ -101,7 +101,7 @@
     "section": "17-2-0200",
     "title": "Allowed uses",
     "chapter": "Chapter 17-2",
-    "text": "",
+    "text": "Sections in this group:\n(17-2-0201) Use Groups and Categories\n(17-2-0202) Permitted Uses\n(17-2-0203) 5 Planned Developments\n(17-2-0204) Prohibited Uses\n(17-2-0205) Use Standards\n(17-2-0206) Parking Standards\n(17-2-0207) Use Table and Standards",
     "source_file": "chapter_17-02.txt"
   },
   {
@@ -157,7 +157,7 @@
     "section": "17-2-0300",
     "title": "Bulk and density standards",
     "chapter": "Chapter 17-2",
-    "text": "",
+    "text": "Sections in this group:\n(17-2-0301) Lot Area\n(17-2-0302) Lot Frontage\n(17-2-0303) Lot Area per Unit (Density)\n(17-2-0304) Floor Area Ratio\n(17-2-0305) Front setbacks\n(17-2-0306) Rear Setbacks\n(17-2-0307) Rear Yard Open Space\n(17-2-0308) On-Site Open Space in RM5.5, RM6 and RM6.5 Districts\n(17-2-0309) Side Setbacks\n(17-2-0310) Building (Wall) Separation\n(17-2-0311) Building Height\n(17-2-0312) Average Dwelling Unit Size\n(17-2-0313) Number of Efficiency Units",
     "source_file": "chapter_17-02.txt"
   },
   {
@@ -241,7 +241,7 @@
     "section": "17-2-0304",
     "title": "Floor Area Ratio",
     "chapter": "Chapter 17-2",
-    "text": "(17-2-0304-A) District\n\nMaximum Floor Area Ratio*\n\nDistrict\n\nMaximum Floor Area Ratio*\n\nRS1\n\n0.50\n\nRS2\n\n0.65\n\nRS3\n\n0.90\n\nRT3.5\n\n1.05\n\nRT4\n\n1.20 (See accessible dwelling unit exceptions, Sec. 17-2-0304-B)\n\nRM4.5\n\n1.70\n\nRM5\n\n2.00\n\nRM5.5\n\n2.50\n\nRM6\n\n4.40; premium may apply - See Sec. 17-2-0304-C\n\nRM6.5\n\n6.60; premiu\n(17-2-0304-C) n lots that permit 50 or more dwelling units, based on the lot's zoning classification, are eligible for floor area ratio premiums in accordance with the following: For each one percent decrease in the number of dwelling units below the maximum number permitted under Section 17-2-0303-A, a 0.50% inc\n(17-2-0304-D) Ground floor Type A units, except those provided in detached houses, will not be counted as floor area for the purpose of calculating floor area ratio in RS3, RS3.5, and RT4 districts.",
+    "text": "(17-2-0304-A) District\n\nMaximum Floor Area Ratio*\n\nDistrict\n\nMaximum Floor Area Ratio*\n\nRS1\n\n0.50\n\nRS2\n\n0.65\n\nRS3\n\n0.90\n\nRT3.5\n\n1.05\n\nRT4\n\n1.20 (See accessible dwelling unit exceptions, Sec. 17-2-0304-B)\n\nRM4.5\n\n1.70\n\nRM5\n\n2.00\n\nRM5.5\n\n2.50\n\nRM6\n\n4.40; premium may apply - See Sec. 17-2-0304-C\n\nRM6.5\n\n6.60; premiu\n(17-2-0304-C) Multi-unit residential buildings located in an RM6 or RM6.5 district on lots that permit 50 or more dwelling units, based on the lot's zoning classification, are eligible for floor area ratio premiums in accordance with the following: For each one percent decrease in the number of dwelling units bel\n(17-2-0304-D) Ground floor Type A units, except those provided in detached houses, will not be counted as floor area for the purpose of calculating floor area ratio in RS3, RS3.5, and RT4 districts.",
     "source_file": "chapter_17-02.txt"
   },
   {
@@ -255,14 +255,14 @@
     "section": "17-2-0304-B",
     "title": "Reserved",
     "chapter": "Chapter 17-2",
-    "text": "",
+    "text": "Reserved",
     "source_file": "chapter_17-02.txt"
   },
   {
     "section": "17-2-0304-C",
-    "title": "Premiums. Multi-unit residential buildings located in an RM6 or RM6.5 district o",
+    "title": "Premiums",
     "chapter": "Chapter 17-2",
-    "text": "n lots that permit 50 or more dwelling units, based on the lot's zoning classification, are eligible for floor area ratio premiums in accordance with the following: For each one percent decrease in the number of dwelling units below the maximum number permitted under Section 17-2-0303-A, a 0.50% increase in the allowable floor area ratio is allowed, provided that the floor area ratio is not increased by more than 25% over the otherwise applicable maximum under Section 17-2-0304-A.",
+    "text": "Multi-unit residential buildings located in an RM6 or RM6.5 district on lots that permit 50 or more dwelling units, based on the lot's zoning classification, are eligible for floor area ratio premiums in accordance with the following: For each one percent decrease in the number of dwelling units below the maximum number permitted under Section 17-2-0303-A, a 0.50% increase in the allowable floor area ratio is allowed, provided that the floor area ratio is not increased by more than 25% over the otherwise applicable maximum under Section 17-2-0304-A.",
     "source_file": "chapter_17-02.txt"
   },
   {
@@ -514,7 +514,7 @@
     "section": "17-2-0400",
     "title": "Character standards",
     "chapter": "Chapter 17-2",
-    "text": "",
+    "text": "Sections in this group:\n(17-2-0401) Blank Walls\n(17-2-0402) Access to Off-Street Parking",
     "source_file": "chapter_17-02.txt"
   },
   {
@@ -661,7 +661,7 @@
     "section": "17-3-0100",
     "title": "District descriptions",
     "chapter": "Chapter 17-3",
-    "text": "",
+    "text": "Sections in this group:\n(17-3-0101) Generally\n(17-3-0102) B1, Neighborhood Shopping District\n(17-3-0103) B2, Neighborhood Mixed-Use District\n(17-3-0104) B3, Community Shopping District\n(17-3-0105) C1, Neighborhood Commercial District\n(17-3-0106) C2, Motor Vehicle-Related Commercial District\n(17-3-0107) C3, Commercial, Manufacturing and Employment District",
     "source_file": "chapter_17-03.txt"
   },
   {
@@ -703,7 +703,7 @@
     "section": "17-3-0102-D",
     "title": "The B1 district permits residential dwelling units above the ground floor",
     "chapter": "Chapter 17-3",
-    "text": "",
+    "text": "The B1 district permits residential dwelling units above the ground floor",
     "source_file": "chapter_17-03.txt"
   },
   {
@@ -731,7 +731,7 @@
     "section": "17-3-0103-B",
     "title": "The B2 district permits residential dwelling units on or above the ground floor",
     "chapter": "Chapter 17-3",
-    "text": "",
+    "text": "The B2 district permits residential dwelling units on or above the ground floor",
     "source_file": "chapter_17-03.txt"
   },
   {
@@ -773,7 +773,7 @@
     "section": "17-3-0104-C",
     "title": "The B3 district permits residential dwelling units above the ground floor",
     "chapter": "Chapter 17-3",
-    "text": "",
+    "text": "The B3 district permits residential dwelling units above the ground floor",
     "source_file": "chapter_17-03.txt"
   },
   {
@@ -815,7 +815,7 @@
     "section": "17-3-0105-C",
     "title": "The C1 district permits residential dwelling units above the ground floor",
     "chapter": "Chapter 17-3",
-    "text": "",
+    "text": "The C1 district permits residential dwelling units above the ground floor",
     "source_file": "chapter_17-03.txt"
   },
   {
@@ -850,7 +850,7 @@
     "section": "17-3-0106-B",
     "title": "The C2 district permits residential dwelling units above the ground floor",
     "chapter": "Chapter 17-3",
-    "text": "",
+    "text": "The C2 district permits residential dwelling units above the ground floor",
     "source_file": "chapter_17-03.txt"
   },
   {
@@ -892,7 +892,7 @@
     "section": "17-3-0107-C",
     "title": "The C3 district does not permit residential dwelling units",
     "chapter": "Chapter 17-3",
-    "text": "",
+    "text": "The C3 district does not permit residential dwelling units",
     "source_file": "chapter_17-03.txt"
   },
   {
@@ -969,7 +969,7 @@
     "section": "17-3-0300",
     "title": "General district standards",
     "chapter": "Chapter 17-3",
-    "text": "",
+    "text": "Sections in this group:\n(17-3-0301) Establishments Requiring Public Place of Amusement (PPA) Licenses\n(17-3-0302) Commercial establishment size limits\n(17-3-0303) Industrial Establishment Size Limits\n(17-3-0304) Indoor/Outdoor Operations\n(17-3-0305) Floor-to-Floor Heights and Floor Area of Ground-floor Space\n(17-3-0306) Strip Centers\n(17-3-0307) Exceptions\n(17-3-0308) Specific Criteria for Transit-Served Locations",
     "source_file": "chapter_17-03.txt"
   },
   {
@@ -983,7 +983,7 @@
     "section": "17-3-0302",
     "title": "Commercial establishment size limits",
     "chapter": "Chapter 17-3",
-    "text": "(17-3-0302-A) The gross floor area of commercial establishments in B1, B2, C1-1, C1-1.5 and C1-2 districts may not exceed 25,000 square feet.\n(17-3-0302-B) o size limits in the B3, C1-3, C1-5, C2 and C3 districts, but some large commercial establishments require review and approval in accordance with the planned development review procedures of Sec. 17-13-0600. The mandatory planned development review thresholds for large commercial establishments are ",
+    "text": "(17-3-0302-A) The gross floor area of commercial establishments in B1, B2, C1-1, C1-1.5 and C1-2 districts may not exceed 25,000 square feet.\n(17-3-0302-B) Commercial establishments are not subject to size limits in the B3, C1-3, C1-5, C2 and C3 districts, but some large commercial establishments require review and approval in accordance with the planned development review procedures of Sec. 17-13-0600. The mandatory planned development review threshol",
     "source_file": "chapter_17-03.txt"
   },
   {
@@ -995,9 +995,9 @@
   },
   {
     "section": "17-3-0302-B",
-    "title": "B3, C1-3, C1-5, C2 and C3 Districts. Commercial establishments are not subject t",
+    "title": "B3, C1-3, C1-5, C2 and C3 Districts",
     "chapter": "Chapter 17-3",
-    "text": "o size limits in the B3, C1-3, C1-5, C2 and C3 districts, but some large commercial establishments require review and approval in accordance with the planned development review procedures of Sec. 17-13-0600. The mandatory planned development review thresholds for large commercial establishments are established in Sec. 17-8-0510.",
+    "text": "Commercial establishments are not subject to size limits in the B3, C1-3, C1-5, C2 and C3 districts, but some large commercial establishments require review and approval in accordance with the planned development review procedures of Sec. 17-13-0600. The mandatory planned development review thresholds for large commercial establishments are established in Sec. 17-8-0510.",
     "source_file": "chapter_17-03.txt"
   },
   {
@@ -1051,9 +1051,9 @@
   },
   {
     "section": "17-3-0306",
-    "title": "Strip Centers. Strip centers are subject to the standards of Sec",
+    "title": "Strip Centers",
     "chapter": "Chapter 17-3",
-    "text": "17-9-0116.",
+    "text": "Strip centers are subject to the standards of Sec. 17-9-0116.",
     "source_file": "chapter_17-03.txt"
   },
   {
@@ -1074,14 +1074,14 @@
     "section": "17-3-0400",
     "title": "Bulk and density standards",
     "chapter": "Chapter 17-3",
-    "text": "",
+    "text": "Sections in this group:\n(17-3-0401) General\n(17-3-0402) Lot area per unit (density)\n(17-3-0403) Floor Area Ratio\n(17-3-0404) Front Setbacks\n(17-3-0405) Rear Setbacks\n(17-3-0406) Side Setbacks\n(17-3-0407) Building (Wall) Separation\n(17-3-0408) Building Height\n(17-3-0409) Average Dwelling Unit Size\n(17-3-0410) Number of Efficiency Units",
     "source_file": "chapter_17-03.txt"
   },
   {
     "section": "17-3-0401",
-    "title": "General. Bulk and density standards in the \"B\" and \"C\" districts vary according",
+    "title": "General",
     "chapter": "Chapter 17-3",
-    "text": "to the applicable bulk and density designation. Bulk and density designations are indicated by the numeral following the dash (–) in the district name, as in \"B1-2\" (B1 dash 2).",
+    "text": "Bulk and density standards in the \"B\" and \"C\" districts vary according to the applicable bulk and density designation. Bulk and density designations are indicated by the numeral following the dash (–) in the district name, as in \"B1-2\" (B1 dash 2).",
     "source_file": "chapter_17-03.txt"
   },
   {
@@ -1163,9 +1163,9 @@
   },
   {
     "section": "17-3-0406",
-    "title": "Side Setbacks. No side setbacks are required in B and C districts, except when B",
+    "title": "Side Setbacks",
     "chapter": "Chapter 17-3",
-    "text": "- or C- zoned property abuts R-zoned property, in which case the side setback required for a residential use on the R- zoned lot applies. Townhouse developments, where allowed, are subject to the townhouse development standards of Sec. 17-2-0500. (See Sec. 17-17-0308 for rules governing the measurement of side setbacks.)",
+    "text": "No side setbacks are required in B and C districts, except when B- or C- zoned property abuts R-zoned property, in which case the side setback required for a residential use on the R- zoned lot applies. Townhouse developments, where allowed, are subject to the townhouse development standards of Sec. 17-2-0500. (See Sec. 17-17-0308 for rules governing the measurement of side setbacks.)",
     "source_file": "chapter_17-03.txt"
   },
   {
@@ -1270,7 +1270,7 @@
     "section": "17-3-0500",
     "title": "Pedestrian streets",
     "chapter": "Chapter 17-3",
-    "text": "",
+    "text": "Sections in this group:\n(17-3-0501) Purpose\n(17-3-0502) Description and Criteria for Designation\n(17-3-0503) Designation and Boundaries\n(17-3-0504) Standards",
     "source_file": "chapter_17-03.txt"
   },
   {
@@ -1282,23 +1282,23 @@
   },
   {
     "section": "17-3-0502",
-    "title": "Description and Criteria for Designation. Pedestrian streets exhibit most or all",
+    "title": "Description and Criteria for Designation",
     "chapter": "Chapter 17-3",
-    "text": "of the following characteristics:",
+    "text": "Pedestrian streets exhibit most or all of the following characteristics:",
     "source_file": "chapter_17-03.txt"
   },
   {
     "section": "17-3-0502-A",
     "title": "have a high concentration of existing stores and restaurants;",
     "chapter": "Chapter 17-3",
-    "text": "",
+    "text": "have a high concentration of existing stores and restaurants;",
     "source_file": "chapter_17-03.txt"
   },
   {
     "section": "17-3-0502-B",
     "title": "abut a street with a right-of-way of 80 feet or less;",
     "chapter": "Chapter 17-3",
-    "text": "",
+    "text": "abut a street with a right-of-way of 80 feet or less;",
     "source_file": "chapter_17-03.txt"
   },
   {
@@ -1312,21 +1312,21 @@
     "section": "17-3-0502-D",
     "title": "have doors and entrances abutting the sidewalk;",
     "chapter": "Chapter 17-3",
-    "text": "",
+    "text": "have doors and entrances abutting the sidewalk;",
     "source_file": "chapter_17-03.txt"
   },
   {
     "section": "17-3-0502-E",
     "title": "have many storefront windows abutting the sidewalk; and",
     "chapter": "Chapter 17-3",
-    "text": "",
+    "text": "have many storefront windows abutting the sidewalk; and",
     "source_file": "chapter_17-03.txt"
   },
   {
     "section": "17-3-0502-F",
     "title": "have very few vacant stores",
     "chapter": "Chapter 17-3",
-    "text": "",
+    "text": "have very few vacant stores",
     "source_file": "chapter_17-03.txt"
   },
   {
@@ -1452,7 +1452,7 @@
     "section": "17-4-0100",
     "title": "District descriptions",
     "chapter": "Chapter 17-4",
-    "text": "",
+    "text": "Sections in this group:\n(17-4-0101) Generally\n(17-4-0102) DC, Downtown Core District\n(17-4-0103) DX, Downtown Mixed-Use District\n(17-4-0104) DR, Downtown Residential District\n(17-4-0105) DS, Downtown Service District",
     "source_file": "chapter_17-04.txt"
   },
   {
@@ -1632,7 +1632,7 @@
   },
   {
     "section": "17-4-0208",
-    "title": "Strip Centers. Strip centers are prohibited in DC, DX and DR districts",
+    "title": "Strip Centers",
     "chapter": "Chapter 17-4",
     "text": "(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 9-1-04, p. 30490; Amend Coun. J. 3-9-05, p. 44391; Amend Coun. J. 11-30-05, p. 62719; Amend Coun. J. 9-13-06, p. 84870, § 2; Amend Coun. J. 5-12-10, p. 91343, § 4; Amend Coun. J. 6-30-10, p. 96060, § 4; Amend Coun. J. 11-3-10, p. 104527; Amend Coun. J. 11-3-10, p. 104833, § 2; Amend Coun. J. 6-8-11, p. 1725, § 2; Amend Coun. J. 9-8-11, p. 7541, § 3; Amend Coun. J. 9-8-11, p. 7562, § 1; Amend Coun. J. 5-9-12, p. 27485, § 190; Amend Coun. J. 7-25-12, p. 31627, § 1; Amend Coun. J. 1-17-13, p. 45291, § 1; Amend Coun. J. 1-17-13, p. 45622, § 1; Amend Coun. J. 2-13-13, 47141, § 1; Amend Coun. J. 4-30-14, p. 80394, § 3; Amend Coun. J. 6-25-14, p. 83727, § 12; Amend Coun. J. 7-30-14, p. 86194, §§ 3, 9; Amend Coun. J. 2-10-16, p. 18766, § 11; Amend Coun. J. 5-18-16, p. 25024, § 1; Amend Coun. J. 6-22-16, p. 27712, § 14; Amend Coun. J. 5-24-17, p. 50364, § 2; Amend Coun. J. 3-28-18, p. 74512, § 3; Amend Coun. J. 10-16-19, p. 7854, § 2; Amend Coun. J. 1-15-20, p. 13417, § 2; Amend Coun. J. 9-20-21, p. 36844, § 2; Amend Coun. J. 12-15-21, p. 42922, § 8; Amend Coun. J. 5-25-22, p. 48413, § 8; Amend Coun. J. 7-20-22, p. 50878, § 5; Amend Coun. J. 5-22-24, p. 12069, § 2; Amend Coun. J. 7-17-24, p. 14728, § 2; Amend Coun. J. 10-30-24, p. 19853, § 1; Amend Coun. J. 5-21-25, p. 28575, § 2)\n\n provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.",
     "source_file": "chapter_17-04.txt"
@@ -1641,7 +1641,7 @@
     "section": "17-4-0300",
     "title": "General district standards",
     "chapter": "Chapter 17-4",
-    "text": "",
+    "text": "Sections in this group:\n(17-4-0301) Specific Criteria for Transit-Served Locations",
     "source_file": "chapter_17-04.txt"
   },
   {
@@ -1655,14 +1655,14 @@
     "section": "17-4-0400",
     "title": "Bulk and density standards",
     "chapter": "Chapter 17-4",
-    "text": "",
+    "text": "Sections in this group:\n(17-4-0401) General\n(17-4-0402) Lot Area\n(17-4-0403) Lot Frontage\n(17-4-0404) Lot Area per Unit\n(17-4-0405) Floor Area Ratio\n(17-4-0406) Setbacks\n(17-4-0407) Maximum Building Height\n(17-4-0408) Average Dwelling Unit Size\n(17-4-0409) Number of Efficiency Units\n(17-4-0410) On-Site Open Space\n(17-4-0411) Floor-to-Floor Heights and Floor Area of Ground-floor Space",
     "source_file": "chapter_17-04.txt"
   },
   {
     "section": "17-4-0401",
-    "title": "General. Bulk and density standards in the \"D\" districts vary according to the b",
+    "title": "General",
     "chapter": "Chapter 17-4",
-    "text": "ulk and density designation of the district. Bulk and density designations are indicated by the numeral following the dash (–) in the district name, as in \"DX-16\" (DX dash 16).",
+    "text": "Bulk and density standards in the \"D\" districts vary according to the bulk and density designation of the district. Bulk and density designations are indicated by the numeral following the dash (–) in the district name, as in \"DX-16\" (DX dash 16).",
     "source_file": "chapter_17-04.txt"
   },
   {
@@ -1718,7 +1718,7 @@
     "section": "17-4-0405",
     "title": "Floor Area Ratio",
     "chapter": "Chapter 17-4",
-    "text": "(17-4-0405-A) Dash Designation\n\nMaximum Base Floor Area Ratio\n\nFAR Bonuses Allowed?\n\n-3\n\n3.0\n\nYes\n\n-5\n\n5.0\n\nYes\n\n-7\n\n7.0\n\nYes\n\n-10\n\n10.0\n\nYes\n\n-12\n\n12.0\n\nYes\n\n-16\n\n16.0\n\nYes\n\n(See Sec. 17-17-0305 for rules governing the measurement of floor area ratio.)\n(17-4-0405-B) 17-4-1000, development in all \"D\" districts is eligible for floor area bonuses, over and above the stated maximum base floor area ratios of Sec. 17-4-0405-A.\n(17-4-0405-C) District\n\nProportion of ARO requirement on-site per 2-44-085-G\n\n(Must include a minimum of one affordable unit under 2-44-085)\n\nMaximum Floor Area Ratio\n\nDash 3\n\n50%\n\n3.5\n\n75%\n\n3.75\n\n100%\n\n4",
+    "text": "(17-4-0405-A) Dash Designation\n\nMaximum Base Floor Area Ratio\n\nFAR Bonuses Allowed?\n\n-3\n\n3.0\n\nYes\n\n-5\n\n5.0\n\nYes\n\n-7\n\n7.0\n\nYes\n\n-10\n\n10.0\n\nYes\n\n-12\n\n12.0\n\nYes\n\n-16\n\n16.0\n\nYes\n\n(See Sec. 17-17-0305 for rules governing the measurement of floor area ratio.)\n(17-4-0405-B) Under the provisions of Sec. 17-4-1000, development in all \"D\" districts is eligible for floor area bonuses, over and above the stated maximum base floor area ratios of Sec. 17-4-0405-A.\n(17-4-0405-C) District\n\nProportion of ARO requirement on-site per 2-44-085-G\n\n(Must include a minimum of one affordable unit under 2-44-085)\n\nMaximum Floor Area Ratio\n\nDash 3\n\n50%\n\n3.5\n\n75%\n\n3.75\n\n100%\n\n4",
     "source_file": "chapter_17-04.txt"
   },
   {
@@ -1730,9 +1730,9 @@
   },
   {
     "section": "17-4-0405-B",
-    "title": "Bonus Floor Area. Under the provisions of Sec",
+    "title": "Bonus Floor Area",
     "chapter": "Chapter 17-4",
-    "text": "17-4-1000, development in all \"D\" districts is eligible for floor area bonuses, over and above the stated maximum base floor area ratios of Sec. 17-4-0405-A.",
+    "text": "Under the provisions of Sec. 17-4-1000, development in all \"D\" districts is eligible for floor area bonuses, over and above the stated maximum base floor area ratios of Sec. 17-4-0405-A.",
     "source_file": "chapter_17-04.txt"
   },
   {
@@ -1793,7 +1793,7 @@
   },
   {
     "section": "17-4-0409-A",
-    "title": "Standards. The total number of efficiency units may not exceed the following standards except as specified in Section 17-4-0409-B:",
+    "title": "Standards",
     "chapter": "Chapter 17-4",
     "text": "District\n\nMaximum Number of Efficiency Units\n\n(% of total units)\n\n-3\n\n20\n\n-5\n\n30\n\n-7\n\n40\n\n-10\n\n50\n\n-12\n\n50\n\n-16\n\n50",
     "source_file": "chapter_17-04.txt"
@@ -1837,7 +1837,7 @@
     "section": "17-4-0500",
     "title": "Pedestrian streets",
     "chapter": "Chapter 17-4",
-    "text": "",
+    "text": "Sections in this group:\n(17-4-0501) Purpose\n(17-4-0502) Description and Criteria for Designation\n(17-4-0503) Designation and Boundaries\n(17-4-0504) Standards",
     "source_file": "chapter_17-04.txt"
   },
   {
@@ -1849,16 +1849,16 @@
   },
   {
     "section": "17-4-0502",
-    "title": "Description and Criteria for Designation. Pedestrian streets exhibit most or all",
+    "title": "Description and Criteria for Designation",
     "chapter": "Chapter 17-4",
-    "text": "of the following characteristics:",
+    "text": "Pedestrian streets exhibit most or all of the following characteristics:",
     "source_file": "chapter_17-04.txt"
   },
   {
     "section": "17-4-0502-A",
     "title": "have a high concentration of existing stores and restaurants;",
     "chapter": "Chapter 17-4",
-    "text": "",
+    "text": "have a high concentration of existing stores and restaurants;",
     "source_file": "chapter_17-04.txt"
   },
   {
@@ -1872,14 +1872,14 @@
     "section": "17-4-0502-C",
     "title": "have doors and entrances abutting the sidewalk; and",
     "chapter": "Chapter 17-4",
-    "text": "",
+    "text": "have doors and entrances abutting the sidewalk; and",
     "source_file": "chapter_17-04.txt"
   },
   {
     "section": "17-4-0502-D",
     "title": "have many storefront windows abutting the sidewalk",
     "chapter": "Chapter 17-4",
-    "text": "",
+    "text": "have many storefront windows abutting the sidewalk",
     "source_file": "chapter_17-04.txt"
   },
   {
@@ -1977,7 +1977,7 @@
     "section": "17-4-0600",
     "title": "Mobility streets",
     "chapter": "Chapter 17-4",
-    "text": "",
+    "text": "Sections in this group:\n(17-4-0601) Purpose\n(17-4-0602) Description and Criteria for Designation\n(17-4-0603) Designation and Boundaries\n(17-4-0604) Standards",
     "source_file": "chapter_17-04.txt"
   },
   {
@@ -1989,9 +1989,9 @@
   },
   {
     "section": "17-4-0602",
-    "title": "Description and Criteria for Designation. Mobility streets exhibit most or all o",
+    "title": "Description and Criteria for Designation",
     "chapter": "Chapter 17-4",
-    "text": "f the following characteristics:",
+    "text": "Mobility streets exhibit most or all of the following characteristics:",
     "source_file": "chapter_17-04.txt"
   },
   {
@@ -2045,7 +2045,7 @@
   },
   {
     "section": "17-4-0604",
-    "title": "Standards. Minimum sidewalk widths of at least 14 feet are necessary to promote",
+    "title": "Standards",
     "chapter": "Chapter 17-4",
     "text": "(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 3-9-05, p. 44391; Amend Coun. J. 9-13-06, p. 84870, § 2*; Amend Coun. J. 7-29-09, p. 68784, § 1; Amend Coun. J. 5-18-16, p. 24993, § 7)\n\n* Editor's note – The text of the 9-13-06 amendment to the 17-4-603-D table shows changed street names, but without indicating an intent to amend those names through stikethroughs and underlining. Accordingly, those street name changes are being treated as inadvertent and are not shown here.\n\n provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.",
     "source_file": "chapter_17-04.txt"
@@ -2054,7 +2054,7 @@
     "section": "17-4-0700",
     "title": "Driveways and vehicle access",
     "chapter": "Chapter 17-4",
-    "text": "",
+    "text": "Sections in this group:\n(17-4-0701) Purpose\n(17-4-0702) Description and Criteria for Designation\n(17-4-0703) Designation and Boundaries\n(17-4-0704) Standards",
     "source_file": "chapter_17-04.txt"
   },
   {
@@ -2066,16 +2066,16 @@
   },
   {
     "section": "17-4-0702",
-    "title": "Description and Criteria for Designation. Streets that are subject to the drivew",
+    "title": "Description and Criteria for Designation",
     "chapter": "Chapter 17-4",
-    "text": "ay and vehicle access standards of this section:",
+    "text": "Streets that are subject to the driveway and vehicle access standards of this section:",
     "source_file": "chapter_17-04.txt"
   },
   {
     "section": "17-4-0702-A",
     "title": "accommodate very high volumes of pedestrian and/or vehicular traffic; and",
     "chapter": "Chapter 17-4",
-    "text": "",
+    "text": "accommodate very high volumes of pedestrian and/or vehicular traffic; and",
     "source_file": "chapter_17-04.txt"
   },
   {
@@ -2117,19 +2117,19 @@
     "section": "17-4-0704",
     "title": "Standards",
     "chapter": "Chapter 17-4",
-    "text": "(17-4-0704-A) s to buildings and uses located along Class 1 streets. New curb cuts and driveway access are prohibited on Class 1 streets. The Zoning Board of Appeals may grant variations only as expressly allowed in Sec. 17-13-1100.\n(17-4-0704-B) (Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 3-9-05, p. 44391; Amend Coun. J. 9-13-06, p. 84870, § 2)\n\n provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and paginat",
+    "text": "(17-4-0704-A) Alleys are intended to serve as the sole means of vehicle access to buildings and uses located along Class 1 streets. New curb cuts and driveway access are prohibited on Class 1 streets. The Zoning Board of Appeals may grant variations only as expressly allowed in Sec. 17-13-1100.\n(17-4-0704-B) (Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 3-9-05, p. 44391; Amend Coun. J. 9-13-06, p. 84870, § 2)\n\n provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and paginat",
     "source_file": "chapter_17-04.txt"
   },
   {
     "section": "17-4-0704-A",
-    "title": "Class 1 Streets. Alleys are intended to serve as the sole means of vehicle acces",
+    "title": "Class 1 Streets",
     "chapter": "Chapter 17-4",
-    "text": "s to buildings and uses located along Class 1 streets. New curb cuts and driveway access are prohibited on Class 1 streets. The Zoning Board of Appeals may grant variations only as expressly allowed in Sec. 17-13-1100.",
+    "text": "Alleys are intended to serve as the sole means of vehicle access to buildings and uses located along Class 1 streets. New curb cuts and driveway access are prohibited on Class 1 streets. The Zoning Board of Appeals may grant variations only as expressly allowed in Sec. 17-13-1100.",
     "source_file": "chapter_17-04.txt"
   },
   {
     "section": "17-4-0704-B",
-    "title": "Class 2 Streets. Alleys are intended to serve as the primary means of vehicle ac",
+    "title": "Class 2 Streets",
     "chapter": "Chapter 17-4",
     "text": "(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 3-9-05, p. 44391; Amend Coun. J. 9-13-06, p. 84870, § 2)\n\n provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.",
     "source_file": "chapter_17-04.txt"
@@ -2138,7 +2138,7 @@
     "section": "17-4-0800",
     "title": "Non-accessory parking",
     "chapter": "Chapter 17-4",
-    "text": "",
+    "text": "Non-accessory parking",
     "source_file": "chapter_17-04.txt"
   },
   {
@@ -2150,7 +2150,7 @@
   },
   {
     "section": "17-4-0801-B",
-    "title": "Outside Central Area Parking District. Non-accessory parking in a \"D\" district located outside the Central Area Parking District described in 17-4-0801-A, requires review and approval as follows:",
+    "title": "Outside Central Area Parking District",
     "chapter": "Chapter 17-4",
     "text": "1.   Non-accessory parking lots containing fewer than 250 parking spaces may be allowed only if reviewed and approved in accordance with the special use procedures of Sec. 17-13-0900.\n\n         2.   Non-accessory parking lots containing 250 parking spaces or more may be allowed only if reviewed and approved in accordance with the planned development procedures of Sec. 17-13-0600.\n\n(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 7-24-13, p. 58315, §§ 1, 2; Amend Coun. J. 12-11-13, p. 71143)\n\n provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.",
     "source_file": "chapter_17-04.txt"
@@ -2166,21 +2166,21 @@
     "section": "17-4-1000",
     "title": "Floor area bonuses",
     "chapter": "Chapter 17-4",
-    "text": "",
+    "text": "Sections in this group:\n(17-4-1001) Purpose\n(17-4-1002) Eligibility Criteria\n(17-4-1003) Administration\n(17-4-1004) Neighborhoods Opportunity Bonus\n(17-4-1005) Local Impact Bonus\n(17-4-1006) Citywide Adopt-a-Landmark\n(17-4-1007) Prior Bonuses\n(17-4-1008) Existing Development\n(17-4-1009) Pending Applications\n(17-4-1010) Rules and Regulations",
     "source_file": "chapter_17-04.txt"
   },
   {
     "section": "17-4-1001",
-    "title": "Purpose. The floor area bonus provisions of this section are intended to provide",
+    "title": "Purpose",
     "chapter": "Chapter 17-4",
-    "text": "the opportunity for downtown area projects to achieve appropriate increases in floor area ratio above the base floor area ratios, while providing a corresponding economic incentive for developers to contribute to the economic growth of qualified investment areas as defined in Sec. 16-14-020, to preserve Chicago landmarks, and to provide public amenities in the downtown area or immediate vicinity that improve the quality of life of City residents, employees, and visitors and are a benefit to the public. This section shall be liberally construed and applied to achieve its purposes.",
+    "text": "The floor area bonus provisions of this section are intended to provide the opportunity for downtown area projects to achieve appropriate increases in floor area ratio above the base floor area ratios, while providing a corresponding economic incentive for developers to contribute to the economic growth of qualified investment areas as defined in Sec. 16-14-020, to preserve Chicago landmarks, and to provide public amenities in the downtown area or immediate vicinity that improve the quality of life of City residents, employees, and visitors and are a benefit to the public. This section shall be liberally construed and applied to achieve its purposes.",
     "source_file": "chapter_17-04.txt"
   },
   {
     "section": "17-4-1002",
-    "title": "Eligibility Criteria. Residential buildings and nonresidential buildings in all",
+    "title": "Eligibility Criteria",
     "chapter": "Chapter 17-4",
-    "text": "\"D\" districts are eligible to receive floor area bonuses under this Sec. 17-4-1000.",
+    "text": "Residential buildings and nonresidential buildings in all \"D\" districts are eligible to receive floor area bonuses under this Sec. 17-4-1000.",
     "source_file": "chapter_17-04.txt"
   },
   {
@@ -2397,7 +2397,7 @@
     "section": "17-5-0100",
     "title": "District descriptions",
     "chapter": "Chapter 17-5",
-    "text": "",
+    "text": "Sections in this group:\n(17-5-0101) Generally\n(17-5-0102) M1, Limited Manufacturing/Business Park District\n(17-5-0103) M2, Light Industry District\n(17-5-0104) M3, Heavy Industry District",
     "source_file": "chapter_17-05.txt"
   },
   {
@@ -2411,14 +2411,14 @@
     "section": "17-5-0101-A",
     "title": "promote the economic viability of manufacturing and industrial uses;",
     "chapter": "Chapter 17-5",
-    "text": "",
+    "text": "promote the economic viability of manufacturing and industrial uses;",
     "source_file": "chapter_17-05.txt"
   },
   {
     "section": "17-5-0101-B",
     "title": "encourage employment growth; and",
     "chapter": "Chapter 17-5",
-    "text": "",
+    "text": "encourage employment growth; and",
     "source_file": "chapter_17-05.txt"
   },
   {
@@ -2516,14 +2516,14 @@
     "section": "17-5-0400",
     "title": "Bulk and density standards",
     "chapter": "Chapter 17-5",
-    "text": "",
+    "text": "Sections in this group:\n(17-5-0401) General\n(17-5-0402) Lot Area\n(17-5-0403) Lot Frontage\n(17-5-0404) Floor Area Ratio\n(17-5-0405) Setbacks",
     "source_file": "chapter_17-05.txt"
   },
   {
     "section": "17-5-0401",
-    "title": "General. Bulk and density standards in the M districts vary according to the typ",
+    "title": "General",
     "chapter": "Chapter 17-5",
-    "text": "e of district or applicable bulk designation. Bulk designations are indicated by the numeral following the dash (–) in the district name, as in \"M1-2\" (M1 dash 2).",
+    "text": "Bulk and density standards in the M districts vary according to the type of district or applicable bulk designation. Bulk designations are indicated by the numeral following the dash (–) in the district name, as in \"M1-2\" (M1 dash 2).",
     "source_file": "chapter_17-05.txt"
   },
   {
@@ -2572,7 +2572,7 @@
     "section": "17-5-0500",
     "title": "Outdoor storage and work activities",
     "chapter": "Chapter 17-5",
-    "text": "",
+    "text": "Sections in this group:\n(17-5-0501) Outdoor Storage and Display Areas\n(17-5-0502) Outdoor Work Areas",
     "source_file": "chapter_17-05.txt"
   },
   {
@@ -2614,7 +2614,7 @@
     "section": "17-5-0600",
     "title": "Screening and buffering",
     "chapter": "Chapter 17-5",
-    "text": "",
+    "text": "Sections in this group:\n(17-5-0601) Outdoor Storage and Display Areas\n(17-5-0602) Outdoor Work Areas",
     "source_file": "chapter_17-05.txt"
   },
   {
@@ -2670,7 +2670,7 @@
     "section": "17-6-0200",
     "title": "POS, Parks and Open Space District",
     "chapter": "Chapter 17-6",
-    "text": "",
+    "text": "Sections in this group:\n(17-6-0201) Purpose and Applicability\n(17-6-0202) Establishment\n(17-6-0203) Allowed Uses\n(17-6-0204) Development Standards",
     "source_file": "chapter_17-06.txt"
   },
   {
@@ -2691,28 +2691,28 @@
     "section": "17-6-0202-A",
     "title": "Regional or Community Park (POS-1);",
     "chapter": "Chapter 17-6",
-    "text": "",
+    "text": "Regional or Community Park (POS-1);",
     "source_file": "chapter_17-06.txt"
   },
   {
     "section": "17-6-0202-B",
     "title": "Neighborhood Park, Mini-Park or Playlot (POS-2);",
     "chapter": "Chapter 17-6",
-    "text": "",
+    "text": "Neighborhood Park, Mini-Park or Playlot (POS-2);",
     "source_file": "chapter_17-06.txt"
   },
   {
     "section": "17-6-0202-C",
     "title": "Open Space or Natural Area (POS-3); or",
     "chapter": "Chapter 17-6",
-    "text": "",
+    "text": "Open Space or Natural Area (POS-3); or",
     "source_file": "chapter_17-06.txt"
   },
   {
     "section": "17-6-0202-D",
     "title": "Cemetery (POS-4)",
     "chapter": "Chapter 17-6",
-    "text": "",
+    "text": "Cemetery (POS-4)",
     "source_file": "chapter_17-06.txt"
   },
   {
@@ -2810,7 +2810,7 @@
     "section": "17-6-0300",
     "title": "T, Transportation District",
     "chapter": "Chapter 17-6",
-    "text": "",
+    "text": "Sections in this group:\n(17-6-0301) Purpose and Applicability\n(17-6-0302) Establishment\n(17-6-0303) Allowed Uses\n(17-6-0304) Buildings and Structures",
     "source_file": "chapter_17-06.txt"
   },
   {
@@ -2859,7 +2859,7 @@
     "section": "17-6-0400",
     "title": "PMD, Planned Manufacturing Districts",
     "chapter": "Chapter 17-6",
-    "text": "",
+    "text": "Sections in this group:\n(17-6-0401) General\n(17-6-0402) Reserved\n(17-6-0403) Allowed Uses\n(17-6-0404) Nonconforming Uses\n(17-6-0405) Development Standards\n(17-6-0406) Indoor/Outdoor Operations\n(17-6-0407) Indoor/Outdoor Storage",
     "source_file": "chapter_17-06.txt"
   },
   {
@@ -2976,9 +2976,9 @@
   },
   {
     "section": "17-6-0404",
-    "title": "Nonconforming Uses. Nonconforming uses may be replaced only with allowed uses",
+    "title": "Nonconforming Uses",
     "chapter": "Chapter 17-6",
-    "text": "",
+    "text": "Nonconforming uses may be replaced only with allowed uses.",
     "source_file": "chapter_17-06.txt"
   },
   {
@@ -3041,19 +3041,19 @@
     "section": "17-7-0100",
     "title": "Overlay districts generally",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Sections in this group:\n(17-7-0101) Described\n(17-7-0102) Effect",
     "source_file": "chapter_17-07.txt"
   },
   {
     "section": "17-7-0101",
-    "title": "Described. Overlay districts deal with special situations or accomplish specific",
+    "title": "Described",
     "chapter": "Chapter 17-7",
-    "text": "city goals that cannot be easily or efficiently addressed through the use of base districts. As the name implies, overlay districts \"overlay\" applicable base district classifications to alter some or all of the zoning regulations that apply to particular sites. Overlay districts are shown on the maps in the Official Zoning Atlas.",
+    "text": "Overlay districts deal with special situations or accomplish specific city goals that cannot be easily or efficiently addressed through the use of base districts. As the name implies, overlay districts \"overlay\" applicable base district classifications to alter some or all of the zoning regulations that apply to particular sites. Overlay districts are shown on the maps in the Official Zoning Atlas.",
     "source_file": "chapter_17-07.txt"
   },
   {
     "section": "17-7-0102",
-    "title": "Effect. Overlay district regulations supplement the zoning regulations of the ap",
+    "title": "Effect",
     "chapter": "Chapter 17-7",
     "text": "(Added Coun. J. 5-26-04, p. 25275)\n\n provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.",
     "source_file": "chapter_17-07.txt"
@@ -3230,7 +3230,7 @@
     "section": "17-7-0400",
     "title": "North Branch Corridor Overlay District",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Sections in this group:\n(17-7-0401) Purpose\n(17-7-0402) Boundaries\n(17-7-0403) Uses\n(17-7-0404) Indoor/Outdoor Operations\n(17-7-0405) Rezonings\n(17-7-0406) Floor Area Ratio\n(17-7-0407) Floor Area Bonuses in NBCO-A\n(17-7-0408) Floor Area Bonuses in NBCO-C\n(17-7-0409) Minimum Lot Area per Unit\n(17-7-0410) Parking\n(17-7-0411) Chicago River Setback\n(17-7-0412) Parks and Open Space\n(17-7-0413) Driveways and Vehicle Access Limitations\n(17-7-0414) Supplemental Use Standards",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -3552,7 +3552,7 @@
     "section": "17-7-0450",
     "title": "Kinzie Corridor Overlay District",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Kinzie Corridor Overlay District",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -3650,7 +3650,7 @@
     "section": "17-7-0500",
     "title": "Burling Street Special Setback Overlay District",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Sections in this group:\n(17-7-0501) Purpose\n(17-7-0502) Boundaries\n(17-7-0503) Standards",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -3678,7 +3678,7 @@
     "section": "17-7-0550",
     "title": "North Greenview Avenue Special Setback District",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "North Greenview Avenue Special Setback District",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -3706,7 +3706,7 @@
     "section": "17-7-0560",
     "title": "Adult Use Cannabis Dispensary Exclusion Zone",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Adult Use Cannabis Dispensary Exclusion Zone",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -3727,7 +3727,7 @@
     "section": "17-7-0570",
     "title": "Additional Dwelling Unit-Allowed Areas",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Additional Dwelling Unit-Allowed Areas",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -3748,7 +3748,7 @@
     "section": "17-7-0580",
     "title": "Multi-Unit Preservation District",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Multi-Unit Preservation District",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -3776,7 +3776,7 @@
     "section": "17-7-0590",
     "title": "Predominance of the Block District",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Predominance of the Block District",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -3818,7 +3818,7 @@
     "section": "17-7-0600",
     "title": "Special character overlay districts generally",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Sections in this group:\n(17-7-0601) Purpose\n(17-7-0602) Minimum Requirements\n(17-7-0603) Authorized Regulations and Standards\n(17-7-0604) Procedure for Establishment\n(17-7-0605) Variations/Administrative Adjustments\n(17-7-0606) Special Uses",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -3851,107 +3851,107 @@
   },
   {
     "section": "17-7-0603",
-    "title": "Authorized Regulations and Standards. Special character overlay district regulat",
+    "title": "Authorized Regulations and Standards",
     "chapter": "Chapter 17-7",
-    "text": "ions may address any of the following:",
+    "text": "Special character overlay district regulations may address any of the following:",
     "source_file": "chapter_17-07.txt"
   },
   {
     "section": "17-7-0603-A",
     "title": "uses;",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "uses;",
     "source_file": "chapter_17-07.txt"
   },
   {
     "section": "17-7-0603-B",
     "title": "floor area ratios;",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "floor area ratios;",
     "source_file": "chapter_17-07.txt"
   },
   {
     "section": "17-7-0603-C",
     "title": "densities (lot area per dwelling unit);",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "densities (lot area per dwelling unit);",
     "source_file": "chapter_17-07.txt"
   },
   {
     "section": "17-7-0603-D",
     "title": "number of buildings on a zoning lot;",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "number of buildings on a zoning lot;",
     "source_file": "chapter_17-07.txt"
   },
   {
     "section": "17-7-0603-E",
     "title": "lot area;",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "lot area;",
     "source_file": "chapter_17-07.txt"
   },
   {
     "section": "17-7-0603-F",
     "title": "building coverage;",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "building coverage;",
     "source_file": "chapter_17-07.txt"
   },
   {
     "section": "17-7-0603-G",
     "title": "yards or setbacks;",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "yards or setbacks;",
     "source_file": "chapter_17-07.txt"
   },
   {
     "section": "17-7-0603-H",
     "title": "lot frontage;",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "lot frontage;",
     "source_file": "chapter_17-07.txt"
   },
   {
     "section": "17-7-0603-I",
     "title": "building heights;",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "building heights;",
     "source_file": "chapter_17-07.txt"
   },
   {
     "section": "17-7-0603-J",
     "title": "building entrances and/or orientation;",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "building entrances and/or orientation;",
     "source_file": "chapter_17-07.txt"
   },
   {
     "section": "17-7-0603-K",
     "title": "exterior building materials and design;",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "exterior building materials and design;",
     "source_file": "chapter_17-07.txt"
   },
   {
     "section": "17-7-0603-L",
     "title": "layout of public ways;",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "layout of public ways;",
     "source_file": "chapter_17-07.txt"
   },
   {
     "section": "17-7-0603-M",
     "title": "vehicular and pedestrian circulation patterns;",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "vehicular and pedestrian circulation patterns;",
     "source_file": "chapter_17-07.txt"
   },
   {
     "section": "17-7-0603-N",
     "title": "amount or location of parking and loading; or",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "amount or location of parking and loading; or",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -3977,9 +3977,9 @@
   },
   {
     "section": "17-7-0604",
-    "title": "Procedure for Establishment. Special character overlay districts must be establi",
+    "title": "Procedure for Establishment",
     "chapter": "Chapter 17-7",
-    "text": "shed in accordance with the procedures of Sec. 17-13-0500.",
+    "text": "Special character overlay districts must be established in accordance with the procedures of Sec. 17-13-0500.",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -4000,7 +4000,7 @@
     "section": "17-7-0700",
     "title": "SD-1, Norwood Park Special Character Overlay District",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Sections in this group:\n(17-7-0701) Description\n(17-7-0702) Lot Area per Dwelling Unit\n(17-7-0703) Lot Frontage\n(17-7-0704) Front Setbacks\n(17-7-0705) Administrative Adjustments\n(17-7-0706) Variations",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -4049,7 +4049,7 @@
     "section": "17-7-0800",
     "title": "SD-2, Norwood Park Special Character Overlay District",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Sections in this group:\n(17-7-0801) Description\n(17-7-0802) Lot Area per Dwelling Unit\n(17-7-0803) Lot Frontage\n(17-7-0804) Floor Area Ratio\n(17-7-0805) Front Yards\n(17-7-0806) Administrative Adjustments\n(17-7-0807) Variations",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -4105,7 +4105,7 @@
     "section": "17-7-0900",
     "title": "SD-4A, North Southport Special Character Overlay District",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Sections in this group:\n(17-7-0901) Description\n(17-7-0902) Lot Area per Dwelling Unit",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -4126,7 +4126,7 @@
     "section": "17-7-1000",
     "title": "SD-8, Longwood Drive Special Character Overlay District",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Sections in this group:\n(17-7-1001) Description\n(17-7-1002) Lot Width\n(17-7-1003) Setbacks from Longwood Drive\n(17-7-1004) Administrative Adjustments\n(17-7-1005) Variations",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -4203,14 +4203,14 @@
     "section": "17-7-1100",
     "title": "SD-10, Roscoe Street",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Sections in this group:\n(17-7-1101) Description\n(17-7-1102) Building Height\n(17-7-1103) Building Orientation\n(17-7-1104) Lot Area\n(17-7-1105) Administrative Adjustments\n(17-7-1106) Variations",
     "source_file": "chapter_17-07.txt"
   },
   {
     "section": "17-7-1101",
-    "title": "Description. The SD-10, Roscoe Street Special Character Overlay District is inte",
+    "title": "Description",
     "chapter": "Chapter 17-7",
-    "text": "nded to conserve the existing low-density, multi-use commercial and residential character of the portion of West Roscoe Street generally located between North Damen Avenue and North Western Avenue. The existing pattern of development is two- and three-story structures with pedestrian-oriented retail at street level and dwelling units above. The Roscoe Street District seeks to maintain the street's existing scale and to limit construction of taller four- and five-story buildings. In addition, the District regulations seek to maintain the street-front orientation of existing buildings by requiring this orientation for new construction and by encouraging conformity to the front setbacks, if any, of the prevailing street wall.",
+    "text": "The SD-10, Roscoe Street Special Character Overlay District is intended to conserve the existing low-density, multi-use commercial and residential character of the portion of West Roscoe Street generally located between North Damen Avenue and North Western Avenue. The existing pattern of development is two- and three-story structures with pedestrian-oriented retail at street level and dwelling units above. The Roscoe Street District seeks to maintain the street's existing scale and to limit construction of taller four- and five-story buildings. In addition, the District regulations seek to maintain the street-front orientation of existing buildings by requiring this orientation for new construction and by encouraging conformity to the front setbacks, if any, of the prevailing street wall.",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -4245,7 +4245,7 @@
     "section": "17-7-1105-A",
     "title": "a building height increase of up to 10%; and",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "a building height increase of up to 10%; and",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -4266,7 +4266,7 @@
     "section": "17-7-1106-A",
     "title": "a building height increase of up to 10%; and",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "a building height increase of up to 10%; and",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -4280,7 +4280,7 @@
     "section": "17-7-1200",
     "title": "Midway International Airport Height Overlay District",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Sections in this group:\n(17-7-1201) Purpose\n(17-7-1202) Boundaries\n(17-7-1203) Height Limits",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -4322,7 +4322,7 @@
     "section": "17-7-1300",
     "title": "SD-23 Sheridan Park North Special Character Overlay District",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Sections in this group:\n(17-7-1301) Description\n(17-7-1302) Front Setbacks",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -4357,7 +4357,7 @@
     "section": "17-7-1400",
     "title": "SD-24 Sheridan Park South Special Character Overlay District",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Sections in this group:\n(17-7-1401) Description\n(17-7-1402) Front Setbacks",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -4392,7 +4392,7 @@
     "section": "17-7-1500",
     "title": "Milwaukee Avenue Special Character Overlay District",
     "chapter": "Chapter 17-7",
-    "text": "",
+    "text": "Sections in this group:\n(17-7-1501) Boundaries\n(17-7-1502) Purpose\n(17-7-1503) Publication\n(17-7-1504) District-specific Guidelines\n(17-7-1505) Administrative Adjustments\n(17-7-1506) Prohibited Uses\n(17-7-1507) Character Buildings\n(17-7-1508) Demolition",
     "source_file": "chapter_17-07.txt"
   },
   {
@@ -4462,14 +4462,14 @@
     "section": "17-8-0101",
     "title": "ensure adequate public review of major development proposals;",
     "chapter": "Chapter 17-8",
-    "text": "",
+    "text": "ensure adequate public review of major development proposals;",
     "source_file": "chapter_17-08.txt"
   },
   {
     "section": "17-8-0102",
     "title": "encourage unified planning and development;",
     "chapter": "Chapter 17-8",
-    "text": "",
+    "text": "encourage unified planning and development;",
     "source_file": "chapter_17-08.txt"
   },
   {
@@ -4483,7 +4483,7 @@
     "section": "17-8-0104",
     "title": "ensure a level of amenities appropriate to the nature and scale of the project;",
     "chapter": "Chapter 17-8",
-    "text": "",
+    "text": "ensure a level of amenities appropriate to the nature and scale of the project;",
     "source_file": "chapter_17-08.txt"
   },
   {
@@ -4530,16 +4530,16 @@
   },
   {
     "section": "17-8-0501",
-    "title": "Air Rights. Planned development review and approval is required for the developm",
+    "title": "Air Rights",
     "chapter": "Chapter 17-8",
-    "text": "ent of air rights above land used or proposed to be used for railroad, expressway, streets, or other public ways, or land otherwise devoted to public purposes.",
+    "text": "Planned development review and approval is required for the development of air rights above land used or proposed to be used for railroad, expressway, streets, or other public ways, or land otherwise devoted to public purposes.",
     "source_file": "chapter_17-08.txt"
   },
   {
     "section": "17-8-0502",
-    "title": "Airports and Heliports. Planned development review and approval is required for",
+    "title": "Airports and Heliports",
     "chapter": "Chapter 17-8",
-    "text": "the development of land for airports and land or air rights to be used for heliports, helistops or vertiports. Heliports, helistops or vertiports must meet the standards of Section 17-8-0913.",
+    "text": "Planned development review and approval is required for the development of land for airports and land or air rights to be used for heliports, helistops or vertiports. Heliports, helistops or vertiports must meet the standards of Section 17-8-0913.",
     "source_file": "chapter_17-08.txt"
   },
   {
@@ -4572,37 +4572,37 @@
   },
   {
     "section": "17-8-0504",
-    "title": "Hospitals, Colleges, Universities and Campus-Style Institutional Uses. Planned d",
+    "title": "Hospitals, Colleges, Universities and Campus-Style Institutional Uses",
     "chapter": "Chapter 17-8",
-    "text": "evelopment review and approval is required for development of land to be used for hospitals, colleges, universities and similar campus-style institutional uses on sites with a net site area of 2 acres or more.",
+    "text": "Planned development review and approval is required for development of land to be used for hospitals, colleges, universities and similar campus-style institutional uses on sites with a net site area of 2 acres or more.",
     "source_file": "chapter_17-08.txt"
   },
   {
     "section": "17-8-0505",
-    "title": "Religious Assembly, Community Centers and Similar Assembly Uses. Planned develop",
+    "title": "Religious Assembly, Community Centers and Similar Assembly Uses",
     "chapter": "Chapter 17-8",
-    "text": "ment review and approval is required for development of land to be used for religious assembly, community centers and similar public assembly uses on sites with a net site area of 2 acres or more.",
+    "text": "Planned development review and approval is required for development of land to be used for religious assembly, community centers and similar public assembly uses on sites with a net site area of 2 acres or more.",
     "source_file": "chapter_17-08.txt"
   },
   {
     "section": "17-8-0506",
-    "title": "Schools, Safety Services and Other Government Buildings. Planned development rev",
+    "title": "Schools, Safety Services and Other Government Buildings",
     "chapter": "Chapter 17-8",
-    "text": "iew and approval is required for development of land to be used for schools, safety services and other government buildings on sites with a net site area of 2 acres or more.",
+    "text": "Planned development review and approval is required for development of land to be used for schools, safety services and other government buildings on sites with a net site area of 2 acres or more.",
     "source_file": "chapter_17-08.txt"
   },
   {
     "section": "17-8-0507",
-    "title": "Power Plants, Water Plants and Wastewater Plants. Planned development review and",
+    "title": "Power Plants, Water Plants and Wastewater Plants",
     "chapter": "Chapter 17-8",
-    "text": "approval is required for development of land for any power generation plant, water treatment or wastewater treatment plant.",
+    "text": "Planned development review and approval is required for development of land for any power generation plant, water treatment or wastewater treatment plant.",
     "source_file": "chapter_17-08.txt"
   },
   {
     "section": "17-8-0508",
-    "title": "Entertainment and Spectator Sports. Planned development review and approval is r",
+    "title": "Entertainment and Spectator Sports",
     "chapter": "Chapter 17-8",
-    "text": "equired for development of any entertainment and spectator sport use with a seating capacity of 1,000 or more persons.",
+    "text": "Planned development review and approval is required for development of any entertainment and spectator sport use with a seating capacity of 1,000 or more persons.",
     "source_file": "chapter_17-08.txt"
   },
   {
@@ -4698,9 +4698,9 @@
   },
   {
     "section": "17-8-0512",
-    "title": "Tall Buildings. Planned development review and approval is required for any buil",
+    "title": "Tall Buildings",
     "chapter": "Chapter 17-8",
-    "text": "ding that meets or exceeds the following height thresholds:",
+    "text": "Planned development review and approval is required for any building that meets or exceeds the following height thresholds:",
     "source_file": "chapter_17-08.txt"
   },
   {
@@ -4719,9 +4719,9 @@
   },
   {
     "section": "17-8-0513",
-    "title": "Large Residential Developments. Planned development review and approval is requi",
+    "title": "Large Residential Developments",
     "chapter": "Chapter 17-8",
-    "text": "red for any residential development that meets or exceeds the following land area or unit-count thresholds:",
+    "text": "Planned development review and approval is required for any residential development that meets or exceeds the following land area or unit-count thresholds:",
     "source_file": "chapter_17-08.txt"
   },
   {
@@ -4740,9 +4740,9 @@
   },
   {
     "section": "17-8-0513-C",
-    "title": "Government-Assisted and Elderly Housing Developments. The unit-count thresholds",
+    "title": "Government-Assisted and Elderly Housing Developments",
     "chapter": "Chapter 17-8",
-    "text": "of Sec. 17-8-0513-A and Sec. 17-8-0513-B are increased by 20% for government-assisted and elderly housing developments. An elderly housing development in the RM4.5 district, for example, must be reviewed and approved as a planned development if it contains 48 or more dwelling units.",
+    "text": "The unit-count thresholds of Sec. 17-8-0513-A and Sec. 17-8-0513-B are increased by 20% for government-assisted and elderly housing developments. An elderly housing development in the RM4.5 district, for example, must be reviewed and approved as a planned development if it contains 48 or more dwelling units.",
     "source_file": "chapter_17-08.txt"
   },
   {
@@ -4754,9 +4754,9 @@
   },
   {
     "section": "17-8-0514",
-    "title": "Bonus Floor Area. Planned development review and approval is required for any de",
+    "title": "Bonus Floor Area",
     "chapter": "Chapter 17-8",
-    "text": "velopment using floor area bonuses under Sec. 17-4-1000.",
+    "text": "Planned development review and approval is required for any development using floor area bonuses under Sec. 17-4-1000.",
     "source_file": "chapter_17-08.txt"
   },
   {
@@ -4854,14 +4854,14 @@
     "section": "17-8-0900",
     "title": "Standards and guidelines",
     "chapter": "Chapter 17-8",
-    "text": "",
+    "text": "Sections in this group:\n(17-8-0901) Uses, Bulk, Density and Intensity\n(17-8-0902) Other Regulations\n(17-8-0903) Approved Plans\n(17-8-0904) Transportation, Traffic Circulation and Parking\n(17-8-0905) Pedestrian-Orientation\n(17-8-0906) Urban Design\n(17-8-0907) Building Design\n(17-8-0908) Green Design\n(17-8-0909) Parks, Open Space, and Landscaping\n(17-8-0910) Public and Civic Amenities\n(17-8-0911) Historic and Cultural Resources\n(17-8-0912) Waterways\n(17-8-0913) Heliports, Helistops or Vertiports",
     "source_file": "chapter_17-08.txt"
   },
   {
     "section": "17-8-0901",
-    "title": "Uses, Bulk, Density and Intensity. Planned developments are subject to strict co",
+    "title": "Uses, Bulk, Density and Intensity",
     "chapter": "Chapter 17-8",
-    "text": "mpliance with the floor area ratio standards of the zoning district applicable to the subject property immediately before approval of the planned development. Planned developments must be in substantial compliance with density, use, setback, building height, and open space and other (non-FAR-related) development standards of the zoning district applicable to the subject property immediately before approval of the planned development.",
+    "text": "Planned developments are subject to strict compliance with the floor area ratio standards of the zoning district applicable to the subject property immediately before approval of the planned development. Planned developments must be in substantial compliance with density, use, setback, building height, and open space and other (non-FAR-related) development standards of the zoning district applicable to the subject property immediately before approval of the planned development.",
     "source_file": "chapter_17-08.txt"
   },
   {
@@ -4873,9 +4873,9 @@
   },
   {
     "section": "17-8-0903",
-    "title": "Approved Plans. Planned developments must be consistent with plans that have bee",
+    "title": "Approved Plans",
     "chapter": "Chapter 17-8",
-    "text": "n adopted by the Plan Commission or approved by the City Council. In furtherance of the foregoing, and in recognition of evolving and changing conditions within the areas which are the subject thereof, all such plans, including any specific information or determinations relating to uses, bulk, height, and other standards contained in such plans, shall be treated as guidelines to inform consideration and not as regulations or requirements in connection with the evaluation of specific planned development proposals. The specific terms and conditions of an approved planned development shall govern to the extent they differ from such guidelines.",
+    "text": "Planned developments must be consistent with plans that have been adopted by the Plan Commission or approved by the City Council. In furtherance of the foregoing, and in recognition of evolving and changing conditions within the areas which are the subject thereof, all such plans, including any specific information or determinations relating to uses, bulk, height, and other standards contained in such plans, shall be treated as guidelines to inform consideration and not as regulations or requirements in connection with the evaluation of specific planned development proposals. The specific terms and conditions of an approved planned development shall govern to the extent they differ from such guidelines.",
     "source_file": "chapter_17-08.txt"
   },
   {
@@ -4887,7 +4887,7 @@
   },
   {
     "section": "17-8-0904-A",
-    "title": "General Intent. Planned developments should:",
+    "title": "General Intent",
     "chapter": "Chapter 17-8",
     "text": "1.   promote the safe and efficient circulation of pedestrians, cyclists and motor vehicles;\n\n         2.   promote transit, pedestrian and bicycle use;\n\n         3.   ensure accessibility for persons with disabilities;\n\n         4.   minimize conflict with existing traffic patterns in the vicinity;\n\n         5.   minimize and mitigate traffic congestion associated with the proposed development;\n\n         6.   provide safe and ample access for emergency and delivery vehicles, while minimizing the adverse visual impact of vehicular service areas; and\n\n         7.   provide adequate bicycle and vehicle parking, while minimizing the adverse visual impact of any off-street parking areas.",
     "source_file": "chapter_17-08.txt"
@@ -4922,7 +4922,7 @@
   },
   {
     "section": "17-8-0905-A",
-    "title": "General Intent. Planned developments should be designed to promote pedestrian interest, safety and comfort by:",
+    "title": "General Intent",
     "chapter": "Chapter 17-8",
     "text": "1.   creating safe and attractive walkways and pedestrian routes;\n\n         2.   providing street-level spaces within buildings that are designed to accommodate active uses or to otherwise engage pedestrian interest;\n\n         3.   avoiding blank walls, especially near sidewalks; and\n\n         4.   emphasizing building entries through architecture and design.",
     "source_file": "chapter_17-08.txt"
@@ -4943,7 +4943,7 @@
   },
   {
     "section": "17-8-0906-A",
-    "title": "General Intent. Planned developments should be designed to:",
+    "title": "General Intent",
     "chapter": "Chapter 17-8",
     "text": "1.   reinforce desirable urban features found within the surrounding area, such as siting patterns, massing arrangements and streetscape characteristics;\n\n         2.   create seamless or gradual transitions in bulk and scale when high-intensity development occurs in or near areas with a lower- intensity character; and\n\n         3.   ensure that signs associated with the development are appropriate to the scale and character of the development and the surrounding area.",
     "source_file": "chapter_17-08.txt"
@@ -5001,21 +5001,21 @@
     "section": "17-8-0908",
     "title": "Green Design",
     "chapter": "Chapter 17-8",
-    "text": "(17-8-0908-A) 1.   minimize human exposure to noxious materials;\n\n         2.   conserve non-renewable energy and scarce materials;\n\n         3.   minimize life-cycle ecological impact of energy and materials used;\n\n         4.   use renewable energy and materials that are sustainably harvested;\n\n         5.   pr\n(17-8-0908-B) ormwater runoff flows from a site.",
+    "text": "(17-8-0908-A) 1.   minimize human exposure to noxious materials;\n\n         2.   conserve non-renewable energy and scarce materials;\n\n         3.   minimize life-cycle ecological impact of energy and materials used;\n\n         4.   use renewable energy and materials that are sustainably harvested;\n\n         5.   pr\n(17-8-0908-B) Planned developments should reduce the speed and contamination of stormwater runoff flows from a site.",
     "source_file": "chapter_17-08.txt"
   },
   {
     "section": "17-8-0908-A",
-    "title": "General Intent. Planned developments should:",
+    "title": "General Intent",
     "chapter": "Chapter 17-8",
     "text": "1.   minimize human exposure to noxious materials;\n\n         2.   conserve non-renewable energy and scarce materials;\n\n         3.   minimize life-cycle ecological impact of energy and materials used;\n\n         4.   use renewable energy and materials that are sustainably harvested;\n\n         5.   protect and restore local air, water, soils, flora and fauna;\n\n         6.   support pedestrians, bicycles, mass transit and other alternatives to fossil-fueled vehicles.",
     "source_file": "chapter_17-08.txt"
   },
   {
     "section": "17-8-0908-B",
-    "title": "Stormwater. Planned developments should reduce the speed and contamination of st",
+    "title": "Stormwater",
     "chapter": "Chapter 17-8",
-    "text": "ormwater runoff flows from a site.",
+    "text": "Planned developments should reduce the speed and contamination of stormwater runoff flows from a site.",
     "source_file": "chapter_17-08.txt"
   },
   {
@@ -5027,7 +5027,7 @@
   },
   {
     "section": "17-8-0909-A",
-    "title": "General Intent. Planned developments should:",
+    "title": "General Intent",
     "chapter": "Chapter 17-8",
     "text": "1.   where appropriate for the site, provide adequate, inviting, usable and accessible parks, open spaces and recreation areas for workers, visitors and residents; and\n\n         2.   where appropriate, provide substantial landscaping of the open areas on the building and the site (including contiguous public ways).",
     "source_file": "chapter_17-08.txt"
@@ -5055,14 +5055,14 @@
   },
   {
     "section": "17-8-0910",
-    "title": "Public and Civic Amenities. Planned developments should provide public, social a",
+    "title": "Public and Civic Amenities",
     "chapter": "Chapter 17-8",
-    "text": "nd cultural amenities for workers, visitors and residents; and promote public safety and security.",
+    "text": "Planned developments should provide public, social and cultural amenities for workers, visitors and residents; and promote public safety and security.",
     "source_file": "chapter_17-08.txt"
   },
   {
     "section": "17-8-0911",
-    "title": "Historic and Cultural Resources. Planned developments should give priority to the adaptive reuse of historic buildings which have been designated as a \"Chicago Landmark\" or color-coded red",
+    "title": "Historic and Cultural Resources",
     "chapter": "Chapter 17-8",
     "text": "or orange in the Chicago Historic Resources Survey. Notwithstanding Section 17-8-0901 of the Chicago Zoning Ordinance, in any D district strict compliance with the underlying zoning district as it applies to the Bulk criteria as identified in Section 17-17-0231 may be varied if the relief sought is consistent with the stated Purpose and Intent identified in Section 17-1-0500 and that relief is necessary for the rehabilitation and reuse of these structures, as approved by City Council in accordance with the procedures of Section 17-13-0600.",
     "source_file": "chapter_17-08.txt"
@@ -5211,28 +5211,28 @@
     "section": "17-9-0100",
     "title": "Use standards",
     "chapter": "Chapter 17-9",
-    "text": "",
+    "text": "Sections in this group:\n(17-9-0101) Adult Uses\n(17-9-0102) (Deleted by Coun\n(17-9-0103) 1-C Standards\n(17-9-0104) Community Homes\n(17-9-0105) 5-B Day care facilities may be allowed in PMD subarea B districts if such use is\n(17-9-0106) Drive-Through Facility\n(17-9-0107) Equipment Sales and Rental\n(17-9-0108) 1 Fulfillment Centers\n(17-9-0109) Gas Stations\n(17-9-0110) Wagering Facilities\n(17-9-0111) 5 Non-Accessory Parking\n(17-9-0112) Personal Services\n(17-9-0113) 1 Residential Storage Warehouse\n(17-9-0114) Residential Support Services\n(17-9-0115) Shelter Facilities\n(17-9-0116) Strip Centers\n(17-9-0117) 7-A General Standards\n(17-9-0118) Wireless Communication Facilities\n(17-9-0119) Location restrictions for certain retail food establishments – Live poultry",
     "source_file": "chapter_17-09.txt"
   },
   {
     "section": "17-9-0101",
-    "title": "Adult Uses. Adult uses may not be located in any of the following areas or locat",
+    "title": "Adult Uses",
     "chapter": "Chapter 17-9",
-    "text": "ions:",
+    "text": "Adult uses may not be located in any of the following areas or locations:",
     "source_file": "chapter_17-09.txt"
   },
   {
     "section": "17-9-0101-A",
     "title": "within 1,000 feet of another existing adult use;",
     "chapter": "Chapter 17-9",
-    "text": "",
+    "text": "within 1,000 feet of another existing adult use;",
     "source_file": "chapter_17-09.txt"
   },
   {
     "section": "17-9-0101-B",
     "title": "within 1,000 feet of any zoning district that is zoned for residential use;",
     "chapter": "Chapter 17-9",
-    "text": "",
+    "text": "within 1,000 feet of any zoning district that is zoned for residential use;",
     "source_file": "chapter_17-09.txt"
   },
   {
@@ -5246,7 +5246,7 @@
     "section": "17-9-0101-D",
     "title": "within any planned manufacturing district (PMD)",
     "chapter": "Chapter 17-9",
-    "text": "",
+    "text": "within any planned manufacturing district (PMD)",
     "source_file": "chapter_17-09.txt"
   },
   {
@@ -5265,14 +5265,14 @@
   },
   {
     "section": "17-9-0104",
-    "title": "Community Homes. Community homes must be located above the ground floor in those",
+    "title": "Community Homes",
     "chapter": "Chapter 17-9",
-    "text": "zoning districts in which dwelling units and other residential uses are not permitted (by-right) on the ground floor.",
+    "text": "Community homes must be located above the ground floor in those zoning districts in which dwelling units and other residential uses are not permitted (by-right) on the ground floor.",
     "source_file": "chapter_17-09.txt"
   },
   {
     "section": "17-9-0105",
-    "title": "5-B Day care facilities may be allowed in PMD subarea B districts if such use is",
+    "title": "5-B Day care facilities may be allowed in PMD subarea B districts if such use is",
     "chapter": "Chapter 17-9",
     "text": "reviewed and approved in accordance with the special use procedures of Section 17-13-0900, and the Zoning Board of Appeals is authorized to allow a maximum floor area of 12,000 square feet.",
     "source_file": "chapter_17-09.txt"
@@ -5365,7 +5365,7 @@
     "section": "17-9-0109-B",
     "title": "The minimum lot area for a gas station is 20,000 square feet",
     "chapter": "Chapter 17-9",
-    "text": "",
+    "text": "The minimum lot area for a gas station is 20,000 square feet",
     "source_file": "chapter_17-09.txt"
   },
   {
@@ -5379,7 +5379,7 @@
     "section": "17-9-0109-D",
     "title": "No signs are allowed on fences",
     "chapter": "Chapter 17-9",
-    "text": "",
+    "text": "No signs are allowed on fences",
     "source_file": "chapter_17-09.txt"
   },
   {
@@ -5419,7 +5419,7 @@
   },
   {
     "section": "17-9-0110-B",
-    "title": "Sports. Sports wagering facilities must be established pursuant to Section 17-13-1405 and shall be deemed permitted by-right, if established as a clearly incidental and accessory use to, and fully contained:",
+    "title": "Sports",
     "chapter": "Chapter 17-9",
     "text": "1.   inside an inter-track wagering facility; or\n\n         2.   inside a casino, as such term may be defined, or as a facility meeting such definition may be authorized to be established, pursuant to the Chicago Municipal Code; or\n\n         3.   at a single location either (i) inside of, or (ii) inside of a permanent structure located within a five-block radius of, any of the following entertainment and spectator sport large venues as named currently (or as may be re-named in the future) so long as each remains a \"sports facility\" as defined under the Sports Wagering Act:\n\n            a.   Wrigley Field.\n\n            b.   Guaranteed Rate Field.\n\n            c.   Soldier Field.\n\n            d.   United Center.\n\n            e.   Wintrust Arena.\n\n            f.   all entertainment and spectator sport large venues identified in Section 17-9-0110-B.3 are allowed only one primary sports license.",
     "source_file": "chapter_17-09.txt"
@@ -5482,30 +5482,30 @@
   },
   {
     "section": "17-9-0113",
-    "title": "1 Residential Storage Warehouse. Residential storage warehouses are permitted in",
+    "title": "1 Residential Storage Warehouse",
     "chapter": "Chapter 17-9",
-    "text": "DX districts only as an adaptive re-use of existing buildings that have been in existence for twenty (20) years or more. Residential storage warehouses are prohibited on lots abutting pedestrian streets. To the extent possible, residential storage warehouses in DX districts must be designed to preserve the architectural features of existing facades including building materials, windows, doors and other features. Window openings must retain their transparency and should not be blocked with interior or exterior barriers including signage with an exception of business identification signage of the facility where such signage is otherwise permitted by the Chicago Zoning Ordinance.",
+    "text": "Residential storage warehouses are permitted in DX districts only as an adaptive re-use of existing buildings that have been in existence for twenty (20) years or more. Residential storage warehouses are prohibited on lots abutting pedestrian streets. To the extent possible, residential storage warehouses in DX districts must be designed to preserve the architectural features of existing facades including building materials, windows, doors and other features. Window openings must retain their transparency and should not be blocked with interior or exterior barriers including signage with an exception of business identification signage of the facility where such signage is otherwise permitted by the Chicago Zoning Ordinance.",
     "source_file": "chapter_17-09.txt"
   },
   {
     "section": "17-9-0114",
     "title": "Residential Support Services",
     "chapter": "Chapter 17-9",
-    "text": "(17-9-0114-A) a permitted or special use in the applicable use table and only in buildings containing more than 50 dwelling units.\n(17-9-0114-B) he first two floors of a building. Individual business, service or office uses within the Residential Support Service category are limited to a maximum of 5,000 square feet in area. Additional floor area requires special use approval in accordance with Sec. 17-13-0900.\n(17-9-0114-C) An outdoor patio (if located at grade level) as defined in Sec. 17-17-0104-K(3), may be allowed in conjunction with a restaurant if reviewed and approved in accordance with the special use procedures of Sec. 17-13-0900.",
+    "text": "(17-9-0114-A) Residential support services are allowed only when identified as a permitted or special use in the applicable use table and only in buildings containing more than 50 dwelling units.\n(17-9-0114-B) Residential support services may be located only on the first two floors of a building. Individual business, service or office uses within the Residential Support Service category are limited to a maximum of 5,000 square feet in area. Additional floor area requires special use approval in accordance\n(17-9-0114-C) An outdoor patio (if located at grade level) as defined in Sec. 17-17-0104-K(3), may be allowed in conjunction with a restaurant if reviewed and approved in accordance with the special use procedures of Sec. 17-13-0900.",
     "source_file": "chapter_17-09.txt"
   },
   {
     "section": "17-9-0114-A",
-    "title": "Where Allowed. Residential support services are allowed only when identified as",
+    "title": "Where Allowed",
     "chapter": "Chapter 17-9",
-    "text": "a permitted or special use in the applicable use table and only in buildings containing more than 50 dwelling units.",
+    "text": "Residential support services are allowed only when identified as a permitted or special use in the applicable use table and only in buildings containing more than 50 dwelling units.",
     "source_file": "chapter_17-09.txt"
   },
   {
     "section": "17-9-0114-B",
-    "title": "Location and Maximum Area. Residential support services may be located only on t",
+    "title": "Location and Maximum Area",
     "chapter": "Chapter 17-9",
-    "text": "he first two floors of a building. Individual business, service or office uses within the Residential Support Service category are limited to a maximum of 5,000 square feet in area. Additional floor area requires special use approval in accordance with Sec. 17-13-0900.",
+    "text": "Residential support services may be located only on the first two floors of a building. Individual business, service or office uses within the Residential Support Service category are limited to a maximum of 5,000 square feet in area. Additional floor area requires special use approval in accordance with Sec. 17-13-0900.",
     "source_file": "chapter_17-09.txt"
   },
   {
@@ -5547,14 +5547,14 @@
     "section": "17-9-0116",
     "title": "Strip Centers",
     "chapter": "Chapter 17-9",
-    "text": "(17-9-0116-A) f Sec. 17-13-0800.\n(17-9-0116-B) 1.   General. The site plan and elevations for a proposed strip center should demonstrate the proposed building's compatibility with the existing pattern of development in the neighborhood in which it is to be located. This compatibility must be judged in terms of: building orientation, massing and ",
+    "text": "(17-9-0116-A) Strip centers are subject to the Site Plan Review procedures of Sec. 17-13-0800.\n(17-9-0116-B) 1.   General. The site plan and elevations for a proposed strip center should demonstrate the proposed building's compatibility with the existing pattern of development in the neighborhood in which it is to be located. This compatibility must be judged in terms of: building orientation, massing and ",
     "source_file": "chapter_17-09.txt"
   },
   {
     "section": "17-9-0116-A",
-    "title": "Site Plan Review. Strip centers are subject to the Site Plan Review procedures o",
+    "title": "Site Plan Review",
     "chapter": "Chapter 17-9",
-    "text": "f Sec. 17-13-0800.",
+    "text": "Strip centers are subject to the Site Plan Review procedures of Sec. 17-13-0800.",
     "source_file": "chapter_17-09.txt"
   },
   {
@@ -5671,7 +5671,7 @@
   },
   {
     "section": "17-9-0118-G",
-    "title": "Waiver. The Zoning Board of Appeals may waive any of the non-federally-mandated",
+    "title": "Waiver",
     "chapter": "Chapter 17-9",
     "text": "1.   Setback requirements may be modified if the applicant shows, to the satisfaction of the Zoning Board of Appeals, that such modification will result in a reduction of the visual impact of the wireless communication facility.\n\n         2.   The height increases authorized in Sec. 17-9-0118-C2 and Sec. 17-9-0118-D3 are available only if the applicant shows, to the satisfaction of the Zoning Board of Appeals, that:\n\n            (a)   the facility will be constructed to safely and effectively accommodate co-location of one or more wireless communication facilities comparable in weight, size and surface area to the applicant's wireless communication facility; and\n\n            (b)   certified letters have been sent to all other wireless carriers licensed to serve the Chicago market notifying them of the construction of the wireless communication facility and its availability for co-location.",
     "source_file": "chapter_17-09.txt"
@@ -5757,7 +5757,7 @@
     "section": "17-9-0200",
     "title": "Accessory uses, buildings and structures",
     "chapter": "Chapter 17-9",
-    "text": "",
+    "text": "Sections in this group:\n(17-9-0201) General\n(17-9-0202) Home Occupations\n(17-9-0203) Satellite Dish Antennas",
     "source_file": "chapter_17-09.txt"
   },
   {
@@ -5813,14 +5813,14 @@
     "section": "17-9-0202",
     "title": "Home Occupations",
     "chapter": "Chapter 17-9",
-    "text": "(17-9-0202-A) egory. The regulations of this section are intended to ensure that home occupations will not be a detriment to the character and livability of the surrounding neighborhood. The regulations are intended to ensure that the home occupation remains subordinate to the residential use, and that the reside\n(17-9-0202-B) Uses are allowed as home occupations only if they comply with all of the standards of this section.\n(17-9-0202-C) to compliance with all of the minimum standards in subsections (e), (f) and (g) of Section 4-6-270.",
+    "text": "(17-9-0202-A) Home occupations are accessory uses to uses in the household living category. The regulations of this section are intended to ensure that home occupations will not be a detriment to the character and livability of the surrounding neighborhood. The regulations are intended to ensure that the home occ\n(17-9-0202-B) Uses are allowed as home occupations only if they comply with all of the standards of this section.\n(17-9-0202-C) A dwelling unit may be used for one or more home occupations subject to compliance with all of the minimum standards in subsections (e), (f) and (g) of Section 4-6-270.",
     "source_file": "chapter_17-09.txt"
   },
   {
     "section": "17-9-0202-A",
-    "title": "General. Home occupations are accessory uses to uses in the household living cat",
+    "title": "General",
     "chapter": "Chapter 17-9",
-    "text": "egory. The regulations of this section are intended to ensure that home occupations will not be a detriment to the character and livability of the surrounding neighborhood. The regulations are intended to ensure that the home occupation remains subordinate to the residential use, and that the residential viability of the dwelling is maintained. The regulations recognize that many types of work can be done in a home with little or no effect on the surrounding neighborhood.",
+    "text": "Home occupations are accessory uses to uses in the household living category. The regulations of this section are intended to ensure that home occupations will not be a detriment to the character and livability of the surrounding neighborhood. The regulations are intended to ensure that the home occupation remains subordinate to the residential use, and that the residential viability of the dwelling is maintained. The regulations recognize that many types of work can be done in a home with little or no effect on the surrounding neighborhood.",
     "source_file": "chapter_17-09.txt"
   },
   {
@@ -5832,9 +5832,9 @@
   },
   {
     "section": "17-9-0202-C",
-    "title": "Standards. A dwelling unit may be used for one or more home occupations subject",
+    "title": "Standards",
     "chapter": "Chapter 17-9",
-    "text": "to compliance with all of the minimum standards in subsections (e), (f) and (g) of Section 4-6-270.",
+    "text": "A dwelling unit may be used for one or more home occupations subject to compliance with all of the minimum standards in subsections (e), (f) and (g) of Section 4-6-270.",
     "source_file": "chapter_17-09.txt"
   },
   {
@@ -5876,7 +5876,7 @@
     "section": "17-9-0300",
     "title": "Temporary uses",
     "chapter": "Chapter 17-9",
-    "text": "",
+    "text": "Sections in this group:\n(17-9-0301) Contractor's Office and Construction Equipment Sheds and Temporary Sales Trailer\n(17-9-0302) Produce Stands",
     "source_file": "chapter_17-09.txt"
   },
   {
@@ -5939,7 +5939,7 @@
     "section": "17-10-0100",
     "title": "General",
     "chapter": "Chapter 17-10",
-    "text": "",
+    "text": "Sections in this group:\n(17-10-0101) Applicability\n(17-10-0102) Off-street Parking Exemptions and Reductions\n(17-10-0103) Damage or Destruction",
     "source_file": "chapter_17-10.txt"
   },
   {
@@ -5974,7 +5974,7 @@
     "section": "17-10-0102",
     "title": "Off-street Parking Exemptions and Reductions",
     "chapter": "Chapter 17-10",
-    "text": "(17-10-0102-A) 1.   No additional off-street parking or loading spaces are required for rehabilitation or reuse of an official Chicago Landmark building.\n\n         2.   No additional off-street parking or loading spaces are required for rehabilitation or reuse of an existing \"contributing building\" within an offic\n(17-10-0102-B) 1.   (a)   In all districts except D districts, minimum off-street automobile parking ratios may be reduced by up to 100 percent from the otherwise applicable standards for new construction or rehabilitation or reuse of existing structures located within 2,640 feet of a CTA rail station entrance or \n(17-10-0102-C) When buildings in \"D\" zoning districts provide all parking spaces underground, minimum off-street parking ratios are reduced by 50 percent from otherwise applicable standards.\n(17-10-0102-D) et parking ratio reductions of up to 25 percent for multi-unit residential developments in \"D\" districts if the Zoning Administrator determines, based on information provided by the applicant, that automobile ownership rates are likely to be lower than minimum off-street parking requirements. In ord\n(17-10-0102-E) District\n\nParking Waived if Minimum Requirement is for Less than:\n\nD dash 5\n\n5 spaces\n\nD dash 7, 10\n\n10 spaces\n\nD dash 12, 16\n\n50 Spaces\n(17-10-0102-F) When a multi-unit residential building utilizes the incentives in 17-2-0303-B.2 or 17-2-0304-D, minimum off-street parking shall be no greater than 1 space per 8 feet of alley frontage, provided that an accessible parking space shall count as 2 spaces. Fractions in the calculation of the number of r",
+    "text": "(17-10-0102-A) 1.   No additional off-street parking or loading spaces are required for rehabilitation or reuse of an official Chicago Landmark building.\n\n         2.   No additional off-street parking or loading spaces are required for rehabilitation or reuse of an existing \"contributing building\" within an offic\n(17-10-0102-B) 1.   (a)   In all districts except D districts, minimum off-street automobile parking ratios may be reduced by up to 100 percent from the otherwise applicable standards for new construction or rehabilitation or reuse of existing structures located within 2,640 feet of a CTA rail station entrance or \n(17-10-0102-C) When buildings in \"D\" zoning districts provide all parking spaces underground, minimum off-street parking ratios are reduced by 50 percent from otherwise applicable standards.\n(17-10-0102-D) The Zoning Administrator is authorized to approve off-street parking ratio reductions of up to 25 percent for multi-unit residential developments in \"D\" districts if the Zoning Administrator determines, based on information provided by the applicant, that automobile ownership rates are likely to be \n(17-10-0102-E) District\n\nParking Waived if Minimum Requirement is for Less than:\n\nD dash 5\n\n5 spaces\n\nD dash 7, 10\n\n10 spaces\n\nD dash 12, 16\n\n50 Spaces\n(17-10-0102-F) When a multi-unit residential building utilizes the incentives in 17-2-0303-B.2 or 17-2-0304-D, minimum off-street parking shall be no greater than 1 space per 8 feet of alley frontage, provided that an accessible parking space shall count as 2 spaces. Fractions in the calculation of the number of r",
     "source_file": "chapter_17-10.txt"
   },
   {
@@ -6000,9 +6000,9 @@
   },
   {
     "section": "17-10-0102-D",
-    "title": "Small Dwelling Units. The Zoning Administrator is authorized to approve off-stre",
+    "title": "Small Dwelling Units",
     "chapter": "Chapter 17-10",
-    "text": "et parking ratio reductions of up to 25 percent for multi-unit residential developments in \"D\" districts if the Zoning Administrator determines, based on information provided by the applicant, that automobile ownership rates are likely to be lower than minimum off-street parking requirements. In order to qualify for consideration of lower parking ratios under this provision, the building must contain 100 or more dwelling units and the average size of a dwelling unit within the building must be less than 800 square feet.",
+    "text": "The Zoning Administrator is authorized to approve off-street parking ratio reductions of up to 25 percent for multi-unit residential developments in \"D\" districts if the Zoning Administrator determines, based on information provided by the applicant, that automobile ownership rates are likely to be lower than minimum off-street parking requirements. In order to qualify for consideration of lower parking ratios under this provision, the building must contain 100 or more dwelling units and the average size of a dwelling unit within the building must be less than 800 square feet.",
     "source_file": "chapter_17-10.txt"
   },
   {
@@ -6030,7 +6030,7 @@
     "section": "17-10-0200",
     "title": "Off-street parking ratios",
     "chapter": "Chapter 17-10",
-    "text": "",
+    "text": "Sections in this group:\n(17-10-0201) General\n(17-10-0202) Parking Groups\n(17-10-0203) Districts\n(17-10-0204) Minimum Automobile Parking Ratio\n(17-10-0205) Maximum Accessory Parking Ratio\n(17-10-0206) Minimum Bicycle Parking\n(17-10-0207) Off-Street Parking Schedule 1: Neighborhood Zoning Districts\n(17-10-0208) Off-Street Parking Schedule 2: Downtown Zoning Districts",
     "source_file": "chapter_17-10.txt"
   },
   {
@@ -6254,7 +6254,7 @@
     "section": "17-10-0300",
     "title": "Bicycle parking",
     "chapter": "Chapter 17-10",
-    "text": "",
+    "text": "Sections in this group:\n(17-10-0301) Spaces Required\n(17-10-0302) Design and Location\n(17-10-0303) Non-accessory Parking",
     "source_file": "chapter_17-10.txt"
   },
   {
@@ -6275,7 +6275,7 @@
     "section": "17-10-0301-B",
     "title": "No use is required to provide more than 50 bicycle parking spaces",
     "chapter": "Chapter 17-10",
-    "text": "",
+    "text": "No use is required to provide more than 50 bicycle parking spaces",
     "source_file": "chapter_17-10.txt"
   },
   {
@@ -6329,7 +6329,7 @@
   },
   {
     "section": "17-10-0303",
-    "title": "Non-accessory Parking. A non-accessory parking facility must provide bicycle par",
+    "title": "Non-accessory Parking",
     "chapter": "Chapter 17-10",
     "text": "(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 11-8-12, p. 38872, § 251; Amend Coun. J. 9-11-13, p. 60173, § 11; Amend Coun. J. 7-20-22, p. 50878, § 6)\n\n provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.",
     "source_file": "chapter_17-10.txt"
@@ -6366,7 +6366,7 @@
     "section": "17-10-0401-C",
     "title": "No parking is required for accessory uses unless otherwise expressly stated",
     "chapter": "Chapter 17-10",
-    "text": "",
+    "text": "No parking is required for accessory uses unless otherwise expressly stated",
     "source_file": "chapter_17-10.txt"
   },
   {
@@ -6436,7 +6436,7 @@
     "section": "17-10-0500",
     "title": "Use of off-street parking areas; leasing of required",
     "chapter": "Chapter 17-10",
-    "text": "",
+    "text": "Sections in this group:\n(17-10-0501) Required off-street parking areas are to be used solely for the parking of licen\n(17-10-0502) Required off-street parking spaces are intended to serve residents, tenants, pat\n(17-10-0503) In RM5, RM5.5, RM6, RM6.5, all B and all C districts, and DR dash 3 and DX dash\n(17-10-0504) Before a parking garage operator may obtain a license for a public (non-accessor\n(17-10-0505) No motor vehicle repair work of any kind is permitted in conjunction with access\n(17-10-0506) No motor vehicle repair work of any kind is permitted in conjunction with open (\n(17-10-0507) No motor vehicle repair work of any kind is permitted in conjunction with open (\n(17-10-0508) In D districts, parking spaces in non-accessory parking facilities may not be used for temporary storage containers",
     "source_file": "chapter_17-10.txt"
   },
   {
@@ -6513,7 +6513,7 @@
     "section": "17-10-0600",
     "title": "Location of off-street parking",
     "chapter": "Chapter 17-10",
-    "text": "",
+    "text": "Sections in this group:\n(17-10-0601) RS Districts\n(17-10-0602) RT, RM and DR Districts\n(17-10-0603) B, C, DC, DX, DS and M Districts\n(17-10-0604) Agreement",
     "source_file": "chapter_17-10.txt"
   },
   {
@@ -6604,7 +6604,7 @@
     "section": "17-10-0700",
     "title": "Shared parking",
     "chapter": "Chapter 17-10",
-    "text": "",
+    "text": "Sections in this group:\n(17-10-0701) Description\n(17-10-0702) Authorization and Criteria\n(17-10-0703) Uses with Different Hours of Operation\n(17-10-0704) Location of Shared Parking Facility\n(17-10-0705) Agreement",
     "source_file": "chapter_17-10.txt"
   },
   {
@@ -6681,7 +6681,7 @@
     "section": "17-10-0800",
     "title": "Cooperative parking",
     "chapter": "Chapter 17-10",
-    "text": "",
+    "text": "Sections in this group:\n(17-10-0801) Description\n(17-10-0802) Authorization\n(17-10-0803) Location of Cooperative Parking Facility\n(17-10-0804) Agreement",
     "source_file": "chapter_17-10.txt"
   },
   {
@@ -6709,14 +6709,14 @@
     "section": "17-10-0802-B",
     "title": "up to a 15% reduction may be approved when 3 commercial uses are involved; and",
     "chapter": "Chapter 17-10",
-    "text": "",
+    "text": "up to a 15% reduction may be approved when 3 commercial uses are involved; and",
     "source_file": "chapter_17-10.txt"
   },
   {
     "section": "17-10-0802-C",
     "title": "up to a 10% reduction may be approved when 2 commercial uses are involved",
     "chapter": "Chapter 17-10",
-    "text": "",
+    "text": "up to a 10% reduction may be approved when 2 commercial uses are involved",
     "source_file": "chapter_17-10.txt"
   },
   {
@@ -6737,7 +6737,7 @@
     "section": "17-10-0900",
     "title": "Accessible parking (for people with disabilities)",
     "chapter": "Chapter 17-10",
-    "text": "",
+    "text": "Sections in this group:\n(17-10-0901) Applicability\n(17-10-0902) Required Parking Spaces and Passenger Loading Facilities\n(17-10-0903) Layout and Design\n(17-10-0904) Passenger Loading Zones",
     "source_file": "chapter_17-10.txt"
   },
   {
@@ -7038,7 +7038,7 @@
     "section": "17-10-1100",
     "title": "Off-street loading",
     "chapter": "Chapter 17-10",
-    "text": "",
+    "text": "Sections in this group:\n(17-10-1101) Schedule of Minimum Requirements\n(17-10-1102) Special Uses\n(17-10-1103) Calculation Rules\n(17-10-1104) Location\n(17-10-1105) Use of Off-Street Loading Areas\n(17-10-1106) Design",
     "source_file": "chapter_17-10.txt"
   },
   {
@@ -7050,9 +7050,9 @@
   },
   {
     "section": "17-10-1102",
-    "title": "Special Uses. For special uses other than prescribed for hereinafter, loading sp",
+    "title": "Special Uses",
     "chapter": "Chapter 17-10",
-    "text": "aces adequate in number and size to serve such uses as determined by the Department of Planning and Development must be provided.",
+    "text": "For special uses other than prescribed for hereinafter, loading spaces adequate in number and size to serve such uses as determined by the Department of Planning and Development must be provided.",
     "source_file": "chapter_17-10.txt"
   },
   {
@@ -7115,14 +7115,14 @@
     "section": "17-10-1104-C",
     "title": "No loading spaces may be located in a required front setback or side setback",
     "chapter": "Chapter 17-10",
-    "text": "",
+    "text": "No loading spaces may be located in a required front setback or side setback",
     "source_file": "chapter_17-10.txt"
   },
   {
     "section": "17-10-1104-D",
     "title": "Any loading spaces located in a required rear setback must be open to the sky",
     "chapter": "Chapter 17-10",
-    "text": "",
+    "text": "Any loading spaces located in a required rear setback must be open to the sky",
     "source_file": "chapter_17-10.txt"
   },
   {
@@ -7171,7 +7171,7 @@
     "section": "17-11-0100",
     "title": "Parkway trees",
     "chapter": "Chapter 17-11",
-    "text": "",
+    "text": "Sections in this group:\n(17-11-0101) Applicability\n(17-11-0102) Exemptions\n(17-11-0103) Standards",
     "source_file": "chapter_17-11.txt"
   },
   {
@@ -7185,7 +7185,7 @@
     "section": "17-11-0101-A",
     "title": "construction of any principal building;",
     "chapter": "Chapter 17-11",
-    "text": "",
+    "text": "construction of any principal building;",
     "source_file": "chapter_17-11.txt"
   },
   {
@@ -7283,7 +7283,7 @@
     "section": "17-11-0200",
     "title": "Vehicular use areas",
     "chapter": "Chapter 17-11",
-    "text": "",
+    "text": "Sections in this group:\n(17-11-0201) Applicability\n(17-11-0202) Perimeter Landscaping, Screening and Fencing\n(17-11-0203) Interior Landscaping\n(17-11-0204) Landscape and Tree Protection\n(17-11-0205) Sight Triangles\n(17-11-0206) Multi-level Parking Garages",
     "source_file": "chapter_17-11.txt"
   },
   {
@@ -7297,7 +7297,7 @@
     "section": "17-11-0201-A",
     "title": "the construction or installation of any vehicular use area",
     "chapter": "Chapter 17-11",
-    "text": "",
+    "text": "the construction or installation of any vehicular use area",
     "source_file": "chapter_17-11.txt"
   },
   {
@@ -7358,7 +7358,7 @@
   },
   {
     "section": "17-11-0202-C",
-    "title": "Fencing. Ornamental fencing is required to be installed along the perimeter of vehicular use areas along those lot lines adjacent to public street rights-of-way or abutting any existing front yard of property located within an R district",
+    "title": "Fencing",
     "chapter": "Chapter 17-11",
     "text": "1.   The required ornamental fencing must be installed behind the required perimeter landscape area, at least 5 feet from abutting property lines.\n\n         2.   Required fences are limited to a height of no more than 5 feet above grade unless the Zoning Administrator determines that the fence is necessary for security purposes in which case the fence may be a maximum of 6 feet in height.\n\n         3.   Any pre-existing vehicular use areas must have ornamental fencing installed behind any existing hedges or, when no hedges exist, at the property line based on the following schedule:\n\nArea\n\nSize of Vehicular Use Area\n\nRequired Date of Compliance\n\nCentral Area\n\nAny\n\nJanuary 1, 2002\n\nOutside of Central Area\n\n30,000 square feet or more\n\nJanuary 1, 2004\n\nOutside of Central Area\n\n8,000 to 29,999 square feet\n\nJune 15, 2014\n\nOutside of Central Area\n\n2,000 to 7,999 square feet\n\nJune 15, 2014\n\nNote: for purposes of this provision, the Central Area is the area bounded by North Avenue, Lake Michigan, Cermak Road, and Ashland Avenue\n\n   Notwithstanding the above schedule, the required date of compliance outside the Central Area for accessory vehicular use areas less than 30,000 square feet in size shall be June 15, 2016.",
     "source_file": "chapter_17-11.txt"
@@ -7479,7 +7479,7 @@
     "section": "17-11-0300",
     "title": "Trash storage area screening",
     "chapter": "Chapter 17-11",
-    "text": "",
+    "text": "Sections in this group:\n(17-11-0301) Applicability\n(17-11-0302) Exemptions\n(17-11-0303) Screening Methods",
     "source_file": "chapter_17-11.txt"
   },
   {
@@ -7493,14 +7493,14 @@
     "section": "17-11-0301-A",
     "title": "multi-unit buildings containing more than 6 dwelling units;",
     "chapter": "Chapter 17-11",
-    "text": "",
+    "text": "multi-unit buildings containing more than 6 dwelling units;",
     "source_file": "chapter_17-11.txt"
   },
   {
     "section": "17-11-0301-B",
     "title": "business, commercial, or manufacturing development; and",
     "chapter": "Chapter 17-11",
-    "text": "",
+    "text": "business, commercial, or manufacturing development; and",
     "source_file": "chapter_17-11.txt"
   },
   {
@@ -7591,7 +7591,7 @@
     "section": "17-11-0500",
     "title": "Installation and maintenance",
     "chapter": "Chapter 17-11",
-    "text": "",
+    "text": "Sections in this group:\n(17-11-0501) All landscape materials required by this chapter must be installed in accordance\n(17-11-0502) All applicants for landscape plan approval must file a maintenance schedule and\n(17-11-0503) Any damaged or dead trees, shrubs or ground cover must be promptly replaced\n(17-11-0504) Maintenance of landscaping must include continuous operations of removal of weed\n(17-11-0505) The obligation for continuous maintenance is binding on the applicant for landsc\n(17-11-0506) Reserved",
     "source_file": "chapter_17-11.txt"
   },
   {
@@ -7612,7 +7612,7 @@
     "section": "17-11-0503",
     "title": "Any damaged or dead trees, shrubs or ground cover must be promptly replaced",
     "chapter": "Chapter 17-11",
-    "text": "",
+    "text": "Any damaged or dead trees, shrubs or ground cover must be promptly replaced",
     "source_file": "chapter_17-11.txt"
   },
   {
@@ -7640,7 +7640,7 @@
     "section": "17-11-0600",
     "title": "Administrative adjustments",
     "chapter": "Chapter 17-11",
-    "text": "",
+    "text": "Sections in this group:\n(17-11-0601) Fencing Standards\n(17-11-0602) Screening of Vehicular Use Areas from Streets\n(17-11-0603) Parkway Trees\n(17-11-0604) Hardships",
     "source_file": "chapter_17-11.txt"
   },
   {
@@ -7759,7 +7759,7 @@
     "section": "17-12-0100",
     "title": "Purpose",
     "chapter": "Chapter 17-12",
-    "text": "",
+    "text": "Sections in this group:\n(17-12-0101) The sign regulations of this chapter are intended to balance the public interest\n(17-12-0102) The regulations allow for a variety of sign types and sizes, based on zoning and",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -7808,7 +7808,7 @@
     "section": "17-12-0101-F",
     "title": "to enable the city to establish an integrated network of city digital signs",
     "chapter": "Chapter 17-12",
-    "text": "",
+    "text": "to enable the city to establish an integrated network of city digital signs",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -7836,7 +7836,7 @@
     "section": "17-12-0400",
     "title": "Transitional provisions",
     "chapter": "Chapter 17-12",
-    "text": "",
+    "text": "Sections in this group:\n(17-12-0401) All signs legally erected or installed before the effective dates specified in S\n(17-12-0402) All holders of permits for signs issued legally before the effective dates speci\n(17-12-0403) All violations of the sign regulations repealed by this Zoning Ordinance will re",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -7892,14 +7892,14 @@
     "section": "17-12-0504",
     "title": "Works of art with no commercial message;",
     "chapter": "Chapter 17-12",
-    "text": "",
+    "text": "Works of art with no commercial message;",
     "source_file": "chapter_17-12.txt"
   },
   {
     "section": "17-12-0505",
     "title": "Holiday decorations with no commercial message; and",
     "chapter": "Chapter 17-12",
-    "text": "",
+    "text": "Holiday decorations with no commercial message; and",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -7913,7 +7913,7 @@
     "section": "17-12-0600",
     "title": "Measurements",
     "chapter": "Chapter 17-12",
-    "text": "",
+    "text": "Sections in this group:\n(17-12-0601) Sign Area\n(17-12-0602) Sign Height\n(17-12-0603) Sign Clearance",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -7990,7 +7990,7 @@
     "section": "17-12-0701",
     "title": "strobe lights;",
     "chapter": "Chapter 17-12",
-    "text": "",
+    "text": "strobe lights;",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -8004,14 +8004,14 @@
     "section": "17-12-0703",
     "title": "abandoned sign structure;",
     "chapter": "Chapter 17-12",
-    "text": "",
+    "text": "abandoned sign structure;",
     "source_file": "chapter_17-12.txt"
   },
   {
     "section": "17-12-0704",
     "title": "dangerous signs;",
     "chapter": "Chapter 17-12",
-    "text": "",
+    "text": "dangerous signs;",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -8067,7 +8067,7 @@
     "section": "17-12-0800",
     "title": "General standards",
     "chapter": "Chapter 17-12",
-    "text": "",
+    "text": "Sections in this group:\n(17-12-0801) Applicability\n(17-12-0802) Sign Placement\n(17-12-0803) Incidental Signs\n(17-12-0804) Temporary Signs",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -8079,16 +8079,16 @@
   },
   {
     "section": "17-12-0802",
-    "title": "Sign Placement. All signs and sign structures must be located on private propert",
+    "title": "Sign Placement",
     "chapter": "Chapter 17-12",
-    "text": "y, within the boundaries of the zoning lot, except when expressly allowed to extend into the right-of-way and provided further, however, that city digital signs and city digital sign structures may be located on public property and may be within, partially within, or outside the boundaries of the zoning lot.",
+    "text": "All signs and sign structures must be located on private property, within the boundaries of the zoning lot, except when expressly allowed to extend into the right-of-way and provided further, however, that city digital signs and city digital sign structures may be located on public property and may be within, partially within, or outside the boundaries of the zoning lot.",
     "source_file": "chapter_17-12.txt"
   },
   {
     "section": "17-12-0803",
     "title": "Incidental Signs",
     "chapter": "Chapter 17-12",
-    "text": "(17-12-0803-A) istricts and are not counted in determining the total area of all signs on the lot.\n(17-12-0803-B) n height. Wall-mounted incidental signs may be up to 6 square feet in area and 12 feet in height.\n(17-12-0803-C) Dynamic image display sign features and projections into the right-of-way are prohibited.\n(17-12-0803-D) district-specific standards for permanent signs and the area of such signs will be counted against a lot's total maximum sign area limit.",
+    "text": "(17-12-0803-A) istricts and are not counted in determining the total area of all signs on the lot.\n(17-12-0803-B) n height. Wall-mounted incidental signs may be up to 6 square feet in area and 12 feet in height.\n(17-12-0803-C) Dynamic image display sign features and projections into the right-of-way are prohibited.\n(17-12-0803-D) district-specific standards for permanent signs and the area of such signs will be counted against a lot's total maximum sign area limit.",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -8109,7 +8109,7 @@
     "section": "17-12-0803-C",
     "title": "Direct or indirect lighting is allowed",
     "chapter": "Chapter 17-12",
-    "text": "Dynamic image display sign features and projections into the right-of-way are prohibited.",
+    "text": "Dynamic image display sign features and projections into the right-of-way are prohibited.",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -8123,14 +8123,14 @@
     "section": "17-12-0804",
     "title": "Temporary Signs",
     "chapter": "Chapter 17-12",
-    "text": "(17-12-0804-A) Dynamic image display sign features and electronic elements are prohibited.\n(17-12-0804-B) 1.   Residential Districts. In addition to any other signs allowed, one temporary wall sign is allowed per street frontage in R and DR districts. Such a temporary wall sign:\n\n            (a)   may not exceed 18 inches ×18 inches in area in RS1, RS2, or RS3 districts;\n\n            (b)   may not excee\n(17-12-0804-C) 1.   Residential Districts. In addition to any other signs allowed, one temporary freestanding sign is allowed per street frontage in R and DR districts. Such a temporary freestanding sign:\n\n            (a)   may not exceed 18 inches ×18 inches in area or 4 feet in height in RS1, RS2, or RS3 distric\n(17-12-0804-D) 1.   Residential Districts. Temporary banners in R and DR districts are exempt from the standards for permanent signs and are not counted in determining the total area of all signs on the lot. The following standards apply to temporary banners in R and DR districts:\n\n            (a)   Temporary bann\n(17-12-0804-E) (Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 11-8-12, p. 38872, § 255; Amend Coun. J. 12-12-12, p. 44485, § 6; Amend Coun. J. 4-30-14, p. 80382, § 5)\n\n provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legis",
+    "text": "(17-12-0804-A) Temporary signs may not be illuminated. Dynamic image display sign features and electronic elements are prohibited.\n(17-12-0804-B) 1.   Residential Districts. In addition to any other signs allowed, one temporary wall sign is allowed per street frontage in R and DR districts. Such a temporary wall sign:\n\n            (a)   may not exceed 18 inches ×18 inches in area in RS1, RS2, or RS3 districts;\n\n            (b)   may not excee\n(17-12-0804-C) 1.   Residential Districts. In addition to any other signs allowed, one temporary freestanding sign is allowed per street frontage in R and DR districts. Such a temporary freestanding sign:\n\n            (a)   may not exceed 18 inches ×18 inches in area or 4 feet in height in RS1, RS2, or RS3 distric\n(17-12-0804-D) 1.   Residential Districts. Temporary banners in R and DR districts are exempt from the standards for permanent signs and are not counted in determining the total area of all signs on the lot. The following standards apply to temporary banners in R and DR districts:\n\n            (a)   Temporary bann\n(17-12-0804-E) (Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 11-8-12, p. 38872, § 255; Amend Coun. J. 12-12-12, p. 44485, § 6; Amend Coun. J. 4-30-14, p. 80382, § 5)\n\n provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legis",
     "source_file": "chapter_17-12.txt"
   },
   {
     "section": "17-12-0804-A",
-    "title": "Sign Features and Characteristics. Temporary signs may not be illuminated",
+    "title": "Sign Features and Characteristics",
     "chapter": "Chapter 17-12",
-    "text": "Dynamic image display sign features and electronic elements are prohibited.",
+    "text": "Temporary signs may not be illuminated. Dynamic image display sign features and electronic elements are prohibited.",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -8156,7 +8156,7 @@
   },
   {
     "section": "17-12-0804-E",
-    "title": "Special Events Signs. The Zoning Administrator is authorized to issue temporary sign permits for special event signs and to impose time limits and other restrictions on the use, location, dimensions and characteristics of such signs to ensure that they are consistent with the purposes of this chapter",
+    "title": "Special Events Signs",
     "chapter": "Chapter 17-12",
     "text": "(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 11-8-12, p. 38872, § 255; Amend Coun. J. 12-12-12, p. 44485, § 6; Amend Coun. J. 4-30-14, p. 80382, § 5)\n\n provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.",
     "source_file": "chapter_17-12.txt"
@@ -8165,7 +8165,7 @@
     "section": "17-12-0900",
     "title": "Signs in residential districts",
     "chapter": "Chapter 17-12",
-    "text": "",
+    "text": "Sections in this group:\n(17-12-0901) Applicability\n(17-12-0902) Permanent, On-premise Signs\n(17-12-0903) Sign Features\n(17-12-0904) Off-premise Signs",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -8186,26 +8186,26 @@
     "section": "17-12-0903",
     "title": "Sign Features",
     "chapter": "Chapter 17-12",
-    "text": "(17-12-0903-A) Direct lighting and internal lighting of signs is prohibited, except in the case of allowed dynamic image display signs.\n(17-12-0903-B) DR districts when such signs are freestanding, on-premise signs for public and civic uses that are located along a through street as classified by the Chicago Department of Transportation. Flashing signs are prohibited.",
+    "text": "(17-12-0903-A) Signs in R and DR zoning districts may use only indirect lighting. Direct lighting and internal lighting of signs is prohibited, except in the case of allowed dynamic image display signs.\n(17-12-0903-B) Dynamic image display signs are permitted in R and DR districts when such signs are freestanding, on-premise signs for public and civic uses that are located along a through street as classified by the Chicago Department of Transportation. Flashing signs are prohibited.",
     "source_file": "chapter_17-12.txt"
   },
   {
     "section": "17-12-0903-A",
-    "title": "Lighting. Signs in R and DR zoning districts may use only indirect lighting",
+    "title": "Lighting",
     "chapter": "Chapter 17-12",
-    "text": "Direct lighting and internal lighting of signs is prohibited, except in the case of allowed dynamic image display signs.",
+    "text": "Signs in R and DR zoning districts may use only indirect lighting. Direct lighting and internal lighting of signs is prohibited, except in the case of allowed dynamic image display signs.",
     "source_file": "chapter_17-12.txt"
   },
   {
     "section": "17-12-0903-B",
-    "title": "Dynamic Image Display Signs. Dynamic image display signs are permitted in R and",
+    "title": "Dynamic Image Display Signs",
     "chapter": "Chapter 17-12",
-    "text": "DR districts when such signs are freestanding, on-premise signs for public and civic uses that are located along a through street as classified by the Chicago Department of Transportation. Flashing signs are prohibited.",
+    "text": "Dynamic image display signs are permitted in R and DR districts when such signs are freestanding, on-premise signs for public and civic uses that are located along a through street as classified by the Chicago Department of Transportation. Flashing signs are prohibited.",
     "source_file": "chapter_17-12.txt"
   },
   {
     "section": "17-12-0904",
-    "title": "Off-premise Signs. Off-premise signs are prohibited in R and DR districts",
+    "title": "Off-premise Signs",
     "chapter": "Chapter 17-12",
     "text": "(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 4-14-10, p. 89020, § 1; Amend Coun. J. 12-12-12, p. 44485, § 6; Amend Coun. J. 4-30-14, p. 80382, § 5; Amend Coun. J. 9-25-25, p. 32113, § 1)\n\n provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.",
     "source_file": "chapter_17-12.txt"
@@ -8214,7 +8214,7 @@
     "section": "17-12-1000",
     "title": "Signs in business, commercial, downtown and manufacturing districts",
     "chapter": "Chapter 17-12",
-    "text": "",
+    "text": "Sections in this group:\n(17-12-1001) Applicability\n(17-12-1002) Permanent Signs\n(17-12-1003) Number, Area and Height Standards\n(17-12-1004) Sign Features and Characteristics\n(17-12-1005) Additional Standards for Specific Types of Signs\n(17-12-1006) Additional Standards for Off- premise Signs",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -8333,21 +8333,21 @@
     "section": "17-12-1005",
     "title": "Additional Standards for Specific Types of Signs",
     "chapter": "Chapter 17-12",
-    "text": "(17-12-1005-D) 1.   No more than one high-rise building sign is allowed on any building, unless the building is located within a planned development and the principal tenant of such building, as identified in 17-12-1005-D.9, also meets the criteria of 17-12-1005-D.10.\n\n         2.   The maximum sign face area of a\n(17-12-1005-A) not extend horizontally or vertically beyond the limits of the awning. Awning signs may not contain internal lighting.\n(17-12-1005-B) In B1 and B2 districts, sign face area devoted to dynamic image display signs may not exceed 25% of the maximum total sign area allowed under Sec. 17-12-1003 or 32 square feet, whichever is less. In all districts, sign face area devoted to dynamic image display signs may not exceed 25% of the maximu\n(17-12-1005-C) 1.   Maximum Area. The total sign face area of all flashing signs on a lot may not exceed 25% of overall sign area limit or 100 square feet, whichever is less.\n\n         2.   Maximum Height. No part of any flashing sign may exceed a height of 24 feet.\n\n         3.   Prohibited Locations. Flashing si\n(17-12-1005-E) Editor's note – Coun. J. 7-20-16, p. 29358, § 2, repealed § 17-12-1005-E, which pertained to marquee signs.\n(17-12-1005-F) are set back at least 18 inches from the curb line. Signs that project over the public way by more than 12 inches must have a minimum clearance of 9 feet.\n(17-12-1005-G) Editor's note – Coun. J. 4-30-14, p. 80832, § 5, repealed § 17-12-1005-G, which pertained to video display signs.",
+    "text": "(17-12-1005-D) 1.   No more than one high-rise building sign is allowed on any building, unless the building is located within a planned development and the principal tenant of such building, as identified in 17-12-1005-D.9, also meets the criteria of 17-12-1005-D.10.\n\n         2.   The maximum sign face area of a\n(17-12-1005-A) Awning signs must be affixed flat to the surface of the awning and not extend horizontally or vertically beyond the limits of the awning. Awning signs may not contain internal lighting.\n(17-12-1005-B) In B1 and B2 districts, sign face area devoted to dynamic image display signs may not exceed 25% of the maximum total sign area allowed under Sec. 17-12-1003 or 32 square feet, whichever is less. In all districts, sign face area devoted to dynamic image display signs may not exceed 25% of the maximu\n(17-12-1005-C) 1.   Maximum Area. The total sign face area of all flashing signs on a lot may not exceed 25% of overall sign area limit or 100 square feet, whichever is less.\n\n         2.   Maximum Height. No part of any flashing sign may exceed a height of 24 feet.\n\n         3.   Prohibited Locations. Flashing si\n(17-12-1005-E) Editor's note – Coun. J. 7-20-16, p. 29358, § 2, repealed § 17-12-1005-E, which pertained to marquee signs.\n(17-12-1005-F) Projecting signs may project into the public way provided they are set back at least 18 inches from the curb line. Signs that project over the public way by more than 12 inches must have a minimum clearance of 9 feet.\n(17-12-1005-G) Editor's note – Coun. J. 4-30-14, p. 80832, § 5, repealed § 17-12-1005-G, which pertained to video display signs.",
     "source_file": "chapter_17-12.txt"
   },
   {
     "section": "17-12-1005-A",
-    "title": "Awning Signs. Awning signs must be affixed flat to the surface of the awning and",
+    "title": "Awning Signs",
     "chapter": "Chapter 17-12",
-    "text": "not extend horizontally or vertically beyond the limits of the awning. Awning signs may not contain internal lighting.",
+    "text": "Awning signs must be affixed flat to the surface of the awning and not extend horizontally or vertically beyond the limits of the awning. Awning signs may not contain internal lighting.",
     "source_file": "chapter_17-12.txt"
   },
   {
     "section": "17-12-1005-B",
     "title": "Dynamic Image Display Signs",
     "chapter": "Chapter 17-12",
-    "text": "In B1 and B2 districts, sign face area devoted to dynamic image display signs may not exceed 25% of the maximum total sign area allowed under Sec. 17-12-1003 or 32 square feet, whichever is less. In all districts, sign face area devoted to dynamic image display signs may not exceed 25% of the maximum total sign area allowed under Sec. 17-12-1003 or 64 square feet, whichever is less.",
+    "text": "In B1 and B2 districts, sign face area devoted to dynamic image display signs may not exceed 25% of the maximum total sign area allowed under Sec. 17-12-1003 or 32 square feet, whichever is less. In all districts, sign face area devoted to dynamic image display signs may not exceed 25% of the maximum total sign area allowed under Sec. 17-12-1003 or 64 square feet, whichever is less.",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -8366,9 +8366,9 @@
   },
   {
     "section": "17-12-1005-F",
-    "title": "Projecting Signs. Projecting signs may project into the public way provided they",
+    "title": "Projecting Signs",
     "chapter": "Chapter 17-12",
-    "text": "are set back at least 18 inches from the curb line. Signs that project over the public way by more than 12 inches must have a minimum clearance of 9 feet.",
+    "text": "Projecting signs may project into the public way provided they are set back at least 18 inches from the curb line. Signs that project over the public way by more than 12 inches must have a minimum clearance of 9 feet.",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -8382,7 +8382,7 @@
     "section": "17-12-1006",
     "title": "Additional Standards for Off- premise Signs",
     "chapter": "Chapter 17-12",
-    "text": "(17-12-1006-A) 1.   Off-premise signs with a sign face area of more than 100 square feet are prohibited within 250 feet of any residential district.\n\n         2.   Off-premise signs are prohibited entirely within 100 feet of any residential district; except off-premises dynamic image display signs are prohibited e\n(17-12-1006-B) 1.   Off-premise signs are prohibited entirely within 100 feet of a residential building located in a D district.\n\n         2.   This distance is to be measured as a straight-line distance from a point on the sign face nearest the residential building to nearest property line of the lot on which the\n(17-12-1006-C) 1.   Off-premise signs are prohibited within 100 feet of a waterway.\n\n         2.   The waterways subject to this provision include: Chicago River Main Branch, Chicago River North Branch and North Branch Canal, Chicago River South Branch and South Fork of the South Branch, North Shore Channel, Chica\n(17-12-1006-D) 1.   Off-premise signs are prohibited within 400 feet of a public park with an area of 10 acres or more if the sign face is legible from the subject park.\n\n         2.   Off-premise signs are prohibited within 100 feet of a public park with an area of 2 acres or more if the sign face is legible from\n(17-12-1006-E) aries of the Lake Michigan and Chicago Lakefront Protection District. (See Chapter 16-4, \"Lake Michigan and Chicago Lakefront Protection Ordinance\")\n(17-12-1006-F) 1.   Off-premise signs are prohibited within 500 feet of the following street and road rights- of-way:\n\n            (a)   Lake Shore Drive;\n\n            (b)   any designated expressway or toll road;\n\n            (c)   Michigan Avenue, between Oak Street on the north and Roosevelt Road on the south.\n\n(17-12-1006-G) ntage on a primary boulevard.\n(17-12-1006-H) 1.   New off-premise signs proposed in B or C districts are prohibited within 300 feet of any other off-premise sign located on the same side of the street.\n\n         2.   New off-premise signs proposed in D or M districts are prohibited within 150 feet of any other off-premise sign located on the s\n(17-12-1006-I) (Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 3-9-05, p. 44391; Amend Coun. J. 9-13-06, p. 84870, § 2; Amend Coun. J. 5-9-07, p. 105899, § 1; Amend Coun. J. 11-19-08, p. 47220, Art. VII, § 1; Amend Coun. J. 12-12-12, p. 44485, § 6; Amend Coun. J. 2-13-13, p. 47133, § 2; Amend Coun. J. 4-30-14, p",
+    "text": "(17-12-1006-A) 1.   Off-premise signs with a sign face area of more than 100 square feet are prohibited within 250 feet of any residential district.\n\n         2.   Off-premise signs are prohibited entirely within 100 feet of any residential district; except off-premises dynamic image display signs are prohibited e\n(17-12-1006-B) 1.   Off-premise signs are prohibited entirely within 100 feet of a residential building located in a D district.\n\n         2.   This distance is to be measured as a straight-line distance from a point on the sign face nearest the residential building to nearest property line of the lot on which the\n(17-12-1006-C) 1.   Off-premise signs are prohibited within 100 feet of a waterway.\n\n         2.   The waterways subject to this provision include: Chicago River Main Branch, Chicago River North Branch and North Branch Canal, Chicago River South Branch and South Fork of the South Branch, North Shore Channel, Chica\n(17-12-1006-D) 1.   Off-premise signs are prohibited within 400 feet of a public park with an area of 10 acres or more if the sign face is legible from the subject park.\n\n         2.   Off-premise signs are prohibited within 100 feet of a public park with an area of 2 acres or more if the sign face is legible from\n(17-12-1006-E) Off-premise signs are prohibited within the boundaries of the Lake Michigan and Chicago Lakefront Protection District. (See Chapter 16-4, \"Lake Michigan and Chicago Lakefront Protection Ordinance\")\n(17-12-1006-F) 1.   Off-premise signs are prohibited within 500 feet of the following street and road rights- of-way:\n\n            (a)   Lake Shore Drive;\n\n            (b)   any designated expressway or toll road;\n\n            (c)   Michigan Avenue, between Oak Street on the north and Roosevelt Road on the south.\n\n(17-12-1006-G) Off- premise signs are prohibited on any lot with street frontage on a primary boulevard.\n(17-12-1006-H) 1.   New off-premise signs proposed in B or C districts are prohibited within 300 feet of any other off-premise sign located on the same side of the street.\n\n         2.   New off-premise signs proposed in D or M districts are prohibited within 150 feet of any other off-premise sign located on the s\n(17-12-1006-I) (Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 3-9-05, p. 44391; Amend Coun. J. 9-13-06, p. 84870, § 2; Amend Coun. J. 5-9-07, p. 105899, § 1; Amend Coun. J. 11-19-08, p. 47220, Art. VII, § 1; Amend Coun. J. 12-12-12, p. 44485, § 6; Amend Coun. J. 2-13-13, p. 47133, § 2; Amend Coun. J. 4-30-14, p",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -8415,9 +8415,9 @@
   },
   {
     "section": "17-12-1006-E",
-    "title": "Lakefront Protection District. Off-premise signs are prohibited within the bound",
+    "title": "Lakefront Protection District",
     "chapter": "Chapter 17-12",
-    "text": "aries of the Lake Michigan and Chicago Lakefront Protection District. (See Chapter 16-4, \"Lake Michigan and Chicago Lakefront Protection Ordinance\")",
+    "text": "Off-premise signs are prohibited within the boundaries of the Lake Michigan and Chicago Lakefront Protection District. (See Chapter 16-4, \"Lake Michigan and Chicago Lakefront Protection Ordinance\")",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -8429,9 +8429,9 @@
   },
   {
     "section": "17-12-1006-G",
-    "title": "Primary Boulevards. Off- premise signs are prohibited on any lot with street fro",
+    "title": "Primary Boulevards",
     "chapter": "Chapter 17-12",
-    "text": "ntage on a primary boulevard.",
+    "text": "Off- premise signs are prohibited on any lot with street frontage on a primary boulevard.",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -8443,7 +8443,7 @@
   },
   {
     "section": "17-12-1006-I",
-    "title": "Flashing and Video Display Elements. Off-premise signs may not contain flashing elements or video displays, except as allowed in section 17-12-0711",
+    "title": "Flashing and Video Display Elements",
     "chapter": "Chapter 17-12",
     "text": "(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 3-9-05, p. 44391; Amend Coun. J. 9-13-06, p. 84870, § 2; Amend Coun. J. 5-9-07, p. 105899, § 1; Amend Coun. J. 11-19-08, p. 47220, Art. VII, § 1; Amend Coun. J. 12-12-12, p. 44485, § 6; Amend Coun. J. 2-13-13, p. 47133, § 2; Amend Coun. J. 4-30-14, p. 80382, § 5; Amend Coun. J. 5-28-14, p. 82414, § 1; Amend Coun. J. 11-19-14, p. 98820, § 2; Amend Coun. J. 7-20-16, p. 29358, §§ 1, 2; Amend Coun. J. 11-16-16, p. 38287, § 1; Amend Coun. J. 10-31-18, p. 87780, § 2; Amend Coun. J. 3-24-21, p. 29061, § 2; Amend Coun. J. 7-19-23, p. 1992, § 2; Amend Coun. J. 5-22-24, p. 12078, § 1)\n\n provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.",
     "source_file": "chapter_17-12.txt"
@@ -8452,7 +8452,7 @@
     "section": "17-12-1100",
     "title": "Special sign districts",
     "chapter": "Chapter 17-12",
-    "text": "",
+    "text": "Sections in this group:\n(17-12-1101) Michigan Avenue Corridor Special Sign District\n(17-12-1102) Oak Street Corridor Special Sign District\n(17-12-1103) State Street/Wabash Avenue Corridor Special Sign District\n(17-12-1104) Chicago River Corridor Special Sign District\n(17-12-1105) Wrigley Field Adjacent Special Sign District",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -8564,7 +8564,7 @@
     "section": "17-12-1200",
     "title": "City digital signs",
     "chapter": "Chapter 17-12",
-    "text": "",
+    "text": "City digital signs",
     "source_file": "chapter_17-12.txt"
   },
   {
@@ -8578,7 +8578,7 @@
     "section": "17-13-0100",
     "title": "General",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "Sections in this group:\n(17-13-0101) Applicability\n(17-13-0102) Submittal Requirements\n(17-13-0103) Application Fees\n(17-13-0104) Application Completeness\n(17-13-0105) Hearings\n(17-13-0106) Burden of Proof\n(17-13-0107) Public Notices\n(17-13-0108) Continuation of Public Hearings\n(17-13-0109) Summary of Procedures",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -8634,7 +8634,7 @@
     "section": "17-13-0103-B",
     "title": "Application fees are nonrefundable",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "Application fees are nonrefundable",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -8667,7 +8667,7 @@
   },
   {
     "section": "17-13-0104-A",
-    "title": "1.   An application will be considered complete and ready for processing only if it is submitted in the required number and form, includes all required information and is accompanied by the required filing fee",
+    "title": "1",
     "chapter": "Chapter 17-13",
     "text": "2.   No application for a zoning amendment, planned development, special use, variation or appeal shall be deemed to be complete if the applicant or owner of the property identified in the application or any person owning, directly or indirectly, more than 7.5 percent of the interest in such applicant or owner has any outstanding debt, as defined in Section 2-32-094, unless and until each applicable person owing such debt satisfies or otherwise resolves the debt within the meaning of Section 2-32-094. Provided, however, that this requirement shall not apply to any federal, state or local government agency. For purposes of this paragraph (2), \"more than 7.5. percent\" shall mean more than 7.5 percent of the combined voting power or fair market value of all stock, partnership interests or other ownership interests in the applicant or property owner or the right to receive at any time the distribution of more than 7.5 percent of the income or profits of the applicant or property owner.\n\n         3.   The official responsible for accepting the application has authority to determine whether the application is complete.",
     "source_file": "chapter_17-13.txt"
@@ -8767,7 +8767,7 @@
     "section": "17-13-0200",
     "title": "Zoning Ordinance text amendments",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "Sections in this group:\n(17-13-0201) Applications\n(17-13-0202) Recommendations – Zoning Administrator\n(17-13-0203) Hearing – City Council Committee on Zoning, Landmarks and Building Standards\n(17-13-0204) Final Action – City Council\n(17-13-0205) Exception",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -8823,7 +8823,7 @@
     "section": "17-13-0300",
     "title": "Zoning map amendments (rezonings)",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "Sections in this group:\n(17-13-0301) Applicability\n(17-13-0302) Type 1 and Type 2 zoning map amendments\n(17-13-0303) Applications\n(17-13-0304) Disclosures\n(17-13-0305) Recommendations – Zoning Administrator\n(17-13-0306) Hearing – City Council Committee on Zoning, Landmarks and Building Standards\n(17-13-0307) Final Action – City Council\n(17-13-0308) Review and Decision-Making Criteria\n(17-13-0309) Inaction by City Council\n(17-13-0310) Effect of Approval of Type 1 Zoning Map Amendment\n(17-13-0311) Lapse of Approval of Type 1 Zoning Map Amendment",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -8865,14 +8865,14 @@
     "section": "17-13-0303",
     "title": "Applications",
     "chapter": "Chapter 17-13",
-    "text": "(17-13-0303-A) cil, Zoning Administrator, the property owner of the subject property or the subject property owner's authorized agent.\n(17-13-0303-B) Zoning Map Amendment applications must be filed with the Zoning Administrator. Upon determining that an application is complete, the Zoning Administrator must transmit the application to the City Clerk. The City Clerk must file all such applications with the City Council at its next regular meeting.\n(17-13-0303-C) 1.   A (narrative) zoning and development analysis describing the proposed development's:\n\n            (a)   floor area ratio;\n\n            (b)   density (lot area per dwelling unit);\n\n            (c)   off-street parking;\n\n            (d)   setbacks; and\n\n            (e)   building height.\n\n       \n(17-13-0303-D) In addition to the information required to be submitted with all Zoning Map Amendment applications, pursuant to other applicable portions of Section 17-13-0300, Type I applications may include relief available pursuant to Sections 17-13-1000 or 17-13-1100; in such instances, City Council approval of",
+    "text": "(17-13-0303-A) Zoning Map Amendments may be proposed by the Mayor, City Council, Zoning Administrator, the property owner of the subject property or the subject property owner's authorized agent.\n(17-13-0303-B) Zoning Map Amendment applications must be filed with the Zoning Administrator. Upon determining that an application is complete, the Zoning Administrator must transmit the application to the City Clerk. The City Clerk must file all such applications with the City Council at its next regular meeting.\n(17-13-0303-C) 1.   A (narrative) zoning and development analysis describing the proposed development's:\n\n            (a)   floor area ratio;\n\n            (b)   density (lot area per dwelling unit);\n\n            (c)   off-street parking;\n\n            (d)   setbacks; and\n\n            (e)   building height.\n\n       \n(17-13-0303-D) In addition to the information required to be submitted with all Zoning Map Amendment applications, pursuant to other applicable portions of Section 17-13-0300, Type I applications may include relief available pursuant to Sections 17-13-1000 or 17-13-1100; in such instances, City Council approval of",
     "source_file": "chapter_17-13.txt"
   },
   {
     "section": "17-13-0303-A",
-    "title": "Authority to File. Zoning Map Amendments may be proposed by the Mayor, City Coun",
+    "title": "Authority to File",
     "chapter": "Chapter 17-13",
-    "text": "cil, Zoning Administrator, the property owner of the subject property or the subject property owner's authorized agent.",
+    "text": "Zoning Map Amendments may be proposed by the Mayor, City Council, Zoning Administrator, the property owner of the subject property or the subject property owner's authorized agent.",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -9075,7 +9075,7 @@
     "section": "17-13-0400",
     "title": "Zoning map amendments within industrial corridors",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "Sections in this group:\n(17-13-0401) Procedure\n(17-13-0402) Hearing – Plan Commission\n(17-13-0403) Review and Decision-Making Criteria",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -9087,9 +9087,9 @@
   },
   {
     "section": "17-13-0402",
-    "title": "Hearing – Plan Commission. In addition to the hearings required under Sec",
+    "title": "Hearing – Plan Commission",
     "chapter": "Chapter 17-13",
-    "text": "17-13-0300, the Plan Commission must hold a public hearing on requests to rezone land within an industrial corridor from an M, PMD, POS or T zoning district classification to any other zoning district classification, and make a recommendation to the City Council before the City Council Committee on Zoning, Landmarks and Building Standards's public hearing. Notice of the Plan Commission's public hearing must be provided in accordance with Sec. 17-13-0107-A, Sec. 17-13-0107-B and Sec. 17-13-0107-C.",
+    "text": "In addition to the hearings required under Sec. 17-13-0300, the Plan Commission must hold a public hearing on requests to rezone land within an industrial corridor from an M, PMD, POS or T zoning district classification to any other zoning district classification, and make a recommendation to the City Council before the City Council Committee on Zoning, Landmarks and Building Standards's public hearing. Notice of the Plan Commission's public hearing must be provided in accordance with Sec. 17-13-0107-A, Sec. 17-13-0107-B and Sec. 17-13-0107-C.",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -9103,21 +9103,21 @@
     "section": "17-13-0403-A",
     "title": "the size of the district;",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "the size of the district;",
     "source_file": "chapter_17-13.txt"
   },
   {
     "section": "17-13-0403-B",
     "title": "the number of existing firms and employees that would be affected;",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "the number of existing firms and employees that would be affected;",
     "source_file": "chapter_17-13.txt"
   },
   {
     "section": "17-13-0403-C",
     "title": "recent and planned public and private investments within the district;",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "recent and planned public and private investments within the district;",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -9131,7 +9131,7 @@
     "section": "17-13-0403-E",
     "title": "the proportion of land in the district currently devoted to industrial uses;",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "the proportion of land in the district currently devoted to industrial uses;",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -9152,7 +9152,7 @@
     "section": "17-13-0500",
     "title": "Establishment of special character overlay district",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "Sections in this group:\n(17-13-0501) Initiation of Special Character Overlay District Amendment\n(17-13-0502) Application and Public Notice\n(17-13-0503) Community Meeting\n(17-13-0504) Report and Recommendation\n(17-13-0505) Factors to be Considered",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -9227,9 +9227,9 @@
   },
   {
     "section": "17-13-0505",
-    "title": "Factors to be Considered. In reviewing an application for a special character ov",
+    "title": "Factors to be Considered",
     "chapter": "Chapter 17-13",
-    "text": "erlay district amendment, the City Council Committee on Zoning, Landmarks and Building Standards must give consideration to all of the following factors:",
+    "text": "In reviewing an application for a special character overlay district amendment, the City Council Committee on Zoning, Landmarks and Building Standards must give consideration to all of the following factors:",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -9278,7 +9278,7 @@
     "section": "17-13-0600",
     "title": "Planned developments",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "Sections in this group:\n(17-13-0601) Purpose\n(17-13-0602) Applications\n(17-13-0603) Recommendations – Zoning Administrator\n(17-13-0604) Hearing – Plan Commission\n(17-13-0605) Plan Commission Recommendation\n(17-13-0606) Hearing – City Council Committee on Zoning\n(17-13-0607) Final Action – City Council\n(17-13-0608) Inaction by City Council\n(17-13-0609) Review and Decision-Making Criteria\n(17-13-0610) Effect of Planned Development Approval\n(17-13-0611) Minor Changes and Amendments\n(17-13-0612) Lapse of Approval\n(17-13-0613) Special rule– Property within Airport Layout Plan",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -9292,14 +9292,14 @@
     "section": "17-13-0602",
     "title": "Applications",
     "chapter": "Chapter 17-13",
-    "text": "(17-13-0602-A) r, City Council, Zoning Administrator or by the property owner of the subject property.\n(17-13-0602-B) 1.   Planned development applications must be filed with the Zoning Administrator.\n\n         2.   The Zoning Administrator must transmit an original copy of the application without delay to the City Clerk, who must record it in the proceedings of the City Council at its next regular meeting.\n\n      ",
+    "text": "(17-13-0602-A) Planned development applications may be submitted by the Mayor, City Council, Zoning Administrator or by the property owner of the subject property.\n(17-13-0602-B) 1.   Planned development applications must be filed with the Zoning Administrator.\n\n         2.   The Zoning Administrator must transmit an original copy of the application without delay to the City Clerk, who must record it in the proceedings of the City Council at its next regular meeting.\n\n      ",
     "source_file": "chapter_17-13.txt"
   },
   {
     "section": "17-13-0602-A",
-    "title": "Authority to File. Planned development applications may be submitted by the Mayo",
+    "title": "Authority to File",
     "chapter": "Chapter 17-13",
-    "text": "r, City Council, Zoning Administrator or by the property owner of the subject property.",
+    "text": "Planned development applications may be submitted by the Mayor, City Council, Zoning Administrator or by the property owner of the subject property.",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -9367,9 +9367,9 @@
   },
   {
     "section": "17-13-0606",
-    "title": "Hearing – City Council Committee on Zoning. The City Council Committee on Zoning",
+    "title": "Hearing – City Council Committee on Zoning",
     "chapter": "Chapter 17-13",
-    "text": ", Landmarks and Building Standards must hold a public hearing on all planned development proposals for the purpose of reviewing the proposed project and taking testimony. Written, Published and Posted Notice of the Committee on Zoning, Landmarks and Building Standards' public hearing must be provided in accordance with Sec. 17-13-0107-A, Sec. 17-13-0107-B and Sec. 17-13-0107-C.",
+    "text": "The City Council Committee on Zoning, Landmarks and Building Standards must hold a public hearing on all planned development proposals for the purpose of reviewing the proposed project and taking testimony. Written, Published and Posted Notice of the Committee on Zoning, Landmarks and Building Standards' public hearing must be provided in accordance with Sec. 17-13-0107-A, Sec. 17-13-0107-B and Sec. 17-13-0107-C.",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -9467,7 +9467,7 @@
     "section": "17-13-0611-D",
     "title": "The fee to review and process a request for minor change approval is $1,500.00",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "The fee to review and process a request for minor change approval is $1,500.00",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -9523,7 +9523,7 @@
     "section": "17-13-0700",
     "title": "Planned manufacturing districts",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "Sections in this group:\n(17-13-0701) Purpose\n(17-13-0702) Applications\n(17-13-0703) Community Meeting\n(17-13-0704) Recommendations – Zoning Administrator\n(17-13-0705) Hearing – Plan Commission\n(17-13-0706) Plan Commission Recommendation\n(17-13-0707) Hearing – City Council Committee on Zoning, Landmarks and Building Standards\n(17-13-0708) Final Action – City Council\n(17-13-0709) Inaction by City Council\n(17-13-0710) Review and Decision-Making Criteria\n(17-13-0711) On-going Review by Plan Commission",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -9649,7 +9649,7 @@
     "section": "17-13-0800",
     "title": "Site plan review",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "Sections in this group:\n(17-13-0801) Purpose\n(17-13-0802) Applications\n(17-13-0803) Review and Action – Zoning Administrator\n(17-13-0804) Review and Decision-Making Criteria\n(17-13-0805) Appeals of Disapproved Site Plans",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -9733,14 +9733,14 @@
     "section": "17-13-0900",
     "title": "Special uses",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "Sections in this group:\n(17-13-0901) Purpose\n(17-13-0902) Applications\n(17-13-0903) Recommendation – Zoning Administrator\n(17-13-0904) Hearing\n(17-13-0905) Approval Criteria\n(17-13-0906) Conditions of Approval\n(17-13-0907) Action by Zoning Board of Appeals\n(17-13-0908) Inaction by Zoning Board of Appeals\n(17-13-0909) Lapse of Approval; Discontinuance\n(17-13-0910) Amendments to Special Uses",
     "source_file": "chapter_17-13.txt"
   },
   {
     "section": "17-13-0901",
-    "title": "Purpose. Special uses are uses that, because of their widely varying land use an",
+    "title": "Purpose",
     "chapter": "Chapter 17-13",
-    "text": "d operational characteristics, require case-by-case review in order to determine whether they will be compatible with surrounding uses and development patterns. Case-by- case review is intended to ensure consideration of the special use's anticipated land use, site design and operational impacts.",
+    "text": "Special uses are uses that, because of their widely varying land use and operational characteristics, require case-by-case review in order to determine whether they will be compatible with surrounding uses and development patterns. Case-by- case review is intended to ensure consideration of the special use's anticipated land use, site design and operational impacts.",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -9824,7 +9824,7 @@
     "section": "17-13-0905-F",
     "title": "Reserved",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "Reserved",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -9836,9 +9836,9 @@
   },
   {
     "section": "17-13-0906",
-    "title": "Conditions of Approval. When the anticipated impacts of a special use are determ",
+    "title": "Conditions of Approval",
     "chapter": "Chapter 17-13",
-    "text": "ined to have the potential for adverse impacts on surrounding property, the special use must be denied or conditions must be placed on the approval to ensure that any adverse impacts will be mitigated. The Zoning Administrator may recommend and the Zoning Board of Appeals may impose such conditions upon the site planning, design, location and operation of a special use.",
+    "text": "When the anticipated impacts of a special use are determined to have the potential for adverse impacts on surrounding property, the special use must be denied or conditions must be placed on the approval to ensure that any adverse impacts will be mitigated. The Zoning Administrator may recommend and the Zoning Board of Appeals may impose such conditions upon the site planning, design, location and operation of a special use.",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -9885,7 +9885,7 @@
   },
   {
     "section": "17-13-0910",
-    "title": "Amendments to Special Uses. A change or increase in the area, bulk or function of any existing special use, or from those conditions specified by the Zoning Board of Appeals at the time of approval, will constitute and be deemed the same as a new special use and will require special use approval pursuant to all procedures of this section",
+    "title": "Amendments to Special Uses",
     "chapter": "Chapter 17-13",
     "text": "(Added Coun. J. 5-26-04, p. 25275; Amend Coun. J. 3-9-05, p. 44391; Amend Coun. J. 11-19-08, p. 47220, Art. VII, § 1; Amend Coun. J. 6-27-12, p. 30744, §§ 5, 6; Amend Coun. J. 6-25-14, p. 83727, § 15; Amend Coun. J. 9-24-15, p. 7499, § 9; Amend Coun. J. 4-10-19, p. 100029, Art. II, § 113; Amend Coun. J. 10-16-19, p. 7854, § 8; Amend Coun. J. 10-7-20, p. 21791, Art. VII, § 29; Amend Coun. J. 7-20-22, p. 50878, § 7; Amend Coun. J. 7-17-24, p. 14728, § 5)\n\n provides these documents for informational purposes only. These documents should not be relied upon as the definitive authority for local legislation. Additionally, the formatting and pagination of the posted documents varies from the formatting and pagination of the official copy. The official printed copy of a Code of Ordinances should be consulted prior to any action being taken.",
     "source_file": "chapter_17-13.txt"
@@ -9894,7 +9894,7 @@
     "section": "17-13-1000",
     "title": "Administrative adjustments",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "Sections in this group:\n(17-13-1001) Purpose\n(17-13-1002) Applicability\n(17-13-1003) Authorized Administrative Adjustments\n(17-13-1004) Applications\n(17-13-1005) Public Notice\n(17-13-1006) Review and Decision – Zoning Administrator\n(17-13-1007) Approval Criteria\n(17-13-1008) Conditions of Approval",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -10174,7 +10174,7 @@
     "section": "17-13-1100",
     "title": "Variations",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "Sections in this group:\n(17-13-1101) Applicability; Authorized Variations\n(17-13-1102) Applications\n(17-13-1103) Hearing\n(17-13-1104) Action by Zoning Board of Appeals\n(17-13-1105) Conditions of Approval\n(17-13-1106) Lapse of Approval; Discontinuance\n(17-13-1107) Approval Criteria and Review Factors",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -10398,7 +10398,7 @@
     "section": "17-13-1200",
     "title": "Appeals",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "Sections in this group:\n(17-13-1201) Authority\n(17-13-1202) Right to Appeal\n(17-13-1203) Application\n(17-13-1204) Effect of Filing\n(17-13-1205) Record of Decision\n(17-13-1206) Hearing\n(17-13-1207) Action by Zoning Board of Appeals\n(17-13-1208) Approval Criteria; Findings of Fact",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -10461,7 +10461,7 @@
     "section": "17-13-1300",
     "title": "Zoning certification",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "Sections in this group:\n(17-13-1301) When Required\n(17-13-1302) Applications\n(17-13-1303) Performance Bonds",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -10524,35 +10524,35 @@
     "section": "17-13-1400",
     "title": "Additional procedures",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "Sections in this group:\n(17-13-1401) [Reserved.]\n(17-13-1402) [Reserved.]\n(17-13-1403) [Reserved.]\n(17-13-1404) [Reserved.]\n(17-13-1405) Wagering Facility",
     "source_file": "chapter_17-13.txt"
   },
   {
     "section": "17-13-1401",
     "title": "[Reserved.]",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "[Reserved.]",
     "source_file": "chapter_17-13.txt"
   },
   {
     "section": "17-13-1402",
     "title": "[Reserved.]",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "[Reserved.]",
     "source_file": "chapter_17-13.txt"
   },
   {
     "section": "17-13-1403",
     "title": "[Reserved.]",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "[Reserved.]",
     "source_file": "chapter_17-13.txt"
   },
   {
     "section": "17-13-1404",
     "title": "[Reserved.]",
     "chapter": "Chapter 17-13",
-    "text": "",
+    "text": "[Reserved.]",
     "source_file": "chapter_17-13.txt"
   },
   {
@@ -10580,7 +10580,7 @@
     "section": "17-14-0100",
     "title": "General",
     "chapter": "Chapter 17-14",
-    "text": "",
+    "text": "Sections in this group:\n(17-14-0101) The administration of this Zoning Ordinance is primarily vested in three offices\n(17-14-0102) This chapter addresses the powers and duties of each of these offices in administering this Zoning Ordinance",
     "source_file": "chapter_17-14.txt"
   },
   {
@@ -10594,14 +10594,14 @@
     "section": "17-14-0101-A",
     "title": "the Department of Planning and Development; and",
     "chapter": "Chapter 17-14",
-    "text": "",
+    "text": "the Department of Planning and Development; and",
     "source_file": "chapter_17-14.txt"
   },
   {
     "section": "17-14-0101-B",
     "title": "the Zoning Board of Appeals; and",
     "chapter": "Chapter 17-14",
-    "text": "",
+    "text": "the Zoning Board of Appeals; and",
     "source_file": "chapter_17-14.txt"
   },
   {
@@ -10622,7 +10622,7 @@
     "section": "17-14-0200",
     "title": "Department of Planning and Development",
     "chapter": "Chapter 17-14",
-    "text": "",
+    "text": "Sections in this group:\n(17-14-0201) Creation\n(17-14-0202) Duties of the Office of Zoning Administrator",
     "source_file": "chapter_17-14.txt"
   },
   {
@@ -10643,14 +10643,14 @@
     "section": "17-14-0202-A",
     "title": "issuing zoning certifications;",
     "chapter": "Chapter 17-14",
-    "text": "",
+    "text": "issuing zoning certifications;",
     "source_file": "chapter_17-14.txt"
   },
   {
     "section": "17-14-0202-B",
     "title": "[Reserved];",
     "chapter": "Chapter 17-14",
-    "text": "",
+    "text": "[Reserved];",
     "source_file": "chapter_17-14.txt"
   },
   {
@@ -10776,7 +10776,7 @@
     "section": "17-14-0300",
     "title": "Zoning Board of Appeals",
     "chapter": "Chapter 17-14",
-    "text": "",
+    "text": "Sections in this group:\n(17-14-0301) Creation and Membership\n(17-14-0302) Jurisdiction\n(17-14-0303) Meetings and Rules\n(17-14-0304) Finality of Decisions of the Zoning Board of Appeals",
     "source_file": "chapter_17-14.txt"
   },
   {
@@ -10937,7 +10937,7 @@
     "section": "17-14-0500",
     "title": "Duties of the Commissioner of Buildings",
     "chapter": "Chapter 17-14",
-    "text": "",
+    "text": "Sections in this group:\n(17-14-0501) Zoning-Related Jurisdiction",
     "source_file": "chapter_17-14.txt"
   },
   {
@@ -10958,7 +10958,7 @@
     "section": "17-15-0100",
     "title": "General",
     "chapter": "Chapter 17-15",
-    "text": "",
+    "text": "Sections in this group:\n(17-15-0101) Scope\n(17-15-0102) Intent\n(17-15-0103) Authority to Continue\n(17-15-0104) Determination of Nonconformity Status\n(17-15-0105) Repairs and Maintenance\n(17-15-0106) Change of Tenancy or Ownership",
     "source_file": "chapter_17-15.txt"
   },
   {
@@ -10986,7 +10986,7 @@
     "section": "17-15-0102-B",
     "title": "promote maintenance, reuse and rehabilitation of existing buildings; and",
     "chapter": "Chapter 17-15",
-    "text": "",
+    "text": "promote maintenance, reuse and rehabilitation of existing buildings; and",
     "source_file": "chapter_17-15.txt"
   },
   {
@@ -11021,7 +11021,7 @@
     "section": "17-15-0105-A",
     "title": "Nonconformities must be maintained to be safe and in good repair",
     "chapter": "Chapter 17-15",
-    "text": "",
+    "text": "Nonconformities must be maintained to be safe and in good repair",
     "source_file": "chapter_17-15.txt"
   },
   {
@@ -11049,7 +11049,7 @@
     "section": "17-15-0200",
     "title": "Nonconforming lots",
     "chapter": "Chapter 17-15",
-    "text": "",
+    "text": "Sections in this group:\n(17-15-0201) Definition\n(17-15-0202) Use of Nonconforming Lots\n(17-15-0203) Dimensional Standards",
     "source_file": "chapter_17-15.txt"
   },
   {
@@ -11091,7 +11091,7 @@
     "section": "17-15-0300",
     "title": "Nonconforming uses",
     "chapter": "Chapter 17-15",
-    "text": "",
+    "text": "Sections in this group:\n(17-15-0301) Definition\n(17-15-0302) Change of Use\n(17-15-0303) Expansion\n(17-15-0304) Loss of Nonconforming Use Status\n(17-15-0305) Discontinuance of Nonconforming Open Uses of Land\n(17-15-0306) Accessory Uses and Structures\n(17-15-0307) Vacation rentals – Nonconforming use",
     "source_file": "chapter_17-15.txt"
   },
   {
@@ -11259,7 +11259,7 @@
     "section": "17-15-0400",
     "title": "Nonconforming developments",
     "chapter": "Chapter 17-15",
-    "text": "",
+    "text": "Sections in this group:\n(17-15-0401) Definition\n(17-15-0402) Continuation\n(17-15-0403) Alterations and Enlargements\n(17-15-0404) Damage or Destruction",
     "source_file": "chapter_17-15.txt"
   },
   {
@@ -11271,9 +11271,9 @@
   },
   {
     "section": "17-15-0402",
-    "title": "Continuation. Nonconforming developments may remain, subject to the regulations",
+    "title": "Continuation",
     "chapter": "Chapter 17-15",
-    "text": "of this section.",
+    "text": "Nonconforming developments may remain, subject to the regulations of this section.",
     "source_file": "chapter_17-15.txt"
   },
   {
@@ -11322,7 +11322,7 @@
     "section": "17-15-0500",
     "title": "Nonconforming signs",
     "chapter": "Chapter 17-15",
-    "text": "",
+    "text": "Sections in this group:\n(17-15-0501) Policy\n(17-15-0502) Reserved\n(17-15-0503) Continuation of Nonconforming Signs\n(17-15-0504) Alterations\n(17-15-0505) Nonconforming Flashing Signs\n(17-15-0506) Abandoned Nonconforming Signs",
     "source_file": "chapter_17-15.txt"
   },
   {
@@ -11336,14 +11336,14 @@
     "section": "17-15-0502",
     "title": "Reserved",
     "chapter": "Chapter 17-15",
-    "text": "",
+    "text": "Reserved",
     "source_file": "chapter_17-15.txt"
   },
   {
     "section": "17-15-0503",
-    "title": "Continuation of Nonconforming Signs. Nonconforming signs may remain in use, subj",
+    "title": "Continuation of Nonconforming Signs",
     "chapter": "Chapter 17-15",
-    "text": "ect to the regulations of this Section 17-15-0500, Section 13-20-565, Section 17-15-0600, and all other applicable requirements of this Code. Nonconforming signs, including vintage signs, must be maintained in good repair, and must comply with all other requirements of this Zoning Ordinance.",
+    "text": "Nonconforming signs may remain in use, subject to the regulations of this Section 17-15-0500, Section 13-20-565, Section 17-15-0600, and all other applicable requirements of this Code. Nonconforming signs, including vintage signs, must be maintained in good repair, and must comply with all other requirements of this Zoning Ordinance.",
     "source_file": "chapter_17-15.txt"
   },
   {
@@ -11397,7 +11397,7 @@
   },
   {
     "section": "17-15-0506-B",
-    "title": "1.   Any nonconforming off-premise sign that is not used or for which a valid permit does not exist for a continuous period of 12 months or more will be deemed to have been abandoned",
+    "title": "1",
     "chapter": "Chapter 17-15",
     "text": "2.   A sign structure that is removed, except as a result of criminal vandalism, such that a nonconforming sign for which a valid permit existed can no longer be displayed, will be deemed to have been abandoned. The remaining presence of in-ground or above-ground footings or portions of the poles or bracing, wiring or other apparatus shall not be grounds for retention of the nonconforming status or revival of the permit.",
     "source_file": "chapter_17-15.txt"
@@ -11427,7 +11427,7 @@
     "section": "17-15-0600",
     "title": "Vintage signs",
     "chapter": "Chapter 17-15",
-    "text": "",
+    "text": "Sections in this group:\n(17-15-0610) Purpose",
     "source_file": "chapter_17-15.txt"
   },
   {
@@ -11630,7 +11630,7 @@
     "section": "17-16-0209",
     "title": "failure to comply with any lawful order issued by the Zoning Administrator;",
     "chapter": "Chapter 17-16",
-    "text": "",
+    "text": "failure to comply with any lawful order issued by the Zoning Administrator;",
     "source_file": "chapter_17-16.txt"
   },
   {
@@ -11651,7 +11651,7 @@
     "section": "17-16-0300",
     "title": "Liability",
     "chapter": "Chapter 17-16",
-    "text": "",
+    "text": "Sections in this group:\n(17-16-0301) The property owner, tenant or occupant of any land or structure, or part thereof, or any design professional, builder, contractor, vendor, authorized agent or other person who participates in, assists, directs, creates or maintains any situation that is contrary to the requirements of this Zoning Ordinance is jointly and severally liable for the violation and subject to all available penalties and remedies",
     "source_file": "chapter_17-16.txt"
   },
   {
@@ -11672,7 +11672,7 @@
     "section": "17-16-0500",
     "title": "Remedies and enforcement powers",
     "chapter": "Chapter 17-16",
-    "text": "",
+    "text": "Sections in this group:\n(17-16-0501) Applicability\n(17-16-0502) Remedies Cumulative\n(17-16-0503) Withhold Permit\n(17-16-0504) Permits with Conditions\n(17-16-0505) Revoke Permit\n(17-16-0506) Stop Work\n(17-16-0507) Forfeiture and Confiscation of Signs\n(17-16-0508) Injunctive Relief\n(17-16-0509) Abatement\n(17-16-0510) Remedial Action\n(17-16-0511) Penalties\n(17-16-0512) Other Remedies and Enforcement Powers",
     "source_file": "chapter_17-16.txt"
   },
   {
@@ -11819,7 +11819,7 @@
     "section": "17-17-0100",
     "title": "Use group and category descriptions",
     "chapter": "Chapter 17-17",
-    "text": "",
+    "text": "Sections in this group:\n(17-17-0101) General\n(17-17-0102) Residential Use Group\n(17-17-0103) Public and Civic Use Group\n(17-17-0104) Commercial Use Group\n(17-17-0105) Industrial Use Group\n(17-17-0106) Other Uses Group",
     "source_file": "chapter_17-17.txt"
   },
   {
@@ -11950,9 +11950,9 @@
   },
   {
     "section": "17-17-0103-J",
-    "title": "School. Public and private schools at the primary, elementary, junior high, or h",
+    "title": "School",
     "chapter": "Chapter 17-17",
-    "text": "igh school level that provide state-mandated basic education. Learning, healthcare and social support centers less than 5,000 square feet in size, and which be accessible to the community at large and may provide a separate entrance directly to a public way or street, are permitted as an accessory use within a school, provided that the center is approved by the Chicago Public Schools.",
+    "text": "Public and private schools at the primary, elementary, junior high, or high school level that provide state-mandated basic education. Learning, healthcare and social support centers less than 5,000 square feet in size, and which be accessible to the community at large and may provide a separate entrance directly to a public way or street, are permitted as an accessory use within a school, provided that the center is approved by the Chicago Public Schools.",
     "source_file": "chapter_17-17.txt"
   },
   {
@@ -11964,9 +11964,9 @@
   },
   {
     "section": "17-17-0103-L",
-    "title": "Utilities and Services, Minor. Infrastructure services that need to be located i",
+    "title": "Utilities and Services, Minor",
     "chapter": "Chapter 17-17",
-    "text": "n an area where the service is provided. Minor Utilities and Services generally do not have regular employees at the site and typically have few if any impacts on surrounding areas. Typical uses include water and sewer pump stations; electrical substations; stormwater facilities and conveyance systems; and telephone exchanges.",
+    "text": "Infrastructure services that need to be located in an area where the service is provided. Minor Utilities and Services generally do not have regular employees at the site and typically have few if any impacts on surrounding areas. Typical uses include water and sewer pump stations; electrical substations; stormwater facilities and conveyance systems; and telephone exchanges.",
     "source_file": "chapter_17-17.txt"
   },
   {
@@ -12176,7 +12176,7 @@
     "section": "17-17-0105-A",
     "title": "Reserved",
     "chapter": "Chapter 17-17",
-    "text": "",
+    "text": "Reserved",
     "source_file": "chapter_17-17.txt"
   },
   {
@@ -12260,14 +12260,14 @@
     "section": "17-17-0200",
     "title": "General terms",
     "chapter": "Chapter 17-17",
-    "text": "",
+    "text": "Sections in this group:\n(17-17-0201) Abandoned Sign Structure\n(17-17-0202) Accessible Dwelling Unit\n(17-17-0203) Accessory Building\n(17-17-0204) Accessory Parking\n(17-17-0205) Accessory Structure\n(17-17-0206) Accessory Use\n(17-17-0207) 5 Inclusionary Application\n(17-17-0208) Agent\n(17-17-0209) Air Rights\n(17-17-0210) Alley\n(17-17-0211) Allowed Use\n(17-17-0212) Artist Live/Work Space\n(17-17-0213) Attic\n(17-17-0214) 5 Automotive Lift\n(17-17-0215) Awning\n(17-17-0216) Awning Sign\n(17-17-0217) Banner\n(17-17-0218) Base District\n(17-17-0219) Base Floor Area Ratio",
     "source_file": "chapter_17-17.txt"
   },
   {
     "section": "17-17-0201",
-    "title": "1 Abutting Property Line",
+    "title": "Abandoned Sign Structure",
     "chapter": "Chapter 17-17",
-    "text": "A border, boundary or property line with no intervening public way or other land.",
+    "text": "A sign structure that has had no sign in place for a continuous period of 6 months or more.",
     "source_file": "chapter_17-17.txt"
   },
   {
@@ -12484,49 +12484,49 @@
     "section": "17-17-0231-A",
     "title": "lot area;",
     "chapter": "Chapter 17-17",
-    "text": "",
+    "text": "lot area;",
     "source_file": "chapter_17-17.txt"
   },
   {
     "section": "17-17-0231-B",
     "title": "setbacks;",
     "chapter": "Chapter 17-17",
-    "text": "",
+    "text": "setbacks;",
     "source_file": "chapter_17-17.txt"
   },
   {
     "section": "17-17-0231-C",
     "title": "open space;",
     "chapter": "Chapter 17-17",
-    "text": "",
+    "text": "open space;",
     "source_file": "chapter_17-17.txt"
   },
   {
     "section": "17-17-0231-D",
     "title": "floor area;",
     "chapter": "Chapter 17-17",
-    "text": "",
+    "text": "floor area;",
     "source_file": "chapter_17-17.txt"
   },
   {
     "section": "17-17-0231-E",
     "title": "floor area ratio;",
     "chapter": "Chapter 17-17",
-    "text": "",
+    "text": "floor area ratio;",
     "source_file": "chapter_17-17.txt"
   },
   {
     "section": "17-17-0231-F",
     "title": "building coverage; and",
     "chapter": "Chapter 17-17",
-    "text": "",
+    "text": "building coverage; and",
     "source_file": "chapter_17-17.txt"
   },
   {
     "section": "17-17-0231-G",
     "title": "building height",
     "chapter": "Chapter 17-17",
-    "text": "",
+    "text": "building height",
     "source_file": "chapter_17-17.txt"
   },
   {
@@ -12603,7 +12603,7 @@
     "section": "17-17-0242",
     "title": "Curb Level",
     "chapter": "Chapter 17-17",
-    "text": "The level of the established curb that is adjacent to the front property line of the subject lot, measured at the center of such front property line. When no curb elevation has been established, the mean elevation of the finished lot grade immediately adjacent to a building is considered the \"curb level\".",
+    "text": "The level of the established curb that is adjacent to the front property line of the subject lot, measured at the center of such front property line. When no curb elevation has been established, the mean elevation of the finished lot grade immediately adjacent to a building is considered the \"curb level\".",
     "source_file": "chapter_17-17.txt"
   },
   {
@@ -12657,9 +12657,9 @@
   },
   {
     "section": "17-17-0250",
-    "title": "Elderly Housing. Dwelling units specially designed and marketed for persons who",
+    "title": "Elderly Housing",
     "chapter": "Chapter 17-17",
-    "text": "are 55 years of age or older, but not including buildings containing equipment for surgical care or for the treatment of disease or injury, other than emergency first-aid-care.",
+    "text": "Dwelling units specially designed and marketed for persons who are 55 years of age or older, but not including buildings containing equipment for surgical care or for the treatment of disease or injury, other than emergency first-aid-care.",
     "source_file": "chapter_17-17.txt"
   },
   {
@@ -12729,7 +12729,7 @@
     "section": "17-17-0260",
     "title": "Front Property Line",
     "chapter": "Chapter 17-17",
-    "text": "That property line that abuts or is along an existing or dedicated public street, or when no public street exists, is along a public way. On lots with multiple street frontages, the property owner may select either street property line as the front property line.",
+    "text": "That property line that abuts or is along an existing or dedicated public street, or when no public street exists, is along a public way. On lots with multiple street frontages, the property owner may select either street property line as the front property line.",
     "source_file": "chapter_17-17.txt"
   },
   {
@@ -12783,9 +12783,9 @@
   },
   {
     "section": "17-17-0268",
-    "title": "High-Rise Building Sign. An individual letter sign mounted at a height of 150 fe",
+    "title": "High-Rise Building Sign",
     "chapter": "Chapter 17-17",
-    "text": "et or more that is attached to the exterior wall of a building or to a roof-top mechanical equipment penthouse or other roof-top feature that is integral to the building upon which it is located.",
+    "text": "An individual letter sign mounted at a height of 150 feet or more that is attached to the exterior wall of a building or to a roof-top mechanical equipment penthouse or other roof-top feature that is integral to the building upon which it is located.",
     "source_file": "chapter_17-17.txt"
   },
   {
@@ -13009,7 +13009,7 @@
     "section": "17-17-0300",
     "title": "Measurements",
     "chapter": "Chapter 17-17",
-    "text": "",
+    "text": "Sections in this group:\n(17-17-0301) Division of Improved Zoning Lots\n(17-17-0302) Lot Area\n(17-17-0303) Lot Frontage\n(17-17-0304) Lot Area per Unit\n(17-17-0305) Floor Area Ratio\n(17-17-0306) Front Setbacks\n(17-17-0307) Rear Setbacks\n(17-17-0308) Side Setbacks\n(17-17-0309) Features Allowed to Encroach in Required Setbacks\n(17-17-0310) Building Wall Separation\n(17-17-0311) Building Height",
     "source_file": "chapter_17-17.txt"
   },
   {
@@ -13021,9 +13021,9 @@
   },
   {
     "section": "17-17-0302",
-    "title": "Lot Area. Lot area includes the total land area contained within the property li",
+    "title": "Lot Area",
     "chapter": "Chapter 17-17",
-    "text": "nes of a lot.",
+    "text": "Lot area includes the total land area contained within the property lines of a lot.",
     "source_file": "chapter_17-17.txt"
   },
   {
@@ -13072,7 +13072,7 @@
     "section": "17-17-0306",
     "title": "Front Setbacks",
     "chapter": "Chapter 17-17",
-    "text": "(17-17-0306-A) Required front setbacks and existing average front yards are to be measured from the front property line of the lot on which such building is located to the exterior wall of the building.\n(17-17-0306-B) Required setbacks must be unobstructed and unoccupied from the ground to the sky except as expressly allowed in Sec. 17-17-0309. All portions of required front setbacks that are not occupied by permitted obstructions (See Sec. 17-17-0309) must be landscaped and preserved as open space.\n(17-17-0306-C) No terrace or patio more than 2 feet below grade is permitted within 15 feet of the front property line in any RS1, RS2 or RS3 district or within 12 feet of the front property line in any other R district. This provision is not intended to prohibit the installation of a terrace or patio on a lot tha\n(17-17-0306-D) When the existing street grade (curb level) has a positive (+) elevation above the established lot grade and there is no requested negative (–) elevation change or lowering of the established lot grade within the front setback; then, a terrace or patio may be allowed provided that the area within th",
+    "text": "(17-17-0306-A) Required front setbacks and existing average front yards are to be measured from the front property line of the lot on which such building is located to the exterior wall of the building.\n(17-17-0306-B) Required setbacks must be unobstructed and unoccupied from the ground to the sky except as expressly allowed in Sec. 17-17-0309. All portions of required front setbacks that are not occupied by permitted obstructions (See Sec. 17-17-0309) must be landscaped and preserved as open space.\n(17-17-0306-C) No terrace or patio more than 2 feet below grade is permitted within 15 feet of the front property line in any RS1, RS2 or RS3 district or within 12 feet of the front property line in any other R district. This provision is not intended to prohibit the installation of a terrace or patio on a lot tha\n(17-17-0306-D) When the existing street grade (curb level) has a positive (+) elevation above the established lot grade and there is no requested negative (–) elevation change or lowering of the established lot grade within the front setback; then, a terrace or patio may be allowed provided that the area within th",
     "source_file": "chapter_17-17.txt"
   },
   {
@@ -13100,7 +13100,7 @@
     "section": "17-17-0306-D",
     "title": "Negative Grade Elevation Lots and Allowed Uses",
     "chapter": "Chapter 17-17",
-    "text": "When the existing street grade (curb level) has a positive (+) elevation above the established lot grade and there is no requested negative (–) elevation change or lowering of the established lot grade within the front setback; then, a terrace or patio may be allowed provided that the area within the terrace or patio is landscaped and preserved as open space. A decorative fence must be installed at the front property enclosing the front setback.",
+    "text": "When the existing street grade (curb level) has a positive (+) elevation above the established lot grade and there is no requested negative (–) elevation change or lowering of the established lot grade within the front setback; then, a terrace or patio may be allowed provided that the area within the terrace or patio is landscaped and preserved as open space. A decorative fence must be installed at the front property enclosing the front setback.",
     "source_file": "chapter_17-17.txt"
   },
   {
