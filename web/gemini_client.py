@@ -261,7 +261,7 @@ class GeminiZoningClient:
         ),
         re.IGNORECASE,
     )
-    SECTION_RE = re.compile(r"\b17-\d{1,2}-\d{3,4}\b", re.IGNORECASE)
+    SECTION_RE = re.compile(r"\b17-\d{1,2}-\d{3,4}(?:-[A-Za-z])?\b", re.IGNORECASE)
     COORDINATE_RE = re.compile(
         r"(?<![\d.-])([+-]?\d{1,2}\.\d+)\s*,\s*"
         r"([+-]?\d{1,3}\.\d+)(?![\d.-])"

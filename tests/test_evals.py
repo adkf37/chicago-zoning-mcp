@@ -458,3 +458,306 @@ def test_eval_q20_multistep_rezone_units(district_tools, development_tools):
     assert (rt4_units - rs3_units) == 4, (
         f"Expected 4 additional units after rezoning, got {rt4_units - rs3_units}"
     )
+
+# ---------------------------------------------------------------------------
+# Q21 — Google-search phrasing for RS-3 lookup
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q21_google_search_rs3(district_tools):
+    """Eval Q21: Google-search phrasing still returns RS-3 district data."""
+    result = district_tools["lookup_district"](district_code="RS-3")
+    assert "error" not in result
+    assert result["district_type_code"] == "RS-3"
+
+
+# ---------------------------------------------------------------------------
+# Q22 — Structured prompt for DC-16 lookup returns FAR 16
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q22_structured_dc16(district_tools):
+    """Eval Q22: Structured prompt for DC-16 returns district data with FAR 16."""
+    result = district_tools["lookup_district"](district_code="DC-16")
+    assert "error" not in result
+    assert result["district_type_code"] == "DC-16"
+    assert float(result["floor_area_ratio"]) == pytest.approx(16.0)
+
+
+# ---------------------------------------------------------------------------
+# Q23 — Which district allows more units on 6000 sqft: RS-3 or RT-4?
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q23_multistep_which_allows_more_units(district_tools, development_tools):
+    """Eval Q23: RT-4 allows more dwelling units than RS-3 on a 6000 sqft lot."""
+    rs3 = development_tools["calculate_development_envelope"](
+        district_code="RS-3", lot_area_sqft=6000
+    )
+    rt4 = development_tools["calculate_development_envelope"](
+        district_code="RT-4", lot_area_sqft=6000
+    )
+    assert "error" not in rs3
+    assert "error" not in rt4
+    assert rt4["max_dwelling_units"] > rs3["max_dwelling_units"]
+
+
+# ---------------------------------------------------------------------------
+# Q27 — B3-2 district summary contains district code
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q27_b3_2_district_summary(district_tools):
+    """Eval Q27: B3-2 lookup returns a valid district record."""
+    result = district_tools["lookup_district"](district_code="B3-2")
+    assert "error" not in result
+    assert result["district_type_code"] == "B3-2"
+
+
+# ---------------------------------------------------------------------------
+# Q28 — RS-3 compliance check: 3000 sqft lot → max 2700 sqft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q28_rs3_compliance_3000(development_tools):
+    """Eval Q28: RS-3 on 3000 sqft lot → max floor area 2700 sqft (FAR 0.9)."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RS-3", lot_area_sqft=3000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(2700.0)
+
+
+# ---------------------------------------------------------------------------
+# Q29 — RT-4 max units on 6000 sqft lot = 6
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q29_rt4_max_units_6000(development_tools):
+    """Eval Q29: RT-4 on 6000 sqft lot → max 6 dwelling units (6000 / 1000)."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RT-4", lot_area_sqft=6000
+    )
+    assert "error" not in result
+    assert result["max_dwelling_units"] == 6
+
+
+# ---------------------------------------------------------------------------
+# Q33 — DX-7 developer lookup returns district record
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q33_dx7_developer_lookup(district_tools):
+    """Eval Q33: DX-7 lookup returns valid district data."""
+    result = district_tools["lookup_district"](district_code="DX-7")
+    assert "error" not in result
+    assert result["district_type_code"] == "DX-7"
+
+
+# ---------------------------------------------------------------------------
+# Q34 — Compare RS-3 vs RT-4 rezoning potential
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q34_rezoning_rs3_to_rt4(district_tools, development_tools):
+    """Eval Q34: Rezoning from RS-3 to RT-4 increases dwelling units on 6000 sqft lot."""
+    comparison = district_tools["compare_districts"](district_a="RS-3", district_b="RT-4")
+    assert "error" not in comparison
+    assert "floor_area_ratio" in comparison
+
+    rs3_env = development_tools["calculate_development_envelope"](
+        district_code="RS-3", lot_area_sqft=6000
+    )
+    rt4_env = development_tools["calculate_development_envelope"](
+        district_code="RT-4", lot_area_sqft=6000
+    )
+    assert rt4_env["max_dwelling_units"] > rs3_env["max_dwelling_units"]
+
+
+# ---------------------------------------------------------------------------
+# Q35 — get_zoning_map_url with coordinates returns gisapps.chicago.gov URL
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q35_zoning_map_url_coords(geospatial_tools):
+    """Eval Q35: get_zoning_map_url with coordinates returns a gisapps.chicago.gov URL."""
+    result = geospatial_tools["get_zoning_map_url"](
+        latitude=41.8789, longitude=-87.6359
+    )
+    assert "url" in result
+    assert "gisapps.chicago.gov" in result["url"]
+
+
+# ---------------------------------------------------------------------------
+# Q36 — list_district_types returns RS-3 when filtering by Residential
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q36_list_residential_districts(district_tools):
+    """Eval Q36: list_district_types('Residential') should include RS-3."""
+    result = district_tools["list_district_types"](category="Residential")
+    assert isinstance(result, list)
+    assert len(result) > 0
+    district_codes = [d["district_type_code"] for d in result]
+    assert "RS-3" in district_codes
+
+
+# ---------------------------------------------------------------------------
+# Q37 — POS-1 max floor area on 10000 sqft lot = 1000
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q37_pos1_far(development_tools):
+    """Eval Q37: POS-1 FAR 0.1 → 10000 sqft lot → max 1000 sqft floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="POS-1", lot_area_sqft=10000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(1000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q38 — RS-3 max units on 5000 sqft lot = 2
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q38_rs3_units_5000(development_tools):
+    """Eval Q38: RS-3 on 5000 sqft lot → max 2 dwelling units (5000 / 2500)."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RS-3", lot_area_sqft=5000
+    )
+    assert "error" not in result
+    assert result["max_dwelling_units"] == 2
+
+
+# ---------------------------------------------------------------------------
+# Q42 — DC16 without hyphen normalizes to DC-16
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q42_dc16_normalization(district_tools):
+    """Eval Q42: DC-16 lookup works regardless of hyphen normalization."""
+    result = district_tools["lookup_district"](district_code="DC-16")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(16.0)
+
+
+# ---------------------------------------------------------------------------
+# Q44 — B1-3 max floor area on 2500 sqft lot = 7500
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q44_b1_3_far_2500(development_tools):
+    """Eval Q44: B1-3 FAR 3.0 → 2500 sqft lot → max 7500 sqft floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="B1-3", lot_area_sqft=2500
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(7500.0)
+
+# ---------------------------------------------------------------------------
+# Q24 — get_zoning_section("17-2-0300") returns section about Bulk standards
+# ---------------------------------------------------------------------------
+
+_CODE_SEARCH_FIXTURE_EXTENDED = _CODE_SEARCH_FIXTURE + [
+    {
+        "section": "17-2-0300",
+        "title": "Bulk and density standards",
+        "chapter": "Chapter 17-2",
+        "text": (
+            "All development in R districts is subject to the following bulk and "
+            "density standards. FAR and height limits apply to the total floor area "
+            "of the building relative to the lot size."
+        ),
+        "source_file": "chapter_17-2.txt",
+    },
+    {
+        "section": "17-7-0300",
+        "title": "Affordable Housing Bonus",
+        "chapter": "Chapter 17-7",
+        "text": (
+            "An affordable housing bonus is available for residential projects that "
+            "include a specified percentage of affordable dwelling units. The bonus "
+            "allows additional floor area ratio beyond the base FAR."
+        ),
+        "source_file": "chapter_17-7.txt",
+    },
+    {
+        "section": "17-15-0300",
+        "title": "Nonconforming uses",
+        "chapter": "Chapter 17-15",
+        "text": (
+            "A nonconforming use is a land use that was lawfully established but is "
+            "no longer allowed by current zoning regulations. Nonconforming signs are "
+            "also addressed in this chapter."
+        ),
+        "source_file": "chapter_17-15.txt",
+    },
+]
+
+
+def test_eval_q24_get_section_17_2_0300(code_search_tools):
+    """Eval Q24: get_zoning_section('17-2-0300') returns Bulk and density text."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_EXTENDED,
+    ):
+        result = code_search_tools["get_zoning_section"](section_number="17-2-0300")
+    assert "error" not in result
+    assert result["section"] == "17-2-0300"
+    assert "bulk" in result["title"].lower() or "bulk" in result["text"].lower()
+
+
+# ---------------------------------------------------------------------------
+# Q25 — search affordable housing bonus returns Chapter 17 results
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q25_search_affordable_housing(code_search_tools):
+    """Eval Q25: search_zoning_code('affordable housing bonus') returns 17- sections."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_EXTENDED,
+    ):
+        result = code_search_tools["search_zoning_code"](query="affordable housing bonus")
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    for section in result["results"]:
+        assert section["section"].startswith("17-")
+
+
+# ---------------------------------------------------------------------------
+# Q39 — get_zoning_section("17-10-0200") returns parking content
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q39_get_section_17_10_0200(code_search_tools):
+    """Eval Q39: get_zoning_section('17-10-0200') returns parking section text."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE,
+    ):
+        result = code_search_tools["get_zoning_section"](section_number="17-10-0200")
+    assert "error" not in result
+    assert result["section"] == "17-10-0200"
+    assert "parking" in result["title"].lower() or "parking" in result["text"].lower()
+
+
+# ---------------------------------------------------------------------------
+# Q40 — search nonconforming signs returns 17-15 sections
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q40_search_nonconforming_signs(code_search_tools):
+    """Eval Q40: search_zoning_code('nonconforming signs') returns chapter 17-15 sections."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_EXTENDED,
+    ):
+        result = code_search_tools["search_zoning_code"](query="nonconforming signs")
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    sections = [r["section"] for r in result["results"]]
+    assert any(s.startswith("17-15") for s in sections), (
+        f"Expected a 17-15 section in results, got: {sections}"
+    )

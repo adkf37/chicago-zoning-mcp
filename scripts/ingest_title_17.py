@@ -27,20 +27,43 @@ OUTPUT_DIR = Path(__file__).parent.parent / "data" / "title_17"
 OUTPUT_FILE = OUTPUT_DIR / "sections.json"
 RAW_DIR = OUTPUT_DIR / "raw"
 
+# Boilerplate lines injected by amlegal.com's web interface
+_BOILERPLATE_RE = re.compile(
+    r"ShareDownloadBookmarkPrint|"
+    r"Disclaimer:.*?American Legal Publishing.*?|"
+    r"For further information.*?toll-free at 800-445-5588\.|"
+    r"Hosted by: American Legal Publishing",
+    re.IGNORECASE | re.DOTALL,
+)
+
+
+def _clean_text(raw: str) -> str:
+    """Strip amlegal.com navigation and disclaimer boilerplate from section text."""
+    cleaned = _BOILERPLATE_RE.sub("", raw)
+    # Collapse runs of blank lines to at most two
+    cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)
+    return cleaned.strip()
+
 
 def parse_sections_from_text(text: str, source_file: str = "") -> list[dict]:
     """Parse Title 17 plain text into section entries.
 
-    Handles section headers in two common amlegal.com formats:
+    Handles section headers in the common amlegal.com formats, including
+    indented subsections and letter-suffixed sub-items:
       17-1-0100  TITLE, PURPOSE AND APPLICABILITY
       17-1-0101  Title.
       Sec. 17-1-0101.  Title.
+         17-1-0101-A  Sub-item text.
+       17-1-0102 Another section.
 
     Returns list of {"section": "17-1-0101", "title": "...", "chapter": "...", "text": "..."}
     """
-    # Match both bare and "Sec." prefixed headers
+    # Match bare, "Sec." prefixed, and indented subsection headers.
+    # Leading whitespace (spaces, tabs, non-breaking spaces \xa0 from amlegal.com)
+    # is consumed but not captured so that indented subsections are also indexed.
+    # Letter-suffixed sub-items like "17-15-0102-A" are also captured.
     section_pattern = re.compile(
-        r"^(?:Sec\.\s+)?(17-\d{1,2}-\d{4}[A-Za-z]?)[.\s]+(.+?)$",
+        r"^\s*(?:Sec\.\s+)?(17-\d{1,2}-\d{4}(?:-[A-Za-z])?)\s*[.\s]+(.+?)$",
         re.MULTILINE,
     )
 
@@ -54,12 +77,29 @@ def parse_sections_from_text(text: str, source_file: str = "") -> list[dict]:
 
     for i, match in enumerate(matches):
         section_num = match.group(1).strip()
-        title = match.group(2).strip().rstrip(".")
+        raw_title = match.group(2).strip()
 
         # Extract text until next section
         start = match.end()
         end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
         body = text[start:end].strip()
+
+        # For single-line subsections the entire content is on the title line.
+        # Split into a short title (first sentence up to the first period or
+        # ~80 chars) and move the remainder into the body text if body is empty.
+        first_dot = raw_title.find(". ")
+        if body and first_dot == -1:
+            # Multi-word title with no period — keep as-is
+            title = raw_title.rstrip(".")
+        elif first_dot != -1 and first_dot <= 80:
+            title = raw_title[:first_dot].strip()
+            remainder = raw_title[first_dot + 2 :].strip()
+            if not body and remainder:
+                body = remainder
+        else:
+            title = raw_title[:80].rstrip(" .,").rstrip(".")
+            if not body and len(raw_title) > 80:
+                body = raw_title[80:].strip()
 
         # Keep whichever occurrence has the most content
         existing = candidates.get(section_num)
@@ -71,7 +111,7 @@ def parse_sections_from_text(text: str, source_file: str = "") -> list[dict]:
                 "section": section_num,
                 "title": title,
                 "chapter": chapter,
-                "text": body,
+                "text": _clean_text(body),
                 "source_file": source_file,
             }
 
@@ -110,12 +150,18 @@ def validate_index(index: list[dict]) -> list[str]:
     if dupes:
         warnings.append(f"Duplicate section numbers ({len(dupes)}): {list(dupes)[:10]}")
 
-    # Check all 17 chapters are represented
+    # Check all expected chapters are represented (chapter 1 requires the raw file)
     chapters_found = {e["section"].split("-")[1] for e in index if "-" in e["section"]}
-    expected_chapters = {str(i) for i in range(1, 18)}
+    # Chapter 17-1 requires the raw file; only warn if other chapters are missing
+    expected_chapters = {str(i) for i in range(2, 18)}
     missing = expected_chapters - chapters_found
     if missing:
         warnings.append(f"Chapters missing: {sorted(missing, key=int)}")
+    if "1" not in chapters_found:
+        warnings.append(
+            "Chapter 17-1 (Title, Purpose, Definitions) is missing. "
+            "Download chapter_17-1.txt from amlegal.com and re-run ingestion."
+        )
 
     # Check for sections with no body text
     empty = [e["section"] for e in index if not e.get("text", "").strip()]
