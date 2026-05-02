@@ -3,6 +3,37 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-05-02 — Data Pipeline — Fix word-boundary truncation in ingestion script
+
+**Context:** FEEDBACK.md requested improved code ingestion quality. Analysis of
+`data/title_17/sections.json` revealed that 372+ sections had their searchable text
+starting mid-word. The root cause: when a single-line section header exceeded 80
+characters with no `. ` separator, the ingestion script cut at exactly character 80
+(potentially mid-word) and put the tail into the `text` field.
+
+**Decision:**
+
+1. **Word-boundary cut** — Changed `scripts/ingest_title_17.py` `else` branch to use
+   `rfind(" ", 0, 80)` to find the last word boundary before position 80. The title
+   is set to `raw_title[:cut]` (complete words only).
+
+2. **Full-text body** — For single-line sections with titles longer than 80 chars, the
+   complete `raw_title` is now stored as the body, ensuring the full text is searchable
+   rather than just the truncated tail. This means search queries can match against
+   the complete sentence rather than a fragment.
+
+3. **Short titles unchanged** — Sections with titles ≤ 80 chars (which didn't need
+   splitting) continue to use the full raw_title as the title, with body staying empty
+   for the aggregation step to fill.
+
+**Impact:**
+- `sections.json` regenerated: 1,888 sections, 0 empty (unchanged)
+- Sections previously starting mid-word (e.g. "ication," "t 2 bicycle...") now
+  contain complete searchable text
+- All 209 offline tests pass
+- Directly addresses FEEDBACK.md concern: "improve the code ingestion, not sure we've
+  captured everything correctly"
+
 ### 2026-05-02 — Data Pipeline — Eval expansion Q66–Q80, routing, front-end redesign
 
 **Context:** FEEDBACK.md requested expanding the test suite with wider range of questions,

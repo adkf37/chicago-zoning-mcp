@@ -108,9 +108,20 @@ def parse_sections_from_text(text: str, source_file: str = "") -> list[dict]:
             if not body and remainder:
                 body = remainder
         else:
-            title = raw_title[:80].rstrip(" .,").rstrip(".")
-            if not body and len(raw_title) > 80:
-                body = raw_title[80:].strip()
+            if len(raw_title) > 80:
+                # Avoid splitting mid-word: find the last word boundary at or before
+                # position 80 (rfind end=81 includes position 80 in the search range).
+                cut = raw_title.rfind(" ", 0, 81)
+                if cut == -1:
+                    cut = 80  # no space found; fall back to hard cut
+                title = raw_title[:cut].rstrip(" .,").rstrip(".")
+                if not body:
+                    # Store the complete raw_title as body for full-sentence searchability.
+                    # The title field holds a ≤80-char label; the body (text) holds the
+                    # complete content so keyword searches match the full sentence.
+                    body = raw_title.strip()
+            else:
+                title = raw_title.rstrip(" .,").rstrip(".")
 
         # Keep whichever occurrence has the most content
         existing = candidates.get(section_num)
