@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Phase | Web Deployment (in progress) |
+| Phase | Build |
 | Last Updated | 2026-04-30 |
 | Squad Template | data_pipeline |
 | Priority | low |
