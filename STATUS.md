@@ -11,16 +11,76 @@
 
 ## Current Objective
 
-**Build phase — ingestion word-boundary fix applied; sections.json regenerated.**
+**Build phase — eval suite expanded to 100 questions; routing improved; 232 tests passing.**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
-- `pytest tests/ -m "not network"` → **209 passed, 5 deselected** ✅ (unchanged)
+- `pytest tests/ -m "not network"` → **232 passed, 5 deselected** ✅ (up from 209)
 - `ruff check src/ tests/ web/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
 - `calculate_development_envelope("RS-3", 5000)` → 4500 sqft ✅
 - 59 districts in `data/zoning_codes.csv` ✅
 - Documentation complete (README, CONTRIBUTING.md, phase docs, example conversations) ✅
+
+## Recent Activity
+
+- 2026-05-02 (this pass): Eval suite expanded to 100 questions; routing improved:
+  - **Eval suite expanded to 100 questions** — Added Q81–Q100 to `evals/zoning_qa.xml`
+    covering 20 new scenarios across previously untested districts:
+    RM-4.5, RM-6.5, B1-5, C2-3, M2-2, M2-1/M2-3, DX-3, DR-3, DS-5, POS-1, C3-2,
+    B2-5, M2-3, DR-5, DS-3/DS-5, plus routing edge cases for commercial/downtown
+    district listing.
+  - **23 new tests** — 20 eval tests (Q81–Q100) + 3 routing tests. Total: **232 passing** (was 209).
+  - **Routing improved** — Added `_looks_like_list_districts_question()` in `gemini_client.py`
+    to handle "What are the commercial zoning districts?" and "Show me all residential
+    districts" patterns that previously fell through to no tool call. Covers:
+    - `"district" + ("list" | "types" | "all")` — existing logic preserved
+    - `"what are" + "zoning districts"` — new pattern for natural-language listing
+    - `"show me" / "give me" + "districts"` — new pattern
+
+- 2026-05-02 (previous pass): Ingestion word-boundary fix applied; sections.json regenerated.
+
+- 2026-05-02 (previous pass): Eval suite expanded to 80 questions, routing improved, front-end redesigned.
+
+- 2026-04-30: Web deployment phase started — adding `web/` (Flask+Gemini) layer.
+- 2026-04-22: Closeout complete — all automated acceptance criteria verified.
+
+## Next Recommended Step
+
+**Validate phase.** Run `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>` to
+measure live eval pass-rate against the full 100-question harness. Prior live eval score
+was 14/20 (70%) on 20 questions; the new target is 100% on 100 questions.
+
+## Artifacts
+
+| Artifact | Location | Status |
+|---|---|---|
+| STATUS.md | `./STATUS.md` | updated |
+| FEEDBACK.md | `./FEEDBACK.md` | created |
+| Backlog README | `backlog/README.md` | created |
+| Data sources doc | `backlog/data_sources.md` | created |
+| `.gitignore` | `.gitignore` | created |
+| Phase 5 — Code Search | `backlog/phase-05-code-text-search.md` | complete — 1,888 sections indexed (0 empty) |
+| Phase 6 — Integration | `backlog/phase-06-integration-and-eval.md` | code complete; live eval pending |
+| Phase 7 — Docs | `backlog/phase-07-documentation.md` | complete |
+| Squad team roster | `.squad/team.md` | created |
+| Squad routing rules | `.squad/routing.md` | created |
+| Squad decisions log | `.squad/decisions.md` | updated |
+| Sprint plan | `.squad/sprint.md` | created |
+| Eval suite | `evals/zoning_qa.xml` | 100 questions (Q1–Q100) |
+| Eval tests | `tests/test_evals.py` | 232 tests passing |
+
+## Needs Human Input
+
+- **Chapter 17-1 download** (~15 min) — Copy-paste Chapter 17-1 (Title, Purpose, and
+  Definitions) from amlegal.com into `data/title_17/raw/chapter_17-01.txt`, then run
+  `python scripts/ingest_title_17.py` to rebuild the index with all 17 chapters.
+
+- **Live eval run** (~15 min) — Execute `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>`
+  to measure pass-rate against the 100-question harness.
+
+- **MCP Inspector verification** (~30 min) — Run `npx @modelcontextprotocol/inspector python -m src.server`.
+
 
 ## Recent Activity
 

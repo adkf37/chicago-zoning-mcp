@@ -3,6 +3,37 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-05-02 — Data Pipeline — Eval expansion Q81–Q100 and routing improvement
+
+**Context:** FEEDBACK.md requested expanding the test suite with a wider range of
+questions to approach 100% answer accuracy. Previous eval suite covered 80 questions;
+district coverage was incomplete (many district types had no test at all).
+
+**Decisions made:**
+
+1. **Eval suite extended to 100 questions** — Added Q81–Q100 to `evals/zoning_qa.xml`:
+   - Covers 17 new district types: RM-4.5, RM-6.5, B1-5, C2-3, M2-2, M2-1, M2-3,
+     DX-3, DR-3, DS-5, POS-1, RM-5.5, B2-5, M2-3, DR-5, DS-3, C3-2
+   - New calculations: C2-3 (FAR 3.0), DX-3 (10 units), C3-2 (FAR 2.2)
+   - New comparisons: M2-1 vs M2-3, RM-4.5 vs RM-5, DR-3 vs DR-10, DS-3 vs DS-5
+   - New list queries: commercial districts, downtown districts
+
+2. **Routing improved** — Added `_looks_like_list_districts_question()` static method
+   in `web/gemini_client.py`. The previous routing only triggered `list_district_types`
+   when "list", "types", or "all" appeared in the question along with "district". The
+   new method additionally matches:
+   - `"what are" + "zoning districts"` — natural language pattern
+   - `"show me" / "give me" + "districts"` — imperative listing patterns
+   This improves routing for Q94/Q100-style questions like
+   *"What are the commercial zoning districts in Chicago?"*
+
+3. **Test count 209 → 232** — 20 eval tests (Q81–Q100) + 3 routing tests. All pass offline.
+
+**Impact:**
+- Every Chicago zoning district type now has at least one eval question
+- `list_district_types` routing is more robust for natural-language questions
+- All 232 offline tests pass; `ruff check` clean
+
 ### 2026-05-02 — Data Pipeline — Fix word-boundary truncation in ingestion script
 
 **Context:** FEEDBACK.md requested improved code ingestion quality. Analysis of
