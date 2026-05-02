@@ -482,7 +482,10 @@ def test_what_are_commercial_districts_routes_to_list():
 
 
 def test_list_all_downtown_districts_routes_to_list():
-    """Q100: 'List all downtown zoning districts' routes to list_district_types."""
+    """Q100: 'List all downtown zoning districts' routes to list_district_types
+    with a category that starts with 'Downtown', not an empty string that would
+    return all 59 districts.
+    """
     client = _client()
 
     with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
@@ -492,6 +495,46 @@ def test_list_all_downtown_districts_routes_to_list():
 
     names = _tool_names(calls)
     assert "list_district_types" in names
+    list_call = next(c for c in calls if c["name"] == "list_district_types")
+    assert list_call["args"].get("category", "").lower().startswith("downtown"), (
+        f"Expected a 'Downtown*' category, got: {list_call['args'].get('category')!r}"
+    )
+
+
+def test_list_downtown_core_districts_keeps_specific_category():
+    """'List all downtown core districts' should use category 'Downtown Core', not 'Downtown'."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "List all downtown core zoning districts in Chicago."
+        )
+
+    names = _tool_names(calls)
+    assert "list_district_types" in names
+    list_call = next(c for c in calls if c["name"] == "list_district_types")
+    assert list_call["args"].get("category") == "Downtown Core", (
+        f"Expected 'Downtown Core', got: {list_call['args'].get('category')!r}"
+    )
+
+
+def test_list_manufacturing_districts_routes_to_list():
+    """Q72: 'List all manufacturing zoning district types' routes to list_district_types
+    with category 'Manufacturing/Industrial'.
+    """
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "List all manufacturing zoning district types in Chicago."
+        )
+
+    names = _tool_names(calls)
+    assert "list_district_types" in names
+    list_call = next(c for c in calls if c["name"] == "list_district_types")
+    assert list_call["args"].get("category") == "Manufacturing/Industrial", (
+        f"Expected 'Manufacturing/Industrial', got: {list_call['args'].get('category')!r}"
+    )
 
 
 def test_show_me_residential_districts_routes_to_list():
