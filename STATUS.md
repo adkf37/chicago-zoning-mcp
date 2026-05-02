@@ -11,10 +11,10 @@
 
 ## Current Objective
 
-**Build phase — expanding test coverage, ingestion quality, and front-end polish (per FEEDBACK.md).**
+**Build phase — expanding test coverage, routing reliability, and eval question breadth (per FEEDBACK.md).**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
-- `pytest tests/ -m "not network"` → **169 passed, 5 deselected** ✅
+- `pytest tests/ -m "not network"` → **184 passed, 5 deselected** ✅
 - `ruff check src/ tests/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
@@ -24,7 +24,30 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 
 ## Recent Activity
 
-- 2026-05-02 (this pass): Expanded test coverage, improved ingestion, redesigned front-end:
+- 2026-05-02 (this pass): Expanded routing keywords, eval suite, and test coverage:
+  - **Routing improvement**: Extended `_looks_like_code_search` in `web/gemini_client.py`
+    with keywords `variance`, `special use`, `landscaping`, `landscape`, `overlay`,
+    `certificate of occupancy`, `use approval`, `rezoning process`, and `application process`.
+    Questions like "What is the variance process?" or "Find landscaping requirements"
+    now correctly route to `search_zoning_code` even without a Title 17 index keyword trigger.
+  - **Eval suite**: Added Q56–Q65 to `evals/zoning_qa.xml` (65 total), covering:
+    - Q56: RS-3 front yard setback (lookup_district)
+    - Q57: Variance application process (search_zoning_code)
+    - Q58: Landscaping requirements (search_zoning_code)
+    - Q59: RS-2 lot area per dwelling unit (lookup_district)
+    - Q60: RS-3 vs RT-4 lot area per unit comparison (compare_districts)
+    - Q61: B3-2 floor area on 20,000 sqft lot (calculate_development_envelope → 44,000 sqft)
+    - Q62: Special use permit requirements (search_zoning_code)
+    - Q63: M1-1 Manufacturing/Industrial category (lookup_district)
+    - Q64: DX-7 vs DX-12 FAR comparison (compare_districts)
+    - Q65: RS-2 maximum building height 30 ft (lookup_district)
+  - **Routing tests**: Added 5 new routing tests (Q56/Q57/Q58/Q61/Q64) covering setback,
+    variance, landscaping, large-lot B3-2 envelope, and DX district comparison. Total: 34 routing tests.
+  - **Eval tests**: Added 10 new eval tests (Q56–Q65). Test count grew from **169 → 184**.
+  - **Code search fixture**: Added `_CODE_SEARCH_FIXTURE_V2` to `tests/test_evals.py` with
+    variance (17-13-0200), landscaping (17-11-0200), and special use (17-13-0600) sections.
+
+- 2026-05-02 (previous pass): Expanded test coverage, improved ingestion, redesigned front-end:
   - **Ingestion**: `parse_sections_from_text` now post-processes empty parent sections by
     aggregating child subsection text (e.g. 17-2-0104-A through -E into 17-2-0104). Reduced
     empty-text sections from **368 → 188** in the rebuilt `sections.json` index. Added 2 new
@@ -48,28 +71,6 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
     improved chat bubbles, tool badge styling, and 6 suggestion chips.
   - **Tests**: Total 169 passing (was 144).
 
-- 2026-05-02 (previous pass): Build pass — ingestion improvements, expanded eval tests, front-end refresh.
-  - **Ingestion**: Improved `parse_sections_from_text` in `scripts/ingest_title_17.py` to capture
-    indented subsections and letter-suffixed sub-items (e.g. `17-15-0102-A`). The parser now uses
-    `\s*` to match non-breaking space (`\xa0`) indentation from amlegal.com. Added boilerplate
-    cleanup (`_clean_text`) to strip "ShareDownloadBookmarkPrint" and disclaimer text. The
-    `sections.json` index grew from **130 → 1,888 sections** (16 chapters, chapters 2–17).
-  - **Parser**: Also splits inline sub-item content into proper `title` + `text` fields so that
-    direct lookups for any indexed section return meaningful content.
-  - **SECTION_RE**: Updated in `web/gemini_client.py` to also match letter-suffixed sections
-    (`17-X-XXXX-A`) so the routing layer can direct those to `get_zoning_section`.
-  - **Eval tests**: Expanded `tests/test_evals.py` from 20 to 35 Q&A tests, covering Q21–Q44
-    (offline: district lookup, development envelope, code search, routing).
-  - **Routing tests**: Added 8 new tests to `tests/test_gemini_tool_routing.py` covering
-    structured prompts, developer-style questions, rezoning comparisons, map URL, and
-    letter-suffixed section routing. Total routing tests: 16.
-  - **Front-end**: Refreshed `web/templates/index.html` — Chicago Municipal blue/red palette,
-    Inter font, stats bar (1,888 sections, 8 tools, 200+ district codes), improved typography,
-    typing indicator, and 5 suggestion chips.
-  - **validate_index**: Now warns specifically about missing Chapter 17-1 (separate from the
-    general missing-chapters warning) without false-positives on the test fixture.
-  - All **144 offline tests pass** (up from 118 before this pass).
-
 - 2026-04-30: Web deployment phase started — adding `web/` (Flask+Gemini) layer + GitHub Actions CI/CD for Cloud Run. Title 17 confirmed already ingested locally. Ollama testing superseded by Gemini approach.
 - 2026-04-30: Web layer complete — `web/app.py`, `web/gemini_client.py`, `web/tool_bridge.py`, `web/templates/index.html`, `.github/workflows/deploy-cloud-run.yml`, updated `Dockerfile` and `pyproject.toml`.
 - 2026-04-22: Closeout complete — all automated acceptance criteria verified.
@@ -78,7 +79,7 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 
 **Validate phase.** Run `python scripts/ingest_title_17.py --validate` after optionally adding
 `data/title_17/raw/chapter_17-1.txt` (the only missing chapter). Then execute `eval_live_web.py`
-against the deployed Cloud Run URL to measure live eval pass-rate against the 44-question harness.
+against the deployed Cloud Run URL to measure live eval pass-rate against the full 65-question harness.
 
 ## Artifacts
 
@@ -104,8 +105,8 @@ against the deployed Cloud Run URL to measure live eval pass-rate against the 44
   `python scripts/ingest_title_17.py` to rebuild the index with all 17 chapters.
 
 - **Live eval run** (~15 min) — Execute `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>`
-  to measure pass-rate against the 44-question harness. The last known score was 14/20 (70%)
-  on 20 questions; the full 44-question target is 100%.
+  to measure pass-rate against the 65-question harness. The last known score was 14/20 (70%)
+  on 20 questions; the full 65-question target is 100%.
 
 - **MCP Inspector verification** (~30 min) — Run `npx @modelcontextprotocol/inspector python -m src.server`.
 

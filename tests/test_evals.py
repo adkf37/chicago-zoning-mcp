@@ -1252,3 +1252,214 @@ def test_eval_q55_rt4_3000_floor_area(development_tools):
     )
     assert "error" not in result
     assert result["max_floor_area_sqft"] == pytest.approx(3600.0)
+
+
+# ---------------------------------------------------------------------------
+# Code-search fixture additions for Q57, Q58, Q62 (variance, landscaping, special use)
+# ---------------------------------------------------------------------------
+
+_CODE_SEARCH_FIXTURE_PROCEDURES = _CODE_SEARCH_FIXTURE + [
+    {
+        "section": "17-13-0200",
+        "title": "Variations and Adjustments",
+        "chapter": "Chapter 17-13",
+        "text": (
+            "A variation is an authorized departure from the specific requirements of "
+            "this Zoning Ordinance. Applications for variations shall be filed with the "
+            "Zoning Board of Appeals. The Board shall consider the applicable standards "
+            "before granting or denying a variance."
+        ),
+        "source_file": "chapter_17-13.txt",
+    },
+    {
+        "section": "17-11-0200",
+        "title": "Landscaping and Screening Standards",
+        "chapter": "Chapter 17-11",
+        "text": (
+            "All parking lots and surface lots with more than four parking spaces must "
+            "provide perimeter landscaping. A minimum of one tree per 10 parking spaces "
+            "is required. Landscaping must be maintained in good condition and replaced "
+            "if it dies."
+        ),
+        "source_file": "chapter_17-11.txt",
+    },
+    {
+        "section": "17-13-0600",
+        "title": "Special Use Permits",
+        "chapter": "Chapter 17-13",
+        "text": (
+            "A special use is a use that, because of its unique characteristics, cannot "
+            "be permitted by right in a particular zoning district. Special use applications "
+            "shall be filed with the Zoning Board of Appeals and require public notice. "
+            "Conditions may be attached to an approved special use."
+        ),
+        "source_file": "chapter_17-13.txt",
+    },
+]
+
+
+# ---------------------------------------------------------------------------
+# Q56 — RS-3 front yard setback is 15 ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q56_rs3_front_yard_setback(district_tools):
+    """Eval Q56: RS-3 front_yard_setback should be 15 ft."""
+    result = district_tools["lookup_district"](district_code="RS-3")
+    assert "error" not in result
+    setback = result.get("front_yard_setback", "")
+    assert "15" in str(setback), f"Expected '15' in front_yard_setback, got: {setback!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q57 — Search "variance" returns Chapter 17-13 section
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q57_variance_code_search(code_search_tools):
+    """Eval Q57: search_zoning_code('variance') returns a Chapter 17-13 section."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_PROCEDURES,
+    ):
+        result = code_search_tools["search_zoning_code"](
+            query="zoning variance application process"
+        )
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    sections = [r["section"] for r in result["results"]]
+    assert any(s.startswith("17-13") for s in sections), (
+        f"Expected a 17-13 section for variance query, got: {sections}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q58 — Search "landscaping" returns relevant fixture section
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q58_landscaping_code_search(code_search_tools):
+    """Eval Q58: search_zoning_code('landscaping requirements') returns landscaping sections."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_PROCEDURES,
+    ):
+        result = code_search_tools["search_zoning_code"](query="landscaping requirements")
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    assert any(
+        "landscap" in r.get("title", "").lower() or "landscap" in r.get("text", "").lower()
+        for r in result["results"]
+    ), "Expected at least one result mentioning 'landscaping'"
+
+
+# ---------------------------------------------------------------------------
+# Q59 — RS-2 lot area per dwelling unit is 5000
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q59_rs2_lot_area_per_unit(district_tools):
+    """Eval Q59: RS-2 lot_area_per_unit should reference 5000 sqft per dwelling unit."""
+    result = district_tools["lookup_district"](district_code="RS-2")
+    assert "error" not in result
+    lot_area = result.get("lot_area_per_unit", "")
+    assert "5000" in lot_area.replace(",", ""), (
+        f"Expected '5000' in lot_area_per_unit for RS-2, got: {lot_area!r}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q60 — RS-3 vs RT-4 lot area per dwelling unit difference
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q60_rs3_rt4_lot_per_unit_differs(district_tools):
+    """Eval Q60: compare_districts RS-3 vs RT-4 shows lot_area_per_unit in _differences."""
+    result = district_tools["compare_districts"](district_a="RS-3", district_b="RT-4")
+    assert "error" not in result
+    assert "lot_area_per_unit" in result["_differences"], (
+        "Expected lot_area_per_unit to appear in _differences for RS-3 vs RT-4"
+    )
+    rs3_val = result["lot_area_per_unit"]["RS-3"]
+    rt4_val = result["lot_area_per_unit"]["RT-4"]
+    assert rs3_val != rt4_val
+
+
+# ---------------------------------------------------------------------------
+# Q61 — B3-2 max floor area on 20,000 sqft lot = 44,000 sqft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q61_b3_2_20000_envelope(development_tools):
+    """Eval Q61: B3-2 FAR 2.2 × 20,000 sqft lot = 44,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="B3-2", lot_area_sqft=20000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(44000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q62 — Search "special use" returns Chapter 17-13 section
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q62_special_use_code_search(code_search_tools):
+    """Eval Q62: search_zoning_code('special use permit') returns 17-13 sections."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_PROCEDURES,
+    ):
+        result = code_search_tools["search_zoning_code"](query="special use permit")
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    sections = [r["section"] for r in result["results"]]
+    assert any(s.startswith("17-13") for s in sections), (
+        f"Expected a 17-13 section for special use query, got: {sections}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q63 — M1-1 district category is Manufacturing/Industrial
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q63_m1_1_category(district_tools):
+    """Eval Q63: M1-1 lookup should show the Manufacturing/Industrial category."""
+    result = district_tools["lookup_district"](district_code="M1-1")
+    assert "error" not in result
+    assert "Manufacturing" in result["category"], (
+        f"Expected 'Manufacturing' in M1-1 category, got: {result['category']!r}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q64 — DX-12 has higher FAR than DX-7
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q64_dx12_higher_far_than_dx7(district_tools):
+    """Eval Q64: compare_districts DX-7 vs DX-12 — DX-12 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="DX-7", district_b="DX-12")
+    assert "error" not in result
+    dx7_far = float(result["floor_area_ratio"]["DX-7"])
+    dx12_far = float(result["floor_area_ratio"]["DX-12"])
+    assert dx12_far > dx7_far, (
+        f"Expected DX-12 FAR ({dx12_far}) > DX-7 FAR ({dx7_far})"
+    )
+    assert "floor_area_ratio" in result["_differences"]
+
+
+# ---------------------------------------------------------------------------
+# Q65 — RS-2 maximum building height contains "30"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q65_rs2_height(district_tools):
+    """Eval Q65: RS-2 maximum_building_height should reference 30 ft."""
+    result = district_tools["lookup_district"](district_code="RS-2")
+    assert "error" not in result
+    height = result.get("maximum_building_height", "")
+    assert "30" in str(height), (
+        f"Expected '30' in RS-2 maximum_building_height, got: {height!r}"
+    )
