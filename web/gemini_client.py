@@ -690,7 +690,11 @@ class GeminiZoningClient:
         if GeminiZoningClient._looks_like_street_address(cleaned):
             return cleaned
 
-        if not re.search(r"\b(?:zoning|zone|parcel|address)\b", question, re.IGNORECASE):
+        if not re.search(
+            r"\b(?:zoning|zone|parcel|address|build|built)\b",
+            question,
+            re.IGNORECASE,
+        ):
             return ""
 
         match = re.search(

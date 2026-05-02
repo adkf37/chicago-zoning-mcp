@@ -761,3 +761,494 @@ def test_eval_q40_search_nonconforming_signs(code_search_tools):
     assert any(s.startswith("17-15") for s in sections), (
         f"Expected a 17-15 section in results, got: {sections}"
     )
+
+
+# ---------------------------------------------------------------------------
+# Q26 — homeowner RS-3 summary: lookup_district + search_zoning_code
+# ---------------------------------------------------------------------------
+
+_CODE_SEARCH_FIXTURE_RS3 = _CODE_SEARCH_FIXTURE + [
+    {
+        "section": "17-2-0200",
+        "title": "Residential Bulk Standards",
+        "chapter": "Chapter 17-2",
+        "text": (
+            "RS-3 single-family residential districts are subject to the following bulk "
+            "standards: maximum FAR 0.9, maximum building height 30 feet, minimum front "
+            "setback 20 feet, minimum side setback 2 feet, minimum rear setback 30 feet."
+        ),
+        "source_file": "chapter_17-2.txt",
+    },
+    {
+        "section": "17-4-0100",
+        "title": "Residential Use Standards",
+        "chapter": "Chapter 17-4",
+        "text": (
+            "Single-family detached houses, two-flats, and townhouses are permitted by-right "
+            "in RS-3 residential districts. Home occupations and accessory structures are "
+            "also allowed subject to the standards in this chapter."
+        ),
+        "source_file": "chapter_17-4.txt",
+    },
+]
+
+
+def test_eval_q26_homeowner_rs3_summary(district_tools, code_search_tools):
+    """Eval Q26: homeowner RS-3 summary returns RS-3 district data and ordinance context."""
+    # Step 1: District lookup
+    district_result = district_tools["lookup_district"](district_code="RS-3")
+    assert "error" not in district_result
+    assert district_result["district_type_code"] == "RS-3"
+
+    # Step 2: Code search for RS-3 context
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_RS3,
+    ):
+        search_result = code_search_tools["search_zoning_code"](
+            query="RS-3 single-family residential bulk standards"
+        )
+    assert "error" not in search_result
+    assert search_result["result_count"] >= 1
+
+
+# ---------------------------------------------------------------------------
+# Q30 — homeowner ADU: search_zoning_code for accessory dwelling unit sections
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q30_adu_code_search(code_search_tools):
+    """Eval Q30: search for ADU sections returns relevant Title 17 references."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE,
+    ):
+        result = code_search_tools["search_zoning_code"](query="accessory dwelling unit")
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    # The ADU fixture is in chapter 17-3
+    sections = [r["section"] for r in result["results"]]
+    assert any(s.startswith("17-") for s in sections)
+    assert any("accessory" in r["title"].lower() or "accessory" in r["text"].lower()
+               for r in result["results"])
+
+
+# ---------------------------------------------------------------------------
+# Q31 — developer B3-2 checklist: lookup_district + search_zoning_code
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q31_b3_2_checklist(district_tools, code_search_tools):
+    """Eval Q31: B3-2 mixed-use checklist requires district lookup and code search."""
+    # Step 1: District lookup confirms B3-2 is valid
+    district_result = district_tools["lookup_district"](district_code="B3-2")
+    assert "error" not in district_result
+    assert district_result["district_type_code"] == "B3-2"
+
+    # Step 2: Code search for mixed-use requirements
+    fixture = _CODE_SEARCH_FIXTURE_EXTENDED + [
+        {
+            "section": "17-4-0300",
+            "title": "Mixed-Use Building Standards",
+            "chapter": "Chapter 17-4",
+            "text": (
+                "Mixed-use buildings in B3 districts may contain residential uses above "
+                "the ground floor. Ground-floor space must be devoted to permitted "
+                "commercial uses. Minimum floor-to-ceiling height for commercial space "
+                "is 10 feet."
+            ),
+            "source_file": "chapter_17-4.txt",
+        },
+    ]
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=fixture,
+    ):
+        search_result = code_search_tools["search_zoning_code"](
+            query="mixed-use construction requirements"
+        )
+    assert "error" not in search_result
+    assert search_result["result_count"] >= 1
+
+
+# ---------------------------------------------------------------------------
+# Q32 — homeowner ADU checklist: RS-3 lookup + ADU code search
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q32_homeowner_adu_checklist(district_tools, code_search_tools):
+    """Eval Q32: homeowner ADU checklist requires RS-3 district data and ADU code sections."""
+    # Step 1: Confirm RS-3 is valid
+    district_result = district_tools["lookup_district"](district_code="RS-3")
+    assert "error" not in district_result
+
+    # Step 2: Search for ADU ordinance text
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE,
+    ):
+        search_result = code_search_tools["search_zoning_code"](
+            query="accessory dwelling unit ADU"
+        )
+    assert "error" not in search_result
+    assert search_result["result_count"] >= 1
+    # Must include a section referencing accessory dwelling
+    found_adu = any(
+        "accessory" in r.get("title", "").lower() or "accessory" in r.get("text", "").lower()
+        for r in search_result["results"]
+    )
+    assert found_adu, "Expected at least one result referencing 'accessory' dwelling unit"
+
+
+# ---------------------------------------------------------------------------
+# Q41 — planned development checklist: PD lookup + code search
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q41_planned_development_checklist(district_tools, code_search_tools):
+    """Eval Q41: PD checklist requires district data and Title 17 procedural sections."""
+    # Step 1: Confirm PD is in the district types
+    all_districts = district_tools["list_district_types"](category="Planned Development")
+    assert isinstance(all_districts, list)
+    # PD type districts should exist
+    codes = [d["district_type_code"] for d in all_districts]
+    assert any("PD" in c or "PMD" in c for c in codes), (
+        f"Expected PD districts in list, got: {codes}"
+    )
+
+    # Step 2: Code search for planned development procedures
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE,
+    ):
+        search_result = code_search_tools["search_zoning_code"](
+            query="planned development application procedures"
+        )
+    assert "error" not in search_result
+    assert search_result["result_count"] >= 1
+    # Should return the planned development section from the fixture
+    sections = [r["section"] for r in search_result["results"]]
+    assert any(s.startswith("17-13") for s in sections), (
+        f"Expected a 17-13 section in results for planned development, got: {sections}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q43 — RS-3 permit pre-check: district lookup + code search
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q43_rs3_permit_precheck(district_tools, code_search_tools):
+    """Eval Q43: RS-3 permit pre-check requires district data and relevant code sections."""
+    # Step 1: RS-3 district data
+    district_result = district_tools["lookup_district"](district_code="RS-3")
+    assert "error" not in district_result
+    assert float(district_result["floor_area_ratio"]) == pytest.approx(0.9)
+
+    # Step 2: Search for single-family permit/building requirements
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_RS3,
+    ):
+        search_result = code_search_tools["search_zoning_code"](
+            query="single-family residential building requirements"
+        )
+    assert "error" not in search_result
+    assert search_result["result_count"] >= 1
+
+
+# ---------------------------------------------------------------------------
+# Q45 — Wrigley Field address routing (mocked geocode + parcel)
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+async def test_eval_q45_wrigley_field_address():
+    """Eval Q45: Wrigley Field address routes to get_parcel_zoning and returns a zone.
+
+    Mocks geocoder and Socrata so no network required.
+    """
+    from unittest.mock import MagicMock
+
+    mcp_t = FastMCP("test")
+    tools: dict = {}
+    original = mcp_t.tool
+
+    def capture(*args, **kwargs):
+        dec = original(*args, **kwargs)
+
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+
+        return wrap
+
+    mcp_t.tool = capture
+    register_geospatial_tools(mcp_t)
+
+    mock_socrata_response = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "properties": {"zone_class": "B3-2", "zone_type": "6"},
+                "geometry": {"type": "MultiPolygon", "coordinates": []},
+            }
+        ],
+    }
+
+    with (
+        patch("src.tools.geospatial.geocode_address", new_callable=AsyncMock) as mock_geo,
+        patch("src.tools.geospatial.httpx.AsyncClient") as mock_client_cls,
+    ):
+        mock_geo.return_value = (41.9478, -87.6553)  # Wrigley Field coordinates
+
+        mock_resp = MagicMock()
+        mock_resp.json.return_value = mock_socrata_response
+        mock_resp.raise_for_status = MagicMock()
+        mock_client = AsyncMock()
+        mock_client.get.return_value = mock_resp
+        mock_client.__aenter__ = AsyncMock(return_value=mock_client)
+        mock_client.__aexit__ = AsyncMock(return_value=False)
+        mock_client_cls.return_value = mock_client
+
+        result = await tools["get_parcel_zoning"](address="1060 W Addison St")
+
+    assert "error" not in result, f"Expected no error, got: {result.get('error')}"
+    assert result.get("zone_class") == "B3-2"
+
+
+# ---------------------------------------------------------------------------
+# Q46 — address + development envelope chain (mocked)
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+async def test_eval_q46_address_development_chain():
+    """Eval Q46: address lookup followed by development envelope calculation.
+
+    Mocks both geocoder and parcel API. Confirms the zone returned by parcel
+    lookup can feed into calculate_development_envelope.
+    """
+    from unittest.mock import MagicMock
+
+    mcp_t = FastMCP("test")
+    all_tools: dict = {}
+    original = mcp_t.tool
+
+    def capture(*args, **kwargs):
+        dec = original(*args, **kwargs)
+
+        def wrap(fn):
+            all_tools[fn.__name__] = fn
+            return dec(fn)
+
+        return wrap
+
+    mcp_t.tool = capture
+    register_geospatial_tools(mcp_t)
+    register_development_tools(mcp_t)
+
+    mock_socrata_response = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "properties": {"zone_class": "B3-2", "zone_type": "6"},
+                "geometry": {},
+            }
+        ],
+    }
+
+    with (
+        patch("src.tools.geospatial.geocode_address", new_callable=AsyncMock) as mock_geo,
+        patch("src.tools.geospatial.httpx.AsyncClient") as mock_client_cls,
+    ):
+        mock_geo.return_value = (41.9478, -87.6553)
+
+        mock_resp = MagicMock()
+        mock_resp.json.return_value = mock_socrata_response
+        mock_resp.raise_for_status = MagicMock()
+        mock_client = AsyncMock()
+        mock_client.get.return_value = mock_resp
+        mock_client.__aenter__ = AsyncMock(return_value=mock_client)
+        mock_client.__aexit__ = AsyncMock(return_value=False)
+        mock_client_cls.return_value = mock_client
+
+        parcel_result = await all_tools["get_parcel_zoning"](address="5555 N Sheridan Rd")
+
+    assert "error" not in parcel_result
+    zone = parcel_result.get("zone_class")
+    assert zone is not None
+
+    # Now calculate development envelope with returned zone + 4000 sqft lot
+    envelope = all_tools["calculate_development_envelope"](
+        district_code=zone, lot_area_sqft=4000
+    )
+    assert "error" not in envelope
+    assert envelope["max_floor_area_sqft"] > 0
+
+
+# ---------------------------------------------------------------------------
+# Q47 — list all district types returns non-empty list
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q47_list_all_district_types(district_tools):
+    """Eval Q47: list_district_types() with no category returns all districts."""
+    result = district_tools["list_district_types"]()
+    assert isinstance(result, list)
+    assert len(result) >= 50, f"Expected 50+ districts, got {len(result)}"
+    # Each district should have required keys
+    for d in result[:5]:
+        assert "district_type_code" in d
+        assert "category" in d
+        assert "floor_area_ratio" in d
+
+
+# ---------------------------------------------------------------------------
+# Q48 — search "sign regulations" returns relevant chapter
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q48_search_sign_regulations(code_search_tools):
+    """Eval Q48: search_zoning_code('sign regulations') returns Title 17 sections."""
+    fixture = _CODE_SEARCH_FIXTURE + [
+        {
+            "section": "17-12-0100",
+            "title": "Sign Regulations — General",
+            "chapter": "Chapter 17-12",
+            "text": (
+                "Sign regulations in this chapter apply to all signs visible from a "
+                "public street or right-of-way. Commercial signs must comply with size, "
+                "height, and illumination standards by district type."
+            ),
+            "source_file": "chapter_17-12.txt",
+        },
+    ]
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=fixture,
+    ):
+        result = code_search_tools["search_zoning_code"](query="sign regulations")
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    assert any("sign" in r["title"].lower() or "sign" in r["text"].lower()
+               for r in result["results"])
+
+
+# ---------------------------------------------------------------------------
+# Q49 — RT-4 height limit is present and parseable
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q49_rt4_height_limit(district_tools):
+    """Eval Q49: RT-4 lookup returns a maximum_building_height value."""
+    result = district_tools["lookup_district"](district_code="RT-4")
+    assert "error" not in result
+    height = result.get("maximum_building_height", "")
+    assert height, "Expected a non-empty maximum_building_height for RT-4"
+
+
+# ---------------------------------------------------------------------------
+# Q50 — RM-5 FAR is higher than RT-4
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q50_rm5_far_higher_than_rt4(district_tools):
+    """Eval Q50: RM-5 FAR should be higher than RT-4 FAR."""
+    rt4 = district_tools["lookup_district"](district_code="RT-4")
+    rm5 = district_tools["lookup_district"](district_code="RM-5")
+    assert "error" not in rt4
+    assert "error" not in rm5
+    rt4_far = float(rt4["floor_area_ratio"])
+    rm5_far = float(rm5["floor_area_ratio"])
+    assert rm5_far >= rt4_far, (
+        f"Expected RM-5 FAR ({rm5_far}) >= RT-4 FAR ({rt4_far})"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q51 — homeowner RS-3 summary with index: lookup + search
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q51_homeowner_rs3_with_index(district_tools, code_search_tools):
+    """Eval Q51: homeowner RS-3 summary uses both district lookup and code search."""
+    district_result = district_tools["lookup_district"](district_code="RS-3")
+    assert "error" not in district_result
+    assert district_result["district_type_code"] == "RS-3"
+
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_RS3,
+    ):
+        search_result = code_search_tools["search_zoning_code"](
+            query="residential zoning requirements"
+        )
+    assert "error" not in search_result
+    assert search_result["result_count"] >= 1
+
+
+# ---------------------------------------------------------------------------
+# Q52 — ADU code search returns accessory dwelling sections
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q52_adu_code_sections(code_search_tools):
+    """Eval Q52: 'accessory dwelling unit' search returns relevant ordinance sections."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE,
+    ):
+        result = code_search_tools["search_zoning_code"](
+            query="accessory dwelling unit property"
+        )
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    assert any(
+        "accessory" in r.get("title", "").lower() or "accessory" in r.get("text", "").lower()
+        for r in result["results"]
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q53 — compare RS-3 vs RT-4 height and FAR differences
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q53_rs3_rt4_height_comparison(district_tools):
+    """Eval Q53: RS-3 and RT-4 comparison shows height and FAR differences."""
+    result = district_tools["compare_districts"](district_a="RS-3", district_b="RT-4")
+    assert "error" not in result
+    # Both height and FAR should differ
+    assert "floor_area_ratio" in result["_differences"]
+    assert result["floor_area_ratio"]["RS-3"] != result["floor_area_ratio"]["RT-4"]
+
+
+# ---------------------------------------------------------------------------
+# Q54 — RS-3 max dwelling units on 8000 sqft = 3
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q54_rs3_8000_units(development_tools):
+    """Eval Q54: RS-3 on 8000 sqft lot → 3 max dwelling units (floor(8000/2500))."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RS-3", lot_area_sqft=8000
+    )
+    assert "error" not in result
+    assert result["max_dwelling_units"] == 3
+
+
+# ---------------------------------------------------------------------------
+# Q55 — RT-4 max floor area on 3000 sqft lot = 3600
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q55_rt4_3000_floor_area(development_tools):
+    """Eval Q55: RT-4 FAR 1.2 × 3000 sqft lot = 3600 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RT-4", lot_area_sqft=3000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(3600.0)

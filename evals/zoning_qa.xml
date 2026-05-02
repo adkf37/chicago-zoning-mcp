@@ -298,4 +298,75 @@
     <notes>B1-3 FAR is 3.0; 2500 sqft * 3.0 = 7500 sqft.</notes>
   </question>
 
+  <!-- Address-specific questions (requires live geocoding + Socrata) -->
+  <question id="45" tool="get_parcel_zoning" type="geospatial" requires_network="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="parcel_zoning_api">
+    <prompt>What is the zoning at Wrigley Field (1060 W Addison St)?</prompt>
+    <answer_contains>B3-2</answer_contains>
+    <notes>Wrigley Field is in a B3-2 community shopping district.</notes>
+  </question>
+
+  <question id="46" tool="multi_step" type="multi_step" requires_network="true" question_type="recommendation" prompt_complexity="simple" audience="professional_developer" data_source="parcel_zoning_api">
+    <prompt>What can I build on a 4,000 sqft lot at 5555 N Sheridan Rd?</prompt>
+    <expected_tools>get_parcel_zoning, calculate_development_envelope</expected_tools>
+    <answer_contains>sqft</answer_contains>
+    <notes>Requires parcel lookup then development envelope. Address is in Edgewater.</notes>
+  </question>
+
+  <question id="47" tool="list_district_types" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>List all zoning district types in Chicago.</prompt>
+    <answer_contains>RS-3</answer_contains>
+    <notes>Should call list_district_types with no filter and return all districts.</notes>
+  </question>
+
+  <question id="48" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_zoning_code">
+    <prompt>What does the Chicago zoning code say about sign regulations?</prompt>
+    <answer_contains>17-12</answer_contains>
+    <notes>Sign regulations are in Chapter 17-12.</notes>
+  </question>
+
+  <question id="49" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in an RT-4 district?</prompt>
+    <answer_contains>RT-4</answer_contains>
+    <notes>RT-4 height limit lookup.</notes>
+  </question>
+
+  <question id="50" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Which allows more floor area: RT-4 or RM-5?</prompt>
+    <answer_contains>RM-5</answer_contains>
+    <notes>RM-5 FAR is higher than RT-4 FAR.</notes>
+  </question>
+
+  <!-- Homeowner multi-step scenarios -->
+  <question id="51" tool="multi_step" type="multi_step" requires_index="true" question_type="summary" prompt_complexity="simple" audience="homeowner" data_source="chicago_zoning_code">
+    <prompt>I am a homeowner in RS-3. What zoning code requirements apply to my property?</prompt>
+    <expected_tools>lookup_district, search_zoning_code</expected_tools>
+    <answer_contains>RS-3</answer_contains>
+    <notes>Homeowner summary requires district data plus ordinance text search.</notes>
+  </question>
+
+  <question id="52" tool="search_zoning_code" type="code_search" requires_index="true" question_type="checklist" prompt_complexity="simple" audience="homeowner" data_source="chicago_zoning_code">
+    <prompt>I want to build an accessory dwelling unit on my property. What zoning code sections apply?</prompt>
+    <answer_contains>accessory</answer_contains>
+    <notes>ADU search should return Chapter 17-3 sections.</notes>
+  </question>
+
+  <question id="53" tool="multi_step" type="multi_step" question_type="recommendation" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the difference in maximum height between RS-3 and RT-4?</prompt>
+    <expected_tools>compare_districts</expected_tools>
+    <answer_contains>RT-4</answer_contains>
+    <notes>Height comparison between two residential districts.</notes>
+  </question>
+
+  <question id="54" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>How many dwelling units can I build on an 8,000 sqft RS-3 lot?</prompt>
+    <answer_regex>\b(3|three)\b</answer_regex>
+    <notes>8000 / 2500 = 3.2, so 3 units (floor division).</notes>
+  </question>
+
+  <question id="55" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area for a 3,000 sqft lot in RT-4?</prompt>
+    <answer_contains>3600</answer_contains>
+    <notes>RT-4 FAR is 1.2; 3000 * 1.2 = 3600 sqft.</notes>
+  </question>
+
 </eval_suite>
