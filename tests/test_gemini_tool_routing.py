@@ -112,7 +112,10 @@ def test_address_development_question_chains_parcel_then_envelope():
 
 
 def test_structured_dc16_question_routes_to_lookup():
-    """Q22: Structured professional prompt for DC-16 routes to lookup_district (code search may also fire)."""
+    """Q22: Structured professional prompt for DC-16 routes to lookup_district.
+
+    A code-search call may also fire because the prompt mentions 'code section'.
+    """
     client = _client()
 
     with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):

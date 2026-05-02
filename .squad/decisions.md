@@ -526,3 +526,52 @@ smaller models (llama3.1:8b). No functional code was changed; only docstrings.
 - `T5-ollama-llm-testing.md` — Ollama end-to-end testing
 
 **Test count:** 109 offline tests still passing; `ruff check` still 0 errors.
+
+### 2026-05-02 — Data Pipeline — Build pass: ingestion depth, eval coverage, front-end polish
+
+**Context:** Eval results from 2026-05-01 (`eval_results_050126.txt`) show 14/20 pass rate
+on the live web app. FEEDBACK.md requests: (1) expanded test suite, (2) improved performance,
+(3) better code ingestion, (4) professional front-end design inspired by Plan_for_Chicago_2030.
+
+**Decision 1: Ingestion overhaul — subsection and letter-suffix support**
+
+The original `parse_sections_from_text` used `^(?:Sec\.\s+)?` which only matched section
+headers at column 0 (no leading whitespace). amlegal.com encodes indentation with non-breaking
+spaces (`\xa0`), so subsections like `\xa0\xa0\xa017-15-0101 Scope.` were invisible to the old
+regex. Changed to `^\s*` which matches any whitespace including `\xa0`.
+
+Also extended the section-number capture group from `17-\d{1,2}-\d{4}[A-Za-z]?` to
+`17-\d{1,2}-\d{4}(?:-[A-Za-z])?` to correctly match hyphen-letter sub-items (e.g. 17-15-0102-A).
+
+Added `_clean_text()` to strip amlegal.com boilerplate (`ShareDownloadBookmarkPrint`,
+Disclaimer text) from section body text.
+
+**Impact:** sections.json grew from **130 → 1,888 sections** across chapters 17-2 to 17-17.
+Subsections like `17-15-0101 Scope` are now directly indexable via `get_zoning_section`.
+
+**Decision 2: SECTION_RE update in gemini_client.py**
+
+Extended `SECTION_RE` from `r"\b17-\d{1,2}-\d{3,4}\b"` to
+`r"\b17-\d{1,2}-\d{3,4}(?:-[A-Za-z])?\b"` so that questions like "What does section
+17-15-0102-A say?" are routed to `get_zoning_section` via the local context path.
+
+**Decision 3: Eval test expansion**
+
+Added 15 new offline tests to `tests/test_evals.py` covering Q21–Q44 (offline subset:
+district lookups, development envelopes, code search with fixture index). Added 8 new
+tests to `tests/test_gemini_tool_routing.py` for structured prompts, developer-style
+questions, and letter-suffixed section routing. Total test count: 144 (was 118).
+
+**Decision 4: Front-end refresh**
+
+Replaced the generic Tailwind blue (#1e40af) with the official Chicago Municipal blue
+(#003087) and complementary accent (#0057A8). Added a stats bar showing live index metrics
+(1,888 sections, 8 tools, 200+ district codes), Inter font, animated typing indicator,
+improved markdown rendering (list styles, code blocks), and a 5th suggestion chip for
+section lookups. The update preserves all existing API contract (`/api/chat`, tool badges,
+error handling).
+
+**Chapter 17-1 note:** The raw file for Chapter 17-1 (Title, Purpose, Definitions) is not
+present in `data/title_17/raw/`. The validate_index function now emits a specific advisory
+warning rather than a generic "chapters missing" warning. A human must download and add
+`chapter_17-01.txt` to complete the index.
