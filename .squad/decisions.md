@@ -3,7 +3,40 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
-### 2026-05-02 — Data Pipeline — Eval expansion Q121–Q140, front-end redesign, routing improvements
+### 2026-05-02 — Data Pipeline — Eval expansion Q141–Q160, full district coverage
+
+**Context:** Eval suite previously covered 140 questions (Q1–Q140). Audit of `data/zoning_codes.csv`
+revealed 18 districts still lacked eval coverage: RS-1, RS-2, RT-3.5, RM-4.5, RM-5, RM-5.5,
+B1-5, B2-5, B3-1, C1-3, C2-3, M1-1, M2-1, M2-2, M2-3, DR-3, DR-5, POS-2. Two comparison
+pairs (RM-5 vs RM-5.5, M2-2 vs M2-3) were also absent.
+
+**Decisions:**
+
+1. **Eval suite extended to 160 questions** — Added Q141–Q160 to `evals/zoning_qa.xml`:
+   - Q141–Q142: RS-1 FAR (0.5), RS-2 lot area per unit (5,000 sqft)
+   - Q143–Q146: RT-3.5 height (35 ft), RM-4.5 FAR (1.5), RM-5 height (45 ft),
+     RM-5.5 lot area per unit (400 sqft)
+   - Q147–Q149: B1-5 envelope (2000 sqft lot → 10,000 sqft), B2-5 FAR (5.0), B3-1 category
+   - Q150–Q154: C1-3 FAR (3.0), C2-3 height (50 ft), M1-1 FAR (1.0), M2-1 category,
+     M2-2 height (45 ft)
+   - Q155–Q158: M2-3 envelope (3000 sqft lot → 9,000 sqft), DR-3 FAR (3.0),
+     DR-5 envelope (2000 sqft lot → 10,000 sqft), POS-2 FAR (0.05)
+   - Q159–Q160: RM-5 vs RM-5.5 comparison (RM-5.5 higher), M2-2 vs M2-3 (M2-3 higher)
+
+2. **20 new eval tests** — `tests/test_evals.py` Q141–Q160 add offline coverage for
+   FAR values, height limits, lot-area-per-unit strings, development envelope calculations,
+   category names, and comparison rankings for all newly covered districts.
+
+3. **Full district coverage achieved** — Every district in `data/zoning_codes.csv` with
+   well-defined FAR values now has at least one eval question. Districts T and PMD have
+   variable/undefined FAR ("Varies by PMD" / None) and are excluded from FAR-based eval
+   questions by design.
+
+**Impact:**
+- Test count: 279 → 299; eval suite: 140 → 160 questions.
+- `ruff check src/ tests/ web/` → 0 errors.
+- Every district code with defined FAR now has eval coverage.
+
 
 **Context:** FEEDBACK.md goals: (1) expand test suite with wider questions including
 zoning code text and specific addresses; (2) improve performance for 100% accuracy;

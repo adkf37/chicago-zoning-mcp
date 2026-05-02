@@ -889,4 +889,126 @@
     <notes>B2-3 FAR is 3.0; B2-1 FAR is 1.0.</notes>
   </question>
 
+  <!-- Q141-Q160: Remaining district coverage — RS-1, RS-2, RT-3.5, RM series, B/C/M variants, DR, POS-2 -->
+
+  <question id="141" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for an RS-1 single-family residential district?</prompt>
+    <answer>0.5</answer>
+    <notes>RS-1 FAR is 0.5.</notes>
+  </question>
+
+  <question id="142" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in an RS-2 district?</prompt>
+    <answer_contains>5000</answer_contains>
+    <notes>RS-2 requires 5,000 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="143" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in an RT-3.5 two-flat residential district?</prompt>
+    <answer_contains>35</answer_contains>
+    <notes>RT-3.5 maximum building height is 35 ft, 2.5 stories.</notes>
+  </question>
+
+  <question id="144" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the FAR for an RM-4.5 multi-unit residential district?</prompt>
+    <answer>1.5</answer>
+    <notes>RM-4.5 FAR is 1.5.</notes>
+  </question>
+
+  <question id="145" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in an RM-5 multi-unit residential district?</prompt>
+    <answer_contains>45</answer_contains>
+    <notes>RM-5 maximum building height is 45 ft, 4 stories.</notes>
+  </question>
+
+  <question id="146" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in an RM-5.5 district?</prompt>
+    <answer_contains>400</answer_contains>
+    <notes>RM-5.5 requires 400 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="147" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>How much floor area can I build on a 2,000 sqft lot in a B1-5 district?</prompt>
+    <answer_contains>10000</answer_contains>
+    <notes>B1-5 FAR is 5.0; 2000 × 5.0 = 10,000 sqft.</notes>
+  </question>
+
+  <question id="148" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the FAR for a B2-5 neighborhood mixed-use district?</prompt>
+    <answer>5.0</answer>
+    <notes>B2-5 FAR is 5.0.</notes>
+  </question>
+
+  <question id="149" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What category does the B3-1 zoning district fall under?</prompt>
+    <answer_contains>Business</answer_contains>
+    <notes>B3-1 is a Business/Shopping district.</notes>
+  </question>
+
+  <question id="150" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the FAR for a C1-3 neighborhood commercial district?</prompt>
+    <answer>3.0</answer>
+    <notes>C1-3 FAR is 3.0.</notes>
+  </question>
+
+  <question id="151" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a C2-3 motor vehicle commercial district?</prompt>
+    <answer_contains>50</answer_contains>
+    <notes>C2-3 maximum building height is 50 ft, 4 stories.</notes>
+  </question>
+
+  <question id="152" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the FAR for an M1-1 limited manufacturing district?</prompt>
+    <answer>1.0</answer>
+    <notes>M1-1 FAR is 1.0.</notes>
+  </question>
+
+  <question id="153" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What category does the M2-1 zoning district fall under?</prompt>
+    <answer_contains>Manufacturing</answer_contains>
+    <notes>M2-1 is a Manufacturing/Industrial district.</notes>
+  </question>
+
+  <question id="154" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in an M2-2 general manufacturing district?</prompt>
+    <answer_contains>45</answer_contains>
+    <notes>M2-2 maximum building height is 45 ft, 4 stories.</notes>
+  </question>
+
+  <question id="155" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 3,000 sqft lot in M2-3?</prompt>
+    <answer_contains>9000</answer_contains>
+    <notes>M2-3 FAR is 3.0; 3000 × 3.0 = 9,000 sqft.</notes>
+  </question>
+
+  <question id="156" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the FAR for a DR-3 downtown residential district?</prompt>
+    <answer>3.0</answer>
+    <notes>DR-3 FAR is 3.0.</notes>
+  </question>
+
+  <question id="157" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>How much floor area can I build on a 2,000 sqft lot in a DR-5 downtown residential district?</prompt>
+    <answer_contains>10000</answer_contains>
+    <notes>DR-5 FAR is 5.0; 2000 × 5.0 = 10,000 sqft.</notes>
+  </question>
+
+  <question id="158" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the FAR for a POS-2 parks and open space district?</prompt>
+    <answer>0.05</answer>
+    <notes>POS-2 FAR is 0.05.</notes>
+  </question>
+
+  <question id="159" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare RM-5 and RM-5.5 multi-unit residential districts. Which has a higher FAR?</prompt>
+    <answer_contains>RM-5.5</answer_contains>
+    <notes>RM-5.5 FAR is 2.5; RM-5 FAR is 2.0.</notes>
+  </question>
+
+  <question id="160" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare M2-2 and M2-3 general manufacturing districts. Which allows more floor area?</prompt>
+    <answer_contains>M2-3</answer_contains>
+    <notes>M2-3 FAR is 3.0; M2-2 FAR is 2.2.</notes>
+  </question>
+
 </eval_suite>
