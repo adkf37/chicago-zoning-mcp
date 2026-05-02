@@ -1011,4 +1011,126 @@
     <notes>M2-3 FAR is 3.0; M2-2 FAR is 2.2.</notes>
   </question>
 
+  <!-- Q161-Q180: Additional multi-step, code-text, address, and edge-case coverage -->
+
+  <question id="161" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for a B1-1.5 neighborhood shopping district?</prompt>
+    <answer>1.5</answer>
+    <notes>B1-1.5 FAR is 1.5.</notes>
+  </question>
+
+  <question id="162" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 4,000 sqft lot in an M3-3 heavy manufacturing district?</prompt>
+    <answer_contains>12000</answer_contains>
+    <notes>M3-3 FAR is 3.0; 4000 × 3.0 = 12,000 sqft.</notes>
+  </question>
+
+  <question id="163" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a DX-16 downtown mixed-use district?</prompt>
+    <answer_contains>115</answer_contains>
+    <notes>DX-16 requires 115 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="164" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the FAR for a DC-12 downtown core district?</prompt>
+    <answer>12.0</answer>
+    <notes>DC-12 FAR is 12.0.</notes>
+  </question>
+
+  <question id="165" tool="list_district_types" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>List all downtown mixed-use zoning districts in Chicago.</prompt>
+    <answer_contains>DX-3</answer_contains>
+    <notes>Should return DX-series districts (DX-3, DX-5, DX-7, DX-12, DX-16).</notes>
+  </question>
+
+  <question id="166" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare B1-1 and B1-1.5 neighborhood shopping districts. Which allows more floor area?</prompt>
+    <answer_contains>B1-1.5</answer_contains>
+    <notes>B1-1.5 FAR is 1.5; B1-1 FAR is 1.0.</notes>
+  </question>
+
+  <question id="167" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>How many dwelling units can I fit on a 12,000 sqft lot zoned RM-4.5?</prompt>
+    <answer_regex>\b(16|sixteen)\b</answer_regex>
+    <notes>RM-4.5 lot_area_per_unit is 750 sqft; 12000 / 750 = 16 units.</notes>
+  </question>
+
+  <question id="168" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare DS-3 and DS-5 downtown service districts. Which has a higher FAR?</prompt>
+    <answer_contains>DS-5</answer_contains>
+    <notes>DS-5 FAR is 5.0; DS-3 FAR is 3.0.</notes>
+  </question>
+
+  <question id="169" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 3,000 sqft lot in a C3-5 commercial manufacturing district?</prompt>
+    <answer_contains>15000</answer_contains>
+    <notes>C3-5 FAR is 5.0; 3000 × 5.0 = 15,000 sqft.</notes>
+  </question>
+
+  <question id="170" tool="get_zoning_section" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>What does section 17-13-0300 of the Chicago zoning code say?</prompt>
+    <answer_contains>planned</answer_contains>
+    <notes>Section 17-13-0300 covers Planned Development Application Procedures.</notes>
+  </question>
+
+  <question id="171" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a DC-16 downtown core district?</prompt>
+    <answer_contains>115</answer_contains>
+    <notes>DC-16 requires 115 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="172" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 10,000 sqft lot in an M3-3 heavy manufacturing district?</prompt>
+    <answer_contains>30000</answer_contains>
+    <notes>M3-3 FAR is 3.0; 10000 × 3.0 = 30,000 sqft.</notes>
+  </question>
+
+  <question id="173" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a B1-2 neighborhood shopping district?</prompt>
+    <answer_contains>700</answer_contains>
+    <notes>B1-2 requires 700 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="174" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>What does the Chicago zoning code say about green roof or sustainability requirements?</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>Sustainability and green roof requirements appear in Title 17.</notes>
+  </question>
+
+  <question id="175" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>Which allows higher residential density: RM-5 or RM-6?</prompt>
+    <answer_contains>RM-6</answer_contains>
+    <notes>RM-6 FAR is 4.4; RM-5 FAR is 2.0. RM-6 allows much higher density.</notes>
+  </question>
+
+  <question id="176" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>What does the Chicago zoning code say about certificate of zoning compliance?</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>Certificate of zoning compliance is addressed in Title 17.</notes>
+  </question>
+
+  <question id="177" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in an M3-3 heavy manufacturing district?</prompt>
+    <answer_contains>55</answer_contains>
+    <notes>M3-3 maximum building height is 55 ft, 5 stories.</notes>
+  </question>
+
+  <question id="178" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>How many dwelling units can I fit on a 10,000 sqft lot zoned RM-5?</prompt>
+    <answer_regex>\b(20|twenty)\b</answer_regex>
+    <notes>RM-5 lot_area_per_unit is 500 sqft; 10000 / 500 = 20 units.</notes>
+  </question>
+
+  <question id="179" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare B1-1.5 and B1-2 neighborhood shopping districts. Which has a higher FAR?</prompt>
+    <answer_contains>B1-2</answer_contains>
+    <notes>B1-2 FAR is 2.2; B1-1.5 FAR is 1.5.</notes>
+  </question>
+
+  <question id="180" tool="get_parcel_zoning" type="address_lookup" requires_network="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_data_portal">
+    <prompt>What is the zoning district at 233 S Wacker Dr in Chicago?</prompt>
+    <answer_contains>DC-16</answer_contains>
+    <notes>Willis Tower is in a DC-16 Downtown Core district.</notes>
+  </question>
+
 </eval_suite>

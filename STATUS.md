@@ -11,10 +11,10 @@
 
 ## Current Objective
 
-**Build phase — eval suite expanded to 160 questions; 299 tests passing; full district coverage achieved.**
+**Build phase — eval suite expanded to 180 questions; 319 tests passing; frontend redesigned.**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
-- `pytest tests/ -m "not network"` → **299 passed, 5 deselected** ✅ (up from 279)
+- `pytest tests/ -m "not network"` → **319 passed, 5 deselected** ✅ (up from 299)
 - `ruff check src/ tests/ web/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
@@ -24,17 +24,20 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 
 ## Recent Activity
 
-- 2026-05-02 (this pass): Eval suite expanded to 160 questions; full district coverage:
-  - **Eval suite expanded to Q141–Q160** — Added 20 new questions to `evals/zoning_qa.xml`
-    covering every previously-untested district: RS-1, RS-2, RT-3.5, RM-4.5, RM-5, RM-5.5,
-    B1-5, B2-5, B3-1, C1-3, C2-3, M1-1, M2-1, M2-2, M2-3, DR-3, DR-5, POS-2, and two
-    new comparison questions (RM-5 vs RM-5.5, M2-2 vs M2-3).
-  - **20 new eval tests** — `tests/test_evals.py` Q141–Q160 verify FAR values, height limits,
-    lot-area-per-unit strings, development envelope calculations, category names, and
-    comparison rankings for all remaining uncovered districts.
-  - **Full district coverage** — Every district code in `data/zoning_codes.csv` now has at
-    least one eval question (except T and PMD, which have variable/undefined FAR values).
-  - **Impact**: Test count: 279 → 299; eval suite: 140 → 160 questions.
+- 2026-05-02 (this pass): Eval suite expanded to 180 questions; frontend redesigned:
+  - **Eval suite expanded to Q161–Q180** — Added 20 new questions to `evals/zoning_qa.xml`
+    covering: B1-1.5, M3-3, DX-16, DC-12 districts; multi-step address lookup (Willis Tower
+    → DC-16, mocked); green roof/sustainability code search; certificate of zoning compliance
+    search; new comparison pairs (B1-1 vs B1-1.5, DS-3 vs DS-5, RM-5 vs RM-6, B1-1.5 vs B1-2).
+  - **20 new eval tests** — `tests/test_evals.py` Q161–Q180 verify FAR values, development
+    envelopes, address routing (mocked), and zoning-code-text searches with new fixture sections.
+  - **Frontend redesigned** — `web/templates/index.html` upgraded: larger hero headline
+    (`clamp(2.4rem)`), bigger stats numbers (`clamp(1.4rem)`), subtle crosshatch background
+    grid, new 3-column "Capabilities" evidence cards (replacing how-it-works section),
+    color tokens aligned to Plan_for_Chicago_2030 palette.
+  - **Impact**: Test count: 299 → 319; eval suite: 160 → 180 questions.
+
+- 2026-05-02 (previous pass): Eval suite expanded to 160 questions; 299 tests passing; full district coverage achieved.
 
 - 2026-05-02 (previous pass): Eval suite expanded to 140 questions; front-end redesigned; routing improved.
 
@@ -43,8 +46,8 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 ## Next Recommended Step
 
 **Validate phase.** Run `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>` to
-measure live eval pass-rate against the full 160-question harness. Prior live eval score
-was 14/20 (70%) on 20 questions; the new target is ≥90% on 160 questions.
+measure live eval pass-rate against the full 180-question harness. Prior live eval score
+was 14/20 (70%) on 20 questions; the new target is ≥90% on 180 questions.
 
 ## Artifacts
 
@@ -62,8 +65,9 @@ was 14/20 (70%) on 20 questions; the new target is ≥90% on 160 questions.
 | Squad routing rules | `.squad/routing.md` | created |
 | Squad decisions log | `.squad/decisions.md` | updated |
 | Sprint plan | `.squad/sprint.md` | created |
-| Eval suite | `evals/zoning_qa.xml` | 160 questions (Q1–Q160) |
-| Eval tests | `tests/test_evals.py` | 299 tests passing |
+| Eval suite | `evals/zoning_qa.xml` | 180 questions (Q1–Q180) |
+| Eval tests | `tests/test_evals.py` | 319 tests passing |
+| Frontend | `web/templates/index.html` | redesigned — capabilities cards, larger hero |
 
 ## Needs Human Input
 
@@ -72,6 +76,6 @@ was 14/20 (70%) on 20 questions; the new target is ≥90% on 160 questions.
   `python scripts/ingest_title_17.py` to rebuild the index with all 17 chapters.
 
 - **Live eval run** (~15 min) — Execute `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>`
-  to measure pass-rate against the 160-question harness.
+  to measure pass-rate against the 180-question harness.
 
 - **MCP Inspector verification** (~30 min) — Run `npx @modelcontextprotocol/inspector python -m src.server`.
