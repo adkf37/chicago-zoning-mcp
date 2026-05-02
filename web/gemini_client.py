@@ -748,6 +748,16 @@ class GeminiZoningClient:
                 "bonus",
                 "affordable housing",
                 "site plan",
+                "variance",
+                "special use",
+                "landscape",
+                "landscaping",
+                "overlay",
+                "certificate of occupancy",
+                "use approval",
+                "rezoning process",
+                "application process",
+                "approval process",
             )
         )
 

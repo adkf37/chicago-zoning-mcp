@@ -369,4 +369,66 @@
     <notes>RT-4 FAR is 1.2; 3000 * 1.2 = 3600 sqft.</notes>
   </question>
 
+  <!-- Extended evaluation set — setbacks, variance/special-use, landscaping, new districts -->
+
+  <question id="56" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the minimum front yard setback for an RS-3 district?</prompt>
+    <answer_contains>15</answer_contains>
+    <notes>RS-3 front_yard_setback is 15 ft.</notes>
+  </question>
+
+  <question id="57" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>What is the process for obtaining a zoning variance in Chicago?</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>Variance procedures are in Chapter 17-13.</notes>
+  </question>
+
+  <question id="58" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_zoning_code">
+    <prompt>Find Chicago zoning code sections about landscaping and green space requirements.</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>Landscaping requirements appear in multiple Title 17 chapters.</notes>
+  </question>
+
+  <question id="59" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in RS-2?</prompt>
+    <answer_contains>5000</answer_contains>
+    <notes>RS-2 requires 5,000 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="60" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the difference in lot area per dwelling unit between RS-3 and RT-4?</prompt>
+    <answer_contains>RT-4</answer_contains>
+    <notes>RS-3 requires 2,500 sqft/unit; RT-4 requires 1,000 sqft/unit.</notes>
+  </question>
+
+  <question id="61" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 20,000 sqft lot in B3-2?</prompt>
+    <answer_contains>44000</answer_contains>
+    <notes>B3-2 FAR is 2.2; 20000 * 2.2 = 44,000 sqft.</notes>
+  </question>
+
+  <question id="62" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>What Chicago zoning code requirements apply to special use permits?</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>Special use permit procedures are covered in Title 17.</notes>
+  </question>
+
+  <question id="63" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What category does the M1-1 zoning district fall under?</prompt>
+    <answer_contains>Manufacturing</answer_contains>
+    <notes>M1-1 is a light manufacturing/industrial district.</notes>
+  </question>
+
+  <question id="64" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Which downtown district allows more floor area: DX-7 or DX-12?</prompt>
+    <answer_contains>DX-12</answer_contains>
+    <notes>DX-12 FAR is 12.0; DX-7 FAR is 7.0.</notes>
+  </question>
+
+  <question id="65" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the maximum building height in an RS-2 district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>RS-2 maximum building height is 30 ft, 2 stories.</notes>
+  </question>
+
 </eval_suite>

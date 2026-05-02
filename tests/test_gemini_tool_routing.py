@@ -299,3 +299,72 @@ def test_rt4_lot_area_routes_to_development():
 
     assert _tool_names(calls) == ["calculate_development_envelope"]
     assert calls[0]["args"] == {"district_code": "RT-4", "lot_area_sqft": 3000.0}
+
+
+def test_rs3_setback_routes_to_lookup():
+    """Q56: Setback question with district code routes to lookup_district."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "What is the minimum front yard setback for an RS-3 district?"
+        )
+
+    names = _tool_names(calls)
+    assert "lookup_district" in names
+    lookup_call = next(c for c in calls if c["name"] == "lookup_district")
+    assert lookup_call["args"] == {"district_code": "RS-3"}
+
+
+def test_variance_routes_to_code_search():
+    """Q57: Variance process question (no district code) routes to search_zoning_code."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "What is the process for obtaining a zoning variance in Chicago?"
+        )
+
+    names = _tool_names(calls)
+    assert "search_zoning_code" in names
+
+
+def test_landscaping_routes_to_code_search():
+    """Q58: Landscaping requirements question routes to search_zoning_code."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "Find Chicago zoning code sections about landscaping requirements."
+        )
+
+    names = _tool_names(calls)
+    assert "search_zoning_code" in names
+
+
+def test_dx7_vs_dx12_comparison_routes_to_compare():
+    """Q64: DX-7 vs DX-12 comparison routes to compare_districts."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "Which downtown district allows more floor area: DX-7 or DX-12?"
+        )
+
+    names = _tool_names(calls)
+    assert "compare_districts" in names
+    compare_call = next(c for c in calls if c["name"] == "compare_districts")
+    assert set(compare_call["args"].values()) == {"DX-7", "DX-12"}
+
+
+def test_b3_2_large_lot_routes_to_development():
+    """Q61: Large lot B3-2 floor area question routes to calculate_development_envelope."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "What is the maximum floor area on a 20,000 sqft lot in B3-2?"
+        )
+
+    assert _tool_names(calls) == ["calculate_development_envelope"]
+    assert calls[0]["args"] == {"district_code": "B3-2", "lot_area_sqft": 20000.0}

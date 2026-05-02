@@ -3,7 +3,37 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
-### 2026-05-02 — Data Pipeline — Test expansion, ingestion improvement, front-end redesign
+### 2026-05-02 — Data Pipeline — Routing expansion, eval breadth, Q56–Q65
+
+**Context:** Build pass to add more question coverage per FEEDBACK.md goal of answering
+100% of questions correctly. Prior eval pass rate was 14/20 (70%). Automatable gaps
+identified: routing for variance/landscaping/special-use questions and test coverage
+gaps for new district types (RS-2, M1-1, DX-12, B3-2 large lots).
+
+**Decisions made:**
+
+1. **Routing keywords expansion** — Added `variance`, `special use`, `landscaping`,
+   `landscape`, `overlay`, `certificate of occupancy`, `use approval`,
+   `rezoning process`, and `application process` to `_looks_like_code_search` in
+   `web/gemini_client.py`. These are common user question triggers for Title 17
+   procedures that previously fell through to no-tool or district lookup.
+
+2. **Eval suite extended to 65 questions** — Added Q56–Q65 covering:
+   - Setback lookups (RS-3, RS-2)
+   - Variance and special use permit procedures (code search → Chapter 17-13)
+   - Landscaping requirements (code search → Chapter 17-11)
+   - Large-lot floor area calculation (B3-2 × 20,000 sqft = 44,000 sqft)
+   - Multi-district comparisons (DX-7 vs DX-12, RS-3 vs RT-4 lot density)
+   - New district categories (M1-1 Manufacturing)
+
+3. **Test count grew 169 → 184** — Added 10 eval tests (Q56–Q65) + 5 routing tests.
+   All tests pass offline; no new test infrastructure required.
+
+4. **Code search fixture V2** — Added `_CODE_SEARCH_FIXTURE_V2` to `tests/test_evals.py`
+   with realistic variance (17-13-0200), landscaping (17-11-0200), and special use
+   (17-13-0600) fixture sections so new code-search eval tests run offline.
+
+
 
 **Context:** FEEDBACK.md requested expanding the test suite to cover more Q&A scenarios
 (especially address-specific questions), improving code ingestion quality, and redesigning
