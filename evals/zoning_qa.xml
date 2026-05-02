@@ -645,4 +645,126 @@
     <notes>Should call list_district_types with a Downtown filter and return DX/DC/DR/DS districts.</notes>
   </question>
 
+  <!-- Q101-Q120: Additional district coverage — untested districts and edge cases -->
+
+  <question id="101" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the FAR for the DC-12 downtown core district?</prompt>
+    <answer>12.0</answer>
+    <notes>DC-12 FAR is 12.0.</notes>
+  </question>
+
+  <question id="102" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What category does the DR-10 zoning district fall under?</prompt>
+    <answer_contains>Downtown</answer_contains>
+    <notes>DR-10 is a Downtown Residential district.</notes>
+  </question>
+
+  <question id="103" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 2,000 sqft lot zoned DX-16?</prompt>
+    <answer_contains>32000</answer_contains>
+    <notes>DX-16 FAR is 16.0; 2000 × 16 = 32,000 sqft.</notes>
+  </question>
+
+  <question id="104" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare DC-12 and DC-16 downtown core districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>DC-16</answer_contains>
+    <notes>DC-16 FAR is 16.0; DC-12 FAR is 12.0.</notes>
+  </question>
+
+  <question id="105" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for an M3-3 heavy manufacturing district?</prompt>
+    <answer>3.0</answer>
+    <notes>M3-3 FAR is 3.0.</notes>
+  </question>
+
+  <question id="106" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the maximum building height in a B1-1.5 neighborhood shopping district?</prompt>
+    <answer_contains>35</answer_contains>
+    <notes>B1-1.5 maximum building height is 35 ft, 3 stories.</notes>
+  </question>
+
+  <question id="107" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>How much floor area can I build on a 3,000 sqft lot in C1-2?</prompt>
+    <answer_contains>6600</answer_contains>
+    <notes>C1-2 FAR is 2.2; 3000 × 2.2 = 6,600 sqft.</notes>
+  </question>
+
+  <question id="108" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the FAR for an M1-2 limited manufacturing district?</prompt>
+    <answer_contains>2.2</answer_contains>
+    <notes>M1-2 FAR is 2.2.</notes>
+  </question>
+
+  <question id="109" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare DR-10 and DR-7 downtown residential districts. Which has a higher FAR?</prompt>
+    <answer_contains>DR-10</answer_contains>
+    <notes>DR-10 FAR is 10.0; DR-7 FAR is 7.0.</notes>
+  </question>
+
+  <question id="110" tool="list_district_types" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>List all residential zoning districts in Chicago.</prompt>
+    <answer_contains>RT-4</answer_contains>
+    <notes>Should return RS, RT, and RM districts.</notes>
+  </question>
+
+  <question id="111" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 4,000 sqft lot in B3-3?</prompt>
+    <answer_contains>12000</answer_contains>
+    <notes>B3-3 FAR is 3.0; 4000 × 3.0 = 12,000 sqft.</notes>
+  </question>
+
+  <question id="112" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in RM-6.5?</prompt>
+    <answer_contains>145</answer_contains>
+    <notes>RM-6.5 requires 145 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="113" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare RM-6 and RM-6.5 multi-unit residential districts. Which allows higher density?</prompt>
+    <answer_contains>RM-6.5</answer_contains>
+    <notes>RM-6.5 FAR is 6.6; RM-6 FAR is 4.4.</notes>
+  </question>
+
+  <question id="114" tool="list_district_types" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>List all downtown service zoning districts in Chicago.</prompt>
+    <answer_contains>DS-3</answer_contains>
+    <notes>Should return DS-3 and DS-5 districts.</notes>
+  </question>
+
+  <question id="115" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare DX-3 and DX-7 downtown mixed-use districts. Which allows more floor area?</prompt>
+    <answer_contains>DX-7</answer_contains>
+    <notes>DX-7 FAR is 7.0; DX-3 FAR is 3.0.</notes>
+  </question>
+
+  <question id="116" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a C2-2 motor vehicle commercial district?</prompt>
+    <answer_contains>38</answer_contains>
+    <notes>C2-2 maximum building height is 38 ft, 3 stories.</notes>
+  </question>
+
+  <question id="117" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for a B2-1 neighborhood mixed-use district?</prompt>
+    <answer>1.0</answer>
+    <notes>B2-1 FAR is 1.0.</notes>
+  </question>
+
+  <question id="118" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What category does the C3-1 commercial manufacturing district fall under?</prompt>
+    <answer_contains>Commercial</answer_contains>
+    <notes>C3-1 is a Commercial district.</notes>
+  </question>
+
+  <question id="119" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 5,000 sqft lot in B3-5?</prompt>
+    <answer_contains>25000</answer_contains>
+    <notes>B3-5 FAR is 5.0; 5000 × 5.0 = 25,000 sqft.</notes>
+  </question>
+
+  <question id="120" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>How much floor area can I build on a 0.5 acre lot zoned RS-3?</prompt>
+    <answer_contains>19602</answer_contains>
+    <notes>0.5 acre = 21,780 sqft; RS-3 FAR 0.9 × 21,780 = 19,602 sqft.</notes>
+  </question>
+
 </eval_suite>

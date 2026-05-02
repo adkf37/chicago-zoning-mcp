@@ -2,6 +2,8 @@
 
 from unittest.mock import patch
 
+import pytest
+
 from web.gemini_client import GeminiZoningClient
 
 
@@ -550,3 +552,81 @@ def test_show_me_residential_districts_routes_to_list():
     assert "list_district_types" in names
     list_call = next(c for c in calls if c["name"] == "list_district_types")
     assert list_call["args"].get("category") == "Residential"
+
+
+def test_dc12_far_routes_to_lookup():
+    """Q101: 'What is the FAR for DC-12?' routes to lookup_district."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "What is the FAR for the DC-12 downtown core district?"
+        )
+
+    assert _tool_names(calls) == ["lookup_district"]
+    assert calls[0]["args"] == {"district_code": "DC-12"}
+
+
+def test_dx16_development_routes_to_envelope():
+    """Q103: DX-16 + lot area routes to calculate_development_envelope."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "What is the maximum floor area on a 2,000 sqft lot zoned DX-16?"
+        )
+
+    assert _tool_names(calls) == ["calculate_development_envelope"]
+    assert calls[0]["args"] == {"district_code": "DX-16", "lot_area_sqft": 2000.0}
+
+
+def test_dc12_vs_dc16_comparison_routes_to_compare():
+    """Q104: 'Compare DC-12 and DC-16' routes to compare_districts."""
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "Compare DC-12 and DC-16 downtown core districts. Which allows a higher FAR?"
+        )
+
+    names = _tool_names(calls)
+    assert "compare_districts" in names
+    compare_call = next(c for c in calls if c["name"] == "compare_districts")
+    assert set(compare_call["args"].values()) == {"DC-12", "DC-16"}
+
+
+def test_list_downtown_service_routes_to_list():
+    """Q114: 'List all downtown service districts' routes to list_district_types
+    with category 'Downtown Service'.
+    """
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "List all downtown service zoning districts in Chicago."
+        )
+
+    names = _tool_names(calls)
+    assert "list_district_types" in names
+    list_call = next(c for c in calls if c["name"] == "list_district_types")
+    assert list_call["args"].get("category") == "Downtown Service", (
+        f"Expected 'Downtown Service', got: {list_call['args'].get('category')!r}"
+    )
+
+
+def test_acre_lot_area_routes_to_development():
+    """Q120: '0.5 acre lot in RS-3' routes to calculate_development_envelope
+    with lot area converted from acres to sqft (0.5 × 43560 = 21780).
+    """
+    client = _client()
+
+    with patch.object(GeminiZoningClient, "_execute_tool", side_effect=_fake_tool):
+        calls = client._collect_tool_context(
+            "How much floor area can I build on a 0.5 acre lot zoned RS-3?"
+        )
+
+    assert _tool_names(calls) == ["calculate_development_envelope"]
+    assert calls[0]["args"]["district_code"] == "RS-3"
+    assert calls[0]["args"]["lot_area_sqft"] == pytest.approx(
+        0.5 * GeminiZoningClient.SQFT_PER_ACRE
+    )

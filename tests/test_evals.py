@@ -1991,3 +1991,275 @@ def test_eval_q100_list_downtown_districts(district_tools):
     assert isinstance(result, list), f"Expected list, got {type(result)}"
     codes = [d["district_type_code"] for d in result]
     assert "DX-7" in codes, f"Expected DX-7 in Downtown Mixed-Use list, got: {codes}"
+
+
+# ---------------------------------------------------------------------------
+# Q101 — DC-12 FAR is 12.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q101_dc12_far(district_tools):
+    """Eval Q101: DC-12 FAR should be 12.0."""
+    result = district_tools["lookup_district"](district_code="DC-12")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(12.0)
+
+
+# ---------------------------------------------------------------------------
+# Q102 — DR-10 category is Downtown Residential
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q102_dr10_category(district_tools):
+    """Eval Q102: DR-10 category should contain 'Downtown'."""
+    result = district_tools["lookup_district"](district_code="DR-10")
+    assert "error" not in result
+    assert "Downtown" in result["category"]
+
+
+# ---------------------------------------------------------------------------
+# Q103 — DX-16 max floor area on 2000 sqft lot = 32000
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q103_dx16_2000_envelope(development_tools):
+    """Eval Q103: DX-16 FAR 16.0 × 2000 sqft lot = 32,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="DX-16", lot_area_sqft=2000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(32000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q104 — DC-16 has higher FAR than DC-12
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q104_dc16_higher_far_than_dc12(district_tools):
+    """Eval Q104: compare_districts DC-12 vs DC-16 — DC-16 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="DC-12", district_b="DC-16")
+    assert "error" not in result
+    dc12_far = float(result["floor_area_ratio"]["DC-12"])
+    dc16_far = float(result["floor_area_ratio"]["DC-16"])
+    assert dc16_far > dc12_far, f"Expected DC-16 FAR ({dc16_far}) > DC-12 FAR ({dc12_far})"
+    assert "floor_area_ratio" in result["_differences"]
+
+
+# ---------------------------------------------------------------------------
+# Q105 — M3-3 FAR is 3.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q105_m3_3_far(district_tools):
+    """Eval Q105: M3-3 heavy manufacturing FAR should be 3.0."""
+    result = district_tools["lookup_district"](district_code="M3-3")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(3.0)
+
+
+# ---------------------------------------------------------------------------
+# Q106 — B1-1.5 height limit contains "35"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q106_b1_1_5_height(district_tools):
+    """Eval Q106: B1-1.5 maximum building height should mention 35 ft."""
+    result = district_tools["lookup_district"](district_code="B1-1.5")
+    assert "error" not in result
+    height = result.get("maximum_building_height", "")
+    assert "35" in str(height), f"Expected '35' in height '{height}'"
+
+
+# ---------------------------------------------------------------------------
+# Q107 — C1-2 max floor area on 3000 sqft lot = 6600
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q107_c1_2_3000_envelope(development_tools):
+    """Eval Q107: C1-2 FAR 2.2 × 3000 sqft lot = 6,600 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="C1-2", lot_area_sqft=3000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(6600.0)
+
+
+# ---------------------------------------------------------------------------
+# Q108 — M1-2 FAR is 2.2
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q108_m1_2_far(district_tools):
+    """Eval Q108: M1-2 limited manufacturing FAR should be 2.2."""
+    result = district_tools["lookup_district"](district_code="M1-2")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(2.2)
+
+
+# ---------------------------------------------------------------------------
+# Q109 — DR-10 has higher FAR than DR-7
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q109_dr10_higher_far_than_dr7(district_tools):
+    """Eval Q109: compare_districts DR-7 vs DR-10 — DR-10 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="DR-7", district_b="DR-10")
+    assert "error" not in result
+    dr7_far = float(result["floor_area_ratio"]["DR-7"])
+    dr10_far = float(result["floor_area_ratio"]["DR-10"])
+    assert dr10_far > dr7_far, f"Expected DR-10 FAR ({dr10_far}) > DR-7 FAR ({dr7_far})"
+
+
+# ---------------------------------------------------------------------------
+# Q110 — list_district_types("Residential") includes RT-4
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q110_list_residential_includes_rt4(district_tools):
+    """Eval Q110: list_district_types('Residential') should include RT-4."""
+    result = district_tools["list_district_types"](category="Residential")
+    assert isinstance(result, list)
+    codes = [d["district_type_code"] for d in result]
+    assert "RT-4" in codes, f"Expected RT-4 in Residential list, got: {codes}"
+
+
+# ---------------------------------------------------------------------------
+# Q111 — B3-3 max floor area on 4000 sqft lot = 12000
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q111_b3_3_4000_envelope(development_tools):
+    """Eval Q111: B3-3 FAR 3.0 × 4000 sqft lot = 12,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="B3-3", lot_area_sqft=4000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(12000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q112 — RM-6.5 lot area per unit contains "145"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q112_rm6_5_lot_area_per_unit(district_tools):
+    """Eval Q112: RM-6.5 lot_area_per_unit should reference 145 sqft."""
+    result = district_tools["lookup_district"](district_code="RM-6.5")
+    assert "error" not in result
+    lot_area = result.get("lot_area_per_unit", "")
+    assert "145" in str(lot_area).replace(",", ""), (
+        f"Expected '145' in lot_area_per_unit '{lot_area}'"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q113 — RM-6.5 has higher FAR than RM-6
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q113_rm6_5_higher_far_than_rm6(district_tools):
+    """Eval Q113: compare_districts RM-6 vs RM-6.5 — RM-6.5 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="RM-6", district_b="RM-6.5")
+    assert "error" not in result
+    rm6_far = float(result["floor_area_ratio"]["RM-6"])
+    rm6_5_far = float(result["floor_area_ratio"]["RM-6.5"])
+    assert rm6_5_far > rm6_far, f"Expected RM-6.5 FAR ({rm6_5_far}) > RM-6 FAR ({rm6_far})"
+
+
+# ---------------------------------------------------------------------------
+# Q114 — list_district_types("Downtown Service") includes DS-3
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q114_list_downtown_service_includes_ds3(district_tools):
+    """Eval Q114: list_district_types('Downtown Service') should include DS-3."""
+    result = district_tools["list_district_types"](category="Downtown Service")
+    assert isinstance(result, list)
+    codes = [d["district_type_code"] for d in result]
+    assert "DS-3" in codes, f"Expected DS-3 in Downtown Service list, got: {codes}"
+
+
+# ---------------------------------------------------------------------------
+# Q115 — DX-7 has higher FAR than DX-3
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q115_dx7_higher_far_than_dx3(district_tools):
+    """Eval Q115: compare_districts DX-3 vs DX-7 — DX-7 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="DX-3", district_b="DX-7")
+    assert "error" not in result
+    dx3_far = float(result["floor_area_ratio"]["DX-3"])
+    dx7_far = float(result["floor_area_ratio"]["DX-7"])
+    assert dx7_far > dx3_far, f"Expected DX-7 FAR ({dx7_far}) > DX-3 FAR ({dx3_far})"
+
+
+# ---------------------------------------------------------------------------
+# Q116 — C2-2 height limit contains "38"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q116_c2_2_height(district_tools):
+    """Eval Q116: C2-2 maximum building height should mention 38 ft."""
+    result = district_tools["lookup_district"](district_code="C2-2")
+    assert "error" not in result
+    height = result.get("maximum_building_height", "")
+    assert "38" in str(height), f"Expected '38' in height '{height}'"
+
+
+# ---------------------------------------------------------------------------
+# Q117 — B2-1 FAR is 1.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q117_b2_1_far(district_tools):
+    """Eval Q117: B2-1 neighborhood mixed-use FAR should be 1.0."""
+    result = district_tools["lookup_district"](district_code="B2-1")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(1.0)
+
+
+# ---------------------------------------------------------------------------
+# Q118 — C3-1 category is Commercial
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q118_c3_1_category(district_tools):
+    """Eval Q118: C3-1 commercial manufacturing category should contain 'Commercial'."""
+    result = district_tools["lookup_district"](district_code="C3-1")
+    assert "error" not in result
+    assert "Commercial" in result["category"], (
+        f"Expected 'Commercial' in category '{result['category']}'"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q119 — B3-5 max floor area on 5000 sqft lot = 25000
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q119_b3_5_5000_envelope(development_tools):
+    """Eval Q119: B3-5 FAR 5.0 × 5000 sqft lot = 25,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="B3-5", lot_area_sqft=5000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(25000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q120 — RS-3 on 0.5 acre lot → 19602 sqft max floor area (acre routing)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q120_rs3_half_acre_envelope(development_tools):
+    """Eval Q120: RS-3 FAR 0.9 × 0.5 acre (21780 sqft) = 19,602 sqft max floor area."""
+    from web.gemini_client import GeminiZoningClient
+
+    # 0.5 acres converted to sqft using the canonical constant
+    lot_sqft = 0.5 * GeminiZoningClient.SQFT_PER_ACRE  # 21780.0
+    result = development_tools["calculate_development_envelope"](
+        district_code="RS-3", lot_area_sqft=lot_sqft
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(19602.0)

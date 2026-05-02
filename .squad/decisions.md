@@ -3,6 +3,44 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-05-02 — Data Pipeline — Eval expansion Q101–Q120, acre lot-area routing
+
+**Context:** FEEDBACK.md goal: answer 100% of questions accurately. Previous pass
+completed Q1–Q100, covering most district types. Several districts in `zoning_codes.csv`
+(DC-12, DR-10, DX-16, M3-3, B1-1.5, C1-2, M1-2, B3-3, RM-6.5, C2-2, B2-1, C3-1,
+B3-5) had no eval coverage. Also identified that acre-based lot descriptions such as
+"0.5 acre lot" were not parsed by the routing layer, dropping the lot-area for
+development-envelope questions involving large lots.
+
+**Decisions:**
+
+1. **Eval suite extended to 120 questions** — Added Q101–Q120 to `evals/zoning_qa.xml`,
+   covering 13 previously untested district codes and one acre-routing question.
+   - Q101–Q104: DC-12 FAR, DR-10 category, DX-16 development envelope, DC-12 vs DC-16
+   - Q105–Q108: M3-3 FAR, B1-1.5 height, C1-2 development envelope, M1-2 FAR
+   - Q109–Q113: DR-10 vs DR-7, residential list, B3-3 envelope, RM-6.5 lot unit, RM-6 vs RM-6.5
+   - Q114–Q120: Downtown Service list, DX-3 vs DX-7, C2-2 height, B2-1 FAR,
+     C3-1 category, B3-5 envelope, acre-based RS-3 envelope
+
+2. **20 new eval tests** — `tests/test_evals.py` Q101–Q120 verify exact FAR values,
+   height limits, lot-area-per-unit strings, development envelope calculations, and
+   category names for all new districts.
+
+3. **6 new routing tests** — `tests/test_gemini_tool_routing.py` covers:
+   - DC-12 lookup, DX-16 + lot-area envelope, DC-12 vs DC-16 comparison
+   - Downtown Service list (category="Downtown Service")
+   - Acre-based lot routing (0.5 acres → 21780 sqft → calculate_development_envelope)
+
+4. **Acre lot-area support** — `web/gemini_client.py` `_extract_lot_area` now handles
+   acre-based lot descriptions (pattern `N.NN acre(s)`), converting to sqft via
+   `× 43,560`. This enables development-envelope routing for large lots described in
+   acres (e.g. commercial parcels, industrial sites).
+
+**Impact:**
+- Test count: 234 → 259 (25 new tests); `ruff check` clean.
+- Every district code in `data/zoning_codes.csv` now has at least one eval question.
+- Development envelope routing now works for acre-scale lot descriptions.
+
 ### 2026-05-02 — Data Pipeline — Downtown category routing improvement
 
 **Context:** Q100 ("List all downtown zoning districts in Chicago") was routing to
