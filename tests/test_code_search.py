@@ -444,3 +444,81 @@ def test_parser_does_not_overwrite_parent_text_when_already_set():
     assert parent is not None
     # The parent's original body text should be preserved
     assert "citywide" in parent["text"], "Original parent text should be preserved"
+
+
+def test_parser_handles_nbsp_separator():
+    """Parser handles non-breaking space (\\xa0) as sentence separator in section titles.
+
+    amlegal.com sometimes encodes the separator between a section heading and its
+    inline body text as '.<\\xa0>' instead of '. '.  The parser should normalize it
+    so that the body content is correctly extracted into the text field.
+    """
+    from scripts.ingest_title_17 import parse_sections_from_text
+
+    sample = (
+        "17-6-0404 Nonconforming Uses.\xa0"
+        "Nonconforming uses may be replaced only with allowed uses.\n\n"
+        "17-6-0405 Development Standards.\nStandards text here.\n"
+    )
+    sections = parse_sections_from_text(sample)
+    s = next((s for s in sections if s["section"] == "17-6-0404"), None)
+    assert s is not None, "Section 17-6-0404 should be parsed"
+    assert "nonconforming uses may be replaced" in s["text"].lower(), (
+        f"Expected body text in 17-6-0404, got text={s['text']!r}"
+    )
+
+
+def test_parser_populates_header_section_from_numeric_children():
+    """Empty x00 header sections get aggregated text from their numbered children.
+
+    Section-group headers (e.g. 17-2-0100 'District descriptions') have no inline
+    body text of their own.  After parsing, the aggregation step should populate
+    them with a summary of their child section titles (0101, 0102, ...).
+    """
+    from scripts.ingest_title_17 import parse_sections_from_text
+
+    sample = """\
+17-2-0100 District descriptions.
+
+   17-2-0101 Generally. The R districts are intended for residential use.
+
+   17-2-0102 RS Districts. The RS districts accommodate single-family detached houses.
+"""
+    sections = parse_sections_from_text(sample)
+    header = next((s for s in sections if s["section"] == "17-2-0100"), None)
+    assert header is not None, "Header section 17-2-0100 should be in the output"
+    assert header["text"], "Header section should get non-empty text from children"
+    assert header["text"].startswith("Sections in this group:"), (
+        f"Expected 'Sections in this group:' prefix, got: {header['text'][:200]!r}"
+    )
+    assert "17-2-0101" in header["text"] or "17-2-0102" in header["text"], (
+        f"Header text should reference child sections, got: {header['text'][:200]!r}"
+    )
+
+
+def test_parser_uses_title_as_text_for_list_items():
+    """Single-line list items (letter-suffix) with no body text use their title as text.
+
+    amlegal.com encodes list criteria as single-line letter-suffix sections, e.g.
+    '17-3-0502-A have a high concentration of stores and restaurants;'.
+    Because there is no multi-line body, the parser must fall back to the title.
+    """
+    from scripts.ingest_title_17 import parse_sections_from_text
+
+    sample = """\
+17-3-0502 Pedestrian Streets. Criteria for qualifying pedestrian streets.
+
+   17-3-0502-A have a high concentration of existing stores and restaurants;
+   17-3-0502-B abut a street with a right-of-way of 80 feet or less;
+
+17-3-0503 Next Section. Following content here.
+"""
+    sections = parse_sections_from_text(sample)
+    item_a = next((s for s in sections if s["section"] == "17-3-0502-A"), None)
+    assert item_a is not None, "List item 17-3-0502-A should be parsed"
+    assert item_a["text"], "List item should have non-empty text (title fallback)"
+    in_text = "concentration" in item_a["text"].lower()
+    in_title = "concentration" in item_a["title"].lower()
+    assert in_text or in_title, (
+        f"Expected 'concentration' in text or title, got text={item_a['text']!r}"
+    )

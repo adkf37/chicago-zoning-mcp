@@ -641,3 +641,46 @@ error handling).
 present in `data/title_17/raw/`. The validate_index function now emits a specific advisory
 warning rather than a generic "chapters missing" warning. A human must download and add
 `chapter_17-01.txt` to complete the index.
+
+### 2026-05-02 — Data Pipeline — Build pass: ingestion depth improvement (0 empty sections)
+
+**Context:** After the previous build pass, `sections.json` had **188 sections with empty text**.
+These fell into three categories:
+1. Inline-body sections where the content follows the heading on the same line, separated by
+   `".\xa0"` (period + non-breaking space) rather than `". "` (period + regular space).
+2. Section-group header sections (ending in a multiple of 100, e.g. `17-2-0100`) that serve
+   as organizational headers with no body text of their own, but have numeric child sections.
+3. Single-line list items (letter-suffix, e.g. `17-3-0502-A`) where the entire content is the
+   heading text itself, with no multi-line body.
+
+**Decision 1: `\xa0` normalization**
+
+Added `replace("\xa0", " ")` when extracting `raw_title` from the regex match. amlegal.com
+uses non-breaking spaces (`\xa0`) in some section headers as the separator between the
+section title and its inline body (e.g. `"Nonconforming Uses.\xa0Nonconforming uses may be..."`).
+Normalizing to regular space allows the existing `". "` split to work correctly.
+Fixed 1 section directly (17-6-0404).
+
+**Decision 2: Numeric child aggregation (Post-process 2)**
+
+Added a post-processing step that finds empty sections ending in a multiple of 100
+(e.g. `17-2-0100`, `17-2-0200`) and populates their text with a "Sections in this group:"
+summary of child section titles (17-2-0101, 17-2-0102, ...). This makes `get_zoning_section`
+useful for these organizational headers and ensures they appear in keyword search results.
+Fixed ~89 header sections.
+
+**Decision 3: Title-as-text fallback (Post-process 3)**
+
+Added a final fallback: any section still empty after the above steps has its title copied
+into the text field. This covers:
+- Letter-suffix list items like `17-3-0502-A "have a high concentration of stores..."`
+- Reserved placeholder sections (`17-2-0304-B "Reserved"`)
+- Any other single-line sections
+
+Fixed ~98 remaining sections. Result: **0 empty sections** in 1,888-section index.
+
+**Test count:** 187 offline tests passing (was 184). Added 3 new parser tests:
+- `test_parser_handles_nbsp_separator`
+- `test_parser_populates_header_section_from_numeric_children`
+- `test_parser_uses_title_as_text_for_list_items`
+
