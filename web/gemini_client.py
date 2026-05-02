@@ -630,6 +630,10 @@ class GeminiZoningClient:
 
     @staticmethod
     def _extract_district_category(question_lower: str) -> str:
+        # More-specific phrases must appear BEFORE shorter prefixes so the
+        # first-match logic returns the most precise category.
+        # e.g. "downtown core" must precede "downtown" so that a question
+        # about "downtown core districts" returns "Downtown Core", not "Downtown".
         categories = {
             "residential": "Residential",
             "business": "Business/Shopping",
@@ -639,6 +643,13 @@ class GeminiZoningClient:
             "industrial": "Manufacturing/Industrial",
             "downtown core": "Downtown Core",
             "downtown mixed": "Downtown Mixed-Use",
+            "downtown residential": "Downtown Residential",
+            "downtown service": "Downtown Service",
+            # Generic "downtown" catch-all — matches any downtown question not
+            # caught by the more specific entries above.  The data loader uses
+            # partial-match logic, so category="Downtown" returns DX, DC, DR,
+            # and DS districts (all whose category name contains "Downtown").
+            "downtown": "Downtown",
             "parks": "Parks and Open Space",
             "open space": "Parks and Open Space",
             "transportation": "Transportation",

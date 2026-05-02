@@ -3,6 +3,45 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-05-02 — Data Pipeline — Downtown category routing improvement
+
+**Context:** Q100 ("List all downtown zoning districts in Chicago") was routing to
+`list_district_types(category="")` which returned all 59 districts instead of just
+the 11 DX/DC/DR/DS downtown ones. The `_extract_district_category` helper only had
+entries for "downtown core" and "downtown mixed", so a bare "downtown" keyword fell
+through to the empty-string catch-all.
+
+**Decision:**
+
+1. **Extended `_extract_district_category`** — Added three new entries to
+   `web/gemini_client.py`, ordered most-specific first so the first-match logic
+   returns the most precise category:
+   - `"downtown residential"` → `"Downtown Residential"` (DR districts)
+   - `"downtown service"` → `"Downtown Service"` (DS districts)
+   - `"downtown"` → `"Downtown"` (catch-all; see note below)
+
+2. **Partial-match catch-all** — `get_districts_by_category("Downtown")` uses
+   `"downtown" in category.lower()` which matches "Downtown Mixed-Use", "Downtown Core",
+   "Downtown Residential", and "Downtown Service" — all four downtown category names.
+   So the catch-all correctly returns all 11 downtown districts.
+
+3. **More-specific entries preserved** — Because "downtown core" appears before
+   "downtown" in the iteration order, a question mentioning "downtown core districts"
+   still resolves to category "Downtown Core" (not the broader "Downtown").
+
+**Tests:**
+- `test_list_all_downtown_districts_routes_to_list` — tightened to assert that
+  `category.lower().startswith("downtown")`, not an empty string.
+- `test_list_downtown_core_districts_keeps_specific_category` — new; asserts that
+  "downtown core" questions still return "Downtown Core".
+- `test_list_manufacturing_districts_routes_to_list` — new; covers Q72
+  ("List all manufacturing districts") → `category="Manufacturing/Industrial"`.
+
+**Impact:**
+- Live eval Q100 now receives only the 11 relevant downtown districts, giving Gemini
+  a shorter, more precise context for answering "which downtown districts exist".
+- All 234 offline tests pass; `ruff check` clean.
+
 ### 2026-05-02 — Data Pipeline — Eval expansion Q81–Q100 and routing improvement
 
 **Context:** FEEDBACK.md requested expanding the test suite with a wider range of

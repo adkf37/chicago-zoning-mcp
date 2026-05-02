@@ -11,10 +11,10 @@
 
 ## Current Objective
 
-**Build phase — eval suite expanded to 100 questions; routing improved; 232 tests passing.**
+**Build phase — downtown category routing fixed; 234 tests passing.**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
-- `pytest tests/ -m "not network"` → **232 passed, 5 deselected** ✅ (up from 209)
+- `pytest tests/ -m "not network"` → **234 passed, 5 deselected** ✅ (up from 232)
 - `ruff check src/ tests/ web/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
@@ -24,7 +24,23 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 
 ## Recent Activity
 
-- 2026-05-02 (this pass): Eval suite expanded to 100 questions; routing improved:
+- 2026-05-02 (this pass): Downtown category routing fix:
+  - **`_extract_district_category` extended** — Added "downtown residential" →
+    "Downtown Residential", "downtown service" → "Downtown Service", and
+    "downtown" → "Downtown" (catch-all) to `web/gemini_client.py`. More-specific
+    phrases appear before the catch-all so "downtown core" questions still resolve
+    to "Downtown Core" (not the broader "Downtown").
+  - **Impact**: Q100-style "List all downtown zoning districts" now calls
+    `list_district_types(category="Downtown")` which returns the 11 DX/DC/DR/DS
+    districts instead of all 59 districts. The partial-match in `get_districts_by_category`
+    correctly matches all categories containing "Downtown".
+  - **2 new tests** — `test_list_all_downtown_districts_routes_to_list` tightened to
+    assert category starts with "Downtown"; added
+    `test_list_downtown_core_districts_keeps_specific_category` and
+    `test_list_manufacturing_districts_routes_to_list` (Q72). Total: **234 passing**
+    (was 232).
+
+- 2026-05-02 (previous pass): Eval suite expanded to 100 questions; routing improved:
   - **Eval suite expanded to 100 questions** — Added Q81–Q100 to `evals/zoning_qa.xml`
     covering 20 new scenarios across previously untested districts:
     RM-4.5, RM-6.5, B1-5, C2-3, M2-2, M2-1/M2-3, DX-3, DR-3, DS-5, POS-1, C3-2,
@@ -68,7 +84,7 @@ was 14/20 (70%) on 20 questions; the new target is 100% on 100 questions.
 | Squad decisions log | `.squad/decisions.md` | updated |
 | Sprint plan | `.squad/sprint.md` | created |
 | Eval suite | `evals/zoning_qa.xml` | 100 questions (Q1–Q100) |
-| Eval tests | `tests/test_evals.py` | 232 tests passing |
+| Eval tests | `tests/test_evals.py` | 234 tests passing |
 
 ## Needs Human Input
 
