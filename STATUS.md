@@ -11,10 +11,10 @@
 
 ## Current Objective
 
-**Build phase — eval suite expanded to 80 questions, routing improved, front-end redesigned.**
+**Build phase — ingestion word-boundary fix applied; sections.json regenerated.**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
-- `pytest tests/ -m "not network"` → **209 passed, 5 deselected** ✅ (was 187)
+- `pytest tests/ -m "not network"` → **209 passed, 5 deselected** ✅ (unchanged)
 - `ruff check src/ tests/ web/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
@@ -24,7 +24,19 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 
 ## Recent Activity
 
-- 2026-05-02 (this pass): Eval suite expansion, routing improvements, and front-end redesign:
+- 2026-05-02 (this pass): Ingestion word-boundary fix:
+  - **Root cause identified**: 372+ sections in `sections.json` had text starting
+    mid-word (e.g. "t 2 bicycle spaces..." instead of "at least 2 bicycle spaces...").
+    The parser cut single-line headers at exactly character 80, potentially splitting
+    a word.
+  - **Fix applied** to `scripts/ingest_title_17.py` `else` branch: use
+    `rfind(" ", 0, 80)` to find last word boundary before position 80 for the title,
+    and store the COMPLETE `raw_title` as body text for long (>80 char) single-line
+    sections, ensuring full searchability.
+  - **`sections.json` regenerated**: 1,888 sections, 0 empty — quality improved.
+  - All 209 tests still pass after regeneration.
+
+- 2026-05-02 (previous pass): Eval suite expanded to 80 questions, routing improved, front-end redesigned.
   - **Eval suite expanded to 80 questions** — Added Q66–Q80 to `evals/zoning_qa.xml` covering:
     - New district types: RS-1, RM-6, DR-7, M1-1/M1-3, POS-2, RT-3.5, RM-5.5, DS-3, B2-3, C1-5, DX-5
     - New calculations: RM-6 (FAR 4.4), POS-2 (FAR 0.05), RT-3.5 units, RM-5.5, B2-3, C1-5
