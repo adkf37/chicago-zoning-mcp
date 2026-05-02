@@ -251,6 +251,8 @@ class GeminiZoningClient:
     """Gemini client with manual function-calling loop and trace capture."""
 
     MAX_ITERATIONS = 5
+    # Conversion factor: 1 acre = 43,560 square feet (exact statutory value)
+    SQFT_PER_ACRE = 43560.0
     DISTRICT_RE = re.compile(
         (
             r"\b(?:"
@@ -707,14 +709,28 @@ class GeminiZoningClient:
 
     @staticmethod
     def _extract_lot_area(question: str) -> float | None:
+        # Precise number pattern: matches integers like '5000', comma-formatted
+        # numbers like '5,000', and decimals like '0.5' or '1,234.56'.
+        # Using \d{1,3}(?:,\d{3})* avoids catastrophic backtracking on inputs
+        # with arbitrary commas (unlike the ambiguous [\d,]+ quantifier).
+        _num = r"\d{1,3}(?:,\d{3})*(?:\.\d+)?"
+        # Square-footage pattern: "5,000 sqft", "5000 sq ft", "5000 square feet", etc.
         match = re.search(
-            r"([\d,]+(?:\.\d+)?)\s*(?:sq\.?\s*ft\.?|square\s+feet|sf|sqft)\b",
+            rf"({_num})\s*(?:sq\.?\s*ft\.?|square\s+feet|sf|sqft)\b",
             question,
             re.IGNORECASE,
         )
-        if not match:
-            return None
-        return float(match.group(1).replace(",", ""))
+        if match:
+            return float(match.group(1).replace(",", ""))
+        # Acre pattern: "0.5 acres", "1.5 acre", "2-acre", etc. (1 acre = 43,560 sq ft)
+        match = re.search(
+            rf"({_num})\s*-?\s*acres?\b",
+            question,
+            re.IGNORECASE,
+        )
+        if match:
+            return float(match.group(1).replace(",", "")) * GeminiZoningClient.SQFT_PER_ACRE
+        return None
 
     @staticmethod
     def _extract_address(question: str) -> str:
