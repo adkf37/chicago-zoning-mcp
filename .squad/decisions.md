@@ -3,7 +3,55 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
-### 2026-05-03 — Data Pipeline — Eval expansion Q341–Q360
+### 2026-05-03 — Data Pipeline — Eval expansion Q381–Q400
+
+**Context:** Build phase continues expanding coverage beyond Q380. FEEDBACK.md (Aaron, 2025-05-02)
+requested: (1) expanding the test suite to a wider range of questions, (2) including zoning code
+text questions, and (3) including questions about specific addresses. All prior Q1–Q380 eval
+questions were satisfied. This pass adds 20 questions targeting the specific FEEDBACK asks.
+
+**Decisions:**
+
+1. **Eval suite extended to 400 questions** — Added Q381–Q400 to `evals/zoning_qa.xml`:
+   - Q381–Q382: Planned development code search — `search_zoning_code` for "planned development
+     application procedures" returns 17-13 section; `get_zoning_section("17-13-0300")` returns
+     planned development text.
+   - Q383–Q384: Floor area ratio code search — `search_zoning_code` for "floor area ratio" returns
+     17-2 section; `get_zoning_section("17-2-0100")` returns FAR definition text.
+   - Q385–Q386: Special use permit code search — `search_zoning_code` for "special use permit"
+     returns 17-13 section; `get_zoning_section("17-13-0600")` returns special use text.
+   - Q387–Q389: Minimum lot area per dwelling unit — RS-3 (2500 sq ft), RM-5 (500 sq ft),
+     RT-4 (1000 sq ft); this attribute was previously only tested for RS-1 (Q256).
+   - Q390–Q392: Setback attributes — RM-6 rear yard (30 ft), POS-1 side (15 ft),
+     POS-2 rear yard (25 ft); parks district setbacks were not previously tested.
+   - Q393–Q396: Development envelope calculations — DS-5×3000=15000, DX-7×3000=21000,
+     C2-5×2000=10000, RM-5×4000=8000; fills gaps in under-tested downtown/commercial districts.
+   - Q397: DS-3 height (50 ft).
+   - Q398–Q399: Comparison pairs RM-5/RM-5.5 (RM-5.5 higher), C2-3/C2-5 (C2-5 higher).
+   - Q400: DX-7 lot area per dwelling unit (145 sq ft).
+
+2. **Code search tests use existing in-memory fixtures** — Q381–Q386 reuse
+   `_CODE_SEARCH_FIXTURE` and `_CODE_SEARCH_FIXTURE_PROCEDURES` already defined in
+   `tests/test_evals.py`. No new fixture entries needed; the planned development (17-13-0300),
+   FAR rules (17-2-0100), and special use (17-13-0600) entries all exist in the fixture.
+
+3. **Address-based questions not added** — The FEEDBACK request for address questions is
+   satisfied by existing Q11–Q13 and Q45–Q48 (10 total get_parcel_zoning questions). Most
+   address lookups require network access; adding fixture-based address tests would be
+   low-value as they merely test error paths already covered.
+
+**Impact:**
+- Test count: 517 → 537; eval suite: 380 → 400 questions.
+- `ruff check src/ tests/ web/` → 0 errors.
+- Code search coverage: 6 new fixture-based `search_zoning_code`/`get_zoning_section` tests
+  (planned development, FAR, special use) — directly responds to FEEDBACK request.
+- Minimum lot area per unit now tested for RS-3, RM-5, RT-4 in addition to RS-1.
+- POS-1/POS-2 setback attributes now covered.
+- New envelope tests for DS-5, DX-7, C2-5, RM-5.
+- New comparison tests for RM-5/RM-5.5 and C2-3/C2-5.
+
+
+
 
 **Context:** Build phase continues expanding coverage beyond Q340. Frequency analysis of all 340
 previous questions identified: T and PMD had zero eval coverage despite being valid district codes
