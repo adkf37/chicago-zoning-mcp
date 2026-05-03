@@ -1861,4 +1861,126 @@
     <notes>35 E Wacker Dr (downtown Chicago, Wacker Drive corridor) is typically in a DX downtown mixed-use district.</notes>
   </question>
 
+  <!-- Q301-Q320: Coverage expansion — undercovered districts (B3-1, M2-1, M2-2, C3-1, C3-2, B3-5, DX-7, DS-5, RM-5.5, DC-12) and missing attribute types (standalone FAR, height, envelope) -->
+
+  <question id="301" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for a B3-1 community shopping district?</prompt>
+    <answer>1.0</answer>
+    <notes>B3-1 FAR is 1.0. Larger-scale commercial and retail areas, lowest intensity in B3 series.</notes>
+  </question>
+
+  <question id="302" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a B3-1 community shopping district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>B3-1 maximum building height is 30 ft, 2 stories.</notes>
+  </question>
+
+  <question id="303" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 3,000 sqft lot zoned B3-1?</prompt>
+    <answer_contains>3000</answer_contains>
+    <notes>B3-1 FAR is 1.0; 3000 × 1.0 = 3,000 sqft.</notes>
+  </question>
+
+  <question id="304" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for an M2-1 general manufacturing district?</prompt>
+    <answer>1.0</answer>
+    <notes>M2-1 FAR is 1.0. General manufacturing and heavy industrial uses, lowest intensity in M2 series.</notes>
+  </question>
+
+  <question id="305" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in an M2-1 general manufacturing district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>M2-1 maximum building height is 30 ft, 2 stories.</notes>
+  </question>
+
+  <question id="306" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for an M2-2 general manufacturing district?</prompt>
+    <answer_contains>2.2</answer_contains>
+    <notes>M2-2 FAR is 2.2. General manufacturing with moderate intensity.</notes>
+  </question>
+
+  <question id="307" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 4,000 sqft lot zoned M2-2?</prompt>
+    <answer_contains>8800</answer_contains>
+    <notes>M2-2 FAR is 2.2; 4000 × 2.2 = 8,800 sqft.</notes>
+  </question>
+
+  <question id="308" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a C3-1 commercial manufacturing district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>C3-1 maximum building height is 30 ft, 2 stories.</notes>
+  </question>
+
+  <question id="309" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a C3-2 commercial manufacturing district?</prompt>
+    <answer_contains>38</answer_contains>
+    <notes>C3-2 maximum building height is 38 ft, 3 stories.</notes>
+  </question>
+
+  <question id="310" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for a B3-5 community shopping district?</prompt>
+    <answer>5.0</answer>
+    <notes>B3-5 FAR is 5.0. Community commercial with high density residential above.</notes>
+  </question>
+
+  <question id="311" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a B3-5 community shopping district?</prompt>
+    <answer_contains>65</answer_contains>
+    <notes>B3-5 maximum building height is 65 ft, 6 stories.</notes>
+  </question>
+
+  <question id="312" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in a DX-7 downtown mixed-use district?</prompt>
+    <answer_contains>80</answer_contains>
+    <notes>DX-7 maximum building height is 80 ft, 8 stories.</notes>
+  </question>
+
+  <question id="313" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in a DS-5 downtown service district?</prompt>
+    <answer_contains>65</answer_contains>
+    <notes>DS-5 maximum building height is 65 ft, 6 stories.</notes>
+  </question>
+
+  <question id="314" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the maximum building height in an RM-5.5 multi-unit residential district?</prompt>
+    <answer_contains>55</answer_contains>
+    <notes>RM-5.5 maximum building height is 55 ft, 5 stories.</notes>
+  </question>
+
+  <question id="315" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a DC-12 downtown core district?</prompt>
+    <answer_contains>115</answer_contains>
+    <notes>DC-12 requires 115 sq ft per dwelling unit. High-density downtown core with very small lot area per unit.</notes>
+  </question>
+
+  <question id="316" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare B3-1 and B3-2 community shopping districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>B3-2</answer_contains>
+    <notes>B3-2 FAR is 2.2; B3-1 FAR is 1.0. B3-2 allows higher floor area.</notes>
+  </question>
+
+  <question id="317" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare C3-1 and C3-2 commercial manufacturing districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>C3-2</answer_contains>
+    <notes>C3-2 FAR is 2.2; C3-1 FAR is 1.0. C3-2 allows higher floor area.</notes>
+  </question>
+
+  <question id="318" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 2,000 sqft lot zoned DS-5?</prompt>
+    <answer_contains>10000</answer_contains>
+    <notes>DS-5 FAR is 5.0; 2000 × 5.0 = 10,000 sqft.</notes>
+  </question>
+
+  <question id="319" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 3,000 sqft lot zoned B3-5?</prompt>
+    <answer_contains>15000</answer_contains>
+    <notes>B3-5 FAR is 5.0; 3000 × 5.0 = 15,000 sqft.</notes>
+  </question>
+
+  <question id="320" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 500 sqft lot zoned DC-12?</prompt>
+    <answer_contains>6000</answer_contains>
+    <notes>DC-12 FAR is 12.0; 500 × 12.0 = 6,000 sqft.</notes>
+  </question>
+
 </eval_suite>
