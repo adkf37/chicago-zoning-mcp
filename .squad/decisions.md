@@ -3,7 +3,46 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
-### 2026-05-03 — Data Pipeline — Eval expansion Q321–Q340
+### 2026-05-03 — Data Pipeline — Eval expansion Q341–Q360
+
+**Context:** Build phase continues expanding coverage beyond Q340. Frequency analysis of all 340
+previous questions identified: T and PMD had zero eval coverage despite being valid district codes
+returned by `list_district_types`. Height attribute was untested for 8 districts (DR-7, DR-10,
+DX-12, DX-16, DC-12, DC-16, B1-3, POS-2). Six districts (DR-7, DR-10, C2-1, RM-4.5, B1-3, M1-2)
+lacked development-envelope tests. Three comparison pairs (DR-5/DR-7, M1-2/M1-3, B1-1/B1-3) were
+absent. DR-7 lacked a lot-area-per-unit test.
+
+**Decisions:**
+
+1. **Eval suite extended to 360 questions** — Added Q341–Q360 to `evals/zoning_qa.xml`:
+   - Q341–Q342: Category tests for T (Transportation) and PMD (Manufacturing/Industrial).
+   - Q343–Q350: Height attribute tests for DR-7 (80 ft), DR-10/DX-12/DX-16/DC-12/DC-16
+     (no fixed limit), B1-3 (45 ft), POS-2 (30 ft).
+   - Q351–Q356: Development envelope: DR-7×2000=14000, DR-10×1000=10000, C2-1×3000=3000,
+     RM-4.5×2000=3000, B1-3×2000=6000, M1-2×4000=8800.
+   - Q357–Q359: Comparison pairs DR-5/DR-7 (DR-7 higher), M1-2/M1-3 (M1-3 higher),
+     B1-1/B1-3 (B1-3 higher).
+   - Q360: DR-7 lot area per dwelling unit (145 sq ft).
+
+2. **20 new offline eval tests** — `tests/test_evals.py` Q341–Q360 added; all are fully
+   offline (no network or index required).
+
+3. **Coverage rationale** — T and PMD are the only two district codes with zero eval questions
+   out of 59 total districts. Downtown districts (DX-12/16, DC-12/16, DR-10) all have no fixed
+   height limit — tested uniformly with "no limit" string match. B1-3 and POS-2 have fixed
+   heights (45 ft and 30 ft respectively) and previously had no height test. The envelope and
+   comparison gaps close the final systematic gaps across the six main attribute types.
+
+**Impact:**
+- Test count: 477 → 497; eval suite: 340 → 360 questions.
+- `ruff check src/ tests/ web/` → 0 errors.
+- T and PMD now have category coverage.
+- Height attribute tested for DR-7, DR-10, DX-12, DX-16, DC-12, DC-16, B1-3, POS-2.
+- Development envelope tested for DR-7, DR-10, C2-1, RM-4.5, B1-3, M1-2.
+- Comparison pairs DR-5/DR-7, M1-2/M1-3, B1-1/B1-3 now covered.
+- DR-7 lot-area-per-unit now verified.
+
+
 
 **Context:** Build phase continues expanding coverage beyond Q320. Attribute-type frequency
 analysis of all 320 previous questions identified: RT-4 had only comparison/envelope/category/

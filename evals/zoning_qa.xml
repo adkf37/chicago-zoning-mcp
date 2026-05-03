@@ -2103,4 +2103,126 @@
     <notes>B3-2 requires 700 sq ft per dwelling unit.</notes>
   </question>
 
+  <!-- Q341–Q360: Coverage gaps — T/PMD category; DR/DX/DC/B1-3/POS-2 height; envelopes; comparisons -->
+
+  <question id="341" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What category does the T transportation district fall under?</prompt>
+    <answer_contains>Transportation</answer_contains>
+    <notes>T is the Transportation zoning district.</notes>
+  </question>
+
+  <question id="342" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What category does the PMD planned manufacturing district fall under?</prompt>
+    <answer_contains>Manufacturing</answer_contains>
+    <notes>PMD (Planned Manufacturing District) falls under the Manufacturing/Industrial category.</notes>
+  </question>
+
+  <question id="343" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in a DR-7 downtown residential district?</prompt>
+    <answer_contains>80</answer_contains>
+    <notes>DR-7 maximum building height is 80 ft (8 stories).</notes>
+  </question>
+
+  <question id="344" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in a DR-10 downtown residential district?</prompt>
+    <answer_contains>No limit</answer_contains>
+    <notes>DR-10 has no fixed height limit; it is subject to FAR and bonus provisions.</notes>
+  </question>
+
+  <question id="345" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in a DX-12 downtown mixed-use district?</prompt>
+    <answer_contains>No limit</answer_contains>
+    <notes>DX-12 has no fixed height limit; it is subject to FAR and bonus provisions.</notes>
+  </question>
+
+  <question id="346" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in a DX-16 downtown mixed-use district?</prompt>
+    <answer_contains>No limit</answer_contains>
+    <notes>DX-16 has no fixed height limit; it is subject to FAR and bonus provisions.</notes>
+  </question>
+
+  <question id="347" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in a DC-12 downtown core district?</prompt>
+    <answer_contains>No limit</answer_contains>
+    <notes>DC-12 has no fixed height limit; it is subject to FAR and bonus provisions.</notes>
+  </question>
+
+  <question id="348" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in a DC-16 downtown core district?</prompt>
+    <answer_contains>No limit</answer_contains>
+    <notes>DC-16 has no fixed height limit; it is subject to FAR and bonus provisions.</notes>
+  </question>
+
+  <question id="349" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in a B1-3 neighborhood shopping district?</prompt>
+    <answer_contains>45</answer_contains>
+    <notes>B1-3 maximum building height is 45 ft (4 stories).</notes>
+  </question>
+
+  <question id="350" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a POS-2 regional parks and open space district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>POS-2 maximum building height is 30 ft (2 stories).</notes>
+  </question>
+
+  <question id="351" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 2,000 sqft lot zoned DR-7?</prompt>
+    <answer_contains>14000</answer_contains>
+    <notes>DR-7 FAR is 7.0; 2000 × 7.0 = 14,000 sqft.</notes>
+  </question>
+
+  <question id="352" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 1,000 sqft lot zoned DR-10?</prompt>
+    <answer_contains>10000</answer_contains>
+    <notes>DR-10 FAR is 10.0; 1000 × 10.0 = 10,000 sqft.</notes>
+  </question>
+
+  <question id="353" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 3,000 sqft lot zoned C2-1?</prompt>
+    <answer_contains>3000</answer_contains>
+    <notes>C2-1 FAR is 1.0; 3000 × 1.0 = 3,000 sqft.</notes>
+  </question>
+
+  <question id="354" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 2,000 sqft lot zoned RM-4.5?</prompt>
+    <answer_contains>3000</answer_contains>
+    <notes>RM-4.5 FAR is 1.5; 2000 × 1.5 = 3,000 sqft.</notes>
+  </question>
+
+  <question id="355" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 2,000 sqft lot zoned B1-3?</prompt>
+    <answer_contains>6000</answer_contains>
+    <notes>B1-3 FAR is 3.0; 2000 × 3.0 = 6,000 sqft.</notes>
+  </question>
+
+  <question id="356" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 4,000 sqft lot zoned M1-2?</prompt>
+    <answer_contains>8800</answer_contains>
+    <notes>M1-2 FAR is 2.2; 4000 × 2.2 = 8,800 sqft.</notes>
+  </question>
+
+  <question id="357" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare DR-5 and DR-7 downtown residential districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>DR-7</answer_contains>
+    <notes>DR-7 FAR is 7.0; DR-5 FAR is 5.0. DR-7 allows higher floor area.</notes>
+  </question>
+
+  <question id="358" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare M1-2 and M1-3 limited manufacturing districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>M1-3</answer_contains>
+    <notes>M1-3 FAR is 3.0; M1-2 FAR is 2.2. M1-3 allows higher floor area.</notes>
+  </question>
+
+  <question id="359" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare B1-1 and B1-3 neighborhood shopping districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>B1-3</answer_contains>
+    <notes>B1-3 FAR is 3.0; B1-1 FAR is 1.0. B1-3 allows higher floor area.</notes>
+  </question>
+
+  <question id="360" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a DR-7 downtown residential district?</prompt>
+    <answer_contains>145</answer_contains>
+    <notes>DR-7 requires 145 sq ft per dwelling unit.</notes>
+  </question>
+
 </eval_suite>

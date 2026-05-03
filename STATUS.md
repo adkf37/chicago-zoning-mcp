@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Phase | Build |
-| Last Updated | 2026-05-03 (build pass 3) |
+| Last Updated | 2026-05-03 (build pass 4) |
 | Squad Template | data_pipeline |
 | Priority | low |
 | Blocking | None for automated work — see "Needs Human Input" below for manual follow-ups |
@@ -11,10 +11,10 @@
 
 ## Current Objective
 
-**Build phase — eval suite expanded to 340 questions; 477 tests passing.**
+**Build phase — eval suite expanded to 360 questions; 497 tests passing.**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
-- `pytest tests/ -m "not network"` → **477 passed, 5 deselected** ✅
+- `pytest tests/ -m "not network"` → **497 passed, 5 deselected** ✅
 - `ruff check src/ tests/ web/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
@@ -24,7 +24,26 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 
 ## Recent Activity
 
-- 2026-05-03 (this pass): Eval suite expanded to 340 questions (Q321–Q340); 477 tests passing:
+- 2026-05-03 (this pass): Eval suite expanded to 360 questions (Q341–Q360); 497 tests passing:
+  - **Eval suite extended to Q341–Q360** — Added 20 new questions to `evals/zoning_qa.xml`
+    filling coverage gaps in previously untested districts (T, PMD) and missing attribute types
+    (height for DR-7/DR-10/DX-12/DX-16/DC-12/DC-16/B1-3/POS-2; envelopes for DR-7/DR-10/
+    C2-1/RM-4.5/B1-3/M1-2; new comparison pairs DR-5/DR-7, M1-2/M1-3, B1-1/B1-3;
+    lot-area-per-unit for DR-7):
+    - T category (Transportation), PMD category (Manufacturing/Industrial)
+    - DR-7 height (80 ft), DR-10/DX-12/DX-16/DC-12/DC-16 height (no fixed limit)
+    - B1-3 height (45 ft), POS-2 height (30 ft)
+    - DR-7 envelope (2000→14000), DR-10 envelope (1000→10000), C2-1 envelope (3000→3000)
+    - RM-4.5 envelope (2000→3000), B1-3 envelope (2000→6000), M1-2 envelope (4000→8800)
+    - DR-5 vs DR-7 comparison (DR-7 higher), M1-2 vs M1-3 comparison (M1-3 higher)
+    - B1-1 vs B1-3 comparison (B1-3 higher), DR-7 lot area per unit (145 sq ft)
+  - **20 new offline eval tests** — `tests/test_evals.py` Q341–Q360, all offline.
+  - **Impact**: Test count: 477 → 497; eval suite: 340 → 360 questions.
+  - **Coverage rationale**: T and PMD had zero eval coverage despite being valid district codes
+    returned by `list_district_types`. The 5 downtown districts DX-12/DX-16/DC-12/DC-16/DR-10
+    and 2 commercial districts B1-3/POS-2 had no height tests. Six districts (DR-7, DR-10,
+    C2-1, RM-4.5, B1-3, M1-2) lacked development-envelope tests. Three comparison pairs
+    (DR-5/DR-7, M1-2/M1-3, B1-1/B1-3) were absent. DR-7 lacked a lot-area-per-unit test.
   - **Eval suite extended to Q321–Q340** — Added 20 new questions to `evals/zoning_qa.xml`
     filling remaining coverage gaps in FAR standalone, height, envelope, comparison, and
     lot-area-per-unit attribute types:
