@@ -3,7 +3,47 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
-### 2026-05-03 — Data Pipeline — Eval expansion Q301–Q320
+### 2026-05-03 — Data Pipeline — Eval expansion Q321–Q340
+
+**Context:** Build phase continues expanding coverage beyond Q320. Attribute-type frequency
+analysis of all 320 previous questions identified: RT-4 had only comparison/envelope/category/
+lot-area-per-unit coverage but no standalone FAR test; B3-2 and B3-3 lacked standalone FAR
+tests; 9 districts (RS-1, RS-3, C1-1, C1-5, C2-1, C3-5, M2-3, DX-3) had no height attribute
+test; 6 districts (RS-1, B1-1, B2-1, C2-2, C1-3) had no development-envelope test; two
+comparison pairs (B3-3/B3-5, M1-1/M1-3) were absent; RT-4 and B3-2 lacked lot-area-per-unit
+tests.
+
+**Decisions:**
+
+1. **Eval suite extended to 340 questions** — Added Q321–Q340 to `evals/zoning_qa.xml`:
+   - Q321–Q323: Standalone FAR for RT-4 (1.2), B3-3 (3.0), B3-2 (2.2).
+   - Q324–Q331: Height attribute tests for RS-1 (30 ft), RS-3 (30 ft), C1-1 (30 ft),
+     C1-5 (65 ft), C2-1 (30 ft), C3-5 (65 ft), M2-3 (55 ft), DX-3 (50 ft).
+   - Q332–Q336: Development envelope for RS-1×2000=1000, B1-1×5000=5000, B2-1×3000=3000,
+     C2-2×2000=4400, C1-3×2000=6000.
+   - Q337–Q338: Comparison pairs B3-3 vs B3-5 (B3-5 higher), M1-1 vs M1-3 (M1-3 higher).
+   - Q339–Q340: Lot area per unit for RT-4 (1,000 sq ft), B3-2 (700 sq ft).
+
+2. **20 new offline eval tests** — `tests/test_evals.py` Q321–Q340 added; all are fully
+   offline (no network or index required).
+
+3. **Coverage rationale** — After systematic frequency analysis of all 320 questions across
+   59 districts and 6 attribute types (FAR, height, envelope, comparison, lot-area-per-unit,
+   setback/category), Q321–Q340 target the highest-priority gaps: standalone FAR for district
+   series representatives, height for the entire C/M/DX lower-density tier, envelope for
+   districts that only had FAR comparisons, and lot-area-per-unit for two B3 and RT districts.
+
+**Impact:**
+- Test count: 457 → 477; eval suite: 320 → 340 questions.
+- `ruff check src/ tests/ web/` → 0 errors.
+- RT-4, B3-2, B3-3 now have standalone FAR tests.
+- Height attribute now tested for RS-1, RS-3, C1-1, C1-5, C2-1, C3-5, M2-3, DX-3.
+- Development envelope now tested for RS-1, B1-1, B2-1, C2-2, C1-3.
+- B3-3/B3-5 and M1-1/M1-3 comparison pairs now covered.
+- RT-4 and B3-2 lot-area-per-unit now verified.
+
+
+
 
 **Context:** Build phase continues expanding coverage beyond Q300. Frequency analysis of all 300
 previous questions identified districts with only category-type questions (B3-1, M2-1) and many

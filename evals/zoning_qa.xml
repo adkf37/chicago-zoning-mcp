@@ -1983,4 +1983,124 @@
     <notes>DC-12 FAR is 12.0; 500 × 12.0 = 6,000 sqft.</notes>
   </question>
 
+  <question id="321" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio for an RT-4 two-flat/townhouse district?</prompt>
+    <answer_contains>1.2</answer_contains>
+    <notes>RT-4 FAR is 1.2.</notes>
+  </question>
+
+  <question id="322" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio for a B3-3 community shopping district?</prompt>
+    <answer_contains>3.0</answer_contains>
+    <notes>B3-3 FAR is 3.0.</notes>
+  </question>
+
+  <question id="323" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio for a B3-2 community shopping district?</prompt>
+    <answer_contains>2.2</answer_contains>
+    <notes>B3-2 FAR is 2.2.</notes>
+  </question>
+
+  <question id="324" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the maximum building height in an RS-1 single-family residential district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>RS-1 maximum building height is 30 ft, 2 stories.</notes>
+  </question>
+
+  <question id="325" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the maximum building height in an RS-3 single-family residential district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>RS-3 maximum building height is 30 ft, 2 stories.</notes>
+  </question>
+
+  <question id="326" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in a C1-1 neighborhood shopping district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>C1-1 maximum building height is 30 ft, 2 stories.</notes>
+  </question>
+
+  <question id="327" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in a C1-5 neighborhood shopping district?</prompt>
+    <answer_contains>65</answer_contains>
+    <notes>C1-5 maximum building height is 65 ft, 6 stories.</notes>
+  </question>
+
+  <question id="328" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in a C2-1 retail services district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>C2-1 maximum building height is 30 ft, 2 stories.</notes>
+  </question>
+
+  <question id="329" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in a C3-5 commercial manufacturing district?</prompt>
+    <answer_contains>65</answer_contains>
+    <notes>C3-5 maximum building height is 65 ft, 6 stories.</notes>
+  </question>
+
+  <question id="330" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in an M2-3 light industry district?</prompt>
+    <answer_contains>55</answer_contains>
+    <notes>M2-3 maximum building height is 55 ft, 5 stories.</notes>
+  </question>
+
+  <question id="331" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in a DX-3 downtown mixed-use district?</prompt>
+    <answer_contains>50</answer_contains>
+    <notes>DX-3 maximum building height is 50 ft, 4 stories.</notes>
+  </question>
+
+  <question id="332" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 2,000 sqft lot zoned RS-1?</prompt>
+    <answer_contains>1000</answer_contains>
+    <notes>RS-1 FAR is 0.5; 2000 × 0.5 = 1,000 sqft.</notes>
+  </question>
+
+  <question id="333" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 5,000 sqft lot zoned B1-1?</prompt>
+    <answer_contains>5000</answer_contains>
+    <notes>B1-1 FAR is 1.0; 5000 × 1.0 = 5,000 sqft.</notes>
+  </question>
+
+  <question id="334" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 3,000 sqft lot zoned B2-1?</prompt>
+    <answer_contains>3000</answer_contains>
+    <notes>B2-1 FAR is 1.0; 3000 × 1.0 = 3,000 sqft.</notes>
+  </question>
+
+  <question id="335" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 2,000 sqft lot zoned C2-2?</prompt>
+    <answer_contains>4400</answer_contains>
+    <notes>C2-2 FAR is 2.2; 2000 × 2.2 = 4,400 sqft.</notes>
+  </question>
+
+  <question id="336" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 2,000 sqft lot zoned C1-3?</prompt>
+    <answer_contains>6000</answer_contains>
+    <notes>C1-3 FAR is 3.0; 2000 × 3.0 = 6,000 sqft.</notes>
+  </question>
+
+  <question id="337" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare B3-3 and B3-5 community shopping districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>B3-5</answer_contains>
+    <notes>B3-5 FAR is 5.0; B3-3 FAR is 3.0. B3-5 allows higher floor area.</notes>
+  </question>
+
+  <question id="338" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare M1-1 and M1-3 limited manufacturing districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>M1-3</answer_contains>
+    <notes>M1-3 FAR is 3.0; M1-1 FAR is 1.0. M1-3 allows higher floor area.</notes>
+  </question>
+
+  <question id="339" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in an RT-4 two-flat/townhouse district?</prompt>
+    <answer_contains>1000</answer_contains>
+    <notes>RT-4 requires 1,000 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="340" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a B3-2 community shopping district?</prompt>
+    <answer_contains>700</answer_contains>
+    <notes>B3-2 requires 700 sq ft per dwelling unit.</notes>
+  </question>
+
 </eval_suite>
