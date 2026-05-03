@@ -3,6 +3,40 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-05-03 — Data Pipeline — Eval expansion Q201–Q220
+
+**Context:** FEEDBACK.md goals: (1) expand test suite with wider range of questions; (2)
+improve performance for 100% accuracy on all question types. Build phase continues incrementally
+expanding coverage beyond Q200.
+
+**Decisions:**
+
+1. **Eval suite extended to 220 questions** — Added Q201–Q220 to `evals/zoning_qa.xml`:
+   - Q201–Q204: DX-7 FAR (7.0), DX-12 FAR (12.0), DR-5 FAR (5.0), DR-7 FAR (7.0) —
+     covering downtown mixed-use and downtown residential districts not previously tested.
+   - Q205–Q210: B2-2 height (38 ft), C1-2 FAR (2.2), M1-2 height (45 ft), RT-3.5 FAR (1.05),
+     RM-5.5 FAR (2.5), B3-3 height (50 ft) — filling coverage gaps in neighborhood mixed-use,
+     commercial, manufacturing, and residential districts.
+   - Q211–Q214: DX-7 vs DX-12 comparison (DX-12 higher FAR), DX-7 envelope (3000 sqft →
+     21,000 sqft), DR-5 envelope (4000 sqft → 20,000 sqft), B2-2 envelope (6000 sqft → 13,200 sqft).
+   - Q215–Q218: M1-3 height (55 ft), C3-5 FAR (5.0), POS-2 FAR (0.05), RM-5.5 lot area
+     per unit (400 sqft) — completing coverage of manufacturing, commercial, and park districts.
+   - Q219–Q220: Sign regulations code search (Chapter 17-12 fixture), 121 N LaSalle St
+     mocked address lookup (→ DC-16 Downtown Core).
+
+2. **20 new eval tests** — `tests/test_evals.py` Q201–Q220 cover:
+   - Previously untested districts: DX-7, DX-12, DR-5, DR-7, B2-2, C1-2, M1-2, RT-3.5,
+     RM-5.5, B3-3, M1-3, C3-5, POS-2
+   - New development envelope checks: DX-7 × 3000, DR-5 × 4000, B2-2 × 6000
+   - New comparison: DX-7 vs DX-12 (FAR difference)
+   - New code search fixture: sign regulations (17-12-0100)
+   - Third mocked address test: 121 N LaSalle St → DC-16
+
+**Impact:**
+- Test count: 339 → 359; eval suite: 200 → 220 questions.
+- `ruff check src/ tests/ web/` → 0 errors.
+- All 59 districts now have at least 3 eval questions covering FAR, height, envelope, or category.
+
 ### 2026-05-02 — Data Pipeline — Eval expansion Q181–Q200
 
 **Context:** FEEDBACK.md goals: (1) expand test suite with wider range of questions; (2)
