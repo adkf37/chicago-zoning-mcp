@@ -1375,4 +1375,126 @@
     <notes>121 N LaSalle St (Chicago City Hall area) is typically in a DC-16 or similar Downtown Core district.</notes>
   </question>
 
+  <!-- Q221-Q240: Extended coverage — height limits, setbacks, lot area, comparisons, code search, address lookups -->
+
+  <question id="221" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in an M1-1 limited manufacturing district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>M1-1 maximum building height is 30 ft, 2 stories.</notes>
+  </question>
+
+  <question id="222" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in an RM-6 multi-unit residential district?</prompt>
+    <answer_contains>70</answer_contains>
+    <notes>RM-6 maximum building height is 70 ft, 6+ stories.</notes>
+  </question>
+
+  <question id="223" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in an RM-6.5 multi-unit residential district?</prompt>
+    <answer_contains>80</answer_contains>
+    <notes>RM-6.5 maximum building height is 80 ft, 7+ stories.</notes>
+  </question>
+
+  <question id="224" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in a DR-5 downtown residential district?</prompt>
+    <answer_contains>65</answer_contains>
+    <notes>DR-5 maximum building height is 65 ft, 6 stories.</notes>
+  </question>
+
+  <question id="225" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the minimum front yard setback in an RS-1 single-family district?</prompt>
+    <answer_contains>20</answer_contains>
+    <notes>RS-1 front_yard_setback is 20 ft.</notes>
+  </question>
+
+  <question id="226" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in an RT-4 two-flat/townhouse district?</prompt>
+    <answer_contains>1000</answer_contains>
+    <notes>RT-4 requires 1,000 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="227" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a B2-3 neighborhood mixed-use district?</prompt>
+    <answer_contains>45</answer_contains>
+    <notes>B2-3 maximum building height is 45 ft, 4 stories.</notes>
+  </question>
+
+  <question id="228" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a C1-3 neighborhood commercial district?</prompt>
+    <answer_contains>50</answer_contains>
+    <notes>C1-3 maximum building height is 50 ft, 4 stories.</notes>
+  </question>
+
+  <question id="229" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio for a PD planned development district?</prompt>
+    <answer_contains>Varies</answer_contains>
+    <notes>PD (Planned Development) FAR varies by individual planned development ordinance.</notes>
+  </question>
+
+  <question id="230" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in an RM-6 high-density residential district?</prompt>
+    <answer_contains>200</answer_contains>
+    <notes>RM-6 requires 200 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="231" tool="list_district_types" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>List all downtown service zoning districts in Chicago.</prompt>
+    <answer_contains>DS</answer_contains>
+    <notes>Downtown Service districts are DS-3 and DS-5.</notes>
+  </question>
+
+  <question id="232" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 4,000 sqft lot zoned RM-6?</prompt>
+    <answer_contains>17600</answer_contains>
+    <notes>RM-6 FAR is 4.4; 4000 × 4.4 = 17,600 sqft.</notes>
+  </question>
+
+  <question id="233" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 3,000 sqft lot zoned RM-6.5?</prompt>
+    <answer_contains>19800</answer_contains>
+    <notes>RM-6.5 FAR is 6.6; 3000 × 6.6 = 19,800 sqft.</notes>
+  </question>
+
+  <question id="234" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 5,000 sqft lot zoned DR-3?</prompt>
+    <answer_contains>15000</answer_contains>
+    <notes>DR-3 FAR is 3.0; 5000 × 3.0 = 15,000 sqft.</notes>
+  </question>
+
+  <question id="235" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare M2-1 and M2-2 general manufacturing districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>M2-2</answer_contains>
+    <notes>M2-2 FAR is 2.2; M2-1 FAR is 1.0. M2-2 allows higher floor area.</notes>
+  </question>
+
+  <question id="236" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a B1-2 neighborhood shopping district?</prompt>
+    <answer_contains>38</answer_contains>
+    <notes>B1-2 maximum building height is 38 ft, 3 stories.</notes>
+  </question>
+
+  <question id="237" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the minimum rear yard setback in an RS-1 single-family district?</prompt>
+    <answer_contains>50</answer_contains>
+    <notes>RS-1 rear_yard_setback is 50 ft.</notes>
+  </question>
+
+  <question id="238" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in a DR-3 downtown residential district?</prompt>
+    <answer_contains>45</answer_contains>
+    <notes>DR-3 maximum building height is 45 ft, 4 stories.</notes>
+  </question>
+
+  <question id="239" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>What does the Chicago zoning code say about special use permits?</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>Special use permit procedures appear in Title 17, typically Chapter 17-13.</notes>
+  </question>
+
+  <question id="240" tool="get_parcel_zoning" type="address_lookup" requires_network="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_data_portal">
+    <prompt>What is the zoning district at 200 E Randolph St in Chicago?</prompt>
+    <answer_contains>DX</answer_contains>
+    <notes>200 E Randolph St (Millennium Park area) is typically in a DX or DC downtown district.</notes>
+  </question>
+
 </eval_suite>

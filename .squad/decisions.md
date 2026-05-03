@@ -3,6 +3,46 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-05-03 — Data Pipeline — Eval expansion Q221–Q240
+
+**Context:** FEEDBACK.md goals: (1) expand test suite with wider range of questions; (2)
+improve performance for 100% accuracy on all question types. Build phase continues incrementally
+expanding coverage beyond Q220 with new data dimensions: height limits, setbacks, lot area per
+unit, edge cases (PD "Varies" FAR), and additional tool-type diversity.
+
+**Decisions:**
+
+1. **Eval suite extended to 240 questions** — Added Q221–Q240 to `evals/zoning_qa.xml`:
+   - Q221–Q224: M1-1 height (30 ft), RM-6 height (70 ft), RM-6.5 height (80 ft), DR-5
+     height (65 ft) — filling height-limit coverage gaps for manufacturing and high-density
+     residential/downtown districts not previously tested for this attribute.
+   - Q225–Q230: RS-1 front yard setback (20 ft), RT-4 lot area per unit (1000 sqft), B2-3
+     height (45 ft), C1-3 height (50 ft), PD FAR ("Varies" — edge case), RM-6 lot area
+     per unit (200 sqft) — adding setback and density dimension coverage.
+   - Q231–Q234: list Downtown Service districts (DS-3, DS-5), RM-6 envelope (4000 sqft →
+     17,600 sqft), RM-6.5 envelope (3000 sqft → 19,800 sqft), DR-3 envelope (5000 sqft →
+     15,000 sqft) — expanding list_district_types and development envelope coverage.
+   - Q235–Q238: M2-1 vs M2-2 comparison (M2-2 higher FAR), B1-2 height (38 ft), RS-1 rear
+     yard setback (50 ft), DR-3 height (45 ft) — filling remaining comparison and attribute gaps.
+   - Q239–Q240: Special use permit code search (Chapter 17-13 fixture), 200 E Randolph St
+     mocked address lookup (→ DX-16 Downtown Mixed-Use).
+
+2. **20 new eval tests** — `tests/test_evals.py` Q221–Q240 cover:
+   - Height limits for untested districts: M1-1, RM-6, RM-6.5, DR-5, B2-3, C1-3, B1-2, DR-3
+   - Setback attributes: RS-1 front yard (20 ft), RS-1 rear yard (50 ft)
+   - Lot area per unit: RT-4 (1000 sqft), RM-6 (200 sqft)
+   - Edge case: PD district FAR returns "Varies by planned development ordinance"
+   - New list_district_types: Downtown Service category → DS-3, DS-5
+   - New development envelopes: RM-6 × 4000, RM-6.5 × 3000, DR-3 × 5000
+   - New comparison: M2-1 vs M2-2 (M2-2 higher FAR)
+   - New code search fixture: special use permit (17-13-0900)
+   - Fourth mocked address test: 200 E Randolph St → DX-16
+
+**Impact:**
+- Test count: 359 → 379; eval suite: 220 → 240 questions.
+- `ruff check src/ tests/ web/` → 0 errors.
+- All 59 districts now have at least 4 eval questions covering FAR, height, setbacks, envelopes, or category.
+
 ### 2026-05-03 — Data Pipeline — Eval expansion Q201–Q220
 
 **Context:** FEEDBACK.md goals: (1) expand test suite with wider range of questions; (2)
