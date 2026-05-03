@@ -3986,3 +3986,338 @@ async def test_eval_q220_lasalle_st_address():
     assert zone.startswith("DC"), (
         f"Expected a DC-series district for 121 N LaSalle St, got: {zone!r}"
     )
+
+
+# ---------------------------------------------------------------------------
+# Q221 — M1-1 maximum building height contains "30"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q221_m1_1_height(district_tools):
+    """Eval Q221: M1-1 maximum_building_height should reference 30 ft."""
+    result = district_tools["lookup_district"](district_code="M1-1")
+    assert "error" not in result
+    assert "30" in result["maximum_building_height"]
+
+
+# ---------------------------------------------------------------------------
+# Q222 — RM-6 maximum building height contains "70"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q222_rm6_height(district_tools):
+    """Eval Q222: RM-6 maximum_building_height should reference 70 ft."""
+    result = district_tools["lookup_district"](district_code="RM-6")
+    assert "error" not in result
+    assert "70" in result["maximum_building_height"]
+
+
+# ---------------------------------------------------------------------------
+# Q223 — RM-6.5 maximum building height contains "80"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q223_rm65_height(district_tools):
+    """Eval Q223: RM-6.5 maximum_building_height should reference 80 ft."""
+    result = district_tools["lookup_district"](district_code="RM-6.5")
+    assert "error" not in result
+    assert "80" in result["maximum_building_height"]
+
+
+# ---------------------------------------------------------------------------
+# Q224 — DR-5 maximum building height contains "65"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q224_dr5_height(district_tools):
+    """Eval Q224: DR-5 maximum_building_height should reference 65 ft."""
+    result = district_tools["lookup_district"](district_code="DR-5")
+    assert "error" not in result
+    assert "65" in result["maximum_building_height"]
+
+
+# ---------------------------------------------------------------------------
+# Q225 — RS-1 front yard setback is 20 ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q225_rs1_front_yard_setback(district_tools):
+    """Eval Q225: RS-1 front_yard_setback should be 20 ft."""
+    result = district_tools["lookup_district"](district_code="RS-1")
+    assert "error" not in result
+    setback = result.get("front_yard_setback", "")
+    assert "20" in str(setback), f"Expected '20' in RS-1 front_yard_setback, got: {setback!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q226 — RT-4 lot area per unit contains "1000"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q226_rt4_lot_area_per_unit(district_tools):
+    """Eval Q226: RT-4 lot_area_per_unit should reference 1000 sqft."""
+    result = district_tools["lookup_district"](district_code="RT-4")
+    assert "error" not in result
+    lot_area = result.get("lot_area_per_unit", "")
+    assert "1000" in lot_area.replace(",", ""), (
+        f"Expected '1000' in RT-4 lot_area_per_unit, got: {lot_area!r}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q227 — B2-3 maximum building height contains "45"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q227_b2_3_height(district_tools):
+    """Eval Q227: B2-3 maximum_building_height should reference 45 ft."""
+    result = district_tools["lookup_district"](district_code="B2-3")
+    assert "error" not in result
+    assert "45" in result["maximum_building_height"]
+
+
+# ---------------------------------------------------------------------------
+# Q228 — C1-3 maximum building height contains "50"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q228_c1_3_height(district_tools):
+    """Eval Q228: C1-3 maximum_building_height should reference 50 ft."""
+    result = district_tools["lookup_district"](district_code="C1-3")
+    assert "error" not in result
+    assert "50" in result["maximum_building_height"]
+
+
+# ---------------------------------------------------------------------------
+# Q229 — PD district FAR contains "Varies"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q229_pd_far_varies(district_tools):
+    """Eval Q229: PD floor_area_ratio should reference 'Varies' (planned development)."""
+    result = district_tools["lookup_district"](district_code="PD")
+    assert "error" not in result
+    far = result.get("floor_area_ratio", "")
+    assert "Varies" in str(far), f"Expected 'Varies' in PD floor_area_ratio, got: {far!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q230 — RM-6 lot area per unit contains "200"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q230_rm6_lot_area_per_unit(district_tools):
+    """Eval Q230: RM-6 lot_area_per_unit should reference 200 sqft."""
+    result = district_tools["lookup_district"](district_code="RM-6")
+    assert "error" not in result
+    lot_area = result.get("lot_area_per_unit", "")
+    assert "200" in lot_area.replace(",", ""), (
+        f"Expected '200' in RM-6 lot_area_per_unit, got: {lot_area!r}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q231 — list_district_types for Downtown Service includes DS-3 and DS-5
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q231_list_downtown_service_districts(district_tools):
+    """Eval Q231: list_district_types('Downtown Service') should include DS-3 and DS-5."""
+    result = district_tools["list_district_types"](category="Downtown Service")
+    assert isinstance(result, list)
+    assert len(result) > 0
+    district_codes = [d["district_type_code"] for d in result]
+    assert any(code.startswith("DS") for code in district_codes), (
+        f"Expected at least one DS district in results, got: {district_codes}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q232 — RM-6 development envelope on 4000 sqft lot = 17600
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q232_rm6_4000_envelope(development_tools):
+    """Eval Q232: RM-6 FAR 4.4 × 4000 sqft = 17,600 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RM-6", lot_area_sqft=4000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(17600.0)
+
+
+# ---------------------------------------------------------------------------
+# Q233 — RM-6.5 development envelope on 3000 sqft lot = 19800
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q233_rm65_3000_envelope(development_tools):
+    """Eval Q233: RM-6.5 FAR 6.6 × 3000 sqft = 19,800 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RM-6.5", lot_area_sqft=3000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(19800.0)
+
+
+# ---------------------------------------------------------------------------
+# Q234 — DR-3 development envelope on 5000 sqft lot = 15000
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q234_dr3_5000_envelope(development_tools):
+    """Eval Q234: DR-3 FAR 3.0 × 5000 sqft = 15,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="DR-3", lot_area_sqft=5000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(15000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q235 — compare_districts M2-1 vs M2-2: M2-2 has higher FAR
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q235_m2_1_vs_m2_2_far(district_tools):
+    """Eval Q235: compare_districts M2-1 vs M2-2 — M2-2 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="M2-1", district_b="M2-2")
+    assert "error" not in result
+    m2_1_far = float(result["floor_area_ratio"]["M2-1"])
+    m2_2_far = float(result["floor_area_ratio"]["M2-2"])
+    assert m2_2_far > m2_1_far, f"Expected M2-2 FAR ({m2_2_far}) > M2-1 FAR ({m2_1_far})"
+
+
+# ---------------------------------------------------------------------------
+# Q236 — B1-2 maximum building height contains "38"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q236_b1_2_height(district_tools):
+    """Eval Q236: B1-2 maximum_building_height should reference 38 ft."""
+    result = district_tools["lookup_district"](district_code="B1-2")
+    assert "error" not in result
+    assert "38" in result["maximum_building_height"]
+
+
+# ---------------------------------------------------------------------------
+# Q237 — RS-1 rear yard setback contains "50"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q237_rs1_rear_yard_setback(district_tools):
+    """Eval Q237: RS-1 rear_yard_setback should reference 50 ft."""
+    result = district_tools["lookup_district"](district_code="RS-1")
+    assert "error" not in result
+    setback = result.get("rear_yard_setback", "")
+    assert "50" in str(setback), f"Expected '50' in RS-1 rear_yard_setback, got: {setback!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q238 — DR-3 maximum building height contains "45"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q238_dr3_height(district_tools):
+    """Eval Q238: DR-3 maximum_building_height should reference 45 ft."""
+    result = district_tools["lookup_district"](district_code="DR-3")
+    assert "error" not in result
+    assert "45" in result["maximum_building_height"]
+
+
+# ---------------------------------------------------------------------------
+# Q239 — Code search "special use permit" returns a 17- section (fixture-based)
+# ---------------------------------------------------------------------------
+
+_CODE_SEARCH_FIXTURE_SPECIAL_USE = _CODE_SEARCH_FIXTURE + [
+    {
+        "section": "17-13-0900",
+        "title": "Special Use Permit Procedures",
+        "chapter": "Chapter 17-13",
+        "text": (
+            "A special use permit authorizes uses that would not otherwise be permitted "
+            "in a zoning district. Applications for special use permits must be submitted "
+            "to the Zoning Board of Appeals. The Board shall hold a public hearing and "
+            "may impose conditions to protect adjacent properties."
+        ),
+        "source_file": "chapter_17-13.txt",
+    },
+]
+
+
+def test_eval_q239_special_use_code_search(code_search_tools):
+    """Eval Q239: search_zoning_code('special use permit') returns a Chapter 17- section."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_SPECIAL_USE,
+    ):
+        result = code_search_tools["search_zoning_code"](query="special use permit")
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    sections = [r["section"] for r in result["results"]]
+    assert any(s.startswith("17-") for s in sections), (
+        f"Expected a 17- section for special use permit query, got: {sections}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q240 — address lookup at 200 E Randolph St returns a DX-series district (mocked)
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+async def test_eval_q240_randolph_st_address():
+    """Eval Q240: 200 E Randolph St routes to get_parcel_zoning and returns a DX-series district.
+
+    Mocks geocoder and Socrata so no network required.
+    """
+    from unittest.mock import MagicMock
+
+    mcp_t = FastMCP("test")
+    tools: dict = {}
+    original = mcp_t.tool
+
+    def capture(*args, **kwargs):
+        dec = original(*args, **kwargs)
+
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+
+        return wrap
+
+    mcp_t.tool = capture
+    register_geospatial_tools(mcp_t)
+
+    mock_socrata_response = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "properties": {"zone_class": "DX-16", "zone_type": "7"},
+                "geometry": {"type": "MultiPolygon", "coordinates": []},
+            }
+        ],
+    }
+
+    with (
+        patch("src.tools.geospatial.geocode_address", new_callable=AsyncMock) as mock_geo,
+        patch("src.tools.geospatial.httpx.AsyncClient") as mock_client_cls,
+    ):
+        mock_geo.return_value = (41.8827, -87.6233)  # 200 E Randolph St coordinates
+        mock_resp = MagicMock()
+        mock_resp.json.return_value = mock_socrata_response
+        mock_resp.raise_for_status = MagicMock()
+        mock_client = AsyncMock()
+        mock_client.get.return_value = mock_resp
+        mock_client.__aenter__ = AsyncMock(return_value=mock_client)
+        mock_client.__aexit__ = AsyncMock(return_value=False)
+        mock_client_cls.return_value = mock_client
+
+        result = await tools["get_parcel_zoning"](address="200 E Randolph St")
+
+    assert "error" not in result, f"Expected no error, got: {result.get('error')}"
+    zone = result.get("zone_class", "")
+    assert zone.startswith("DX"), (
+        f"Expected a DX-series district for 200 E Randolph St, got: {zone!r}"
+    )

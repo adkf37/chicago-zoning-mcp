@@ -11,10 +11,10 @@
 
 ## Current Objective
 
-**Build phase — eval suite expanded to 220 questions; 359 tests passing.**
+**Build phase — eval suite expanded to 240 questions; 379 tests passing.**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
-- `pytest tests/ -m "not network"` → **359 passed, 5 deselected** ✅ (up from 339)
+- `pytest tests/ -m "not network"` → **379 passed, 5 deselected** ✅ (up from 359)
 - `ruff check src/ tests/ web/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
@@ -24,21 +24,25 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 
 ## Recent Activity
 
-- 2026-05-03 (this pass): Eval suite expanded to 220 questions (Q201–Q220); 359 tests passing:
-  - **Eval suite expanded to Q201–Q220** — Added 20 new questions to `evals/zoning_qa.xml`
-    covering: DX-7 FAR (7.0), DX-12 FAR (12.0), DR-5 FAR (5.0), DR-7 FAR (7.0),
-    B2-2 height (38 ft), C1-2 FAR (2.2), M1-2 height (45 ft), RT-3.5 FAR (1.05),
-    RM-5.5 FAR (2.5), B3-3 height (50 ft), DX-7 vs DX-12 comparison, DX-7 envelope
-    (3000 sqft → 21,000 sqft), DR-5 envelope (4000 sqft → 20,000 sqft), B2-2 envelope
-    (6000 sqft → 13,200 sqft), M1-3 height (55 ft), C3-5 FAR (5.0), POS-2 FAR (0.05),
-    RM-5.5 lot area per unit (400 sqft), sign regulations code search (17-12),
-    and 121 N LaSalle St address lookup (mocked → DC-16).
-  - **20 new eval tests** — `tests/test_evals.py` Q201–Q220 verify district lookups for
-    previously untested codes (DX-7, DX-12, DR-5, DR-7, B2-2, C1-2, M1-2, RT-3.5,
-    RM-5.5, B3-3, M1-3, C3-5, POS-2), development envelopes, a comparison ranking,
-    a code search for signs (17-12 fixture), and a mocked address lookup (121 N LaSalle St → DC-16).
-  - **Impact**: Test count: 339 → 359; eval suite: 200 → 220 questions.
+- 2026-05-03 (this pass): Eval suite expanded to 240 questions (Q221–Q240); 379 tests passing:
+  - **Eval suite expanded to Q221–Q240** — Added 20 new questions to `evals/zoning_qa.xml`
+    covering: M1-1 height (30 ft), RM-6 height (70 ft), RM-6.5 height (80 ft), DR-5 height
+    (65 ft), RS-1 front yard setback (20 ft), RT-4 lot area per unit (1000 sqft), B2-3 height
+    (45 ft), C1-3 height (50 ft), PD FAR ("Varies"), RM-6 lot area per unit (200 sqft),
+    list Downtown Service districts (DS-3, DS-5), RM-6 envelope (4000 sqft → 17,600 sqft),
+    RM-6.5 envelope (3000 sqft → 19,800 sqft), DR-3 envelope (5000 sqft → 15,000 sqft),
+    M2-1 vs M2-2 comparison (M2-2 higher FAR), B1-2 height (38 ft), RS-1 rear yard setback
+    (50 ft), DR-3 height (45 ft), special use permit code search (17-13 fixture), and
+    200 E Randolph St address lookup (mocked → DX-16).
+  - **20 new eval tests** — `tests/test_evals.py` Q221–Q240 verify height limits for
+    previously untested districts (M1-1, RM-6, RM-6.5, DR-5, B2-3, C1-3, B1-2, DR-3),
+    setback values (RS-1 front yard and rear yard), lot area per unit (RT-4, RM-6),
+    the PD "Varies" FAR edge case, Downtown Service district listing, 3 new development
+    envelopes, a M2-1 vs M2-2 comparison, a special use permit code search, and a
+    mocked address lookup (200 E Randolph St → DX-16).
+  - **Impact**: Test count: 359 → 379; eval suite: 220 → 240 questions.
 
+- 2026-05-03 (previous pass): Eval suite expanded to 220 questions; 359 tests passing.
 - 2026-05-02 (previous pass): Eval suite expanded to 200 questions; 339 tests passing.
 - 2026-05-02 (previous pass): Eval suite expanded to 180 questions; frontend redesigned.
 - 2026-05-02 (previous pass): Eval suite expanded to 160 questions; 299 tests passing.
@@ -48,8 +52,8 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 ## Next Recommended Step
 
 **Validate phase.** Run `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>` to
-measure live eval pass-rate against the full 220-question harness. Prior live eval score
-was 14/20 (70%) on 20 questions; the new target is ≥90% on 220 questions.
+measure live eval pass-rate against the full 240-question harness. Prior live eval score
+was 14/20 (70%) on 20 questions; the new target is ≥90% on 240 questions.
 
 ## Artifacts
 
@@ -67,8 +71,8 @@ was 14/20 (70%) on 20 questions; the new target is ≥90% on 220 questions.
 | Squad routing rules | `.squad/routing.md` | created |
 | Squad decisions log | `.squad/decisions.md` | updated |
 | Sprint plan | `.squad/sprint.md` | created |
-| Eval suite | `evals/zoning_qa.xml` | 220 questions (Q1–Q220) |
-| Eval tests | `tests/test_evals.py` | 359 tests passing |
+| Eval suite | `evals/zoning_qa.xml` | 240 questions (Q1–Q240) |
+| Eval tests | `tests/test_evals.py` | 379 tests passing |
 | Frontend | `web/templates/index.html` | redesigned — capabilities cards, larger hero |
 
 ## Needs Human Input
@@ -78,6 +82,6 @@ was 14/20 (70%) on 20 questions; the new target is ≥90% on 220 questions.
   `python scripts/ingest_title_17.py` to rebuild the index with all 17 chapters.
 
 - **Live eval run** (~15 min) — Execute `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>`
-  to measure pass-rate against the 220-question harness.
+  to measure pass-rate against the 240-question harness.
 
 - **MCP Inspector verification** (~30 min) — Run `npx @modelcontextprotocol/inspector python -m src.server`.
