@@ -4657,3 +4657,248 @@ async def test_eval_q260_wrigley_field_address():
     assert zone.startswith("B"), (
         f"Expected a B-series district for 1060 W Addison St, got: {zone!r}"
     )
+
+
+# ---------------------------------------------------------------------------
+# Q261 — C1-1 floor area ratio is 1.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q261_c1_1_far(district_tools):
+    """Eval Q261: C1-1 FAR should be 1.0."""
+    result = district_tools["lookup_district"](district_code="C1-1")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(1.0)
+
+
+# ---------------------------------------------------------------------------
+# Q262 — C1-5 floor area ratio is 5.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q262_c1_5_far(district_tools):
+    """Eval Q262: C1-5 FAR should be 5.0."""
+    result = district_tools["lookup_district"](district_code="C1-5")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(5.0)
+
+
+# ---------------------------------------------------------------------------
+# Q263 — C2-1 floor area ratio is 1.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q263_c2_1_far(district_tools):
+    """Eval Q263: C2-1 FAR should be 1.0."""
+    result = district_tools["lookup_district"](district_code="C2-1")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(1.0)
+
+
+# ---------------------------------------------------------------------------
+# Q264 — C2-2 floor area ratio is 2.2
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q264_c2_2_far(district_tools):
+    """Eval Q264: C2-2 FAR should be 2.2."""
+    result = district_tools["lookup_district"](district_code="C2-2")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(2.2)
+
+
+# ---------------------------------------------------------------------------
+# Q265 — B1-5 floor area ratio is 5.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q265_b1_5_far(district_tools):
+    """Eval Q265: B1-5 FAR should be 5.0."""
+    result = district_tools["lookup_district"](district_code="B1-5")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(5.0)
+
+
+# ---------------------------------------------------------------------------
+# Q266 — B2-5 floor area ratio is 5.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q266_b2_5_far(district_tools):
+    """Eval Q266: B2-5 FAR should be 5.0."""
+    result = district_tools["lookup_district"](district_code="B2-5")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(5.0)
+
+
+# ---------------------------------------------------------------------------
+# Q267 — C2-3 maximum building height contains "50"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q267_c2_3_height(district_tools):
+    """Eval Q267: C2-3 maximum_building_height should reference 50 ft."""
+    result = district_tools["lookup_district"](district_code="C2-3")
+    assert "error" not in result
+    height = result.get("maximum_building_height", "")
+    assert "50" in str(height), f"Expected '50' in C2-3 maximum_building_height, got: {height!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q268 — C3-1 floor area ratio is 1.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q268_c3_1_far(district_tools):
+    """Eval Q268: C3-1 FAR should be 1.0."""
+    result = district_tools["lookup_district"](district_code="C3-1")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(1.0)
+
+
+# ---------------------------------------------------------------------------
+# Q269 — C3-2 floor area ratio is 2.2
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q269_c3_2_far(district_tools):
+    """Eval Q269: C3-2 FAR should be 2.2."""
+    result = district_tools["lookup_district"](district_code="C3-2")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(2.2)
+
+
+# ---------------------------------------------------------------------------
+# Q270 — RM-5.5 floor area ratio is 2.5
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q270_rm55_far(district_tools):
+    """Eval Q270: RM-5.5 FAR should be 2.5."""
+    result = district_tools["lookup_district"](district_code="RM-5.5")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(2.5)
+
+
+# ---------------------------------------------------------------------------
+# Q271 — B1-1.5 floor area ratio is 1.5
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q271_b1_15_far(district_tools):
+    """Eval Q271: B1-1.5 FAR should be 1.5."""
+    result = district_tools["lookup_district"](district_code="B1-1.5")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(1.5)
+
+
+# ---------------------------------------------------------------------------
+# Q272 — DX-3 floor area ratio is 3.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q272_dx3_far(district_tools):
+    """Eval Q272: DX-3 FAR should be 3.0."""
+    result = district_tools["lookup_district"](district_code="DX-3")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(3.0)
+
+
+# ---------------------------------------------------------------------------
+# Q273 — DC-12 floor area ratio is 12.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q273_dc12_far(district_tools):
+    """Eval Q273: DC-12 FAR should be 12.0."""
+    result = district_tools["lookup_district"](district_code="DC-12")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(12.0)
+
+
+# ---------------------------------------------------------------------------
+# Q274 — DR-7 floor area ratio is 7.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q274_dr7_far(district_tools):
+    """Eval Q274: DR-7 FAR should be 7.0."""
+    result = district_tools["lookup_district"](district_code="DR-7")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(7.0)
+
+
+# ---------------------------------------------------------------------------
+# Q275 — DR-10 floor area ratio is 10.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q275_dr10_far(district_tools):
+    """Eval Q275: DR-10 FAR should be 10.0."""
+    result = district_tools["lookup_district"](district_code="DR-10")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(10.0)
+
+
+# ---------------------------------------------------------------------------
+# Q276 — M1-3 floor area ratio is 3.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q276_m1_3_far(district_tools):
+    """Eval Q276: M1-3 FAR should be 3.0."""
+    result = district_tools["lookup_district"](district_code="M1-3")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(3.0)
+
+
+# ---------------------------------------------------------------------------
+# Q277 — M2-3 floor area ratio is 3.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q277_m2_3_far(district_tools):
+    """Eval Q277: M2-3 FAR should be 3.0."""
+    result = district_tools["lookup_district"](district_code="M2-3")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(3.0)
+
+
+# ---------------------------------------------------------------------------
+# Q278 — M3-3 floor area ratio is 3.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q278_m3_3_far(district_tools):
+    """Eval Q278: M3-3 FAR should be 3.0."""
+    result = district_tools["lookup_district"](district_code="M3-3")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(3.0)
+
+
+# ---------------------------------------------------------------------------
+# Q279 — compare_districts C2-1 vs C2-3: C2-3 has higher FAR
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q279_c2_1_vs_c2_3_far(district_tools):
+    """Eval Q279: compare_districts C2-1 vs C2-3 — C2-3 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="C2-1", district_b="C2-3")
+    assert "error" not in result
+    c2_1_far = float(result["floor_area_ratio"]["C2-1"])
+    c2_3_far = float(result["floor_area_ratio"]["C2-3"])
+    assert c2_3_far > c2_1_far, f"Expected C2-3 FAR ({c2_3_far}) > C2-1 FAR ({c2_1_far})"
+
+
+# ---------------------------------------------------------------------------
+# Q280 — RM-5.5 3000 sqft lot → 7500 sqft max floor area (FAR 2.5)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q280_rm55_3000_envelope(development_tools):
+    """Eval Q280: RM-5.5 FAR 2.5 × 3000 sqft lot = 7,500 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RM-5.5", lot_area_sqft=3000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(7500.0)

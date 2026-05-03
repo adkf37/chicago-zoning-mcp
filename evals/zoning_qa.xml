@@ -1619,4 +1619,124 @@
     <notes>1060 W Addison St (Wrigley Field area) is typically in a B or C commercial district.</notes>
   </question>
 
+  <question id="261" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio in a C1-1 neighborhood commercial district?</prompt>
+    <answer_contains>1.0</answer_contains>
+    <notes>C1-1 FAR is 1.0. Small neighborhood commercial, office and limited retail.</notes>
+  </question>
+
+  <question id="262" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio in a C1-5 neighborhood commercial district?</prompt>
+    <answer_contains>5.0</answer_contains>
+    <notes>C1-5 FAR is 5.0. High density neighborhood commercial with residential.</notes>
+  </question>
+
+  <question id="263" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio allowed in a C2-1 motor vehicle-related commercial district?</prompt>
+    <answer_contains>1.0</answer_contains>
+    <notes>C2-1 FAR is 1.0. Auto-oriented commercial uses with lowest FAR in C2 series.</notes>
+  </question>
+
+  <question id="264" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio in a C2-2 motor vehicle-related commercial district?</prompt>
+    <answer_contains>2.2</answer_contains>
+    <notes>C2-2 FAR is 2.2. Motor vehicle commercial with residential allowed.</notes>
+  </question>
+
+  <question id="265" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio in a B1-5 neighborhood shopping district?</prompt>
+    <answer_contains>5.0</answer_contains>
+    <notes>B1-5 FAR is 5.0. Neighborhood commercial with high density residential above.</notes>
+  </question>
+
+  <question id="266" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio in a B2-5 neighborhood mixed-use district?</prompt>
+    <answer_contains>5.0</answer_contains>
+    <notes>B2-5 FAR is 5.0. Mixed-use corridor with high density residential above.</notes>
+  </question>
+
+  <question id="267" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in a C2-3 motor vehicle-related commercial district?</prompt>
+    <answer_contains>50</answer_contains>
+    <notes>C2-3 maximum building height is 50 ft (4 stories).</notes>
+  </question>
+
+  <question id="268" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio in a C3-1 commercial manufacturing district?</prompt>
+    <answer_contains>1.0</answer_contains>
+    <notes>C3-1 FAR is 1.0. Light commercial-manufacturing uses.</notes>
+  </question>
+
+  <question id="269" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio in a C3-2 commercial manufacturing district?</prompt>
+    <answer_contains>2.2</answer_contains>
+    <notes>C3-2 FAR is 2.2. Commercial-manufacturing with residential allowed.</notes>
+  </question>
+
+  <question id="270" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio in an RM-5.5 multi-unit residential district?</prompt>
+    <answer_contains>2.5</answer_contains>
+    <notes>RM-5.5 FAR is 2.5. Mid-rise apartments, high density residential.</notes>
+  </question>
+
+  <question id="271" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio in a B1-1.5 neighborhood shopping district?</prompt>
+    <answer_contains>1.5</answer_contains>
+    <notes>B1-1.5 FAR is 1.5. Neighborhood retail with some residential above.</notes>
+  </question>
+
+  <question id="272" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio in a DX-3 downtown mixed-use district?</prompt>
+    <answer_contains>3.0</answer_contains>
+    <notes>DX-3 FAR is 3.0. Downtown mixed-use with moderate density.</notes>
+  </question>
+
+  <question id="273" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio allowed in a DC-12 downtown core district?</prompt>
+    <answer_contains>12.0</answer_contains>
+    <notes>DC-12 FAR is 12.0. Downtown core, high density, Central Loop district.</notes>
+  </question>
+
+  <question id="274" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio in a DR-7 downtown residential district?</prompt>
+    <answer_contains>7.0</answer_contains>
+    <notes>DR-7 FAR is 7.0. Downtown residential with high density.</notes>
+  </question>
+
+  <question id="275" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio allowed in a DR-10 downtown residential district?</prompt>
+    <answer_contains>10.0</answer_contains>
+    <notes>DR-10 FAR is 10.0. Downtown residential, very high density, lakefront towers.</notes>
+  </question>
+
+  <question id="276" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio in an M1-3 limited manufacturing district?</prompt>
+    <answer_contains>3.0</answer_contains>
+    <notes>M1-3 FAR is 3.0. Limited manufacturing with higher intensity.</notes>
+  </question>
+
+  <question id="277" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio in an M2-3 general manufacturing district?</prompt>
+    <answer_contains>3.0</answer_contains>
+    <notes>M2-3 FAR is 3.0. General manufacturing with higher intensity.</notes>
+  </question>
+
+  <question id="278" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio in an M3-3 heavy manufacturing district?</prompt>
+    <answer_contains>3.0</answer_contains>
+    <notes>M3-3 FAR is 3.0. Heavy industrial and manufacturing uses.</notes>
+  </question>
+
+  <question id="279" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare C2-1 and C2-3 motor vehicle-related commercial districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>C2-3</answer_contains>
+    <notes>C2-3 FAR is 3.0; C2-1 FAR is 1.0. C2-3 allows higher floor area.</notes>
+  </question>
+
+  <question id="280" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 3,000 sqft lot zoned RM-5.5?</prompt>
+    <answer_contains>7500</answer_contains>
+    <notes>RM-5.5 FAR 2.5 × 3000 sqft = 7,500 sqft.</notes>
+  </question>
+
 </eval_suite>
