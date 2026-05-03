@@ -1351,3 +1351,47 @@ Fixed ~98 remaining sections. Result: **0 empty sections** in 1,888-section inde
 - `test_parser_populates_header_section_from_numeric_children`
 - `test_parser_uses_title_as_text_for_list_items`
 
+
+### 2026-05-03 — Data Pipeline — Eval expansion Q361–Q380
+
+**Context:** Build phase continues expanding coverage beyond Q360. Per-district question
+count analysis identified 19 districts with 3–6 questions (below average ~6.1). Missing
+attribute types per district: lot area per unit (9 districts), development envelope (6
+districts), comparison pairs (3 pairs), height (1 district), front yard setback (1 district).
+
+**Decisions:**
+
+1. **Eval suite extended to 380 questions** — Added Q361–Q380 to `evals/zoning_qa.xml`:
+   - Q361: C1-2 height (38 ft, 3 stories).
+   - Q362: B1-5 lot area per unit (200 sq ft).
+   - Q363: C2-2 lot area per unit (700 sq ft).
+   - Q364: B2-3 FAR (3.0).
+   - Q365: B2-5 envelope (1000 × 5.0 = 5,000 sqft).
+   - Q366: C3-5 lot area per unit (200 sq ft).
+   - Q367: B1-1.5 envelope (2000 × 1.5 = 3,000 sqft).
+   - Q368: B1-2 envelope (5000 × 2.2 = 11,000 sqft).
+   - Q369: B2-2 lot area per unit (700 sq ft).
+   - Q370: B3-3 lot area per unit (500 sq ft).
+   - Q371: C3-1 envelope (5000 × 1.0 = 5,000 sqft).
+   - Q372: C3-2 lot area per unit (700 sq ft).
+   - Q373: M2-1 envelope (3000 × 1.0 = 3,000 sqft).
+   - Q374: M2-2 vs M3-3 comparison (M3-3 FAR 3.0 > M2-2 FAR 2.2).
+   - Q375: DX-5 envelope (2000 × 5.0 = 10,000 sqft).
+   - Q376: DR-3 lot area per unit (500 sq ft).
+   - Q377: POS-1 vs POS-2 comparison (POS-1 FAR 0.1 > POS-2 FAR 0.05).
+   - Q378: RS-1 front yard setback (20 ft).
+   - Q379: B1-3 vs B1-5 comparison (B1-5 FAR 5.0 > B1-3 FAR 3.0).
+   - Q380: B2-3 lot area per unit (500 sq ft).
+
+2. **20 new offline eval tests** — `tests/test_evals.py` Q361–Q380 added; all fully offline.
+
+3. **Coverage rationale** — Prioritised districts with ≤5 questions. Attribute mix chosen
+   to avoid duplicating existing test types per district. Manufacturing districts (M2-1, M3-3)
+   and parks districts (POS-1, POS-2) previously lacked envelope and comparison tests.
+   RS-1 front yard setback adds the first explicit setback test for that district.
+
+**Impact:**
+- Test count: 497 → 517; eval suite: 360 → 380 questions.
+- `ruff check src/ tests/ web/` → 0 errors.
+- 19 previously under-covered districts now have additional attribute-type coverage.
+- 3 new comparison pairs (M2-2/M3-3, POS-1/POS-2, B1-3/B1-5) added.

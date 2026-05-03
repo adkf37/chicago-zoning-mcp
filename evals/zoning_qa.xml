@@ -2225,4 +2225,126 @@
     <notes>DR-7 requires 145 sq ft per dwelling unit.</notes>
   </question>
 
+  <!-- Q361–Q380: Coverage gaps — additional attribute tests for under-covered districts -->
+
+  <question id="361" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a C1-2 neighborhood commercial district?</prompt>
+    <answer_contains>38</answer_contains>
+    <notes>C1-2 maximum building height is 38 ft, 3 stories.</notes>
+  </question>
+
+  <question id="362" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a B1-5 neighborhood shopping district?</prompt>
+    <answer_contains>200</answer_contains>
+    <notes>B1-5 requires 200 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="363" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a C2-2 motor vehicle-related commercial district?</prompt>
+    <answer_contains>700</answer_contains>
+    <notes>C2-2 requires 700 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="364" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for a B2-3 neighborhood mixed-use district?</prompt>
+    <answer>3.0</answer>
+    <notes>B2-3 FAR is 3.0.</notes>
+  </question>
+
+  <question id="365" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="moderate" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 1,000 sqft lot zoned B2-5?</prompt>
+    <answer_contains>5000</answer_contains>
+    <notes>B2-5 FAR is 5.0; 1000 × 5.0 = 5,000 sqft.</notes>
+  </question>
+
+  <question id="366" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a C3-5 commercial manufacturing district?</prompt>
+    <answer_contains>200</answer_contains>
+    <notes>C3-5 requires 200 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="367" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="moderate" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 2,000 sqft lot zoned B1-1.5?</prompt>
+    <answer_contains>3000</answer_contains>
+    <notes>B1-1.5 FAR is 1.5; 2000 × 1.5 = 3,000 sqft.</notes>
+  </question>
+
+  <question id="368" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="moderate" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 5,000 sqft lot zoned B1-2?</prompt>
+    <answer_contains>11000</answer_contains>
+    <notes>B1-2 FAR is 2.2; 5000 × 2.2 = 11,000 sqft.</notes>
+  </question>
+
+  <question id="369" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a B2-2 neighborhood mixed-use district?</prompt>
+    <answer_contains>700</answer_contains>
+    <notes>B2-2 requires 700 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="370" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a B3-3 community shopping district?</prompt>
+    <answer_contains>500</answer_contains>
+    <notes>B3-3 requires 500 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="371" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="moderate" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 5,000 sqft lot zoned C3-1?</prompt>
+    <answer_contains>5000</answer_contains>
+    <notes>C3-1 FAR is 1.0; 5000 × 1.0 = 5,000 sqft.</notes>
+  </question>
+
+  <question id="372" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a C3-2 commercial manufacturing district?</prompt>
+    <answer_contains>700</answer_contains>
+    <notes>C3-2 requires 700 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="373" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="moderate" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 3,000 sqft lot zoned M2-1?</prompt>
+    <answer_contains>3000</answer_contains>
+    <notes>M2-1 FAR is 1.0; 3000 × 1.0 = 3,000 sqft.</notes>
+  </question>
+
+  <question id="374" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare M2-2 and M3-3 manufacturing districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>M3-3</answer_contains>
+    <notes>M3-3 FAR is 3.0; M2-2 FAR is 2.2. M3-3 allows higher floor area.</notes>
+  </question>
+
+  <question id="375" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="moderate" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 2,000 sqft lot zoned DX-5?</prompt>
+    <answer_contains>10000</answer_contains>
+    <notes>DX-5 FAR is 5.0; 2000 × 5.0 = 10,000 sqft.</notes>
+  </question>
+
+  <question id="376" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a DR-3 downtown residential district?</prompt>
+    <answer_contains>500</answer_contains>
+    <notes>DR-3 requires 500 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="377" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>Compare POS-1 and POS-2 parks and open space districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>POS-1</answer_contains>
+    <notes>POS-1 FAR is 0.1; POS-2 FAR is 0.05. POS-1 allows higher floor area.</notes>
+  </question>
+
+  <question id="378" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the minimum front yard setback for an RS-1 single-family district?</prompt>
+    <answer_contains>20</answer_contains>
+    <notes>RS-1 minimum front yard setback is 20 ft.</notes>
+  </question>
+
+  <question id="379" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare B1-3 and B1-5 neighborhood shopping districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>B1-5</answer_contains>
+    <notes>B1-5 FAR is 5.0; B1-3 FAR is 3.0. B1-5 allows higher floor area.</notes>
+  </question>
+
+  <question id="380" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a B2-3 neighborhood mixed-use district?</prompt>
+    <answer_contains>500</answer_contains>
+    <notes>B2-3 requires 500 sq ft per dwelling unit.</notes>
+  </question>
+
 </eval_suite>
