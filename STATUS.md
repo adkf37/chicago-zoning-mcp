@@ -11,10 +11,10 @@
 
 ## Current Objective
 
-**Build phase — eval suite expanded to 240 questions; 379 tests passing.**
+**Build phase — eval suite expanded to 260 questions; 399 tests passing.**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
-- `pytest tests/ -m "not network"` → **379 passed, 5 deselected** ✅ (up from 359)
+- `pytest tests/ -m "not network"` → **399 passed, 5 deselected** ✅ (up from 379)
 - `ruff check src/ tests/ web/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
@@ -24,25 +24,24 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 
 ## Recent Activity
 
-- 2026-05-03 (this pass): Eval suite expanded to 240 questions (Q221–Q240); 379 tests passing:
-  - **Eval suite expanded to Q221–Q240** — Added 20 new questions to `evals/zoning_qa.xml`
-    covering: M1-1 height (30 ft), RM-6 height (70 ft), RM-6.5 height (80 ft), DR-5 height
-    (65 ft), RS-1 front yard setback (20 ft), RT-4 lot area per unit (1000 sqft), B2-3 height
-    (45 ft), C1-3 height (50 ft), PD FAR ("Varies"), RM-6 lot area per unit (200 sqft),
-    list Downtown Service districts (DS-3, DS-5), RM-6 envelope (4000 sqft → 17,600 sqft),
-    RM-6.5 envelope (3000 sqft → 19,800 sqft), DR-3 envelope (5000 sqft → 15,000 sqft),
-    M2-1 vs M2-2 comparison (M2-2 higher FAR), B1-2 height (38 ft), RS-1 rear yard setback
-    (50 ft), DR-3 height (45 ft), special use permit code search (17-13 fixture), and
-    200 E Randolph St address lookup (mocked → DX-16).
-  - **20 new eval tests** — `tests/test_evals.py` Q221–Q240 verify height limits for
-    previously untested districts (M1-1, RM-6, RM-6.5, DR-5, B2-3, C1-3, B1-2, DR-3),
-    setback values (RS-1 front yard and rear yard), lot area per unit (RT-4, RM-6),
-    the PD "Varies" FAR edge case, Downtown Service district listing, 3 new development
-    envelopes, a M2-1 vs M2-2 comparison, a special use permit code search, and a
-    mocked address lookup (200 E Randolph St → DX-16).
-  - **Impact**: Test count: 359 → 379; eval suite: 220 → 240 questions.
+- 2026-05-03 (this pass): Eval suite expanded to 260 questions (Q241–Q260); 399 tests passing:
+  - **Eval suite expanded to Q241–Q260** — Added 20 new questions to `evals/zoning_qa.xml`
+    covering: RS-2 FAR (0.65), RS-2 front yard setback (15 ft), RS-2 rear yard setback (30 ft),
+    RM-5 FAR (2.0), B1-1 FAR (1.0), DS-3 FAR (3.0), POS-1 FAR (0.1), RT-3.5 lot area per unit
+    (1650 sqft), RS-2 envelope (6000 → 3900 sqft), RM-5 envelope (8000 → 16000 sqft), DS-3
+    envelope (4000 → 12000 sqft), B3-3 vs B3-5 comparison (B3-5 higher FAR), C1-2 vs C1-3
+    comparison (C1-3 higher FAR), M1-1 vs M1-2 comparison (M1-2 higher FAR), RS-3 side yard
+    setback (combined 8 ft), RS-1 minimum lot area (6500 sqft), 3 new code search queries
+    (FAR measurement, secondary dwelling unit, planned development site plan), and mocked Wrigley
+    Field address lookup (1060 W Addison → B3-1).
+  - **20 new eval tests** — `tests/test_evals.py` Q241–Q260 cover: previously untested standalone
+    FAR values (RS-2, RM-5, B1-1, DS-3, POS-1), RS-2 setbacks (front and rear), RT-3.5 lot area
+    per unit, 3 development envelope calculations, 3 new comparison pairs (B3-3/B3-5, C1-2/C1-3,
+    M1-1/M1-2), first-ever side setback test (RS-3), first-ever minimum lot area test (RS-1),
+    3 new code search fixture queries, and a mocked Wrigley Field address lookup.
+  - **Impact**: Test count: 379 → 399; eval suite: 240 → 260 questions.
 
-- 2026-05-03 (previous pass): Eval suite expanded to 220 questions; 359 tests passing.
+- 2026-05-03 (previous pass): Eval suite expanded to 240 questions (Q221–Q240); 379 tests passing.
 - 2026-05-02 (previous pass): Eval suite expanded to 200 questions; 339 tests passing.
 - 2026-05-02 (previous pass): Eval suite expanded to 180 questions; frontend redesigned.
 - 2026-05-02 (previous pass): Eval suite expanded to 160 questions; 299 tests passing.

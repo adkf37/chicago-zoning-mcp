@@ -3,6 +3,46 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-05-03 — Data Pipeline — Eval expansion Q241–Q260
+
+**Context:** FEEDBACK.md goals: (1) expand test suite with wider range of questions; (2)
+improve performance for 100% accuracy on all question types. Build phase continues incrementally
+expanding coverage beyond Q240, now targeting coverage gaps in FAR standalone values, setback
+attributes, new comparison pairs, minimum lot area, and additional code search query variations.
+
+**Decisions:**
+
+1. **Eval suite extended to 260 questions** — Added Q241–Q260 to `evals/zoning_qa.xml`:
+   - Q241–Q243: RS-2 attributes not yet directly tested: FAR (0.65), front yard setback
+     (15 ft), rear yard setback (30 ft).
+   - Q244–Q247: Standalone FAR values previously only seen in comparisons: RM-5 (2.0),
+     B1-1 (1.0), DS-3 (3.0), POS-1 (0.1).
+   - Q248: RT-3.5 lot area per unit (1,650 sqft/DU) — first standalone test of this attribute.
+   - Q249–Q251: Three new development envelope calculations: RS-2 × 6000 (3900 sqft),
+     RM-5 × 8000 (16000 sqft), DS-3 × 4000 (12000 sqft).
+   - Q252–Q254: Three new comparison pairs not previously tested: B3-3 vs B3-5 (B3-5
+     higher FAR), C1-2 vs C1-3 (C1-3 higher FAR), M1-1 vs M1-2 (M1-2 higher FAR).
+   - Q255: First-ever side yard setback test — RS-3 combined 8 ft requirement.
+   - Q256: First-ever minimum lot area test — RS-1 minimum 6,500 sqft.
+   - Q257–Q259: Three new code search queries: "floor area ratio measurement" (17-2-0100),
+     "secondary residential unit" (17-3-0102), "site plan traffic study" (17-13-0300).
+   - Q260: Fourth mocked address lookup — 1060 W Addison St (Wrigley Field → B3-1).
+
+2. **20 new eval tests** — `tests/test_evals.py` Q241–Q260 cover:
+   - Standalone FAR: RS-2, RM-5, B1-1, DS-3, POS-1
+   - Setbacks: RS-2 front yard, RS-2 rear yard, RS-3 side yard (first side setback test)
+   - Lot attributes: RT-3.5 lot area per unit, RS-1 minimum lot area (first min lot area test)
+   - Envelopes: RS-2 × 6000, RM-5 × 8000, DS-3 × 4000
+   - Comparisons: B3-3/B3-5, C1-2/C1-3, M1-1/M1-2 (all new pairs)
+   - Code search: 3 new query terms against base fixture
+   - Address lookup: 1060 W Addison St mocked → B3-1
+
+**Impact:**
+- Test count: 379 → 399; eval suite: 240 → 260 questions.
+- `ruff check src/ tests/ web/` → 0 errors.
+- Side setbacks (side_setback) and minimum lot area (minimum_lot_area) are now covered for
+  the first time, adding two new attribute dimensions to the eval harness.
+
 ### 2026-05-03 — Data Pipeline — Eval expansion Q221–Q240
 
 **Context:** FEEDBACK.md goals: (1) expand test suite with wider range of questions; (2)

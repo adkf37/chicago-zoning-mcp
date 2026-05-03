@@ -1497,4 +1497,126 @@
     <notes>200 E Randolph St (Millennium Park area) is typically in a DX or DC downtown district.</notes>
   </question>
 
+  <!-- Q241-Q260: Coverage gaps — RS-2 attributes, RM-5 FAR, standalone lookups, new comparisons, side setbacks, min lot area, more code search, address lookup -->
+
+  <question id="241" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio (FAR) for an RS-2 single-family residential district?</prompt>
+    <answer>0.65</answer>
+    <notes>RS-2 FAR is 0.65.</notes>
+  </question>
+
+  <question id="242" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the minimum front yard setback in an RS-2 single-family district?</prompt>
+    <answer_contains>15</answer_contains>
+    <notes>RS-2 front_yard_setback is 15 ft.</notes>
+  </question>
+
+  <question id="243" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the minimum rear yard setback in an RS-2 single-family district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>RS-2 rear_yard_setback is 30 ft.</notes>
+  </question>
+
+  <question id="244" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for an RM-5 high-density residential district?</prompt>
+    <answer>2.0</answer>
+    <notes>RM-5 FAR is 2.0.</notes>
+  </question>
+
+  <question id="245" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for a B1-1 neighborhood shopping district?</prompt>
+    <answer>1.0</answer>
+    <notes>B1-1 FAR is 1.0.</notes>
+  </question>
+
+  <question id="246" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio for a DS-3 downtown service district?</prompt>
+    <answer>3.0</answer>
+    <notes>DS-3 FAR is 3.0.</notes>
+  </question>
+
+  <question id="247" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for a POS-1 parks and open space district?</prompt>
+    <answer>0.1</answer>
+    <notes>POS-1 FAR is 0.1.</notes>
+  </question>
+
+  <question id="248" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in an RT-3.5 two-flat district?</prompt>
+    <answer_contains>1650</answer_contains>
+    <notes>RT-3.5 requires 1,650 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="249" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>How much floor area can I build on a 6,000 sqft lot zoned RS-2?</prompt>
+    <answer_contains>3900</answer_contains>
+    <notes>RS-2 FAR 0.65 × 6000 sqft = 3,900 sqft.</notes>
+  </question>
+
+  <question id="250" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on an 8,000 sqft lot zoned RM-5?</prompt>
+    <answer_contains>16000</answer_contains>
+    <notes>RM-5 FAR 2.0 × 8000 sqft = 16,000 sqft.</notes>
+  </question>
+
+  <question id="251" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 4,000 sqft lot zoned DS-3?</prompt>
+    <answer_contains>12000</answer_contains>
+    <notes>DS-3 FAR 3.0 × 4000 sqft = 12,000 sqft.</notes>
+  </question>
+
+  <question id="252" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare B3-3 and B3-5 commercial manufacturing districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>B3-5</answer_contains>
+    <notes>B3-5 FAR is 5.0; B3-3 FAR is 3.0. B3-5 allows higher floor area.</notes>
+  </question>
+
+  <question id="253" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare C1-2 and C1-3 neighborhood commercial districts. Which allows more floor area?</prompt>
+    <answer_contains>C1-3</answer_contains>
+    <notes>C1-3 FAR is 3.0; C1-2 FAR is 2.2. C1-3 allows more floor area.</notes>
+  </question>
+
+  <question id="254" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare M1-1 and M1-2 limited manufacturing districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>M1-2</answer_contains>
+    <notes>M1-2 FAR is 2.2; M1-1 FAR is 1.0. M1-2 allows higher floor area.</notes>
+  </question>
+
+  <question id="255" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the side yard setback requirement in an RS-3 single-family district?</prompt>
+    <answer_contains>8</answer_contains>
+    <notes>RS-3 side setback is combined 8 ft, minimum 2 ft each side.</notes>
+  </question>
+
+  <question id="256" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the minimum lot area in an RS-1 single-family residential district?</prompt>
+    <answer_contains>6500</answer_contains>
+    <notes>RS-1 minimum lot area is 6,500 sq ft.</notes>
+  </question>
+
+  <question id="257" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>How does the Chicago zoning code define floor area ratio as a measurement?</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>FAR measurement rules appear in Chapter 17-2 (Rules of Measurement).</notes>
+  </question>
+
+  <question id="258" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="chicago_zoning_code">
+    <prompt>What does the Chicago zoning code say about secondary residential units on a lot?</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>ADU (secondary dwelling unit) provisions appear in Chapter 17-3.</notes>
+  </question>
+
+  <question id="259" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>What does the Chicago zoning code require in a planned development application?</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>Planned development application requirements (site plan, traffic study) are in Chapter 17-13.</notes>
+  </question>
+
+  <question id="260" tool="get_parcel_zoning" type="address_lookup" requires_network="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_data_portal">
+    <prompt>What is the zoning district at 1060 W Addison St in Chicago?</prompt>
+    <answer_contains>B</answer_contains>
+    <notes>1060 W Addison St (Wrigley Field area) is typically in a B or C commercial district.</notes>
+  </question>
+
 </eval_suite>
