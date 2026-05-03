@@ -6216,3 +6216,330 @@ def test_eval_q380_b2_3_lot_area_per_unit(district_tools):
     assert "error" not in result
     lot = str(result.get("lot_area_per_unit", ""))
     assert "500" in lot, f"Expected '500' in B2-3 lot_area_per_unit, got: {lot!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q381 — search_zoning_code("planned development application") returns 17-13 section
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q381_search_planned_development(code_search_tools):
+    """Eval Q381: search_zoning_code('planned development application') returns 17-13 section.
+
+    Uses the fixture index so no live Title 17 index is needed.
+    """
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE,
+    ):
+        result = code_search_tools["search_zoning_code"](
+            query="planned development application procedures"
+        )
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    sections = [r["section"] for r in result["results"]]
+    assert any(s.startswith("17-13") for s in sections), (
+        f"Expected a 17-13 section for planned development query, got: {sections}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q382 — get_zoning_section("17-13-0300") returns planned development text
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q382_get_planned_development_section(code_search_tools):
+    """Eval Q382: get_zoning_section('17-13-0300') returns planned development text.
+
+    Uses the fixture index so no live Title 17 index is needed.
+    """
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE,
+    ):
+        result = code_search_tools["get_zoning_section"](section_number="17-13-0300")
+    assert "error" not in result
+    assert result["section"] == "17-13-0300"
+    assert "planned development" in result["text"].lower(), (
+        "Expected 'planned development' in section 17-13-0300 text"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q383 — search_zoning_code("floor area ratio") returns 17-2 section
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q383_search_floor_area_ratio(code_search_tools):
+    """Eval Q383: search_zoning_code('floor area ratio') returns chapter 17-2 section.
+
+    Uses the fixture index so no live Title 17 index is needed.
+    """
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE,
+    ):
+        result = code_search_tools["search_zoning_code"](query="floor area ratio rules")
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    sections = [r["section"] for r in result["results"]]
+    assert any(s.startswith("17-2") for s in sections), (
+        f"Expected a 17-2 section for floor area ratio query, got: {sections}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q384 — get_zoning_section("17-2-0100") returns FAR definition text
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q384_get_far_section(code_search_tools):
+    """Eval Q384: get_zoning_section('17-2-0100') returns FAR definition text.
+
+    Uses the fixture index so no live Title 17 index is needed.
+    """
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE,
+    ):
+        result = code_search_tools["get_zoning_section"](section_number="17-2-0100")
+    assert "error" not in result
+    assert result["section"] == "17-2-0100"
+    assert "floor area ratio" in result["text"].lower(), (
+        "Expected 'floor area ratio' in section 17-2-0100 text"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q385 — search_zoning_code("special use permit") returns 17-13 section
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q385_search_special_use(code_search_tools):
+    """Eval Q385: search_zoning_code('special use permit') returns a 17-13 section.
+
+    Uses the procedures fixture so no live Title 17 index is needed.
+    """
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_PROCEDURES,
+    ):
+        result = code_search_tools["search_zoning_code"](
+            query="special use permit requirements"
+        )
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    sections = [r["section"] for r in result["results"]]
+    assert any(s.startswith("17-13") for s in sections), (
+        f"Expected a 17-13 section for special use query, got: {sections}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q386 — get_zoning_section("17-13-0600") returns special use text
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q386_get_special_use_section(code_search_tools):
+    """Eval Q386: get_zoning_section('17-13-0600') returns special use permit text.
+
+    Uses the procedures fixture so no live Title 17 index is needed.
+    """
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_PROCEDURES,
+    ):
+        result = code_search_tools["get_zoning_section"](section_number="17-13-0600")
+    assert "error" not in result
+    assert result["section"] == "17-13-0600"
+    assert "special use" in result["text"].lower(), (
+        "Expected 'special use' in section 17-13-0600 text"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q387 — RS-3 minimum lot area per dwelling unit is 2500 sq ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q387_rs3_lot_area_per_unit(district_tools):
+    """Eval Q387: RS-3 lot_area_per_unit should contain '2500'."""
+    result = district_tools["lookup_district"](district_code="RS-3")
+    assert "error" not in result
+    lot = str(result.get("lot_area_per_unit", ""))
+    assert "2500" in lot, f"Expected '2500' in RS-3 lot_area_per_unit, got: {lot!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q388 — RM-5 minimum lot area per dwelling unit is 500 sq ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q388_rm5_lot_area_per_unit(district_tools):
+    """Eval Q388: RM-5 lot_area_per_unit should contain '500'."""
+    result = district_tools["lookup_district"](district_code="RM-5")
+    assert "error" not in result
+    lot = str(result.get("lot_area_per_unit", ""))
+    assert "500" in lot, f"Expected '500' in RM-5 lot_area_per_unit, got: {lot!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q389 — RT-4 minimum lot area per dwelling unit is 1000 sq ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q389_rt4_lot_area_per_unit(district_tools):
+    """Eval Q389: RT-4 lot_area_per_unit should contain '1000'."""
+    result = district_tools["lookup_district"](district_code="RT-4")
+    assert "error" not in result
+    lot = str(result.get("lot_area_per_unit", ""))
+    assert "1000" in lot, f"Expected '1000' in RT-4 lot_area_per_unit, got: {lot!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q390 — RM-6 rear yard setback is 30 ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q390_rm6_rear_yard_setback(district_tools):
+    """Eval Q390: RM-6 rear_yard_setback should contain '30'."""
+    result = district_tools["lookup_district"](district_code="RM-6")
+    assert "error" not in result
+    setback = str(result.get("rear_yard_setback", ""))
+    assert "30" in setback, f"Expected '30' in RM-6 rear_yard_setback, got: {setback!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q391 — POS-1 side setback is 15 ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q391_pos1_side_setback(district_tools):
+    """Eval Q391: POS-1 side_setback should contain '15'."""
+    result = district_tools["lookup_district"](district_code="POS-1")
+    assert "error" not in result
+    setback = str(result.get("side_setback", ""))
+    assert "15" in setback, f"Expected '15' in POS-1 side_setback, got: {setback!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q392 — POS-2 rear yard setback is 25 ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q392_pos2_rear_yard_setback(district_tools):
+    """Eval Q392: POS-2 rear_yard_setback should contain '25'."""
+    result = district_tools["lookup_district"](district_code="POS-2")
+    assert "error" not in result
+    setback = str(result.get("rear_yard_setback", ""))
+    assert "25" in setback, f"Expected '25' in POS-2 rear_yard_setback, got: {setback!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q393 — DS-5 development envelope: 3000 sqft lot → 15000 sqft max floor area
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q393_ds5_envelope(development_tools):
+    """Eval Q393: DS-5 FAR is 5.0; 3000 × 5.0 = 15000 sqft."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="DS-5", lot_area_sqft=3000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(15000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q394 — DX-7 development envelope: 3000 sqft lot → 21000 sqft max floor area
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q394_dx7_envelope(development_tools):
+    """Eval Q394: DX-7 FAR is 7.0; 3000 × 7.0 = 21000 sqft."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="DX-7", lot_area_sqft=3000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(21000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q395 — C2-5 development envelope: 2000 sqft lot → 10000 sqft max floor area
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q395_c2_5_envelope(development_tools):
+    """Eval Q395: C2-5 FAR is 5.0; 2000 × 5.0 = 10000 sqft."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="C2-5", lot_area_sqft=2000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(10000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q396 — RM-5 development envelope: 4000 sqft lot → 8000 sqft max floor area
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q396_rm5_envelope(development_tools):
+    """Eval Q396: RM-5 FAR is 2.0; 4000 × 2.0 = 8000 sqft."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RM-5", lot_area_sqft=4000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(8000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q397 — DS-3 maximum building height contains "50"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q397_ds3_height(district_tools):
+    """Eval Q397: DS-3 maximum_building_height should contain '50'."""
+    result = district_tools["lookup_district"](district_code="DS-3")
+    assert "error" not in result
+    height = str(result.get("maximum_building_height", ""))
+    assert "50" in height, f"Expected '50' in DS-3 maximum_building_height, got: {height!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q398 — compare_districts RM-5 vs RM-5.5: RM-5.5 has higher FAR
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q398_rm5_vs_rm5_5_far(district_tools):
+    """Eval Q398: compare_districts RM-5 vs RM-5.5 — RM-5.5 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="RM-5", district_b="RM-5.5")
+    assert "error" not in result
+    rm5_far = float(result["floor_area_ratio"]["RM-5"])
+    rm5_5_far = float(result["floor_area_ratio"]["RM-5.5"])
+    assert rm5_5_far > rm5_far, f"Expected RM-5.5 FAR ({rm5_5_far}) > RM-5 FAR ({rm5_far})"
+
+
+# ---------------------------------------------------------------------------
+# Q399 — compare_districts C2-3 vs C2-5: C2-5 has higher FAR
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q399_c2_3_vs_c2_5_far(district_tools):
+    """Eval Q399: compare_districts C2-3 vs C2-5 — C2-5 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="C2-3", district_b="C2-5")
+    assert "error" not in result
+    c2_3_far = float(result["floor_area_ratio"]["C2-3"])
+    c2_5_far = float(result["floor_area_ratio"]["C2-5"])
+    assert c2_5_far > c2_3_far, f"Expected C2-5 FAR ({c2_5_far}) > C2-3 FAR ({c2_3_far})"
+
+
+# ---------------------------------------------------------------------------
+# Q400 — DX-7 minimum lot area per dwelling unit is 145 sq ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q400_dx7_lot_area_per_unit(district_tools):
+    """Eval Q400: DX-7 lot_area_per_unit should contain '145'."""
+    result = district_tools["lookup_district"](district_code="DX-7")
+    assert "error" not in result
+    lot = str(result.get("lot_area_per_unit", ""))
+    assert "145" in lot, f"Expected '145' in DX-7 lot_area_per_unit, got: {lot!r}"

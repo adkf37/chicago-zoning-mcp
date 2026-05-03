@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Phase | Build |
-| Last Updated | 2026-05-03 (build pass 5) |
+| Last Updated | 2026-05-03 (build pass 6) |
 | Squad Template | data_pipeline |
 | Priority | low |
 | Blocking | None for automated work — see "Needs Human Input" below for manual follow-ups |
@@ -11,10 +11,10 @@
 
 ## Current Objective
 
-**Build phase — eval suite expanded to 380 questions; 517 tests passing.**
+**Build phase — eval suite expanded to 400 questions; 537 tests passing.**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
-- `pytest tests/ -m "not network"` → **517 passed, 5 deselected** ✅
+- `pytest tests/ -m "not network"` → **537 passed, 5 deselected** ✅
 - `ruff check src/ tests/ web/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
@@ -24,26 +24,28 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 
 ## Recent Activity
 
-- 2026-05-03 (this pass): Eval suite expanded to 380 questions (Q361–Q380); 517 tests passing:
-  - **Eval suite extended to Q361–Q380** — Added 20 new questions to `evals/zoning_qa.xml`
-    filling coverage gaps in under-tested districts and attribute types:
-    - C1-2 height (38 ft), B1-5 lot area per unit (200 sq ft), C2-2 lot area per unit (700 sq ft)
-    - B2-3 FAR (3.0), B2-5 envelope (1000→5000), C3-5 lot area per unit (200 sq ft)
-    - B1-1.5 envelope (2000→3000), B1-2 envelope (5000→11000)
-    - B2-2 lot area per unit (700 sq ft), B3-3 lot area per unit (500 sq ft)
-    - C3-1 envelope (5000→5000), C3-2 lot area per unit (700 sq ft)
-    - M2-1 envelope (3000→3000), M2-2 vs M3-3 comparison (M3-3 higher)
-    - DX-5 envelope (2000→10000), DR-3 lot area per unit (500 sq ft)
-    - POS-1 vs POS-2 comparison (POS-1 higher FAR), RS-1 front yard setback (20 ft)
-    - B1-3 vs B1-5 comparison (B1-5 higher FAR), B2-3 lot area per unit (500 sq ft)
-  - **20 new offline eval tests** — `tests/test_evals.py` Q361–Q380, all offline.
-  - **Impact**: Test count: 497 → 517; eval suite: 360 → 380 questions.
-  - **Coverage rationale**: Districts C1-2, B1-5, C2-2, B2-3, B2-5, C3-5, B1-1.5, B1-2, B2-2,
-    B3-3, C3-1, C3-2, M2-1, M2-2, M3-3, DX-5, DR-3, POS-1, POS-2 each had 3–6 questions
-    (below average). The new questions fill missing attribute types (lot area per unit, envelope,
-    comparison, height, setback) for each of these districts, bringing them closer to average
-    coverage depth.
+- 2026-05-03 (this pass): Eval suite expanded to 400 questions (Q381–Q400); 537 tests passing:
+  - **Eval suite extended to Q381–Q400** — Added 20 new questions to `evals/zoning_qa.xml`
+    addressing FEEDBACK request for zoning code text questions and broader attribute coverage:
+    - Q381–Q386: Fixture-based code-search questions (planned development, floor area ratio,
+      special use permit) — `search_zoning_code` and `get_zoning_section` tests using the
+      in-memory fixture index; no live Title 17 index required.
+    - Q387–Q389: Minimum lot area per dwelling unit for RS-3 (2500), RM-5 (500), RT-4 (1000).
+    - Q390–Q392: Setback attributes — RM-6 rear yard (30 ft), POS-1 side (15 ft),
+      POS-2 rear yard (25 ft).
+    - Q393–Q396: Development envelope calculations — DS-5×3000=15000, DX-7×3000=21000,
+      C2-5×2000=10000, RM-5×4000=8000.
+    - Q397: DS-3 height (50 ft).
+    - Q398–Q399: Comparison pairs RM-5/RM-5.5 (RM-5.5 higher), C2-3/C2-5 (C2-5 higher).
+    - Q400: DX-7 lot area per dwelling unit (145 sq ft).
+  - **20 new offline eval tests** — `tests/test_evals.py` Q381–Q400, all offline.
+  - **Impact**: Test count: 517 → 537; eval suite: 380 → 400 questions.
+  - **Coverage rationale**: Addresses FEEDBACK request for more zoning code text questions
+    (6 fixture-based code search tests); fills minimum lot area per unit gaps (RS-3, RM-5,
+    RT-4 previously untested for this attribute); adds setback coverage for POS and RM-6;
+    adds envelope/comparison coverage for DS-5, DX-7, C2-5, RM-5, RM-5/RM-5.5, C2-3/C2-5.
 
+- 2026-05-03 (previous pass): Eval suite expanded to 380 questions (Q361–Q380); 517 tests passing.
 - 2026-05-03 (previous pass): Eval suite expanded to 360 questions (Q341–Q360); 497 tests passing.
 - 2026-05-03 (previous pass): Eval suite expanded to 340 questions (Q321–Q340); 477 tests passing.
 - 2026-05-03 (previous pass): Eval suite expanded to 320 questions (Q301–Q320); 457 tests passing.
@@ -60,8 +62,8 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 ## Next Recommended Step
 
 **Validate phase.** Run `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>` to
-measure live eval pass-rate against the full 380-question harness. Prior live eval score
-was 14/20 (70%) on 20 questions; the new target is ≥90% on 380 questions.
+measure live eval pass-rate against the full 400-question harness. Prior live eval score
+was 14/20 (70%) on 20 questions; the new target is ≥90% on 400 questions.
 
 ## Artifacts
 
@@ -79,8 +81,8 @@ was 14/20 (70%) on 20 questions; the new target is ≥90% on 380 questions.
 | Squad routing rules | `.squad/routing.md` | created |
 | Squad decisions log | `.squad/decisions.md` | updated |
 | Sprint plan | `.squad/sprint.md` | created |
-| Eval suite | `evals/zoning_qa.xml` | 380 questions (Q1–Q380) |
-| Eval tests | `tests/test_evals.py` | 517 tests passing |
+| Eval suite | `evals/zoning_qa.xml` | 400 questions (Q1–Q400) |
+| Eval tests | `tests/test_evals.py` | 537 tests passing |
 | Frontend | `web/templates/index.html` | redesigned — capabilities cards, larger hero |
 
 ## Needs Human Input
@@ -90,6 +92,7 @@ was 14/20 (70%) on 20 questions; the new target is ≥90% on 380 questions.
   `python scripts/ingest_title_17.py` to rebuild the index with all 17 chapters.
 
 - **Live eval run** (~15 min) — Execute `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>`
-  to measure pass-rate against the 380-question harness.
+  to measure pass-rate against the 400-question harness.
 
 - **MCP Inspector verification** (~30 min) — Run `npx @modelcontextprotocol/inspector python -m src.server`.
+

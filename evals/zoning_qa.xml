@@ -2347,4 +2347,124 @@
     <notes>B2-3 requires 500 sq ft per dwelling unit.</notes>
   </question>
 
+  <question id="381" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>Search the zoning code for "planned development application procedures".</prompt>
+    <answer_contains>17-13</answer_contains>
+    <notes>Planned development procedures are in Chapter 17-13; section 17-13-0300 is the application procedures section.</notes>
+  </question>
+
+  <question id="382" tool="get_zoning_section" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>Retrieve section 17-13-0300 from the zoning code.</prompt>
+    <answer_contains>planned development</answer_contains>
+    <notes>Section 17-13-0300 covers Planned Development Application Procedures.</notes>
+  </question>
+
+  <question id="383" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_zoning_code">
+    <prompt>Search the zoning code for "floor area ratio" rules.</prompt>
+    <answer_contains>17-2</answer_contains>
+    <notes>Floor area ratio is defined in Chapter 17-2 (Rules of Measurement).</notes>
+  </question>
+
+  <question id="384" tool="get_zoning_section" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_zoning_code">
+    <prompt>Retrieve section 17-2-0100 from the zoning code.</prompt>
+    <answer_contains>floor area ratio</answer_contains>
+    <notes>Section 17-2-0100 defines floor area ratio (FAR).</notes>
+  </question>
+
+  <question id="385" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_zoning_code">
+    <prompt>Search the zoning code for "special use permit" requirements.</prompt>
+    <answer_contains>17-13</answer_contains>
+    <notes>Special use permits are governed by Chapter 17-13; section 17-13-0600 covers special use procedures.</notes>
+  </question>
+
+  <question id="386" tool="get_zoning_section" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_zoning_code">
+    <prompt>Retrieve section 17-13-0600 from the zoning code.</prompt>
+    <answer_contains>special use</answer_contains>
+    <notes>Section 17-13-0600 covers Special Use Permits.</notes>
+  </question>
+
+  <question id="387" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in an RS-3 single-family district?</prompt>
+    <answer_contains>2500</answer_contains>
+    <notes>RS-3 minimum lot area per dwelling unit is 2,500 sq ft.</notes>
+  </question>
+
+  <question id="388" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in an RM-5 multi-unit residential district?</prompt>
+    <answer_contains>500</answer_contains>
+    <notes>RM-5 minimum lot area per dwelling unit is 500 sq ft.</notes>
+  </question>
+
+  <question id="389" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the minimum lot area for a single dwelling unit in an RT-4 two-flat/townhouse district?</prompt>
+    <answer_contains>1000</answer_contains>
+    <notes>RT-4 minimum lot area per dwelling unit is 1,000 sq ft.</notes>
+  </question>
+
+  <question id="390" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the rear yard setback requirement in an RM-6 multi-unit residential district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>RM-6 rear yard setback is 30 ft.</notes>
+  </question>
+
+  <question id="391" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the side setback requirement in a POS-1 parks and open space district?</prompt>
+    <answer_contains>15</answer_contains>
+    <notes>POS-1 side setback is 15 ft.</notes>
+  </question>
+
+  <question id="392" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the rear yard setback in a POS-2 regional parks and open space district?</prompt>
+    <answer_contains>25</answer_contains>
+    <notes>POS-2 rear yard setback is 25 ft.</notes>
+  </question>
+
+  <question id="393" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="moderate" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 3,000 sqft lot zoned DS-5?</prompt>
+    <answer_contains>15000</answer_contains>
+    <notes>DS-5 FAR is 5.0; 3000 × 5.0 = 15,000 sqft.</notes>
+  </question>
+
+  <question id="394" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="moderate" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 3,000 sqft lot zoned DX-7?</prompt>
+    <answer_contains>21000</answer_contains>
+    <notes>DX-7 FAR is 7.0; 3000 × 7.0 = 21,000 sqft.</notes>
+  </question>
+
+  <question id="395" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="moderate" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 2,000 sqft lot zoned C2-5?</prompt>
+    <answer_contains>10000</answer_contains>
+    <notes>C2-5 FAR is 5.0; 2000 × 5.0 = 10,000 sqft.</notes>
+  </question>
+
+  <question id="396" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="moderate" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 4,000 sqft lot zoned RM-5?</prompt>
+    <answer_contains>8000</answer_contains>
+    <notes>RM-5 FAR is 2.0; 4000 × 2.0 = 8,000 sqft.</notes>
+  </question>
+
+  <question id="397" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a DS-3 downtown service district?</prompt>
+    <answer_contains>50</answer_contains>
+    <notes>DS-3 maximum building height is 50 ft (4 stories).</notes>
+  </question>
+
+  <question id="398" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare RM-5 and RM-5.5 residential districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>RM-5.5</answer_contains>
+    <notes>RM-5.5 FAR is 2.5; RM-5 FAR is 2.0. RM-5.5 allows higher floor area.</notes>
+  </question>
+
+  <question id="399" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare C2-3 and C2-5 motor vehicle commercial districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>C2-5</answer_contains>
+    <notes>C2-5 FAR is 5.0; C2-3 FAR is 3.0. C2-5 allows higher floor area.</notes>
+  </question>
+
+  <question id="400" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a DX-7 downtown mixed-use district?</prompt>
+    <answer_contains>145</answer_contains>
+    <notes>DX-7 minimum lot area per dwelling unit is 145 sq ft.</notes>
+  </question>
+
 </eval_suite>
