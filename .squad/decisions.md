@@ -3,7 +3,44 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
-### 2026-05-03 — Data Pipeline — Eval expansion Q281–Q300
+### 2026-05-03 — Data Pipeline — Eval expansion Q301–Q320
+
+**Context:** Build phase continues expanding coverage beyond Q300. Frequency analysis of all 300
+previous questions identified districts with only category-type questions (B3-1, M2-1) and many
+districts with no height attribute tests (B3-5, DX-7, DS-5, RM-5.5, C3-1, C3-2). DC-12 lacked
+a lot-area-per-unit test despite being a key downtown residential district.
+
+**Decisions:**
+
+1. **Eval suite extended to 320 questions** — Added Q301–Q320 to `evals/zoning_qa.xml`:
+   - Q301–Q303: B3-1 standalone FAR (1.0), height (30 ft), envelope (3000×1.0=3000 sqft).
+   - Q304–Q305: M2-1 standalone FAR (1.0) and height (30 ft).
+   - Q306–Q307: M2-2 standalone FAR (2.2) and envelope (4000×2.2=8800 sqft).
+   - Q308–Q309: C3-1 height (30 ft) and C3-2 height (38 ft).
+   - Q310–Q311: B3-5 standalone FAR (5.0) and height (65 ft).
+   - Q312–Q314: DX-7 height (80 ft), DS-5 height (65 ft), RM-5.5 height (55 ft).
+   - Q315: DC-12 lot area per unit (115 sq ft).
+   - Q316–Q317: B3-1 vs B3-2 comparison (B3-2 higher); C3-1 vs C3-2 comparison (C3-2 higher).
+   - Q318–Q320: DS-5 envelope (2000×5.0=10000), B3-5 envelope (3000×5.0=15000), DC-12 envelope (500×12.0=6000).
+
+2. **20 new offline eval tests** — `tests/test_evals.py` Q301–Q320 added; all are fully
+   offline (no network or index required).
+
+3. **Coverage rationale** — B3-1 previously had only two category questions with no FAR, height,
+   or envelope coverage. M2-1 had only category and comparison questions. The height attribute was
+   completely untested for 6 districts (B3-5, DX-7, DS-5, RM-5.5, C3-1, C3-2). DC-12 had FAR
+   coverage but no lot-area-per-unit test. The 20 new questions balance standalone FAR, height,
+   lot-area-per-unit, envelope, and comparison attributes across undertested districts.
+
+**Impact:**
+- Test count: 437 → 457; eval suite: 300 → 320 questions.
+- `ruff check src/ tests/ web/` → 0 errors.
+- B3-1 and M2-1 now have standalone FAR and height tests.
+- Height attribute tested for B3-5, DX-7, DS-5, RM-5.5, C3-1, C3-2.
+- DC-12 lot-area-per-unit now verified (115 sq ft/dwelling unit).
+
+
+
 
 **Context:** FEEDBACK.md goals: (1) expand test suite with wider range of questions; (2) improve
 performance for 100% accuracy. Build phase continues expanding coverage beyond Q280, now focusing
