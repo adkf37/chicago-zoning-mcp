@@ -2467,4 +2467,126 @@
     <notes>DX-7 minimum lot area per dwelling unit is 145 sq ft.</notes>
   </question>
 
+  <!-- Q401-Q420: B/C/M/DR/DX series coverage, front-yard setbacks, additional comparisons -->
+
+  <question id="401" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio (FAR) for a B1-2 neighborhood shopping district?</prompt>
+    <answer_contains>2.2</answer_contains>
+    <notes>B1-2 FAR is 2.2.</notes>
+  </question>
+
+  <question id="402" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a B1-3 neighborhood shopping district?</prompt>
+    <answer_contains>45</answer_contains>
+    <notes>B1-3 maximum building height is 45 ft (4 stories).</notes>
+  </question>
+
+  <question id="403" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio (FAR) for a C1-2 neighborhood commercial district?</prompt>
+    <answer_contains>2.2</answer_contains>
+    <notes>C1-2 FAR is 2.2.</notes>
+  </question>
+
+  <question id="404" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio (FAR) for an M1-3 limited manufacturing district?</prompt>
+    <answer_contains>3.0</answer_contains>
+    <notes>M1-3 FAR is 3.0.</notes>
+  </question>
+
+  <question id="405" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in an M2-2 general manufacturing district?</prompt>
+    <answer_contains>45</answer_contains>
+    <notes>M2-2 maximum building height is 45 ft (4 stories).</notes>
+  </question>
+
+  <question id="406" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio (FAR) for a DR-5 downtown residential district?</prompt>
+    <answer_contains>5.0</answer_contains>
+    <notes>DR-5 FAR is 5.0.</notes>
+  </question>
+
+  <question id="407" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a DR-7 downtown residential district?</prompt>
+    <answer_contains>80</answer_contains>
+    <notes>DR-7 maximum building height is 80 ft (8 stories).</notes>
+  </question>
+
+  <question id="408" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a DR-3 downtown residential district?</prompt>
+    <answer_contains>500</answer_contains>
+    <notes>DR-3 minimum lot area per dwelling unit is 500 sq ft.</notes>
+  </question>
+
+  <question id="409" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio (FAR) for a DX-5 downtown mixed-use district?</prompt>
+    <answer_contains>5.0</answer_contains>
+    <notes>DX-5 FAR is 5.0.</notes>
+  </question>
+
+  <question id="410" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio (FAR) for a DC-12 downtown core district?</prompt>
+    <answer_contains>12</answer_contains>
+    <notes>DC-12 FAR is 12.0.</notes>
+  </question>
+
+  <question id="411" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="moderate" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 5,000 sqft lot zoned RS-1?</prompt>
+    <answer_contains>2500</answer_contains>
+    <notes>RS-1 FAR is 0.5; 5000 × 0.5 = 2,500 sqft.</notes>
+  </question>
+
+  <question id="412" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="moderate" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 10,000 sqft lot zoned B1-3?</prompt>
+    <answer_contains>30000</answer_contains>
+    <notes>B1-3 FAR is 3.0; 10000 × 3.0 = 30,000 sqft.</notes>
+  </question>
+
+  <question id="413" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>Compare RS-1 and RS-2 single-family residential districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>RS-2</answer_contains>
+    <notes>RS-2 FAR is 0.65; RS-1 FAR is 0.5. RS-2 allows higher floor area.</notes>
+  </question>
+
+  <question id="414" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>Compare DR-3 and DR-5 downtown residential districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>DR-5</answer_contains>
+    <notes>DR-5 FAR is 5.0; DR-3 FAR is 3.0. DR-5 allows higher floor area.</notes>
+  </question>
+
+  <question id="415" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the front yard setback requirement in an RS-1 single-family residential district?</prompt>
+    <answer_contains>20</answer_contains>
+    <notes>RS-1 front yard setback is 20 ft.</notes>
+  </question>
+
+  <question id="416" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the rear yard setback requirement in an RS-2 single-family residential district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>RS-2 rear yard setback is 30 ft.</notes>
+  </question>
+
+  <question id="417" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the front yard setback in a DR-3 downtown residential district?</prompt>
+    <answer_contains>15</answer_contains>
+    <notes>DR-3 front yard setback is 15 ft.</notes>
+  </question>
+
+  <question id="418" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio (FAR) for an RM-4.5 multi-unit residential district?</prompt>
+    <answer_contains>1.5</answer_contains>
+    <notes>RM-4.5 FAR is 1.5.</notes>
+  </question>
+
+  <question id="419" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in an RM-5.5 multi-unit residential district?</prompt>
+    <answer_contains>55</answer_contains>
+    <notes>RM-5.5 maximum building height is 55 ft (5 stories).</notes>
+  </question>
+
+  <question id="420" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in an RM-5.5 multi-unit residential district?</prompt>
+    <answer_contains>400</answer_contains>
+    <notes>RM-5.5 minimum lot area per dwelling unit is 400 sq ft.</notes>
+  </question>
+
 </eval_suite>

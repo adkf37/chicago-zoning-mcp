@@ -3,6 +3,45 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-05-03 — Data Pipeline — Eval expansion Q401–Q420
+
+**Context:** Build phase continues expanding coverage beyond Q400. This pass adds 20 questions
+targeting B/C/M/DR/DX district series gaps, front-yard and rear-yard setback coverage, and
+additional comparison pairs. Prior eval coverage had gaps in B1-2 FAR, M1-3 FAR, DR-5 FAR,
+DR-3 lot area per unit, DC-12 FAR, RS-1 development envelope, front-yard setbacks (RS-1/DR-3),
+and RM-4.5/RM-5.5 attributes.
+
+**Decisions:**
+
+1. **Eval suite extended to 420 questions** — Added Q401–Q420 to `evals/zoning_qa.xml`:
+   - Q401–Q403: B/C series FAR — B1-2 (2.2), B1-3 height (45 ft), C1-2 (2.2).
+   - Q404–Q405: M series — M1-3 FAR (3.0), M2-2 height (45 ft).
+   - Q406–Q408: DR series — DR-5 FAR (5.0), DR-7 height (80 ft), DR-3 lot area per unit (500 sq ft).
+   - Q409–Q410: DX/DC series — DX-5 FAR (5.0), DC-12 FAR (12.0).
+   - Q411–Q412: Development envelope calculations — RS-1×5000=2500, B1-3×10000=30000.
+   - Q413–Q414: Comparison pairs — RS-1/RS-2 (RS-2 higher), DR-3/DR-5 (DR-5 higher).
+   - Q415–Q417: Front/rear yard setbacks — RS-1 front (20 ft), RS-2 rear (30 ft), DR-3 front (15 ft).
+   - Q418–Q420: RM-4.5/RM-5.5 attributes — RM-4.5 FAR (1.5), RM-5.5 height (55 ft),
+     RM-5.5 lot area per unit (400 sq ft).
+
+2. **20 new offline eval tests** — `tests/test_evals.py` Q401–Q420 added; all are fully
+   offline (no network or index required).
+
+3. **Coverage rationale** — B1-2, C1-2, M1-3 FAR and M2-2 height were untested despite being
+   common commercial/industrial zone lookups. DR-5 FAR and DR-7 height were not individually
+   tested (only as comparison targets). RS-1 front yard (20 ft) is distinct from RS-2/RS-3
+   (15 ft) — an important distinction for homeowners. RM-4.5 and RM-5.5 were undertested
+   outside of comparison contexts.
+
+**Impact:**
+- Test count: 537 → 557; eval suite: 400 → 420 questions.
+- `ruff check src/ tests/ web/` → 0 errors.
+- New coverage: B-series (B1-2, B1-3), C-series (C1-2), M-series (M1-3, M2-2), DR-series
+  (DR-3, DR-5, DR-7), DX/DC-series (DX-5, DC-12), front-yard setbacks for RS-1/DR-3,
+  rear-yard for RS-2, RM-4.5/RM-5.5 multi-attribute coverage.
+
+---
+
 ### 2026-05-03 — Data Pipeline — Eval expansion Q381–Q400
 
 **Context:** Build phase continues expanding coverage beyond Q380. FEEDBACK.md (Aaron, 2025-05-02)
