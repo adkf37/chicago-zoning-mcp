@@ -11,10 +11,10 @@
 
 ## Current Objective
 
-**Build phase — side setback data corrected; 419 tests passing.**
+**Build phase — eval suite expanded to 300 questions; 437 tests passing.**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
-- `pytest tests/ -m "not network"` → **419 passed, 5 deselected** ✅
+- `pytest tests/ -m "not network"` → **437 passed, 5 deselected** ✅
 - `ruff check src/ tests/ web/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
@@ -24,7 +24,20 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 
 ## Recent Activity
 
-- 2026-05-03 (this pass): Fixed inaccurate side setback data per FEEDBACK.md; 419 tests passing:
+- 2026-05-03 (this pass): Eval suite expanded to 300 questions (Q281–Q300); 437 tests passing:
+  - **Eval suite extended to Q281–Q300** — Added 20 new questions to `evals/zoning_qa.xml`
+    covering undercovered districts and new attribute types: C2-5 FAR (5.0), DX-16 FAR (16.0),
+    B2-1 FAR (1.0), B2-2 FAR (2.2), B2-1 height (30 ft), RT-3.5 height (35 ft), RM-5 height
+    (45 ft), RS-3 rear yard setback (28 ft), RS-2 side setback (30% formula), RT-3.5 lot area
+    per unit (1,650), RM-5 lot area per unit (500), B2-5 lot area per unit (200), B2-1 vs B2-3
+    comparison, DX-12 vs DX-16 comparison, C2-5 envelope (4000→20000), DX-16 envelope
+    (1000→16000), B2-2 envelope (5000→11000), RM-6.5 lot area per unit (145), code search
+    (parking requirements), address lookup (35 E Wacker Dr).
+  - **18 new offline eval tests** — `tests/test_evals.py` Q281–Q298 (Q299 requires index,
+    Q300 requires network — both omitted from offline test suite per existing convention).
+  - **Impact**: Test count: 419 → 437; eval suite: 280 → 300 questions.
+
+- 2026-05-03 (previous pass): Fixed inaccurate side setback data per FEEDBACK.md; 419 tests passing:
   - **Corrected `data/zoning_codes.csv` side setbacks** for all R and DR districts per the
     actual zoning code (Sec. 17-2-0309 and 17-4-0406-B). Previous values were simplified
     fixed-foot numbers (e.g. "Combined 8 ft"); correct values are percentage-of-lot-width

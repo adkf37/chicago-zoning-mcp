@@ -3,7 +3,47 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
-### 2026-05-03 — Data Pipeline — Fix inaccurate side setback values in zoning_codes.csv
+### 2026-05-03 — Data Pipeline — Eval expansion Q281–Q300
+
+**Context:** FEEDBACK.md goals: (1) expand test suite with wider range of questions; (2) improve
+performance for 100% accuracy. Build phase continues expanding coverage beyond Q280, now focusing
+on undercovered districts (C2-5 had only 4 mentions; DX-16 had 5; B2-1, B2-2 had 6 each) and
+attribute types not yet directly tested in offline suite (height, rear-yard setback, lot area per
+dwelling unit).
+
+**Decisions:**
+
+1. **Eval suite extended to 300 questions** — Added Q281–Q300 to `evals/zoning_qa.xml`:
+   - Q281–Q284: FAR tests for lowest-coverage districts: C2-5 (5.0), DX-16 (16.0), B2-1 (1.0),
+     B2-2 (2.2).
+   - Q285–Q287: New height attribute tests: B2-1 (30 ft), RT-3.5 (35 ft), RM-5 (45 ft).
+   - Q288–Q289: Setback correctness tests: RS-3 rear yard (28 ft), RS-2 side setback (30% of
+     lot width formula per Sec. 17-2-0309).
+   - Q290–Q292: Lot area per dwelling unit tests: RT-3.5 (1,650), RM-5 (500), B2-5 (200).
+   - Q293–Q294: New comparison tests: B2-1 vs B2-3 (B2-3 higher); DX-12 vs DX-16 (DX-16 higher).
+   - Q295–Q297: Development envelope for undercovered districts: C2-5×4000=20,000; DX-16×1000=16,000;
+     B2-2×5000=11,000.
+   - Q298: RM-6.5 lot area per unit (145 sq ft) — highest-density general residential.
+   - Q299: Code search for parking requirements (requires_index).
+   - Q300: Address lookup at 35 E Wacker Dr (requires_network).
+
+2. **18 new offline eval tests** — `tests/test_evals.py` Q281–Q298 added. Q299 (code_search,
+   requires_index) and Q300 (address_lookup, requires_network) omitted from offline test suite
+   per established convention (these types require fixtures/network and are tested in live eval).
+
+3. **Coverage rationale** — Used frequency analysis of all 280 previous questions; C2-5 (4
+   mentions), DX-16 (5 mentions) were the two lowest-coverage districts. Height and lot-area-per-
+   unit attributes were underrepresented vs. FAR (which has heavy coverage). The 20 new questions
+   add balanced coverage across attribute types.
+
+**Impact:**
+- Test count: 419 → 437; eval suite: 280 → 300 questions.
+- `ruff check src/ tests/ web/` → 0 errors.
+- C2-5 and DX-16 now have standalone FAR tests.
+- Height attribute tested for B2, RT, RM district series.
+- RS-2 side setback verified as percentage-based formula (consistent with RS-3 fix from prior pass).
+
+
 
 **Context:** FEEDBACK.md (2025-05-03) from Aaron identified that eval Q255 ("What is the side
 yard setback requirement in an RS-3 single-family district?") had a wrong answer: the CSV stored
