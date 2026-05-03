@@ -5404,3 +5404,270 @@ def test_eval_q320_dc12_500_envelope(development_tools):
     )
     assert "error" not in result
     assert result["max_floor_area_sqft"] == pytest.approx(6000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q321 — RT-4 standalone FAR is 1.2
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q321_rt4_far(district_tools):
+    """Eval Q321: RT-4 standalone FAR should be 1.2."""
+    result = district_tools["lookup_district"](district_code="RT-4")
+    assert "error" not in result
+    far = float(result.get("floor_area_ratio", 0))
+    assert far == pytest.approx(1.2), f"Expected RT-4 FAR 1.2, got: {far!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q322 — B3-3 standalone FAR is 3.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q322_b3_3_far(district_tools):
+    """Eval Q322: B3-3 standalone FAR should be 3.0."""
+    result = district_tools["lookup_district"](district_code="B3-3")
+    assert "error" not in result
+    far = float(result.get("floor_area_ratio", 0))
+    assert far == pytest.approx(3.0), f"Expected B3-3 FAR 3.0, got: {far!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q323 — B3-2 standalone FAR is 2.2
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q323_b3_2_far(district_tools):
+    """Eval Q323: B3-2 standalone FAR should be 2.2."""
+    result = district_tools["lookup_district"](district_code="B3-2")
+    assert "error" not in result
+    far = float(result.get("floor_area_ratio", 0))
+    assert far == pytest.approx(2.2), f"Expected B3-2 FAR 2.2, got: {far!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q324 — RS-1 maximum building height is 30 ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q324_rs1_height(district_tools):
+    """Eval Q324: RS-1 maximum building height should contain '30'."""
+    result = district_tools["lookup_district"](district_code="RS-1")
+    assert "error" not in result
+    height = str(result.get("maximum_building_height", ""))
+    assert "30" in height, f"Expected '30' in RS-1 height, got: {height!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q325 — RS-3 maximum building height is 30 ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q325_rs3_height(district_tools):
+    """Eval Q325: RS-3 maximum building height should contain '30'."""
+    result = district_tools["lookup_district"](district_code="RS-3")
+    assert "error" not in result
+    height = str(result.get("maximum_building_height", ""))
+    assert "30" in height, f"Expected '30' in RS-3 height, got: {height!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q326 — C1-1 maximum building height is 30 ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q326_c1_1_height(district_tools):
+    """Eval Q326: C1-1 maximum building height should contain '30'."""
+    result = district_tools["lookup_district"](district_code="C1-1")
+    assert "error" not in result
+    height = str(result.get("maximum_building_height", ""))
+    assert "30" in height, f"Expected '30' in C1-1 height, got: {height!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q327 — C1-5 maximum building height is 65 ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q327_c1_5_height(district_tools):
+    """Eval Q327: C1-5 maximum building height should contain '65'."""
+    result = district_tools["lookup_district"](district_code="C1-5")
+    assert "error" not in result
+    height = str(result.get("maximum_building_height", ""))
+    assert "65" in height, f"Expected '65' in C1-5 height, got: {height!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q328 — C2-1 maximum building height is 30 ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q328_c2_1_height(district_tools):
+    """Eval Q328: C2-1 maximum building height should contain '30'."""
+    result = district_tools["lookup_district"](district_code="C2-1")
+    assert "error" not in result
+    height = str(result.get("maximum_building_height", ""))
+    assert "30" in height, f"Expected '30' in C2-1 height, got: {height!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q329 — C3-5 maximum building height is 65 ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q329_c3_5_height(district_tools):
+    """Eval Q329: C3-5 maximum building height should contain '65'."""
+    result = district_tools["lookup_district"](district_code="C3-5")
+    assert "error" not in result
+    height = str(result.get("maximum_building_height", ""))
+    assert "65" in height, f"Expected '65' in C3-5 height, got: {height!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q330 — M2-3 maximum building height is 55 ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q330_m2_3_height(district_tools):
+    """Eval Q330: M2-3 maximum building height should contain '55'."""
+    result = district_tools["lookup_district"](district_code="M2-3")
+    assert "error" not in result
+    height = str(result.get("maximum_building_height", ""))
+    assert "55" in height, f"Expected '55' in M2-3 height, got: {height!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q331 — DX-3 maximum building height is 50 ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q331_dx3_height(district_tools):
+    """Eval Q331: DX-3 maximum building height should contain '50'."""
+    result = district_tools["lookup_district"](district_code="DX-3")
+    assert "error" not in result
+    height = str(result.get("maximum_building_height", ""))
+    assert "50" in height, f"Expected '50' in DX-3 height, got: {height!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q332 — RS-1 2000 sqft lot → 1000 sqft max floor area (FAR 0.5)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q332_rs1_2000_envelope(development_tools):
+    """Eval Q332: RS-1 FAR 0.5 × 2000 sqft lot = 1,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RS-1", lot_area_sqft=2000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(1000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q333 — B1-1 5000 sqft lot → 5000 sqft max floor area (FAR 1.0)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q333_b1_1_5000_envelope(development_tools):
+    """Eval Q333: B1-1 FAR 1.0 × 5000 sqft lot = 5,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="B1-1", lot_area_sqft=5000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(5000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q334 — B2-1 3000 sqft lot → 3000 sqft max floor area (FAR 1.0)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q334_b2_1_3000_envelope(development_tools):
+    """Eval Q334: B2-1 FAR 1.0 × 3000 sqft lot = 3,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="B2-1", lot_area_sqft=3000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(3000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q335 — C2-2 2000 sqft lot → 4400 sqft max floor area (FAR 2.2)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q335_c2_2_2000_envelope(development_tools):
+    """Eval Q335: C2-2 FAR 2.2 × 2000 sqft lot = 4,400 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="C2-2", lot_area_sqft=2000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(4400.0)
+
+
+# ---------------------------------------------------------------------------
+# Q336 — C1-3 2000 sqft lot → 6000 sqft max floor area (FAR 3.0)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q336_c1_3_2000_envelope(development_tools):
+    """Eval Q336: C1-3 FAR 3.0 × 2000 sqft lot = 6,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="C1-3", lot_area_sqft=2000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(6000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q337 — compare_districts B3-3 vs B3-5: B3-5 has higher FAR
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q337_b3_3_vs_b3_5_far(district_tools):
+    """Eval Q337: compare_districts B3-3 vs B3-5 — B3-5 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="B3-3", district_b="B3-5")
+    assert "error" not in result
+    b3_3_far = float(result["floor_area_ratio"]["B3-3"])
+    b3_5_far = float(result["floor_area_ratio"]["B3-5"])
+    assert b3_5_far > b3_3_far, f"Expected B3-5 FAR ({b3_5_far}) > B3-3 FAR ({b3_3_far})"
+
+
+# ---------------------------------------------------------------------------
+# Q338 — compare_districts M1-1 vs M1-3: M1-3 has higher FAR
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q338_m1_1_vs_m1_3_far(district_tools):
+    """Eval Q338: compare_districts M1-1 vs M1-3 — M1-3 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="M1-1", district_b="M1-3")
+    assert "error" not in result
+    m1_1_far = float(result["floor_area_ratio"]["M1-1"])
+    m1_3_far = float(result["floor_area_ratio"]["M1-3"])
+    assert m1_3_far > m1_1_far, f"Expected M1-3 FAR ({m1_3_far}) > M1-1 FAR ({m1_1_far})"
+
+
+# ---------------------------------------------------------------------------
+# Q339 — RT-4 minimum lot area per dwelling unit is 1,000 sq ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q339_rt4_lot_area_per_unit(district_tools):
+    """Eval Q339: RT-4 lot_area_per_unit should contain '1000'."""
+    result = district_tools["lookup_district"](district_code="RT-4")
+    assert "error" not in result
+    lot = str(result.get("lot_area_per_unit", ""))
+    assert "1000" in lot, f"Expected '1000' in RT-4 lot_area_per_unit, got: {lot!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q340 — B3-2 minimum lot area per dwelling unit is 700 sq ft
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q340_b3_2_lot_area_per_unit(district_tools):
+    """Eval Q340: B3-2 lot_area_per_unit should contain '700'."""
+    result = district_tools["lookup_district"](district_code="B3-2")
+    assert "error" not in result
+    lot = str(result.get("lot_area_per_unit", ""))
+    assert "700" in lot, f"Expected '700' in B3-2 lot_area_per_unit, got: {lot!r}"

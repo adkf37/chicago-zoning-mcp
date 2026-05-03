@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Phase | Build |
-| Last Updated | 2026-05-03 (build pass 2) |
+| Last Updated | 2026-05-03 (build pass 3) |
 | Squad Template | data_pipeline |
 | Priority | low |
 | Blocking | None for automated work — see "Needs Human Input" below for manual follow-ups |
@@ -11,10 +11,10 @@
 
 ## Current Objective
 
-**Build phase — eval suite expanded to 320 questions; 457 tests passing.**
+**Build phase — eval suite expanded to 340 questions; 477 tests passing.**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
-- `pytest tests/ -m "not network"` → **457 passed, 5 deselected** ✅
+- `pytest tests/ -m "not network"` → **477 passed, 5 deselected** ✅
 - `ruff check src/ tests/ web/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
@@ -23,6 +23,24 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 - Documentation complete (README, CONTRIBUTING.md, phase docs, example conversations) ✅
 
 ## Recent Activity
+
+- 2026-05-03 (this pass): Eval suite expanded to 340 questions (Q321–Q340); 477 tests passing:
+  - **Eval suite extended to Q321–Q340** — Added 20 new questions to `evals/zoning_qa.xml`
+    filling remaining coverage gaps in FAR standalone, height, envelope, comparison, and
+    lot-area-per-unit attribute types:
+    RT-4 FAR (1.2), B3-3 FAR (3.0), B3-2 FAR (2.2), RS-1 height (30 ft), RS-3 height (30 ft),
+    C1-1 height (30 ft), C1-5 height (65 ft), C2-1 height (30 ft), C3-5 height (65 ft),
+    M2-3 height (55 ft), DX-3 height (50 ft), RS-1 envelope (2000→1000), B1-1 envelope
+    (5000→5000), B2-1 envelope (3000→3000), C2-2 envelope (2000→4400), C1-3 envelope
+    (2000→6000), B3-3 vs B3-5 comparison (B3-5 higher), M1-1 vs M1-3 comparison (M1-3 higher),
+    RT-4 lot area per unit (1000 sq ft), B3-2 lot area per unit (700 sq ft).
+  - **20 new offline eval tests** — `tests/test_evals.py` Q321–Q340, all offline.
+  - **Impact**: Test count: 457 → 477; eval suite: 320 → 340 questions.
+  - **Coverage rationale**: RT-4 lacked standalone FAR despite appearing in comparisons and
+    envelopes; B3-2 and B3-3 lacked standalone FAR; 9 districts (RS-1, RS-3, C1-1, C1-5,
+    C2-1, C3-5, M2-3, DX-3) had no height attribute test; 6 districts (RS-1, B1-1, B2-1,
+    C2-2, C1-3, C3-5) had no envelope test; B3-3/B3-5 and M1-1/M1-3 series lacked comparison
+    tests; RT-4 and B3-2 lacked lot-area-per-unit tests.
 
 - 2026-05-03 (this pass): Eval suite expanded to 320 questions (Q301–Q320); 457 tests passing:
   - **Eval suite extended to Q301–Q320** — Added 20 new questions to `evals/zoning_qa.xml`
@@ -113,8 +131,8 @@ was 14/20 (70%) on 20 questions; the new target is ≥90% on 320 questions.
 | Squad routing rules | `.squad/routing.md` | created |
 | Squad decisions log | `.squad/decisions.md` | updated |
 | Sprint plan | `.squad/sprint.md` | created |
-| Eval suite | `evals/zoning_qa.xml` | 320 questions (Q1–Q320) |
-| Eval tests | `tests/test_evals.py` | 457 tests passing |
+| Eval suite | `evals/zoning_qa.xml` | 340 questions (Q1–Q340) |
+| Eval tests | `tests/test_evals.py` | 477 tests passing |
 | Frontend | `web/templates/index.html` | redesigned — capabilities cards, larger hero |
 
 ## Needs Human Input
