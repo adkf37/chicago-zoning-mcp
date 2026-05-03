@@ -11,10 +11,10 @@
 
 ## Current Objective
 
-**Build phase — eval suite expanded to 260 questions; 399 tests passing.**
+**Build phase — eval suite expanded to 280 questions; 419 tests passing.**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
-- `pytest tests/ -m "not network"` → **399 passed, 5 deselected** ✅ (up from 379)
+- `pytest tests/ -m "not network"` → **419 passed, 5 deselected** ✅ (up from 399)
 - `ruff check src/ tests/ web/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
@@ -24,23 +24,22 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 
 ## Recent Activity
 
-- 2026-05-03 (this pass): Eval suite expanded to 260 questions (Q241–Q260); 399 tests passing:
-  - **Eval suite expanded to Q241–Q260** — Added 20 new questions to `evals/zoning_qa.xml`
-    covering: RS-2 FAR (0.65), RS-2 front yard setback (15 ft), RS-2 rear yard setback (30 ft),
-    RM-5 FAR (2.0), B1-1 FAR (1.0), DS-3 FAR (3.0), POS-1 FAR (0.1), RT-3.5 lot area per unit
-    (1650 sqft), RS-2 envelope (6000 → 3900 sqft), RM-5 envelope (8000 → 16000 sqft), DS-3
-    envelope (4000 → 12000 sqft), B3-3 vs B3-5 comparison (B3-5 higher FAR), C1-2 vs C1-3
-    comparison (C1-3 higher FAR), M1-1 vs M1-2 comparison (M1-2 higher FAR), RS-3 side yard
-    setback (combined 8 ft), RS-1 minimum lot area (6500 sqft), 3 new code search queries
-    (FAR measurement, secondary dwelling unit, planned development site plan), and mocked Wrigley
-    Field address lookup (1060 W Addison → B3-1).
-  - **20 new eval tests** — `tests/test_evals.py` Q241–Q260 cover: previously untested standalone
-    FAR values (RS-2, RM-5, B1-1, DS-3, POS-1), RS-2 setbacks (front and rear), RT-3.5 lot area
-    per unit, 3 development envelope calculations, 3 new comparison pairs (B3-3/B3-5, C1-2/C1-3,
-    M1-1/M1-2), first-ever side setback test (RS-3), first-ever minimum lot area test (RS-1),
-    3 new code search fixture queries, and a mocked Wrigley Field address lookup.
-  - **Impact**: Test count: 379 → 399; eval suite: 240 → 260 questions.
+- 2026-05-03 (this pass): Eval suite expanded to 280 questions (Q261–Q280); 419 tests passing:
+  - **Eval suite extended to Q261–Q280** — Added 20 new questions to `evals/zoning_qa.xml`
+    covering the least-tested districts and attributes: C1-1 FAR (1.0), C1-5 FAR (5.0),
+    C2-1 FAR (1.0), C2-2 FAR (2.2), B1-5 FAR (5.0), B2-5 FAR (5.0), C2-3 height (50 ft),
+    C3-1 FAR (1.0), C3-2 FAR (2.2), RM-5.5 FAR (2.5), B1-1.5 FAR (1.5), DX-3 FAR (3.0),
+    DC-12 FAR (12.0), DR-7 FAR (7.0), DR-10 FAR (10.0), M1-3 FAR (3.0), M2-3 FAR (3.0),
+    M3-3 FAR (3.0), C2-1 vs C2-3 comparison (C2-3 higher FAR), RM-5.5 envelope
+    (3000 → 7500 sqft).
+  - **20 new eval tests** — `tests/test_evals.py` Q261–Q280 cover: 7 previously least-tested
+    districts (C1-1, C1-5, C2-1, C2-2, C3-1, C3-2, M3-3) with standalone FAR tests; 6
+    additional district FAR tests (B1-5, B2-5, RM-5.5, B1-1.5, M1-3, M2-3); 4 downtown
+    district FAR tests (DX-3, DC-12, DR-7, DR-10); 1 new height test (C2-3); 1 new comparison
+    pair (C2-1 vs C2-3); 1 new envelope calculation (RM-5.5 × 3000).
+  - **Impact**: Test count: 399 → 419; eval suite: 260 → 280 questions.
 
+- 2026-05-03 (previous pass): Eval suite expanded to 260 questions (Q241–Q260); 399 tests passing.
 - 2026-05-03 (previous pass): Eval suite expanded to 240 questions (Q221–Q240); 379 tests passing.
 - 2026-05-02 (previous pass): Eval suite expanded to 200 questions; 339 tests passing.
 - 2026-05-02 (previous pass): Eval suite expanded to 180 questions; frontend redesigned.
@@ -51,8 +50,8 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 ## Next Recommended Step
 
 **Validate phase.** Run `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>` to
-measure live eval pass-rate against the full 240-question harness. Prior live eval score
-was 14/20 (70%) on 20 questions; the new target is ≥90% on 240 questions.
+measure live eval pass-rate against the full 280-question harness. Prior live eval score
+was 14/20 (70%) on 20 questions; the new target is ≥90% on 280 questions.
 
 ## Artifacts
 
@@ -70,8 +69,8 @@ was 14/20 (70%) on 20 questions; the new target is ≥90% on 240 questions.
 | Squad routing rules | `.squad/routing.md` | created |
 | Squad decisions log | `.squad/decisions.md` | updated |
 | Sprint plan | `.squad/sprint.md` | created |
-| Eval suite | `evals/zoning_qa.xml` | 240 questions (Q1–Q240) |
-| Eval tests | `tests/test_evals.py` | 379 tests passing |
+| Eval suite | `evals/zoning_qa.xml` | 280 questions (Q1–Q280) |
+| Eval tests | `tests/test_evals.py` | 419 tests passing |
 | Frontend | `web/templates/index.html` | redesigned — capabilities cards, larger hero |
 
 ## Needs Human Input
@@ -81,6 +80,6 @@ was 14/20 (70%) on 20 questions; the new target is ≥90% on 240 questions.
   `python scripts/ingest_title_17.py` to rebuild the index with all 17 chapters.
 
 - **Live eval run** (~15 min) — Execute `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>`
-  to measure pass-rate against the 240-question harness.
+  to measure pass-rate against the 280-question harness.
 
 - **MCP Inspector verification** (~30 min) — Run `npx @modelcontextprotocol/inspector python -m src.server`.
