@@ -1739,4 +1739,126 @@
     <notes>RM-5.5 FAR 2.5 × 3000 sqft = 7,500 sqft.</notes>
   </question>
 
+  <!-- Q281-Q300: Coverage expansion — undercovered districts, height/setback/lot-area attributes, comparison and envelope tests -->
+
+  <question id="281" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio allowed in a C2-5 motor vehicle-related commercial district?</prompt>
+    <answer_contains>5.0</answer_contains>
+    <notes>C2-5 FAR is 5.0. Motor vehicle commercial with high density residential above.</notes>
+  </question>
+
+  <question id="282" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the floor area ratio for a DX-16 downtown mixed-use district?</prompt>
+    <answer_contains>16</answer_contains>
+    <notes>DX-16 FAR is 16.0. Highest-density downtown mixed-use corridor district.</notes>
+  </question>
+
+  <question id="283" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for a B2-1 neighborhood mixed-use district?</prompt>
+    <answer>1.0</answer>
+    <notes>B2-1 FAR is 1.0. Auto-oriented commercial area with lowest B2 intensity.</notes>
+  </question>
+
+  <question id="284" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for a B2-2 neighborhood mixed-use district?</prompt>
+    <answer_contains>2.2</answer_contains>
+    <notes>B2-2 FAR is 2.2. Mixed-use corridor with moderate scale.</notes>
+  </question>
+
+  <question id="285" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a B2-1 neighborhood mixed-use district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>B2-1 maximum building height is 30 ft, 2 stories.</notes>
+  </question>
+
+  <question id="286" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the maximum building height in an RT-3.5 two-flat residential district?</prompt>
+    <answer_contains>35</answer_contains>
+    <notes>RT-3.5 maximum building height is 35 ft, 2.5 stories.</notes>
+  </question>
+
+  <question id="287" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the maximum building height in an RM-5 multi-unit residential district?</prompt>
+    <answer_contains>45</answer_contains>
+    <notes>RM-5 maximum building height is 45 ft, 4 stories.</notes>
+  </question>
+
+  <question id="288" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the minimum rear yard setback in an RS-3 single-family district?</prompt>
+    <answer_contains>28</answer_contains>
+    <notes>RS-3 rear_yard_setback is 28 ft.</notes>
+  </question>
+
+  <question id="289" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the side yard setback requirement in an RS-2 single-family district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>RS-2 side setback is 30% of lot width (combined) per Sec. 17-2-0309. Key token "30" distinguishes the percentage formula.</notes>
+  </question>
+
+  <question id="290" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in an RT-3.5 two-flat residential district?</prompt>
+    <answer_contains>1,650</answer_contains>
+    <notes>RT-3.5 requires 1,650 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="291" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in an RM-5 multi-unit residential district?</prompt>
+    <answer_contains>500</answer_contains>
+    <notes>RM-5 requires 500 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="292" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a B2-5 neighborhood mixed-use district?</prompt>
+    <answer_contains>200</answer_contains>
+    <notes>B2-5 requires 200 sq ft per dwelling unit. High density residential above commercial.</notes>
+  </question>
+
+  <question id="293" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare B2-1 and B2-3 neighborhood mixed-use districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>B2-3</answer_contains>
+    <notes>B2-3 FAR is 3.0; B2-1 FAR is 1.0. B2-3 allows higher floor area.</notes>
+  </question>
+
+  <question id="294" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare DX-12 and DX-16 downtown mixed-use districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>DX-16</answer_contains>
+    <notes>DX-16 FAR is 16.0; DX-12 FAR is 12.0. DX-16 allows higher floor area.</notes>
+  </question>
+
+  <question id="295" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 4,000 sqft lot zoned C2-5?</prompt>
+    <answer_contains>20000</answer_contains>
+    <notes>C2-5 FAR is 5.0; 4000 × 5.0 = 20,000 sqft.</notes>
+  </question>
+
+  <question id="296" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 1,000 sqft lot zoned DX-16?</prompt>
+    <answer_contains>16000</answer_contains>
+    <notes>DX-16 FAR is 16.0; 1000 × 16.0 = 16,000 sqft.</notes>
+  </question>
+
+  <question id="297" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 5,000 sqft lot zoned B2-2?</prompt>
+    <answer_contains>11000</answer_contains>
+    <notes>B2-2 FAR is 2.2; 5000 × 2.2 = 11,000 sqft.</notes>
+  </question>
+
+  <question id="298" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in an RM-6.5 multi-unit residential district?</prompt>
+    <answer_contains>145</answer_contains>
+    <notes>RM-6.5 requires 145 sq ft per dwelling unit. Highest-density general residential.</notes>
+  </question>
+
+  <question id="299" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>What does the Chicago zoning code say about off-street parking requirements?</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>Off-street parking requirements appear in Title 17, typically Chapter 17-10 or 17-11.</notes>
+  </question>
+
+  <question id="300" tool="get_parcel_zoning" type="address_lookup" requires_network="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_data_portal">
+    <prompt>What is the zoning district at 35 E Wacker Dr in Chicago?</prompt>
+    <answer_contains>DX</answer_contains>
+    <notes>35 E Wacker Dr (downtown Chicago, Wacker Drive corridor) is typically in a DX downtown mixed-use district.</notes>
+  </question>
+
 </eval_suite>
