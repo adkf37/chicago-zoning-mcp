@@ -3,6 +3,35 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-05-02 — Data Pipeline — Eval expansion Q181–Q200
+
+**Context:** FEEDBACK.md goals: (1) expand test suite with wider range of questions; (2)
+improve performance for 100% accuracy on all question types. Build phase continues incrementally
+expanding coverage beyond Q180.
+
+**Decisions:**
+
+1. **Eval suite extended to 200 questions** — Added Q181–Q200 to `evals/zoning_qa.xml`:
+   - Q181–Q187: POS-1 FAR (0.1), RM-6.5 FAR (6.6), RM-6 vs RM-6.5 comparison, B2-1
+     category, DX-3 FAR (3.0), C2-5 FAR (5.0), RS-1 lot area per unit (6500 sqft).
+   - Q188–Q194: RM-6.5 envelope (5000 sqft → 33,000 sqft), POS-1 height (30 ft),
+     RS-1 vs RS-2 comparison, B3-1 category, C3-1 FAR (1.0), RM-4.5 height (38 ft),
+     DX-5 lot area per unit (200 sqft).
+   - Q195–Q200: Rezoning procedures code search, affordable housing code search, B1-3
+     envelope (5000 sqft → 15,000 sqft), DX-5 height (65 ft), 4521 N Clark St address
+     lookup (mocked → B3-2), RM-6 units on 5800 sqft lot (29 units).
+
+2. **20 new eval tests** — `tests/test_evals.py` Q181–Q200 cover:
+   - Previously untested districts: POS-1, RM-6.5, B2-1, DX-3, C2-5, B3-1, C3-1
+   - New development envelope checks: RM-6.5 × 5000, B1-3 × 5000, RM-6 units on 5800
+   - New code search fixtures: rezoning procedures (17-13-0300), affordable housing (17-4-1000)
+   - Second mocked address test: 4521 N Clark St → B3-2
+
+**Impact:**
+- Test count: 319 → 339; eval suite: 180 → 200 questions.
+- `ruff check src/ tests/ web/` → 0 errors.
+- All 59 districts are now represented across the eval suite with multiple question types.
+
 ### 2026-05-02 — Data Pipeline — Eval expansion Q161–Q180, frontend redesign
 
 **Context:** FEEDBACK.md goals: (1) expand test suite with wider questions including
