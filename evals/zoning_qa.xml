@@ -1585,8 +1585,8 @@
 
   <question id="255" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
     <prompt>What is the side yard setback requirement in an RS-3 single-family district?</prompt>
-    <answer_contains>8</answer_contains>
-    <notes>RS-3 side setback is combined 8 ft, minimum 2 ft each side.</notes>
+    <answer_contains>20</answer_contains>
+    <notes>RS-3 side setback: combined total must equal 20% of lot width; each side minimum 2 ft or 8% of lot width, whichever is greater (Sec. 17-2-0309).</notes>
   </question>
 
   <question id="256" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">

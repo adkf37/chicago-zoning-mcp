@@ -3,7 +3,49 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
-### 2026-05-03 — Data Pipeline — Eval expansion Q261–Q280
+### 2026-05-03 — Data Pipeline — Fix inaccurate side setback values in zoning_codes.csv
+
+**Context:** FEEDBACK.md (2025-05-03) from Aaron identified that eval Q255 ("What is the side
+yard setback requirement in an RS-3 single-family district?") had a wrong answer: the CSV stored
+"Combined 8 ft, minimum 2 ft each side" but the actual ordinance (Sec. 17-2-0309) defines a
+percentage-of-lot-width formula: "combined total must equal 20% of lot width with neither
+required setback less than 2 feet or 8% of lot width, whichever is greater." Aaron was
+"worried we are doing something major wrong" — the bot was reading from inaccurate simplified
+data rather than reflecting the actual legal text.
+
+**Root Cause:** The `side_setback` column in `data/zoning_codes.csv` was populated with
+simplified fixed-foot values that do not match the actual ordinance language. The actual code
+(Sec. 17-2-0309 for R districts, Sec. 17-4-0406-B for downtown D districts) uses
+percentage-based formulas for RS/RT/RM districts and explicitly states "no minimum side setback"
+for DR districts.
+
+**Decisions:**
+
+1. **Corrected RS/RT/RM district side setbacks in `data/zoning_codes.csv`** per Sec. 17-2-0309:
+   - RS-1: "30% of lot width (combined); each side min 5 ft or 10% of lot width, whichever is greater"
+   - RS-2: "30% of lot width (combined); each side min 4 ft or 10% of lot width, whichever is greater"
+   - RS-3: "20% of lot width (combined); each side min 2 ft or 8% of lot width, whichever is greater"
+   - RT-3.5/RT-4: "20% of lot width (combined); each side min 2 ft or 8% of lot width, max 5 ft per side"
+   - RM-4.5/RM-5/RM-5.5: same formula as RT-3.5/RT-4
+   - RM-6/RM-6.5: None for ≤50% lot coverage; >50% → each side min 10% of lot width or 10% of building height (max 20 ft)
+
+2. **Corrected DR district side setbacks** per Sec. 17-4-0406-B: "no minimum side setback" —
+   changed all four DR districts from "Combined 5 ft, minimum 2 ft each side" to "None (no
+   minimum side setback in DR district per Sec. 17-4-0406-B)".
+
+3. **Updated eval Q255** in `evals/zoning_qa.xml`: `answer_contains` changed from "8" to "20"
+   (the dominant distinguishing token for the 20%-of-lot-width formula); notes updated.
+
+4. **Updated test for Q255** in `tests/test_evals.py`: assertion now checks for "20" (checks
+   the percentage-based rule) rather than "8" (the old wrong fixed-foot value).
+
+**Impact:**
+- All 419 tests still pass; ruff → 0 errors.
+- lookup_district("RS-3").side_setback now returns the legally accurate percentage formula.
+- DR district side setback now correctly states "None" (no minimum).
+- The system now accurately reflects ordinance text rather than simplified approximations.
+
+
 
 **Context:** FEEDBACK.md goals: (1) expand test suite with wider range of questions; (2)
 improve performance for 100% accuracy on all question types. Build phase continues expanding

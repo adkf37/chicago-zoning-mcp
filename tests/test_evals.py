@@ -4509,16 +4509,18 @@ def test_eval_q254_m1_1_vs_m1_2_far(district_tools):
 
 
 # ---------------------------------------------------------------------------
-# Q255 — RS-3 side yard setback contains "8"
+# Q255 — RS-3 side yard setback references 20% of lot width (Sec. 17-2-0309)
 # ---------------------------------------------------------------------------
 
 
 def test_eval_q255_rs3_side_setback(district_tools):
-    """Eval Q255: RS-3 side_setback should reference combined 8 ft."""
+    """Eval Q255: RS-3 side_setback should reference 20% of lot width per Sec. 17-2-0309."""
     result = district_tools["lookup_district"](district_code="RS-3")
     assert "error" not in result
     side = result.get("side_setback", "")
-    assert "8" in str(side), f"Expected '8' in RS-3 side_setback, got: {side!r}"
+    assert "20" in str(side), (
+        f"Expected '20' (20% of lot width) in RS-3 side_setback, got: {side!r}"
+    )
 
 
 # ---------------------------------------------------------------------------

@@ -11,10 +11,10 @@
 
 ## Current Objective
 
-**Build phase — eval suite expanded to 280 questions; 419 tests passing.**
+**Build phase — side setback data corrected; 419 tests passing.**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
-- `pytest tests/ -m "not network"` → **419 passed, 5 deselected** ✅ (up from 399)
+- `pytest tests/ -m "not network"` → **419 passed, 5 deselected** ✅
 - `ruff check src/ tests/ web/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
@@ -24,7 +24,24 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 
 ## Recent Activity
 
-- 2026-05-03 (this pass): Eval suite expanded to 280 questions (Q261–Q280); 419 tests passing:
+- 2026-05-03 (this pass): Fixed inaccurate side setback data per FEEDBACK.md; 419 tests passing:
+  - **Corrected `data/zoning_codes.csv` side setbacks** for all R and DR districts per the
+    actual zoning code (Sec. 17-2-0309 and 17-4-0406-B). Previous values were simplified
+    fixed-foot numbers (e.g. "Combined 8 ft"); correct values are percentage-of-lot-width
+    formulas. Key corrections:
+    - RS-1: "Combined 15 ft…" → "30% of lot width (combined); each side min 5 ft or 10% of lot width"
+    - RS-2: "Combined 10 ft, min 3 ft…" → "30% of lot width (combined); each side min 4 ft or 10%"
+    - RS-3: "Combined 8 ft, min 2 ft…" → "20% of lot width (combined); each side min 2 ft or 8%"
+    - RT-3.5/RT-4: "Combined 5 ft, min 2 ft…" → "20% of lot width (combined); each side min 2 ft or 8%, max 5 ft"
+    - RM-4.5/RM-5/RM-5.5: same percentage formula as RT-3.5/RT-4
+    - RM-6/RM-6.5: none for ≤50% lot coverage; ≥50% → 10% of lot width or 10% of building height, max 20 ft
+    - DR-3/DR-5/DR-7/DR-10: "Combined 5 ft…" → "None (no minimum side setback in DR district per Sec. 17-4-0406-B)"
+  - **Fixed `evals/zoning_qa.xml` Q255** — updated answer_contains from "8" to "20" and
+    corrected notes to match the actual rule (20% of lot width, not a fixed 8 ft).
+  - **Fixed `tests/test_evals.py` Q255** — assertion now checks for "20" (percentage-based
+    formula) rather than "8" (old wrong fixed value).
+
+- 2026-05-03 (previous pass): Eval suite expanded to 280 questions (Q261–Q280); 419 tests passing.
   - **Eval suite extended to Q261–Q280** — Added 20 new questions to `evals/zoning_qa.xml`
     covering the least-tested districts and attributes: C1-1 FAR (1.0), C1-5 FAR (5.0),
     C2-1 FAR (1.0), C2-2 FAR (2.2), B1-5 FAR (5.0), B2-5 FAR (5.0), C2-3 height (50 ft),
