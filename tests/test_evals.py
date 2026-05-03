@@ -3658,3 +3658,331 @@ def test_eval_q200_rm6_5800_units(development_tools):
     )
     assert "error" not in result
     assert result["max_dwelling_units"] == 29
+
+
+# ---------------------------------------------------------------------------
+# Q201 — DX-7 floor area ratio is 7.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q201_dx7_far(district_tools):
+    """Eval Q201: DX-7 FAR should be 7.0."""
+    result = district_tools["lookup_district"](district_code="DX-7")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(7.0)
+
+
+# ---------------------------------------------------------------------------
+# Q202 — DX-12 floor area ratio is 12.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q202_dx12_far(district_tools):
+    """Eval Q202: DX-12 FAR should be 12.0."""
+    result = district_tools["lookup_district"](district_code="DX-12")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(12.0)
+
+
+# ---------------------------------------------------------------------------
+# Q203 — DR-5 floor area ratio is 5.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q203_dr5_far(district_tools):
+    """Eval Q203: DR-5 FAR should be 5.0."""
+    result = district_tools["lookup_district"](district_code="DR-5")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(5.0)
+
+
+# ---------------------------------------------------------------------------
+# Q204 — DR-7 floor area ratio is 7.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q204_dr7_far(district_tools):
+    """Eval Q204: DR-7 FAR should be 7.0."""
+    result = district_tools["lookup_district"](district_code="DR-7")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(7.0)
+
+
+# ---------------------------------------------------------------------------
+# Q205 — B2-2 maximum building height contains "38"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q205_b2_2_height(district_tools):
+    """Eval Q205: B2-2 maximum_building_height should reference 38 ft."""
+    result = district_tools["lookup_district"](district_code="B2-2")
+    assert "error" not in result
+    assert "38" in result["maximum_building_height"]
+
+
+# ---------------------------------------------------------------------------
+# Q206 — C1-2 floor area ratio is 2.2
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q206_c1_2_far(district_tools):
+    """Eval Q206: C1-2 FAR should be 2.2."""
+    result = district_tools["lookup_district"](district_code="C1-2")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(2.2)
+
+
+# ---------------------------------------------------------------------------
+# Q207 — M1-2 maximum building height contains "45"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q207_m1_2_height(district_tools):
+    """Eval Q207: M1-2 maximum_building_height should reference 45 ft."""
+    result = district_tools["lookup_district"](district_code="M1-2")
+    assert "error" not in result
+    assert "45" in result["maximum_building_height"]
+
+
+# ---------------------------------------------------------------------------
+# Q208 — RT-3.5 floor area ratio is 1.05
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q208_rt35_far(district_tools):
+    """Eval Q208: RT-3.5 FAR should be 1.05."""
+    result = district_tools["lookup_district"](district_code="RT-3.5")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(1.05)
+
+
+# ---------------------------------------------------------------------------
+# Q209 — RM-5.5 floor area ratio is 2.5
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q209_rm55_far(district_tools):
+    """Eval Q209: RM-5.5 FAR should be 2.5."""
+    result = district_tools["lookup_district"](district_code="RM-5.5")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(2.5)
+
+
+# ---------------------------------------------------------------------------
+# Q210 — B3-3 maximum building height contains "50"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q210_b3_3_height(district_tools):
+    """Eval Q210: B3-3 maximum_building_height should reference 50 ft."""
+    result = district_tools["lookup_district"](district_code="B3-3")
+    assert "error" not in result
+    assert "50" in result["maximum_building_height"]
+
+
+# ---------------------------------------------------------------------------
+# Q211 — compare DX-7 vs DX-12 — DX-12 has higher FAR
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q211_dx7_vs_dx12_comparison(district_tools):
+    """Eval Q211: compare_districts DX-7 vs DX-12 — DX-12 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="DX-7", district_b="DX-12")
+    assert "error" not in result
+    dx7_far = float(result["floor_area_ratio"]["DX-7"])
+    dx12_far = float(result["floor_area_ratio"]["DX-12"])
+    assert dx12_far > dx7_far, (
+        f"Expected DX-12 FAR ({dx12_far}) > DX-7 FAR ({dx7_far})"
+    )
+    assert "floor_area_ratio" in result["_differences"]
+
+
+# ---------------------------------------------------------------------------
+# Q212 — DX-7 on 3000 sqft lot → 21,000 sqft max floor area
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q212_dx7_3000_envelope(development_tools):
+    """Eval Q212: DX-7 FAR 7.0 × 3000 sqft lot = 21,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="DX-7", lot_area_sqft=3000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(21000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q213 — DR-5 on 4000 sqft lot → 20,000 sqft max floor area
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q213_dr5_4000_envelope(development_tools):
+    """Eval Q213: DR-5 FAR 5.0 × 4000 sqft lot = 20,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="DR-5", lot_area_sqft=4000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(20000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q214 — B2-2 on 6000 sqft lot → 13,200 sqft max floor area
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q214_b2_2_6000_envelope(development_tools):
+    """Eval Q214: B2-2 FAR 2.2 × 6000 sqft lot = 13,200 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="B2-2", lot_area_sqft=6000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(13200.0)
+
+
+# ---------------------------------------------------------------------------
+# Q215 — M1-3 maximum building height contains "55"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q215_m1_3_height(district_tools):
+    """Eval Q215: M1-3 maximum_building_height should reference 55 ft."""
+    result = district_tools["lookup_district"](district_code="M1-3")
+    assert "error" not in result
+    assert "55" in result["maximum_building_height"]
+
+
+# ---------------------------------------------------------------------------
+# Q216 — C3-5 floor area ratio is 5.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q216_c3_5_far(district_tools):
+    """Eval Q216: C3-5 FAR should be 5.0."""
+    result = district_tools["lookup_district"](district_code="C3-5")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(5.0)
+
+
+# ---------------------------------------------------------------------------
+# Q217 — POS-2 floor area ratio is 0.05
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q217_pos2_far(district_tools):
+    """Eval Q217: POS-2 FAR should be 0.05."""
+    result = district_tools["lookup_district"](district_code="POS-2")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(0.05)
+
+
+# ---------------------------------------------------------------------------
+# Q218 — RM-5.5 lot area per unit contains "400"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q218_rm55_lot_area_per_unit(district_tools):
+    """Eval Q218: RM-5.5 lot_area_per_unit should reference 400 sqft."""
+    result = district_tools["lookup_district"](district_code="RM-5.5")
+    assert "error" not in result
+    lot_area = result.get("lot_area_per_unit", "")
+    assert "400" in lot_area.replace(",", ""), (
+        f"Expected '400' in RM-5.5 lot_area_per_unit, got: {lot_area!r}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q219 — Code search "sign regulations" returns a 17- section (fixture-based)
+# ---------------------------------------------------------------------------
+
+_CODE_SEARCH_FIXTURE_SIGNS = _CODE_SEARCH_FIXTURE + [
+    {
+        "section": "17-12-0100",
+        "title": "Sign Regulations",
+        "chapter": "Chapter 17-12",
+        "text": (
+            "Signs must comply with the regulations of this chapter. "
+            "No sign may be erected, altered, relocated or maintained except in "
+            "conformance with the provisions of this chapter. Outdoor advertising "
+            "signs and billboards are regulated separately from on-premise signs."
+        ),
+        "source_file": "chapter_17-12.txt",
+    },
+]
+
+
+def test_eval_q219_sign_regulations_code_search(code_search_tools):
+    """Eval Q219: search_zoning_code('sign regulations') returns a Chapter 17-12 section."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_SIGNS,
+    ):
+        result = code_search_tools["search_zoning_code"](query="sign regulations")
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    sections = [r["section"] for r in result["results"]]
+    assert any(s.startswith("17-12") for s in sections), (
+        f"Expected a 17-12 section for sign regulations query, got: {sections}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q220 — address lookup at 121 N LaSalle St returns a DC-series district (mocked)
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+async def test_eval_q220_lasalle_st_address():
+    """Eval Q220: 121 N LaSalle St routes to get_parcel_zoning and returns a DC-series district.
+
+    Mocks geocoder and Socrata so no network required.
+    """
+    from unittest.mock import MagicMock
+
+    mcp_t = FastMCP("test")
+    tools: dict = {}
+    original = mcp_t.tool
+
+    def capture(*args, **kwargs):
+        dec = original(*args, **kwargs)
+
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+
+        return wrap
+
+    mcp_t.tool = capture
+    register_geospatial_tools(mcp_t)
+
+    mock_socrata_response = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "properties": {"zone_class": "DC-16", "zone_type": "8"},
+                "geometry": {"type": "MultiPolygon", "coordinates": []},
+            }
+        ],
+    }
+
+    with (
+        patch("src.tools.geospatial.geocode_address", new_callable=AsyncMock) as mock_geo,
+        patch("src.tools.geospatial.httpx.AsyncClient") as mock_client_cls,
+    ):
+        mock_geo.return_value = (41.8836, -87.6318)  # 121 N LaSalle St coordinates
+        mock_resp = MagicMock()
+        mock_resp.json.return_value = mock_socrata_response
+        mock_resp.raise_for_status = MagicMock()
+        mock_client = AsyncMock()
+        mock_client.get.return_value = mock_resp
+        mock_client.__aenter__ = AsyncMock(return_value=mock_client)
+        mock_client.__aexit__ = AsyncMock(return_value=False)
+        mock_client_cls.return_value = mock_client
+
+        result = await tools["get_parcel_zoning"](address="121 N LaSalle St")
+
+    assert "error" not in result, f"Expected no error, got: {result.get('error')}"
+    zone = result.get("zone_class", "")
+    assert zone.startswith("DC"), (
+        f"Expected a DC-series district for 121 N LaSalle St, got: {zone!r}"
+    )
