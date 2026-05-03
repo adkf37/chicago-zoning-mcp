@@ -3,6 +3,45 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-05-03 — Data Pipeline — Eval expansion Q261–Q280
+
+**Context:** FEEDBACK.md goals: (1) expand test suite with wider range of questions; (2)
+improve performance for 100% accuracy on all question types. Build phase continues expanding
+coverage beyond Q260, now targeting the least-tested districts by frequency analysis of
+existing eval questions (C1-1, C1-5, C2-1, C2-2 had only 2 mentions each; C3-1, C3-2,
+M3-3 had 4 mentions each). Also filling FAR coverage gaps for downtown series (DX-3, DC-12,
+DR-7, DR-10) and manufacturing tiers (M1-3, M2-3, M3-3).
+
+**Decisions:**
+
+1. **Eval suite extended to 280 questions** — Added Q261–Q280 to `evals/zoning_qa.xml`:
+   - Q261–Q264: Least-tested commercial districts get standalone FAR tests: C1-1 (1.0),
+     C1-5 (5.0), C2-1 (1.0), C2-2 (2.2).
+   - Q265–Q266: High-density shopping series: B1-5 (5.0), B2-5 (5.0).
+   - Q267: C2-3 maximum height (50 ft) — first height test for motor vehicle commercial.
+   - Q268–Q269: Commercial manufacturing standalone FAR: C3-1 (1.0), C3-2 (2.2).
+   - Q270–Q271: Mid-tier residential/shopping FAR: RM-5.5 (2.5), B1-1.5 (1.5).
+   - Q272–Q275: Downtown district FAR coverage: DX-3 (3.0), DC-12 (12.0), DR-7 (7.0),
+     DR-10 (10.0).
+   - Q276–Q278: Manufacturing tier FAR: M1-3 (3.0), M2-3 (3.0), M3-3 (3.0 — first M3 test).
+   - Q279: New comparison pair C2-1 vs C2-3 (C2-3 higher FAR at 3.0 vs 1.0).
+   - Q280: RM-5.5 development envelope — 3000 sqft lot → 7,500 sqft (FAR 2.5).
+
+2. **20 new eval tests** — `tests/test_evals.py` Q261–Q280:
+   - 7 least-tested districts (C1-1, C1-5, C2-1, C2-2, C3-1, C3-2, M3-3) standalone FAR
+   - 6 additional standalone FAR tests (B1-5, B2-5, RM-5.5, B1-1.5, M1-3, M2-3)
+   - 4 downtown FAR tests (DX-3, DC-12, DR-7, DR-10)
+   - 1 new height test (C2-3)
+   - 1 new comparison (C2-1 vs C2-3)
+   - 1 new envelope (RM-5.5 × 3000)
+
+**Impact:**
+- Test count: 399 → 419; eval suite: 260 → 280 questions.
+- `ruff check src/ tests/ web/` → 0 errors.
+- M3-3 (Heavy Manufacturing) now has its first dedicated FAR test.
+- All four downtown residential tiers (DR-3, DR-5, DR-7, DR-10) now have FAR coverage.
+- Coverage analysis used frequency counts of district mentions across entire eval suite.
+
 ### 2026-05-03 — Data Pipeline — Eval expansion Q241–Q260
 
 **Context:** FEEDBACK.md goals: (1) expand test suite with wider range of questions; (2)
