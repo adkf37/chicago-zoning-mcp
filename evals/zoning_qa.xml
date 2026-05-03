@@ -1133,4 +1133,126 @@
     <notes>Willis Tower is in a DC-16 Downtown Core district.</notes>
   </question>
 
+  <!-- Q181-Q200: Extended coverage — districts, setbacks, code search, address lookups -->
+
+  <question id="181" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for a POS-1 parks and open space district?</prompt>
+    <answer>0.1</answer>
+    <notes>POS-1 FAR is 0.1.</notes>
+  </question>
+
+  <question id="182" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the FAR for an RM-6.5 high-rise residential district?</prompt>
+    <answer>6.6</answer>
+    <notes>RM-6.5 FAR is 6.6.</notes>
+  </question>
+
+  <question id="183" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare RM-6 and RM-6.5 multi-unit residential districts. Which has a higher FAR?</prompt>
+    <answer_contains>RM-6.5</answer_contains>
+    <notes>RM-6.5 FAR is 6.6; RM-6 FAR is 4.4.</notes>
+  </question>
+
+  <question id="184" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What category does the B2-1 zoning district fall under?</prompt>
+    <answer_contains>Neighborhood</answer_contains>
+    <notes>B2-1 is a Neighborhood Mixed-Use district (Business/Shopping category).</notes>
+  </question>
+
+  <question id="185" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the FAR for a DX-3 downtown mixed-use district?</prompt>
+    <answer>3.0</answer>
+    <notes>DX-3 FAR is 3.0.</notes>
+  </question>
+
+  <question id="186" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for a C2-5 motor vehicle commercial district?</prompt>
+    <answer>5.0</answer>
+    <notes>C2-5 FAR is 5.0.</notes>
+  </question>
+
+  <question id="187" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in an RS-1 district?</prompt>
+    <answer_contains>6500</answer_contains>
+    <notes>RS-1 requires 6,500 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="188" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 5,000 sqft lot zoned RM-6.5?</prompt>
+    <answer_contains>33000</answer_contains>
+    <notes>RM-6.5 FAR is 6.6; 5000 × 6.6 = 33,000 sqft.</notes>
+  </question>
+
+  <question id="189" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a POS-1 parks and open space district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>POS-1 maximum building height is 30 ft, 2 stories.</notes>
+  </question>
+
+  <question id="190" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>Compare RS-1 and RS-2 single-family districts. Which allows a higher FAR?</prompt>
+    <answer_contains>RS-2</answer_contains>
+    <notes>RS-2 FAR is 0.65; RS-1 FAR is 0.5.</notes>
+  </question>
+
+  <question id="191" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What category does the B3-1 zoning district fall under?</prompt>
+    <answer_contains>Shopping</answer_contains>
+    <notes>B3-1 is a Community Shopping district (Business/Shopping category).</notes>
+  </question>
+
+  <question id="192" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the floor area ratio for a C3-1 commercial manufacturing district?</prompt>
+    <answer>1.0</answer>
+    <notes>C3-1 FAR is 1.0.</notes>
+  </question>
+
+  <question id="193" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>What is the maximum building height in an RM-4.5 multi-unit residential district?</prompt>
+    <answer_contains>38</answer_contains>
+    <notes>RM-4.5 maximum building height is 38 ft, 3 stories.</notes>
+  </question>
+
+  <question id="194" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a DX-5 downtown mixed-use district?</prompt>
+    <answer_contains>200</answer_contains>
+    <notes>DX-5 requires 200 sq ft per dwelling unit.</notes>
+  </question>
+
+  <question id="195" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="chicago_zoning_code">
+    <prompt>What does the Chicago zoning code say about rezoning procedures?</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>Rezoning procedures appear in Title 17.</notes>
+  </question>
+
+  <question id="196" tool="search_zoning_code" type="code_search" requires_index="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_zoning_code">
+    <prompt>What does the Chicago zoning code say about affordable housing requirements?</prompt>
+    <answer_contains>17-</answer_contains>
+    <notes>Affordable housing requirements appear in Title 17.</notes>
+  </question>
+
+  <question id="197" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 5,000 sqft lot in a B1-3 neighborhood shopping district?</prompt>
+    <answer_contains>15000</answer_contains>
+    <notes>B1-3 FAR is 3.0; 5000 × 3.0 = 15,000 sqft.</notes>
+  </question>
+
+  <question id="198" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
+    <prompt>What is the maximum building height in a DX-5 downtown mixed-use district?</prompt>
+    <answer_contains>65</answer_contains>
+    <notes>DX-5 maximum building height is 65 ft, 6 stories.</notes>
+  </question>
+
+  <question id="199" tool="get_parcel_zoning" type="address_lookup" requires_network="true" question_type="factual" prompt_complexity="simple" audience="general" data_source="chicago_data_portal">
+    <prompt>What is the zoning district at 4521 N Clark St in Chicago?</prompt>
+    <answer_contains>B</answer_contains>
+    <notes>4521 N Clark St (Wrigleyville) is typically in a B3-2 or similar Business district.</notes>
+  </question>
+
+  <question id="200" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+    <prompt>How many dwelling units can I fit on a 5,800 sqft lot zoned RM-6?</prompt>
+    <answer_regex>\b(29|twenty-nine)\b</answer_regex>
+    <notes>RM-6 lot_area_per_unit is 200 sqft; 5800 / 200 = 29 units.</notes>
+  </question>
+
 </eval_suite>

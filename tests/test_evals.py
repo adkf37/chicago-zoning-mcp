@@ -3285,3 +3285,376 @@ async def test_eval_q180_willis_tower_address():
 
     assert "error" not in result, f"Expected no error, got: {result.get('error')}"
     assert result.get("zone_class") == "DC-16"
+
+
+# ---------------------------------------------------------------------------
+# Q181 — POS-1 FAR is 0.1
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q181_pos1_far(district_tools):
+    """Eval Q181: POS-1 FAR should be 0.1."""
+    result = district_tools["lookup_district"](district_code="POS-1")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(0.1)
+
+
+# ---------------------------------------------------------------------------
+# Q182 — RM-6.5 FAR is 6.6
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q182_rm65_far(district_tools):
+    """Eval Q182: RM-6.5 FAR should be 6.6."""
+    result = district_tools["lookup_district"](district_code="RM-6.5")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(6.6)
+
+
+# ---------------------------------------------------------------------------
+# Q183 — RM-6.5 has higher FAR than RM-6
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q183_rm65_higher_far_than_rm6(district_tools):
+    """Eval Q183: compare_districts RM-6 vs RM-6.5 — RM-6.5 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="RM-6", district_b="RM-6.5")
+    assert "error" not in result
+    rm6_far = float(result["floor_area_ratio"]["RM-6"])
+    rm65_far = float(result["floor_area_ratio"]["RM-6.5"])
+    assert rm65_far > rm6_far, (
+        f"Expected RM-6.5 FAR ({rm65_far}) > RM-6 FAR ({rm6_far})"
+    )
+    assert "floor_area_ratio" in result["_differences"]
+
+
+# ---------------------------------------------------------------------------
+# Q184 — B2-1 category contains "Neighborhood" or "Shopping"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q184_b2_1_category(district_tools):
+    """Eval Q184: B2-1 should be in the Neighborhood Mixed-Use / Business/Shopping category."""
+    result = district_tools["lookup_district"](district_code="B2-1")
+    assert "error" not in result
+    category = result.get("category", "")
+    assert "Neighborhood" in category or "Shopping" in category or "Business" in category, (
+        f"Expected 'Neighborhood' or 'Shopping' in B2-1 category, got: {category!r}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q185 — DX-3 FAR is 3.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q185_dx3_far(district_tools):
+    """Eval Q185: DX-3 FAR should be 3.0."""
+    result = district_tools["lookup_district"](district_code="DX-3")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(3.0)
+
+
+# ---------------------------------------------------------------------------
+# Q186 — C2-5 FAR is 5.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q186_c2_5_far(district_tools):
+    """Eval Q186: C2-5 FAR should be 5.0."""
+    result = district_tools["lookup_district"](district_code="C2-5")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(5.0)
+
+
+# ---------------------------------------------------------------------------
+# Q187 — RS-1 lot area per dwelling unit is 6500
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q187_rs1_lot_area_per_unit(district_tools):
+    """Eval Q187: RS-1 lot_area_per_unit should reference 6500 sqft per dwelling unit."""
+    result = district_tools["lookup_district"](district_code="RS-1")
+    assert "error" not in result
+    lot_area = result.get("lot_area_per_unit", "")
+    assert "6500" in lot_area.replace(",", ""), (
+        f"Expected '6500' in lot_area_per_unit for RS-1, got: {lot_area!r}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q188 — RM-6.5 max floor area on 5000 sqft lot = 33000 (FAR 6.6)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q188_rm65_5000_envelope(development_tools):
+    """Eval Q188: RM-6.5 FAR 6.6 × 5000 sqft lot = 33,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RM-6.5", lot_area_sqft=5000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(33000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q189 — POS-1 maximum building height contains "30"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q189_pos1_height(district_tools):
+    """Eval Q189: POS-1 maximum_building_height should reference 30 ft."""
+    result = district_tools["lookup_district"](district_code="POS-1")
+    assert "error" not in result
+    height = result.get("maximum_building_height", "")
+    assert "30" in str(height), (
+        f"Expected '30' in POS-1 maximum_building_height, got: {height!r}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q190 — RS-2 has higher FAR than RS-1
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q190_rs2_higher_far_than_rs1(district_tools):
+    """Eval Q190: compare_districts RS-1 vs RS-2 — RS-2 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="RS-1", district_b="RS-2")
+    assert "error" not in result
+    rs1_far = float(result["floor_area_ratio"]["RS-1"])
+    rs2_far = float(result["floor_area_ratio"]["RS-2"])
+    assert rs2_far > rs1_far, (
+        f"Expected RS-2 FAR ({rs2_far}) > RS-1 FAR ({rs1_far})"
+    )
+    assert "floor_area_ratio" in result["_differences"]
+
+
+# ---------------------------------------------------------------------------
+# Q191 — B3-1 category is Community Shopping
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q191_b3_1_category(district_tools):
+    """Eval Q191: B3-1 should be in the Community Shopping / Business/Shopping category."""
+    result = district_tools["lookup_district"](district_code="B3-1")
+    assert "error" not in result
+    category = result.get("category", "")
+    assert "Shopping" in category or "Business" in category or "Community" in category, (
+        f"Expected 'Shopping' or 'Business' in B3-1 category, got: {category!r}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q192 — C3-1 FAR is 1.0
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q192_c3_1_far(district_tools):
+    """Eval Q192: C3-1 FAR should be 1.0."""
+    result = district_tools["lookup_district"](district_code="C3-1")
+    assert "error" not in result
+    assert float(result["floor_area_ratio"]) == pytest.approx(1.0)
+
+
+# ---------------------------------------------------------------------------
+# Q193 — RM-4.5 maximum building height contains "38"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q193_rm45_height(district_tools):
+    """Eval Q193: RM-4.5 maximum_building_height should reference 38 ft."""
+    result = district_tools["lookup_district"](district_code="RM-4.5")
+    assert "error" not in result
+    height = result.get("maximum_building_height", "")
+    assert "38" in str(height), (
+        f"Expected '38' in RM-4.5 maximum_building_height, got: {height!r}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q194 — DX-5 lot area per dwelling unit is 200
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q194_dx5_lot_area_per_unit(district_tools):
+    """Eval Q194: DX-5 lot_area_per_unit should reference 200 sqft per dwelling unit."""
+    result = district_tools["lookup_district"](district_code="DX-5")
+    assert "error" not in result
+    lot_area = result.get("lot_area_per_unit", "")
+    assert "200" in lot_area.replace(",", ""), (
+        f"Expected '200' in lot_area_per_unit for DX-5, got: {lot_area!r}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q195 — search "rezoning procedures" returns Title 17 sections
+# ---------------------------------------------------------------------------
+
+_CODE_SEARCH_FIXTURE_REZONING = _CODE_SEARCH_FIXTURE + [
+    {
+        "section": "17-13-0300",
+        "title": "Rezoning and Map Amendment Procedures",
+        "chapter": "Chapter 17-13",
+        "text": (
+            "A zoning map amendment (rezoning) requires a recommendation from the "
+            "Chicago Plan Commission and approval by the City Council. Applications "
+            "must demonstrate consistency with the Comprehensive Plan and applicable "
+            "planning policies."
+        ),
+        "source_file": "chapter_17-13.txt",
+    },
+]
+
+
+def test_eval_q195_search_rezoning(code_search_tools):
+    """Eval Q195: search_zoning_code('rezoning procedures') returns Title 17 sections."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_REZONING,
+    ):
+        result = code_search_tools["search_zoning_code"](query="rezoning procedures")
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    sections = [r["section"] for r in result["results"]]
+    assert any(s.startswith("17-") for s in sections)
+
+
+# ---------------------------------------------------------------------------
+# Q196 — search "affordable housing" returns Title 17 sections
+# ---------------------------------------------------------------------------
+
+_CODE_SEARCH_FIXTURE_AFFORDABLE = _CODE_SEARCH_FIXTURE + [
+    {
+        "section": "17-4-1000",
+        "title": "Affordable Housing Bonus",
+        "chapter": "Chapter 17-4",
+        "text": (
+            "Developments that include affordable housing units may receive a floor "
+            "area bonus under the Affordable Requirements Ordinance (ARO). Affordable "
+            "units must remain affordable for a period of at least 30 years."
+        ),
+        "source_file": "chapter_17-4.txt",
+    },
+]
+
+
+def test_eval_q196_search_affordable_housing(code_search_tools):
+    """Eval Q196: search_zoning_code('affordable housing') returns Title 17 sections."""
+    with patch(
+        "src.tools.code_search.load_section_index",
+        return_value=_CODE_SEARCH_FIXTURE_AFFORDABLE,
+    ):
+        result = code_search_tools["search_zoning_code"](query="affordable housing requirements")
+    assert "error" not in result
+    assert result["result_count"] >= 1
+    sections = [r["section"] for r in result["results"]]
+    assert any(s.startswith("17-") for s in sections)
+    assert any(
+        "affordable" in r.get("title", "").lower()
+        or "affordable" in r.get("text", "").lower()
+        for r in result["results"]
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q197 — B1-3 max floor area on 5000 sqft lot = 15000 (FAR 3.0)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q197_b1_3_5000_envelope(development_tools):
+    """Eval Q197: B1-3 FAR 3.0 × 5000 sqft lot = 15,000 sqft max floor area."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="B1-3", lot_area_sqft=5000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(15000.0)
+
+
+# ---------------------------------------------------------------------------
+# Q198 — DX-5 maximum building height contains "65"
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q198_dx5_height(district_tools):
+    """Eval Q198: DX-5 maximum_building_height should reference 65 ft."""
+    result = district_tools["lookup_district"](district_code="DX-5")
+    assert "error" not in result
+    height = result.get("maximum_building_height", "")
+    assert "65" in str(height), (
+        f"Expected '65' in DX-5 maximum_building_height, got: {height!r}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Q199 — address lookup at 4521 N Clark returns a B-series district (mocked)
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+async def test_eval_q199_clark_st_address():
+    """Eval Q199: 4521 N Clark St routes to get_parcel_zoning and returns a B-series district.
+
+    Mocks geocoder and Socrata so no network required.
+    """
+    from unittest.mock import MagicMock
+
+    mcp_t = FastMCP("test")
+    tools: dict = {}
+    original = mcp_t.tool
+
+    def capture(*args, **kwargs):
+        dec = original(*args, **kwargs)
+
+        def wrap(fn):
+            tools[fn.__name__] = fn
+            return dec(fn)
+
+        return wrap
+
+    mcp_t.tool = capture
+    register_geospatial_tools(mcp_t)
+
+    mock_socrata_response = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "properties": {"zone_class": "B3-2", "zone_type": "1"},
+                "geometry": {"type": "MultiPolygon", "coordinates": []},
+            }
+        ],
+    }
+
+    with (
+        patch("src.tools.geospatial.geocode_address", new_callable=AsyncMock) as mock_geo,
+        patch("src.tools.geospatial.httpx.AsyncClient") as mock_client_cls,
+    ):
+        mock_geo.return_value = (41.9620, -87.6591)  # 4521 N Clark St coordinates
+
+        mock_resp = MagicMock()
+        mock_resp.json.return_value = mock_socrata_response
+        mock_resp.raise_for_status = MagicMock()
+        mock_client = AsyncMock()
+        mock_client.get.return_value = mock_resp
+        mock_client.__aenter__ = AsyncMock(return_value=mock_client)
+        mock_client.__aexit__ = AsyncMock(return_value=False)
+        mock_client_cls.return_value = mock_client
+
+        result = await tools["get_parcel_zoning"](address="4521 N Clark St")
+
+    assert "error" not in result, f"Expected no error, got: {result.get('error')}"
+    zone = result.get("zone_class", "")
+    assert zone.startswith("B"), f"Expected a B-series district for 4521 N Clark St, got: {zone!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q200 — RM-6 max dwelling units on 5800 sqft lot = 29 (5800 / 200)
+# ---------------------------------------------------------------------------
+
+
+def test_eval_q200_rm6_5800_units(development_tools):
+    """Eval Q200: RM-6 on 5800 sqft lot → 29 max dwelling units (5800 / 200)."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RM-6", lot_area_sqft=5800
+    )
+    assert "error" not in result
+    assert result["max_dwelling_units"] == 29
