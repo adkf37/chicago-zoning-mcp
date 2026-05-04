@@ -3,6 +3,44 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-05-04 — Ralph — Final closeout review reconfirms human-blocked handoff
+
+**Context:** I re-ran the documented closeout checks in the current sandbox so the handoff
+decision is backed by fresh evidence from this repository state, not only by earlier
+same-day closeout notes.
+
+**Evidence checked in this pass:**
+
+| Check | Result |
+|---|---|
+| `python -m pip install -e ".[dev,web]"` | ✅ Passed |
+| `python -m ruff check src/ tests/ web/` | ✅ Passed |
+| `python -m pytest tests/ -m "not network" --tb=short` | ✅ 598 passed, 5 deselected |
+| `python -m pytest tests/ -m network --tb=short` | ⚠️ 5 failed in sandbox (live geocoder / Chicago Data Portal unavailable) |
+| `await mcp.list_tools()` | ✅ 8 tools registered |
+| RS-3 spot checks | ✅ FAR 0.9; height text present; 5,000 sqft envelope = 4500.0 sqft |
+| `data/zoning_codes.csv` count | ✅ 67 district records |
+| `evals/zoning_qa.xml` parse + count | ✅ Well-formed XML with 460 questions |
+
+**Decisions:**
+
+1. **Keep `Next Action: Human Blocked`** — The open work is still external or manual:
+   T3-01–T3-05 (Title 17 download / ingestion), T4-01–T4-10 (MCP Inspector verification),
+   T5-01–T5-06 (Ollama validation), T6-02 (Docker verification), and T6-03 (parent repo
+   cross-reference).
+2. **Refresh only the closeout artifacts** — `STATUS.md`, `.squad/review_report.md`, and this
+   decisions log were updated to capture this final review pass. No additional code or handoff-doc
+   changes were needed because the existing README-level guidance already matches the verified state.
+3. **Do not overstate completion** — Automated quality is strong, but the sprint Definition of Done
+   still has manual items unchecked, so the project should remain handoff-ready yet human-blocked.
+
+**Handoff updates made in this pass:**
+- `STATUS.md` — refreshed the current objective / recent activity to reflect this final review pass.
+- `.squad/review_report.md` — updated the evidence wording to match the commands and spot checks run here.
+- `.squad/decisions.md` — recorded the final closeout decision and why no further doc refresh was needed.
+
+---
+
 ### 2026-05-04 — Ralph — Closeout revalidated in fresh clone; handoff remains human-blocked
 
 **Context:** I repeated closeout verification in a fresh clone environment to confirm the
