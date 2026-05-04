@@ -15,7 +15,7 @@
 | Lint | `python -m ruff check src/ tests/ web/` | ✅ Passed |
 | Offline test suite | `python -m pytest tests/ -m "not network" --tb=short` | ✅ 598 passed, 5 deselected |
 | Live network tests | `python -m pytest tests/ -m network --tb=short` | ⚠️ 5 failed in sandbox due to live geocoding / Chicago Data Portal access |
-| Tool registration | `await mcp.list_tools()` | ✅ 8 tools registered |
+| Tool registration | `await mcp.list_tools()` | ✅ 8 tools registered (manual Inspector callability still pending) |
 | District lookup spot check | `get_district("RS-3")` via data loader | ✅ `floor_area_ratio` = `0.9`; height text present |
 | Development envelope spot check | RS-3 FAR × 5,000 sqft | ✅ 4500.0 sqft |
 | District data count | `data/zoning_codes.csv` row count | ✅ 67 district records |
@@ -41,6 +41,16 @@
 - **T5-01–T5-06** — Ollama end-to-end validation remains pending; `ollama` is not installed here.
 - **T6-02** — `docker compose up` has not been manually verified in this pass.
 - **T6-03** — Parent repo README cross-reference still requires human repo access.
+
+### Sprint Definition of Done review
+
+- [x] `pytest tests/ -m "not network"` passes
+- [x] `ruff check src/ tests/ web/` passes
+- [x] Network-test failures are documented
+- [ ] All 8 tools verified callable in MCP Inspector
+- [ ] Ollama end-to-end testing completed
+- [x] No new tool-description issues were found in this closeout pass
+- [x] `STATUS.md` reflects the current sprint outcome
 
 ## Risks
 

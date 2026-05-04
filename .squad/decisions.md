@@ -3,6 +3,42 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-05-04 — Ralph — Closeout sign-off confirms human-blocked handoff
+
+**Context:** Maestro requested a final closeout decision for this loop. I re-ran the repository's
+documented automated checks, re-checked the closeout evidence, and compared the current state to
+the sprint Definition of Done before deciding whether the loop could be marked complete.
+
+**Evidence checked in this pass:**
+
+| Check | Result |
+|---|---|
+| `python -m ruff check src/ tests/ web/` | ✅ Passed |
+| `python -m pytest tests/ -m "not network" --tb=short` | ✅ 598 passed, 5 deselected |
+| `python -m pytest tests/ -m network --tb=short` | ⚠️ 5 failed in sandbox (live geocoder / Chicago Data Portal unavailable) |
+| `await mcp.list_tools()` | ✅ 8 tools registered |
+| `data/zoning_codes.csv` count | ✅ 67 district records |
+| `xml.etree.ElementTree.parse("evals/zoning_qa.xml")` | ✅ Well-formed `eval_suite` XML |
+| `evals/zoning_qa.xml` count | ✅ 460 questions |
+
+**Decisions:**
+
+1. **Keep the final direction at `Human Blocked`** — The remaining gaps are still manual or
+   environment-bound: T3-01–T3-05 (Title 17 ingestion), T4-01–T4-10 (MCP Inspector), T5-01–T5-06
+   (Ollama validation), T6-02 (Docker verification), and T6-03 (parent repo cross-reference).
+2. **Do not over-claim tool verification** — Closeout artifacts now distinguish between
+   programmatic tool registration and manual Inspector callability, which is still pending.
+3. **Refresh handoff docs only where needed** — `STATUS.md`, `.squad/review_report.md`, and this
+   decisions log were updated for the latest pass, and `README.md` now points at the real parent
+   project URL instead of a placeholder link.
+
+**Handoff updates made in this pass:**
+- `STATUS.md` — recorded the latest closeout sign-off evidence and kept `Next Action: Human Blocked`.
+- `.squad/review_report.md` — refreshed the evidence wording and added a sprint Definition of Done review.
+- `README.md` — corrected the parent-project cross-reference URL for human handoff.
+
+---
+
 ### 2026-05-04 — Ralph — Closeout refreshed after eval XML repair; final state remains human-blocked
 
 **Context:** During the final closeout verification, the documented XML question-count check for
