@@ -2709,4 +2709,126 @@
     <notes>DS-3 minimum lot area per dwelling unit is 400 sq ft/dwelling unit.</notes>
   </question>
 
+  <!-- Q441–Q460: Setbacks, minimum lot areas, development envelopes, and comparisons for underrepresented districts -->
+
+  <question id="441" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the minimum lot area required for a parcel in an RT-4 two-flat/townhouse district?</prompt>
+    <answer_contains>1000</answer_contains>
+    <notes>RT-4 minimum_lot_area is 1000 sq ft.</notes>
+  </question>
+
+  <question id="442" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the minimum lot area for a parcel in an RM-4.5 multi-unit residential district?</prompt>
+    <answer_contains>1650</answer_contains>
+    <notes>RM-4.5 minimum_lot_area is 1650 sq ft.</notes>
+  </question>
+
+  <question id="443" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the rear yard setback requirement in an RM-5 multi-unit residential district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>RM-5 rear yard setback is 30 ft.</notes>
+  </question>
+
+  <question id="444" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the minimum front yard setback in an RT-3.5 two-flat/townhouse district?</prompt>
+    <answer_contains>15</answer_contains>
+    <notes>RT-3.5 front yard setback is 15 ft.</notes>
+  </question>
+
+  <question id="445" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the front yard setback requirement in a POS-1 parks and open space district?</prompt>
+    <answer_contains>25</answer_contains>
+    <notes>POS-1 front yard setback is 25 ft.</notes>
+  </question>
+
+  <question id="446" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the side setback requirement in a POS-2 regional parks and open space district?</prompt>
+    <answer_contains>15</answer_contains>
+    <notes>POS-2 side setback is 15 ft.</notes>
+  </question>
+
+  <question id="447" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the rear yard requirement for a DX-3 downtown mixed-use district on a small lot?</prompt>
+    <answer_contains>No minimum</answer_contains>
+    <notes>DX-3 rear yard setback is "No minimum for lots less than 10000 sq ft".</notes>
+  </question>
+
+  <question id="448" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the side setback requirement in a DR-5 downtown residential district?</prompt>
+    <answer_contains>no minimum</answer_contains>
+    <notes>DR-5 has no minimum side setback per Sec. 17-4-0406-B.</notes>
+  </question>
+
+  <question id="449" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="moderate" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 5,000 sqft lot zoned RM-4.5?</prompt>
+    <answer_contains>8500</answer_contains>
+    <notes>RM-4.5 FAR is 1.7; 5000 × 1.7 = 8,500 sqft.</notes>
+  </question>
+
+  <question id="450" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="moderate" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 4,000 sqft lot zoned RM-5?</prompt>
+    <answer_contains>8000</answer_contains>
+    <notes>RM-5 FAR is 2.0; 4000 × 2.0 = 8,000 sqft.</notes>
+  </question>
+
+  <question id="451" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="moderate" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum floor area on a 6,000 sqft lot zoned RT-3.5?</prompt>
+    <answer_contains>6300</answer_contains>
+    <notes>RT-3.5 FAR is 1.05; 6000 × 1.05 = 6,300 sqft.</notes>
+  </question>
+
+  <question id="452" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare RT-3.5 and RT-4 two-flat/townhouse districts. Which allows a higher floor area ratio?</prompt>
+    <answer_contains>RT-4</answer_contains>
+    <notes>RT-4 FAR is 1.2; RT-3.5 FAR is 1.05. RT-4 allows higher floor area.</notes>
+  </question>
+
+  <question id="453" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the minimum lot area for a parcel in an RM-6 multi-unit residential district?</prompt>
+    <answer_contains>1650</answer_contains>
+    <notes>RM-6 minimum_lot_area is 1650 sq ft.</notes>
+  </question>
+
+  <question id="454" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the minimum lot area for a parcel in an RM-6.5 multi-unit residential district?</prompt>
+    <answer_contains>1650</answer_contains>
+    <notes>RM-6.5 minimum_lot_area is 1650 sq ft.</notes>
+  </question>
+
+  <question id="455" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the maximum building height in an M2-1 general manufacturing district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>M2-1 maximum building height is 30 ft, 2 stories.</notes>
+  </question>
+
+  <question id="456" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>Compare DR-5 and DS-5 districts. Do they have the same floor area ratio?</prompt>
+    <answer_contains>5.0</answer_contains>
+    <notes>Both DR-5 and DS-5 have FAR 5.0; they are equal in this regard.</notes>
+  </question>
+
+  <question id="457" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the rear yard setback requirement in a B1-1 neighborhood shopping district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>B1-1 rear yard setback is 30 ft.</notes>
+  </question>
+
+  <question id="458" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the rear yard setback requirement in an M1-2 light industrial district?</prompt>
+    <answer_contains>30</answer_contains>
+    <notes>M1-2 rear yard setback is 30 ft.</notes>
+  </question>
+
+  <question id="459" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a DX-5 downtown mixed-use district?</prompt>
+    <answer_contains>200</answer_contains>
+    <notes>DX-5 minimum lot area per dwelling unit is 200 sq ft/dwelling unit.</notes>
+  </question>
+
+  <question id="460" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
+    <prompt>What is the minimum lot area per dwelling unit in a DR-7 downtown residential district?</prompt>
+    <answer_contains>145</answer_contains>
+    <notes>DR-7 minimum lot area per dwelling unit is 145 sq ft/dwelling unit.</notes>
+  </question>
+
 </eval_suite>

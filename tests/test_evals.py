@@ -6942,3 +6942,198 @@ def test_eval_q440_ds3_lot_area_per_unit(district_tools):
     assert "error" not in result
     lot = str(result.get("lot_area_per_unit", ""))
     assert "400" in lot, f"Expected '400' in DS-3 lot_area_per_unit, got: {lot!r}"
+
+
+# ---------------------------------------------------------------------------
+# Q441–Q460: Setbacks, minimum lot areas, development envelopes, comparisons
+# ---------------------------------------------------------------------------
+
+
+# Q441 — RT-4 minimum lot area is 1000 sq ft
+def test_eval_q441_rt4_minimum_lot_area(district_tools):
+    """Eval Q441: RT-4 minimum_lot_area should be 1000."""
+    result = district_tools["lookup_district"](district_code="RT-4")
+    assert "error" not in result
+    min_lot = str(result.get("minimum_lot_area", ""))
+    assert "1000" in min_lot, f"Expected '1000' in RT-4 minimum_lot_area, got: {min_lot!r}"
+
+
+# Q442 — RM-4.5 minimum lot area is 1650 sq ft
+def test_eval_q442_rm45_minimum_lot_area(district_tools):
+    """Eval Q442: RM-4.5 minimum_lot_area should be 1650."""
+    result = district_tools["lookup_district"](district_code="RM-4.5")
+    assert "error" not in result
+    min_lot = str(result.get("minimum_lot_area", ""))
+    assert "1650" in min_lot, f"Expected '1650' in RM-4.5 minimum_lot_area, got: {min_lot!r}"
+
+
+# Q443 — RM-5 rear yard setback is 30 ft
+def test_eval_q443_rm5_rear_yard_setback(district_tools):
+    """Eval Q443: RM-5 rear_yard_setback should contain '30'."""
+    result = district_tools["lookup_district"](district_code="RM-5")
+    assert "error" not in result
+    rear = str(result.get("rear_yard_setback", ""))
+    assert "30" in rear, f"Expected '30' in RM-5 rear_yard_setback, got: {rear!r}"
+
+
+# Q444 — RT-3.5 front yard setback is 15 ft
+def test_eval_q444_rt35_front_yard_setback(district_tools):
+    """Eval Q444: RT-3.5 front_yard_setback should contain '15'."""
+    result = district_tools["lookup_district"](district_code="RT-3.5")
+    assert "error" not in result
+    front = str(result.get("front_yard_setback", ""))
+    assert "15" in front, f"Expected '15' in RT-3.5 front_yard_setback, got: {front!r}"
+
+
+# Q445 — POS-1 front yard setback is 25 ft
+def test_eval_q445_pos1_front_yard_setback(district_tools):
+    """Eval Q445: POS-1 front_yard_setback should contain '25'."""
+    result = district_tools["lookup_district"](district_code="POS-1")
+    assert "error" not in result
+    front = str(result.get("front_yard_setback", ""))
+    assert "25" in front, f"Expected '25' in POS-1 front_yard_setback, got: {front!r}"
+
+
+# Q446 — POS-2 side setback is 15 ft
+def test_eval_q446_pos2_side_setback(district_tools):
+    """Eval Q446: POS-2 side_setback should contain '15'."""
+    result = district_tools["lookup_district"](district_code="POS-2")
+    assert "error" not in result
+    side = str(result.get("side_setback", ""))
+    assert "15" in side, f"Expected '15' in POS-2 side_setback, got: {side!r}"
+
+
+# Q447 — DX-3 rear yard setback is "No minimum for lots less than 10000 sq ft"
+def test_eval_q447_dx3_rear_yard_setback(district_tools):
+    """Eval Q447: DX-3 rear_yard_setback should contain 'No minimum'."""
+    result = district_tools["lookup_district"](district_code="DX-3")
+    assert "error" not in result
+    rear = str(result.get("rear_yard_setback", ""))
+    assert "No minimum" in rear or "no minimum" in rear.lower(), (
+        f"Expected 'No minimum' in DX-3 rear_yard_setback, got: {rear!r}"
+    )
+
+
+# Q448 — DR-5 has no minimum side setback
+def test_eval_q448_dr5_side_setback_no_minimum(district_tools):
+    """Eval Q448: DR-5 side_setback should indicate no minimum."""
+    result = district_tools["lookup_district"](district_code="DR-5")
+    assert "error" not in result
+    side = str(result.get("side_setback", "")).lower()
+    assert "no minimum" in side or "none" in side, (
+        f"Expected 'no minimum' in DR-5 side_setback, got: {side!r}"
+    )
+
+
+# Q449 — RM-4.5 development envelope on 5000 sqft lot = 8500 sqft
+def test_eval_q449_rm45_dev_envelope_5000(development_tools):
+    """Eval Q449: RM-4.5 × 5000 sqft lot → max_floor_area_sqft = 8500."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RM-4.5", lot_area_sqft=5000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(8500.0)
+
+
+# Q450 — RM-5 development envelope on 4000 sqft lot = 8000 sqft
+def test_eval_q450_rm5_dev_envelope_4000(development_tools):
+    """Eval Q450: RM-5 × 4000 sqft lot → max_floor_area_sqft = 8000."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RM-5", lot_area_sqft=4000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(8000.0)
+
+
+# Q451 — RT-3.5 development envelope on 6000 sqft lot = 6300 sqft
+def test_eval_q451_rt35_dev_envelope_6000(development_tools):
+    """Eval Q451: RT-3.5 × 6000 sqft lot → max_floor_area_sqft = 6300."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="RT-3.5", lot_area_sqft=6000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(6300.0)
+
+
+# Q452 — compare RT-3.5 vs RT-4: RT-4 has higher FAR
+def test_eval_q452_rt35_vs_rt4_far(district_tools):
+    """Eval Q452: compare_districts RT-3.5 vs RT-4 — RT-4 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="RT-3.5", district_b="RT-4")
+    assert "error" not in result
+    rt35_far = float(result["floor_area_ratio"]["RT-3.5"])
+    rt4_far = float(result["floor_area_ratio"]["RT-4"])
+    assert rt4_far > rt35_far, f"Expected RT-4 FAR ({rt4_far}) > RT-3.5 FAR ({rt35_far})"
+
+
+# Q453 — RM-6 minimum lot area is 1650 sq ft
+def test_eval_q453_rm6_minimum_lot_area(district_tools):
+    """Eval Q453: RM-6 minimum_lot_area should contain '1650'."""
+    result = district_tools["lookup_district"](district_code="RM-6")
+    assert "error" not in result
+    min_lot = str(result.get("minimum_lot_area", ""))
+    assert "1650" in min_lot, f"Expected '1650' in RM-6 minimum_lot_area, got: {min_lot!r}"
+
+
+# Q454 — RM-6.5 minimum lot area is 1650 sq ft
+def test_eval_q454_rm65_minimum_lot_area(district_tools):
+    """Eval Q454: RM-6.5 minimum_lot_area should contain '1650'."""
+    result = district_tools["lookup_district"](district_code="RM-6.5")
+    assert "error" not in result
+    min_lot = str(result.get("minimum_lot_area", ""))
+    assert "1650" in min_lot, f"Expected '1650' in RM-6.5 minimum_lot_area, got: {min_lot!r}"
+
+
+# Q455 — M2-1 maximum building height is 30 ft
+def test_eval_q455_m2_1_building_height(district_tools):
+    """Eval Q455: M2-1 maximum_building_height should contain '30'."""
+    result = district_tools["lookup_district"](district_code="M2-1")
+    assert "error" not in result
+    height = str(result.get("maximum_building_height", ""))
+    assert "30" in height, f"Expected '30' in M2-1 maximum_building_height, got: {height!r}"
+
+
+# Q456 — compare DR-5 vs DS-5: both have FAR 5.0
+def test_eval_q456_dr5_vs_ds5_far_equal(district_tools):
+    """Eval Q456: compare_districts DR-5 vs DS-5 — both should have FAR 5.0."""
+    result = district_tools["compare_districts"](district_a="DR-5", district_b="DS-5")
+    assert "error" not in result
+    dr5_far = float(result["floor_area_ratio"]["DR-5"])
+    ds5_far = float(result["floor_area_ratio"]["DS-5"])
+    assert dr5_far == pytest.approx(5.0), f"Expected DR-5 FAR 5.0, got: {dr5_far}"
+    assert ds5_far == pytest.approx(5.0), f"Expected DS-5 FAR 5.0, got: {ds5_far}"
+
+
+# Q457 — B1-1 rear yard setback is 30 ft
+def test_eval_q457_b1_1_rear_yard_setback(district_tools):
+    """Eval Q457: B1-1 rear_yard_setback should contain '30'."""
+    result = district_tools["lookup_district"](district_code="B1-1")
+    assert "error" not in result
+    rear = str(result.get("rear_yard_setback", ""))
+    assert "30" in rear, f"Expected '30' in B1-1 rear_yard_setback, got: {rear!r}"
+
+
+# Q458 — M1-2 rear yard setback is 30 ft
+def test_eval_q458_m1_2_rear_yard_setback(district_tools):
+    """Eval Q458: M1-2 rear_yard_setback should contain '30'."""
+    result = district_tools["lookup_district"](district_code="M1-2")
+    assert "error" not in result
+    rear = str(result.get("rear_yard_setback", ""))
+    assert "30" in rear, f"Expected '30' in M1-2 rear_yard_setback, got: {rear!r}"
+
+
+# Q459 — DX-5 lot_area_per_unit contains "200"
+def test_eval_q459_dx5_lot_area_per_unit(district_tools):
+    """Eval Q459: DX-5 lot_area_per_unit should contain '200'."""
+    result = district_tools["lookup_district"](district_code="DX-5")
+    assert "error" not in result
+    lot = str(result.get("lot_area_per_unit", ""))
+    assert "200" in lot, f"Expected '200' in DX-5 lot_area_per_unit, got: {lot!r}"
+
+
+# Q460 — DR-7 lot_area_per_unit contains "145"
+def test_eval_q460_dr7_lot_area_per_unit(district_tools):
+    """Eval Q460: DR-7 lot_area_per_unit should contain '145'."""
+    result = district_tools["lookup_district"](district_code="DR-7")
+    assert "error" not in result
+    lot = str(result.get("lot_area_per_unit", ""))
+    assert "145" in lot, f"Expected '145' in DR-7 lot_area_per_unit, got: {lot!r}"
