@@ -322,7 +322,7 @@
 
     .capabilities__grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.25rem;
     }
 
@@ -369,6 +369,10 @@
 
     @media (max-width: 640px) {
       .capabilities__grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 900px) and (min-width: 641px) {
+      .capabilities__grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     /* ─── CHAT LAYOUT ─────────────────────────────────────── */
@@ -863,7 +867,7 @@
   <section class="capabilities">
     <div class="capabilities__inner">
       <p class="capabilities__label">What it can do</p>
-      <h2 class="capabilities__heading">Three tools in one conversation</h2>
+      <h2 class="capabilities__heading">Four capabilities in one conversation</h2>
       <div class="capabilities__grid">
 
         <div class="capability-card">
@@ -888,6 +892,16 @@
         </div>
 
         <div class="capability-card">
+          <span class="capability-card__icon" aria-hidden="true">🗺️</span>
+          <div class="capability-card__stat">Live Data</div>
+          <h3 class="capability-card__title">Address Zoning</h3>
+          <p class="capability-card__text">
+            Find the zoning district for any Chicago address in real time using the
+            Chicago Data Portal. Get the district code, map link, and key rules.
+          </p>
+        </div>
+
+        <div class="capability-card">
           <span class="capability-card__icon" aria-hidden="true">📖</span>
           <!-- Update count after re-running scripts/ingest_title_17.py -->
           <div class="capability-card__stat">1,888+ Sections</div>
@@ -901,6 +915,33 @@
       </div>
     </div>
   </section>
+
+  <!-- ═══ HOW IT WORKS ════════════════════════════════════════ -->
+  <div class="how-it-works">
+    <div class="how-it-works__inner">
+      <div class="how-step">
+        <div class="how-step__number">1</div>
+        <div class="how-step__text">
+          <strong>Ask in plain English</strong>
+          Type your zoning question — no codes or jargon needed.
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-step__number">2</div>
+        <div class="how-step__text">
+          <strong>AI selects the right tool</strong>
+          The assistant picks the best tool: lookup, calculator, address search, or code search.
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-step__number">3</div>
+        <div class="how-step__text">
+          <strong>Get a structured answer</strong>
+          Receive a clear, cited response — always sourced from official Chicago data.
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ═══ CHAT ════════════════════════════════════════════════ -->
   <main class="chat-wrapper">
@@ -934,6 +975,7 @@
           <div class="suggestion-group__chips">
             <button class="chip" onclick="sendSuggestion(this)">What's the zoning at 233 S Wacker Dr?</button>
             <button class="chip" onclick="sendSuggestion(this)">What is the zoning at Wrigley Field?</button>
+            <button class="chip" onclick="sendSuggestion(this)">What's the zoning at 4521 N Clark St?</button>
           </div>
         </div>
 
@@ -946,6 +988,8 @@
             <button class="chip" onclick="sendSuggestion(this)">What can I build on a 5,000 sqft RS-3 lot?</button>
             <button class="chip" onclick="sendSuggestion(this)">Compare RS-3 and RT-4 districts</button>
             <button class="chip" onclick="sendSuggestion(this)">List all residential district types in Chicago</button>
+            <button class="chip" onclick="sendSuggestion(this)">What are the height limits in a DX-5 district?</button>
+            <button class="chip" onclick="sendSuggestion(this)">What is the FAR for a B1-3 neighborhood shopping district?</button>
           </div>
         </div>
 

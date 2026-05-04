@@ -3,7 +3,49 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
-### 2026-05-04 — Data Pipeline — CSV accuracy corrections from secondcityzoning.org data
+### 2026-05-04 — Data Pipeline — Eval suite extended to 440 questions; frontend enhanced
+
+**Context:** Build pass 9 continues expanding the evaluation harness to improve coverage of
+all 59 districts. Previous pass corrected data and reached 420 questions; this pass fills
+gaps in the M-series, DX/DC high-density, DS-series, POS-series, C3-series, and B3-series.
+Frontend improved per FEEDBACK.md request for a more professional design.
+
+**Decisions:**
+
+1. **Eval suite extended to 440 questions** — Added Q421–Q440 to `evals/zoning_qa.xml`:
+   - Q421–Q423: Manufacturing series extension — M1-2 FAR (2.2), M2-3 FAR (3.0), M3-3 height (55 ft).
+   - Q424–Q427: High-density downtown series — DX-12 FAR (12.0), DX-16 FAR (16.0), DC-16 FAR (16.0),
+     DR-10 FAR (10.0).
+   - Q428–Q429: Downtown service series — DS-3 FAR (3.0), DS-5 lot_area_per_unit (200 sq ft).
+   - Q430–Q431: Park and open space — POS-1 FAR (0.1), POS-2 FAR (0.05).
+   - Q432–Q434: Commercial series gaps — C3-2 FAR (2.2), B3-5 FAR (5.0), C2-3 lot_area_per_unit (400).
+   - Q435–Q436: Cross-series comparisons — DX-12 vs DX-16 (DX-16 higher), DC-12 vs DC-16 (DC-16 higher).
+   - Q437–Q438: Additional development envelope calculations — C3-2×8000=17600, M1-2×6000=13200.
+   - Q439–Q440: Density attributes — DR-10 lot_area_per_unit (115 sq ft), DS-3 lot_area_per_unit (400 sq ft).
+
+2. **20 new offline eval tests** — `tests/test_evals.py` Q421–Q440 added; all fully offline.
+
+3. **Frontend improvements** per FEEDBACK.md design request:
+   - Added 4th capability card "Address Zoning" (geospatial tool was missing from capabilities).
+   - Added "How it Works" 3-step strip (CSS was already defined but HTML was absent).
+   - Updated capabilities grid from 3→4 columns (responsive: 4 cols desktop, 2 cols tablet, 1 col mobile).
+   - Updated heading from "Three tools" → "Four capabilities in one conversation".
+   - Added 2 new suggestion chips (4521 N Clark St address lookup; DX-5 height limit; B1-3 FAR).
+
+4. **Coverage rationale** — After Q420, the remaining gaps were in high-density downtown (DX-12,
+   DX-16, DC-16), downtown residential (DR-10) and service (DS-3, DS-5), park/open space (POS-1,
+   POS-2), and commercial series (C3-2, B3-5, C2-3). All 59 districts now have at least one test
+   assertion; all major district series have at least one cross-comparison test.
+
+**Impact:**
+- Test count: 557 → 577; eval suite: 420 → 440 questions.
+- `ruff check src/ tests/ web/` → 0 errors.
+- Frontend now correctly shows 4 tool categories, has a "How it Works" section, and 5 suggestion
+  chips per group for better discovery.
+
+---
+
+
 
 **Context:** Existing `data/zoning_codes.csv` contained several inaccurate values inherited from
 earlier manual transcription. This pass corrects factual errors using authoritative data from
