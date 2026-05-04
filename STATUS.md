@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Phase | Build |
-| Last Updated | 2026-05-04 (build pass 8) |
+| Last Updated | 2026-05-04 (build pass 9) |
 | Squad Template | data_pipeline |
 | Priority | low |
 | Blocking | None for automated work — see "Needs Human Input" below for manual follow-ups |
@@ -11,10 +11,10 @@
 
 ## Current Objective
 
-**Build phase — CSV accuracy corrections applied; 557 tests passing.**
+**Build phase — eval suite expanded to 440 questions; 577 tests passing; frontend enhanced.**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
-- `pytest tests/ -m "not network"` → **557 passed, 5 deselected** ✅
+- `pytest tests/ -m "not network"` → **577 passed, 5 deselected** ✅
 - `ruff check src/ tests/ web/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
@@ -24,7 +24,17 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 
 ## Recent Activity
 
-- 2026-05-04 (this pass): Corrected inaccurate `data/zoning_codes.csv` values sourced from
+- 2026-05-04 (this pass): Expanded eval suite from 420 → 440 questions (Q421–Q440).
+  - Added coverage for undertested districts: M1-2, M2-3, M3-3, DX-12, DX-16, DC-16, DR-10,
+    DS-3, DS-5, POS-1, POS-2, C3-2, B3-5, C2-3.
+  - Added cross-series comparison questions (DX-12 vs DX-16, DC-12 vs DC-16).
+  - Added development envelope calculations for C3-2 and M1-2.
+  - Added 20 new offline test functions in `tests/test_evals.py` (Q421–Q440).
+  - Test count: 557 → 577 passed.
+  - Frontend: added 4th capability card (Address Zoning), added "How it Works" strip,
+    updated capabilities grid to 4 columns, expanded suggestion chips.
+
+- 2026-05-04 (previous pass): Corrected inaccurate `data/zoning_codes.csv` values sourced from
   secondcityzoning.org. Key corrections:
   - RS-1 lot area: 6500 → 6250 sq ft; RT-3.5 lot_area_per_unit: 1650 → 1250 sq ft.
   - RM-4.5 FAR: 1.5 → 1.7; RM-5/RM-5.5/RM-6/RM-6.5 lot_area_per_unit corrected.
@@ -44,16 +54,12 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 - 2026-05-03 (previous pass): Eval suite expanded to 260 questions (Q241–Q260); 399 tests passing.
 - 2026-05-03 (previous pass): Eval suite expanded to 240 questions (Q221–Q240); 379 tests passing.
 - 2026-05-02 (previous pass): Eval suite expanded to 200 questions; 339 tests passing.
-- 2026-05-02 (previous pass): Eval suite expanded to 180 questions; frontend redesigned.
-- 2026-05-02 (previous pass): Eval suite expanded to 160 questions; 299 tests passing.
-- 2026-05-02 (previous pass): Eval suite expanded to 140 questions; front-end redesigned.
-- 2026-05-02 (previous pass): Eval suite expanded to 120 questions; 259 tests passing.
 
 ## Next Recommended Step
 
 **Validate phase.** Run `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>` to
-measure live eval pass-rate against the full 400-question harness. Prior live eval score
-was 14/20 (70%) on 20 questions; the new target is ≥90% on 400 questions.
+measure live eval pass-rate against the full 440-question harness. Prior live eval score
+was 14/20 (70%) on 20 questions; the new target is ≥90% on 440 questions.
 
 ## Artifacts
 
@@ -71,9 +77,9 @@ was 14/20 (70%) on 20 questions; the new target is ≥90% on 400 questions.
 | Squad routing rules | `.squad/routing.md` | created |
 | Squad decisions log | `.squad/decisions.md` | updated |
 | Sprint plan | `.squad/sprint.md` | created |
-| Eval suite | `evals/zoning_qa.xml` | 420 questions (Q1–Q420) — values corrected 2026-05-04 |
-| Eval tests | `tests/test_evals.py` | 557 tests passing — assertions corrected 2026-05-04 |
-| Frontend | `web/templates/index.html` | redesigned — capabilities cards, larger hero |
+| Eval suite | `evals/zoning_qa.xml` | 440 questions (Q1–Q440) |
+| Eval tests | `tests/test_evals.py` | 577 tests passing |
+| Frontend | `web/templates/index.html` | enhanced — 4 capability cards, "How it Works" strip, expanded suggestions |
 
 ## Needs Human Input
 
@@ -82,7 +88,6 @@ was 14/20 (70%) on 20 questions; the new target is ≥90% on 400 questions.
   `python scripts/ingest_title_17.py` to rebuild the index with all 17 chapters.
 
 - **Live eval run** (~15 min) — Execute `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>`
-  to measure pass-rate against the 400-question harness.
+  to measure pass-rate against the 440-question harness.
 
 - **MCP Inspector verification** (~30 min) — Run `npx @modelcontextprotocol/inspector python -m src.server`.
-

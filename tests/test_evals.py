@@ -6758,3 +6758,187 @@ def test_eval_q420_rm5_5_lot_area_per_unit(district_tools):
     assert "error" not in result
     lot = str(result.get("lot_area_per_unit", ""))
     assert "400" in lot, f"Expected '400' in RM-5.5 lot_area_per_unit, got: {lot!r}"
+
+
+# Q421 — M1-2 FAR is 2.2
+def test_eval_q421_m1_2_far(district_tools):
+    """Eval Q421: M1-2 floor_area_ratio should be 2.2."""
+    result = district_tools["lookup_district"](district_code="M1-2")
+    assert "error" not in result
+    far = float(result["floor_area_ratio"])
+    assert far == pytest.approx(2.2), f"Expected M1-2 FAR 2.2, got: {far}"
+
+
+# Q422 — M2-3 FAR is 3.0
+def test_eval_q422_m2_3_far(district_tools):
+    """Eval Q422: M2-3 floor_area_ratio should be 3.0."""
+    result = district_tools["lookup_district"](district_code="M2-3")
+    assert "error" not in result
+    far = float(result["floor_area_ratio"])
+    assert far == pytest.approx(3.0), f"Expected M2-3 FAR 3.0, got: {far}"
+
+
+# Q423 — M3-3 maximum building height is 55 ft
+def test_eval_q423_m3_3_height(district_tools):
+    """Eval Q423: M3-3 maximum_building_height should contain '55'."""
+    result = district_tools["lookup_district"](district_code="M3-3")
+    assert "error" not in result
+    height = str(result.get("maximum_building_height", ""))
+    assert "55" in height, f"Expected '55' in M3-3 height, got: {height!r}"
+
+
+# Q424 — DX-12 FAR is 12.0
+def test_eval_q424_dx_12_far(district_tools):
+    """Eval Q424: DX-12 floor_area_ratio should be 12.0."""
+    result = district_tools["lookup_district"](district_code="DX-12")
+    assert "error" not in result
+    far = float(result["floor_area_ratio"])
+    assert far == pytest.approx(12.0), f"Expected DX-12 FAR 12.0, got: {far}"
+
+
+# Q425 — DX-16 FAR is 16.0
+def test_eval_q425_dx_16_far(district_tools):
+    """Eval Q425: DX-16 floor_area_ratio should be 16.0."""
+    result = district_tools["lookup_district"](district_code="DX-16")
+    assert "error" not in result
+    far = float(result["floor_area_ratio"])
+    assert far == pytest.approx(16.0), f"Expected DX-16 FAR 16.0, got: {far}"
+
+
+# Q426 — DC-16 FAR is 16.0
+def test_eval_q426_dc_16_far(district_tools):
+    """Eval Q426: DC-16 floor_area_ratio should be 16.0."""
+    result = district_tools["lookup_district"](district_code="DC-16")
+    assert "error" not in result
+    far = float(result["floor_area_ratio"])
+    assert far == pytest.approx(16.0), f"Expected DC-16 FAR 16.0, got: {far}"
+
+
+# Q427 — DR-10 FAR is 10.0
+def test_eval_q427_dr_10_far(district_tools):
+    """Eval Q427: DR-10 floor_area_ratio should be 10.0."""
+    result = district_tools["lookup_district"](district_code="DR-10")
+    assert "error" not in result
+    far = float(result["floor_area_ratio"])
+    assert far == pytest.approx(10.0), f"Expected DR-10 FAR 10.0, got: {far}"
+
+
+# Q428 — DS-3 FAR is 3.0
+def test_eval_q428_ds_3_far(district_tools):
+    """Eval Q428: DS-3 floor_area_ratio should be 3.0."""
+    result = district_tools["lookup_district"](district_code="DS-3")
+    assert "error" not in result
+    far = float(result["floor_area_ratio"])
+    assert far == pytest.approx(3.0), f"Expected DS-3 FAR 3.0, got: {far}"
+
+
+# Q429 — DS-5 minimum lot area per dwelling unit contains "200"
+def test_eval_q429_ds_5_lot_area_per_unit(district_tools):
+    """Eval Q429: DS-5 lot_area_per_unit should contain '200'."""
+    result = district_tools["lookup_district"](district_code="DS-5")
+    assert "error" not in result
+    lot = str(result.get("lot_area_per_unit", ""))
+    assert "200" in lot, f"Expected '200' in DS-5 lot_area_per_unit, got: {lot!r}"
+
+
+# Q430 — POS-1 FAR is 0.1
+def test_eval_q430_pos1_far(district_tools):
+    """Eval Q430: POS-1 floor_area_ratio should be 0.1."""
+    result = district_tools["lookup_district"](district_code="POS-1")
+    assert "error" not in result
+    far = float(result["floor_area_ratio"])
+    assert far == pytest.approx(0.1), f"Expected POS-1 FAR 0.1, got: {far}"
+
+
+# Q431 — POS-2 FAR is 0.05
+def test_eval_q431_pos2_far(district_tools):
+    """Eval Q431: POS-2 floor_area_ratio should be 0.05."""
+    result = district_tools["lookup_district"](district_code="POS-2")
+    assert "error" not in result
+    far = float(result["floor_area_ratio"])
+    assert far == pytest.approx(0.05), f"Expected POS-2 FAR 0.05, got: {far}"
+
+
+# Q432 — C3-2 FAR is 2.2
+def test_eval_q432_c3_2_far(district_tools):
+    """Eval Q432: C3-2 floor_area_ratio should be 2.2."""
+    result = district_tools["lookup_district"](district_code="C3-2")
+    assert "error" not in result
+    far = float(result["floor_area_ratio"])
+    assert far == pytest.approx(2.2), f"Expected C3-2 FAR 2.2, got: {far}"
+
+
+# Q433 — B3-5 FAR is 5.0
+def test_eval_q433_b3_5_far(district_tools):
+    """Eval Q433: B3-5 floor_area_ratio should be 5.0."""
+    result = district_tools["lookup_district"](district_code="B3-5")
+    assert "error" not in result
+    far = float(result["floor_area_ratio"])
+    assert far == pytest.approx(5.0), f"Expected B3-5 FAR 5.0, got: {far}"
+
+
+# Q434 — C2-3 lot_area_per_unit contains "400"
+def test_eval_q434_c2_3_lot_area_per_unit(district_tools):
+    """Eval Q434: C2-3 lot_area_per_unit should contain '400'."""
+    result = district_tools["lookup_district"](district_code="C2-3")
+    assert "error" not in result
+    lot = str(result.get("lot_area_per_unit", ""))
+    assert "400" in lot, f"Expected '400' in C2-3 lot_area_per_unit, got: {lot!r}"
+
+
+# Q435 — compare DX-12 vs DX-16: DX-16 has higher FAR
+def test_eval_q435_dx12_vs_dx16_far(district_tools):
+    """Eval Q435: compare_districts DX-12 vs DX-16 — DX-16 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="DX-12", district_b="DX-16")
+    assert "error" not in result
+    dx12_far = float(result["floor_area_ratio"]["DX-12"])
+    dx16_far = float(result["floor_area_ratio"]["DX-16"])
+    assert dx16_far > dx12_far, f"Expected DX-16 FAR ({dx16_far}) > DX-12 FAR ({dx12_far})"
+
+
+# Q436 — compare DC-12 vs DC-16: DC-16 has higher FAR
+def test_eval_q436_dc12_vs_dc16_far(district_tools):
+    """Eval Q436: compare_districts DC-12 vs DC-16 — DC-16 should have higher FAR."""
+    result = district_tools["compare_districts"](district_a="DC-12", district_b="DC-16")
+    assert "error" not in result
+    dc12_far = float(result["floor_area_ratio"]["DC-12"])
+    dc16_far = float(result["floor_area_ratio"]["DC-16"])
+    assert dc16_far > dc12_far, f"Expected DC-16 FAR ({dc16_far}) > DC-12 FAR ({dc12_far})"
+
+
+# Q437 — C3-2 development envelope on 8000 sqft lot = 17600 sqft
+def test_eval_q437_c3_2_dev_envelope_8000(development_tools):
+    """Eval Q437: C3-2 × 8000 sqft lot → max_floor_area_sqft = 17600."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="C3-2", lot_area_sqft=8000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(17600.0)
+
+
+# Q438 — M1-2 development envelope on 6000 sqft lot = 13200 sqft
+def test_eval_q438_m1_2_dev_envelope_6000(development_tools):
+    """Eval Q438: M1-2 × 6000 sqft lot → max_floor_area_sqft = 13200."""
+    result = development_tools["calculate_development_envelope"](
+        district_code="M1-2", lot_area_sqft=6000
+    )
+    assert "error" not in result
+    assert result["max_floor_area_sqft"] == pytest.approx(13200.0)
+
+
+# Q439 — DR-10 lot_area_per_unit contains "115"
+def test_eval_q439_dr10_lot_area_per_unit(district_tools):
+    """Eval Q439: DR-10 lot_area_per_unit should contain '115'."""
+    result = district_tools["lookup_district"](district_code="DR-10")
+    assert "error" not in result
+    lot = str(result.get("lot_area_per_unit", ""))
+    assert "115" in lot, f"Expected '115' in DR-10 lot_area_per_unit, got: {lot!r}"
+
+
+# Q440 — DS-3 lot_area_per_unit contains "400"
+def test_eval_q440_ds3_lot_area_per_unit(district_tools):
+    """Eval Q440: DS-3 lot_area_per_unit should contain '400'."""
+    result = district_tools["lookup_district"](district_code="DS-3")
+    assert "error" not in result
+    lot = str(result.get("lot_area_per_unit", ""))
+    assert "400" in lot, f"Expected '400' in DS-3 lot_area_per_unit, got: {lot!r}"
