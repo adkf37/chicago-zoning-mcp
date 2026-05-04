@@ -13,14 +13,15 @@
 | Check | Command / Evidence | Result |
 |---|---|---|
 | Lint | `python -m ruff check src/ tests/ web/` | ✅ Passed |
-| Offline test suite | `python -m pytest tests/ -m "not network" --tb=short` | ✅ 597 passed, 5 deselected |
+| Offline test suite | `python -m pytest tests/ -m "not network" --tb=short` | ✅ 598 passed, 5 deselected |
 | Live network tests | `python -m pytest tests/ -m network --tb=short` | ⚠️ 5 failed in sandbox due to live geocoding / Chicago Data Portal access |
 | Tool registration | `await mcp.list_tools()` | ✅ 8 tools registered |
-| District lookup spot check | `get_district("RS-3")` via data loader | ✅ FAR `0.9`; height text present |
+| District lookup spot check | `get_district("RS-3")` via data loader | ✅ `floor_area_ratio` = `0.9`; height text present |
 | Development envelope spot check | RS-3 FAR × 5,000 sqft | ✅ 4500.0 sqft |
 | District data count | `data/zoning_codes.csv` row count | ✅ 67 district records |
+| Eval harness integrity | `xml.etree.ElementTree.parse("evals/zoning_qa.xml")` | ✅ Well-formed `eval_suite` XML |
 | Eval harness size | `evals/zoning_qa.xml` question count | ✅ 460 questions |
-| Handoff docs | `STATUS.md`, `README.md`, `backlog/README.md`, `CONTRIBUTING.md` | ✅ Refreshed in this pass |
+| Handoff docs | `STATUS.md`, `README.md`, `backlog/README.md`, `CONTRIBUTING.md` | ✅ `STATUS.md` / review docs updated, README refreshed, backlog + contributing docs reviewed unchanged |
 
 ## Backlog / Sprint Review
 
@@ -31,7 +32,7 @@
 - [x] Final closeout notes written to `.squad/decisions.md`
 - [x] Human-facing docs refreshed enough for handoff
 - [x] Remaining blockers and follow-up work are explicit
-- [x] Review decision matches current evidence rather than stale historical counts
+- [x] Review decision matches current evidence rather than stale historical counts or malformed eval XML
 
 ### Remaining incomplete work
 

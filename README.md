@@ -14,7 +14,7 @@ Ask questions like:
 
 The server exposes **8 MCP tools** that the LLM calls as needed — no RAG pipeline, no vector database. Structured data gets structured lookups; zoning code text gets section-indexed keyword search.
 
-Current offline validation status: **597 tests passed** (`5` network tests deselected), with a
+Current offline validation status: **598 tests passed** (`5` network tests deselected), with a
 **460-question** eval harness and **67** district records in `data/zoning_codes.csv`.
 
 ## Architecture

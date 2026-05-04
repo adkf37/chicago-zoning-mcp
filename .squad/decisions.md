@@ -3,6 +3,43 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-05-04 — Ralph — Closeout refreshed after eval XML repair; final state remains human-blocked
+
+**Context:** During the final closeout verification, the documented XML question-count check for
+`evals/zoning_qa.xml` failed because one `<notes>` entry contained a raw `<` character and Q73 was
+still wrapped in an XML comment. The offline pytest suite still passed because it does not parse the
+full XML file, so the closeout artifacts needed a small repair before they could be trusted.
+
+**Evidence checked in this refresh:**
+
+| Check | Result |
+|---|---|
+| `python -m ruff check src/ tests/ web/` | ✅ Passed |
+| `python -m pytest tests/ -m "not network" --tb=short` | ✅ 598 passed, 5 deselected |
+| `python -m pytest tests/ -m network --tb=short` | ⚠️ 5 failed in sandbox (live geocoder / Chicago Data Portal unavailable) |
+| `await mcp.list_tools()` | ✅ 8 tools registered |
+| `data/zoning_codes.csv` count | ✅ 67 district records |
+| `xml.etree.ElementTree.parse("evals/zoning_qa.xml")` | ✅ Well-formed `eval_suite` XML |
+| `evals/zoning_qa.xml` count | ✅ 460 questions |
+
+**Decisions:**
+
+1. **Repair the eval harness, not the closeout story** — Escaped the raw `<` in the RM-4.5 notes
+   entry and restored Q73 as a real `<question>` so the file is valid XML again and the 460-question
+   count matches the documented harness.
+2. **Add a regression test for XML integrity** — Added `tests/test_eval_xml.py` so future passes
+   catch malformed XML before closeout artifacts claim the file was parsed successfully.
+3. **Keep the closeout decision at `Human Blocked`** — Manual Title 17 ingestion, MCP Inspector,
+   Ollama validation, Docker verification, and parent-repo cross-reference still require human work.
+
+**Handoff updates made in this refresh:**
+- `STATUS.md` — refreshed validation totals (now 598 passed), noted the eval XML repair, and kept
+  `Next Action: Human Blocked`.
+- `.squad/review_report.md` — updated evidence to include XML parse integrity and current test totals.
+- `README.md` — validation summary refreshed to 598 passing offline tests.
+
+---
+
 ### 2026-05-04 — Ralph — Closeout reviewed; final state is human-blocked
 
 **Context:** Maestro requested a final closeout decision for the current loop after the latest
