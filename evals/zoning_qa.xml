@@ -475,7 +475,7 @@
     <notes>Should call list_district_types with a manufacturing filter and return M1 districts.</notes>
   </question>
 
-  <!-- SKIPPED Q73 - answer updated in test_eval_q73 - RT-3.5 lot_area_per_unit is now 1,650 sqft (not 1,250)
+  <!-- SKIPPED Q73 - RT-3.5 lot_area_per_unit is now 1,250 sqft (not 1,650); answer changes from 5 to 6
   <question id="73" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
     <prompt>How many dwelling units can I build on an 8,250 sqft lot zoned RT-3.5?</prompt>
     <answer_regex>\b(6|six)\b</answer_regex>
