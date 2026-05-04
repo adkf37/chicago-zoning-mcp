@@ -6,7 +6,7 @@ This project is managed by the **Maestro** orchestration system and uses **Squad
 
 ## Before Starting Work
 
-1. `STATUS.md` - current phase, objective, blockers, and next recommended step
+1. `STATUS.md` - current phase, machine-readable `Next Action`, objective, blockers, and next recommended step
 2. `FEEDBACK.md` - human corrections or guidance, if present
 
 If these files or directories exist, read them next:
@@ -23,7 +23,7 @@ If these files or directories exist, read them next:
 
 - **Branch naming:** `maestro/{phase}-{kebab-case-slug}`
 - **Commit messages:** Use one of these phase prefixes: `[Planner]`, `[Squad Init]`, `[Squad Review]`, `[Build]`, `[Validate]`, `[Closeout]`
-- **Status updates:** Update `STATUS.md` whenever you change the phase, objective, blockers, or next step.
+- **Status updates:** Update `STATUS.md` whenever you change the phase, objective, blockers, or next step. Keep a machine-readable `Next Action` field set to `Build`, `Validate`, `Closeout`, `Complete`, or `Human Blocked`.
 - **Decisions:** Log significant architectural, data, and validation decisions in `.squad/decisions.md`.
 
 ## Phases
@@ -32,9 +32,9 @@ This repo follows the Maestro lifecycle:
 1. **Planner** - Survey the existing repo, define the deliverable, and create the backlog contract.
 2. **Squad Init** - Bootstrap `.squad/`, define the team, and align responsibilities to the backlog.
 3. **Squad Review** - Tighten backlog tasks, surface risks, and turn the backlog into an execution plan.
-4. **Build** - Execute the next implementation or analysis slice from the sprint plan.
+4. **Build** - Execute the next explicitly identified implementation or analysis slice from the sprint plan.
 5. **Validate** - Run the right checks, capture evidence, and decide whether the loop advances or returns to build.
-6. **Closeout** - Refresh handoff artifacts and decide whether the project is complete or loops back for more work.
+6. **Closeout** - Refresh handoff artifacts and decide whether the project is complete, human-blocked, or returns to one explicit task.
 
 Legacy aliases still appear in older repos:
 
@@ -69,9 +69,9 @@ Legacy aliases still appear in older repos:
 
 ### Build
 
-- Implementation work that materially advances at least one task from `backlog/tasks/`
-- `STATUS.md` - updated with progress, blockers, and suggested next step
-- `.squad/decisions.md` - updated with significant implementation decisions
+- Implementation work that materially advances exactly one explicit task from `backlog/tasks/` or one dated `FEEDBACK.md` item
+- `STATUS.md` - updated with progress, blockers, task/feedback ID, and machine-readable `Next Action`
+- `.squad/decisions.md` - updated with significant implementation decisions and the task/feedback ID behind any new artifact
 
 ### Validate
 
@@ -82,9 +82,9 @@ Legacy aliases still appear in older repos:
 
 ### Closeout
 
-- `STATUS.md` - updated with closeout outcome and remaining blockers
-- `.squad/review_report.md` - final review decision, evidence checked, risks, and explicit signoff or return-to-work decision
-- `.squad/decisions.md` - final closeout decisions and handoff notes
+- `STATUS.md` - updated with closeout outcome, remaining blockers, and machine-readable `Next Action`
+- `.squad/review_report.md` - final review decision, evidence checked, risks, and explicit `Complete`, `Human Blocked`, or return-to-build decision with task/feedback ID
+- `.squad/decisions.md` - final closeout decisions, handoff notes, and task/feedback ID if returning to build
 - Human-facing docs refreshed enough for handoff
 
 ## Data Constraints
