@@ -12,6 +12,7 @@
 
 | Check | Command / Evidence | Result |
 |---|---|---|
+| Fresh-clone setup | `pip install -e ".[dev,web]"` | ✅ Passed in this sandbox |
 | Lint | `python -m ruff check src/ tests/ web/` | ✅ Passed |
 | Offline test suite | `python -m pytest tests/ -m "not network" --tb=short` | ✅ 598 passed, 5 deselected |
 | Live network tests | `python -m pytest tests/ -m network --tb=short` | ⚠️ 5 failed in sandbox due to live geocoding / Chicago Data Portal access |
@@ -21,7 +22,7 @@
 | District data count | `data/zoning_codes.csv` row count | ✅ 67 district records |
 | Eval harness integrity | `xml.etree.ElementTree.parse("evals/zoning_qa.xml")` | ✅ Well-formed `eval_suite` XML |
 | Eval harness size | `evals/zoning_qa.xml` question count | ✅ 460 questions |
-| Handoff docs | `STATUS.md`, `README.md`, `backlog/README.md`, `CONTRIBUTING.md` | ✅ `STATUS.md` / review docs updated, README refreshed, backlog + contributing docs reviewed unchanged |
+| Handoff docs | `STATUS.md`, `README.md`, `backlog/README.md`, `CONTRIBUTING.md` | ✅ Closeout artifacts refreshed; human-facing docs reviewed and remain current for handoff |
 
 ## Backlog / Sprint Review
 
@@ -61,4 +62,4 @@
 
 ## Recommendation
 
-Do not mark the project `Complete` yet. The repository is in a good automated state, but the closeout gate should remain **Human Blocked** until the manual verification and external-input tasks above are finished.
+Do not mark the project `Complete` yet. The repository is in a good automated state and the documented setup works in a fresh clone, but the closeout gate should remain **Human Blocked** until the manual verification and external-input tasks above are finished.
