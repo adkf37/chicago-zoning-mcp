@@ -3,7 +3,46 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
-### 2026-05-04 — Data Pipeline — Eval suite extended to 460 questions (build pass 10)
+### 2026-05-04 — Data Pipeline — Tests and eval notes aligned to updated zoning_codes.csv (Feedback ID: 2025-05-04-Aaron)
+
+**Context:** Aaron manually updated `data/zoning_codes.csv` with corrected values from the
+zoning code source. This caused 74 test failures because the test suite was asserting the old
+values. The eval file also had a broken XML structure (Q73 commented out with `#SKIP#` instead
+of a valid XML comment).
+
+**Decisions:**
+
+1. **Test assertions updated to match new CSV values** — 74 tests fixed across
+   `tests/test_evals.py` (73) and `tests/test_integration.py` (1):
+   - B/C district heights now say "Varies by lot frontage..." instead of fixed ft values.
+   - M district heights now "None." instead of fixed ft values.
+   - POS district FAR/heights/setbacks are now approval-description text, not numerics.
+   - M1-1 and M2-1 FAR changed from 1.0 → 1.2; affected envelope test updated.
+   - Setback values for RS-2/RS-3 front yard, RS-2 rear yard updated.
+   - POS-1/POS-2 setback expectations updated to match new formula-based text.
+   - DX-3 rear yard updated (now varies by use, not "No minimum").
+   - DX-16, DC-16 lot_area_per_unit corrected to 100 sq ft (was 115).
+   - RT-4 minimum_lot_area corrected to 1,650 sq ft (was 1,000).
+   - T and PMD categories now "Other" (not Transportation/Manufacturing).
+   - lot_area_per_unit format now includes commas; tests use `.replace(",","")`.
+
+2. **XML parse error fixed** — Q73 in `evals/zoning_qa.xml` had `#SKIP#` pseudo-comment
+   replaced with a valid XML comment block containing the corrected question (6 units, not 5).
+
+3. **Eval notes corrected** — All `<notes>` entries in `evals/zoning_qa.xml` that referenced
+   FAR=1.0 for -1 series districts (B/C/M) updated to 1.2; RM-4.5 FAR note updated to 1.7.
+
+4. **No new test questions added** — Per FEEDBACK.md instruction "Let's not add anymore test
+   questions." Only existing test assertions and notes were corrected.
+
+**Impact:**
+- Test count: 597 passed, 5 deselected (unchanged count; all previously failing 74 tests now pass).
+- `ruff check src/ tests/ web/` → 0 errors.
+- `Next Action: Closeout` — per Aaron's feedback.
+
+---
+
+
 
 **Context:** Build pass 10 continues expanding the evaluation harness to broaden coverage of
 setback attributes, minimum lot areas, and development envelope calculations for undertested

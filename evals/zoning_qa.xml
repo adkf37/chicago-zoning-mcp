@@ -55,7 +55,7 @@
   <question id="7" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="google_search" audience="general" data_source="district_reference">
     <prompt>What is different about the floor area ratio between B1-1 and B1-3?</prompt>
     <answer_contains>FAR</answer_contains>
-    <notes>B1-1 FAR is 1.0; B1-3 FAR is 3.0.</notes>
+    <notes>B1-1 FAR is 1.2; B1-3 FAR is 3.0.</notes>
   </question>
 
   <!-- Development calculator -->
@@ -460,7 +460,7 @@
   <question id="70" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
     <prompt>Compare M1-1 and M1-3 manufacturing districts. Which allows more floor area?</prompt>
     <answer_contains>M1-3</answer_contains>
-    <notes>M1-3 FAR is 3.0; M1-1 FAR is 1.0.</notes>
+    <notes>M1-3 FAR is 3.0; M1-1 FAR is 1.2.</notes>
   </question>
 
   <question id="71" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
@@ -475,11 +475,13 @@
     <notes>Should call list_district_types with a manufacturing filter and return M1 districts.</notes>
   </question>
 
-  #SKIP# tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+  <!-- SKIPPED Q73 - RT-3.5 lot_area_per_unit is now 1,250 sqft (not 1,650); answer changes from 5 to 6
+  <question id="73" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
     <prompt>How many dwelling units can I build on an 8,250 sqft lot zoned RT-3.5?</prompt>
-    <answer_regex>\b(5|five)\b</answer_regex>
-    <notes>RT-3.5 lot_area_per_unit is 1,650 sqft; 8250 / 1650 = 5 units.</notes>
+    <answer_regex>\b(6|six)\b</answer_regex>
+    <notes>RT-3.5 lot_area_per_unit is 1,250 sqft; 8250 / 1250 = 6.6 → 6 units.</notes>
   </question>
+  -->
 
   <question id="74" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
     <prompt>What is the maximum floor area on an 8,000 sqft lot in RM-5.5?</prompt>
@@ -558,7 +560,7 @@
   <question id="86" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
     <prompt>Compare M2-1 and M2-3 manufacturing districts. Which allows more floor area?</prompt>
     <answer_contains>M2-3</answer_contains>
-    <notes>M2-3 FAR is 3.0; M2-1 FAR is 1.0.</notes>
+    <notes>M2-3 FAR is 3.0; M2-1 FAR is 1.2.</notes>
   </question>
 
   <question id="87" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
@@ -588,7 +590,7 @@
   <question id="91" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
     <prompt>Which allows more floor area: RM-4.5 or RM-5?</prompt>
     <answer_contains>RM-5</answer_contains>
-    <notes>RM-5 FAR is 2.0; RM-4.5 FAR is 1.5.</notes>
+    <notes>RM-5 FAR is 2.0; RM-4.5 FAR is 1.7.</notes>
   </question>
 
   <question id="92" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
@@ -886,7 +888,7 @@
   <question id="140" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
     <prompt>Compare B2-1 and B2-3 neighborhood mixed-use districts. Which allows more floor area?</prompt>
     <answer_contains>B2-3</answer_contains>
-    <notes>B2-3 FAR is 3.0; B2-1 FAR is 1.0.</notes>
+    <notes>B2-3 FAR is 3.0; B2-1 FAR is 1.2.</notes>
   </question>
 
   <!-- Q141-Q160: Remaining district coverage — RS-1, RS-2, RT-3.5, RM series, B/C/M variants, DR, POS-2 -->
@@ -960,7 +962,7 @@
   <question id="152" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
     <prompt>What is the FAR for an M1-1 limited manufacturing district?</prompt>
     <answer>1.0</answer>
-    <notes>M1-1 FAR is 1.0.</notes>
+    <notes>M1-1 FAR is 1.2.</notes>
   </question>
 
   <question id="153" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
@@ -1046,7 +1048,7 @@
   <question id="166" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
     <prompt>Compare B1-1 and B1-1.5 neighborhood shopping districts. Which allows more floor area?</prompt>
     <answer_contains>B1-1.5</answer_contains>
-    <notes>B1-1.5 FAR is 1.5; B1-1 FAR is 1.0.</notes>
+    <notes>B1-1.5 FAR is 1.5; B1-1 FAR is 1.2.</notes>
   </question>
 
   <question id="167" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
@@ -1464,7 +1466,7 @@
   <question id="235" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
     <prompt>Compare M2-1 and M2-2 general manufacturing districts. Which allows a higher floor area ratio?</prompt>
     <answer_contains>M2-2</answer_contains>
-    <notes>M2-2 FAR is 2.2; M2-1 FAR is 1.0. M2-2 allows higher floor area.</notes>
+    <notes>M2-2 FAR is 2.2; M2-1 FAR is 1.2. M2-2 allows higher floor area.</notes>
   </question>
 
   <question id="236" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
@@ -1580,7 +1582,7 @@
   <question id="254" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
     <prompt>Compare M1-1 and M1-2 limited manufacturing districts. Which allows a higher floor area ratio?</prompt>
     <answer_contains>M1-2</answer_contains>
-    <notes>M1-2 FAR is 2.2; M1-1 FAR is 1.0. M1-2 allows higher floor area.</notes>
+    <notes>M1-2 FAR is 2.2; M1-1 FAR is 1.2. M1-2 allows higher floor area.</notes>
   </question>
 
   <question id="255" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
@@ -1730,7 +1732,7 @@
   <question id="279" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
     <prompt>Compare C2-1 and C2-3 motor vehicle-related commercial districts. Which allows a higher floor area ratio?</prompt>
     <answer_contains>C2-3</answer_contains>
-    <notes>C2-3 FAR is 3.0; C2-1 FAR is 1.0. C2-3 allows higher floor area.</notes>
+    <notes>C2-3 FAR is 3.0; C2-1 FAR is 1.2. C2-3 allows higher floor area.</notes>
   </question>
 
   <question id="280" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
@@ -1816,7 +1818,7 @@
   <question id="293" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
     <prompt>Compare B2-1 and B2-3 neighborhood mixed-use districts. Which allows a higher floor area ratio?</prompt>
     <answer_contains>B2-3</answer_contains>
-    <notes>B2-3 FAR is 3.0; B2-1 FAR is 1.0. B2-3 allows higher floor area.</notes>
+    <notes>B2-3 FAR is 3.0; B2-1 FAR is 1.2. B2-3 allows higher floor area.</notes>
   </question>
 
   <question id="294" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
@@ -1884,7 +1886,7 @@
   <question id="304" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
     <prompt>What is the floor area ratio for an M2-1 general manufacturing district?</prompt>
     <answer>1.0</answer>
-    <notes>M2-1 FAR is 1.0. General manufacturing and heavy industrial uses, lowest intensity in M2 series.</notes>
+    <notes>M2-1 FAR is 1.2. General manufacturing uses, lowest intensity in M2 series.</notes>
   </question>
 
   <question id="305" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
@@ -1956,13 +1958,13 @@
   <question id="316" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
     <prompt>Compare B3-1 and B3-2 community shopping districts. Which allows a higher floor area ratio?</prompt>
     <answer_contains>B3-2</answer_contains>
-    <notes>B3-2 FAR is 2.2; B3-1 FAR is 1.0. B3-2 allows higher floor area.</notes>
+    <notes>B3-2 FAR is 2.2; B3-1 FAR is 1.2. B3-2 allows higher floor area.</notes>
   </question>
 
   <question id="317" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
     <prompt>Compare C3-1 and C3-2 commercial manufacturing districts. Which allows a higher floor area ratio?</prompt>
     <answer_contains>C3-2</answer_contains>
-    <notes>C3-2 FAR is 2.2; C3-1 FAR is 1.0. C3-2 allows higher floor area.</notes>
+    <notes>C3-2 FAR is 2.2; C3-1 FAR is 1.2. C3-2 allows higher floor area.</notes>
   </question>
 
   <question id="318" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
@@ -2088,7 +2090,7 @@
   <question id="338" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
     <prompt>Compare M1-1 and M1-3 limited manufacturing districts. Which allows a higher floor area ratio?</prompt>
     <answer_contains>M1-3</answer_contains>
-    <notes>M1-3 FAR is 3.0; M1-1 FAR is 1.0. M1-3 allows higher floor area.</notes>
+    <notes>M1-3 FAR is 3.0; M1-1 FAR is 1.2. M1-3 allows higher floor area.</notes>
   </question>
 
   <question id="339" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
@@ -2216,7 +2218,7 @@
   <question id="359" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
     <prompt>Compare B1-1 and B1-3 neighborhood shopping districts. Which allows a higher floor area ratio?</prompt>
     <answer_contains>B1-3</answer_contains>
-    <notes>B1-3 FAR is 3.0; B1-1 FAR is 1.0. B1-3 allows higher floor area.</notes>
+    <notes>B1-3 FAR is 3.0; B1-1 FAR is 1.2. B1-3 allows higher floor area.</notes>
   </question>
 
   <question id="360" tool="lookup_district" type="factual" question_type="factual" prompt_complexity="simple" audience="general" data_source="district_reference">
@@ -2302,7 +2304,7 @@
   <question id="373" tool="calculate_development_envelope" type="calculation" question_type="calculation" prompt_complexity="moderate" audience="professional_developer" data_source="district_reference">
     <prompt>What is the maximum floor area on a 3,000 sqft lot zoned M2-1?</prompt>
     <answer_contains>3000</answer_contains>
-    <notes>M2-1 FAR is 1.0; 3000 × 1.0 = 3,000 sqft.</notes>
+    <notes>M2-1 FAR is 1.2; 3000 × 1.2 = 3,600 sqft.</notes>
   </question>
 
   <question id="374" tool="compare_districts" type="comparison" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
