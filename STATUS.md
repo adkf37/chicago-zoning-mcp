@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Phase | Build |
-| Last Updated | 2026-05-04 (build pass 9) |
+| Last Updated | 2026-05-04 (build pass 10) |
 | Squad Template | data_pipeline |
 | Priority | low |
 | Blocking | None for automated work — see "Needs Human Input" below for manual follow-ups |
@@ -11,10 +11,10 @@
 
 ## Current Objective
 
-**Build phase — eval suite expanded to 440 questions; 577 tests passing; frontend enhanced.**
+**Build phase — eval suite expanded to 460 questions; 597 tests passing.**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
-- `pytest tests/ -m "not network"` → **577 passed, 5 deselected** ✅
+- `pytest tests/ -m "not network"` → **597 passed, 5 deselected** ✅
 - `ruff check src/ tests/ web/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
 - `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
@@ -24,7 +24,20 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 
 ## Recent Activity
 
-- 2026-05-04 (this pass): Expanded eval suite from 420 → 440 questions (Q421–Q440).
+- 2026-05-04 (this pass): Expanded eval suite from 440 → 460 questions (Q441–Q460).
+  - Added setback coverage: RT-3.5 front yard (15 ft), RM-5 rear yard (30 ft), POS-1 front yard
+    (25 ft), POS-2 side setback (15 ft), DX-3 rear yard (no minimum), DR-5 side setback (none),
+    B1-1 rear yard (30 ft), M1-2 rear yard (30 ft).
+  - Added minimum lot area coverage: RT-4 (1000 sq ft), RM-4.5 (1650), RM-6 (1650), RM-6.5 (1650).
+  - Added development envelope calculations: RM-4.5 × 5000=8500, RM-5 × 4000=8000,
+    RT-3.5 × 6000=6300.
+  - Added comparisons: RT-3.5 vs RT-4 FAR (RT-4 higher), DR-5 vs DS-5 FAR (equal at 5.0).
+  - Added standalone lookups: M2-1 height (30 ft), DX-5 lot_area_per_unit (200), DR-7
+    lot_area_per_unit (145).
+  - Added 20 new offline test functions in `tests/test_evals.py` (Q441–Q460).
+  - Test count: 577 → 597 passed.
+
+- 2026-05-04 (previous pass): Expanded eval suite from 420 → 440 questions (Q421–Q440).
   - Added coverage for undertested districts: M1-2, M2-3, M3-3, DX-12, DX-16, DC-16, DR-10,
     DS-3, DS-5, POS-1, POS-2, C3-2, B3-5, C2-3.
   - Added cross-series comparison questions (DX-12 vs DX-16, DC-12 vs DC-16).
@@ -77,8 +90,8 @@ was 14/20 (70%) on 20 questions; the new target is ≥90% on 440 questions.
 | Squad routing rules | `.squad/routing.md` | created |
 | Squad decisions log | `.squad/decisions.md` | updated |
 | Sprint plan | `.squad/sprint.md` | created |
-| Eval suite | `evals/zoning_qa.xml` | 440 questions (Q1–Q440) |
-| Eval tests | `tests/test_evals.py` | 577 tests passing |
+| Eval suite | `evals/zoning_qa.xml` | 460 questions (Q1–Q460) |
+| Eval tests | `tests/test_evals.py` | 597 tests passing |
 | Frontend | `web/templates/index.html` | enhanced — 4 capability cards, "How it Works" strip, expanded suggestions |
 
 ## Needs Human Input

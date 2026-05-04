@@ -3,6 +3,40 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-05-04 — Data Pipeline — Eval suite extended to 460 questions (build pass 10)
+
+**Context:** Build pass 10 continues expanding the evaluation harness to broaden coverage of
+setback attributes, minimum lot areas, and development envelope calculations for undertested
+districts. Previous pass reached 440 questions; this pass adds 20 more (Q441–Q460).
+
+**Decisions:**
+
+1. **Eval suite extended to 460 questions** — Added Q441–Q460 to `evals/zoning_qa.xml`:
+   - Q441–Q442: Minimum lot area — RT-4 (1000 sq ft), RM-4.5 (1650 sq ft).
+   - Q443–Q444: Rear/front setbacks — RM-5 rear (30 ft), RT-3.5 front (15 ft).
+   - Q445–Q448: Setbacks for POS and downtown districts — POS-1 front (25 ft), POS-2 side (15 ft),
+     DX-3 rear (no minimum for small lots), DR-5 side (no minimum per Sec. 17-4-0406-B).
+   - Q449–Q451: Development envelopes — RM-4.5×5000=8500, RM-5×4000=8000, RT-3.5×6000=6300.
+   - Q452: Comparison — RT-3.5 vs RT-4 FAR (RT-4 higher at 1.2 vs 1.05).
+   - Q453–Q454: Minimum lot area — RM-6 (1650), RM-6.5 (1650).
+   - Q455: M2-1 maximum building height (30 ft, 2 stories).
+   - Q456: Comparison — DR-5 vs DS-5 FAR (both 5.0, equal).
+   - Q457–Q458: Rear yard setbacks — B1-1 (30 ft), M1-2 (30 ft).
+   - Q459–Q460: Density — DX-5 lot_area_per_unit (200 sq ft), DR-7 lot_area_per_unit (145 sq ft).
+
+2. **20 new offline eval tests** — `tests/test_evals.py` Q441–Q460 added; all fully offline.
+
+3. **Coverage rationale** — After Q440, remaining gaps were in setback attributes (front, rear,
+   side) for RT/RM/POS/DX/DR districts, minimum_lot_area for RM-tier districts, and development
+   envelopes for RM-4.5/RM-5/RT-3.5. All key attribute types now have broader cross-district
+   coverage.
+
+**Impact:**
+- Test count: 577 → 597; eval suite: 440 → 460 questions.
+- `ruff check src/ tests/ web/` → 0 errors.
+
+---
+
 ### 2026-05-04 — Data Pipeline — Eval suite extended to 440 questions; frontend enhanced
 
 **Context:** Build pass 9 continues expanding the evaluation harness to improve coverage of
