@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Phase | Closeout |
-| Last Updated | 2026-05-04 (closeout revalidated) |
+| Last Updated | 2026-05-04 (closeout reviewed) |
 | Squad Template | data_pipeline |
 | Priority | low |
 | Blocking | Human follow-up required for Title 17 ingestion, MCP Inspector/Ollama checks, Docker verification, and parent repo cross-reference |
@@ -11,7 +11,7 @@
 
 ## Current Objective
 
-**Closeout revalidated in a fresh clone — the documented setup works, automated checks still pass, the eval harness is well-formed XML, and the repo is handoff-ready except for manual / external verification that keeps the loop human-blocked.**
+**Closeout reviewed in the current sandbox — the documented setup works from a fresh clone, automated checks still pass, the eval harness is well-formed XML, and the repo is handoff-ready except for manual / external verification that keeps the loop human-blocked.**
 
 Validated in this pass:
 - `pytest tests/ -m "not network"` → **598 passed, 5 deselected** ✅
@@ -35,6 +35,15 @@ Still blocked for final completion:
 Human Blocked
 
 ## Recent Activity
+
+- 2026-05-04 (closeout final review): Re-ran the documented closeout evidence in the current sandbox and confirmed the decision stays human-blocked.
+  - `python -m pip install -e ".[dev,web]"` completed successfully.
+  - `python -m ruff check src/ tests/ web/` → 0 errors.
+  - `python -m pytest tests/ -m "not network" --tb=short` → 598 passed, 5 deselected.
+  - `python -m pytest tests/ -m network --tb=short` → 5 failed in sandbox (live geocoding / Chicago Data Portal).
+  - Programmatic checks reconfirmed 8 registered tools, RS-3 FAR 0.9, a 4500.0 sqft RS-3 envelope on a 5,000 sqft lot,
+    67 district records, and 460 eval questions.
+  - Refreshed closeout artifacts only; `Next Action` remains `Human Blocked` because all remaining gates are manual or external.
 
 - 2026-05-04 (final closeout revalidation): Confirmed the handoff state from a fresh clone environment.
   - `pip install -e ".[dev,web]"` completed successfully in the sandbox.
