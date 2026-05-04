@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Phase | Build |
-| Last Updated | 2026-05-03 (build pass 7) |
+| Last Updated | 2026-05-04 (build pass 8) |
 | Squad Template | data_pipeline |
 | Priority | low |
 | Blocking | None for automated work — see "Needs Human Input" below for manual follow-ups |
@@ -11,7 +11,7 @@
 
 ## Current Objective
 
-**Build phase — eval suite expanded to 420 questions; 557 tests passing.**
+**Build phase — CSV accuracy corrections applied; 557 tests passing.**
 
 All automatable acceptance criteria from `backlog/README.md` are satisfied:
 - `pytest tests/ -m "not network"` → **557 passed, 5 deselected** ✅
@@ -24,20 +24,16 @@ All automatable acceptance criteria from `backlog/README.md` are satisfied:
 
 ## Recent Activity
 
-- 2026-05-03 (this pass): Eval suite expanded to 420 questions (Q401–Q420); 557 tests passing:
-  - **Eval suite extended to Q401–Q420** — Added 20 new questions to `evals/zoning_qa.xml`
-    covering B/C/M/DR/DX district series gaps, front-yard/rear-yard setbacks, and comparisons:
-    - Q401–Q403: B1-2 FAR (2.2), B1-3 height (45 ft), C1-2 FAR (2.2).
-    - Q404–Q405: M1-3 FAR (3.0), M2-2 height (45 ft).
-    - Q406–Q408: DR-5 FAR (5.0), DR-7 height (80 ft), DR-3 lot area per unit (500 sq ft).
-    - Q409–Q410: DX-5 FAR (5.0), DC-12 FAR (12.0).
-    - Q411–Q412: Development envelopes — RS-1×5000=2500 sqft, B1-3×10000=30000 sqft.
-    - Q413–Q414: Comparison pairs — RS-1/RS-2 (RS-2 higher), DR-3/DR-5 (DR-5 higher).
-    - Q415–Q417: Front/rear yard setbacks — RS-1 front (20 ft), RS-2 rear (30 ft),
-      DR-3 front (15 ft).
-    - Q418–Q420: RM-4.5 FAR (1.5), RM-5.5 height (55 ft), RM-5.5 lot area per unit (400 sq ft).
-  - **20 new offline eval tests** — `tests/test_evals.py` Q401–Q420, all offline.
-  - **Impact**: Test count: 537 → 557; eval suite: 400 → 420 questions.
+- 2026-05-04 (this pass): Corrected inaccurate `data/zoning_codes.csv` values sourced from
+  secondcityzoning.org. Key corrections:
+  - RS-1 lot area: 6500 → 6250 sq ft; RT-3.5 lot_area_per_unit: 1650 → 1250 sq ft.
+  - RM-4.5 FAR: 1.5 → 1.7; RM-5/RM-5.5/RM-6/RM-6.5 lot_area_per_unit corrected.
+  - B/C -1 districts: FAR 1.0 → 1.2; height updated to 38 ft formula; residential density added.
+  - B/C -2 districts: lot_area_per_unit 700 → 1000; height updated to varies formula.
+  - B/C -3 districts: lot_area_per_unit 500 → 400; height updated to varies formula.
+  - DR/DX/DS tall-building districts: heights set to None (PD required).
+  - Updated 420 eval questions in evals/zoning_qa.xml and 80 test assertions in test_evals.py.
+  - Integration test updated to use M1-1 (no residential) instead of B1-1.
 
 - 2026-05-03 (previous pass): Eval suite expanded to 400 questions (Q381–Q400); 537 tests passing.
 - 2026-05-03 (previous pass): Eval suite expanded to 360 questions (Q341–Q360); 497 tests passing.
@@ -75,8 +71,8 @@ was 14/20 (70%) on 20 questions; the new target is ≥90% on 400 questions.
 | Squad routing rules | `.squad/routing.md` | created |
 | Squad decisions log | `.squad/decisions.md` | updated |
 | Sprint plan | `.squad/sprint.md` | created |
-| Eval suite | `evals/zoning_qa.xml` | 420 questions (Q1–Q420) |
-| Eval tests | `tests/test_evals.py` | 557 tests passing |
+| Eval suite | `evals/zoning_qa.xml` | 420 questions (Q1–Q420) — values corrected 2026-05-04 |
+| Eval tests | `tests/test_evals.py` | 557 tests passing — assertions corrected 2026-05-04 |
 | Frontend | `web/templates/index.html` | redesigned — capabilities cards, larger hero |
 
 ## Needs Human Input

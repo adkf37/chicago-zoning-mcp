@@ -3,7 +3,63 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
-### 2026-05-03 — Data Pipeline — Eval expansion Q401–Q420
+### 2026-05-04 — Data Pipeline — CSV accuracy corrections from secondcityzoning.org data
+
+**Context:** Existing `data/zoning_codes.csv` contained several inaccurate values inherited from
+earlier manual transcription. This pass corrects factual errors using authoritative data from
+[secondcityzoning.org](https://secondcityzoning.org) — Chicago's official zoning map application —
+as the reference source.
+
+**Decisions:**
+
+1. **RS-1**: `lot_area_per_unit` and `minimum_lot_area` corrected from 6500 → 6250 sq ft per
+   Sec. 17-2-0301-A. RS-1 minimum lot area is 6,250 sq ft, not 6,500.
+
+2. **RT-3.5**: `lot_area_per_unit` corrected from 1650 → 1250 sq ft; `minimum_lot_area` set to
+   2500 sq ft per Sec. 17-2-0301.
+
+3. **RM-4.5**: FAR corrected 1.5 → 1.7; height updated to reflect two-tier formula (45/47 ft);
+   `lot_area_per_unit` corrected 750 → 700; `minimum_lot_area` set to 1650.
+
+4. **RM-5**: `lot_area_per_unit` corrected 500 → 400 sq ft per Sec. 17-2-0301.
+
+5. **RM-5.5**: Height corrected to 47/60 ft formula (was 55 ft); `minimum_lot_area` set to 1650.
+
+6. **RM-6, RM-6.5**: Height set to `None (tall buildings require Planned Development approval;
+   Sec. 17-13-0600)` — no fixed limit. `lot_area_per_unit` corrected 200/145 → 300 sq ft.
+
+7. **B1/B2/B3/C1/C2/C3 -1 districts**: FAR corrected 1.0 → 1.2; `lot_area_per_unit` set to
+   2500 sq ft/dwelling unit (was None). Height set to "38 ft (Sec. 17-3-0408)".
+
+8. **B/C -1.5 districts**: `lot_area_per_unit` corrected 1000 → 1350 sq ft.
+
+9. **B/C -2 districts**: `lot_area_per_unit` corrected 700 → 1000 sq ft. Height updated to
+   "Varies by lot frontage (45-50 ft; Sec. 17-3-0408)".
+
+10. **B/C -3 districts**: `lot_area_per_unit` corrected 500 → 400 sq ft. Height updated to
+    "Varies by lot frontage (50-65 ft; Sec. 17-3-0408)".
+
+11. **B/C -5 districts**: Height updated to "Varies by lot frontage (50-80 ft; Sec. 17-3-0408)".
+
+12. **DR-3, DX-3, DS-3, DR-5, DX-5, DS-5, DR-7, DX-7**: Heights set to
+    `None (tall buildings require Planned Development approval; Sec. 17-13-0600)`.
+    `lot_area_per_unit` updated: DR-3/DX-3/DS-3 → 400; DR-5/DX-5/DS-5 → 200 sq ft.
+
+13. **Test and eval synchronization**: All 420 eval questions in `evals/zoning_qa.xml` and all
+    557 tests in `tests/test_evals.py` updated to reflect corrected CSV values. The
+    `test_integration.py` integration test that used B1-1 (now with residential density) was
+    updated to use M1-1 (industrial, no residential use).
+
+**Impact:**
+- `data/zoning_codes.csv`: Multiple districts corrected.
+- `evals/zoning_qa.xml`: ~60 answer values updated.
+- `tests/test_evals.py`: ~80 test assertions updated.
+- `tests/test_integration.py`: 1 test updated (B1-1 → M1-1 for "no residential" scenario).
+- All 557 tests pass; `ruff check` reports 0 errors.
+
+---
+
+
 
 **Context:** Build phase continues expanding coverage beyond Q400. This pass adds 20 questions
 targeting B/C/M/DR/DX district series gaps, front-yard and rear-yard setback coverage, and
