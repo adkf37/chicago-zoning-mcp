@@ -60,12 +60,12 @@ chicago-zoning-mcp/
 ├── tests/                  — pytest test suite (unit + integration)
 ├── scripts/                — one-time data ingestion scripts
 ├── data/
-│   ├── zoning_codes.csv    — 80+ district rules (FAR, height, setbacks)
+│   ├── zoning_codes.csv    — 67 district rules (FAR, height, setbacks)
 │   └── title_17/           — generated; gitignored
 │       ├── raw/            — manually downloaded chapter text
 │       └── sections.json   — built by ingest_title_17.py
 ├── evals/
-│   └── zoning_qa.xml       — 20 Q&A pairs for LLM evaluation
+│   └── zoning_qa.xml       — 460 Q&A pairs for LLM evaluation
 ├── Dockerfile
 └── docker-compose.yml
 ```

@@ -3,32 +3,48 @@
 | Field | Value |
 |---|---|
 | Phase | Closeout |
-| Last Updated | 2026-05-04 (build pass 11) |
+| Last Updated | 2026-05-04 (closeout review) |
 | Squad Template | data_pipeline |
 | Priority | low |
-| Blocking | None for automated work — see "Needs Human Input" below for manual follow-ups |
+| Blocking | Human follow-up required for Title 17 ingestion, MCP Inspector/Ollama checks, Docker verification, and parent repo cross-reference |
 | GitHub Repo | https://github.com/adkf37/chicago-zoning-mcp |
 
 ## Current Objective
 
-**Closeout — eval tests realigned to corrected zoning_codes.csv; 597 tests passing.**
+**Closeout review complete — automated checks pass, but final handoff remains human-blocked by manual verification and external dependencies.**
 
-All automatable acceptance criteria from `backlog/README.md` are satisfied:
+Validated in this pass:
 - `pytest tests/ -m "not network"` → **597 passed, 5 deselected** ✅
 - `ruff check src/ tests/ web/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
-- `lookup_district("RS-3")` → FAR 0.9, height 30 ft ✅
-- `calculate_development_envelope("RS-3", 5000)` → 4500 sqft ✅
-- 59 districts in `data/zoning_codes.csv` ✅
-- Documentation complete (README, CONTRIBUTING.md, phase docs, example conversations) ✅
+- `lookup_district("RS-3")` → FAR 0.9, height text present ✅
+- `calculate_development_envelope("RS-3", 5000)` → **4500.0 sqft** ✅
+- `data/zoning_codes.csv` currently contains **67** district records ✅
+- `evals/zoning_qa.xml` currently contains **460** questions ✅
+- README / handoff docs refreshed to match the current repo state ✅
+
+Still blocked for final completion:
+- `pytest tests/ -m network` → **5 failed** in sandbox (live geocoding / Chicago Data Portal access unavailable)
+- Title 17 download + ingestion still require manual human work
+- MCP Inspector verification is still pending
+- Ollama end-to-end validation is still pending (`ollama` not installed in this environment)
+- Docker Compose deployment and parent repo cross-reference still need human confirmation
 
 ## Next Action
 
-Closeout
+Human Blocked
 
 ## Recent Activity
 
-- 2026-05-04 (this pass): Realigned 74 failing tests to manually corrected `data/zoning_codes.csv`.
+- 2026-05-04 (this closeout pass): Re-ran the current validation and refreshed handoff artifacts.
+  - `python -m ruff check src/ tests/ web/` → 0 errors.
+  - `python -m pytest tests/ -m "not network" --tb=short` → 597 passed, 5 deselected.
+  - `python -m pytest tests/ -m network --tb=short` → 5 failed in sandbox (live geocoder / Chicago Data Portal).
+  - Programmatic checks confirmed 8 registered tools, RS-3 FAR 0.9, 5,000 sqft RS-3 envelope 4500.0 sqft,
+    67 district records, and 460 eval questions.
+  - Added `.squad/review_report.md` and updated closeout notes to reflect a human-blocked finish rather than a completed handoff.
+
+- 2026-05-04 (previous build pass): Realigned 74 failing tests to manually corrected `data/zoning_codes.csv`.
   - Feedback ID: 2025-05-04-Aaron — Aaron manually updated the CSV; tests were still asserting old values.
   - Fixed 73 assertions in `tests/test_evals.py`, 1 in `tests/test_integration.py`.
   - Fixed XML parse error in `evals/zoning_qa.xml` (Q73 `#SKIP#` replaced with proper XML comment).
@@ -45,9 +61,11 @@ Closeout
 
 ## Next Recommended Step
 
-**Closeout.** Run `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>` to
-measure live eval pass-rate against the full 460-question harness. Prior live eval score
-was 14/20 (70%) on 20 questions; the new target is ≥90% on 460 questions.
+**Human follow-up required.** Complete the blocked manual checks in this order:
+1. Run MCP Inspector verification from `backlog/tasks/T4-mcp-inspector-verification.md`.
+2. Install Ollama and run `backlog/tasks/T5-ollama-llm-testing.md`.
+3. Run `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>` against the 460-question harness.
+4. Verify `docker compose up` on a human-controlled machine and add the parent repo cross-reference.
 
 ## Artifacts
 
@@ -64,6 +82,7 @@ was 14/20 (70%) on 20 questions; the new target is ≥90% on 460 questions.
 | Squad team roster | `.squad/team.md` | created |
 | Squad routing rules | `.squad/routing.md` | created |
 | Squad decisions log | `.squad/decisions.md` | updated |
+| Closeout review report | `.squad/review_report.md` | created |
 | Sprint plan | `.squad/sprint.md` | created |
 | Eval suite | `evals/zoning_qa.xml` | 460 questions (Q1–Q460) |
 | Eval tests | `tests/test_evals.py` | 597 tests passing |
@@ -71,11 +90,17 @@ was 14/20 (70%) on 20 questions; the new target is ≥90% on 460 questions.
 
 ## Needs Human Input
 
-- **Chapter 17-1 download** (~15 min) — Copy-paste Chapter 17-1 (Title, Purpose, and
-  Definitions) from amlegal.com into `data/title_17/raw/chapter_17-01.txt`, then run
-  `python scripts/ingest_title_17.py` to rebuild the index with all 17 chapters.
+- **Title 17 download + ingest** (~2 hrs) — Complete `backlog/tasks/T3-01-download-title-17-BLOCKED.md`,
+  then run `python scripts/ingest_title_17.py` and `python scripts/ingest_title_17.py --validate`.
 
-- **Live eval run** (~15 min) — Execute `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>`
-  to measure pass-rate against the 440-question harness.
+- **Live geospatial verification** (~15 min) — Re-run `python -m pytest tests/ -m network --tb=short`
+  from an environment that can reach Nominatim and the Chicago Data Portal.
 
-- **MCP Inspector verification** (~30 min) — Run `npx @modelcontextprotocol/inspector python -m src.server`.
+- **MCP Inspector verification** (~30 min) — Complete `backlog/tasks/T4-mcp-inspector-verification.md`
+  and confirm all 8 tools are callable in the UI.
+
+- **Ollama / LLM validation** (~1 hr) — Install Ollama, then complete
+  `backlog/tasks/T5-ollama-llm-testing.md` and `python scripts/eval_live_web.py --base-url <CLOUD_RUN_URL>`.
+
+- **Docker + parent repo handoff** (~30 min) — Verify `docker compose up` manually and add the
+  requested cross-reference from the parent repo README (`T6-03`).

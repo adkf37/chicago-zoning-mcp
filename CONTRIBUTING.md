@@ -46,12 +46,12 @@ src/
 scripts/
   ingest_title_17.py  # One-time Title 17 ingestion (run manually)
 data/
-  zoning_codes.csv    # ~80 Chicago zoning district records
+  zoning_codes.csv    # 67 Chicago zoning district records
   title_17/
     raw/              # Raw .txt chapter files (gitignored, add manually)
     sections.json     # Built index (gitignored, built by ingest script)
 evals/
-  zoning_qa.xml       # 20 Q&A pairs for LLM response evaluation
+  zoning_qa.xml       # 460 Q&A pairs for LLM response evaluation
 ```
 
 ## Adding a New Tool
@@ -66,8 +66,7 @@ evals/
 This project uses [Ruff](https://docs.astral.sh/ruff/) for linting:
 
 ```bash
-ruff check src/ tests/ scripts/
-ruff format src/ tests/ scripts/
+python -m ruff check src/ tests/ web/
 ```
 
 ## Title 17 Data
