@@ -212,7 +212,7 @@ npx @modelcontextprotocol/inspector python -m src.server
 
 ## Related Projects
 
-- [Plan for Chicago 2030](https://github.com/your-username/Plan_for_Chicago_2030) — The parent analysis project with zoning analysis, property value modeling, and interactive maps.
+- [Plan for Chicago 2030](https://github.com/adkf37/Plan_for_Chicago_2030) — The parent analysis project with zoning analysis, property value modeling, and interactive maps.
 
 ## License
 

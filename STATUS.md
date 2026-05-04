@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Phase | Closeout |
-| Last Updated | 2026-05-04 (closeout refresh) |
+| Last Updated | 2026-05-04 (closeout sign-off) |
 | Squad Template | data_pipeline |
 | Priority | low |
 | Blocking | Human follow-up required for Title 17 ingestion, MCP Inspector/Ollama checks, Docker verification, and parent repo cross-reference |
@@ -11,12 +11,12 @@
 
 ## Current Objective
 
-**Closeout review refreshed — automated checks pass, the eval harness is well-formed XML again, but final handoff remains human-blocked by manual verification and external dependencies.**
+**Closeout reviewed against the sprint Definition of Done — automated checks still pass, the eval harness is well-formed XML, and the repo is handoff-ready except for manual / external verification that keeps the loop human-blocked.**
 
 Validated in this pass:
 - `pytest tests/ -m "not network"` → **598 passed, 5 deselected** ✅
 - `ruff check src/ tests/ web/` → **0 errors** ✅
-- All 8 MCP tools registered and callable ✅
+- All 8 MCP tools are registered via `await mcp.list_tools()` ✅
 - `get_district("RS-3")` → `floor_area_ratio` 0.9, `maximum_building_height` text present ✅
 - `calculate_development_envelope("RS-3", 5000)` → **4500.0 sqft** ✅
 - `data/zoning_codes.csv` currently contains **67** district records ✅
@@ -35,6 +35,14 @@ Still blocked for final completion:
 Human Blocked
 
 ## Recent Activity
+
+- 2026-05-04 (closeout sign-off): Re-validated the final handoff state against the sprint Definition of Done.
+  - `python -m ruff check src/ tests/ web/` → 0 errors.
+  - `python -m pytest tests/ -m "not network" --tb=short` → 598 passed, 5 deselected.
+  - `python -m pytest tests/ -m network --tb=short` → 5 failed in sandbox (live geocoder / Chicago Data Portal).
+  - Programmatic checks reconfirmed 8 registered tools, 67 district records, valid `eval_suite` XML,
+    and 460 eval questions.
+  - Refreshed closeout artifacts and corrected the README handoff link for the parent project.
 
 - 2026-05-04 (closeout refresh): Repaired the eval harness and re-ran closeout validation.
   - Escaped the malformed `&lt;` token in `evals/zoning_qa.xml`, restored Q73 as a real eval entry,
