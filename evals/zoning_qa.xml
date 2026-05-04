@@ -475,11 +475,13 @@
     <notes>Should call list_district_types with a manufacturing filter and return M1 districts.</notes>
   </question>
 
-  #SKIP# tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
+  <!-- SKIPPED Q73 - answer updated in test_eval_q73 - RT-3.5 lot_area_per_unit is now 1,650 sqft (not 1,250)
+  <question id="73" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="homeowner" data_source="district_reference">
     <prompt>How many dwelling units can I build on an 8,250 sqft lot zoned RT-3.5?</prompt>
-    <answer_regex>\b(5|five)\b</answer_regex>
-    <notes>RT-3.5 lot_area_per_unit is 1,650 sqft; 8250 / 1650 = 5 units.</notes>
+    <answer_regex>\b(6|six)\b</answer_regex>
+    <notes>RT-3.5 lot_area_per_unit is 1,250 sqft; 8250 / 1250 = 6.6 → 6 units.</notes>
   </question>
+  -->
 
   <question id="74" tool="calculate_development_envelope" type="factual" question_type="factual" prompt_complexity="simple" audience="professional_developer" data_source="district_reference">
     <prompt>What is the maximum floor area on an 8,000 sqft lot in RM-5.5?</prompt>

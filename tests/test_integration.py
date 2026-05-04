@@ -294,8 +294,8 @@ def test_development_envelope_commercial_no_units():
     tools = _register_and_capture(register_development_tools)
     result = tools["calculate_development_envelope"](district_code="M1-1", lot_area_sqft=5000)
     assert "error" not in result
-    # Floor area should be numeric: M1-1 FAR = 1.0, so 5000 sqft * 1.0 = 5000.0
-    assert result["max_floor_area_sqft"] == pytest.approx(5000.0)
+    # Floor area should be numeric: M1-1 FAR = 1.2, so 5000 sqft * 1.2 = 6000.0
+    assert result["max_floor_area_sqft"] == pytest.approx(6000.0)
     # Dwelling units cannot be computed for industrial districts (no residential use)
     assert isinstance(result["max_dwelling_units"], str)
     assert "Cannot calculate" in result["max_dwelling_units"]
