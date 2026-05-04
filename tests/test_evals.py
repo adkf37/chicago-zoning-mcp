@@ -4115,8 +4115,11 @@ def test_eval_q229_pd_far_varies(district_tools):
     result = district_tools["lookup_district"](district_code="PD")
     assert "error" not in result
     far = result.get("floor_area_ratio", "")
-    assert "Must use" in str(far) or "property had before" in str(far) or "planned development" in str(far), \
-        f"Expected pre-PD FAR description in PD floor_area_ratio, got: {far!r}"
+    assert (
+        "Must use" in str(far)
+        or "property had before" in str(far)
+        or "planned development" in str(far)
+    ), f"Expected pre-PD FAR description in PD floor_area_ratio, got: {far!r}"
 
 
 # ---------------------------------------------------------------------------
@@ -4765,7 +4768,9 @@ def test_eval_q267_c2_3_height(district_tools):
     result = district_tools["lookup_district"](district_code="C2-3")
     assert "error" not in result
     height = result.get("maximum_building_height", "")
-    assert "Varies" in str(height), f"Expected 'Varies' in C2-3 maximum_building_height, got: {height!r}"
+    assert "Varies" in str(height), (
+        f"Expected 'Varies' in C2-3 maximum_building_height, got: {height!r}"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -5686,7 +5691,9 @@ def test_eval_q339_rt4_lot_area_per_unit(district_tools):
     result = district_tools["lookup_district"](district_code="RT-4")
     assert "error" not in result
     lot = str(result.get("lot_area_per_unit", ""))
-    assert "1000" in lot.replace(",", ""), f"Expected '1000' in RT-4 lot_area_per_unit, got: {lot!r}"
+    assert "1000" in lot.replace(",", ""), (
+        f"Expected '1000' in RT-4 lot_area_per_unit, got: {lot!r}"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -5699,7 +5706,9 @@ def test_eval_q340_b3_2_lot_area_per_unit(district_tools):
     result = district_tools["lookup_district"](district_code="B3-2")
     assert "error" not in result
     lot = str(result.get("lot_area_per_unit", ""))
-    assert "1000" in lot.replace(",", ""), f"Expected '1000' in B3-2 lot_area_per_unit, got: {lot!r}"
+    assert "1000" in lot.replace(",", ""), (
+        f"Expected '1000' in B3-2 lot_area_per_unit, got: {lot!r}"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -6023,7 +6032,9 @@ def test_eval_q363_c2_2_lot_area_per_unit(district_tools):
     result = district_tools["lookup_district"](district_code="C2-2")
     assert "error" not in result
     lot = str(result.get("lot_area_per_unit", ""))
-    assert "1000" in lot.replace(",", ""), f"Expected '1000' in C2-2 lot_area_per_unit, got: {lot!r}"
+    assert "1000" in lot.replace(",", ""), (
+        f"Expected '1000' in C2-2 lot_area_per_unit, got: {lot!r}"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -6103,7 +6114,9 @@ def test_eval_q369_b2_2_lot_area_per_unit(district_tools):
     result = district_tools["lookup_district"](district_code="B2-2")
     assert "error" not in result
     lot = str(result.get("lot_area_per_unit", ""))
-    assert "1000" in lot.replace(",", ""), f"Expected '1000' in B2-2 lot_area_per_unit, got: {lot!r}"
+    assert "1000" in lot.replace(",", ""), (
+        f"Expected '1000' in B2-2 lot_area_per_unit, got: {lot!r}"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -6143,7 +6156,9 @@ def test_eval_q372_c3_2_lot_area_per_unit(district_tools):
     result = district_tools["lookup_district"](district_code="C3-2")
     assert "error" not in result
     lot = str(result.get("lot_area_per_unit", ""))
-    assert "1000" in lot.replace(",", ""), f"Expected '1000' in C3-2 lot_area_per_unit, got: {lot!r}"
+    assert "1000" in lot.replace(",", ""), (
+        f"Expected '1000' in C3-2 lot_area_per_unit, got: {lot!r}"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -6207,7 +6222,7 @@ def test_eval_q376_dr3_lot_area_per_unit(district_tools):
 
 
 def test_eval_q377_pos1_vs_pos2_far(district_tools):
-    """Eval Q377: compare_districts POS-1 vs POS-2 — both FAR values are non-numeric approval descriptions."""
+    """Eval Q377: POS-1 vs POS-2 — both FAR values are non-numeric approval descriptions."""
     result = district_tools["compare_districts"](district_a="POS-1", district_b="POS-2")
     assert "error" not in result
     pos1_far = str(result["floor_area_ratio"]["POS-1"])
@@ -6409,7 +6424,9 @@ def test_eval_q387_rs3_lot_area_per_unit(district_tools):
     result = district_tools["lookup_district"](district_code="RS-3")
     assert "error" not in result
     lot = str(result.get("lot_area_per_unit", ""))
-    assert "2500" in lot.replace(",", ""), f"Expected '2500' in RS-3 lot_area_per_unit, got: {lot!r}"
+    assert "2500" in lot.replace(",", ""), (
+        f"Expected '2500' in RS-3 lot_area_per_unit, got: {lot!r}"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -6435,7 +6452,9 @@ def test_eval_q389_rt4_lot_area_per_unit(district_tools):
     result = district_tools["lookup_district"](district_code="RT-4")
     assert "error" not in result
     lot = str(result.get("lot_area_per_unit", ""))
-    assert "1000" in lot.replace(",", ""), f"Expected '1000' in RT-4 lot_area_per_unit, got: {lot!r}"
+    assert "1000" in lot.replace(",", ""), (
+        f"Expected '1000' in RT-4 lot_area_per_unit, got: {lot!r}"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -6982,7 +7001,9 @@ def test_eval_q441_rt4_minimum_lot_area(district_tools):
     result = district_tools["lookup_district"](district_code="RT-4")
     assert "error" not in result
     min_lot = str(result.get("minimum_lot_area", ""))
-    assert "1650" in min_lot.replace(",", ""), f"Expected '1650' in RT-4 minimum_lot_area, got: {min_lot!r}"
+    assert "1650" in min_lot.replace(",", ""), (
+        f"Expected '1650' in RT-4 minimum_lot_area, got: {min_lot!r}"
+    )
 
 
 # Q442 — RM-4.5 minimum lot area is 1650 sq ft
@@ -6991,7 +7012,9 @@ def test_eval_q442_rm45_minimum_lot_area(district_tools):
     result = district_tools["lookup_district"](district_code="RM-4.5")
     assert "error" not in result
     min_lot = str(result.get("minimum_lot_area", ""))
-    assert "1650" in min_lot.replace(",", ""), f"Expected '1650' in RM-4.5 minimum_lot_area, got: {min_lot!r}"
+    assert "1650" in min_lot.replace(",", ""), (
+        f"Expected '1650' in RM-4.5 minimum_lot_area, got: {min_lot!r}"
+    )
 
 
 # Q443 — RM-5 rear yard setback is 30 ft
@@ -7100,7 +7123,9 @@ def test_eval_q453_rm6_minimum_lot_area(district_tools):
     result = district_tools["lookup_district"](district_code="RM-6")
     assert "error" not in result
     min_lot = str(result.get("minimum_lot_area", ""))
-    assert "1650" in min_lot.replace(",", ""), f"Expected '1650' in RM-6 minimum_lot_area, got: {min_lot!r}"
+    assert "1650" in min_lot.replace(",", ""), (
+        f"Expected '1650' in RM-6 minimum_lot_area, got: {min_lot!r}"
+    )
 
 
 # Q454 — RM-6.5 minimum lot area is 1650 sq ft
@@ -7109,7 +7134,9 @@ def test_eval_q454_rm65_minimum_lot_area(district_tools):
     result = district_tools["lookup_district"](district_code="RM-6.5")
     assert "error" not in result
     min_lot = str(result.get("minimum_lot_area", ""))
-    assert "1650" in min_lot.replace(",", ""), f"Expected '1650' in RM-6.5 minimum_lot_area, got: {min_lot!r}"
+    assert "1650" in min_lot.replace(",", ""), (
+        f"Expected '1650' in RM-6.5 minimum_lot_area, got: {min_lot!r}"
+    )
 
 
 # Q455 — M2-1 maximum building height has no fixed limit
