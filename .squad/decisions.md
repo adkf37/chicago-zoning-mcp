@@ -3,6 +3,42 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-05-04 — Ralph — Closeout reviewed; final state is human-blocked
+
+**Context:** Maestro requested a final closeout decision for the current loop after the latest
+build pass updated eval expectations to match the manually corrected `data/zoning_codes.csv`.
+
+**Evidence checked in this pass:**
+
+| Check | Result |
+|---|---|
+| `python -m ruff check src/ tests/ web/` | ✅ Passed |
+| `python -m pytest tests/ -m "not network" --tb=short` | ✅ 597 passed, 5 deselected |
+| `python -m pytest tests/ -m network --tb=short` | ⚠️ 5 failed in sandbox (live geocoder / Chicago Data Portal unavailable) |
+| `await mcp.list_tools()` | ✅ 8 tools registered |
+| RS-3 lookup spot check | ✅ FAR 0.9; current height field present |
+| RS-3 5,000 sqft envelope | ✅ 4500.0 sqft |
+| `data/zoning_codes.csv` count | ✅ 67 district records |
+| `evals/zoning_qa.xml` count | ✅ 460 questions |
+
+**Decision:** Do **not** mark the repo `Complete`. Closeout is **Human Blocked** because
+manual / external tasks still gate final handoff:
+
+- T3-01–T3-05 — human Title 17 download + ingestion
+- T4-01–T4-10 — MCP Inspector verification
+- T5-01–T5-06 — Ollama end-to-end validation (`ollama` missing in this environment)
+- T6-02 — Docker Compose manual verification
+- T6-03 — parent repo cross-reference
+
+**Handoff updates made in this pass:**
+- `STATUS.md` — `Next Action` changed from `Closeout` to `Human Blocked`; stale 59-district and
+  440-question references replaced with current 67-district / 460-question evidence.
+- `.squad/review_report.md` — created with explicit final decision and blocker summary.
+- `README.md`, `backlog/README.md`, `CONTRIBUTING.md` — refreshed so handoff docs match the
+  current evaluation harness and district data counts.
+
+---
+
 ### 2026-05-04 — Data Pipeline — Tests and eval notes aligned to updated zoning_codes.csv (Feedback ID: 2025-05-04-Aaron)
 
 **Context:** Aaron manually updated `data/zoning_codes.csv` with corrected values from the
