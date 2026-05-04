@@ -288,15 +288,15 @@ def test_development_envelope_pd_nonnumeric_far():
 
 
 def test_development_envelope_commercial_no_units():
-    """Commercial district with no lot_area_per_unit (B1-1) should return partial result."""
+    """Industrial district with no lot_area_per_unit (M1-1) should return partial result."""
     from src.tools.development import register_development_tools
 
     tools = _register_and_capture(register_development_tools)
-    result = tools["calculate_development_envelope"](district_code="B1-1", lot_area_sqft=5000)
+    result = tools["calculate_development_envelope"](district_code="M1-1", lot_area_sqft=5000)
     assert "error" not in result
-    # Floor area should be numeric: B1-1 FAR = 1.0, so 5000 sqft * 1.0 = 5000.0
+    # Floor area should be numeric: M1-1 FAR = 1.0, so 5000 sqft * 1.0 = 5000.0
     assert result["max_floor_area_sqft"] == pytest.approx(5000.0)
-    # Dwelling units cannot be computed for pure commercial districts
+    # Dwelling units cannot be computed for industrial districts (no residential use)
     assert isinstance(result["max_dwelling_units"], str)
     assert "Cannot calculate" in result["max_dwelling_units"]
     assert "disclaimer" in result
