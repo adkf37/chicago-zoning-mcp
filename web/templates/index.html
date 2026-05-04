@@ -34,7 +34,7 @@
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; height: 100%; }
     body {
       font-family: var(--font-body);
       font-size: 1rem;
@@ -43,9 +43,10 @@
       background: var(--cream);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      min-height: 100vh;
+      height: 100%;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
     }
 
     /* ─── TOP NAV BAR ─────────────────────────────────────── */
@@ -156,7 +157,7 @@
     .hero__inner {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 3.5rem 1.5rem 0;
+      padding: 1.25rem 1.5rem 1rem;
     }
 
     .hero__eyebrow {
@@ -181,11 +182,11 @@
 
     .hero__headline {
       font-family: var(--font-display);
-      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
       line-height: 1.1;
       letter-spacing: -0.01em;
       color: #ffffff;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
       max-width: 720px;
     }
 
@@ -195,197 +196,96 @@
     }
 
     .hero__subtitle {
-      font-size: 1.1rem;
-      line-height: 1.65;
+      font-size: 0.95rem;
+      line-height: 1.55;
       color: rgba(255,255,255,0.62);
       max-width: 580px;
       font-weight: 300;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0;
     }
 
-    /* ─── STATS BAR ───────────────────────────────────────── */
-    .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,0.06);
-      border-top: 1px solid rgba(255,255,255,0.08);
-      max-width: 100%;
-    }
-
-    .stat-cell {
-      padding: 1.25rem 1.5rem;
-      background: rgba(0,29,61,0.7);
-      text-align: center;
-    }
-
-    .stat-cell__number {
-      font-family: var(--font-display);
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      color: #ffffff;
-      line-height: 1.2;
-    }
-
-    .stat-cell__label {
-      font-size: 0.67rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      margin-top: 0.1rem;
-    }
-
-    /* ─── HOW IT WORKS STRIP ──────────────────────────────── */
-    .how-it-works {
-      background: var(--warm-white);
-      border-bottom: 1px solid var(--rule);
-      flex-shrink: 0;
-    }
-
-    .how-it-works__inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      display: flex;
-      gap: 2rem;
-      align-items: stretch;
-      flex-wrap: wrap;
-    }
-
-    .how-step {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
+    /* ─── MAIN TWO-COLUMN LAYOUT ──────────────────────────── */
+    .main-layout {
       flex: 1;
-      min-width: 180px;
+      display: grid;
+      grid-template-columns: 252px 1fr;
+      min-height: 0;
+      overflow: hidden;
     }
 
-    .how-step__number {
-      flex-shrink: 0;
-      width: 1.6rem;
-      height: 1.6rem;
-      border-radius: 50%;
-      background: var(--navy);
-      color: #fff;
-      font-size: 0.72rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 0.15rem;
-    }
-
-    .how-step__text {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .how-step__text strong {
-      display: block;
-      font-size: 0.83rem;
-      color: var(--text);
-      font-weight: 600;
-      margin-bottom: 0.1rem;
-    }
-
-    /* ─── CAPABILITIES SECTION ────────────────────────────── */
-    .capabilities {
+    /* ─── SIDEBAR (capabilities) ────────────────────────────── */
+    .sidebar {
       background: var(--warm-white);
-      border-bottom: 1px solid var(--rule);
-      flex-shrink: 0;
+      border-right: 1px solid var(--rule);
+      overflow-y: auto;
+      padding: 1.25rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
     }
 
-    .capabilities__inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem;
-    }
-
-    .capabilities__label {
-      font-family: var(--font-body);
-      font-size: 0.73rem;
-      font-weight: 600;
+    .sidebar__label {
+      font-size: 0.67rem;
+      font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--text-light);
       margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
     }
 
-    .capabilities__heading {
-      font-family: var(--font-display);
-      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-      color: var(--navy);
-      margin-bottom: 1.75rem;
-      line-height: 1.25;
-    }
-
-    .capabilities__grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.25rem;
-    }
-
+    /* ─── CAPABILITY CARDS (sidebar style) ─────────────────── */
     .capability-card {
       background: var(--card-bg);
-      padding: 1.5rem;
-      border-top: 3px solid var(--navy);
+      padding: 0.75rem 0.875rem;
+      border-left: 3px solid var(--navy);
       box-shadow: var(--card-shadow);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .capability-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(0,20,50,.08), 0 16px 40px rgba(0,20,50,.06);
-    }
-
-    .capability-card__icon {
-      font-size: 1.5rem;
-      display: block;
-      margin-bottom: 0.75rem;
-    }
-
-    .capability-card__stat {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      color: var(--navy);
-      margin-bottom: 0.35rem;
-      line-height: 1.2;
-    }
-
-    .capability-card__title {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text);
+      border-radius: 0 4px 4px 0;
+      transition: border-color 0.15s, background 0.15s;
       margin-bottom: 0.5rem;
     }
 
+    .capability-card:hover {
+      border-left-color: var(--red);
+      background: #f8f5f0;
+    }
+
+    .capability-card__header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .capability-card__icon {
+      font-size: 0.9rem;
+      line-height: 1;
+    }
+
+    .capability-card__title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
     .capability-card__text {
-      font-size: 0.875rem;
-      line-height: 1.65;
+      font-size: 0.75rem;
+      line-height: 1.5;
       color: var(--text-muted);
-    }
-
-    @media (max-width: 640px) {
-      .capabilities__grid { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 900px) and (min-width: 641px) {
-      .capabilities__grid { grid-template-columns: repeat(2, 1fr); }
+      padding-left: 1.4rem;
     }
 
     /* ─── CHAT LAYOUT ─────────────────────────────────────── */
     .chat-wrapper {
       flex: 1;
-      max-width: 840px;
       width: 100%;
-      margin: 0 auto;
-      padding: 1.5rem 1.25rem;
+      padding: 1.25rem 1.5rem;
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: 1rem;
       min-height: 0;
+      overflow: hidden;
     }
 
     .messages {
@@ -395,7 +295,6 @@
       flex-direction: column;
       gap: 1rem;
       padding-bottom: 0.5rem;
-      max-height: calc(100vh - 380px);
     }
 
     .messages::-webkit-scrollbar { width: 4px; }
@@ -793,20 +692,16 @@
     }
 
     /* ─── RESPONSIVE ──────────────────────────────────────── */
-    @media (max-width: 640px) {
-      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 768px) {
+      .main-layout { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
       .top-nav__links { display: none; }
       .bubble { max-width: 90%; }
       .welcome-block { max-width: 90%; }
       .suggestions { padding-left: 0; }
       .site-footer__inner { grid-template-columns: 1fr; }
       .site-footer__links { text-align: left; }
-      .hero__headline { font-size: 1.8rem; }
-      .how-it-works__inner { flex-direction: column; gap: 0.75rem; }
-    }
-
-    @media (max-width: 380px) {
-      .stats-bar { grid-template-columns: 1fr; }
+      .hero__headline { font-size: 1.6rem; }
     }
   </style>
 </head>
@@ -837,111 +732,50 @@
       </p>
       <h1 class="hero__headline">Chicago Zoning <em>Assistant</em></h1>
       <p class="hero__subtitle">
-        Ask about district rules, calculate development potential,
-        look up specific addresses, and search the full text of the Chicago Zoning Ordinance.
+        Ask about district rules, development potential, address lookups, and the full zoning ordinance.
       </p>
-    </div>
-
-    <!-- Stats bar -->
-    <div class="stats-bar">
-      <div class="stat-cell">
-        <div class="stat-cell__number">1,888</div>
-        <div class="stat-cell__label">Indexed sections</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-cell__number">8</div>
-        <div class="stat-cell__label">Zoning tools</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-cell__number">59</div>
-        <div class="stat-cell__label">District types</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-cell__number">Live</div>
-        <div class="stat-cell__label">Chicago Data Portal</div>
-      </div>
     </div>
   </header>
 
-  <!-- ═══ CAPABILITIES ════════════════════════════════════════ -->
-  <section class="capabilities">
-    <div class="capabilities__inner">
-      <p class="capabilities__label">What it can do</p>
-      <h2 class="capabilities__heading">Four capabilities in one conversation</h2>
-      <div class="capabilities__grid">
+  <!-- ═══ MAIN LAYOUT (sidebar + chat) ══════════════════════ -->
+  <div class="main-layout">
 
-        <div class="capability-card">
+    <!-- Capabilities sidebar -->
+    <aside class="sidebar">
+      <p class="sidebar__label">What it can do</p>
+
+      <div class="capability-card">
+        <div class="capability-card__header">
           <span class="capability-card__icon" aria-hidden="true">📍</span>
-          <!-- Update count if zoning_codes.csv district count changes -->
-          <div class="capability-card__stat">59 Districts</div>
-          <h3 class="capability-card__title">District Lookup</h3>
-          <p class="capability-card__text">
-            Look up any Chicago zoning district by code. Instantly retrieve FAR limits,
-            height limits, setback requirements, and a plain-language description.
-          </p>
+          <span class="capability-card__title">District Lookup</span>
         </div>
+        <p class="capability-card__text">FAR, height limits, setbacks &amp; uses for all 59 district types.</p>
+      </div>
 
-        <div class="capability-card">
+      <div class="capability-card">
+        <div class="capability-card__header">
           <span class="capability-card__icon" aria-hidden="true">🏗️</span>
-          <div class="capability-card__stat">By-the-Number</div>
-          <h3 class="capability-card__title">Development Potential</h3>
-          <p class="capability-card__text">
-            Calculate the maximum floor area, dwelling unit count, and height for any
-            lot. Enter a district code and lot size — get precise answers back.
-          </p>
+          <span class="capability-card__title">Development Potential</span>
         </div>
+        <p class="capability-card__text">Max floor area, unit count &amp; height for any lot size.</p>
+      </div>
 
-        <div class="capability-card">
+      <div class="capability-card">
+        <div class="capability-card__header">
           <span class="capability-card__icon" aria-hidden="true">🗺️</span>
-          <div class="capability-card__stat">Live Data</div>
-          <h3 class="capability-card__title">Address Zoning</h3>
-          <p class="capability-card__text">
-            Find the zoning district for any Chicago address in real time using the
-            Chicago Data Portal. Get the district code, map link, and key rules.
-          </p>
+          <span class="capability-card__title">Address Zoning</span>
         </div>
+        <p class="capability-card__text">Live district lookup for any Chicago address via the Data Portal.</p>
+      </div>
 
-        <div class="capability-card">
+      <div class="capability-card">
+        <div class="capability-card__header">
           <span class="capability-card__icon" aria-hidden="true">📖</span>
-          <!-- Update count after re-running scripts/ingest_title_17.py -->
-          <div class="capability-card__stat">1,888+ Sections</div>
-          <h3 class="capability-card__title">Title 17 Search</h3>
-          <p class="capability-card__text">
-            Search the full text of the Chicago Zoning Ordinance. Find sections on
-            parking, ADUs, variances, signs, planned developments, and more.
-          </p>
+          <span class="capability-card__title">Title 17 Search</span>
         </div>
-
+        <p class="capability-card__text">Full-text search across 1,888+ sections of the zoning ordinance.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- ═══ HOW IT WORKS ════════════════════════════════════════ -->
-  <div class="how-it-works">
-    <div class="how-it-works__inner">
-      <div class="how-step">
-        <div class="how-step__number">1</div>
-        <div class="how-step__text">
-          <strong>Ask in plain English</strong>
-          Type your zoning question — no codes or jargon needed.
-        </div>
-      </div>
-      <div class="how-step">
-        <div class="how-step__number">2</div>
-        <div class="how-step__text">
-          <strong>AI selects the right tool</strong>
-          The assistant picks the best tool: lookup, calculator, address search, or code search.
-        </div>
-      </div>
-      <div class="how-step">
-        <div class="how-step__number">3</div>
-        <div class="how-step__text">
-          <strong>Get a structured answer</strong>
-          Receive a clear, cited response — always sourced from official Chicago data.
-        </div>
-      </div>
-    </div>
-  </div>
+    </aside>
 
   <!-- ═══ CHAT ════════════════════════════════════════════════ -->
   <main class="chat-wrapper">
@@ -1030,6 +864,8 @@
     </div>
 
   </main>
+
+  </div><!-- /main-layout -->
 
   <!-- ═══ FOOTER ══════════════════════════════════════════════ -->
   <footer class="site-footer">
