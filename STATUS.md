@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Phase | Closeout |
-| Last Updated | 2026-05-04 (closeout review) |
+| Last Updated | 2026-05-04 (closeout refresh) |
 | Squad Template | data_pipeline |
 | Priority | low |
 | Blocking | Human follow-up required for Title 17 ingestion, MCP Inspector/Ollama checks, Docker verification, and parent repo cross-reference |
@@ -11,16 +11,16 @@
 
 ## Current Objective
 
-**Closeout review complete — automated checks pass, but final handoff remains human-blocked by manual verification and external dependencies.**
+**Closeout review refreshed — automated checks pass, the eval harness is well-formed XML again, but final handoff remains human-blocked by manual verification and external dependencies.**
 
 Validated in this pass:
-- `pytest tests/ -m "not network"` → **597 passed, 5 deselected** ✅
+- `pytest tests/ -m "not network"` → **598 passed, 5 deselected** ✅
 - `ruff check src/ tests/ web/` → **0 errors** ✅
 - All 8 MCP tools registered and callable ✅
-- `lookup_district("RS-3")` → FAR 0.9, height text present ✅
+- `get_district("RS-3")` → `floor_area_ratio` 0.9, `maximum_building_height` text present ✅
 - `calculate_development_envelope("RS-3", 5000)` → **4500.0 sqft** ✅
 - `data/zoning_codes.csv` currently contains **67** district records ✅
-- `evals/zoning_qa.xml` currently contains **460** questions ✅
+- `evals/zoning_qa.xml` is valid XML with **460** questions ✅
 - README / handoff docs refreshed to match the current repo state ✅
 
 Still blocked for final completion:
@@ -36,12 +36,22 @@ Human Blocked
 
 ## Recent Activity
 
+- 2026-05-04 (closeout refresh): Repaired the eval harness and re-ran closeout validation.
+  - Escaped the malformed `&lt;` token in `evals/zoning_qa.xml`, restored Q73 as a real eval entry,
+    and added `tests/test_eval_xml.py` so future closeout passes verify the file parses as XML.
+  - `python -m ruff check src/ tests/ web/` → 0 errors.
+  - `python -m pytest tests/ -m "not network" --tb=short` → 598 passed, 5 deselected.
+  - `python -m pytest tests/ -m network --tb=short` → 5 failed in sandbox (live geocoder / Chicago Data Portal).
+  - Programmatic checks confirmed 8 registered tools, 67 district records, valid `eval_suite` XML,
+    and 460 eval questions.
+
 - 2026-05-04 (this closeout pass): Re-ran the current validation and refreshed handoff artifacts.
   - `python -m ruff check src/ tests/ web/` → 0 errors.
   - `python -m pytest tests/ -m "not network" --tb=short` → 597 passed, 5 deselected.
   - `python -m pytest tests/ -m network --tb=short` → 5 failed in sandbox (live geocoder / Chicago Data Portal).
-  - Programmatic checks confirmed 8 registered tools, RS-3 FAR 0.9, 5,000 sqft RS-3 envelope 4500.0 sqft,
-    67 district records, and 460 eval questions.
+  - Initial programmatic checks found 8 registered tools and 67 district records, but the eval XML
+    parse step exposed a malformed `<` token and a commented-out Q73 that were repaired in the
+    follow-up closeout refresh above.
   - Added `.squad/review_report.md` and updated closeout notes to reflect a human-blocked finish rather than a completed handoff.
 
 - 2026-05-04 (previous build pass): Realigned 74 failing tests to manually corrected `data/zoning_codes.csv`.
@@ -82,10 +92,10 @@ Human Blocked
 | Squad team roster | `.squad/team.md` | created |
 | Squad routing rules | `.squad/routing.md` | created |
 | Squad decisions log | `.squad/decisions.md` | updated |
-| Closeout review report | `.squad/review_report.md` | created |
+| Closeout review report | `.squad/review_report.md` | updated |
 | Sprint plan | `.squad/sprint.md` | created |
-| Eval suite | `evals/zoning_qa.xml` | 460 questions (Q1–Q460) |
-| Eval tests | `tests/test_evals.py` | 597 tests passing |
+| Eval suite | `evals/zoning_qa.xml` | valid XML with 460 questions (Q1–Q460) |
+| Tests | `tests/` | 598 passed, 5 deselected |
 | Frontend | `web/templates/index.html` | enhanced — 4 capability cards, "How it Works" strip, expanded suggestions |
 
 ## Needs Human Input
