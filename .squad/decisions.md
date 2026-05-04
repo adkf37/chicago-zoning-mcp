@@ -3,6 +3,41 @@
 > Significant architectural and data decisions are recorded here by the Lead.
 > Format: `### YYYY-MM-DD — [Agent] — [Decision Title]`
 
+### 2026-05-04 — Ralph — Closeout revalidated in fresh clone; handoff remains human-blocked
+
+**Context:** I repeated closeout verification in a fresh clone environment to confirm the
+documented setup still works before leaving the loop in its final state.
+
+**Evidence checked in this pass:**
+
+| Check | Result |
+|---|---|
+| `pip install -e ".[dev,web]"` | ✅ Passed |
+| `python -m ruff check src/ tests/ web/` | ✅ Passed |
+| `python -m pytest tests/ -m "not network" --tb=short` | ✅ 598 passed, 5 deselected |
+| `python -m pytest tests/ -m network --tb=short` | ⚠️ 5 failed in sandbox (live geocoder / Chicago Data Portal unavailable) |
+| `await mcp.list_tools()` | ✅ 8 tools registered |
+| RS-3 spot checks | ✅ FAR 0.9; max building height text present; 5,000 sqft envelope = 4500.0 sqft |
+| `data/zoning_codes.csv` count | ✅ 67 district records |
+| `evals/zoning_qa.xml` parse + count | ✅ Well-formed XML with 460 questions |
+
+**Decisions:**
+
+1. **Keep the final direction at `Human Blocked`** — The remaining gaps are still manual or
+   environment-bound: T3-01–T3-05 (Title 17 ingestion), T4-01–T4-10 (MCP Inspector), T5-01–T5-06
+   (Ollama validation), T6-02 (Docker verification), and T6-03 (parent repo cross-reference).
+2. **Treat the current README / handoff docs as sufficient** — No further human-facing doc edits
+   were needed in this pass because the repo-level summaries already match the verified counts.
+3. **Refresh only the closeout artifacts** — `STATUS.md`, `.squad/review_report.md`, and this
+   decisions log were updated so the final handoff reflects evidence reproduced in this environment.
+
+**Handoff updates made in this pass:**
+- `STATUS.md` — refreshed the objective and activity log to show fresh-clone revalidation.
+- `.squad/review_report.md` — added fresh-clone setup evidence and kept the explicit `Human Blocked` decision.
+- `.squad/decisions.md` — recorded this final revalidation entry.
+
+---
+
 ### 2026-05-04 — Ralph — Closeout sign-off confirms human-blocked handoff
 
 **Context:** Maestro requested a final closeout decision for this loop. I re-ran the repository's
