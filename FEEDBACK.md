@@ -44,5 +44,14 @@ Worried that we are doing something major wrong....
 ]
 ```
 
+### 2025-05-03 — [Aaron]
+Priority: [high]
+Sope: [code improvement]
+
+[Figured out the accuracy issue. The zoning_codes.csv file in the data folder has outdated information. Let's update that file using the data here: https://secondcityzoning.org/zones/
+
+Then redo the answers in the eval file where relevant.
+]
+
 ## Feedback Log
 
