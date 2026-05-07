@@ -401,6 +401,7 @@ class GeminiZoningClient:
                 text = "".join(
                     p.text for p in model_content.parts if getattr(p, "text", None)
                 )
+                text = self._strip_tool_code(text)
                 trace["final_answer"] = text
                 return text, trace
 
@@ -469,7 +470,7 @@ class GeminiZoningClient:
                 contents=prompt,
                 config=types.GenerateContentConfig(system_instruction=SYSTEM_PROMPT),
             )
-            answer = getattr(response, "text", "") or ""
+            answer = self._strip_tool_code(getattr(response, "text", "") or "")
         except Exception:
             if not trace["tool_calls"]:
                 raise
@@ -477,6 +478,29 @@ class GeminiZoningClient:
             answer = self._format_local_fallback(trace["tool_calls"])
         trace["final_answer"] = answer
         return answer, trace
+
+    # Tool-code pattern that Gemini sometimes emits instead of structured calls
+    _TOOL_CODE_RE = re.compile(
+        r"(?:```(?:python|tool_code)?\s*\n)?"
+        r"(?:\s*print\(tool_code_interpreter\.\w+\([^)]*\)\)\s*\n?)+ "
+        r"(?:```\s*\n?)?",
+        re.MULTILINE,
+    )
+
+    @staticmethod
+    def _strip_tool_code(text: str) -> str:
+        """Remove any tool_code_interpreter print lines Gemini sneaks into answers."""
+        lines = text.splitlines(keepends=True)
+        filtered = [
+            line
+            for line in lines
+            if not line.lstrip().startswith("print(tool_code_interpreter.")
+            and not line.lstrip().startswith("```tool_code")
+        ]
+        result = "".join(filtered).strip()
+        # Also collapse any remaining ``` fences left empty after stripping
+        result = re.sub(r"```\s*\n+```", "", result).strip()
+        return result
 
     @staticmethod
     def _format_local_fallback(tool_calls: list[dict[str, Any]]) -> str:

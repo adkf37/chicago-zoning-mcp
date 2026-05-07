@@ -203,46 +203,24 @@
       margin-bottom: 0;
     }
 
-    /* ─── MAIN THREE-COLUMN LAYOUT ────────────────────────── */
+    /* ─── MAIN TWO-COLUMN LAYOUT ─────────────────────────── */
     .main-layout {
       flex: 1;
       display: grid;
-      grid-template-columns: 160px 3fr 1fr;
+      grid-template-columns: 3fr 1fr;
       min-height: 0;
       overflow: hidden;
     }
 
-    /* ─── SIDEBAR (capabilities) ────────────────────────────── */
-    .sidebar {
-      background: var(--warm-white);
-      border-right: 1px solid var(--rule);
-      overflow-y: auto;
-      padding: 1.25rem 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-
-    .sidebar__label {
-      font-size: 0.67rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      margin-bottom: 0.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    /* ─── CAPABILITY CARDS (sidebar style) ─────────────────── */
+    /* ─── CAPABILITY CARDS (right panel style) ──────────────── */
     .capability-card {
       background: var(--card-bg);
-      padding: 0.75rem 0.875rem;
+      padding: 0.6rem 0.75rem;
       border-left: 3px solid var(--navy);
       box-shadow: var(--card-shadow);
       border-radius: 0 4px 4px 0;
       transition: border-color 0.15s, background 0.15s;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .capability-card:hover {
@@ -253,26 +231,32 @@
     .capability-card__header {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.2rem;
+      gap: 0.4rem;
+      margin-bottom: 0.1rem;
     }
 
     .capability-card__icon {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       line-height: 1;
     }
 
     .capability-card__title {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 600;
       color: var(--text);
     }
 
     .capability-card__text {
-      font-size: 0.75rem;
-      line-height: 1.5;
+      font-size: 0.72rem;
+      line-height: 1.45;
       color: var(--text-muted);
-      padding-left: 1.4rem;
+      padding-left: 1.3rem;
+    }
+
+    .panel-divider {
+      height: 1px;
+      background: var(--rule);
+      margin: 0.75rem 0;
     }
 
     /* ─── CHAT LAYOUT ─────────────────────────────────────── */
@@ -663,12 +647,11 @@
 
     /* ─── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 900px) {
-      .main-layout { grid-template-columns: 160px 1fr; }
-      .suggestions-panel { display: none; }
+      .main-layout { grid-template-columns: 3fr 1fr; }
     }
     @media (max-width: 768px) {
       .main-layout { grid-template-columns: 1fr; }
-      .sidebar { display: none; }
+      .suggestions-panel { display: none; }
       .top-nav__links { display: none; }
       .bubble { max-width: 90%; }
       .site-footer__inner { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
@@ -708,42 +691,7 @@
   <!-- ═══ MAIN LAYOUT (sidebar + chat) ══════════════════════ -->
   <div class="main-layout">
 
-    <!-- Capabilities sidebar -->
-    <aside class="sidebar">
-      <p class="sidebar__label">What it can do</p>
 
-      <div class="capability-card">
-        <div class="capability-card__header">
-          <span class="capability-card__icon" aria-hidden="true">📍</span>
-          <span class="capability-card__title">District Lookup</span>
-        </div>
-        <p class="capability-card__text">FAR, height limits, setbacks &amp; uses for all 59 district types.</p>
-      </div>
-
-      <div class="capability-card">
-        <div class="capability-card__header">
-          <span class="capability-card__icon" aria-hidden="true">🏗️</span>
-          <span class="capability-card__title">Development Potential</span>
-        </div>
-        <p class="capability-card__text">Max floor area, unit count &amp; height for any lot size.</p>
-      </div>
-
-      <div class="capability-card">
-        <div class="capability-card__header">
-          <span class="capability-card__icon" aria-hidden="true">🗺️</span>
-          <span class="capability-card__title">Address Zoning</span>
-        </div>
-        <p class="capability-card__text">Live district lookup for any Chicago address via the Data Portal.</p>
-      </div>
-
-      <div class="capability-card">
-        <div class="capability-card__header">
-          <span class="capability-card__icon" aria-hidden="true">📖</span>
-          <span class="capability-card__title">Title 17 Search</span>
-        </div>
-        <p class="capability-card__text">Full-text search across 1,888+ sections of the zoning ordinance.</p>
-      </div>
-    </aside>
 
   <!-- ═══ CHAT ════════════════════════════════════════════════ -->
   <main class="chat-wrapper">
@@ -776,10 +724,43 @@
 
   <!-- ═══ RIGHT PANEL ══════════════════════════════════════════ -->
   <aside class="suggestions-panel">
-    <p class="panel__label">Try asking</p>
-    <h2 class="panel__heading">What would you like to know about Chicago zoning?</h2>
-    <p class="panel__subtext">Ask in plain English — no codes or jargon needed.</p>
+    <p class="panel__label">What it can do</p>
 
+    <div class="capability-card">
+      <div class="capability-card__header">
+        <span class="capability-card__icon" aria-hidden="true">📍</span>
+        <span class="capability-card__title">District Lookup</span>
+      </div>
+      <p class="capability-card__text">FAR, height limits, setbacks &amp; uses for all 59 district types.</p>
+    </div>
+
+    <div class="capability-card">
+      <div class="capability-card__header">
+        <span class="capability-card__icon" aria-hidden="true">🏗️</span>
+        <span class="capability-card__title">Development Potential</span>
+      </div>
+      <p class="capability-card__text">Max floor area, unit count &amp; height for any lot size.</p>
+    </div>
+
+    <div class="capability-card">
+      <div class="capability-card__header">
+        <span class="capability-card__icon" aria-hidden="true">🗺️</span>
+        <span class="capability-card__title">Address Zoning</span>
+      </div>
+      <p class="capability-card__text">Live district lookup for any Chicago address via the Data Portal.</p>
+    </div>
+
+    <div class="capability-card">
+      <div class="capability-card__header">
+        <span class="capability-card__icon" aria-hidden="true">📖</span>
+        <span class="capability-card__title">Title 17 Search</span>
+      </div>
+      <p class="capability-card__text">Full-text search across 1,888+ sections of the zoning ordinance.</p>
+    </div>
+
+    <div class="panel-divider"></div>
+
+    <p class="panel__label">Try asking</p>
     <button class="panel-chip" onclick="sendSuggestion(this)">What's the zoning at 233 S Wacker Dr?</button>
     <button class="panel-chip" onclick="sendSuggestion(this)">What can I build on a 5,000 sqft RS-3 lot?</button>
     <button class="panel-chip" onclick="sendSuggestion(this)">Compare RS-3 and RT-4 districts</button>
