@@ -9,6 +9,35 @@ from src.geocoder import geocode_address, is_in_chicago
 # Chicago Data Portal — Zoning Districts GeoJSON (Socrata)
 ZONING_SOCRATA_URL = "https://data.cityofchicago.org/resource/dj47-wfun.geojson"
 
+# Trim the Socrata payload — we only need a few attributes, not the full geometry.
+_SOCRATA_SELECT_FIELDS = "zone_class,zone_type,edit_date,objectid,case_number"
+
+# Reuse one async client (connection pool + keep-alive). FastMCP runs a single
+# event loop per server process, so module-level reuse is safe and noticeably
+# faster than spinning a new client per call.
+_http_client: httpx.AsyncClient | None = None
+
+
+def _get_http_client() -> httpx.AsyncClient:
+    global _http_client
+    if _http_client is None or _http_client.is_closed:
+        _http_client = httpx.AsyncClient(
+            timeout=httpx.Timeout(15.0, connect=5.0),
+            headers={"User-Agent": "chicago-zoning-mcp/0.1"},
+        )
+    return _http_client
+
+
+# Small in-process cache for repeated point-in-polygon lookups. Coordinates are
+# rounded to ~1 m (5 decimal places) so near-identical follow-ups (typical when
+# an LLM retries) hit the cache.
+_parcel_cache: dict[tuple[float, float], dict] = {}
+_PARCEL_CACHE_MAX = 256
+
+
+def _cache_key(lat: float, lng: float) -> tuple[float, float]:
+    return (round(lat, 5), round(lng, 5))
+
 
 def register_geospatial_tools(mcp: FastMCP):
     """Register geospatial tools with the MCP server."""
@@ -75,18 +104,23 @@ def register_geospatial_tools(mcp: FastMCP):
         # Query Socrata for zoning district at this point
         soql_where = f"intersects(the_geom, 'POINT({lng} {lat})')"
 
+        cache_key = _cache_key(lat, lng)
+        cached = _parcel_cache.get(cache_key)
+        if cached is not None:
+            return {**cached, "address": address or None}
+
         try:
-            async with httpx.AsyncClient() as client:
-                resp = await client.get(
-                    ZONING_SOCRATA_URL,
-                    params={
-                        "$where": soql_where,
-                        "$limit": 5,
-                    },
-                    timeout=15,
-                )
-                resp.raise_for_status()
-                data = resp.json()
+            client = _get_http_client()
+            resp = await client.get(
+                ZONING_SOCRATA_URL,
+                params={
+                    "$where": soql_where,
+                    "$select": _SOCRATA_SELECT_FIELDS,
+                    "$limit": 5,
+                },
+            )
+            resp.raise_for_status()
+            data = resp.json()
         except httpx.TimeoutException:
             return {
                 "error": "Request to Chicago Data Portal timed out. Try again shortly.",
@@ -125,13 +159,20 @@ def register_geospatial_tools(mcp: FastMCP):
         # Enrich with our reference data
         district_info = get_district(district_code)
 
-        return {
+        result = {
             "coordinates": {"lat": lat, "lng": lng},
             "address": address or None,
             "zone_class": district_code,
             "socrata_properties": props,
             "district_details": district_info,
         }
+
+        # Cache successful lookups (without the per-call address)
+        if len(_parcel_cache) >= _PARCEL_CACHE_MAX:
+            _parcel_cache.pop(next(iter(_parcel_cache)))
+        _parcel_cache[cache_key] = {k: v for k, v in result.items() if k != "address"}
+
+        return result
 
     @mcp.tool()
     def get_zoning_map_url(

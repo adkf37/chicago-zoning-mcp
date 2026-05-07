@@ -241,6 +241,72 @@ FUNCTION_DECLARATIONS = [
             "required": ["section_number"],
         },
     },
+    {
+        "name": "find_districts_meeting_criteria",
+        "description": (
+            "Find Chicago zoning districts that meet specific development criteria. "
+            "Use this for questions like 'Which residential districts allow at least "
+            "4 units on a 6,000 sq ft lot?', 'What districts have FAR >= 3?', or "
+            "'Which commercial districts have FAR between 2 and 5?'. "
+            "All parameters are optional — omit or set to 0 to skip that filter."
+        ),
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "min_far": {
+                    "type": "number",
+                    "description": "Minimum FAR required (0 = no lower bound)",
+                },
+                "max_far": {
+                    "type": "number",
+                    "description": "Maximum FAR allowed (0 = no upper bound)",
+                },
+                "min_dwelling_units": {
+                    "type": "integer",
+                    "description": (
+                        "Minimum number of dwelling units that must fit on the lot. "
+                        "Requires lot_area_sqft > 0."
+                    ),
+                },
+                "lot_area_sqft": {
+                    "type": "number",
+                    "description": (
+                        "Lot size in square feet used for dwelling-unit calculations. "
+                        "Required when min_dwelling_units > 0."
+                    ),
+                },
+                "category": {
+                    "type": "string",
+                    "description": (
+                        "Optional category filter, e.g. 'Residential', 'Commercial', "
+                        "'Business/Shopping', 'Manufacturing/Industrial', 'Downtown Mixed-Use'."
+                    ),
+                },
+            },
+        },
+    },
+    {
+        "name": "get_use_table",
+        "description": (
+            "Return the permitted-use table for a Chicago zoning district, showing which "
+            "land uses are Permitted (P), require Special Use approval (S), require "
+            "Planned Development approval (PD), or are Not Allowed (-). "
+            "Use when the user asks what types of businesses, buildings, or activities "
+            "are allowed in a district — e.g. 'Can I open a restaurant in B2-1?', "
+            "'Are multi-unit buildings allowed in RS-3?', 'What uses are permitted in M1-2?'. "
+            "Supported districts: RS, RT, RM, B1–B3, C1–C3, DC, DX, DR, DS, M1–M3."
+        ),
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "district_code": {
+                    "type": "string",
+                    "description": "Chicago zoning district code, e.g. 'RS-3', 'B2-1', 'M1-2'",
+                }
+            },
+            "required": ["district_code"],
+        },
+    },
 ]
 
 
@@ -512,6 +578,14 @@ class GeminiZoningClient:
             return calls
 
         if districts:
+            # Use-table questions take priority over plain lookup
+            if self._looks_like_use_table_question(q_lower):
+                self._append_tool_call(
+                    calls,
+                    "get_use_table",
+                    {"district_code": districts[0]},
+                )
+                return calls
             self._append_tool_call(calls, "lookup_district", {"district_code": districts[0]})
             if self._looks_like_code_search(q_lower) and any(
                 word in q_lower
@@ -530,6 +604,16 @@ class GeminiZoningClient:
                     "search_zoning_code",
                     {"query": q, "max_results": 5},
                 )
+            return calls
+
+        # Criteria-based district search
+        if self._looks_like_criteria_question(q_lower):
+            criteria = self._extract_criteria(q, q_lower)
+            self._append_tool_call(
+                calls,
+                "find_districts_meeting_criteria",
+                criteria,
+            )
             return calls
 
         if self._looks_like_code_search(q_lower):
@@ -583,6 +667,115 @@ class GeminiZoningClient:
                 "rezoned",
             )
         )
+
+    @staticmethod
+    def _looks_like_use_table_question(question_lower: str) -> bool:
+        """Return True when the question asks about permitted/allowed uses in a district."""
+        return any(
+            phrase in question_lower
+            for phrase in (
+                "allowed in",
+                "permitted in",
+                "allow in",
+                "allow a",
+                "allows a",
+                "can i open",
+                "can i build",
+                "can i operate",
+                "can i run",
+                "what can i",
+                "what is allowed",
+                "what is permitted",
+                "what uses are",
+                "permitted uses",
+                "allowed uses",
+                "use table",
+                "restaurant",
+                "retail",
+                "office use",
+                "warehouse",
+                "daycare",
+                "school",
+                "church",
+                "hotel",
+                "multifamily",
+                "multi-family",
+                "multi family",
+                "residential use",
+                "commercial use",
+                "what businesses",
+                "what type of use",
+                "what types of use",
+            )
+        )
+
+    @staticmethod
+    def _looks_like_criteria_question(question_lower: str) -> bool:
+        """Return True when the question asks which districts meet some criteria."""
+        return any(
+            phrase in question_lower
+            for phrase in (
+                "which district",
+                "what district",
+                "which zones",
+                "what zones",
+                "districts allow",
+                "zones allow",
+                "districts with",
+                "zones with",
+                "districts that",
+                "zones that",
+                "meet criteria",
+                "at least",
+                "minimum far",
+                "max far",
+                "far of",
+                "far greater",
+                "far higher",
+                "far above",
+                "far below",
+                "far less",
+                "how many units",
+                "dwelling units on",
+            )
+        )
+
+    def _extract_criteria(self, question: str, question_lower: str) -> dict:
+        """Extract filter arguments for find_districts_meeting_criteria from the question."""
+        args: dict = {}
+        lot_area = self._extract_lot_area(question)
+        if lot_area:
+            args["lot_area_sqft"] = lot_area
+
+        # Try to extract a minimum unit count: "at least N units", "N or more units"
+        units_match = re.search(
+            r"(?:at least|minimum of?|at minimum)\s+(\d+)\s+(?:dwelling\s+)?units?",
+            question_lower,
+        )
+        if units_match:
+            args["min_dwelling_units"] = int(units_match.group(1))
+
+        # FAR filter: "FAR of at least N", "FAR >= N", "FAR greater than N", "minimum FAR N"
+        min_far_match = re.search(
+            r"(?:far|floor\s+area\s+ratio)\s*(?:of\s+)?(?:at\s+least|>=?|greater\s+than|above|minimum)\s*(\d+(?:\.\d+)?)",
+            question_lower,
+        )
+        if min_far_match:
+            args["min_far"] = float(min_far_match.group(1))
+
+        max_far_match = re.search(
+            r"(?:far|floor\s+area\s+ratio)\s*(?:of\s+)?(?:at\s+most|<=?|less\s+than|below|maximum|under)\s*(\d+(?:\.\d+)?)",
+            question_lower,
+        )
+        if max_far_match:
+            args["max_far"] = float(max_far_match.group(1))
+
+        # Category
+        category = self._extract_district_category(question_lower)
+        if category:
+            args["category"] = category
+
+        return args
 
     @staticmethod
     def _looks_like_comparison_question(question_lower: str) -> bool:

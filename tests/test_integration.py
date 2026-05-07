@@ -67,11 +67,13 @@ EXPECTED_TOOLS = {
     "get_zoning_map_url",
     "search_zoning_code",
     "get_zoning_section",
+    "find_districts_meeting_criteria",
+    "get_use_table",
 }
 
 
 def test_all_tools_registered():
-    """All 8 expected tools must be registered on the server."""
+    """All 10 expected tools must be registered on the server."""
     registered = _get_tool_names(mcp)
     missing = EXPECTED_TOOLS - registered
     assert not missing, f"Missing tools: {missing}"

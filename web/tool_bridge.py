@@ -20,46 +20,71 @@ from src.tools.code_search import get_section_by_number, load_section_index, sea
 
 _NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
 _SOCRATA_URL = "https://data.cityofchicago.org/resource/dj47-wfun.geojson"
+_SOCRATA_SELECT_FIELDS = "zone_class,zone_type,edit_date,objectid,case_number"
 
 _last_geocode_time: float = 0.0
 _RATE_LIMIT_SECONDS = 1.1
+
+# Reuse one connection-pooled HTTP client for all sync calls. Saves a TLS
+# handshake (~50–200 ms) per call after the first one.
+_http_client: httpx.Client = httpx.Client(
+    timeout=httpx.Timeout(15.0, connect=5.0),
+    headers={"User-Agent": "chicago-zoning-mcp/0.1"},
+)
+
+# In-process caches keyed on normalized address / rounded coordinates.
+_geocode_cache: dict[str, tuple[float, float] | None] = {}
+_GEOCODE_CACHE_MAX = 512
+_parcel_cache: dict[tuple[float, float], dict] = {}
+_PARCEL_CACHE_MAX = 256
+
+
+def _cache_set(cache: dict, max_size: int, key, value) -> None:
+    if len(cache) >= max_size:
+        cache.pop(next(iter(cache)))
+    cache[key] = value
 
 
 def _sync_geocode(address: str) -> tuple[float, float] | None:
     """Synchronous geocoding via Nominatim. Rate-limited to 1 req/sec."""
     global _last_geocode_time
+    if "chicago" not in address.lower():
+        address = f"{address}, Chicago, IL"
+    cache_key = " ".join(address.lower().split())
+    if cache_key in _geocode_cache:
+        return _geocode_cache[cache_key]
+
     elapsed = time.monotonic() - _last_geocode_time
     if elapsed < _RATE_LIMIT_SECONDS:
         time.sleep(_RATE_LIMIT_SECONDS - elapsed)
     _last_geocode_time = time.monotonic()
 
-    if "chicago" not in address.lower():
-        address = f"{address}, Chicago, IL"
     try:
-        with httpx.Client() as client:
-            resp = client.get(
-                _NOMINATIM_URL,
-                params={
-                    "q": address,
-                    "format": "json",
-                    "limit": 1,
-                    "countrycodes": "us",
-                    "viewbox": "-87.94,42.02,-87.52,41.64",
-                    "bounded": 1,
-                },
-                headers={"User-Agent": "chicago-zoning-mcp/0.1"},
-                timeout=10,
-            )
-            resp.raise_for_status()
-            results = resp.json()
+        resp = _http_client.get(
+            _NOMINATIM_URL,
+            params={
+                "q": address,
+                "format": "json",
+                "limit": 1,
+                "countrycodes": "us",
+                "viewbox": "-87.94,42.02,-87.52,41.64",
+                "bounded": 1,
+            },
+            timeout=10,
+        )
+        resp.raise_for_status()
+        results = resp.json()
     except httpx.HTTPError:
         return None
 
     if not results:
+        _cache_set(_geocode_cache, _GEOCODE_CACHE_MAX, cache_key, None)
         return None
     lat = float(results[0]["lat"])
     lng = float(results[0]["lon"])
-    return (lat, lng) if is_in_chicago(lat, lng) else None
+    coords = (lat, lng) if is_in_chicago(lat, lng) else None
+    _cache_set(_geocode_cache, _GEOCODE_CACHE_MAX, cache_key, coords)
+    return coords
 
 
 # ---------------------------------------------------------------------------
@@ -191,15 +216,24 @@ def get_parcel_zoning(
         return {"error": "Provide either an address or latitude/longitude."}
 
     soql_where = f"intersects(the_geom, 'POINT({lng} {lat})')"
+
+    cache_key = (round(lat, 5), round(lng, 5))
+    cached = _parcel_cache.get(cache_key)
+    if cached is not None:
+        return {**cached, "address": address or None}
+
     try:
-        with httpx.Client() as client:
-            resp = client.get(
-                _SOCRATA_URL,
-                params={"$where": soql_where, "$limit": 5},
-                timeout=15,
-            )
-            resp.raise_for_status()
-            data = resp.json()
+        resp = _http_client.get(
+            _SOCRATA_URL,
+            params={
+                "$where": soql_where,
+                "$select": _SOCRATA_SELECT_FIELDS,
+                "$limit": 5,
+            },
+            timeout=15,
+        )
+        resp.raise_for_status()
+        data = resp.json()
     except httpx.TimeoutException:
         return {
             "error": "Request to Chicago Data Portal timed out. Try again shortly.",
@@ -219,13 +253,20 @@ def get_parcel_zoning(
         }
     props = features[0].get("properties", {})
     district_code = props.get("zone_class", "")
-    return {
+    result = {
         "coordinates": {"lat": lat, "lng": lng},
         "address": address or None,
         "zone_class": district_code,
         "socrata_properties": props,
         "district_details": get_district(district_code),
     }
+    _cache_set(
+        _parcel_cache,
+        _PARCEL_CACHE_MAX,
+        cache_key,
+        {k: v for k, v in result.items() if k != "address"},
+    )
+    return result
 
 
 def get_zoning_map_url(
@@ -271,6 +312,158 @@ def get_zoning_section(section_number: str) -> dict:
 
 
 # ---------------------------------------------------------------------------
+# New tools added 2026-05-07
+# ---------------------------------------------------------------------------
+
+
+def find_districts_meeting_criteria(
+    min_far: float = 0.0,
+    max_far: float = 0.0,
+    min_dwelling_units: int = 0,
+    lot_area_sqft: float = 0.0,
+    category: str = "",
+) -> dict:
+    """Sync bridge — delegates directly to the src implementation."""
+    from src.tools.district_lookup import (
+        _parse_far,
+        _parse_lot_per_unit,
+    )
+
+    errors = []
+    if min_dwelling_units > 0 and lot_area_sqft <= 0:
+        errors.append("lot_area_sqft must be > 0 when min_dwelling_units is set.")
+    if min_far < 0 or max_far < 0:
+        errors.append("min_far and max_far must be >= 0.")
+    if min_far > 0 and max_far > 0 and min_far > max_far:
+        errors.append("min_far cannot be greater than max_far.")
+    if errors:
+        return {"error": " ".join(errors)}
+
+    candidates = (
+        get_districts_by_category(category)
+        if category
+        else list(get_all_districts().values())
+    )
+
+    results = []
+    for d in candidates:
+        far = _parse_far(d.get("floor_area_ratio", ""))
+        if min_far > 0 or max_far > 0:
+            if far is None:
+                continue
+            if min_far > 0 and far < min_far:
+                continue
+            if max_far > 0 and far > max_far:
+                continue
+
+        max_units: int | str = "N/A"
+        if lot_area_sqft > 0:
+            lpu = _parse_lot_per_unit(d.get("lot_area_per_unit", ""))
+            if lpu is not None:
+                max_units = max(int(lot_area_sqft // lpu), 1)
+            else:
+                max_units = "N/A (see lot_area_per_unit)"
+
+        if min_dwelling_units > 0:
+            if not isinstance(max_units, int) or max_units < min_dwelling_units:
+                continue
+
+        entry: dict = {
+            "district_type_code": d["district_type_code"],
+            "category": d["category"],
+            "district_title": d["district_title"],
+            "floor_area_ratio": d["floor_area_ratio"],
+            "plain_description": d["plain_description"],
+        }
+        if lot_area_sqft > 0:
+            entry["max_dwelling_units"] = max_units
+        results.append((far if far is not None else -1.0, entry))
+
+    results.sort(key=lambda x: -x[0])
+    matches = [e for _, e in results]
+
+    applied: dict = {}
+    if min_far > 0:
+        applied["min_far"] = min_far
+    if max_far > 0:
+        applied["max_far"] = max_far
+    if min_dwelling_units > 0:
+        applied["min_dwelling_units"] = min_dwelling_units
+    if lot_area_sqft > 0:
+        applied["lot_area_sqft"] = lot_area_sqft
+    if category:
+        applied["category"] = category
+
+    return {
+        "matching_count": len(matches),
+        "applied_filters": applied,
+        "districts": matches,
+    }
+
+
+def get_use_table(district_code: str) -> dict:
+    """Sync bridge — delegates directly to the src implementation."""
+    from src.tools.code_search import (
+        _map_use_table,
+        get_section_by_number,
+        load_section_index,
+    )
+
+    if not load_section_index():
+        return {
+            "error": "Title 17 text index not yet built.",
+            "hint": "Run: python scripts/ingest_title_17.py",
+        }
+
+    code = district_code.strip().upper()
+    district_info = get_district(code)
+    if district_info is None:
+        return {
+            "error": f"District '{district_code}' not found.",
+            "hint": "Use list_district_types to see all valid district codes.",
+        }
+
+    section_number, column_label, notes = _map_use_table(code)
+    if section_number is None:
+        return {
+            "error": (
+                f"District '{code}' does not have a standard Title 17 use table. "
+                f"{notes or ''}"
+            ),
+            "district_title": district_info["district_title"],
+        }
+
+    section = get_section_by_number(section_number)
+    if section is None:
+        return {
+            "error": (
+                f"Use table section {section_number} was not found in the index. "
+                "Re-run ingest_title_17.py to rebuild."
+            ),
+        }
+
+    return {
+        "district_code": code,
+        "district_title": district_info["district_title"],
+        "use_table_section": section_number,
+        "column_label": column_label,
+        "column_hint": (
+            f"Look for the column labelled '{column_label}' in the table below "
+            "to see what is Permitted (P), requires Special Use (S), requires "
+            "Planned Development approval (PD), or is Not Allowed (-)."
+        ),
+        "legend": {
+            "P": "Permitted by-right",
+            "S": "Special Use approval required (Zoning Board of Appeals)",
+            "PD": "Planned Development approval required (City Council)",
+            "-": "Not allowed",
+        },
+        "use_table_text": section.get("text", ""),
+        "source": f"Title 17 §{section_number} — {section.get('title', '')}",
+    }
+
+
+# ---------------------------------------------------------------------------
 # Registry for the Gemini client to dispatch by name
 # ---------------------------------------------------------------------------
 
@@ -283,4 +476,6 @@ TOOL_FUNCTIONS: dict[str, callable] = {
     "get_zoning_map_url": get_zoning_map_url,
     "search_zoning_code": search_zoning_code,
     "get_zoning_section": get_zoning_section,
+    "find_districts_meeting_criteria": find_districts_meeting_criteria,
+    "get_use_table": get_use_table,
 }

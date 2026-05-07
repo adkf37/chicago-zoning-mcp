@@ -8,7 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"
+          integrity="sha384-/TQbtLCAerC3jgaim+N78RZSDYV7ryeoBCVqTuzRrFec2akfBkHS7ACQ3PQhvMVi"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"
+          integrity="sha384-+VfUPEb0PdtChMwmBcBmykRMDd+v6D/oFmB3rZM/puCMDYcIvF968OimRh4KQY9a"
+          crossorigin="anonymous"></script>
   <style>
     /* ─── DESIGN TOKENS ──────────────────────────────────── */
     :root {
@@ -865,7 +870,10 @@
         bubble.appendChild(label);
 
         const body = document.createElement('div');
-        body.innerHTML = marked.parse(content);
+        // LLM/tool output is untrusted markdown — sanitize the rendered HTML
+        // through DOMPurify to prevent XSS (e.g. <script>, <img onerror=...>)
+        // from a prompt-injected response.
+        body.innerHTML = DOMPurify.sanitize(marked.parse(content));
         bubble.appendChild(body);
 
         if (toolCalls && toolCalls.length > 0) {

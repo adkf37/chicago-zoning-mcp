@@ -20,6 +20,16 @@ CHICAGO_BOUNDS = {
 _last_request_time: float = 0.0
 _RATE_LIMIT_SECONDS = 1.1  # Slightly over 1s to be safe
 
+# In-process cache for repeated geocoding lookups. Repeat queries (very common
+# during multi-turn LLM conversations) are returned instantly and skip the
+# 1.1 s rate-limit wait entirely.
+_geocode_cache: dict[str, tuple[float, float] | None] = {}
+_GEOCODE_CACHE_MAX = 512
+
+
+def _normalize_address(address: str) -> str:
+    return " ".join(address.lower().split())
+
 
 async def _enforce_rate_limit() -> None:
     """Wait if needed to respect Nominatim's 1 req/sec rate limit."""
@@ -48,6 +58,10 @@ async def geocode_address(address: str) -> tuple[float, float] | None:
     if "chicago" not in address.lower():
         address = f"{address}, Chicago, IL"
 
+    cache_key = _normalize_address(address)
+    if cache_key in _geocode_cache:
+        return _geocode_cache[cache_key]
+
     await _enforce_rate_limit()
 
     try:
@@ -71,6 +85,7 @@ async def geocode_address(address: str) -> tuple[float, float] | None:
         return None
 
     if not results:
+        _store_geocode(cache_key, None)
         return None
 
     lat = float(results[0]["lat"])
@@ -78,6 +93,14 @@ async def geocode_address(address: str) -> tuple[float, float] | None:
 
     # Verify result is actually in Chicago
     if not is_in_chicago(lat, lng):
+        _store_geocode(cache_key, None)
         return None
 
+    _store_geocode(cache_key, (lat, lng))
     return lat, lng
+
+
+def _store_geocode(key: str, value: tuple[float, float] | None) -> None:
+    if len(_geocode_cache) >= _GEOCODE_CACHE_MAX:
+        _geocode_cache.pop(next(iter(_geocode_cache)))
+    _geocode_cache[key] = value

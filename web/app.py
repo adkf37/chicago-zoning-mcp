@@ -13,6 +13,7 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 DEFAULT_GEMINI_MODEL = "gemini-2.5-flash"
+MAX_QUESTION_LENGTH = 4000  # characters; rejects oversized payloads early
 
 # Lazily initialized Gemini client (avoids cold-start API key check)
 _gemini_client = None
@@ -69,6 +70,19 @@ def chat() -> tuple[Any, int]:
     if not question:
         return jsonify({"error": "Question is required."}), 400
 
+    if len(question) > MAX_QUESTION_LENGTH:
+        return (
+            jsonify(
+                {
+                    "error": (
+                        f"Question is too long ({len(question)} chars). "
+                        f"Maximum is {MAX_QUESTION_LENGTH}."
+                    )
+                }
+            ),
+            413,
+        )
+
     try:
         client = _get_client()
         answer, trace = client.ask(question)
@@ -109,7 +123,7 @@ def health() -> tuple[Any, int]:
                 "status": "ok",
                 "api_key_configured": api_key_set,
                 "gemini_model": os.environ.get("GEMINI_MODEL", DEFAULT_GEMINI_MODEL),
-                "tools_count": 8,
+                "tools_count": 10,
             }
         ),
         200,
