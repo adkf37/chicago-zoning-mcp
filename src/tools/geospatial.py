@@ -10,7 +10,7 @@ from src.geocoder import geocode_address, is_in_chicago
 ZONING_SOCRATA_URL = "https://data.cityofchicago.org/resource/dj47-wfun.geojson"
 
 # Trim the Socrata payload — we only need a few attributes, not the full geometry.
-_SOCRATA_SELECT_FIELDS = "zone_class,zone_type,edit_date,objectid,case_number"
+_SOCRATA_SELECT_FIELDS = "zone_class,zone_type,edit_date,objectid,case_numbe"
 
 # Reuse one async client (connection pool + keep-alive). FastMCP runs a single
 # event loop per server process, so module-level reuse is safe and noticeably

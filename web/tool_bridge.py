@@ -20,7 +20,7 @@ from src.tools.code_search import get_section_by_number, load_section_index, sea
 
 _NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
 _SOCRATA_URL = "https://data.cityofchicago.org/resource/dj47-wfun.geojson"
-_SOCRATA_SELECT_FIELDS = "zone_class,zone_type,edit_date,objectid,case_number"
+_SOCRATA_SELECT_FIELDS = "zone_class,zone_type,edit_date,objectid,case_numbe"
 
 _last_geocode_time: float = 0.0
 _RATE_LIMIT_SECONDS = 1.1
