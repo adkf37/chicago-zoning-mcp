@@ -162,37 +162,32 @@
     .hero__inner {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 1.25rem 1.5rem 1rem;
+      padding: 0.3rem 1.5rem 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
     }
 
     .hero__eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 1rem;
+      display: none;
     }
 
     .hero__eyebrow-stars {
       display: flex;
       gap: 0.2rem;
       color: var(--red);
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       opacity: 0.7;
     }
 
     .hero__headline {
       font-family: var(--font-display);
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      line-height: 1.1;
+      font-size: clamp(1rem, 1.8vw, 1.35rem);
+      line-height: 1.15;
       letter-spacing: -0.01em;
       color: #ffffff;
-      margin-bottom: 0.5rem;
-      max-width: 720px;
+      margin-bottom: 0;
+      white-space: nowrap;
     }
 
     .hero__headline em {
@@ -201,10 +196,9 @@
     }
 
     .hero__subtitle {
-      font-size: 0.95rem;
-      line-height: 1.55;
-      color: rgba(255,255,255,0.62);
-      max-width: 580px;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.55);
       font-weight: 300;
       margin-bottom: 0;
     }
@@ -213,7 +207,7 @@
     .main-layout {
       flex: 1;
       display: grid;
-      grid-template-columns: 220px 1fr 260px;
+      grid-template-columns: 160px 3fr 1fr;
       min-height: 0;
       overflow: hidden;
     }
@@ -614,65 +608,53 @@
     .site-footer {
       background: var(--navy-deep);
       border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 1.75rem 1.5rem;
+      padding: 0.2rem 1.5rem;
       flex-shrink: 0;
     }
 
     .site-footer__inner {
       max-width: var(--max-width);
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr auto;
+      display: flex;
+      align-items: center;
       gap: 1.5rem;
-      align-items: start;
+      justify-content: space-between;
     }
 
     .site-footer__brand {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.9);
-      margin-bottom: 0.35rem;
+      display: none;
     }
 
     .site-footer__brand-stars {
-      display: flex;
-      gap: 0.15rem;
-      color: var(--red);
-      font-size: 0.7rem;
-      margin-top: 0.15rem;
+      display: none;
     }
 
     .site-footer__meta {
-      font-size: 0.73rem;
-      color: rgba(255,255,255,0.32);
-      line-height: 1.65;
-      max-width: 420px;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.28);
+      line-height: 1.4;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .site-footer__links {
       display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
+      flex-direction: row;
+      gap: 0.75rem;
       text-align: right;
     }
 
     .site-footer__links-label {
-      font-size: 0.67rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
-      margin-bottom: 0.25rem;
+      display: none;
     }
 
     .site-footer__links a {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.45);
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.35);
       text-decoration: none;
       transition: color 0.2s;
+      white-space: nowrap;
     }
 
     .site-footer__links a:hover {
@@ -681,7 +663,7 @@
 
     /* ─── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 900px) {
-      .main-layout { grid-template-columns: 200px 1fr; }
+      .main-layout { grid-template-columns: 160px 1fr; }
       .suggestions-panel { display: none; }
     }
     @media (max-width: 768px) {
@@ -689,9 +671,9 @@
       .sidebar { display: none; }
       .top-nav__links { display: none; }
       .bubble { max-width: 90%; }
-      .site-footer__inner { grid-template-columns: 1fr; }
-      .site-footer__links { text-align: left; }
-      .hero__headline { font-size: 1.6rem; }
+      .site-footer__inner { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+      .site-footer__links { flex-wrap: wrap; }
+      .hero__headline { font-size: 1rem; }
     }
   </style>
 </head>
@@ -716,13 +698,9 @@
   <header class="hero">
     <div class="hero__bg-grid" aria-hidden="true"></div>
     <div class="hero__inner">
-      <p class="hero__eyebrow">
-        <span class="hero__eyebrow-stars" aria-hidden="true">★ ★ ★ ★</span>
-        Chicago Municipal Code · Title 17
-      </p>
       <h1 class="hero__headline">Chicago Zoning <em>Assistant</em></h1>
       <p class="hero__subtitle">
-        Ask about district rules, development potential, address lookups, and the full zoning ordinance.
+        District rules · Development potential · Address lookups · Title 17 search
       </p>
     </div>
   </header>
@@ -814,22 +792,14 @@
   <!-- ═══ FOOTER ══════════════════════════════════════════════ -->
   <footer class="site-footer">
     <div class="site-footer__inner">
-      <div>
-        <div class="site-footer__brand">
-          <span class="site-footer__brand-stars" aria-hidden="true">★ ★ ★ ★</span>
-          Chicago Zoning Assistant
-        </div>
-        <div class="site-footer__meta">
-          Powered by Gemini · Data from the Chicago Data Portal and American Legal Publishing<br/>
-          Not affiliated with the City of Chicago · For informational purposes only — not legal advice
-        </div>
+      <div class="site-footer__meta">
+        Powered by Gemini · Chicago Data Portal · Not legal advice
       </div>
       <div class="site-footer__links">
-        <p class="site-footer__links-label">Official Resources</p>
         <a href="https://www.chicago.gov/city/en/depts/dcd/supp_info/zoning.html" target="_blank" rel="noopener">Chicago DPD</a>
-        <a href="https://gisapps.chicago.gov/ChicagoMaps/zoningDistricts" target="_blank" rel="noopener">Official Zoning Map</a>
-        <a href="https://codelibrary.amlegal.com/codes/chicago/latest/chicago_il/0-0-0-2647389" target="_blank" rel="noopener">Title 17 (Full Text)</a>
-        <a href="https://data.cityofchicago.org/" target="_blank" rel="noopener">Chicago Data Portal</a>
+        <a href="https://gisapps.chicago.gov/ChicagoMaps/zoningDistricts" target="_blank" rel="noopener">Zoning Map</a>
+        <a href="https://codelibrary.amlegal.com/codes/chicago/latest/chicago_il/0-0-0-2647389" target="_blank" rel="noopener">Title 17</a>
+        <a href="https://data.cityofchicago.org/" target="_blank" rel="noopener">Data Portal</a>
       </div>
     </div>
   </footer>
