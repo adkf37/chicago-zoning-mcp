@@ -336,6 +336,26 @@ class GeminiZoningClient:
         r"(?<![\d.-])([+-]?\d{1,2}\.\d+)\s*,\s*"
         r"([+-]?\d{1,3}\.\d+)(?![\d.-])"
     )
+    # Trailing words that users tack on after an address but that aren't part of
+    # the street address itself (e.g. "1521 N Bell zoning" -> address is
+    # "1521 N Bell"). Stripped from candidate address strings before validation.
+    ADDRESS_TRAILING_TRIGGER_RE = re.compile(
+        r"(?:[\s,?.!:;-]+"
+        r"(?:zoning|zone|zoned|district|districts|parcel|parcels|lot|lots|"
+        r"address|addresses|info|information|details|rules|code|codes|"
+        r"please|here|now|today|map|use|uses|allowed|permitted|category)"
+        r")+\s*\??\s*$",
+        re.IGNORECASE,
+    )
+    # Pronoun/anaphora cues that indicate the user is referring to entities
+    # established earlier in the conversation ("parking requirements there").
+    PRONOUN_RE = re.compile(
+        r"\b(?:there|here|that|this|it|its|same|same\s+address|same\s+lot|"
+        r"that\s+address|this\s+address|that\s+lot|this\s+lot|that\s+district|"
+        r"this\s+district|that\s+zone|the\s+address|the\s+district|the\s+lot|"
+        r"the\s+zone|the\s+section|the\s+parcel)\b",
+        re.IGNORECASE,
+    )
 
     def __init__(self, model: str | None = None) -> None:
         if genai is None or types is None:
@@ -352,18 +372,39 @@ class GeminiZoningClient:
 
     # ------------------------------------------------------------------
 
-    def ask(self, question: str) -> tuple[str, dict[str, Any]]:
+    def ask(
+        self,
+        question: str,
+        history: list[dict[str, Any]] | None = None,
+        entities: dict[str, Any] | None = None,
+    ) -> tuple[str, dict[str, Any]]:
         """Ask a question, invoking tools as needed.
 
-        Returns:
-            (answer, trace) - trace contains tool_calls list and final_answer.
-        """
-        if os.environ.get("GEMINI_FUNCTION_CALLING", "").lower() not in {"1", "true", "yes"}:
-            return self._ask_with_local_context(question)
+        Args:
+            question: User's current question.
+            history: Optional list of prior turns,
+                e.g. ``[{"role": "user", "content": "..."}, {"role": "assistant", "content": "..."}]``.
+                Used to give Gemini conversational context.
+            entities: Optional dict of resolved entities from prior turns
+                (``last_address``, ``last_zone_class``, ``last_district``,
+                ``last_lot_area``, ``last_section``, ``last_coordinates``).
+                Used to resolve pronouns like "there" / "that district".
 
-        deterministic_calls = self._collect_tool_context(question)
+        Returns:
+            (answer, trace) - trace contains tool_calls list, final_answer, and
+            an ``entities`` dict the caller can persist for the next turn.
+        """
+        history = history or []
+        entities = entities or {}
+
+        if os.environ.get("GEMINI_FUNCTION_CALLING", "").lower() not in {"1", "true", "yes"}:
+            return self._ask_with_local_context(question, history, entities)
+
+        deterministic_calls = self._collect_tool_context(question, entities)
         if deterministic_calls:
-            return self._answer_with_tool_context(question, deterministic_calls)
+            return self._answer_with_tool_context(
+                question, deterministic_calls, history, entities
+            )
 
         contents: list[types.Content] = [
             types.Content(role="user", parts=[types.Part(text=question)])
@@ -433,37 +474,71 @@ class GeminiZoningClient:
         # Exhausted max iterations
         fallback = "I was unable to complete the analysis within the iteration limit."
         trace["final_answer"] = fallback
+        trace["entities"] = self._update_entities(entities, trace["tool_calls"], question)
         return fallback, trace
 
     # ------------------------------------------------------------------
 
-    def _ask_with_local_context(self, question: str) -> tuple[str, dict[str, Any]]:
+    def _ask_with_local_context(
+        self,
+        question: str,
+        history: list[dict[str, Any]],
+        entities: dict[str, Any],
+    ) -> tuple[str, dict[str, Any]]:
         """Run local zoning lookups before sending a plain-text Gemini request."""
-        return self._answer_with_tool_context(question, self._collect_tool_context(question))
+        return self._answer_with_tool_context(
+            question,
+            self._collect_tool_context(question, entities),
+            history,
+            entities,
+        )
 
     def _answer_with_tool_context(
         self,
         question: str,
         tool_calls: list[dict[str, Any]],
+        history: list[dict[str, Any]] | None = None,
+        entities: dict[str, Any] | None = None,
     ) -> tuple[str, dict[str, Any]]:
         """Ask Gemini to write the final answer from deterministic local tool results."""
+        history = history or []
+        entities = entities or {}
         trace: dict[str, Any] = {
             "question": question,
             "tool_calls": tool_calls,
             "final_answer": None,
         }
         context = json.dumps(trace["tool_calls"], ensure_ascii=True, default=str, indent=2)
-        prompt = (
-            f"User question:\n{question}\n\n"
-            f"Local zoning tool results as JSON:\n{context or '[]'}\n\n"
+        history_block = self._format_history(history)
+        entity_block = self._format_entities(entities)
+        prompt_parts = []
+        if history_block:
+            prompt_parts.append(
+                "Recent conversation (oldest first):\n" + history_block
+            )
+        if entity_block:
+            prompt_parts.append(
+                "Entities from earlier in the conversation "
+                "(use these to resolve pronouns like 'there', 'that district'):\n"
+                + entity_block
+            )
+        prompt_parts.append(f"User question:\n{question}")
+        prompt_parts.append(
+            f"Local zoning tool results as JSON:\n{context or '[]'}"
+        )
+        prompt_parts.append(
             "Answer using the tool results when present. Do not ignore a successful "
-            "tool result. For validity questions, explicitly start with Yes or No. "
+            "tool result. When the user asks a follow-up that refers to an earlier "
+            "address, district, lot, or section (e.g. 'parking requirements there'), "
+            "apply the question to that earlier entity rather than answering "
+            "generically. For validity questions, explicitly start with Yes or No. "
             "For parcel results, include the zone_class. For calculations, include "
             "the max_floor_area_sqft and FAR when available. For section lookups, "
             "include the section number and title. If no relevant tool result is "
             "present, answer briefly from general zoning knowledge and say when the "
             "user should verify against the official Chicago zoning code or map."
         )
+        prompt = "\n\n".join(prompt_parts)
         try:
             response = self.client.models.generate_content(
                 model=self.model,
@@ -477,7 +552,104 @@ class GeminiZoningClient:
             logger.exception("Gemini request failed; returning local tool fallback")
             answer = self._format_local_fallback(trace["tool_calls"])
         trace["final_answer"] = answer
+        trace["entities"] = self._update_entities(entities, trace["tool_calls"], question)
         return answer, trace
+
+    # ------------------------------------------------------------------
+    # Conversation context helpers
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def _format_history(history: list[dict[str, Any]]) -> str:
+        if not history:
+            return ""
+        lines: list[str] = []
+        for turn in history[-6:]:  # cap at last ~3 Q/A pairs
+            role = turn.get("role", "user").lower()
+            content = (turn.get("content") or "").strip()
+            if not content:
+                continue
+            # Truncate any single turn so the prompt stays small.
+            if len(content) > 600:
+                content = content[:600].rstrip() + "…"
+            label = "User" if role == "user" else "Assistant"
+            lines.append(f"{label}: {content}")
+        return "\n".join(lines)
+
+    @staticmethod
+    def _format_entities(entities: dict[str, Any]) -> str:
+        if not entities:
+            return ""
+        keys = (
+            "last_address",
+            "last_coordinates",
+            "last_zone_class",
+            "last_district",
+            "last_lot_area",
+            "last_section",
+        )
+        lines = []
+        for key in keys:
+            value = entities.get(key)
+            if value in (None, "", []):
+                continue
+            lines.append(f"- {key}: {value}")
+        return "\n".join(lines)
+
+    @classmethod
+    def _update_entities(
+        cls,
+        entities: dict[str, Any],
+        tool_calls: list[dict[str, Any]],
+        question: str,
+    ) -> dict[str, Any]:
+        """Return a new entities dict with anything resolved this turn merged in."""
+        merged = dict(entities)
+        # Pull lot area from the question if mentioned (sticks across turns).
+        lot_area = cls._extract_lot_area(question)
+        if lot_area:
+            merged["last_lot_area"] = lot_area
+        for call in tool_calls:
+            name = call.get("name")
+            args = call.get("args") or {}
+            result = call.get("result") or {}
+            if name == "get_parcel_zoning":
+                addr = args.get("address")
+                if addr:
+                    merged["last_address"] = addr
+                lat = args.get("latitude")
+                lng = args.get("longitude")
+                if lat and lng:
+                    merged["last_coordinates"] = [lat, lng]
+                if isinstance(result, dict):
+                    zone = result.get("zone_class")
+                    if zone:
+                        merged["last_zone_class"] = zone
+                        merged["last_district"] = zone
+                    coords = result.get("coordinates")
+                    if isinstance(coords, dict):
+                        merged["last_coordinates"] = [
+                            coords.get("lat"),
+                            coords.get("lng"),
+                        ]
+            elif name in {"lookup_district", "calculate_development_envelope", "get_use_table"}:
+                code = args.get("district_code")
+                if code:
+                    merged["last_district"] = code
+                if name == "calculate_development_envelope":
+                    area = args.get("lot_area_sqft")
+                    if area:
+                        merged["last_lot_area"] = area
+            elif name == "compare_districts":
+                # Keep the most-recently mentioned (b) as the focus.
+                code = args.get("district_b") or args.get("district_a")
+                if code:
+                    merged["last_district"] = code
+            elif name == "get_zoning_section":
+                sec = args.get("section_number")
+                if sec:
+                    merged["last_section"] = sec
+        return merged
 
     # Tool-code pattern that Gemini sometimes emits instead of structured calls
     _TOOL_CODE_RE = re.compile(
@@ -517,7 +689,12 @@ class GeminiZoningClient:
             lines.append("")
         return "\n".join(lines).strip()
 
-    def _collect_tool_context(self, question: str) -> list[dict[str, Any]]:
+    def _collect_tool_context(
+        self,
+        question: str,
+        entities: dict[str, Any] | None = None,
+    ) -> list[dict[str, Any]]:
+        entities = entities or {}
         q = question.strip()
         q_lower = q.lower()
         calls: list[dict[str, Any]] = []
@@ -526,6 +703,44 @@ class GeminiZoningClient:
         lot_area = self._extract_lot_area(q)
         section_number = self._extract_section_number(q)
         coordinates = self._extract_coordinates(q)
+
+        # ----- Pronoun / anaphora resolution from prior-turn entities -----
+        # If the user is clearly referring back ("there", "that district", etc.)
+        # and we don't have an explicit entity in the current question, pull
+        # the most-recent matching entity from the session.
+        has_address_in_q = bool(self._extract_address(q))
+        has_pronoun = bool(self.PRONOUN_RE.search(q_lower))
+        if has_pronoun or (
+            not districts
+            and not coordinates
+            and not section_number
+            and not has_address_in_q
+        ):
+            # Fall back to last district if nothing else found in this question.
+            if not districts and entities.get("last_district"):
+                districts = [self._normalize_district_code(str(entities["last_district"]))]
+            if not section_number and entities.get("last_section"):
+                section_number = str(entities["last_section"])
+            if not coordinates and entities.get("last_coordinates"):
+                coords = entities["last_coordinates"]
+                if (
+                    isinstance(coords, (list, tuple))
+                    and len(coords) == 2
+                    and coords[0] is not None
+                    and coords[1] is not None
+                ):
+                    coordinates = (float(coords[0]), float(coords[1]))
+            if not lot_area and entities.get("last_lot_area"):
+                try:
+                    lot_area = float(entities["last_lot_area"])
+                except (TypeError, ValueError):
+                    pass
+        # Carry-over address used only when the question doesn't already imply one.
+        carried_address = (
+            entities.get("last_address")
+            if (has_pronoun and not has_address_in_q)
+            else None
+        )
 
         if section_number:
             self._append_tool_call(
@@ -589,15 +804,51 @@ class GeminiZoningClient:
             }
             return calls
 
-        address = self._extract_address(q)
+        address = self._extract_address(q) or carried_address
         if address:
+            # If the question is a follow-up that refers to a prior address but
+            # also asks about a clear code-search topic (e.g. "parking
+            # requirements there"), surface those code sections too.
             self._append_tool_call(calls, "get_parcel_zoning", {"address": address})
             zone_class = self._district_from_parcel_result(calls[-1]["result"])
-            if zone_class and lot_area and self._looks_like_development_question(q_lower):
+            is_dev_question = self._looks_like_development_question(q_lower)
+            if zone_class and lot_area and is_dev_question:
                 self._append_tool_call(
                     calls,
                     "calculate_development_envelope",
                     {"district_code": zone_class, "lot_area_sqft": lot_area},
+                )
+            if (
+                not is_dev_question
+                and self._looks_like_code_search(q_lower)
+                and any(
+                    word in q_lower
+                    for word in (
+                        "parking",
+                        "adu",
+                        "accessory dwelling",
+                        "variance",
+                        "special use",
+                        "permit",
+                        "ordinance",
+                        "section",
+                        "setback",
+                        "sign",
+                        "home occupation",
+                        "landscape",
+                        "landscaping",
+                        "overlay",
+                        "nonconforming",
+                        "planned development",
+                        "transit-oriented",
+                        "pedestrian street",
+                    )
+                )
+            ):
+                self._append_tool_call(
+                    calls,
+                    "search_zoning_code",
+                    {"query": q, "max_results": 5},
                 )
             return calls
 
@@ -972,8 +1223,11 @@ class GeminiZoningClient:
     def _extract_address(question: str) -> str:
         cleaned = re.sub(r"\([^)]*\)", "", question)
         cleaned = re.sub(r"\s+", " ", cleaned).strip(" .,")
-        if GeminiZoningClient._looks_like_street_address(cleaned):
-            return cleaned
+        # Strip trailing zoning-trigger words so things like
+        # "1521 N Bell zoning" -> "1521 N Bell" before address validation.
+        trimmed = GeminiZoningClient._strip_trailing_triggers(cleaned)
+        if trimmed and GeminiZoningClient._looks_like_street_address(trimmed):
+            return trimmed
 
         if not re.search(
             r"\b(?:zoning|zone|parcel|address|build|built)\b",
@@ -991,11 +1245,23 @@ class GeminiZoningClient:
         if not match:
             return ""
         address = re.sub(r"\s+", " ", match.group(1)).strip(" .,")
+        address = GeminiZoningClient._strip_trailing_triggers(address) or address
         if re.fullmatch(r"[+-]?\d+(?:\.\d+)?\s*,\s*[+-]?\d+(?:\.\d+)?", address):
             return ""
         if not GeminiZoningClient._looks_like_street_address(address):
             return ""
         return address if re.search(r"\d", address) else ""
+
+    @staticmethod
+    def _strip_trailing_triggers(text: str) -> str:
+        """Remove trailing trigger words like 'zoning' from an address candidate."""
+        prev = None
+        out = text
+        # Apply repeatedly so "... zoning info please" collapses fully.
+        while prev != out:
+            prev = out
+            out = GeminiZoningClient.ADDRESS_TRAILING_TRIGGER_RE.sub("", out).strip(" .,?")
+        return out
 
     @staticmethod
     def _looks_like_street_address(text: str) -> bool:

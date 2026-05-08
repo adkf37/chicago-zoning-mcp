@@ -795,6 +795,25 @@
 
     marked.setOptions({ breaks: true, gfm: true });
 
+    // ─── Conversation session ─────────────────────────────────
+    // A stable id keeps follow-up questions ("parking requirements there")
+    // tied to the entities resolved on prior turns. Persists across reloads
+    // for the lifetime of this browser tab/session.
+    const SESSION_KEY = 'czm.sessionId';
+    function _genId() {
+      if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+      return 'sid-' + Date.now().toString(36) + '-' +
+             Math.random().toString(36).slice(2, 10);
+    }
+    let sessionId = null;
+    try {
+      sessionId = sessionStorage.getItem(SESSION_KEY);
+    } catch (_) { /* sessionStorage may be unavailable */ }
+    if (!sessionId) {
+      sessionId = _genId();
+      try { sessionStorage.setItem(SESSION_KEY, sessionId); } catch (_) {}
+    }
+
     function setLoading(on) {
       submitBtn.disabled = on;
       btnText.style.display    = on ? 'none'  : '';
@@ -888,7 +907,7 @@
         const res = await fetch('/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ question }),
+          body: JSON.stringify({ question, session_id: sessionId }),
         });
         const data = await res.json();
         hideTyping();
@@ -902,6 +921,10 @@
           ].filter(Boolean).join('\n\n');
           appendError(details);
         } else {
+          if (data.session_id && data.session_id !== sessionId) {
+            sessionId = data.session_id;
+            try { sessionStorage.setItem(SESSION_KEY, sessionId); } catch (_) {}
+          }
           appendMessage('bot', data.answer, data.used_tools ? data.tool_calls : []);
         }
       } catch (err) {

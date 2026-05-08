@@ -4,7 +4,11 @@ from __future__ import annotations
 
 import logging
 import os
-from typing import Any
+import threading
+import time
+import uuid
+from collections import deque
+from typing import Any, Deque
 
 from flask import Flask, jsonify, render_template, request
 
@@ -17,6 +21,49 @@ MAX_QUESTION_LENGTH = 4000  # characters; rejects oversized payloads early
 
 # Lazily initialized Gemini client (avoids cold-start API key check)
 _gemini_client = None
+
+# ---------------------------------------------------------------------------
+# In-memory conversation sessions
+# ---------------------------------------------------------------------------
+# Each session keeps a small rolling transcript and a dict of resolved
+# entities (last address / district / lot area / etc). This is intentionally
+# in-process — sessions are best-effort and reset when the worker restarts.
+
+_SESSION_TTL_SECONDS = 60 * 60  # 1 hour
+_SESSION_MAX = 500
+_SESSION_HISTORY_TURNS = 8  # 4 Q/A pairs
+
+_sessions: dict[str, dict[str, Any]] = {}
+_sessions_lock = threading.Lock()
+
+
+def _prune_sessions_locked() -> None:
+    """Drop expired or oldest sessions. Caller holds ``_sessions_lock``."""
+    now = time.monotonic()
+    expired = [sid for sid, s in _sessions.items() if now - s["updated"] > _SESSION_TTL_SECONDS]
+    for sid in expired:
+        _sessions.pop(sid, None)
+    while len(_sessions) > _SESSION_MAX:
+        _sessions.pop(next(iter(_sessions)), None)
+
+
+def _get_session(session_id: str | None) -> tuple[str, dict[str, Any]]:
+    """Return ``(session_id, session)``, creating a new session if needed."""
+    with _sessions_lock:
+        _prune_sessions_locked()
+        if session_id and session_id in _sessions:
+            session = _sessions[session_id]
+            session["updated"] = time.monotonic()
+            return session_id, session
+        new_id = session_id or uuid.uuid4().hex
+        history: Deque[dict[str, str]] = deque(maxlen=_SESSION_HISTORY_TURNS)
+        session = {
+            "history": history,
+            "entities": {},
+            "updated": time.monotonic(),
+        }
+        _sessions[new_id] = session
+        return new_id, session
 
 
 def _get_client():
@@ -66,6 +113,7 @@ def index() -> str:
 def chat() -> tuple[Any, int]:
     data: dict[str, Any] = request.get_json(force=True, silent=True) or {}
     question: str = (data.get("question") or "").strip()
+    session_id_in = data.get("session_id") or None
 
     if not question:
         return jsonify({"error": "Question is required."}), 400
@@ -83,10 +131,24 @@ def chat() -> tuple[Any, int]:
             413,
         )
 
+    session_id, session = _get_session(session_id_in)
+    history_snapshot = list(session["history"])
+    entities_snapshot = dict(session["entities"])
+
     try:
         client = _get_client()
-        answer, trace = client.ask(question)
+        answer, trace = client.ask(
+            question,
+            history=history_snapshot,
+            entities=entities_snapshot,
+        )
         tool_calls = trace.get("tool_calls", [])
+        # Persist the new turn back to the session.
+        with _sessions_lock:
+            session["history"].append({"role": "user", "content": question})
+            session["history"].append({"role": "assistant", "content": answer})
+            session["entities"] = trace.get("entities") or entities_snapshot
+            session["updated"] = time.monotonic()
         return (
             jsonify(
                 {
@@ -96,6 +158,7 @@ def chat() -> tuple[Any, int]:
                         {"name": tc["name"], "args": tc["args"]} for tc in tool_calls
                     ],
                     "trace": trace,
+                    "session_id": session_id,
                 }
             ),
             200,
@@ -112,6 +175,17 @@ def chat() -> tuple[Any, int]:
 
         logger.exception("Unexpected error handling chat request")
         return jsonify({"error": "An unexpected error occurred. Please try again."}), 500
+
+
+@app.post("/api/session/reset")
+def reset_session() -> tuple[Any, int]:
+    """Clear a session's conversation history."""
+    data: dict[str, Any] = request.get_json(force=True, silent=True) or {}
+    session_id = data.get("session_id") or None
+    if session_id:
+        with _sessions_lock:
+            _sessions.pop(session_id, None)
+    return jsonify({"ok": True}), 200
 
 
 @app.get("/api/health")
