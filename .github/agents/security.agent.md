@@ -59,4 +59,31 @@ Write `.security/report.md` using this exact structure:
 - After Squad addresses a finding, they should update its `**Status:**` to `resolved`
   or `wontfix` (with a one-line rationale). Maestro reads these statuses to decide
   whether to escalate.
-- Make a single commit: `Security: scan report YYYY-MM-DD`.
+
+## Final Step — Export report to Maestro (private)
+
+After writing `.security/report.md`, push it to the private `adkf37/.maestro`
+repository so findings stay out of this public repo:
+
+```bash
+REPORT_B64=$(base64 -w 0 .security/report.md)
+EXISTING_SHA=$(gh api repos/adkf37/.maestro/contents/state/security-reports/REPO_NAME/report.md --jq '.sha' 2>/dev/null || echo "")
+if [ -n "$EXISTING_SHA" ]; then
+  gh api repos/adkf37/.maestro/contents/state/security-reports/REPO_NAME/report.md \
+    --method PUT \
+    -f message="Security: scan report $(date +%Y-%m-%d) [REPO_NAME]" \
+    -f content="$REPORT_B64" \
+    -f sha="$EXISTING_SHA"
+else
+  gh api repos/adkf37/.maestro/contents/state/security-reports/REPO_NAME/report.md \
+    --method PUT \
+    -f message="Security: scan report $(date +%Y-%m-%d) [REPO_NAME]" \
+    -f content="$REPORT_B64"
+fi
+```
+
+Replace `REPO_NAME` with the name of this repository (the part after `adkf37/`).
+
+Do **not** commit the report or any scan artifacts to this repository.
+Add `.security/` to `.gitignore` if not already listed, then make exactly one
+commit: `Security: update .gitignore`.
